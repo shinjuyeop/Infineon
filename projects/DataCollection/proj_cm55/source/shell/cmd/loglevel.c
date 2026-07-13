@@ -1,0 +1,106 @@
+/******************************************************************************
+* File Name: loglevel.c
+*
+* Description: Implementation of the 'loglevel' command for the shell.
+*
+* Related Document: See README.md
+*
+*******************************************************************************
+* (c) 2026, Infineon Technologies AG, or an affiliate of Infineon
+* Technologies AG. All rights reserved.
+* This software, associated documentation and materials ("Software") is
+* owned by Infineon Technologies AG or one of its affiliates ("Infineon")
+* and is protected by and subject to worldwide patent protection, worldwide
+* copyright laws, and international treaty provisions. Therefore, you may use
+* this Software only as provided in the license agreement accompanying the
+* software package from which you obtained this Software. If no license
+* agreement applies, then any use, reproduction, modification, translation, or
+* compilation of this Software is prohibited without the express written
+* permission of Infineon.
+*
+* Disclaimer: UNLESS OTHERWISE EXPRESSLY AGREED WITH INFINEON, THIS SOFTWARE
+* IS PROVIDED AS-IS, WITH NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+* INCLUDING, BUT NOT LIMITED TO, ALL WARRANTIES OF NON-INFRINGEMENT OF
+* THIRD-PARTY RIGHTS AND IMPLIED WARRANTIES SUCH AS WARRANTIES OF FITNESS FOR A
+* SPECIFIC USE/PURPOSE OR MERCHANTABILITY.
+* Infineon reserves the right to make changes to the Software without notice.
+* You are responsible for properly designing, programming, and testing the
+* functionality and safety of your intended application of the Software, as
+* well as complying with any legal requirements related to its use. Infineon
+* does not guarantee that the Software will be free from intrusion, data theft
+* or loss, or other breaches ("Security Breaches"), and Infineon shall have
+* no liability arising out of any Security Breaches. Unless otherwise
+* explicitly approved by Infineon, the Software may not be used in any
+* application where a failure of the Product or any consequences of the use
+* thereof can reasonably be expected to result in personal injury.
+*******************************************************************************/
+#ifdef IM_ENABLE_SHELL
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "../common.h"
+
+/******************************************************************************
+* Function Name: main_loglevel
+********************************************************************************
+* Summary:
+*   Implementation of the 'loglevel' command for the shell.
+*
+* Parameters:
+*   argc: Argument count.
+*   argv: Argument vector.
+*
+* Return:
+*   0 if operation is successful, otherwise -1.
+*
+*******************************************************************************/
+int main_loglevel(int argc, char** argv) 
+{
+    const char* command = argv[1];
+    const char* usage_text = "Usage: %s <command>\n"
+        "Commands:\n"
+        "  none    - Disable logging\n"
+        "  debug   - Display DEBUG, INFO, and ERROR messages\n"
+        "  info    - Display INFO and ERROR messages\n"
+        "  error   - Display only ERROR messages\n";
+
+    if (argc != 2) 
+    {
+        printf(usage_text, argv[0]);
+        return -1;
+    }
+
+    if (strcmp(command, "none") == 0) 
+    {
+        log_set_level(LOG_LEVEL_NONE);
+        printf("Logging disabled\n");
+    }
+    else if (strcmp(command, "debug") == 0) 
+    {
+        log_set_level(LOG_LEVEL_DEBUG);
+        printf("Log level set to: DEBUG, INFO, and ERROR\n");
+    }
+    else if (strcmp(command, "info") == 0) 
+    {
+        log_set_level(LOG_LEVEL_INFO);
+        printf("Log level set to: INFO and ERROR\n");
+    }
+    else if (strcmp(command, "error") == 0) 
+    {
+        log_set_level(LOG_LEVEL_ERROR);
+        printf("Log level set to: ERROR\n");
+    }
+    else 
+    {
+        printf("Unknown command: %s\n", command);
+        printf(usage_text, argv[0]);
+        return -1;
+    }
+
+    return 0;
+}
+
+#endif /* IM_ENABLE_SHELL */
+
+/* [] END OF FILE */
