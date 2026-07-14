@@ -475,15 +475,16 @@ cy_rslt_t imu_data_process(void)
     /* To check the status of FIFO watermark interrupt. */
     if (int_status & BMI2_FWM_INT_STATUS_MASK)
     {
-        /* Redraw the fixed-width inference result in place without clearing
-         * the screen first, which avoids visible flicker.
+        /* Redraw the inference result in place. Clear only the current line
+         * before writing it so terminal status text cannot remain mixed in,
+         * while avoiding the flicker caused by clearing the entire screen.
          */
-        printf("\x1b[H");
+        printf("\x1b[H\x1b[2K");
 
 #ifdef COMPONENT_CM33
-        printf("DEEPCRAFT Studio Deploy Motion Example - CM33\r\n\n");
+        printf("DEEPCRAFT Studio Deploy Motion Example - CM33\r\n\x1b[2K\r\n");
 #else
-        printf("DEEPCRAFT Studio Deploy Motion Example - CM55\r\n\n");
+        printf("DEEPCRAFT Studio Deploy Motion Example - CM55\r\n\x1b[2K\r\n");
 #endif /* COMPONENT_CM33 */
 
         /* Turn user led on.*/
@@ -603,7 +604,7 @@ cy_rslt_t imu_data_process(void)
                 {
                     for(int i = 0; i < IMAI_DATA_OUT_COUNT; i++)
                     {
-                        printf("label: %-10s: score: %f\r\n", label_text[i],
+                        printf("\x1b[2Klabel: %-10s: score: %f\r\n", label_text[i],
                                label_scores[i]);
                         if (label_scores[i] > max_score)
                         {
@@ -611,8 +612,17 @@ cy_rslt_t imu_data_process(void)
                             best_label = i;
                         }
                     }
-                    printf("\r\n");
-                    printf("Output: %-30s\r\n", label_text[best_label]);
+                    printf("\x1b[2K\r\n");
+                    printf("\x1b[2KOutput: %-30s\r\n", label_text[best_label]);
+#if defined(IMU_ACC) && defined(IMU_GYR)
+                    printf("\x1b[2KIMU: ax=% .4f ay=% .4f az=% .4f "
+                           "gx=% .4f gy=% .4f gz=% .4f\r\n\x1b[2K",
+                           imu_buffer[0], imu_buffer[1], imu_buffer[2],
+                           imu_buffer[3], imu_buffer[4], imu_buffer[5]);
+#else
+                    printf("\x1b[2KIMU: x=% .4f y=% .4f z=% .4f\r\n\x1b[2K",
+                           imu_buffer[0], imu_buffer[1], imu_buffer[2]);
+#endif
                     break;
                 }
 
