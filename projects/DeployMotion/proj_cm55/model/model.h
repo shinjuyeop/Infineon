@@ -2,14 +2,14 @@
 * ImagiNet Compiler 5.13.5729.0+9fdc76d9f295d32de8260f13ae53677c59192b10
 * Copyright © 2023- Imagimob AB, All Rights Reserved.
 * 
-* Generated at 07/14/2026 03:15:24 UTC. Any changes will be lost.
+* Generated at 07/14/2026 07:14:23 UTC. Any changes will be lost.
 * 
-* Model ID  b51a271f-8296-4cd6-9e10-41c2374205f0
+* Model ID  6a6f2ee0-50b2-43db-ad22-d4edd9ef4ab8
 * 
 * Memory    Size                      Efficiency
 * Buffers   2400 bytes (RAM)          100 %
 * State     47680 bytes (RAM)         100 %
-* Readonly  134428 bytes (Flash)      100 %
+* Readonly  79212 bytes (Flash)       100 %
 * 
 * Exported functions:
 * 
@@ -46,7 +46,6 @@
 * 	-> This code was generated with DEEPCRAFT Studio using:
 * 		ml-coretools 3.2.0.9646.
 * 		tensorflow 2.19.0.
-* 		ethos-u-vela 4.5.0.
 * 	-> This code requires the following Modus Toolbox libraries (add them to your
 * 	project using the Library Manager):
 * 		ml-middleware 3.2.0.
@@ -66,7 +65,7 @@ typedef int64_t q63_t;       // 64-bit fractional data type in Q1.63 format.
 typedef float timestamp_t;
 
 // Model GUID (16 bytes)
-#define IMAI_MODEL_ID {0x1f, 0x27, 0x1a, 0xb5, 0x96, 0x82, 0xd6, 0x4c, 0x9e, 0x10, 0x41, 0xc2, 0x37, 0x42, 0x05, 0xf0}
+#define IMAI_MODEL_ID {0xe0, 0x2e, 0x6f, 0x6a, 0xb2, 0x50, 0xdb, 0x43, 0xad, 0x22, 0xd4, 0xed, 0xd9, 0xef, 0x4a, 0xb8}
 
 
 // First nibble is bit encoding, second nibble is number of bytes
@@ -112,7 +111,7 @@ typedef float timestamp_t;
 #define IMAI_DATA_OUT_SHIFT 0
 #define IMAI_DATA_OUT_OFFSET 0
 #define IMAI_DATA_OUT_SCALE 0
-#define IMAI_DATA_OUT_SYMBOLS {"unlabeled", "background", "shake", "circle"}
+#define IMAI_DATA_OUT_SYMBOLS {"unlabeled", "background", "circle", "shake"}
 
 // data_in [2,3] (24 bytes)
 #define IMAI_DATA_IN_RANK (2)
