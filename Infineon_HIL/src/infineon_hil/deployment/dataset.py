@@ -8,8 +8,8 @@ from pathlib import Path
 import numpy as np
 from numpy.typing import NDArray
 
-from deepet_hil.model.dataset import PreparedDataset, prepare_dataset
-from deepet_hil.schema import NUM_CHANNELS
+from infineon_hil.model.dataset import PreparedDataset, prepare_dataset
+from infineon_hil.schema import NUM_CHANNELS
 
 
 @dataclass(frozen=True)

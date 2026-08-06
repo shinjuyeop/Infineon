@@ -59,14 +59,14 @@ Host → PSoC6 HIL → DAC → J17 / ADC → KIT_PSE84_AI
 - Units: FSR `[N]`, vibration `[g]`
 - Classes: `0=concrete`, `1=marble`, `2=ice`, `3=sand`
 
-채널 이름과 index는 host package의 `schema.py` 한 곳에서 정의한다. YAML channel order도 이 schema와 일치하는지 로드 시 검증된다. Class ID나 terrain metadata는 sensor tensor에 포함되지 않는다.
+채널 이름과 index는 `infineon_hil.schema` 한 곳에서 정의한다. YAML channel order도 이 schema와 일치하는지 로드 시 검증된다. Class ID나 terrain metadata는 sensor tensor에 포함되지 않는다.
 
 ## Directory tree
 
 ```text
 .
 ├── configs/terrain_v0_1.yaml
-├── src/<host_package>/
+├── src/infineon_hil/
 │   ├── schema.py                   # canonical channel definition
 │   ├── terrain/
 │   │   ├── params.py               # YAML/provenance validation
@@ -123,7 +123,7 @@ Input (50,5)
 
 총 trainable parameter는 972개다. 학습에는 mini-batch Adam과 cross-entropy를 사용한다. 전처리는 training partition에서 계산한 5채널별 mean/std만 사용하며, 값은 model artifact에 저장되어 Host inference와 MockE84가 완전히 동일하게 적용한다.
 
-NumPy reference artifact는 pickle 없는 compressed NPZ이며 Host architecture와 Mock HIL 검증용이다. 이 모델과 host package의 `model/` 코드는 deployment model로 대체되지 않는다.
+NumPy reference artifact는 pickle 없는 compressed NPZ이며 Host architecture와 Mock HIL 검증용이다. 이 모델과 `src/infineon_hil/model/` 코드는 deployment model로 대체되지 않는다.
 
 ## Deployment-target TensorFlow model
 

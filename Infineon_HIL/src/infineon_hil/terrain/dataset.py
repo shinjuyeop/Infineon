@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 from numpy.typing import NDArray
 
-from deepet_hil.schema import NUM_CHANNELS
+from infineon_hil.schema import NUM_CHANNELS
 
 from .generator import generate_window
 from .params import TerrainConfig

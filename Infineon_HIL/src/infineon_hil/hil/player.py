@@ -9,8 +9,8 @@ from pathlib import Path
 import numpy as np
 from numpy.typing import NDArray
 
-from deepet_hil.model.dataset import load_npz_dataset
-from deepet_hil.schema import NUM_CHANNELS
+from infineon_hil.model.dataset import load_npz_dataset
+from infineon_hil.schema import NUM_CHANNELS
 
 from .frame import HilFrame
 from .interface import HilOutput

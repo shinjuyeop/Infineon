@@ -1,4 +1,4 @@
-"""G1 virtual sensors used by the DeepET HIL prototype."""
+"""G1 virtual sensors used by the Infineon HIL prototype."""
 
 from __future__ import annotations
 

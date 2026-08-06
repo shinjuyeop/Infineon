@@ -8,8 +8,8 @@ from pathlib import Path
 import numpy as np
 from numpy.typing import NDArray
 
-from deepet_hil.schema import NUM_CHANNELS
-from deepet_hil.terrain.dataset import stratified_split_indices
+from infineon_hil.schema import NUM_CHANNELS
+from infineon_hil.terrain.dataset import stratified_split_indices
 
 
 @dataclass(frozen=True)

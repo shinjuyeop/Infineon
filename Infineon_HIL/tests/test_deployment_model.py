@@ -7,7 +7,7 @@ import pytest
 
 tf = pytest.importorskip("tensorflow")
 
-from deepet_hil.deployment.model import build_deployment_model
+from infineon_hil.deployment.model import build_deployment_model
 
 pytestmark = pytest.mark.deployment
 

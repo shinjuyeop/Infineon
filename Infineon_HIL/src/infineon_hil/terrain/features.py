@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 from numpy.typing import ArrayLike, NDArray
 
-from deepet_hil.schema import Channel, NUM_CHANNELS
+from infineon_hil.schema import Channel, NUM_CHANNELS
 
 FEATURE_NAMES = (
     "vibration_rms_g",

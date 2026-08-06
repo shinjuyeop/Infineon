@@ -16,9 +16,9 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from deepet_hil.terrain.features import FEATURE_NAMES, extract_features
-from deepet_hil.terrain.params import load_config
-from deepet_hil.schema import Channel
+from infineon_hil.terrain.features import FEATURE_NAMES, extract_features
+from infineon_hil.terrain.params import load_config
+from infineon_hil.schema import Channel
 
 
 def _save_distribution(values: np.ndarray, y: np.ndarray, names: dict[int, str], title: str, unit: str, path: Path) -> None:

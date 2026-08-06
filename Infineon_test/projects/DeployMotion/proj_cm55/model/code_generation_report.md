@@ -1,5 +1,5 @@
 # Model performance and validation report
-**Source model:** C:/Users/shinj/Desktop/DeepET/DEEPCRAFT/E84_SensorTest/PSE84_IMU_Motion_v2/conv2d-medium-balanced-1/conv2d-medium-balanced-1.h5  
+**Source model:** `PSE84_IMU_Motion_v2/conv2d-medium-balanced-1/conv2d-medium-balanced-1.h5`
 **Generated:** 2026-07-14 16:14:24
 
 ### Memory usage
@@ -9,4 +9,3 @@
 
 ### Latency
 **Total CPU cycles:** 0
-

@@ -7,7 +7,7 @@ from dataclasses import dataclass
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
 
-from deepet_hil.schema import Channel, NUM_CHANNELS
+from infineon_hil.schema import Channel, NUM_CHANNELS
 
 
 @dataclass(frozen=True)

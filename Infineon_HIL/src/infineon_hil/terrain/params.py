@@ -8,7 +8,7 @@ from typing import Any, Mapping
 
 import yaml
 
-from deepet_hil.schema import CHANNEL_NAMES
+from infineon_hil.schema import CHANNEL_NAMES
 
 
 @dataclass(frozen=True)

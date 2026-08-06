@@ -13,10 +13,10 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from deepet_hil.model.dataset import load_npz_dataset
-from deepet_hil.model.evaluation import evaluate_model
-from deepet_hil.model.inference import TerrainInferenceEngine
-from deepet_hil.terrain.dataset import stratified_split_indices
+from infineon_hil.model.dataset import load_npz_dataset
+from infineon_hil.model.evaluation import evaluate_model
+from infineon_hil.model.inference import TerrainInferenceEngine
+from infineon_hil.terrain.dataset import stratified_split_indices
 
 
 def main() -> None:

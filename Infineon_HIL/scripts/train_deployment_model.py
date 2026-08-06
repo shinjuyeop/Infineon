@@ -12,17 +12,17 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from deepet_hil.deployment.dataset import prepare_deployment_dataset
-from deepet_hil.deployment.evaluate import calculate_metrics
-from deepet_hil.deployment.metadata import DeploymentMetadata
-from deepet_hil.deployment.model import build_deployment_model
-from deepet_hil.deployment.train import (
+from infineon_hil.deployment.dataset import prepare_deployment_dataset
+from infineon_hil.deployment.evaluate import calculate_metrics
+from infineon_hil.deployment.metadata import DeploymentMetadata
+from infineon_hil.deployment.model import build_deployment_model
+from infineon_hil.deployment.train import (
     DeploymentTrainingConfig,
     save_training_history_plot,
     train_deployment_model,
 )
-from deepet_hil.schema import CHANNEL_NAMES
-from deepet_hil.terrain.params import load_config
+from infineon_hil.schema import CHANNEL_NAMES
+from infineon_hil.terrain.params import load_config
 
 
 def main() -> None:

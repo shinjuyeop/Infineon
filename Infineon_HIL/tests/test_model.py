@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import numpy as np
 
-from deepet_hil.model.dataset import ChannelStandardizer
-from deepet_hil.model.inference import TerrainInferenceEngine
-from deepet_hil.model.network import TerrainCNN
-from deepet_hil.model.train import TrainingConfig, train_model
+from infineon_hil.model.dataset import ChannelStandardizer
+from infineon_hil.model.inference import TerrainInferenceEngine
+from infineon_hil.model.network import TerrainCNN
+from infineon_hil.model.train import TrainingConfig, train_model
 
 
 def test_cnn_input_output_shape() -> None:

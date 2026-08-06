@@ -10,8 +10,8 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from deepet_hil.terrain.dataset import build_dataset, save_dataset
-from deepet_hil.terrain.params import load_config
+from infineon_hil.terrain.dataset import build_dataset, save_dataset
+from infineon_hil.terrain.params import load_config
 
 
 def main() -> None:

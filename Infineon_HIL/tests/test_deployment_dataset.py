@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import numpy as np
 
-from deepet_hil.deployment.dataset import prepare_deployment_dataset
-from deepet_hil.deployment.metadata import DeploymentMetadata
-from deepet_hil.schema import CHANNEL_NAMES
-from deepet_hil.terrain.dataset import save_dataset
+from infineon_hil.deployment.dataset import prepare_deployment_dataset
+from infineon_hil.deployment.metadata import DeploymentMetadata
+from infineon_hil.schema import CHANNEL_NAMES
+from infineon_hil.terrain.dataset import save_dataset
 
 
 def test_deployment_split_and_normalizer_are_leak_free(tmp_path, full_dataset) -> None:
