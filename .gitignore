@@ -1,0 +1,72 @@
+# Private/local documents (the existing directory uses the first spelling)
+/Infienon_documents/
+/Infineon_documents/
+
+# Previous publication staging, if recreated locally
+/Infineon_monorepo/
+
+# Nested repository metadata
+**/.git/
+
+# Python environments and caches
+.venv/
+venv/
+**/.venv/
+**/venv/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+*.egg-info/
+
+# Generated simulation and ML artifacts
+/simulation/outputs/
+/Infineon_HIL/outputs/
+/Infineon_HIL/data/synthetic/*
+!/Infineon_HIL/data/synthetic/.gitkeep
+/Infineon_HIL/models/*
+!/Infineon_HIL/models/.gitkeep
+!/Infineon_HIL/models/deployment/
+/Infineon_HIL/models/deployment/*
+!/Infineon_HIL/models/deployment/.gitkeep
+
+# ModusToolbox downloads and generated files
+/Infineon_test/projects/mtb_shared/
+/Infineon_test/projects/test_project_epc2/
+/Infineon_test/workspace/
+/Infineon_test/downloads/
+/Infineon_test/tools/
+**/build/
+**/Debug/
+**/Release/
+**/*_build/
+**/libs/
+**/.cache/
+**/.mtbqueryapi
+**/.ninja_*
+**/.metadata/
+**/.settings/
+
+# Compiled binaries and logs
+*.bin
+*.elf
+*.hex
+*.map
+*.o
+*.log
+
+# Credentials and machine-local configuration
+.env
+.env.*
+*.pem
+*.key
+*credentials*
+*secrets*
+
+# Editors and operating systems
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+Thumbs.db
+*~

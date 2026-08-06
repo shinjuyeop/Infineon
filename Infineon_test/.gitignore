@@ -1,0 +1,42 @@
+# ModusToolbox libraries downloaded by `make getlibs`
+/projects/mtb_shared/
+
+# Separate scratch/evaluation-board project
+/projects/test_project_epc2/
+
+# Local ModusToolbox and IDE workspace data
+/workspace/
+/downloads/
+/tools/
+
+# Build outputs generated at every project/core level
+**/build/
+**/Debug/
+**/Release/
+**/*_build/
+
+# Generated dependency views and Ninja state
+**/libs/
+**/.mtbqueryapi
+**/.ninja_*
+
+# Local IDE and debugger files
+**/.metadata/
+**/.settings/
+**/.cache/
+**/.vscode/
+**/*.code-workspace
+**/openocd.tcl
+
+# Compiled binaries and logs
+**/*.bin
+**/*.elf
+**/*.hex
+**/*.map
+**/*.o
+**/*.log
+
+# OS/editor files
+**/.DS_Store
+**/Thumbs.db
+**/*~

@@ -1,0 +1,102 @@
+schema_version: "0.1"
+provenance:
+  status: "engineering estimates for synthetic/HIL validation; not measured sensor data"
+  replacement_note: "Replace this table with Phase-1 bench measurements before final model use."
+
+sampling:
+  sampling_rate_hz: 1000
+  window_length_ms: 50
+  time_steps: 50
+  channel_order: [FSR1, FSR2, FSR3, FSR4, vibration]
+
+dataset:
+  samples_per_class: 500
+  global_seed: 42
+  split_ratios: {train: 0.70, validation: 0.15, test: 0.15}
+
+# Source-provided v0.1 synthetic lookup values. These are engineering estimates,
+# not measurements and must not be interpreted as calibrated physical constants.
+terrains:
+  concrete:
+    class_id: 0
+    friction_mu: 0.85
+    relative_stiffness: 1.00
+    damping: 0.10
+    vibration_band_hz: {min: 50, max: 500}
+    vibration_rms_g: 0.90
+    impulsive: false
+    fsr_peak_n: {min: 150, max: 185}
+    rise_time_ms: {min: 14, max: 20}
+    micro_slip_probability: 0.02
+  marble:
+    class_id: 1
+    friction_mu: 0.45
+    relative_stiffness: 1.05
+    damping: 0.06
+    vibration_band_hz: {min: 80, max: 300}
+    vibration_rms_g: 0.40
+    impulsive: false
+    fsr_peak_n: {min: 150, max: 185}
+    rise_time_ms: {min: 12, max: 18}
+    micro_slip_probability: 0.12
+  ice:
+    class_id: 2
+    friction_mu: 0.12
+    relative_stiffness: 0.95
+    damping: 0.05
+    vibration_band_hz: {min: 20, max: 120}
+    vibration_rms_g: 0.14
+    impulsive: true
+    fsr_peak_n: {min: 120, max: 165}
+    rise_time_ms: {min: 10, max: 16}
+    micro_slip_probability: 0.55
+  sand:
+    class_id: 3
+    friction_mu: 0.55
+    relative_stiffness: 0.35
+    damping: 0.45
+    vibration_band_hz: {min: 10, max: 80}
+    vibration_rms_g: 0.55
+    impulsive: false
+    fsr_peak_n: {min: 95, max: 140}
+    rise_time_ms: {min: 28, max: 42}
+    micro_slip_probability: 0.05
+
+# Temporary engineering assumptions: deliberately isolated for later calibration.
+engineering_assumptions:
+  fsr:
+    base_spatial_weights: [0.30, 0.27, 0.24, 0.19]
+    spatial_weight_std:
+      concrete: 0.025
+      marble: 0.030
+      ice: 0.045
+      sand: 0.075
+    sensor_gain_error_fraction: 0.05
+    sensor_offset_n: 2.0
+    temporal_noise_fraction: {min: 0.03, max: 0.08}
+    plateau_duration_ms: {min: 3, max: 12}
+    contact_start_ms: {min: 0, max: 3}
+    sand_low_frequency_variation_fraction: 0.10
+    output_range_n: {min: 0.0, max: 200.0}
+  micro_slip:
+    slip_drop_fraction: {min: 0.20, max: 0.45}
+    slip_duration_ms: {min: 3, max: 10}
+    slip_start_ms: {min: 20, max: 40}
+    channel_drop_variation: 0.10
+    recovery_fraction: {min: 0.70, max: 1.00}
+  vibration:
+    rms_randomization_fraction: 0.15
+    sensor_gain_error_fraction: 0.05
+    additive_noise_fraction: {min: 0.03, max: 0.10}
+    damping_decay_scale: 4.0
+    impulse_amplitude_multiplier: {min: 2.0, max: 5.0}
+    impulse_duration_ms: {min: 2, max: 6}
+  # Legacy concept only; NOT validated for KIT_PSE84_AI J17/ADC or any HIL hardware.
+  # Synthetic terrain generation does not depend on these voltage values.
+  legacy_conceptual_hil_mapping:
+    status: "concept only; NOT validated for KIT_PSE84_AI analog input"
+    fsr_full_scale_n: 200.0
+    fsr_full_scale_v: 3.3
+    vibration_midrail_v: 1.65
+    vibration_amplitude_v: 1.5
+    vibration_full_scale_g: 5.0  # Engineering assumption until calibration.
