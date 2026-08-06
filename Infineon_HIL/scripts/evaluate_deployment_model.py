@@ -13,11 +13,11 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from deepet_hil.deployment.evaluate import calculate_metrics, save_confusion_matrix_plot
-from deepet_hil.deployment.metadata import DeploymentMetadata
-from deepet_hil.deployment.model import require_tensorflow
-from deepet_hil.model.dataset import load_npz_dataset
-from deepet_hil.terrain.dataset import stratified_split_indices
+from infineon_hil.deployment.evaluate import calculate_metrics, save_confusion_matrix_plot
+from infineon_hil.deployment.metadata import DeploymentMetadata
+from infineon_hil.deployment.model import require_tensorflow
+from infineon_hil.model.dataset import load_npz_dataset
+from infineon_hil.terrain.dataset import stratified_split_indices
 
 
 def main() -> None:

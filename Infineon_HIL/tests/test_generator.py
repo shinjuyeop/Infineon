@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import numpy as np
 
-from deepet_hil.terrain.features import extract_features
-from deepet_hil.terrain.generator import generate_window
+from infineon_hil.terrain.features import extract_features
+from infineon_hil.terrain.generator import generate_window
 
 
 def test_class_mapping(config) -> None:

@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 from typing import Any
 
-from deepet_hil.schema import NUM_CHANNELS
+from infineon_hil.schema import NUM_CHANNELS
 
 
 def require_tensorflow() -> Any:

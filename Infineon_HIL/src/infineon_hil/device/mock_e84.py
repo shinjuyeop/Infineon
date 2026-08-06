@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import numpy as np
 
-from deepet_hil.hil.frame import HilFrame
-from deepet_hil.model.inference import Prediction, TerrainInferenceEngine
+from infineon_hil.hil.frame import HilFrame
+from infineon_hil.model.inference import Prediction, TerrainInferenceEngine
 
 
 class MockE84Inference:

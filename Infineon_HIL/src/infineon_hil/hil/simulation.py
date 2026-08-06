@@ -7,8 +7,8 @@ from dataclasses import dataclass
 import numpy as np
 from numpy.typing import NDArray
 
-from deepet_hil.device.mock_e84 import MockE84Inference
-from deepet_hil.model.inference import Prediction, TerrainInferenceEngine
+from infineon_hil.device.mock_e84 import MockE84Inference
+from infineon_hil.model.inference import Prediction, TerrainInferenceEngine
 
 from .mock import MockHilOutput
 from .player import PlaybackSample, SignalPlayer

@@ -12,7 +12,7 @@ from sklearn.neighbors import NearestCentroid
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
-from deepet_hil.schema import Channel, NUM_CHANNELS
+from infineon_hil.schema import Channel, NUM_CHANNELS
 
 from .features import extract_features
 

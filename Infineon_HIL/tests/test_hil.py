@@ -4,14 +4,14 @@ from __future__ import annotations
 
 import numpy as np
 
-from deepet_hil.device.mock_e84 import MockE84Inference
-from deepet_hil.hil.mock import MockHilOutput
-from deepet_hil.hil.player import PlaybackSample, SignalPlayer
-from deepet_hil.hil.simulation import run_mock_sample
-from deepet_hil.model.inference import TerrainInferenceEngine
-from deepet_hil.model.network import TerrainCNN
-from deepet_hil.schema import NUM_CHANNELS
-from deepet_hil.terrain.mapping import (
+from infineon_hil.device.mock_e84 import MockE84Inference
+from infineon_hil.hil.mock import MockHilOutput
+from infineon_hil.hil.player import PlaybackSample, SignalPlayer
+from infineon_hil.hil.simulation import run_mock_sample
+from infineon_hil.model.inference import TerrainInferenceEngine
+from infineon_hil.model.network import TerrainCNN
+from infineon_hil.schema import NUM_CHANNELS
+from infineon_hil.terrain.mapping import (
     fsr_n_to_normalized,
     normalized_to_output_code,
     output_code_to_physical,

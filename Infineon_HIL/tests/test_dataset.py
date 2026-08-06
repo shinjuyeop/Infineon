@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import numpy as np
 
-from deepet_hil.terrain.dataset import build_dataset, stratified_split_indices
-from deepet_hil.terrain.validation import run_sanity_baseline
+from infineon_hil.terrain.dataset import build_dataset, stratified_split_indices
+from infineon_hil.terrain.validation import run_sanity_baseline
 
 
 def test_full_dataset_shape_balance_and_range(full_dataset) -> None:

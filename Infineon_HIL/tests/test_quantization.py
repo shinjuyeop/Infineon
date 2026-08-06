@@ -7,8 +7,8 @@ import pytest
 
 pytest.importorskip("tensorflow")
 
-from deepet_hil.deployment.model import build_deployment_model
-from deepet_hil.deployment.quantization import export_full_int8_tflite
+from infineon_hil.deployment.model import build_deployment_model
+from infineon_hil.deployment.quantization import export_full_int8_tflite
 
 pytestmark = pytest.mark.deployment
 

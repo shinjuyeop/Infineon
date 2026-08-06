@@ -14,9 +14,9 @@ from sklearn.metrics import confusion_matrix
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from deepet_hil.hil.simulation import run_mock_sample
-from deepet_hil.model.dataset import load_npz_dataset
-from deepet_hil.model.inference import TerrainInferenceEngine
+from infineon_hil.hil.simulation import run_mock_sample
+from infineon_hil.model.dataset import load_npz_dataset
+from infineon_hil.model.inference import TerrainInferenceEngine
 
 
 def main() -> None:

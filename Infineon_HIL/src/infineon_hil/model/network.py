@@ -9,7 +9,7 @@ from typing import Any
 import numpy as np
 from numpy.typing import NDArray
 
-from deepet_hil.schema import NUM_CHANNELS
+from infineon_hil.schema import NUM_CHANNELS
 
 FloatArray = NDArray[np.float32]
 
@@ -159,7 +159,7 @@ class TerrainCNN:
             "conv1_channels": self.conv1_channels,
             "conv2_channels": self.conv2_channels,
             "num_classes": self.num_classes,
-            "format": "deepet_numpy_cnn_v1",
+            "format": "infineon_hil_numpy_cnn_v1",
         }
         np.savez_compressed(
             output,
@@ -178,7 +178,7 @@ class TerrainCNN:
 
         with np.load(Path(path), allow_pickle=False) as data:
             architecture = json.loads(str(data["architecture"]))
-            if architecture.get("format") != "deepet_numpy_cnn_v1":
+            if architecture.get("format") != "infineon_hil_numpy_cnn_v1":
                 raise ValueError("Unsupported model artifact format")
             model = cls(
                 input_steps=int(architecture["input_steps"]),
