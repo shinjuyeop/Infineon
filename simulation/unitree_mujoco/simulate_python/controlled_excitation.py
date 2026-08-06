@@ -133,6 +133,8 @@ class VerticalElasticBandSupport:
         dof_address: int,
         support_ratio: float = 0.70,
         anchor_height: float = 2.0,
+        application_body_name: str = "torso_link",
+        application_site_name: str | None = None,
     ) -> None:
         if not 0.0 < support_ratio < 1.0:
             raise ValueError("support_ratio must be between zero and one")
@@ -142,7 +144,19 @@ class VerticalElasticBandSupport:
         self.dof_address = dof_address
         self.support_ratio = support_ratio
         self.anchor_height = anchor_height
-        self.torso_body_id = model.body("torso_link").id
+        self.application_body_id = model.body(application_body_name).id
+        self.application_site_id = (
+            None
+            if application_site_name is None
+            else model.site(application_site_name).id
+        )
+        if (
+            self.application_site_id is not None
+            and model.site_bodyid[self.application_site_id] != self.application_body_id
+        ):
+            raise ValueError(
+                f"{application_site_name} is not attached to {application_body_name}"
+            )
 
         self.band = ElasticBand()
         base_position = data.qpos[qpos_address : qpos_address + 3]
@@ -162,7 +176,22 @@ class VerticalElasticBandSupport:
         base_velocity = self.data.qvel[self.dof_address : self.dof_address + 3]
         self.band.point[:2] = base_position[:2]
         force = self.band.Advance(base_position, base_velocity)
-        self.data.xfrc_applied[self.torso_body_id, :3] = force
+        if self.application_site_id is None:
+            self.data.xfrc_applied[self.application_body_id, :3] = force
+        else:
+            # The site is fixed on the equivalent upper-body COM. Clearing the
+            # user generalized force once per step makes subsequent pulse
+            # application additive without accumulating prior-step forces.
+            self.data.qfrc_applied.fill(0.0)
+            mujoco.mj_applyFT(
+                self.model,
+                self.data,
+                force,
+                np.zeros(3, dtype=np.float64),
+                self.data.site_xpos[self.application_site_id],
+                self.application_body_id,
+                self.data.qfrc_applied,
+            )
         return force
 
 
@@ -175,14 +204,37 @@ class HorizontalPulseExciter:
         data: mujoco.MjData,
         pulse: HorizontalPulse,
         body_name: str = "torso_link",
+        application_site_name: str | None = None,
     ) -> None:
+        self.model = model
         self.data = data
         self.pulse = pulse
         self.body_id = model.body(body_name).id
+        self.application_site_id = (
+            None
+            if application_site_name is None
+            else model.site(application_site_name).id
+        )
+        if (
+            self.application_site_id is not None
+            and model.site_bodyid[self.application_site_id] != self.body_id
+        ):
+            raise ValueError(f"{application_site_name} is not attached to {body_name}")
 
     def apply(self, time: float) -> tuple[np.ndarray, bool]:
         force, active = self.pulse.force_at(time)
-        self.data.xfrc_applied[self.body_id, :3] += force
+        if self.application_site_id is None:
+            self.data.xfrc_applied[self.body_id, :3] += force
+        else:
+            mujoco.mj_applyFT(
+                self.model,
+                self.data,
+                force,
+                np.zeros(3, dtype=np.float64),
+                self.data.site_xpos[self.application_site_id],
+                self.body_id,
+                self.data.qfrc_applied,
+            )
         return force, active
 
 

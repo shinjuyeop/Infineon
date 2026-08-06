@@ -35,8 +35,10 @@ DEFAULT_GUI_OUTPUT_DIR = SIMULATION_DIR / "outputs" / "horizontal_pulse_gui_prev
 DEFAULT_SEED = 20260805
 RUN_COLUMNS = (
     "run_id",
+    "session_id",
     "terrain",
     "dataset_seed",
+    "pulse_direction",
     "base_height_offset",
     "base_roll_deg",
     "base_pitch_deg",
@@ -169,6 +171,8 @@ def write_run_csv(
     body_collision: np.ndarray,
     collision_latched: np.ndarray,
     valid_contact: np.ndarray,
+    session_id: str = "",
+    pulse_direction_label: str = "",
 ) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", newline="", encoding="utf-8") as csv_file:
@@ -177,7 +181,8 @@ def write_run_csv(
         for index, timestamp in enumerate(timestamps):
             writer.writerow(
                 (
-                    condition.run_id, terrain, seed,
+                    condition.run_id, session_id, terrain, seed,
+                    pulse_direction_label,
                     f"{condition.base_height_offset:.9f}",
                     f"{condition.base_roll_deg:.9f}", f"{condition.base_pitch_deg:.9f}",
                     f"{support_ratio:.9f}", f"{pulse.start_time:.9f}",
@@ -193,6 +198,16 @@ def write_run_csv(
             )
 
 
+def pulse_direction_name(pulse: HorizontalPulse) -> str:
+    direction = np.asarray((pulse.direction_x, pulse.direction_y), dtype=np.float64)
+    direction /= np.linalg.norm(direction)
+    if np.allclose(direction, (1.0, 0.0)):
+        return "positive_x"
+    if np.allclose(direction, (-1.0, 0.0)):
+        return "negative_x"
+    return f"unit_{direction[0]:+.6f}_{direction[1]:+.6f}"
+
+
 def run_window(
     terrain: str,
     condition: ExcitationCondition,
@@ -205,15 +220,42 @@ def run_window(
     gui: bool = False,
     realtime_factor: float = 1.0,
     gui_hold_seconds: float = 3.0,
+    session_id: str = "",
+    pulse_direction_label: str = "",
+    scene_path: Path | None = None,
+    support_body_name: str = "torso_link",
+    support_site_name: str | None = None,
+    pulse_body_name: str = "torso_link",
+    pulse_site_name: str | None = None,
 ) -> dict[str, float | int | str]:
-    scene_path = (SIMULATE_PYTHON_DIR / config.ROBOT_SCENE).resolve()
+    if not pulse_direction_label:
+        pulse_direction_label = pulse_direction_name(pulse)
+    scene_path = (
+        (SIMULATE_PYTHON_DIR / config.ROBOT_SCENE).resolve()
+        if scene_path is None
+        else scene_path.resolve()
+    )
     model = mujoco.MjModel.from_xml_path(str(scene_path))
     model.opt.timestep = config.SIMULATE_DT
     floor_id = apply_terrain_profile(model, TERRAIN_PROFILES[terrain])
     data = mujoco.MjData(model)
     qpos_address, dof_address = apply_excitation_condition(model, data, condition)
-    support = VerticalElasticBandSupport(model, data, qpos_address, dof_address, support_ratio)
-    exciter = HorizontalPulseExciter(model, data, pulse)
+    support = VerticalElasticBandSupport(
+        model,
+        data,
+        qpos_address,
+        dof_address,
+        support_ratio,
+        application_body_name=support_body_name,
+        application_site_name=support_site_name,
+    )
+    exciter = HorizontalPulseExciter(
+        model,
+        data,
+        pulse,
+        body_name=pulse_body_name,
+        application_site_name=pulse_site_name,
+    )
     sensor_reader = G1HilSensorReader(model, data)
     diagnostic_reader = G1SlipDiagnosticReader(model, data, floor_id)
     allowed_foot_geoms = find_allowed_foot_geom_ids(model)
@@ -311,6 +353,8 @@ def run_window(
             output_dir / relative_path, terrain, seed, condition, support_ratio, pulse,
             timestamp_array, sensor_array, diagnostic_array, body_array, latched_array,
             contact_array,
+            session_id=session_id,
+            pulse_direction_label=pulse_direction_label,
         )
     metrics = calculate_run_metrics(
         timestamp_array, sensor_array, latched_array, contact_array, sample_rate
@@ -322,7 +366,9 @@ def run_window(
     )
     metrics.update(
         {
-            "run_id": condition.run_id, "terrain": terrain, "dataset_seed": seed,
+            "run_id": condition.run_id, "session_id": session_id,
+            "terrain": terrain, "dataset_seed": seed,
+            "pulse_direction": pulse_direction_label,
             "base_height_offset": condition.base_height_offset,
             "base_roll_deg": condition.base_roll_deg,
             "base_pitch_deg": condition.base_pitch_deg,
@@ -332,6 +378,11 @@ def run_window(
             "pulse_magnitude": pulse.magnitude,
             "pulse_direction_x": pulse.direction_x,
             "pulse_direction_y": pulse.direction_y,
+            "scene_path": str(scene_path),
+            "support_body": support_body_name,
+            "support_site": "" if support_site_name is None else support_site_name,
+            "pulse_body": pulse_body_name,
+            "pulse_site": "" if pulse_site_name is None else pulse_site_name,
             "csv_path": str(relative_path),
         }
     )
