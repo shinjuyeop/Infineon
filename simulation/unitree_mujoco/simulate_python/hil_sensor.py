@@ -28,15 +28,22 @@ HIL_SENSOR_CHANNELS = (
 
 
 class G1HilSensorReader:
-    """Read the first 10-channel HIL vector from a G1 MuJoCo state."""
+    """Read the 10-channel left-foot HIL vector from a G1 MuJoCo state."""
 
     def __init__(self, model: mujoco.MjModel, data: mujoco.MjData) -> None:
         self.model = model
         self.data = data
-        self._accelerometer_sensor_id = model.sensor("imu_acc").id
-        self._gyroscope_sensor_id = model.sensor("imu_gyro").id
+        self._accelerometer_sensor_id = model.sensor("left_foot_imu_acc").id
+        self._gyroscope_sensor_id = model.sensor("left_foot_imu_gyro").id
+        self._pelvis_accelerometer_sensor_id = model.sensor("imu_acc").id
+        self._pelvis_gyroscope_sensor_id = model.sensor("imu_gyro").id
 
         ankle_body_id = model.body("left_ankle_roll_link").id
+        left_foot_imu_site_id = model.site("left_foot_imu").id
+        if model.site_bodyid[left_foot_imu_site_id] != ankle_body_id:
+            raise ValueError(
+                "left_foot_imu is not attached to the G1 left_ankle_roll_link"
+            )
         self.left_foot_geom_ids = tuple(
             model.geom(name).id for name in LEFT_FOOT_CONTACT_GEOM_NAMES
         )
@@ -85,10 +92,17 @@ class G1HilSensorReader:
         return forces
 
     def read_vector(self) -> np.ndarray:
-        """Return [4 foot forces, accelerometer XYZ, gyroscope XYZ]."""
+        """Return [4 foot forces, left-foot accel XYZ, left-foot gyro XYZ]."""
         foot_forces = self.read_left_foot_normal_forces()
         accelerometer = self._sensor_data(self._accelerometer_sensor_id)
         gyroscope = self._sensor_data(self._gyroscope_sensor_id)
+        return np.concatenate((foot_forces, accelerometer, gyroscope))
+
+    def read_pelvis_diagnostic_vector(self) -> np.ndarray:
+        """Return the legacy pelvis-based vector for matched diagnostics only."""
+        foot_forces = self.read_left_foot_normal_forces()
+        accelerometer = self._sensor_data(self._pelvis_accelerometer_sensor_id)
+        gyroscope = self._sensor_data(self._pelvis_gyroscope_sensor_id)
         return np.concatenate((foot_forces, accelerometer, gyroscope))
 
 
