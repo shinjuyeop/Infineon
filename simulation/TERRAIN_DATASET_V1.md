@@ -1,11 +1,11 @@
 # MuJoCo Terrain Dataset v1 Pilot
 
-Status: **current production candidate for simulation/host validation**. It has
-not been calibrated against real sensors and has not been deployed to E84.
+상태: **simulation/host 검증용 현재 production candidate**. Real sensor로
+calibration하지 않았으며 E84에 deploy하지 않았다.
 
-This pipeline is separate from the legacy synthetic `(50, 5)` dataset under
-`Infineon_HIL`. Its schema is `(N, 50, 10)` with four FSR channels followed by
-left-foot accelerometer XYZ and gyroscope XYZ.
+이 pipeline은 `Infineon_HIL` 아래의 legacy synthetic `(50, 5)` dataset과
+분리되어 있다. Schema는 `(N, 50, 10)`이며 FSR 4채널 뒤에 left-foot
+accelerometer XYZ와 gyroscope XYZ가 이어진다.
 
 ```text
 Terrain parameters
@@ -25,32 +25,32 @@ Dataset v1 pilot
 RandomForest baseline
 ```
 
-MuJoCo physics ground truth consists of friction, slip, normal load, load
-distribution, CoP-related response, surface geometry response, and low-frequency
-foot dynamics. The virtual sensor input is FSR4 plus the ankle-mounted foot IMU6.
-The pelvis IMU and raw contact diagnostics are diagnostic-only and are stored
-outside the AI tensors. Sensor imperfections are reproducible pilot engineering
-assumptions, not measured KIT_PSE84_AI/BMI270 calibration values.
+MuJoCo physics ground truth는 friction, slip, normal load, load distribution,
+CoP-related response, surface geometry response, low-frequency foot dynamics로
+구성된다. Virtual sensor 입력은 FSR4와 ankle-mounted foot IMU6이다. Pelvis
+IMU와 raw contact diagnostic은 diagnostic 전용이며 AI tensor 밖에 별도로
+저장한다. Sensor imperfection은 재현 가능한 pilot engineering assumption이며
+KIT_PSE84_AI/BMI270의 측정 calibration 값이 아니다.
 
-The AI input deliberately excludes timestep-sensitive raw high-frequency
-vibration PSD, exact dominant vibration frequency, and micro-contact spectral
-features. Clean and noisy tensors are saved separately, and train/validation/test
-surface realizations and sessions are disjoint.
+AI 입력에서는 timestep-sensitive raw high-frequency vibration PSD, 정확한
+dominant vibration frequency, micro-contact spectral feature를 의도적으로
+제외한다. Clean/noisy tensor를 별도로 저장하며 train/validation/test의 surface
+realization과 session은 서로 겹치지 않는다.
 
-Run from `simulation/unitree_mujoco/simulate_python`:
+`simulation/unitree_mujoco/simulate_python`에서 실행한다.
 
 ```bash
 /d/shin/Infineon/simulation/venv/bin/python -m pip install -r requirements-dataset-v1.txt
 /d/shin/Infineon/simulation/venv/bin/python run_terrain_dataset_v1_pilot.py
 ```
 
-Generated data is written to the gitignored
-`simulation/outputs/terrain_dataset_v1_pilot/` directory. The runner refuses to
-overwrite a non-empty output directory.
+생성 데이터는 gitignored 경로인
+`simulation/outputs/terrain_dataset_v1_pilot/`에 저장한다. Runner는 비어 있지
+않은 output directory를 덮어쓰지 않는다.
 
-## Pilot result
+## Pilot 결과
 
-| Item | Result |
+| 항목 | 결과 |
 |---|---:|
 | Candidate runs | 1,200 |
 | Valid windows | 1,189 |
@@ -62,18 +62,20 @@ overwrite a non-empty output directory.
 | Marble recall, fusion | 90.0% |
 | Concrete-Marble mutual confusion, fusion | 5.8% |
 
-Fusion is better than FSR-only, but **the pilot does not establish that Fusion is
-better than IMU-only**. The next milestone must repeat FSR/IMU/Fusion ablation
-with unseen procedural surface families and a shared small 1D-CNN architecture.
+Fusion은 FSR-only보다 우수하지만, **이 pilot만으로 Fusion이 IMU-only보다
+우수하다고 결론낼 수 없다**. 이 한계는 후속 expanded milestone에서 unseen
+procedural surface family와 동일한 small 1D-CNN architecture를 사용해 다시
+평가했다. 완료 결과는 `EXPANDED_DATASET_V1_RESULTS.md`를 참조한다.
 
-## Status boundaries
+## 상태 경계
 
-- **Current/locked:** four terrain labels, FSR4 + foot IMU6, `medium_response`,
-  `(50, 10)`, surface-disjoint splits, and low-frequency MuJoCo responses.
-- **Diagnostic-only:** pelvis IMU, slip/contact traces, collision flags, and raw
-  clean simulation logs.
-- **Deprecated/superseded for Dataset v1:** pelvis IMU as AI input, direct use of
-  raw MuJoCo high-frequency vibration/PSD, and mixing the synthetic `(50, 5)`
-  schema with MuJoCo `(50, 10)` data.
-- **Optional/deferred:** virtual high-frequency vibration sensor model, exact PSD
-  features, gait-based collection, and real sensor calibration.
+- **CURRENT / LOCKED:** terrain label 4개, FSR4 + foot IMU6,
+  `medium_response`, `(50, 10)`, surface-disjoint split, low-frequency MuJoCo
+  response
+- **DIAGNOSTIC-ONLY:** pelvis IMU, slip/contact trace, collision flag, raw clean
+  simulation log
+- **DEPRECATED / SUPERSEDED for Dataset v1:** pelvis IMU AI 입력, raw MuJoCo
+  high-frequency vibration/PSD 직접 사용, synthetic `(50, 5)`와 MuJoCo
+  `(50, 10)` data 혼합
+- **OPTIONAL / DEFERRED:** virtual high-frequency vibration sensor model, exact
+  PSD feature, gait-based collection, real sensor calibration

@@ -1,10 +1,10 @@
 # Terrain Classification Handoff
 
-This is the canonical reset handoff for the MuJoCo terrain-classification work.
-Read it together with `TERRAIN_DATASET_V1.md` and `NEXT_MILESTONE.md` before
-starting another experiment.
+MuJoCo terrain-classification 작업의 canonical reset handoff 문서이다. 다음
+작업 전 `TERRAIN_DATASET_V1.md`, `EXPANDED_DATASET_V1_RESULTS.md`,
+`NEXT_MILESTONE.md`와 함께 읽는다.
 
-## Current pipeline
+## 현재 pipeline
 
 ```text
 Terrain parameters and procedural surface
@@ -24,50 +24,50 @@ Terrain parameters and procedural surface
       host classifier → future KIT_PSE84_AI
 ```
 
-The operational MuJoCo timestep for low-frequency Dataset v1 dynamics is 0.5 ms
-(2 kHz). This is not a claim that raw high-frequency contact vibration converged.
+Low-frequency Dataset v1 dynamics의 operational MuJoCo timestep은 0.5 ms
+(2 kHz)이다. Raw high-frequency contact vibration이 수렴했다는 의미는 아니다.
 
-## Design decisions
+## 설계 결정
 
 ### LOCKED / CURRENT
 
-- AI channels: `foot_force_1..4`, accelerometer XYZ, gyroscope XYZ.
-- IMU site: left foot/ankle, rigidly attached to `left_ankle_roll_link`.
-- Classes: concrete=0, marble=1, ice=2, sand=3.
-- Canonical window: `medium_response`, `[0.15, 0.65)`.
-- Current input shape: `(50, 10)` at 100 Hz.
-- Split unit: surface seed, session, and run group; never random windows.
-- Test data uses unseen surface realizations.
-- Use MuJoCo friction, slip, load distribution, CoP-related response, surface
-  geometry response, and low-frequency foot dynamics.
+- AI channel: `foot_force_1..4`, accelerometer XYZ, gyroscope XYZ
+- IMU site: `left_ankle_roll_link`에 rigidly attached된 left foot/ankle
+- Class: concrete=0, marble=1, ice=2, sand=3
+- Canonical window: `medium_response`, `[0.15, 0.65)`
+- Input shape: `(50, 10)` at 100 Hz
+- Split unit: surface family/seed, session, run group; random window split 금지
+- Test data는 training에 사용하지 않은 surface family/realization 사용
+- MuJoCo friction, slip, load distribution, CoP-related response, surface
+  geometry response, low-frequency foot dynamics 사용
 
 ### DIAGNOSTIC-ONLY
 
-- Pelvis IMU (`imu_acc`, `imu_gyro`).
-- Pelvis/foot velocity, slip, tangential/normal contact force, collision and
-  contact-validity traces.
-- Clean raw simulation CSVs and high-rate convergence artifacts.
+- Pelvis IMU (`imu_acc`, `imu_gyro`)
+- Pelvis/foot velocity, slip, tangential/normal contact force, collision 및
+  contact-validity trace
+- Clean raw simulation CSV와 high-rate convergence artifact
 
 ### DEFERRED / OPTIONAL
 
-- Separate high-frequency vibration sensor model.
-- Exact PSD, dominant-frequency, and micro-contact spectral features.
-- Gait-based dataset and locomotion-controller integration.
-- Real FSR/BMI270 gain, bias, orientation, bandwidth, and noise calibration.
+- 별도의 high-frequency vibration sensor model
+- Exact PSD, dominant-frequency, micro-contact spectral feature
+- Gait-based dataset과 locomotion-controller integration
+- Real FSR/BMI270 gain, bias, orientation, bandwidth, noise calibration
 
-### SUPERSEDED FOR THE CURRENT DATASET
+### SUPERSEDED FOR CURRENT DATASET
 
-- Pelvis IMU as an AI input.
-- Raw MuJoCo high-frequency vibration as classifier evidence.
-- Treating 50/100/200 Hz logging differences as physics convergence.
-- Mixing the legacy synthetic `(50, 5)` terrain schema with MuJoCo `(50, 10)`.
+- Pelvis IMU를 AI 입력으로 사용
+- Raw MuJoCo high-frequency vibration을 classifier evidence로 사용
+- 50/100/200 Hz logging 차이를 physics convergence로 해석
+- Legacy synthetic `(50, 5)`와 MuJoCo `(50, 10)` 혼합
 
-The synthetic pipeline under `Infineon_HIL` is preserved for its original host,
-quantization, and HIL work. It is not silently converted or joined to Dataset v1.
+`Infineon_HIL` synthetic pipeline은 기존 host, quantization, HIL 작업을 위해
+보존한다. Dataset v1과 자동 변환하거나 결합하지 않는다.
 
-## Dataset v1 pilot result
+## Dataset v1 pilot 결과
 
-| Metric | Result |
+| Metric | 결과 |
 |---|---:|
 | Candidate / valid | 1,200 / 1,189 |
 | Clean/noisy tensor | `(1189, 50, 10)` |
@@ -78,107 +78,80 @@ quantization, and HIL work. It is not silently converted or joined to Dataset v1
 | Marble recall, fusion | 90.0% |
 | Concrete-Marble mutual confusion | 5.8% |
 
-These are unseen-surface results within one procedural surface family. Fusion is
-better than FSR-only, but it is not yet valid to claim that Fusion is superior to
-IMU-only.
+Pilot은 하나의 procedural surface family 안에서 unseen-surface를 평가했다.
+Fusion은 FSR-only보다 우수하지만 IMU-only보다 우수하다고 결론낼 수 없었다.
 
-## Expanded milestone startup status
+## Expanded milestone 현재 상태
 
-The next milestone implementation scaffold now exists without changing the
-pilot or historical experiments:
+기존 pilot와 historical experiment를 변경하지 않고 다음을 완료했다.
 
-- seven procedural surface families with train/validation/test family splits;
-- a dry-run-first 4,480-candidate generator and pilot-based cost estimate;
-- one shared compact Conv1D architecture for FSR4, IMU6, and Fusion10;
-- train-family-only normalization and pooled/per-family evaluation;
-- deterministic leakage, balance, morphology, resource, and CNN smoke tests.
+- Train 3 / validation 2 / test 2의 procedural surface family 7개
+- 4,480-candidate dry-run-first generator와 cost estimate
+- FSR4, IMU6, Fusion10에 동일한 compact Conv1D architecture
+- Train-family-only normalization과 pooled/per-family evaluation
+- Leakage, balance, morphology, resource, CNN/INT8 test
 
-A 28-run MuJoCo integration smoke completed with 28/28 valid windows, and all
-three CNN input variants completed a one-epoch pipeline smoke. These are wiring
-checks, not classifier evidence. The full expanded dataset and substantive CNN
-ablation subsequently completed with 4,453 valid windows. Three-seed noisy
-Fusion accuracy was 98.95 +/- 0.40%, and strict full-INT8 host accuracy was
-99.29% for the validation-selected seed with a -0.079 percentage-point float
-delta. See `EXPANDED_DATASET_V1_RESULTS.md` for the complete evidence and
-`NEXT_MILESTONE.md` for the remaining E84 gates.
+Expanded dataset은 4,453 valid window를 생성했다. 3-seed noisy Fusion accuracy는
+98.95 +/- 0.40%였다. Validation 기준으로 선택한 seed의 strict full-INT8 host
+accuracy는 99.29%였고 float 대비 delta는 -0.079 percentage point였다. 전체
+근거는 `EXPANDED_DATASET_V1_RESULTS.md`, 남은 E84 gate는
+`NEXT_MILESTONE.md`에 기록한다.
 
-## Experiment history
+## 실험 이력
 
-| Experiment | Purpose | Conclusion | Retained in current pipeline | Superseded/deferred |
+| 실험 | 목적 | 결론 | 현재 반영 | 폐기/보류 |
 |---|---|---|---|---|
-| Passive terrain | Establish initial four-terrain contact response | Unsupported/passive runs exposed force/acceleration instability and weak hard-surface separation | Terrain profiles and failure checks | Passive data is not a training baseline |
-| Controlled excitation | Stabilize comparisons with matched initial conditions and 70% support | Removed the worst passive artifacts; concrete-marble remained difficult | Matched seeds, support, validity/outlier rules | Narrow deterministic dataset was insufficient |
-| Horizontal pulse | Add controlled friction/slip excitation | 80 N pulse exposed terrain slip ordering but did not improve full-window concrete-marble separation | 80 N-class pulse and slip/contact diagnostics | Full-window separation as the design target |
-| Bidirectional validation | Check +X/-X asymmetry and response windows over 480 runs | Slip ordering was direction-consistent; `medium_response` was the best practical window, but all-pair gate failed | Both pulse directions and canonical medium window | One-direction training and full window |
-| Lower-body validation | Test a reduced model while preserving mass/COM/inertia and contact layout | Equivalent lower-body model was validated as a research option | Validation utilities and reference model | Current Dataset v1 continues to use full-body G1 |
-| Foot IMU A/B | Compare pelvis versus foot/ankle IMU | Foot location did not improve aggregate concrete-marble separation at flat 50 Hz, but Accel-X sensitivity increased | Foot IMU fixed as AI input; pelvis retained diagnostically | Pelvis IMU AI input |
-| Surface/sampling study | Test flat/surface-aware terrain and 50/200 Hz logging | Roughness and higher logging changed separation; apparent spectral peaks were not yet physics-validated | Native hfield representation and low-frequency response | Treating 200 Hz peaks as final vibration features |
-| Friction × roughness factorization | Separate material factors | FSR response was roughness-dominant; foot IMU response was friction/slip-dominant | Sensor complementarity and domain-variation design | Claiming simulated response is measured material physics |
-| Timestep convergence | Audit 5/2/1 ms and common-band vibration | Previously reported 60–70 Hz behavior was timestep-sensitive | Requirement to separate low-frequency dynamics from raw vibration | 5 ms/200 Hz spectral conclusions |
-| Final vibration limitation | Compare 1/0.5 ms and finally 0.5/0.25 ms | Aggregate force/slip converged sufficiently; vibration waveform/PSD and micro-contact switching did not | 0.5 ms operational physics for low-frequency Dataset v1 | Further timestep search and raw high-frequency PSD |
-| Dataset v1 pilot | Add domain variation, noise, leakage-safe splits, and classifier evidence | 1,189 valid; IMU 97.47%, Fusion 96.20%; unseen surfaces feasible | Current `(50,10)` pilot and next-milestone baseline | Claim that Fusion already beats IMU-only |
+| Passive terrain | 초기 4-terrain contact response 확인 | Unsupported/passive run에서 force/acceleration instability와 weak hard-surface separation 확인 | Terrain profile, failure check | Passive data를 training baseline으로 사용하지 않음 |
+| Controlled excitation | Matched initial condition과 70% support로 비교 안정화 | 심한 passive artifact 제거, concrete-marble은 여전히 어려움 | Matched seed, support, validity/outlier rule | 좁은 deterministic dataset |
+| Horizontal pulse | Controlled friction/slip excitation 추가 | 80 N pulse가 slip ordering을 드러냈지만 full-window separation은 개선하지 못함 | 80 N-class pulse, slip/contact diagnostic | Full-window separation target |
+| Bidirectional validation | +X/-X asymmetry와 response window 검증 | Slip ordering은 direction-consistent, `medium_response`가 가장 실용적 | 양방향 pulse, canonical medium window | One-direction training, full window |
+| Lower-body validation | Mass/COM/inertia와 contact layout을 보존한 reduced model 평가 | Research option으로 유효하지만 production은 full-body 유지 | Validation utility와 reference model | Dataset v1은 full-body G1 유지 |
+| Foot IMU A/B | Pelvis와 foot/ankle IMU 비교 | Flat 50 Hz에서 aggregate separation은 개선하지 않았지만 Accel-X sensitivity 증가 | Foot IMU를 AI 입력으로 고정 | Pelvis IMU AI 입력 |
+| Surface/sampling study | Flat/surface-aware와 50/200 Hz logging 비교 | Roughness와 logging rate가 separation에 영향, spectral peak는 physics 미검증 | Native hfield와 low-frequency response | 200 Hz peak를 vibration feature로 사용 |
+| Friction x roughness | Material factor 분리 | FSR은 roughness-dominant, foot IMU는 friction/slip-dominant | Sensor complementarity와 domain variation | Measured material physics 주장 |
+| Timestep convergence | 5/2/1 ms와 common-band vibration audit | 기존 60–70 Hz behavior는 timestep-sensitive | Low-frequency와 raw vibration 분리 | 5 ms/200 Hz spectral conclusion |
+| Final vibration limitation | 1/0.5 ms와 0.5/0.25 ms 비교 | Aggregate force/slip은 충분히 수렴, waveform/PSD와 micro-contact는 미수렴 | Dataset v1은 0.5 ms 사용 | 추가 timestep 탐색과 raw high-frequency PSD |
+| Dataset v1 pilot | Domain variation, noise, leakage-safe split, classifier evidence | 1,189 valid; IMU 97.47%, Fusion 96.20% | `(50,10)` pilot baseline | Fusion 우위 주장 |
+| Expanded Dataset v1 | Unseen surface-family generalization 및 CNN ablation | 4,453 valid; 3-seed Fusion 98.95%; INT8 parity 통과 | 현재 deployment candidate | Real-world generalization 주장 |
 
-## Repository map and cleanup classification
+## Repository map
 
-### Current source
+### 현재 source
 
-- `terrain_dataset_v1.py`: schema, variation, sensor model, split checks, features,
-  and RandomForest evaluation.
-- `run_terrain_dataset_v1_pilot.py`: current pilot entry point.
+- `terrain_dataset_v1.py`: pilot schema, variation, sensor model, split check,
+  RandomForest evaluation
+- `expanded_terrain_dataset_v1.py`: surface-family design, manifest, cost model
+- `run_expanded_terrain_dataset_v1.py`: expanded generator
+- `terrain_cnn.py`, `train_terrain_1d_cnn.py`: CNN ablation과 normalization
+- `terrain_int8.py`, `export_terrain_int8.py`: strict INT8 export와 parity
 - `hil_sensor.py`, `terrain_profiles.py`, `surface_profiles.py`,
-  `controlled_excitation.py`, `run_horizontal_pulse_dataset.py`, and
-  `pulse_windows.py`: current simulation foundations.
+  `controlled_excitation.py`, `pulse_windows.py`: simulation foundation
 
-### Tests
+### Test
 
-- `test/test_terrain_dataset_v1.py`: seed/noise pairing, leakage, balance,
-  filtering, shape, and classifier smoke tests.
-- `test/test_hil_sensor_reader.py`, `test/test_surface_sampling_study.py`, and
-  `test/test_timestep_convergence.py`: retained regression coverage.
-- `gamepad_test.py` and `hil_sensor_test.py` are manual/hardware-oriented scripts,
-  not part of the automatic `test*.py` unittest suite.
-
-### Documentation
-
-- `TERRAIN_DATASET_V1.md`: current pilot protocol and result.
-- This file: design/history/reset handoff.
-- `NEXT_MILESTONE.md`: implementation gate and E84 checklist.
-- `models/g1_lower_body/README.md`: historical reduced-model validation.
+- `test/test_terrain_dataset_v1.py`, `test/test_expanded_terrain_dataset_v1.py`
+- `test/test_terrain_cnn.py`, `test/test_terrain_int8.py`
+- 기존 sensor/surface/timestep regression test
+- `gamepad_test.py`, `hil_sensor_test.py`는 automated unittest가 아닌 manual
+  hardware-oriented script
 
 ### Generated output
 
-- Everything under `simulation/outputs/` is generated and gitignored.
-- `terrain_dataset_v1_pilot/` is the current evidence directory.
-- Directories with `smoke`, `rerun`, `analysis`, or convergence names are
-  preserved experiment artifacts, not current training inputs.
+- `simulation/outputs/` 전체는 generated이며 gitignored
+- Dataset, Keras, TFLite artifact는 output 아래에만 존재
+- Historical result는 삭제하거나 current dataset과 혼합하지 않음
 
-### Historical but still useful experiments
+## Code-health 참고
 
-- Bidirectional validation, IMU-location A/B, friction×roughness factorization,
-  lower-body validation, and final timestep convergence.
-
-### Superseded experiment paths
-
-- Initial passive terrain analysis and old pelvis-labelled analysis scripts.
-- Early 5 ms/200 Hz spectral interpretation and intermediate rerun directories.
-- These are retained for provenance; do not import their outputs into Dataset v1.
-
-## Code-health audit notes
-
-- No source deletion or refactor was required for this handoff.
-- `analyze_terrain_data.py` contains pelvis-specific labels and belongs to the
-  initial passive experiment, not the current foot-IMU pipeline.
-- CSV loading/writing, separation, and summary helpers are duplicated across
-  research runners. Consolidation may be considered later, but changing them now
-  would create unnecessary regression risk.
-- Final timestep reporting relies on a wrapper that replaces the generic
-  assessment with the 0.25 ms terminal assessment. It works, but the coupling is
-  worth removing only during a dedicated cleanup.
-- Dataset dependencies are in `requirements-dataset-v1.txt`; the simulator as a
-  whole still lacks one consolidated environment lockfile.
+- Historical runner 일부가 current utility를 제공하므로 임의 삭제하지 않는다.
+- `analyze_terrain_data.py`의 pelvis label은 초기 passive experiment 기록이다.
+- CSV/separation helper 중복은 향후 parity test를 준비한 뒤 통합한다.
+- Dataset dependency는 `requirements-dataset-v1.txt`, CNN dependency는
+  `requirements-cnn.txt`에 있다.
 
 ## Reset recovery
 
-After a full reset, first read this file, then `TERRAIN_DATASET_V1.md`, then
-`NEXT_MILESTONE.md`. Do not rerun the historical physics studies unless a model
-or contact representation is intentionally changed.
+Full reset 후 이 문서, `EXPANDED_DATASET_V1_RESULTS.md`,
+`NEXT_MILESTONE.md`, `CLEANUP_AUDIT.md` 순서로 읽는다. Model/contact
+representation을 의도적으로 바꾸지 않는 한 historical physics study를 다시
+실행하지 않는다.
