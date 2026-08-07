@@ -1,0 +1,2 @@
+-r requirements-dataset-v1.txt
+tensorflow-cpu>=2.15,<2.22

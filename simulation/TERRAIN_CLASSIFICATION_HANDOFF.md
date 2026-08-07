@@ -82,6 +82,23 @@ These are unseen-surface results within one procedural surface family. Fusion is
 better than FSR-only, but it is not yet valid to claim that Fusion is superior to
 IMU-only.
 
+## Expanded milestone startup status
+
+The next milestone implementation scaffold now exists without changing the
+pilot or historical experiments:
+
+- seven procedural surface families with train/validation/test family splits;
+- a dry-run-first 4,480-candidate generator and pilot-based cost estimate;
+- one shared compact Conv1D architecture for FSR4, IMU6, and Fusion10;
+- train-family-only normalization and pooled/per-family evaluation;
+- deterministic leakage, balance, morphology, resource, and CNN smoke tests.
+
+A 28-run MuJoCo integration smoke completed with 28/28 valid windows, and all
+three CNN input variants completed a one-epoch pipeline smoke. These are wiring
+checks, not classifier evidence. The full expanded dataset and substantive CNN
+ablation have not been executed. See `NEXT_MILESTONE.md` for exact allocation,
+cost, commands, and gates.
+
 ## Experiment history
 
 | Experiment | Purpose | Conclusion | Retained in current pipeline | Superseded/deferred |

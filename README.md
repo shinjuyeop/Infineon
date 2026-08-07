@@ -30,7 +30,7 @@ The current design, experiment history, repository map, and reset handoff are in
 [`simulation/TERRAIN_CLASSIFICATION_HANDOFF.md`](simulation/TERRAIN_CLASSIFICATION_HANDOFF.md).
 The source/generated/vendor boundary and conservative cleanup decisions are in
 [`simulation/CLEANUP_AUDIT.md`](simulation/CLEANUP_AUDIT.md).
-The next milestone is specified, but not implemented, in
+The expanded-dataset/1D-CNN milestone scaffold and execution gate are in
 [`simulation/NEXT_MILESTONE.md`](simulation/NEXT_MILESTONE.md).
 
 ## Current terrain-classification candidate

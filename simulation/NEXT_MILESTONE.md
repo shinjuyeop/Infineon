@@ -1,6 +1,23 @@
 # Next Milestone: Expanded Dataset v1 and Small 1D-CNN
 
-Status: **design only; not implemented or executed**.
+Status: **implementation scaffold complete; expanded generation not executed**.
+
+The implementation start adds:
+
+- `expanded_terrain_dataset_v1.py`: seven bounded surface families, deterministic
+  family assignment, leakage checks, and pilot-based execution-cost estimates;
+- `run_expanded_terrain_dataset_v1.py`: dry-run-first planning and a separate,
+  overwrite-safe expanded dataset generator;
+- `terrain_cnn.py`: split-safe channel normalization, the shared compact model,
+  evaluation helpers, and resource estimates;
+- `train_terrain_1d_cnn.py`: clean/noisy FSR/IMU/Fusion training with identical
+  architecture/training policy and per-family test metrics;
+- `test_expanded_terrain_dataset_v1.py` and `test_terrain_cnn.py`: family leakage,
+  balance, boundedness, normalization, resource, metric, and model smoke tests.
+
+The completed 1,200-run pilot and all historical experiment outputs remain
+unchanged. Expanded outputs use `simulation/outputs/terrain_dataset_v1_expanded*`
+and are gitignored.
 
 ## Objective and gate
 
@@ -18,6 +35,30 @@ sample count alone is not success; the held-out procedural family is the gate.
 - Retain clean/noisy pairing, four labels, foot sensor schema, medium window,
   validity filtering, bidirectional pulse coverage, and diagnostic separation.
 - Review 4,000–6,000 valid windows before execution; exact count is not locked.
+
+### Implemented family allocation
+
+| Split | Procedural family | Nominal spatial scale |
+|---|---|---:|
+| Train | `multisine` | 36–121 mm |
+| Train | `filtered_random` | 80–250 mm |
+| Train | `sparse_aggregate` | 50–120 mm |
+| Validation | `crosshatch` | 58–121 mm |
+| Validation | `rounded_ridges` | 58–363 mm including modulation |
+| Test | `warped_multisine` | 36–363 mm including coordinate warp |
+| Test | `smooth_random_patches` | 75–180 mm |
+
+Each normalized morphology is deterministic, zero-centered, and bounded to
+`[-1, 1]`. Terrain-specific Dataset v1 peak-to-valley amplitude ranges and
+friction ranges remain unchanged; the new family definitions do not enlarge
+roughness solely to improve classification.
+The 10 mm hfield grid resolves the smallest 36 mm component with more than three
+grid intervals. These are bounded engineering morphology ranges, not measured
+material spectra or claims about real concrete, marble, ice, or sand.
+
+The default design is 4 terrains x 7 families x 8 surfaces x 20 runs = 4,480
+candidates. Applying the pilot valid rate gives an estimate of about 4,439 valid
+windows, within the requested 4k–6k range.
 
 ## B. Leakage-safe split
 
@@ -52,6 +93,18 @@ Before fixing widths/kernel sizes, estimate parameter count, activation peak RAM
 model flash, and operator compatibility. Prefer a compact topology suitable for
 Cortex-M55/Ethos-U55 rather than maximizing host accuracy.
 
+The implemented first candidate fixes widths at 12 and 16 with kernels 5 and 3:
+
+| Input | Parameters | Float parameter bytes | Estimated float activation working set |
+|---|---:|---:|---:|
+| FSR4 | 912 | 3,648 | 5,600 bytes |
+| IMU6 | 1,032 | 4,128 | 5,600 bytes |
+| Fusion10 | 1,272 | 5,088 | 5,600 bytes |
+
+The activation estimate is tensor liveness only. TFLite arena metadata,
+alignment, and kernel scratch buffers must be measured after conversion; it is
+not a deployment RAM claim.
+
 ## E. Evaluation
 
 - Overall accuracy and macro F1.
@@ -75,16 +128,54 @@ If it fails, investigate domain coverage, family shift, split design,
 normalization, model capacity, and data quality first. Do **not** jump directly to
 a vibration model merely because a classifier fails.
 
-## Planned entry points
+## Entry points and execution cost
 
-These names are candidates and do not exist yet:
+These entry points now exist:
 
 - `run_expanded_terrain_dataset_v1.py`: generation and manifests.
 - `train_terrain_1d_cnn.py`: shared FSR/IMU/Fusion training.
-- `evaluate_terrain_1d_cnn.py`: family-disjoint metrics and reports.
 
-Start implementation only after reviewing the family definitions, valid-sample
-budget, storage estimate, and expected runtime.
+Family-disjoint metrics and reports are currently integrated into
+`train_terrain_1d_cnn.py`; a separate `evaluate_terrain_1d_cnn.py` remains
+deferred until model serialization and INT8 evaluation requirements are fixed.
+
+The completed pilot took approximately 756.5 seconds and 110,186,372 bytes for
+1,200 candidates on this host. Linear scaling estimates the default expanded run
+at about 47.1 minutes and 392.3 MiB. This is a planning estimate, not a guarantee.
+
+Dry-run review (default; writes nothing):
+
+```bash
+cd simulation/unitree_mujoco/simulate_python
+../../venv/bin/python run_expanded_terrain_dataset_v1.py
+```
+
+Full generation must be explicitly authorized with `--execute`:
+
+```bash
+../../venv/bin/python run_expanded_terrain_dataset_v1.py --execute
+```
+
+After successful generation, install `requirements-cnn.txt` in a suitable
+training environment and run:
+
+```bash
+python train_terrain_1d_cnn.py
+```
+
+The trainer refuses to overwrite non-empty output directories, fits
+normalization on train families only, uses validation families for early
+stopping, and reserves test families for final evaluation.
+
+### Startup smoke evidence
+
+A 28-run integration smoke (4 terrains x 7 families x 1 surface x 1 run)
+completed with 28/28 valid windows and `(28, 50, 10)` clean/noisy tensors. A
+one-epoch noisy FSR/IMU/Fusion CNN smoke also completed, confirming dataset load,
+train-only normalization, model save, and split/per-family evaluation paths.
+Its 25% accuracy is not a model result: the smoke is intentionally balanced,
+tiny, and trained for only one epoch. The 4,480-candidate dataset and substantive
+CNN ablation have not been run.
 
 ## E84 readiness checklist
 
