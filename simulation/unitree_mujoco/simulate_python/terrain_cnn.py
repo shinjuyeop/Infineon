@@ -19,6 +19,18 @@ CHANNEL_GROUPS = {
     "imu_only": tuple(range(4, 10)),
     "fusion": tuple(range(10)),
 }
+FUSION_CHANNEL_NAMES = (
+    "foot_force_1",
+    "foot_force_2",
+    "foot_force_3",
+    "foot_force_4",
+    "accel_x",
+    "accel_y",
+    "accel_z",
+    "gyro_x",
+    "gyro_y",
+    "gyro_z",
+)
 
 
 @dataclass(frozen=True)

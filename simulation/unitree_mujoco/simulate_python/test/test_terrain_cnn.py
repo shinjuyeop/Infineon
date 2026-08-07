@@ -15,6 +15,7 @@ sys.path.insert(0, str(SIMULATE_PYTHON_DIR))
 
 from terrain_cnn import (  # noqa: E402
     CHANNEL_GROUPS,
+    FUSION_CHANNEL_NAMES,
     ChannelNormalizer,
     build_compact_1d_cnn,
     estimate_model_resources,
@@ -22,6 +23,7 @@ from terrain_cnn import (  # noqa: E402
     mutual_pair_confusion,
 )
 from train_terrain_1d_cnn import validate_dataset_arrays  # noqa: E402
+from hil_sensor import HIL_SENSOR_CHANNELS  # noqa: E402
 
 
 class TerrainCnnTest(unittest.TestCase):
@@ -29,6 +31,7 @@ class TerrainCnnTest(unittest.TestCase):
         self.assertEqual(CHANNEL_GROUPS["fsr_only"], (0, 1, 2, 3))
         self.assertEqual(CHANNEL_GROUPS["imu_only"], (4, 5, 6, 7, 8, 9))
         self.assertEqual(CHANNEL_GROUPS["fusion"], tuple(range(10)))
+        self.assertEqual(FUSION_CHANNEL_NAMES, HIL_SENSOR_CHANNELS)
 
     def test_normalizer_is_fitted_per_channel(self) -> None:
         train = np.zeros((3, 50, 2), dtype=np.float32)

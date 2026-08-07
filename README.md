@@ -32,6 +32,9 @@ The source/generated/vendor boundary and conservative cleanup decisions are in
 [`simulation/CLEANUP_AUDIT.md`](simulation/CLEANUP_AUDIT.md).
 The expanded-dataset/1D-CNN milestone scaffold and execution gate are in
 [`simulation/NEXT_MILESTONE.md`](simulation/NEXT_MILESTONE.md).
+The completed expanded-dataset, three-seed CNN, and strict INT8 host-parity
+results are in
+[`simulation/EXPANDED_DATASET_V1_RESULTS.md`](simulation/EXPANDED_DATASET_V1_RESULTS.md).
 
 ## Current terrain-classification candidate
 

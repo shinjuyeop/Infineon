@@ -96,8 +96,11 @@ pilot or historical experiments:
 A 28-run MuJoCo integration smoke completed with 28/28 valid windows, and all
 three CNN input variants completed a one-epoch pipeline smoke. These are wiring
 checks, not classifier evidence. The full expanded dataset and substantive CNN
-ablation have not been executed. See `NEXT_MILESTONE.md` for exact allocation,
-cost, commands, and gates.
+ablation subsequently completed with 4,453 valid windows. Three-seed noisy
+Fusion accuracy was 98.95 +/- 0.40%, and strict full-INT8 host accuracy was
+99.29% for the validation-selected seed with a -0.079 percentage-point float
+delta. See `EXPANDED_DATASET_V1_RESULTS.md` for the complete evidence and
+`NEXT_MILESTONE.md` for the remaining E84 gates.
 
 ## Experiment history
 

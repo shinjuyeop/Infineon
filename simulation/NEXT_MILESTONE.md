@@ -1,6 +1,7 @@
 # Next Milestone: Expanded Dataset v1 and Small 1D-CNN
 
-Status: **implementation scaffold complete; expanded generation not executed**.
+Status: **expanded dataset, three-seed CNN gate, and host INT8 parity complete;
+E84 compatibility is next**.
 
 The implementation start adds:
 
@@ -17,7 +18,8 @@ The implementation start adds:
 
 The completed 1,200-run pilot and all historical experiment outputs remain
 unchanged. Expanded outputs use `simulation/outputs/terrain_dataset_v1_expanded*`
-and are gitignored.
+and are gitignored. Final host-side results are recorded in
+`EXPANDED_DATASET_V1_RESULTS.md`.
 
 ## Objective and gate
 
@@ -134,6 +136,8 @@ These entry points now exist:
 
 - `run_expanded_terrain_dataset_v1.py`: generation and manifests.
 - `train_terrain_1d_cnn.py`: shared FSR/IMU/Fusion training.
+- `export_terrain_int8.py`: train-family calibration, strict INT8 export, and
+  unseen-family float/INT8 parity.
 
 Family-disjoint metrics and reports are currently integrated into
 `train_terrain_1d_cnn.py`; a separate `evaluate_terrain_1d_cnn.py` remains
@@ -174,17 +178,18 @@ completed with 28/28 valid windows and `(28, 50, 10)` clean/noisy tensors. A
 one-epoch noisy FSR/IMU/Fusion CNN smoke also completed, confirming dataset load,
 train-only normalization, model save, and split/per-family evaluation paths.
 Its 25% accuracy is not a model result: the smoke is intentionally balanced,
-tiny, and trained for only one epoch. The 4,480-candidate dataset and substantive
-CNN ablation have not been run.
+tiny, and trained for only one epoch. The subsequent full result is recorded in
+`EXPANDED_DATASET_V1_RESULTS.md`.
 
 ## E84 readiness checklist
 
 Nothing below is complete merely because the Dataset v1 pilot exists.
 
-- [ ] Freeze final input tensor shape, channel order, units, and sample timing.
-- [ ] Freeze normalization and reproduce it in host and embedded code.
-- [ ] Define representative, split-safe INT8 calibration data.
-- [ ] Confirm strict INT8 conversion and float/INT8 host parity.
+- [x] Freeze the current simulation deployment-candidate input tensor shape,
+  channel order, units, and sample timing.
+- [x] Freeze host normalization metadata; embedded reproduction remains pending.
+- [x] Define representative, split-safe INT8 calibration data.
+- [x] Confirm strict INT8 conversion and float/INT8 host parity.
 - [ ] Verify TFLite/LiteRT and DEEPCRAFT import/operator compatibility.
 - [ ] Measure model parameter count, flash size, arena/activation RAM.
 - [ ] Measure inference latency and sustained timing budget.
@@ -197,9 +202,9 @@ Nothing below is complete merely because the Dataset v1 pilot exists.
 
 ## First three actions after reset
 
-1. Define and unit-test at least three bounded procedural surface families plus a
-   family-level split manifest, without generating the full dataset.
-2. Estimate 4k–6k run time/storage and approve the valid-window budget and family
-   allocation.
-3. Implement a tiny synthetic-shape smoke test for the shared FSR/IMU/Fusion
-   Conv1D architecture before any large simulation run.
+1. Read `EXPANDED_DATASET_V1_RESULTS.md` and verify the selected Keras, noisy
+   dataset, and TFLite hashes before using local ignored artifacts.
+2. Test the 7,048-byte strict INT8 model with the intended DEEPCRAFT/TFLite Micro
+   importer and record supported operators/tool versions.
+3. Measure arena/scratch RAM and inference latency on the Cortex-M55/Ethos-U55
+   path before designing UART/HIL timing around unmeasured assumptions.
