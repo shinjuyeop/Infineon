@@ -23,6 +23,10 @@ real sensor data.
 Third-party license and attribution files remain with their respective source
 trees. This repository does not replace or relicense those upstream projects.
 
+The leakage-safe MuJoCo `(N, 50, 10)` terrain pilot and its separation from the
+legacy synthetic `(50, 5)` pipeline are documented in
+[`simulation/TERRAIN_DATASET_V1.md`](simulation/TERRAIN_DATASET_V1.md).
+
 ## G1 horizontal-pulse preview
 
 After preparing the simulation virtual environment:
