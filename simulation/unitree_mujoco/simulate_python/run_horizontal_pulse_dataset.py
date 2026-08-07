@@ -7,6 +7,7 @@ import csv
 from pathlib import Path
 import threading
 import time
+from typing import Callable
 
 import mujoco
 import numpy as np
@@ -25,7 +26,7 @@ from controlled_excitation import (
 from hil_sensor import G1HilSensorReader, HIL_SENSOR_CHANNELS
 from run_controlled_terrain_dataset import calculate_run_metrics, validate_run, write_manifest
 from slip_diagnostics import DIAGNOSTIC_CHANNELS, G1SlipDiagnosticReader
-from terrain_profiles import TERRAIN_PROFILES, apply_terrain_profile
+from terrain_profiles import TERRAIN_PROFILES, TerrainProfile, apply_terrain_profile
 
 
 SIMULATE_PYTHON_DIR = Path(__file__).resolve().parent
@@ -227,6 +228,9 @@ def run_window(
     support_site_name: str | None = None,
     pulse_body_name: str = "torso_link",
     pulse_site_name: str | None = None,
+    matched_pelvis_output_dir: Path | None = None,
+    model_configurator: Callable[[mujoco.MjModel, TerrainProfile], int] | None = None,
+    physics_timestep: float | None = None,
 ) -> dict[str, float | int | str]:
     if not pulse_direction_label:
         pulse_direction_label = pulse_direction_name(pulse)
@@ -236,8 +240,16 @@ def run_window(
         else scene_path.resolve()
     )
     model = mujoco.MjModel.from_xml_path(str(scene_path))
-    model.opt.timestep = config.SIMULATE_DT
-    floor_id = apply_terrain_profile(model, TERRAIN_PROFILES[terrain])
+    model.opt.timestep = (
+        config.SIMULATE_DT if physics_timestep is None else physics_timestep
+    )
+    if model.opt.timestep <= 0.0:
+        raise ValueError("physics_timestep must be positive")
+    floor_id = (
+        apply_terrain_profile(model, TERRAIN_PROFILES[terrain])
+        if model_configurator is None
+        else model_configurator(model, TERRAIN_PROFILES[terrain])
+    )
     data = mujoco.MjData(model)
     qpos_address, dof_address = apply_excitation_condition(model, data, condition)
     support = VerticalElasticBandSupport(
@@ -267,6 +279,7 @@ def run_window(
     collision_latched_value = False
     timestamps: list[float] = []
     sensors: list[np.ndarray] = []
+    pelvis_diagnostic_sensors: list[np.ndarray] = []
     diagnostics: list[np.ndarray] = []
     body_collision: list[bool] = []
     collision_latched: list[bool] = []
@@ -304,6 +317,10 @@ def run_window(
             collision_latched_value |= collision_since_sample
             if data.time + 1e-12 >= next_sample_time:
                 sensor_vector = sensor_reader.read_vector()
+                if matched_pelvis_output_dir is not None:
+                    pelvis_diagnostic_sensors.append(
+                        sensor_reader.read_pelvis_diagnostic_vector()
+                    )
                 diagnostic = diagnostic_reader.read(pulse_active)
                 timestamps.append(float(data.time))
                 sensors.append(sensor_vector)
@@ -337,11 +354,16 @@ def run_window(
 
     timestamp_array = np.asarray(timestamps)
     sensor_array = np.asarray(sensors)
+    pelvis_diagnostic_sensor_array = np.asarray(pelvis_diagnostic_sensors)
     diagnostic_array = np.asarray(diagnostics)
     body_array = np.asarray(body_collision, dtype=bool)
     latched_array = np.asarray(collision_latched, dtype=bool)
     contact_array = np.asarray(valid_contact, dtype=bool)
     validate_run(timestamp_array, sensor_array, expected_samples)
+    if matched_pelvis_output_dir is not None:
+        validate_run(
+            timestamp_array, pelvis_diagnostic_sensor_array, expected_samples
+        )
     if diagnostic_array.shape != (expected_samples, len(DIAGNOSTIC_CHANNELS)):
         raise ValueError(f"unexpected diagnostic shape {diagnostic_array.shape}")
     if not np.all(np.isfinite(diagnostic_array)):
@@ -352,6 +374,23 @@ def run_window(
         write_run_csv(
             output_dir / relative_path, terrain, seed, condition, support_ratio, pulse,
             timestamp_array, sensor_array, diagnostic_array, body_array, latched_array,
+            contact_array,
+            session_id=session_id,
+            pulse_direction_label=pulse_direction_label,
+        )
+    if matched_pelvis_output_dir is not None:
+        write_run_csv(
+            matched_pelvis_output_dir / relative_path,
+            terrain,
+            seed,
+            condition,
+            support_ratio,
+            pulse,
+            timestamp_array,
+            pelvis_diagnostic_sensor_array,
+            diagnostic_array,
+            body_array,
+            latched_array,
             contact_array,
             session_id=session_id,
             pulse_direction_label=pulse_direction_label,
