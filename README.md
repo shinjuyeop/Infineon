@@ -26,6 +26,23 @@ trees. This repository does not replace or relicense those upstream projects.
 The leakage-safe MuJoCo `(N, 50, 10)` terrain pilot and its separation from the
 legacy synthetic `(50, 5)` pipeline are documented in
 [`simulation/TERRAIN_DATASET_V1.md`](simulation/TERRAIN_DATASET_V1.md).
+The current design, experiment history, repository map, and reset handoff are in
+[`simulation/TERRAIN_CLASSIFICATION_HANDOFF.md`](simulation/TERRAIN_CLASSIFICATION_HANDOFF.md).
+The next milestone is specified, but not implemented, in
+[`simulation/NEXT_MILESTONE.md`](simulation/NEXT_MILESTONE.md).
+
+## Current terrain-classification candidate
+
+```text
+Terrain → MuJoCo full-body G1 → FSR4 + foot IMU6
+        → domain variation → sensor noise
+        → medium_response → (50, 10)
+        → surface-disjoint train/validation/test → classifier → future E84
+```
+
+This is a simulation/host candidate, not an E84 deployment claim. Pelvis IMU and
+slip/contact traces are diagnostics. Legacy experiments and the synthetic
+`(50, 5)` HIL pipeline remain preserved but are not inputs to Dataset v1.
 
 ## G1 horizontal-pulse preview
 
