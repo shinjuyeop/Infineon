@@ -28,6 +28,8 @@ legacy synthetic `(50, 5)` pipeline are documented in
 [`simulation/TERRAIN_DATASET_V1.md`](simulation/TERRAIN_DATASET_V1.md).
 The current design, experiment history, repository map, and reset handoff are in
 [`simulation/TERRAIN_CLASSIFICATION_HANDOFF.md`](simulation/TERRAIN_CLASSIFICATION_HANDOFF.md).
+The source/generated/vendor boundary and conservative cleanup decisions are in
+[`simulation/CLEANUP_AUDIT.md`](simulation/CLEANUP_AUDIT.md).
 The next milestone is specified, but not implemented, in
 [`simulation/NEXT_MILESTONE.md`](simulation/NEXT_MILESTONE.md).
 
