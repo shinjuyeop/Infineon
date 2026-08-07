@@ -11,12 +11,14 @@ from run_final_timestep_convergence import (
     OUTPUT_DIR,
     REPRESENTATIVES,
     SPECTRAL_AXES,
+    TIMESTEPS,
 )
 from run_surface_sampling_rate_study import write_dict_rows
 
 
 def main() -> None:
     output = OUTPUT_DIR.resolve()
+    coarse_name, fine_name = tuple(TIMESTEPS)
     with (output / "run_level_metrics.csv").open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
     result: list[dict[str, object]] = []
@@ -25,7 +27,7 @@ def main() -> None:
             for low, high in BANDS:
                 feature = f"{axis}_band_{low}_{high}_power"
                 values_by_dt = {}
-                for dt_name in ("dt_1ms", "dt_0p5ms"):
+                for dt_name in (coarse_name, fine_name):
                     values = np.asarray(
                         [
                             float(row[feature])
@@ -46,15 +48,15 @@ def main() -> None:
                             "relative_error_mean": "",
                         }
                     )
-                coarse = values_by_dt["dt_1ms"]
-                fine = values_by_dt["dt_0p5ms"]
+                coarse = values_by_dt[coarse_name]
+                fine = values_by_dt[fine_name]
                 errors = np.abs(coarse - fine) / np.maximum(np.abs(fine), 1e-12)
                 result.append(
                     {
                         "representative": representative,
                         "axis": axis,
                         "band_hz": f"{low}-{high}",
-                        "row_type": "dt_1ms_vs_dt_0p5ms",
+                        "row_type": f"{coarse_name}_vs_{fine_name}",
                         "power_mean": "",
                         "power_std": "",
                         "relative_error_mean": f"{errors.mean():.9f}",

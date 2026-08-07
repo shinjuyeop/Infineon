@@ -44,7 +44,11 @@ class HorizontalPulse:
 
     def force_at(self, time: float) -> tuple[np.ndarray, bool]:
         phase = (time - self.start_time) / self.duration
-        if phase < 0.0 or phase >= 1.0:
+        # MuJoCo advances time by repeated additions, so a nominal end time can
+        # arrive a few ulps below the decimal boundary.  Keep the requested
+        # half-open pulse interval stable across physics timesteps.
+        boundary_tolerance = 1e-12
+        if phase < -boundary_tolerance or phase >= 1.0 - boundary_tolerance:
             return np.zeros(3, dtype=np.float64), False
         direction = np.asarray((self.direction_x, self.direction_y), dtype=np.float64)
         direction /= np.linalg.norm(direction)

@@ -1,4 +1,4 @@
-"""Final matched 1.0 ms versus 0.5 ms MuJoCo convergence study."""
+"""Final matched two-timestep MuJoCo convergence study."""
 
 from __future__ import annotations
 
@@ -129,6 +129,11 @@ def main() -> None:
         raise FileExistsError(f"refusing to overwrite {output}")
     output.mkdir(parents=True, exist_ok=True)
     conditions = generate_pulse_conditions(RUN_COUNT, DEFAULT_SEED)
+    coarse_name, fine_name = tuple(TIMESTEPS)
+    coarse_timestep = TIMESTEPS[coarse_name]
+    fine_timestep = TIMESTEPS[fine_name]
+    if not np.isclose(coarse_timestep / fine_timestep, 2.0):
+        raise ValueError("final convergence requires an exact 2:1 timestep ratio")
     protocol = {
         "purpose": "numerical convergence only; no parameter or feature changes",
         "representatives": REPRESENTATIVES,
@@ -136,8 +141,8 @@ def main() -> None:
         "runs_per_cell": RUN_COUNT,
         "duration_s": 1.0,
         "logging": "one sensor state after every distinct mj_step",
-        "common_time_grid_hz": 1000,
-        "decimation": "exact dt_0p5ms rows[1::2], no anti-alias filter",
+        "common_time_grid_hz": 1.0 / coarse_timestep,
+        "decimation": f"exact {fine_name} rows[1::2] onto {coarse_name}; no anti-alias filter",
         "spectral_window_s": [0.20, 0.60],
         "common_spectral_band_hz": [0, 450],
         "bands_hz": BANDS,
@@ -239,7 +244,7 @@ def main() -> None:
     for representative in REPRESENTATIVES:
         fine_by_run = {
             str(row["run_id"]): row
-            for row in metrics_by_cell[(representative, "dt_0p5ms")]
+            for row in metrics_by_cell[(representative, fine_name)]
         }
         errors = {feature: [] for feature in comparison_features}
         errors["summary_10_relative_norm"] = []
@@ -248,15 +253,18 @@ def main() -> None:
             errors[f"{axis}_centroid_0_450_hz"] = []
         psd_correlations = {axis: [] for axis in SPECTRAL_AXES}
         band_errors = {(axis, low, high): [] for axis in SPECTRAL_AXES for low, high in BANDS}
-        for coarse in metrics_by_cell[(representative, "dt_1ms")]:
+        for coarse in metrics_by_cell[(representative, coarse_name)]:
             run_id = str(coarse["run_id"])
             fine = fine_by_run[run_id]
-            coarse_time, coarse_sensors, coarse_path = arrays[(representative, "dt_1ms", run_id)]
-            fine_time, fine_sensors, fine_path = arrays[(representative, "dt_0p5ms", run_id)]
+            coarse_time, coarse_sensors, coarse_path = arrays[(representative, coarse_name, run_id)]
+            fine_time, fine_sensors, fine_path = arrays[(representative, fine_name, run_id)]
             decimated_time = fine_time[1::2]
             decimated_sensors = fine_sensors[1::2]
             if not np.array_equal(coarse_time, decimated_time):
-                raise ValueError("0.5 ms data do not exactly align to the 1 ms grid")
+                raise ValueError(
+                    f"{fine_timestep * 1000:g} ms data do not exactly align to "
+                    f"the {coarse_timestep * 1000:g} ms grid"
+                )
             for index, channel in enumerate(HIL_SENSOR_CHANNELS):
                 reference_rms = np.sqrt(np.mean(decimated_sensors[:, index] ** 2))
                 nrmse = np.sqrt(
@@ -308,8 +316,12 @@ def main() -> None:
             for axis, index in SPECTRAL_AXES.items():
                 coarse_focus = (coarse_time >= 0.20) & (coarse_time < 0.60)
                 fine_focus = (fine_time >= 0.20) & (fine_time < 0.60)
-                coarse_freq, coarse_psd = periodogram(coarse_sensors[coarse_focus, index], 1000.0)
-                fine_freq, fine_psd = periodogram(fine_sensors[fine_focus, index], 2000.0)
+                coarse_freq, coarse_psd = periodogram(
+                    coarse_sensors[coarse_focus, index], 1.0 / coarse_timestep
+                )
+                fine_freq, fine_psd = periodogram(
+                    fine_sensors[fine_focus, index], 1.0 / fine_timestep
+                )
                 grid = coarse_freq[(coarse_freq > 0) & (coarse_freq <= 450)]
                 a = coarse_psd[(coarse_freq > 0) & (coarse_freq <= 450)]
                 b = np.interp(grid, fine_freq, fine_psd)
@@ -404,10 +416,10 @@ def main() -> None:
             f"- {representative}/{dt_name}: valid={sum(int(r['valid_run']) for r in rows)}/{RUN_COUNT}, collision={sum(int(r['body_collision']) for r in rows)}, force_outlier={sum(int(r['extreme_force_outlier']) for r in rows)}, accel_outlier={sum(int(r['extreme_accel_outlier']) for r in rows)}"
         )
     summary = [
-        "Final 1.0 ms vs 0.5 ms timestep convergence", "",
+        f"Final {coarse_timestep * 1000:g} ms vs {fine_timestep * 1000:g} ms timestep convergence", "",
         *validity,
         "",
-        "Fine 0.5 ms data were exactly decimated 2:1 to the 1 ms comparison grid; no filtering or interpolation was used.",
+        f"Fine {fine_timestep * 1000:g} ms data were exactly decimated 2:1 to the {coarse_timestep * 1000:g} ms comparison grid; no filtering or interpolation was used.",
         "See convergence_metrics.csv, spectral_summary.csv, band_power_summary.csv, and feature_separation.csv.",
     ]
     (output / "summary.txt").write_text("\n".join(summary) + "\n", encoding="utf-8")
