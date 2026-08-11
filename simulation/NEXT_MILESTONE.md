@@ -1,7 +1,8 @@
-# 다음 Milestone: E84 Compatibility 및 On-device 검증
+# E84 Deployment 및 Continuous HIL 검증
 
-상태: **expanded dataset, 3-seed CNN gate, host INT8 parity 완료;
-E84 compatibility가 다음 단계**.
+상태: **expanded dataset, 3-seed CNN gate, host INT8 parity 및
+KIT_PSE84_AI E84 deployment/UART window HIL 완료; continuous sample-stream
+HIL이 다음 단계**.
 
 완료된 host pipeline:
 
@@ -97,8 +98,9 @@ Validation loss로 선택한 seed `20260809` noisy Fusion model을 사용했다.
 - Prediction agreement: 99.607%
 - Flex 및 floating-point tensor 없음
 
-Host parity gate는 모두 통과했다. 이는 E84 deployment 완료가 아니라 다음
-compatibility 검증을 시작할 수 있다는 의미이다.
+Host parity gate 이후 동일 artifact를 KIT_PSE84_AI에서 Cortex-M55 TFLM과
+Ethos-U55-128 양쪽으로 실행했다. 고정 test tensor와 UART full-window HIL에서
+Host/E84 raw INT8 output 및 class parity를 확인했다.
 
 ## Entry point
 
@@ -128,28 +130,36 @@ INT8 export/parity:
 
 - [x] Current simulation deployment-candidate tensor shape, channel order, unit,
   sample timing 고정
-- [x] Host normalization metadata 고정; embedded 재현은 미완료
+- [x] Host normalization metadata 고정; PC HIL preprocessing에서 재현 확인
 - [x] Split-safe representative INT8 calibration 정의
 - [x] Strict INT8 conversion과 float/INT8 host parity 확인
-- [ ] TFLite/LiteRT와 DEEPCRAFT importer/operator compatibility 확인
-- [ ] TFLite Micro arena, activation, scratch RAM 실측
-- [ ] Model flash placement와 inference latency 실측
-- [ ] Cortex-M55/Ethos-U55 execution path와 tool version 확인
-- [ ] UART framing, byte order, version, CRC, error handling 정의
-- [ ] Host → E84 input transfer 구현 및 검증
-- [ ] E84 → Host class/score transfer 구현 및 검증
-- [ ] HIL buffering, window cadence, timeout, end-to-end timing 정의
+- [x] TFLite/TFLM operator compatibility 확인; Vela 4.2.0 U55 전체 graph
+  mapping, CPU fallback operator 0
+- [x] TFLite Micro arena/scratch RAM 실측; CPU arena 3,236 B, U55 arena
+  2,180 B, Vela scratch 1,600 B
+- [x] Model 포함/flash placement와 inference latency 실측; raw model 7,048 B,
+  CPU 약 564 us, U55 약 90 us one-shot
+- [x] Cortex-M55 TFLM 및 Ethos-U55-128 execution path 실제 보드 확인
+- [x] UART framing, little-endian length, version magic, CRC32, 기본 error
+  handling 정의 (`TRN1`)
+- [x] Host → E84 input transfer 구현 및 검증; 1 Mbaud KitProg3 UART로
+  INT8 `(50,10)` 500-byte window 전송
+- [x] E84 → Host class/raw output transfer 구현 및 검증; sample 878에서
+  `[35,-35,-128,-128]`, class 0 Host parity
+- [x] HIL buffering, window cadence, timeout, end-to-end timing 검증; E84
+  50x10 ring buffer, 100 Hz/stride 1에서 1,000 samples와 951 inferences,
+  drop/timeout/deadline miss 0, RTT 1.657 +/- 0.070 ms (p95 1.790 ms)
 - [ ] Real FSR/BMI270 orientation, gain, bias, range, noise calibration
+  (deferred; current Digital Twin/UART HIL milestone에는 불필요)
 
 ## 다음 실행 순서
 
-1. Local ignored artifact를 사용하기 전에 `EXPANDED_DATASET_V1_RESULTS.md`의
-   Keras, noisy dataset, TFLite hash를 검증한다.
-2. 7,048-byte strict INT8 model을 대상 DEEPCRAFT/TFLite Micro importer에 넣어
-   supported operator와 tool version을 기록한다.
-3. Cortex-M55/Ethos-U55 path에서 arena/scratch RAM과 inference latency를
-   실측한다.
-4. 측정된 resource/timing을 기준으로 UART와 HIL protocol을 설계한다.
+1. MuJoCo live loop가 생성하는 physical-unit 10-channel sample을 검증된
+   `TRN2` client API에 연결한다.
+2. Digital Twin session/run boundary에서 sequence 0으로 E84 ring을 명시적으로
+   reset한다.
+3. Real FSR/BMI270 calibration은 실제 센서 milestone이 승인될 때까지
+   deferred 상태로 유지한다.
 
 Importer 또는 on-device gate가 실패하면 vibration model로 돌아가지 않는다.
 먼저 unsupported operator, quantization convention, memory arena, preprocessing,

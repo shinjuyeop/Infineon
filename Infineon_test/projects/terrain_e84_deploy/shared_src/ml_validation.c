@@ -149,9 +149,30 @@ cy_rslt_t ml_validation_init(mtb_ml_profile_config_t profile_cfg,
 
 #ifndef USE_STREAM_DATA
 /*******************************************************************************
-* UART HIL protocol: "TRN1", uint16 little-endian payload length, 500 INT8
-* values, then IEEE CRC-32 of the payload as uint32 little-endian.
+* UART HIL protocols:
+* TRN1: uint16 LE length, 500 INT8 window bytes, uint32 LE payload CRC-32.
+* TRN2: uint16 LE length, uint32 LE sequence, uint16 LE inference stride,
+*       10 INT8 sample bytes, uint32 LE payload CRC-32.
 *******************************************************************************/
+#define TERRAIN_CHANNEL_COUNT          (10u)
+#define TERRAIN_WINDOW_SAMPLES         (50u)
+#define TERRAIN_WINDOW_BYTES           (TERRAIN_CHANNEL_COUNT * TERRAIN_WINDOW_SAMPLES)
+#define TERRAIN_STREAM_HEADER_BYTES    (6u)
+#define TERRAIN_STREAM_PAYLOAD_BYTES   (TERRAIN_STREAM_HEADER_BYTES + TERRAIN_CHANNEL_COUNT)
+
+typedef struct
+{
+    int8_t samples[TERRAIN_WINDOW_SAMPLES][TERRAIN_CHANNEL_COUNT];
+    uint16_t write_index;
+    uint16_t fill;
+    uint16_t stride;
+    uint16_t inference_countdown;
+    uint32_t last_sequence;
+    bool have_sequence;
+} terrain_stream_state_t;
+
+static terrain_stream_state_t terrain_stream_state;
+
 static uint32_t terrain_crc32(const uint8_t *data, size_t size)
 {
     uint32_t crc = 0xffffffffu;
@@ -177,6 +198,60 @@ static uint8_t terrain_uart_get_byte(void)
     return value;
 }
 
+static uint16_t terrain_uart_get_u16(void)
+{
+    uint16_t value = terrain_uart_get_byte();
+    value |= (uint16_t) ((uint16_t) terrain_uart_get_byte() << 8);
+    return value;
+}
+
+static uint32_t terrain_uart_get_u32(void)
+{
+    uint32_t value = 0u;
+    for (uint32_t index = 0u; index < 4u; index++)
+    {
+        value |= (uint32_t) terrain_uart_get_byte() << (8u * index);
+    }
+    return value;
+}
+
+static uint8_t terrain_uart_find_protocol(void)
+{
+    static const uint8_t prefix[3] = {'T', 'R', 'N'};
+    size_t matched = 0u;
+    for (;;)
+    {
+        uint8_t value = terrain_uart_get_byte();
+        if (matched < sizeof(prefix))
+        {
+            if (value == prefix[matched])
+            {
+                matched++;
+            }
+            else
+            {
+                matched = (value == prefix[0]) ? 1u : 0u;
+            }
+            continue;
+        }
+        if ((value == '1') || (value == '2'))
+        {
+            return value;
+        }
+        matched = (value == prefix[0]) ? 1u : 0u;
+    }
+}
+
+static cy_rslt_t terrain_invoke(const int8_t *input)
+{
+    cy_rslt_t result = mtb_ml_model_inputs(model_obj, (MTB_ML_DATA_T *) input, 0);
+    if (result == CY_RSLT_SUCCESS)
+    {
+        result = mtb_ml_model_invoke(model_obj);
+    }
+    return result;
+}
+
 static void terrain_print_hil_result(void)
 {
     int predicted_class = mtb_ml_utils_find_max(result_buffer[0], model_output_size[0]);
@@ -194,69 +269,204 @@ static void terrain_print_hil_result(void)
     printf("\r\n");
 }
 
-cy_rslt_t ml_validation_hil_task(void)
+static cy_rslt_t terrain_handle_window_frame(uint16_t length)
 {
-    static const uint8_t magic[4] = {'T', 'R', 'N', '1'};
-    uint8_t input[500];
-    size_t matched = 0;
+    int8_t input[TERRAIN_WINDOW_BYTES];
 
-    if ((model_obj->input_count != 1) || (model_obj->input_concat_bytes != sizeof(input)))
+    if (length != sizeof(input))
     {
-        printf("HIL_ERROR unexpected_input_bytes=%u\r\n",
-               (unsigned int) model_obj->input_concat_bytes);
-        return MTB_ML_RESULT_INPUT_ERROR;
+        printf("HIL_ERROR protocol=TRN1,bad_length=%u\r\n", (unsigned int) length);
+        return CY_RSLT_SUCCESS;
     }
-    printf("HIL_READY protocol=TRN1,payload_bytes=500,baud=1000000\r\n");
-    for (;;)
+    for (size_t index = 0u; index < sizeof(input); index++)
     {
-        uint8_t value = terrain_uart_get_byte();
-        if (value == magic[matched])
+        input[index] = (int8_t) terrain_uart_get_byte();
+    }
+    uint32_t received_crc = terrain_uart_get_u32();
+    uint32_t computed_crc = terrain_crc32((uint8_t *) input, sizeof(input));
+    if (received_crc != computed_crc)
+    {
+        printf("HIL_ERROR protocol=TRN1,bad_crc=0x%08" PRIx32
+               ",expected=0x%08" PRIx32 "\r\n", received_crc, computed_crc);
+        return CY_RSLT_SUCCESS;
+    }
+    cy_rslt_t result = terrain_invoke(input);
+    if (result != CY_RSLT_SUCCESS)
+    {
+        printf("HIL_ERROR protocol=TRN1,inference=0x%08lx\r\n",
+               (unsigned long) result);
+        return result;
+    }
+    terrain_print_hil_result();
+    return CY_RSLT_SUCCESS;
+}
+
+static void terrain_stream_reset(void)
+{
+    terrain_stream_state.write_index = 0u;
+    terrain_stream_state.fill = 0u;
+    terrain_stream_state.inference_countdown = 0u;
+}
+
+static void terrain_stream_build_window(int8_t *window)
+{
+    for (uint16_t row = 0u; row < TERRAIN_WINDOW_SAMPLES; row++)
+    {
+        uint16_t source_row = (uint16_t)
+            ((terrain_stream_state.write_index + row) % TERRAIN_WINDOW_SAMPLES);
+        for (uint16_t channel = 0u; channel < TERRAIN_CHANNEL_COUNT; channel++)
         {
-            matched++;
+            window[(row * TERRAIN_CHANNEL_COUNT) + channel] =
+                terrain_stream_state.samples[source_row][channel];
+        }
+    }
+}
+
+static void terrain_print_stream_result(uint32_t sequence, bool inferred)
+{
+    int predicted_class = -1;
+    printf("STREAM_RESULT seq=%lu,fill=%u,warmup=%u,inferred=%u,class=",
+           (unsigned long) sequence, (unsigned int) terrain_stream_state.fill,
+           (terrain_stream_state.fill < TERRAIN_WINDOW_SAMPLES) ? 1u : 0u,
+           inferred ? 1u : 0u);
+    if (inferred)
+    {
+        predicted_class = mtb_ml_utils_find_max(result_buffer[0], model_output_size[0]);
+    }
+    printf("%d,raw=[", predicted_class);
+    for (int index = 0; index < 4; index++)
+    {
+        int value = inferred ? (int) result_buffer[0][index] : 0;
+        printf("%d%s", value, (index == 3) ? "" : ",");
+    }
+    printf("],cpu_cyc=%lu,npu_cyc=%lu\r\n",
+           inferred ? (unsigned long) model_obj->m_cpu_cycles : 0ul,
+#if defined(COMPONENT_U55) || defined(COMPONENT_NNLITE2)
+           inferred ? (unsigned long) model_obj->m_npu_cycles : 0ul
+#else
+           0ul
+#endif
+    );
+}
+
+static cy_rslt_t terrain_handle_stream_frame(uint16_t length)
+{
+    uint8_t payload[TERRAIN_STREAM_PAYLOAD_BYTES];
+    if (length != sizeof(payload))
+    {
+        printf("STREAM_ERROR code=bad_length,length=%u\r\n", (unsigned int) length);
+        return CY_RSLT_SUCCESS;
+    }
+    for (size_t index = 0u; index < sizeof(payload); index++)
+    {
+        payload[index] = terrain_uart_get_byte();
+    }
+    uint32_t received_crc = terrain_uart_get_u32();
+    uint32_t computed_crc = terrain_crc32(payload, sizeof(payload));
+    uint32_t sequence = (uint32_t) payload[0]
+        | ((uint32_t) payload[1] << 8)
+        | ((uint32_t) payload[2] << 16)
+        | ((uint32_t) payload[3] << 24);
+    uint16_t stride = (uint16_t) payload[4] | ((uint16_t) payload[5] << 8);
+    if (received_crc != computed_crc)
+    {
+        printf("STREAM_ERROR seq=%lu,code=bad_crc,received=0x%08" PRIx32
+               ",expected=0x%08" PRIx32 "\r\n", (unsigned long) sequence,
+               received_crc, computed_crc);
+        return CY_RSLT_SUCCESS;
+    }
+    if (stride == 0u)
+    {
+        printf("STREAM_ERROR seq=%lu,code=bad_stride,stride=0\r\n",
+               (unsigned long) sequence);
+        return CY_RSLT_SUCCESS;
+    }
+    if (terrain_stream_state.have_sequence && (sequence == 0u))
+    {
+        /* Sequence zero starts a new client session without requiring a reset. */
+        terrain_stream_reset();
+    }
+    else if (terrain_stream_state.have_sequence
+             && (sequence != (terrain_stream_state.last_sequence + 1u)))
+    {
+        printf("STREAM_ERROR seq=%lu,code=sequence,expected=%lu,action=reset\r\n",
+               (unsigned long) sequence,
+               (unsigned long) (terrain_stream_state.last_sequence + 1u));
+        terrain_stream_reset();
+    }
+    terrain_stream_state.have_sequence = true;
+    terrain_stream_state.last_sequence = sequence;
+    if (terrain_stream_state.stride != stride)
+    {
+        terrain_stream_state.stride = stride;
+        terrain_stream_state.inference_countdown = 0u;
+    }
+    for (uint16_t channel = 0u; channel < TERRAIN_CHANNEL_COUNT; channel++)
+    {
+        terrain_stream_state.samples[terrain_stream_state.write_index][channel] =
+            (int8_t) payload[TERRAIN_STREAM_HEADER_BYTES + channel];
+    }
+    terrain_stream_state.write_index =
+        (uint16_t) ((terrain_stream_state.write_index + 1u) % TERRAIN_WINDOW_SAMPLES);
+    if (terrain_stream_state.fill < TERRAIN_WINDOW_SAMPLES)
+    {
+        terrain_stream_state.fill++;
+    }
+
+    bool inferred = false;
+    cy_rslt_t result = CY_RSLT_SUCCESS;
+    if (terrain_stream_state.fill == TERRAIN_WINDOW_SAMPLES)
+    {
+        if (terrain_stream_state.inference_countdown == 0u)
+        {
+            int8_t input[TERRAIN_WINDOW_BYTES];
+            terrain_stream_build_window(input);
+            result = terrain_invoke(input);
+            if (result != CY_RSLT_SUCCESS)
+            {
+                printf("STREAM_ERROR seq=%lu,code=inference,result=0x%08lx\r\n",
+                       (unsigned long) sequence, (unsigned long) result);
+                return result;
+            }
+            inferred = true;
+            terrain_stream_state.inference_countdown = (uint16_t) (stride - 1u);
         }
         else
         {
-            matched = (value == magic[0]) ? 1u : 0u;
+            terrain_stream_state.inference_countdown--;
         }
-        if (matched != sizeof(magic))
-        {
-            continue;
-        }
-        matched = 0;
-        uint16_t length = (uint16_t) terrain_uart_get_byte();
-        length |= (uint16_t) ((uint16_t) terrain_uart_get_byte() << 8);
-        if (length != sizeof(input))
-        {
-            printf("HIL_ERROR bad_length=%u\r\n", (unsigned int) length);
-            continue;
-        }
-        for (size_t index = 0; index < sizeof(input); index++)
-        {
-            input[index] = terrain_uart_get_byte();
-        }
-        uint32_t received_crc = 0u;
-        for (uint32_t index = 0; index < 4u; index++)
-        {
-            received_crc |= (uint32_t) terrain_uart_get_byte() << (8u * index);
-        }
-        uint32_t computed_crc = terrain_crc32(input, sizeof(input));
-        if (received_crc != computed_crc)
-        {
-            printf("HIL_ERROR bad_crc=0x%08" PRIx32 ",expected=0x%08" PRIx32 "\r\n",
-                   received_crc, computed_crc);
-            continue;
-        }
-        cy_rslt_t result = mtb_ml_model_inputs(model_obj, (MTB_ML_DATA_T *) input, 0);
-        if (result == CY_RSLT_SUCCESS)
-        {
-            result = mtb_ml_model_invoke(model_obj);
-        }
+    }
+    terrain_print_stream_result(sequence, inferred);
+    return CY_RSLT_SUCCESS;
+}
+
+cy_rslt_t ml_validation_hil_task(void)
+{
+    if ((model_obj->input_count != 1)
+        || (model_obj->input_concat_bytes != TERRAIN_WINDOW_BYTES)
+        || (model_obj->output_count != 1)
+        || (model_output_size[0] != 4))
+    {
+        printf("HIL_ERROR unexpected_model_io,input_bytes=%u,output_values=%d\r\n",
+               (unsigned int) model_obj->input_concat_bytes, model_output_size[0]);
+        return MTB_ML_RESULT_INPUT_ERROR;
+    }
+    terrain_stream_reset();
+    terrain_stream_state.have_sequence = false;
+    terrain_stream_state.stride = 1u;
+    printf("HIL_READY protocols=TRN1,TRN2,window_bytes=500,sample_bytes=10,"
+           "window_samples=50,baud=1000000\r\n");
+    for (;;)
+    {
+        uint8_t protocol = terrain_uart_find_protocol();
+        uint16_t length = terrain_uart_get_u16();
+        cy_rslt_t result = (protocol == '1')
+            ? terrain_handle_window_frame(length)
+            : terrain_handle_stream_frame(length);
         if (result != CY_RSLT_SUCCESS)
         {
-            printf("HIL_ERROR inference=0x%08lx\r\n", (unsigned long) result);
             return result;
         }
-        terrain_print_hil_result();
     }
 }
 

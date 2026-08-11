@@ -52,7 +52,7 @@ NN_TYPE=int8x8
 NN_MODEL_NAME=TERRAIN_CPU
 
 # fixed: run the generated test-partition tensor once at boot
-# hil:   receive quantized (1,50,10) INT8 windows over the KitProg3 UART
+# hil:   receive TRN1 full windows or TRN2 INT8 samples over KitProg3 UART
 TERRAIN_MODE?=fixed
 ifeq (hil, $(TERRAIN_MODE))
 DEFINES+=TERRAIN_HIL

@@ -21,7 +21,7 @@ Terrain parameters and procedural surface
                     ↓
  surface/session-disjoint train/validation/test
                     ↓
-      host classifier → future KIT_PSE84_AI
+ strict INT8 classifier → KIT_PSE84_AI CM55/U55
 ```
 
 Low-frequency Dataset v1 dynamics의 operational MuJoCo timestep은 0.5 ms
@@ -94,8 +94,22 @@ Fusion은 FSR-only보다 우수하지만 IMU-only보다 우수하다고 결론�
 Expanded dataset은 4,453 valid window를 생성했다. 3-seed noisy Fusion accuracy는
 98.95 +/- 0.40%였다. Validation 기준으로 선택한 seed의 strict full-INT8 host
 accuracy는 99.29%였고 float 대비 delta는 -0.079 percentage point였다. 전체
-근거는 `EXPANDED_DATASET_V1_RESULTS.md`, 남은 E84 gate는
-`NEXT_MILESTONE.md`에 기록한다.
+근거는 `EXPANDED_DATASET_V1_RESULTS.md`, E84 deployment 및 continuous HIL
+결과와 남은 live-integration 항목은 `NEXT_MILESTONE.md`에 기록한다.
+
+## E84 deployment gate
+
+7,048-byte strict INT8 noisy Fusion model은 실제 KIT_PSE84_AI에서
+Cortex-M55 TFLM 및 Vela 4.2.0 Ethos-U55-128 실행을 통과했다. U55 CPU
+fallback operator는 0이며, 고정 tensor와 1 Mbaud UART `TRN1` full-window
+HIL 모두 Host와 raw output/class가 일치했다. CPU는 약 564 us, U55는 약
+90 us one-shot이었고 상세 재현 절차와 arena/scratch 실측값은
+`../Infineon_test/projects/terrain_e84_deploy/deployment/README.md`에 기록한다.
+이후 별도 `TRN2` sample protocol과 E84 50x10 ring buffer를 실제 보드에서
+100 Hz, stride 1, 1,000 samples로 검증했다. 951 inference 동안
+drop/timeout/deadline miss는 0이었고 전체 request/response RTT는 평균
+1.657 ms, p95 1.790 ms였다. Real sensor calibration만 current Digital
+Twin/UART HIL 범위 밖의 deferred 항목으로 남는다.
 
 ## 실험 이력
 

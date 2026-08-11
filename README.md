@@ -36,6 +36,8 @@ Third-party license와 attribution 파일은 해당 source tree에 그대로 보
   expanded dataset, 3-seed CNN, strict INT8 host-parity 최종 결과
 - [`simulation/COMMAND_RUNBOOK.md`](simulation/COMMAND_RUNBOOK.md):
   환경 확인, simulation preview, dataset/CNN/INT8 재현, test 명령 모음
+- [`Infineon_test/projects/terrain_e84_deploy/deployment/README.md`](Infineon_test/projects/terrain_e84_deploy/deployment/README.md):
+  E84 Cortex-M55/Ethos-U55 배포, 메모리·latency 실측 및 UART HIL 재현 절차
 
 ## 현재 terrain-classification 후보
 
@@ -43,13 +45,16 @@ Third-party license와 attribution 파일은 해당 source tree에 그대로 보
 Terrain → MuJoCo full-body G1 → FSR4 + foot IMU6
         → domain variation → sensor noise
         → medium_response → (50, 10)
-        → surface-disjoint train/validation/test → classifier → future E84
+        → surface-disjoint train/validation/test → strict INT8 classifier
+        → PSoC Edge E84 Cortex-M55 / Ethos-U55 → UART HIL
 ```
 
-현재 결과는 simulation/host candidate이며 E84 deployment 완료를 의미하지
-않는다. Pelvis IMU와 slip/contact trace는 diagnostic 전용이다. Legacy 실험과
-synthetic `(50, 5)` HIL pipeline은 보존하지만 Dataset v1 입력에는 사용하지
-않는다.
+E84 deployment와 1 Mbaud KitProg3 UART full-window 및 100 Hz continuous
+sample-stream HIL을 실제 KIT_PSE84_AI에서 검증했다. E84의 50x10 ring
+buffer가 1,000 samples를 drop/timeout 없이 처리했으며 Host와 E84의 raw INT8
+output/class가 일치한다. Pelvis IMU와 slip/contact trace는 diagnostic 전용이다.
+Legacy 실험과 synthetic `(50, 5)` HIL pipeline은 보존하지만 Dataset v1
+입력에는 사용하지 않는다.
 
 ## G1 horizontal-pulse preview
 
