@@ -1,0 +1,2 @@
+-r requirements-dataset-v1.txt
+ai-edge-litert>=1.0,<3

@@ -231,6 +231,7 @@ def run_window(
     matched_pelvis_output_dir: Path | None = None,
     model_configurator: Callable[[mujoco.MjModel, TerrainProfile], int] | None = None,
     physics_timestep: float | None = None,
+    sample_callback: Callable[[int, float, np.ndarray], None] | None = None,
 ) -> dict[str, float | int | str]:
     if not pulse_direction_label:
         pulse_direction_label = pulse_direction_name(pulse)
@@ -317,6 +318,12 @@ def run_window(
             collision_latched_value |= collision_since_sample
             if data.time + 1e-12 >= next_sample_time:
                 sensor_vector = sensor_reader.read_vector()
+                # This is the canonical live physical-unit sample: it is read
+                # after the physics step and before CSV storage/window extraction.
+                if sample_callback is not None:
+                    sample_callback(
+                        len(sensors), float(data.time), sensor_vector.copy()
+                    )
                 if matched_pelvis_output_dir is not None:
                     pelvis_diagnostic_sensors.append(
                         sensor_reader.read_pelvis_diagnostic_vector()

@@ -46,7 +46,8 @@ Terrain → MuJoCo full-body G1 → FSR4 + foot IMU6
         → domain variation → sensor noise
         → medium_response → (50, 10)
         → surface-disjoint train/validation/test → strict INT8 classifier
-        → PSoC Edge E84 Cortex-M55 / Ethos-U55 → UART HIL
+        → live MuJoCo 100 Hz TRN2 → physical PSoC Edge E84 / Ethos-U55
+        → terrain result + Host shadow logging
 ```
 
 E84 deployment와 1 Mbaud KitProg3 UART full-window 및 100 Hz continuous
@@ -55,6 +56,12 @@ buffer가 1,000 samples를 drop/timeout 없이 처리했으며 Host와 E84의 ra
 output/class가 일치한다. Pelvis IMU와 slip/contact trace는 diagnostic 전용이다.
 Legacy 실험과 synthetic `(50, 5)` HIL pipeline은 보존하지만 Dataset v1
 입력에는 사용하지 않는다.
+
+실행 중인 MuJoCo의 2 kHz controlled-excitation loop도 실제 E84에 연결했다.
+네 terrain의 400 live samples/204 inference에서 reference INT8 Host shadow와
+E84 raw output/class가 204/204 exact match했고 100 Hz deadline miss, drop,
+timeout, device error는 모두 0이었다. 이 live stream은 clean virtual sensor를
+사용하며 sensor noise는 Dataset 생성 시의 offline augmentation이다.
 
 ## G1 horizontal-pulse preview
 

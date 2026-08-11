@@ -1,8 +1,8 @@
-# E84 Deployment 및 Continuous HIL 검증
+# E84 Deployment 및 Live MuJoCo HIL 검증
 
-상태: **expanded dataset, 3-seed CNN gate, host INT8 parity 및
-KIT_PSE84_AI E84 deployment/UART window HIL 완료; continuous sample-stream
-HIL이 다음 단계**.
+상태: **expanded dataset, host INT8 parity, KIT_PSE84_AI E84 deployment,
+TRN1 full-window HIL, TRN2 continuous sample-stream HIL 및 실제 MuJoCo
+live-loop → physical E84 integration 완료**.
 
 완료된 host pipeline:
 
@@ -102,6 +102,36 @@ Host parity gate 이후 동일 artifact를 KIT_PSE84_AI에서 Cortex-M55 TFLM과
 Ethos-U55-128 양쪽으로 실행했다. 고정 test tensor와 UART full-window HIL에서
 Host/E84 raw INT8 output 및 class parity를 확인했다.
 
+## 완료된 MuJoCo live HIL gate
+
+기존 `run_window()`의 0.5 ms physics loop에서 매 20 step마다 생성되는 clean
+physical-unit FSR4 + left-foot/ankle IMU6 sample을 callback으로 받아 100 Hz
+`TRN2`로 실제 probe `13070E98012D2400`에 전송했다. 각 terrain/run 시작은
+sequence 0으로 E84 ring을 reset한다. Dataset v1의 sensor imperfection은
+50-sample tensor 추출 후 적용되는 offline augmentation이므로 live 값에
+재적용하지 않았다.
+
+`multisine`, surface 0, run 0의 concrete/marble/ice/sand 네 deterministic
+run에서 총 400 live samples와 204 sliding-window inference를 확인했다.
+
+| Gate | 결과 |
+|---|---:|
+| Host reference INT8 ↔ E84 raw/class exact parity | 204 / 204 |
+| Sequence drop / timeout / device error / deadline miss | 0 / 0 / 0 / 0 |
+| Send period | mean 10.001 ms, p95 10.163 ms |
+| UART request/response RTT | mean 1.574 ms, p95 1.724 ms |
+| CPU cycles, inferred | mean 5,836.2, p95 5,847 |
+| NPU cycles, inferred | mean 7,144.1, p95 7,160 |
+| `[0.15,0.65)` aligned ground-truth accuracy | 4 / 4 |
+| 모든 exploratory sliding window accuracy | 78.43% |
+
+Host optimized XNNPACK kernel은 일부 arbitrary input에서 E84와 raw output이
+몇 LSB 달랐으므로 exact transport gate는 같은 canonical TFLite의 reference
+INT8 kernels를 사용한다. Class는 바뀌지 않았지만 raw parity를 느슨하게
+처리하지 않았다. Timing benchmark는 headless이며 GUI는 demonstration
+옵션이다. 78.43%는 training distribution 밖의 arbitrary continuous window를
+포함하므로 Dataset-v1 99.29% test accuracy와 같은 의미로 해석하지 않는다.
+
 ## Entry point
 
 Expanded dataset dry-run:
@@ -149,15 +179,19 @@ INT8 export/parity:
 - [x] HIL buffering, window cadence, timeout, end-to-end timing 검증; E84
   50x10 ring buffer, 100 Hz/stride 1에서 1,000 samples와 951 inferences,
   drop/timeout/deadline miss 0, RTT 1.657 +/- 0.070 ms (p95 1.790 ms)
+- [x] 실제 MuJoCo 2 kHz loop → 100 Hz TRN2 → physical E84/U55 live HIL;
+  4 terrains, 400 samples, 204 inference, Host/E84 exact parity 100%,
+  drop/timeout/error/deadline miss 0
 - [ ] Real FSR/BMI270 orientation, gain, bias, range, noise calibration
   (deferred; current Digital Twin/UART HIL milestone에는 불필요)
 
-## 다음 실행 순서
+## 다음 milestone
 
-1. MuJoCo live loop가 생성하는 physical-unit 10-channel sample을 검증된
-   `TRN2` client API에 연결한다.
-2. Digital Twin session/run boundary에서 sequence 0으로 E84 ring을 명시적으로
-   reset한다.
+1. 현재 live adapter를 장시간·다중 run HIL robustness와 fault-injection에
+   확장하되 100 Hz/50-sample model과 controlled excitation은 유지한다.
+2. Arbitrary continuous window accuracy 개선이 필요하면 먼저 별도의
+   transition/continuous dataset milestone을 설계하고 승인받는다. 현재 78.43%
+   결과만으로 모델을 재학습하거나 구조를 바꾸지 않는다.
 3. Real FSR/BMI270 calibration은 실제 센서 milestone이 승인될 때까지
    deferred 상태로 유지한다.
 

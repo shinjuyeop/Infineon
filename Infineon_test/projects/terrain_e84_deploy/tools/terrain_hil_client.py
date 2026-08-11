@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import json
 import os
 import select
 import struct
@@ -16,16 +15,10 @@ from pathlib import Path
 import numpy as np
 
 
-PROJECT = Path(__file__).resolve().parents[1]
-REPO = PROJECT.parents[2]
-SIMULATION = REPO / "simulation"
-DATASET = SIMULATION / "outputs/terrain_dataset_v1_expanded/dataset_noisy.npz"
-NORMALIZATION = (
-    SIMULATION
-    / "outputs/terrain_dataset_v1_expanded_cnn_seed_20260809_e120/normalization.json"
-)
-INPUT_SCALE = 0.10959112644195557
-INPUT_ZERO_POINT = 22
+try:
+    from terrain_preprocessing import DATASET, quantize_physical
+except ModuleNotFoundError:
+    from tools.terrain_preprocessing import DATASET, quantize_physical
 
 
 def configure_uart(fd: int) -> None:
@@ -45,13 +38,7 @@ def quantize(values: np.ndarray) -> np.ndarray:
     values = np.asarray(values, dtype=np.float32)
     if values.shape != (50, 10):
         raise ValueError(f"expected a (50,10) FSR4+IMU6 window, got {values.shape}")
-    stats = json.loads(NORMALIZATION.read_text(encoding="utf-8"))["noisy/fusion"]
-    normalized = (values - np.asarray(stats["mean"], np.float32)) / np.asarray(
-        stats["std"], np.float32
-    )
-    return np.clip(
-        np.rint(normalized / INPUT_SCALE + INPUT_ZERO_POINT), -128, 127
-    ).astype(np.int8)
+    return quantize_physical(values)
 
 
 def load_input(args: argparse.Namespace) -> np.ndarray:

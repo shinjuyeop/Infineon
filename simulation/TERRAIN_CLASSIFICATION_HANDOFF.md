@@ -111,6 +111,16 @@ drop/timeout/deadline miss는 0이었고 전체 request/response RTT는 평균
 1.657 ms, p95 1.790 ms였다. Real sensor calibration만 current Digital
 Twin/UART HIL 범위 밖의 deferred 항목으로 남는다.
 
+동일한 `TRN2` endpoint를 기존 Dataset-v1 `run_window()`에 최소 callback으로
+연결했다. 0.5 ms physics step 20회마다 `G1HilSensorReader.read_vector()`가
+생성한 clean physical-unit FSR4 + ankle IMU6 sample 한 개를 보낸다. 네
+terrain의 deterministic `multisine` run에서 400 samples, 204 inference,
+Host reference INT8/E84 raw 및 class parity 204/204, deadline/drop/timeout/error
+0을 실제 probe `13070E98012D2400`에서 확인했다. `[0.15,0.65)`에 정확히
+정렬된 네 window는 4/4였지만 모든 exploratory sliding window accuracy는
+78.43%였다. 후자는 arbitrary continuous trajectory 결과이며 canonical
+Dataset-v1 test accuracy를 대체하지 않는다.
+
 ## 실험 이력
 
 | 실험 | 목적 | 결론 | 현재 반영 | 폐기/보류 |
@@ -140,6 +150,11 @@ Twin/UART HIL 범위 밖의 deferred 항목으로 남는다.
 - `terrain_int8.py`, `export_terrain_int8.py`: strict INT8 export와 parity
 - `hil_sensor.py`, `terrain_profiles.py`, `surface_profiles.py`,
   `controlled_excitation.py`, `pulse_windows.py`: simulation foundation
+- `run_live_terrain_hil.py`: existing runner callback을 사용하는 physical E84
+  live adapter, Host shadow parity, timing/CSV logger
+- `terrain_e84_deploy/tools/terrain_preprocessing.py`, `terrain_shadow.py`,
+  `terrain_stream_client.py`: shared preprocessing, reference INT8 shadow,
+  reusable `TerrainStreamLink`
 
 ### Test
 

@@ -161,3 +161,61 @@ The installed standalone Vela package does not contain Infineon's named
 uses Arm's default U55 memory-bandwidth model. This affects Vela's performance
 estimate/scheduling assumptions, not operator support; successful execution on
 the physical E84 verifies the generated command stream functionally.
+
+## Live MuJoCo TRN2 HIL
+
+Dataset replay와 별도로, `run_live_terrain_hil.py`는 현재 실행 중인 Dataset-v1
+MuJoCo runner의 sensor callback을 사용한다. 0.5 ms physics step 20회마다
+`G1HilSensorReader`에서 FSR4 force(N), left-foot accelerometer(m/s^2),
+gyroscope(rad/s) 한 sample을 읽는다. Domain variation은 기존 surface/friction/
+initial-condition configurator에 적용된다. Sensor imperfection은 Dataset 생성의
+50-sample window 추출 뒤 적용되는 offline augmentation이므로 live stream은
+`clean_live`로 명시해 기록한다.
+
+MuJoCo virtual environment에 Host shadow runtime을 한 번 설치한다.
+
+```sh
+cd simulation/unitree_mujoco/simulate_python
+../../venv/bin/python -m pip install -r requirements-live-hil.txt
+```
+
+지정된 physical board에서 deterministic concrete run을 먼저 실행한다.
+
+```sh
+../../venv/bin/python run_live_terrain_hil.py \
+  --terrain concrete \
+  --family multisine \
+  --surface-index 0 \
+  --run-index 0 \
+  --runs 1 \
+  --stride 1
+```
+
+그 후 동일 조건으로 네 terrain을 실행한다.
+
+```sh
+../../venv/bin/python run_live_terrain_hil.py \
+  --terrain all \
+  --family multisine \
+  --surface-index 0 \
+  --run-index 0 \
+  --runs 1 \
+  --stride 1
+```
+
+기본 port는 probe serial `13070E98012D2400`의 KitProg3 USB-UART이다. 각
+run/terrain boundary에서 다음 sample은 sequence 0이 되어 E84 ring을 reset한다.
+CSV에는 physical/quantized 10 channels, simulation/wall time, session/run/terrain,
+E84와 Host raw/class, parity, cycles, RTT와 lateness를 모두 기록한다. Host
+shadow는 canonical 7,048-byte model의 SHA-256을 검증하고 reference INT8
+kernels를 사용한다. Host optimized XNNPACK은 일부 input에서 class가 같아도
+E84와 raw가 몇 LSB 다를 수 있어 exact parity gate에는 사용하지 않는다.
+
+실제 네 terrain `multisine` surface 0/run 0 결과는 400 samples, 204 inference,
+raw/class exact parity 204/204, deadline/drop/timeout/device error 0이었다. Send
+period는 mean 10.001 ms, p95 10.163 ms였고 RTT는 mean 1.574 ms, p95
+1.724 ms였다. Medium-response aligned window는 4/4였고 모든 exploratory
+continuous sliding window accuracy는 78.43%였다. Arbitrary window 결과는
+controlled-response training distribution 밖이므로 99.29% Dataset-v1 test
+accuracy와 직접 비교하지 않는다. Timing benchmark는 headless가 기본이며
+`--gui`는 단일-terrain demonstration 전용이다.

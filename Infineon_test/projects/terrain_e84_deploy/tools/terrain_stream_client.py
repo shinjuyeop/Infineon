@@ -13,14 +13,17 @@ import struct
 import termios
 import time
 import zlib
+from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
 
 try:
     from terrain_hil_client import DATASET, configure_uart, quantize, write_all
+    from terrain_preprocessing import quantize_physical
 except ModuleNotFoundError:
     from tools.terrain_hil_client import DATASET, configure_uart, quantize, write_all
+    from tools.terrain_preprocessing import quantize_physical
 
 
 DEFAULT_PORT = Path(
@@ -51,6 +54,77 @@ class LineReader:
             if ready:
                 self.buffer.extend(os.read(fd, 4096))
         raise TimeoutError(f"UART line timeout; buffered={bytes(self.buffer)!r}")
+
+
+@dataclass(frozen=True)
+class StreamExchange:
+    result: dict[str, int]
+    device_errors: tuple[str, ...]
+    send_time: float
+    receive_time: float
+
+    @property
+    def rtt_ms(self) -> float:
+        return (self.receive_time - self.send_time) * 1000.0
+
+
+class TerrainStreamLink:
+    """Reusable synchronous TRN2 link with explicit stream-session boundaries."""
+
+    def __init__(self, port: Path = DEFAULT_PORT, timeout: float = 1.0) -> None:
+        self.port = Path(port)
+        self.timeout = timeout
+        self.fd: int | None = None
+        self.reader = LineReader()
+        self.next_sequence = 0
+
+    def open(self) -> "TerrainStreamLink":
+        if self.fd is not None:
+            return self
+        self.fd = os.open(self.port, os.O_RDWR | os.O_NOCTTY | os.O_NONBLOCK)
+        try:
+            configure_uart(self.fd)
+            termios.tcflush(self.fd, termios.TCIOFLUSH)
+        except BaseException:
+            os.close(self.fd)
+            self.fd = None
+            raise
+        self.reader = LineReader()
+        self.next_sequence = 0
+        return self
+
+    def start_session(self) -> None:
+        """Make the next accepted sample sequence zero, resetting the E84 ring."""
+        self.next_sequence = 0
+
+    def send_quantized(self, sample: np.ndarray, stride: int = 1) -> StreamExchange:
+        if self.fd is None:
+            raise RuntimeError("TerrainStreamLink is not open")
+        if not 1 <= stride <= 65535:
+            raise ValueError("stride must be in [1,65535]")
+        sequence = self.next_sequence
+        send_time = time.monotonic()
+        write_all(self.fd, build_frame(sequence, stride, sample), self.timeout)
+        result, errors = read_result(
+            self.fd, self.reader, sequence, self.timeout
+        )
+        receive_time = time.monotonic()
+        self.next_sequence += 1
+        return StreamExchange(result, tuple(errors), send_time, receive_time)
+
+    def send_physical(self, sample: np.ndarray, stride: int = 1) -> StreamExchange:
+        return self.send_quantized(quantize_physical(sample), stride)
+
+    def close(self) -> None:
+        if self.fd is not None:
+            os.close(self.fd)
+            self.fd = None
+
+    def __enter__(self) -> "TerrainStreamLink":
+        return self.open()
+
+    def __exit__(self, *_args: object) -> None:
+        self.close()
 
 
 def load_window(args: argparse.Namespace) -> tuple[np.ndarray, int | None]:
@@ -187,11 +261,7 @@ def main() -> None:
     inferred_rtt_ms: list[float] = []
     deadline_misses = 0
 
-    fd = os.open(args.port, os.O_RDWR | os.O_NOCTTY | os.O_NONBLOCK)
-    try:
-        configure_uart(fd)
-        termios.tcflush(fd, termios.TCIOFLUSH)
-        reader = LineReader()
+    with TerrainStreamLink(args.port, args.timeout) as link:
         start = time.monotonic()
         for sequence, sample in enumerate(samples):
             target = start + sequence * period
@@ -203,10 +273,10 @@ def main() -> None:
             if not args.no_realtime and (send_time - target) > period:
                 deadline_misses += 1
             send_times.append(send_time)
-            write_all(fd, build_frame(sequence, args.stride, sample), args.timeout)
-            result, frame_errors = read_result(fd, reader, sequence, args.timeout)
-            receive_time = time.monotonic()
-            errors.extend(frame_errors)
+            exchange = link.send_quantized(sample, args.stride)
+            result = exchange.result
+            receive_time = exchange.receive_time
+            errors.extend(exchange.device_errors)
             expected_fill = min(sequence + 1, 50)
             expected_warmup = 1 if sequence < 49 else 0
             expected_inferred = (
@@ -234,9 +304,6 @@ def main() -> None:
                 }
             )
             rows.append(result)
-    finally:
-        os.close(fd)
-
     inferred = [row for row in rows if row["inferred"] == 1]
     expected_inferences = 1 + (args.samples - 50) // args.stride
     if len(inferred) != expected_inferences:
