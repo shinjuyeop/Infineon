@@ -1,0 +1,30 @@
+{
+  "sample_index": 878,
+  "split": "test",
+  "surface_family": "warped_multisine",
+  "expected_label": 0,
+  "expected_class": "concrete",
+  "input_shape": [
+    1,
+    50,
+    10
+  ],
+  "input_dtype": "int8",
+  "input_scale": 0.10959112644195557,
+  "input_zero_point": 22,
+  "input_sha256": "6119c67c0cfd7465fc57befad8ff5d2da0b018ca3538c9cfe052948bae0cc9fc",
+  "host_output_raw": [
+    35,
+    -35,
+    -128,
+    -128
+  ],
+  "host_class": 0,
+  "output_scale": 0.00390625,
+  "output_zero_point": -128,
+  "u55_model_size_bytes": 7792,
+  "u55_accelerator_config": "ethos-u55-128",
+  "source_model": "/d/shin/Infineon/simulation/outputs/terrain_dataset_v1_expanded_int8_seed_20260809/noisy_fusion_int8.tflite",
+  "source_model_sha256": "f5d34f48b765d89f61cebe7e15eb9ee27a78b1c823950bca67043b6d4fa96df4",
+  "source_dataset_sha256": "ee84861570a1ae1244c54957219b9896c29a1756be97d4d02353f9699ac264ec"
+}
