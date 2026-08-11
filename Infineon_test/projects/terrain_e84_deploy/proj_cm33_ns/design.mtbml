@@ -1,0 +1,51 @@
+{
+    "app": "ML",
+    "calibration_data": {
+        "active_state": true,
+        "feat_col_count": 784,
+        "feat_col_first": 1,
+        "input_calibration_type": "ML",
+        "input_format": "JPEG",
+        "path": "sample_data/mnist_calib_data.csv",
+        "target_col_count": 1,
+        "target_col_first": 0
+    },
+    "filetype": "modustoolbox-ml-configurator",
+    "formatVersion": "3",
+    "lastSavedWith": "ML Configurator",
+    "lastSavedWithVersion": "3.0.0",
+    "model": {
+        "model_task": "CLASSIFICATION",
+        "optimization_tflm": false,
+        "path": "pretrained_models/small_mlp_mnist.h5",
+        "quantization": {
+            "float32": true,
+            "int16x8": true,
+            "int8x8": true
+        },
+        "sparsity_tflm": true,
+        "tflm_model_quantization": "FLOAT",
+        "verbose_output": true
+    },
+    "name": "TEST_MODEL",
+    "output_dir": "mtb_ml_gen",
+    "target": "PSE84_M33_NNLITE2",
+    "toolsPackage": "ModusToolbox Machine Learning Pack 3.0.0",
+    "validation": {
+        "feat_col_count": 784,
+        "feat_col_first": 1,
+        "input_format": "JPEG",
+        "input_type": "ML",
+        "max_samples": 1000,
+        "path": "sample_data/mnist_test_data.csv",
+        "quantization": {
+            "float32": true,
+            "int16x8": true,
+            "int8x8": true
+        },
+        "target": {
+            "target_baud_rate": 1000000,
+            "target_quantization": "int8x8"
+        }
+    }
+}
