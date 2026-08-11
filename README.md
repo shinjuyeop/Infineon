@@ -34,6 +34,8 @@ Third-party license와 attribution 파일은 해당 source tree에 그대로 보
   expanded dataset/1D-CNN milestone과 E84 진행 gate
 - [`simulation/EXPANDED_DATASET_V1_RESULTS.md`](simulation/EXPANDED_DATASET_V1_RESULTS.md):
   expanded dataset, 3-seed CNN, strict INT8 host-parity 최종 결과
+- [`simulation/COMMAND_RUNBOOK.md`](simulation/COMMAND_RUNBOOK.md):
+  환경 확인, simulation preview, dataset/CNN/INT8 재현, test 명령 모음
 
 ## 현재 terrain-classification 후보
 
