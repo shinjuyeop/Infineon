@@ -81,6 +81,26 @@ def inspect_tflite_model(path: str | Path) -> tuple[TensorQuantization, TensorQu
     return input_spec, output_spec
 
 
+def list_tflite_operators(path: str | Path) -> list[str]:
+    """Return the ordered builtin operator names used by a validated model."""
+    tf = require_tensorflow()
+    interpreter = tf.lite.Interpreter(model_path=str(Path(path)))
+    interpreter.allocate_tensors()
+    get_ops = getattr(interpreter, "_get_ops_details", None)
+    if get_ops is None:
+        raise RuntimeError("TensorFlow Lite operator inspection is unavailable")
+    # DELEGATE entries describe this host interpreter's execution plan, not
+    # operators serialized in the TFLite flatbuffer.
+    operators = [
+        str(detail.get("op_name", ""))
+        for detail in get_ops()
+        if str(detail.get("op_name", "")) != "DELEGATE"
+    ]
+    if any(not name or name.startswith("Flex") for name in operators):
+        raise ValueError(f"invalid operator list: {operators}")
+    return operators
+
+
 def export_full_int8_tflite(
     model: Any,
     representative_samples: np.ndarray,

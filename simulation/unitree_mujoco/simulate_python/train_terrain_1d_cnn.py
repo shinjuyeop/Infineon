@@ -6,6 +6,7 @@ import argparse
 import csv
 import json
 from pathlib import Path
+import time
 
 import numpy as np
 
@@ -32,6 +33,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--dataset-dir", type=Path, default=DATASET_DIR)
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
     parser.add_argument("--variants", nargs="+", choices=("clean", "noisy"), default=("clean", "noisy"))
+    parser.add_argument(
+        "--sensor-groups",
+        nargs="+",
+        choices=tuple(CHANNEL_GROUPS),
+        default=tuple(CHANNEL_GROUPS),
+        help="channel ablations to train; rate ablation uses fusion only",
+    )
     parser.add_argument("--epochs", type=int, default=60)
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--patience", type=int, default=8)
@@ -150,11 +158,13 @@ def main() -> None:
     history_rows: list[dict[str, object]] = []
     resource_rows: list[dict[str, object]] = []
     normalization: dict[str, object] = {}
+    training_times: list[dict[str, object]] = []
     terrain_names = tuple(TERRAIN_LABELS)
 
     for variant in args.variants:
         x, y, split, families = load_variant(args.dataset_dir.resolve(), variant)
-        for group, channels in CHANNEL_GROUPS.items():
+        for group in args.sensor_groups:
+            channels = CHANNEL_GROUPS[group]
             tf.keras.backend.clear_session()
             selected = x[:, :, channels]
             train_mask = split == "train"
@@ -178,6 +188,7 @@ def main() -> None:
                     restore_best_weights=True,
                 )
             ]
+            training_start = time.perf_counter()
             history = model.fit(
                 normalized[train_mask],
                 y[train_mask],
@@ -188,7 +199,17 @@ def main() -> None:
                 callbacks=callbacks,
                 verbose=2,
             )
+            training_time_s = time.perf_counter() - training_start
+            training_times.append(
+                {
+                    "variant": variant,
+                    "sensor_group": group,
+                    "wall_time_s": training_time_s,
+                    "epochs_completed": len(history.history["loss"]),
+                }
+            )
             model.save(output / f"{variant}_{group}.keras")
+            model_path = output / f"{variant}_{group}.keras"
             for epoch in range(len(history.history["loss"])):
                 history_rows.append(
                     {
@@ -260,6 +281,7 @@ def main() -> None:
                     "sensor_group": group,
                     **vars(estimate),
                     "keras_parameters": int(model.count_params()),
+                    "keras_artifact_bytes": model_path.stat().st_size,
                     "estimate_scope": "tensor payload/liveness only; excludes TFLite arena metadata, alignment, and kernel scratch buffers",
                 }
             )
@@ -272,18 +294,28 @@ def main() -> None:
     (output / "normalization.json").write_text(
         json.dumps(normalization, indent=2) + "\n", encoding="utf-8"
     )
+    dataset_protocol_path = args.dataset_dir.resolve() / "protocol.json"
+    dataset_protocol = (
+        json.loads(dataset_protocol_path.read_text(encoding="utf-8"))
+        if dataset_protocol_path.is_file()
+        else None
+    )
     (output / "training_protocol.json").write_text(
         json.dumps(
             {
                 "architecture": "Conv1D(12,k=5)-Conv1D(16,k=3)-GlobalAveragePooling-Dense(4)",
                 "channel_groups": {name: list(values) for name, values in CHANNEL_GROUPS.items()},
+                "trained_sensor_groups": list(args.sensor_groups),
                 "variants": list(args.variants),
                 "epochs": args.epochs,
                 "batch_size": args.batch_size,
                 "patience": args.patience,
                 "seed": args.seed,
+                "source_dataset_dir": str(args.dataset_dir.resolve()),
+                "source_dataset_protocol": dataset_protocol,
                 "normalization": "per-channel mean/std fitted on train families only",
                 "selection": "early stopping on validation-family loss; test families are evaluation-only",
+                "training_times": training_times,
             },
             indent=2,
         )

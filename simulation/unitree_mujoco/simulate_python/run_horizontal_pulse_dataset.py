@@ -246,6 +246,16 @@ def run_window(
     )
     if model.opt.timestep <= 0.0:
         raise ValueError("physics_timestep must be positive")
+    steps_per_sample_float = 1.0 / (model.opt.timestep * sample_rate)
+    rounded_steps_per_sample = int(round(steps_per_sample_float))
+    steps_per_sample = (
+        rounded_steps_per_sample
+        if rounded_steps_per_sample > 0
+        and np.isclose(
+            steps_per_sample_float, rounded_steps_per_sample, rtol=0.0, atol=1e-10
+        )
+        else None
+    )
     floor_id = (
         apply_terrain_profile(model, TERRAIN_PROFILES[terrain])
         if model_configurator is None
@@ -274,8 +284,8 @@ def run_window(
     allowed_foot_geoms = find_allowed_foot_geom_ids(model)
 
     expected_samples = int(round(duration * sample_rate))
-    sample_period = 1.0 / sample_rate
-    next_sample_time = sample_period
+    physics_step_count = 0
+    next_sample_time = 1.0 / sample_rate
     collision_since_sample = False
     collision_latched_value = False
     timestamps: list[float] = []
@@ -308,6 +318,7 @@ def run_window(
             support.apply()
             _, pulse_active = exciter.apply(float(data.time))
             mujoco.mj_step(model, data)
+            physics_step_count += 1
             diagnostic_reader.advance_slip(
                 model.opt.timestep,
                 pulse.start_time <= data.time,
@@ -316,7 +327,12 @@ def run_window(
                 data, floor_id, allowed_foot_geoms
             )
             collision_latched_value |= collision_since_sample
-            if data.time + 1e-12 >= next_sample_time:
+            sample_due = (
+                physics_step_count % steps_per_sample == 0
+                if steps_per_sample is not None
+                else data.time + 1e-12 >= next_sample_time
+            )
+            if sample_due:
                 sensor_vector = sensor_reader.read_vector()
                 # This is the canonical live physical-unit sample: it is read
                 # after the physics step and before CSV storage/window extraction.
@@ -336,7 +352,8 @@ def run_window(
                 collision_latched.append(collision_latched_value)
                 valid_contact.append(bool(sensor_vector[:4].sum() > 1.0))
                 collision_since_sample = False
-                next_sample_time += sample_period
+                if steps_per_sample is None:
+                    next_sample_time += 1.0 / sample_rate
             if viewer is not None:
                 viewer.sync()
                 target_wall_elapsed = (
@@ -429,6 +446,11 @@ def run_window(
             "support_site": "" if support_site_name is None else support_site_name,
             "pulse_body": pulse_body_name,
             "pulse_site": "" if pulse_site_name is None else pulse_site_name,
+            "physics_timestep_s": float(model.opt.timestep),
+            "physics_steps_per_sample": (
+                "" if steps_per_sample is None else steps_per_sample
+            ),
+            "sensor_rate_hz": float(sample_rate),
             "csv_path": str(relative_path),
         }
     )

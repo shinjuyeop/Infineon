@@ -24,6 +24,8 @@ from expanded_terrain_dataset_v1 import (  # noqa: E402
     validate_family_manifest,
 )
 from terrain_dataset_v1 import DOMAIN_RANGES, TERRAIN_LABELS  # noqa: E402
+from run_expanded_terrain_dataset_v1 import protocol  # noqa: E402
+from hil_sensor import HIL_SENSOR_CHANNELS  # noqa: E402
 
 
 class ExpandedTerrainDatasetV1Test(unittest.TestCase):
@@ -93,6 +95,25 @@ class ExpandedTerrainDatasetV1Test(unittest.TestCase):
         self.assertLess(estimate.estimated_runtime_s, 50.0 * 60.0)
         self.assertGreater(estimate.estimated_storage_bytes, 390 * 1024**2)
         self.assertLess(estimate.estimated_storage_bytes, 410 * 1024**2)
+
+    def test_rate_ablation_protocol_uses_native_integer_step_cadence(self) -> None:
+        expected = {100: (20, 0.5), 500: (4, 0.1), 1000: (2, 0.05)}
+        for rate, (steps, duration) in expected.items():
+            payload = protocol(4, 10, rate)
+            self.assertEqual(payload["physics_steps_per_sample"], steps)
+            self.assertEqual(payload["sample_count"], 50)
+            self.assertAlmostEqual(payload["observation_duration_s"], duration)
+            self.assertEqual(payload["channels"], tuple(HIL_SENSOR_CHANNELS))
+        self.assertEqual(protocol(4, 10, 100)["window"]["name"], "medium_response")
+        self.assertEqual(
+            protocol(4, 10, 1000)["window"],
+            {
+                "name": "pulse_onset_rate_ablation",
+                "start_s": 0.25,
+                "end_s": 0.30,
+                "interval": "left-closed/right-open",
+            },
+        )
 
 
 if __name__ == "__main__":

@@ -19,6 +19,7 @@ from terrain_cnn import (
 )
 from terrain_int8 import (
     export_full_int8_tflite,
+    list_tflite_operators,
     normalize,
     parity_gate,
     predict_tflite,
@@ -48,6 +49,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
     parser.add_argument("--representative-samples", type=int, default=256)
     parser.add_argument("--calibration-seed", type=int, default=20260809)
+    parser.add_argument("--sample-rate-hz", type=int, default=100)
+    parser.add_argument("--window-start-s", type=float, default=0.15)
     return parser.parse_args()
 
 
@@ -70,6 +73,11 @@ def write_rows(path: Path, rows: list[dict[str, object]]) -> None:
 
 def main() -> None:
     args = parse_args()
+    steps_per_sample = 1.0 / (0.0005 * args.sample_rate_hz)
+    if args.sample_rate_hz <= 0 or not np.isclose(
+        steps_per_sample, round(steps_per_sample), rtol=0.0, atol=1e-12
+    ):
+        raise ValueError("sample rate must divide the 2 kHz physics rate exactly")
     dataset_path = args.dataset.resolve()
     model_path = args.model.resolve()
     normalization_path = args.normalization.resolve()
@@ -215,7 +223,10 @@ def main() -> None:
 
     training_protocol = json.loads(protocol_path.read_text(encoding="utf-8"))
     metadata = {
-        "model_version": "terrain_dataset_v1_expanded_noisy_fusion_seed20260809_int8_v1",
+        "model_version": (
+            f"terrain_dataset_v1_expanded_{args.sample_rate_hz}hz_noisy_fusion_"
+            f"seed{training_protocol['seed']}_int8_v1"
+        ),
         "source_model": str(model_path),
         "source_model_sha256": sha256(model_path),
         "source_dataset": str(dataset_path),
@@ -224,8 +235,16 @@ def main() -> None:
         "input_shape": [50, 10],
         "channel_order": list(FUSION_CHANNEL_NAMES),
         "class_names": list(CLASS_NAMES),
-        "sample_rate_hz": 100,
-        "window": {"name": "medium_response", "start_s": 0.15, "end_s": 0.65},
+        "sample_rate_hz": args.sample_rate_hz,
+        "sample_count": 50,
+        "observation_duration_s": 50.0 / args.sample_rate_hz,
+        "physics_timestep_s": 0.0005,
+        "physics_steps_per_sample": int(round(1.0 / (0.0005 * args.sample_rate_hz))),
+        "window": {
+            "name": "medium_response" if args.sample_rate_hz == 100 else "pulse_onset_rate_ablation",
+            "start_s": args.window_start_s,
+            "end_s": args.window_start_s + 50.0 / args.sample_rate_hz,
+        },
         "normalization": {"mean": mean.tolist(), "std": std.tolist()},
         "calibration": {
             "partition": "train",
@@ -242,6 +261,7 @@ def main() -> None:
             "sha256": sha256(tflite_path),
             "size_bytes": tflite_path.stat().st_size,
             "strict_builtins_int8": True,
+            "operators": list_tflite_operators(tflite_path),
             "input": asdict(input_spec),
             "output": asdict(output_spec),
         },

@@ -15,7 +15,7 @@ Terrain parameters and procedural surface
                     ↓
     domain variation + sensor imperfections
                     ↓
- medium_response [0.15, 0.65) at 100 Hz
+ canonical baseline: medium_response [0.15, 0.65) at 100 Hz
                     ↓
                   (50, 10)
                     ↓
@@ -26,6 +26,13 @@ Terrain parameters and procedural surface
 
 Low-frequency Dataset v1 dynamics의 operational MuJoCo timestep은 0.5 ms
 (2 kHz)이다. Raw high-frequency contact vibration이 수렴했다는 의미는 아니다.
+
+Sampling-rate/observation-window ablation은 이 baseline을 보존하고 native
+500 Hz/100 ms와 1000 Hz/50 ms를 비교했다. Full 3-seed와 strict INT8 host
+gate를 통과한 fast candidate는 1000 Hz, 50 samples, 50 ms이며 상세 결과는
+`TERRAIN_RATE_ABLATION.md`에 있다. 이후 별도 `TERRAIN_FAST1000_CPU` 및
+`TERRAIN_FAST1000_U55` artifact를 생성했고 E84/U55 fixed regression과 Host
+golden HIL parity를 통과했다.
 
 ## 설계 결정
 
@@ -40,6 +47,10 @@ Low-frequency Dataset v1 dynamics의 operational MuJoCo timestep은 0.5 ms
 - Test data는 training에 사용하지 않은 surface family/realization 사용
 - MuJoCo friction, slip, load distribution, CoP-related response, surface
   geometry response, low-frequency foot dynamics 사용
+
+위 100 Hz 항목은 canonical deployed baseline으로 계속 LOCKED이다. Fast host
+candidate는 별도 artifact로 `pulse_onset_rate_ablation [0.25,0.30)` at 1000 Hz,
+`(50,10)`을 사용한다.
 
 ### DIAGNOSTIC-ONLY
 
@@ -111,6 +122,12 @@ drop/timeout/deadline miss는 0이었고 전체 request/response RTT는 평균
 1.657 ms, p95 1.790 ms였다. Real sensor calibration만 current Digital
 Twin/UART HIL 범위 밖의 deferred 항목으로 남는다.
 
+이 gate는 기존 100 Hz model에 대한 evidence이다. 1000 Hz selected strict INT8은
+별도 deployment path에서 Vela U55-128 변환, E84 fixed regression 및 Host golden
+HIL exact parity를 통과했다. Board raw output은 `[114,-114,-128,-128]`, class 0이며
+fixed/HIL 모두 host와 일치했다. 현재 synchronous TRN2 RTT 1.5–1.7 ms는 1 kHz
+sample period 1 ms보다 길어 async 1 kHz transport는 여전히 별도 과제다.
+
 동일한 `TRN2` endpoint를 기존 Dataset-v1 `run_window()`에 최소 callback으로
 연결했다. 0.5 ms physics step 20회마다 `G1HilSensorReader.read_vector()`가
 생성한 clean physical-unit FSR4 + ankle IMU6 sample 한 개를 보낸다. 네
@@ -148,6 +165,7 @@ Dataset-v1 test accuracy를 대체하지 않는다.
 - `run_expanded_terrain_dataset_v1.py`: expanded generator
 - `terrain_cnn.py`, `train_terrain_1d_cnn.py`: CNN ablation과 normalization
 - `terrain_int8.py`, `export_terrain_int8.py`: strict INT8 export와 parity
+- `prepare_rate_ablation_common_valid.py`: rate간 동일 valid-run subset 정렬
 - `hil_sensor.py`, `terrain_profiles.py`, `surface_profiles.py`,
   `controlled_excitation.py`, `pulse_windows.py`: simulation foundation
 - `run_live_terrain_hil.py`: existing runner callback을 사용하는 physical E84
@@ -169,6 +187,8 @@ Dataset-v1 test accuracy를 대체하지 않는다.
 - `simulation/outputs/` 전체는 generated이며 gitignored
 - Dataset, Keras, TFLite artifact는 output 아래에만 존재
 - Historical result는 삭제하거나 current dataset과 혼합하지 않음
+- Rate ablation output은 `terrain_dataset_v1_expanded_rate_quick_*` 및
+  `terrain_dataset_v1_expanded_1000hz_*`로 100 Hz artifact와 분리
 
 ## Code-health 참고
 
