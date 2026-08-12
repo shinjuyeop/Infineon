@@ -1,8 +1,9 @@
-# E84 Deployment 및 Live MuJoCo HIL 검증
+# Terrain Classification Milestone Status
 
 상태: **expanded dataset, host INT8 parity, KIT_PSE84_AI E84 deployment,
 TRN1 full-window HIL, TRN2 continuous sample-stream HIL 및 실제 MuJoCo
-live-loop → physical E84 integration 완료**.
+live-loop → physical E84 integration, native 1 kHz/50 ms feasibility 및
+fast1000 E84/U55 fixed regression 완료**.
 
 완료된 host pipeline:
 
@@ -187,11 +188,53 @@ INT8 export/parity:
 
 ## 다음 milestone
 
-1. 현재 live adapter를 장시간·다중 run HIL robustness와 fault-injection에
-   확장하되 100 Hz/50-sample model과 controlled excitation은 유지한다.
-2. Arbitrary continuous window accuracy 개선이 필요하면 먼저 별도의
-   transition/continuous dataset milestone을 설계하고 승인받는다. 현재 78.43%
-   결과만으로 모델을 재학습하거나 구조를 바꾸지 않는다.
+### Native 1 kHz / 50 ms terrain classification feasibility
+
+- [x] 2 kHz MuJoCo physics에서 2 step마다 native 1 kHz sensor sample 취득
+- [x] `pulse_onset_rate_ablation [0.25,0.30)`의 `(50,10)` window 생성
+- [x] 4 terrains × 7 families full dataset 및 split/leakage/statistics 검증
+- [x] 동일 compact CNN architecture의 3-seed 평가와 train-only normalization
+- [x] strict full-INT8 host gate와 100 Hz/500 ms baseline 비교
+- [x] 별도 `TERRAIN_FAST1000_CPU`/`TERRAIN_FAST1000_U55` artifact 및 E84 fixed
+  tensor/Host-golden exact parity
+
+### Walking Touchdown-Aligned Terrain Classification (진행 중)
+
+핵심 연구 질문:
+
+> 1 kHz FSR4 + left-foot IMU6를 이용할 때, 보행 중 touchdown 이후 최소 몇
+> ms의 관측으로 terrain을 안정적으로 분류할 수 있는가?
+
+현재 단계는 full walking dataset이나 accuracy 결과가 아니라 acquisition
+foundation이다. MuJoCo left-foot AIR→CONTACT를 canonical touchdown으로 삼아
+`[-10,+50) ms` physical-unit trajectory를 한 번 저장하고, 후속 단계에서 같은
+event의 `t >= 0` prefix를 재사용한다.
+
+- candidate observation: **1 / 2 / 5 / 10 / 15 / 20 / 30 / 50 ms**
+- 주력 후보: 5 / 10 / 15 / 20 / 30 / 50 ms
+- 우선 목표: **touchdown 이후 ≤ 20 ms**
+- event random split 금지; surface family/realization, session, run ownership 유지
+- terrain label은 몸 위치가 아니라 touchdown 순간 왼발이 접촉한 terrain
+- 1/2 ms는 lower-bound exploratory candidate이며 아직 accuracy 결과 없음
+
+Concrete/Marble/Ice/Sand pilot은 31 events 중 16 valid였다. 후속 contact audit는
+원본 XML을 유지한 채 terrain support를 명시적인 sole sphere로 격리했다.
+Sand native soft contact의 수직 침하 원인은 `solref`였으며, native `solimp`와
+friction/roughness를 유지하고 `solref=(0.015,1.0)`만 적용한
+`walking-support-v1`에서는 0.10/0.15/0.20 m/s가 모두 2/2 통과했다.
+
+Ice는 전진 추종을 포함한 최종 gate에서 모든 속도 0/2였다. Upstream policy의
+학습 foot-friction 범위 `[0.3,1.6]`에 비해 Ice domain `[0.03,0.12]`는 명백한
+OOD이다. 다음 gate는 full generation이 아니라 low-friction domain randomization
+정책의 학습·export와 동일 12-run sweep 재통과다. 그 전에는 walking CNN
+training, INT8 export 또는 E84 deployment를 완료 처리하지 않는다.
+
+### 그 밖의 후속 작업
+
+1. 1 kHz에 맞는 batched/asynchronous UART와 E84 ring-buffer cadence를 별도
+   milestone로 설계한다. 기존 TRN1/TRN2 100 Hz path는 유지한다.
+2. Async transport 전에는 fixed regression 결과를 real-time 1 kHz streaming
+   evidence로 해석하지 않는다.
 3. Real FSR/BMI270 calibration은 실제 센서 milestone이 승인될 때까지
    deferred 상태로 유지한다.
 

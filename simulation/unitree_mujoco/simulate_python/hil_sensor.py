@@ -91,6 +91,29 @@ class G1HilSensorReader:
 
         return forces
 
+    def has_left_foot_contact(
+        self, allowed_other_geom_ids: frozenset[int] | None = None
+    ) -> bool:
+        """Return MuJoCo contact ground truth for a named left sole sphere.
+
+        This deliberately does not use the force values or an FSR threshold.
+        When ``allowed_other_geom_ids`` is supplied, self-collisions and contacts
+        with unrelated geometry are excluded from the terrain-contact state.
+        """
+        left_ids = self._foot_slot_by_geom_id
+        for contact_id in range(self.data.ncon):
+            contact = self.data.contact[contact_id]
+            geom1, geom2 = int(contact.geom1), int(contact.geom2)
+            if geom1 in left_ids:
+                other = geom2
+            elif geom2 in left_ids:
+                other = geom1
+            else:
+                continue
+            if allowed_other_geom_ids is None or other in allowed_other_geom_ids:
+                return True
+        return False
+
     def read_vector(self) -> np.ndarray:
         """Return [4 foot forces, left-foot accel XYZ, left-foot gyro XYZ]."""
         foot_forces = self.read_left_foot_normal_forces()

@@ -1,6 +1,6 @@
 # Terrain INT8 on-device validation
 
-## 1000 Hz / 50-sample fast candidate (host artifact prepared, board pending)
+## 1000 Hz / 50-sample fast candidate (E84/U55 fixed and Host-golden HIL verified)
 
 The fast candidate is intentionally separate from the deployed 100 Hz model:
 
@@ -30,6 +30,10 @@ The source identity expected by the generator is:
 No 1 kHz asynchronous UART transport is added here. `TERRAIN_MODE=hil` still
 means the existing synchronous TRN1/TRN2 implementation and must not be used as
 evidence of 1 kHz real-time streaming.
+
+Probe `13070E98012D2400` verification produced the exact fixed/HIL raw output
+`[114,-114,-128,-128]`, class 0. The measured HIL profile was
+`cpu_cyc=24910`, `npu_cyc=9987`.
 
 ### Commands to run manually
 

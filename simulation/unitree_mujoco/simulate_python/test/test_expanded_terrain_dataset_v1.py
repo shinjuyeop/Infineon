@@ -24,7 +24,10 @@ from expanded_terrain_dataset_v1 import (  # noqa: E402
     validate_family_manifest,
 )
 from terrain_dataset_v1 import DOMAIN_RANGES, TERRAIN_LABELS  # noqa: E402
-from run_expanded_terrain_dataset_v1 import protocol  # noqa: E402
+from run_expanded_terrain_dataset_v1 import (  # noqa: E402
+    extract_native_rate_window,
+    protocol,
+)
 from hil_sensor import HIL_SENSOR_CHANNELS  # noqa: E402
 
 
@@ -114,6 +117,25 @@ class ExpandedTerrainDatasetV1Test(unittest.TestCase):
                 "interval": "left-closed/right-open",
             },
         )
+
+    def test_1khz_native_timestamps_extract_exact_50ms_window(self) -> None:
+        timestamps = np.arange(1, 1001, dtype=np.float64) / 1000.0
+        sensors = np.arange(1000 * 10, dtype=np.float32).reshape(1000, 10)
+        selected_times, selected = extract_native_rate_window(
+            timestamps, sensors, 1000, 0.25
+        )
+        self.assertEqual(selected.shape, (50, 10))
+        self.assertAlmostEqual(float(selected_times[0]), 0.25)
+        self.assertAlmostEqual(float(selected_times[-1]), 0.299)
+        np.testing.assert_allclose(np.diff(selected_times), 0.001, rtol=0.0, atol=1e-12)
+        np.testing.assert_array_equal(selected, sensors[249:299])
+
+    def test_1khz_window_rejects_non_native_timestamp_grid(self) -> None:
+        timestamps = np.arange(1, 1001, dtype=np.float64) / 1000.0
+        timestamps[250] += 0.0001
+        sensors = np.zeros((1000, 10), dtype=np.float32)
+        with self.assertRaisesRegex(ValueError, "physics-step grid"):
+            extract_native_rate_window(timestamps, sensors, 1000, 0.25)
 
 
 if __name__ == "__main__":

@@ -21,6 +21,7 @@ venv/
 
 # Generated simulation and ML artifacts
 /simulation/outputs/
+/simulation/unitree_rl_mjlab/
 /Infineon_HIL/outputs/
 /Infineon_HIL/data/synthetic/*
 !/Infineon_HIL/data/synthetic/.gitkeep

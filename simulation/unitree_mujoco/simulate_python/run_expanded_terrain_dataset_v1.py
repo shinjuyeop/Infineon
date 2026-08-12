@@ -172,6 +172,36 @@ def print_plan(payload: dict[str, object]) -> None:
     print("Dry run only. Pass --execute to create the dataset.")
 
 
+def extract_native_rate_window(
+    timestamps: np.ndarray,
+    sensors: np.ndarray,
+    sample_rate_hz: int,
+    window_start_s: float,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Extract 50 consecutive native samples from an exact physics-step grid."""
+    if sample_rate_hz <= 0:
+        raise ValueError("sample_rate_hz must be positive")
+    if timestamps.ndim != 1 or sensors.shape != (len(timestamps), len(HIL_SENSOR_CHANNELS)):
+        raise ValueError("expected timestamps=(N,) and sensors=(N,10)")
+    expected_times = np.arange(1, len(timestamps) + 1, dtype=np.float64) / sample_rate_hz
+    if not np.allclose(timestamps, expected_times, rtol=0.0, atol=1e-9):
+        raise ValueError("native samples do not match the configured physics-step grid")
+    window_end_s = window_start_s + SAMPLE_COUNT / sample_rate_hz
+    tolerance = np.finfo(np.float64).eps * 16.0
+    indices = np.flatnonzero(
+        (expected_times >= window_start_s - tolerance)
+        & (expected_times < window_end_s - tolerance)
+    )
+    if len(indices) != SAMPLE_COUNT or not np.array_equal(
+        np.diff(indices), np.ones(SAMPLE_COUNT - 1, dtype=np.int64)
+    ):
+        raise ValueError(
+            f"rate-ablation window selected {len(indices)} non-consecutive samples, "
+            f"expected {SAMPLE_COUNT}"
+        )
+    return timestamps[indices].copy(), sensors[indices].copy()
+
+
 def main() -> None:
     args = parse_args()
     payload = protocol(
@@ -212,7 +242,6 @@ def main() -> None:
     total = len(candidate_manifest)
     generation_start = time.perf_counter()
     window_start_s = float(payload["window"]["start_s"])
-    window_end_s = float(payload["window"]["end_s"])
 
     for candidate in candidate_manifest:
         terrain = str(candidate["terrain_class"])
@@ -305,20 +334,9 @@ def main() -> None:
                     timestamps, sensors, WINDOW_PROFILES["medium_response"], args.sample_rate_hz
                 )
             else:
-                sample_times = np.arange(1, len(timestamps) + 1) / args.sample_rate_hz
-                tolerance = np.finfo(np.float64).eps * 16.0
-                indices = np.flatnonzero(
-                    (sample_times >= window_start_s - tolerance)
-                    & (sample_times < window_end_s - tolerance)
+                _, clean = extract_native_rate_window(
+                    timestamps, sensors, args.sample_rate_hz, window_start_s
                 )
-                if len(indices) != SAMPLE_COUNT:
-                    raise ValueError(
-                        f"rate-ablation window selected {len(indices)} samples, expected {SAMPLE_COUNT}"
-                    )
-                expected_times = sample_times
-                if not np.allclose(timestamps, expected_times, rtol=0.0, atol=1e-9):
-                    raise ValueError("native samples do not match the configured physics-step grid")
-                clean = sensors[indices].copy()
             clean_windows.append(clean.astype(np.float32))
             noisy_windows.append(apply_sensor_imperfections(clean, spec.sensor_noise_seed))
             labels.append(spec.terrain_id)

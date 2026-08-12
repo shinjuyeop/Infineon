@@ -1,0 +1,21 @@
+<mujoco model="g1_29dof walking surface">
+  <include file="g1_29dof.xml"/>
+
+  <statistic center="0.8 0 0.5" extent="3.5"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <global azimuth="-130" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <!-- 6.0 m x 1.6 m at the Dataset-v1 10 mm hfield grid. -->
+    <hfield name="study_surface" nrow="161" ncol="601" size="3.0 0.8 0.0004 0.02"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
+    <geom name="surface_floor" type="hfield" hfield="study_surface"
+      pos="0 0 -0.0002" rgba="0.25 0.3 0.35 1"/>
+  </worldbody>
+</mujoco>
