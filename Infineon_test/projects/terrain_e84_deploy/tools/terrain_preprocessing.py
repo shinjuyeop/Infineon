@@ -22,6 +22,25 @@ MODEL = (
     / "outputs/terrain_dataset_v1_expanded_int8_seed_20260809/noisy_fusion_int8.tflite"
 )
 DATASET = SIMULATION / "outputs/terrain_dataset_v1_expanded/dataset_noisy.npz"
+FAST1000_DEPLOYMENT_METADATA = (
+    SIMULATION
+    / "outputs/terrain_dataset_v1_expanded_1000hz_int8_seed_20260807/deployment_metadata.json"
+)
+FAST1000_MODEL = (
+    SIMULATION
+    / "outputs/terrain_dataset_v1_expanded_1000hz_int8_seed_20260807/noisy_fusion_int8.tflite"
+)
+FAST1000_DATASET = (
+    SIMULATION / "outputs/terrain_dataset_v1_expanded_1000hz_full/dataset_noisy.npz"
+)
+PROFILE_PATHS = {
+    "100hz": (DEPLOYMENT_METADATA, MODEL, DATASET),
+    "fast1000": (
+        FAST1000_DEPLOYMENT_METADATA,
+        FAST1000_MODEL,
+        FAST1000_DATASET,
+    ),
+}
 
 
 class TerrainPreprocessor:
@@ -77,6 +96,18 @@ def verify_canonical_model(
         "size_bytes": len(payload),
         "sha256": actual_hash,
     }
+
+
+def paths_for_profile(profile: str) -> tuple[Path, Path, Path]:
+    try:
+        return PROFILE_PATHS[profile]
+    except KeyError as exc:
+        raise ValueError(f"unknown terrain deployment profile {profile!r}") from exc
+
+
+def preprocessor_for_profile(profile: str) -> TerrainPreprocessor:
+    metadata_path, _, _ = paths_for_profile(profile)
+    return TerrainPreprocessor(metadata_path)
 
 
 DEFAULT_PREPROCESSOR = TerrainPreprocessor()

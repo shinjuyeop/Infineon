@@ -49,6 +49,8 @@ NN_TYPE=int8x8
 # TERRAIN_CPU contains the original strict-INT8 TFLite model and exercises the
 # Cortex-M55 TFLM kernels. Override with NN_MODEL_NAME=TERRAIN_U55 to exercise
 # the Vela-compiled Ethos-U55 path with the same fixed regression tensor.
+# The separate 1 kHz/50-sample candidate uses TERRAIN_FAST1000_CPU or
+# TERRAIN_FAST1000_U55. These names never select or overwrite the 100 Hz arrays.
 NN_MODEL_NAME=TERRAIN_CPU
 
 # fixed: run the generated test-partition tensor once at boot

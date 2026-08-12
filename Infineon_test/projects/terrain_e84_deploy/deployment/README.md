@@ -1,5 +1,123 @@
 # Terrain INT8 on-device validation
 
+## 1000 Hz / 50-sample fast candidate (host artifact prepared, board pending)
+
+The fast candidate is intentionally separate from the deployed 100 Hz model:
+
+| Path | Model name | Source |
+|---|---|---|
+| Cortex-M55 TFLM | `TERRAIN_FAST1000_CPU` | raw strict-INT8 fast model |
+| Ethos-U55-128 | `TERRAIN_FAST1000_U55` | Vela-compiled fast model |
+
+The existing `TERRAIN_CPU`, `TERRAIN_U55`, `deployment/fixed_test_metadata.json`,
+TRN1, and TRN2 paths remain unchanged. Generated fast reports are written below
+`deployment/fast1000/`. Artifact generation refuses to overwrite any selected
+profile output unless `--force` is explicitly supplied; normal fast deployment
+does not require `--force`.
+
+The source identity expected by the generator is:
+
+- raw TFLite: 7,048 bytes, SHA-256
+  `6f123c7727e3879e3a6c8ef41f55617a70d48a975fa44921042251b06049e74a`
+- input/output: strict INT8 `(1,50,10) -> (1,4)`
+- operators: `EXPAND_DIMS`, `CONV_2D`, `RESHAPE`, `MEAN`,
+  `FULLY_CONNECTED`, `SOFTMAX`
+- fixed sample: full 1000 Hz test sample 878, `warped_multisine`, Concrete
+- fixed input SHA-256:
+  `77389783c1e3d558c2c616d6cca5279879a6b56f22be58628bf2f1314538be2d`
+- Host raw golden: `[114,-114,-128,-128]`, class 0
+
+No 1 kHz asynchronous UART transport is added here. `TERRAIN_MODE=hil` still
+means the existing synchronous TRN1/TRN2 implementation and must not be used as
+evidence of 1 kHz real-time streaming.
+
+### Commands to run manually
+
+Run all commands from this project directory:
+
+```sh
+cd /d/shin/Infineon/Infineon_test/projects/terrain_e84_deploy
+```
+
+#### A. Source verification and artifact generation
+
+The first command performs Host-only identity/I/O/operator/golden checks and
+writes nothing. The second invokes Vela and creates both separate model arrays
+and their identical fixed regression arrays.
+
+```sh
+/d/shin/Infineon/Infineon_HIL/.venv/bin/python \
+  tools/generate_terrain_artifacts.py --profile fast1000 --verify-only
+
+/d/shin/Infineon/Infineon_HIL/.venv/bin/python \
+  tools/generate_terrain_artifacts.py --profile fast1000 --backend all
+```
+
+Expected generated names are `TERRAIN_FAST1000_CPU_*` and
+`TERRAIN_FAST1000_U55_*`; metadata is
+`deployment/fast1000/fixed_test_metadata.json`. Review Vela's emitted summary
+and confirm the `--show-cpu-operations` report contains no fallback operator.
+
+#### B. Cortex-M55 compatibility build and U55 fixed build
+
+The CPU build is the TFLM compatibility gate. The second command selects the
+Vela model for the image that will be flashed.
+
+```sh
+make build NN_MODEL_NAME=TERRAIN_FAST1000_CPU TERRAIN_MODE=fixed
+make build NN_MODEL_NAME=TERRAIN_FAST1000_U55 TERRAIN_MODE=fixed
+```
+
+If switching configurations in an already-built workspace does not trigger a
+complete relink, run `make clean` once and repeat the desired build command.
+
+#### C. Flash the U55 fixed image to probe 13070E98012D2400
+
+```sh
+make qprogram \
+  NN_MODEL_NAME=TERRAIN_FAST1000_U55 \
+  TERRAIN_MODE=fixed \
+  MTB_PROBE_SERIAL=13070E98012D2400
+```
+
+#### D. Fixed tensor board test
+
+Start the verifier, then press the physical RESET button on KIT_PSE84_AI while
+it is waiting. It requires exact device/embedded/Host raw parity, class 0, and
+the firmware `PASS` marker.
+
+```sh
+/d/shin/Infineon/Infineon_HIL/.venv/bin/python \
+  tools/terrain_fixed_test_client.py --profile fast1000 --timeout 15
+```
+
+Expected raw output is `[114,-114,-128,-128]` and the final JSON must contain
+`"passed": true`.
+
+#### E. Host golden comparison or optional existing-TRN1 parity
+
+Recompute the Host golden without writing generated files:
+
+```sh
+/d/shin/Infineon/Infineon_HIL/.venv/bin/python \
+  tools/generate_terrain_artifacts.py --profile fast1000 --verify-only
+```
+
+If a full-window UART parity check is wanted after the fixed gate, explicitly
+build/flash the existing TRN1 HIL mode and send the same fast sample. This does
+not implement or validate asynchronous 1 kHz streaming.
+
+```sh
+make build NN_MODEL_NAME=TERRAIN_FAST1000_U55 TERRAIN_MODE=hil
+make qprogram \
+  NN_MODEL_NAME=TERRAIN_FAST1000_U55 \
+  TERRAIN_MODE=hil \
+  MTB_PROBE_SERIAL=13070E98012D2400
+/d/shin/Infineon/Infineon_HIL/.venv/bin/python \
+  tools/terrain_hil_client.py --profile fast1000 --sample-index 878 \
+  --expect-fixed-golden
+```
+
 The CM55 project defaults to `TERRAIN_CPU`, which embeds the canonical raw
 strict-INT8 TFLite model and runs one fixed test-partition tensor through TFLM
 on Cortex-M55. `TERRAIN_U55` embeds the same model compiled by Vela 4.2.0 for
@@ -13,11 +131,12 @@ under `proj_cm55/mtb_ml_gen/mtb_ml_models`; `proj_cm55/Makefile` selects it with
 output arrays are selected by the same name under
 `proj_cm55/mtb_ml_gen/mtb_ml_regression_data`.
 
-Regenerate both variants and the Host golden tensor from the immutable
-simulation artifacts:
+The following historical command targets the existing 100 Hz names. Do not run
+it for the fast candidate and do not overwrite the canonical generated arrays.
+Source-only verification remains available with:
 
 ```sh
-python3 tools/generate_terrain_artifacts.py
+python3 tools/generate_terrain_artifacts.py --profile 100hz --verify-only
 ```
 
 Build the CPU path (default):

@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
+import re
 import select
 import struct
 import termios
@@ -15,10 +17,29 @@ from pathlib import Path
 import numpy as np
 
 
+PROJECT = Path(__file__).resolve().parents[1]
+FIXED_METADATA = {
+    "100hz": PROJECT / "deployment/fixed_test_metadata.json",
+    "fast1000": PROJECT / "deployment/fast1000/fixed_test_metadata.json",
+}
+HIL_RESULT_RE = re.compile(rb"HIL_RESULT raw=\[([^]]+)\],class=(\d+)")
+
+
 try:
-    from terrain_preprocessing import DATASET, quantize_physical
+    from terrain_preprocessing import (
+        PROFILE_PATHS,
+        paths_for_profile,
+        preprocessor_for_profile,
+    )
 except ModuleNotFoundError:
-    from tools.terrain_preprocessing import DATASET, quantize_physical
+    from tools.terrain_preprocessing import (
+        PROFILE_PATHS,
+        paths_for_profile,
+        preprocessor_for_profile,
+    )
+
+# Backward-compatible canonical alias used by terrain_stream_client.py.
+_, _, DATASET = paths_for_profile("100hz")
 
 
 def configure_uart(fd: int) -> None:
@@ -34,24 +55,25 @@ def configure_uart(fd: int) -> None:
     termios.tcsetattr(fd, termios.TCSANOW, attrs)
 
 
-def quantize(values: np.ndarray) -> np.ndarray:
+def quantize(values: np.ndarray, profile: str = "100hz") -> np.ndarray:
     values = np.asarray(values, dtype=np.float32)
     if values.shape != (50, 10):
         raise ValueError(f"expected a (50,10) FSR4+IMU6 window, got {values.shape}")
-    return quantize_physical(values)
+    return preprocessor_for_profile(profile).quantize(values)
 
 
 def load_input(args: argparse.Namespace) -> np.ndarray:
     if args.npy is not None:
-        return quantize(np.load(args.npy, allow_pickle=False))
-    with np.load(DATASET, allow_pickle=False) as dataset:
+        return quantize(np.load(args.npy, allow_pickle=False), args.profile)
+    _, _, dataset_path = paths_for_profile(args.profile)
+    with np.load(dataset_path, allow_pickle=False) as dataset:
         values = np.asarray(dataset["X"][args.sample_index], np.float32)
         print(
             f"sample={args.sample_index} split={dataset['split'][args.sample_index]} "
             f"label={int(dataset['y'][args.sample_index])} "
             f"family={dataset['surface_family'][args.sample_index]}"
         )
-    return quantize(values)
+    return quantize(values, args.profile)
 
 
 def read_until(fd: int, needle: bytes, timeout: float) -> bytes:
@@ -80,6 +102,23 @@ def write_all(fd: int, data: bytes, timeout: float) -> None:
     termios.tcdrain(fd)
 
 
+def verify_fixed_golden(result_line: bytes, profile: str) -> dict[str, object]:
+    metadata = json.loads(FIXED_METADATA[profile].read_text(encoding="utf-8"))
+    match = HIL_RESULT_RE.search(result_line)
+    if match is None:
+        raise RuntimeError(f"cannot parse HIL_RESULT: {result_line!r}")
+    raw = [int(value.strip()) for value in match.group(1).split(b",")]
+    predicted_class = int(match.group(2))
+    expected_raw = [int(value) for value in metadata["host_output_raw"]]
+    expected_class = int(metadata["host_class"])
+    if raw != expected_raw or predicted_class != expected_class:
+        raise RuntimeError(
+            f"Host golden mismatch: raw={raw}, class={predicted_class}, "
+            f"expected_raw={expected_raw}, expected_class={expected_class}"
+        )
+    return {"passed": True, "raw": raw, "class": predicted_class}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -90,8 +129,16 @@ def main() -> None:
         ),
     )
     parser.add_argument("--sample-index", type=int, default=878)
+    parser.add_argument(
+        "--profile", choices=tuple(PROFILE_PATHS), default="100hz"
+    )
     parser.add_argument("--npy", type=Path, help="physical-unit float32 (50,10) MuJoCo window")
     parser.add_argument("--timeout", type=float, default=8.0)
+    parser.add_argument(
+        "--expect-fixed-golden",
+        action="store_true",
+        help="require exact raw/class parity with the generated fixed metadata",
+    )
     args = parser.parse_args()
     quantized = load_input(args)
     payload = quantized.tobytes()
@@ -108,6 +155,12 @@ def main() -> None:
         marker = response.rfind(b"HIL_RESULT")
         result_line = response[marker:].splitlines()[0]
         print(result_line.decode("ascii", errors="replace"))
+        if args.expect_fixed_golden:
+            if args.npy is not None or args.sample_index != 878:
+                raise ValueError(
+                    "--expect-fixed-golden requires the profile's fixed sample index 878"
+                )
+            print(json.dumps(verify_fixed_golden(result_line, args.profile), indent=2))
     finally:
         os.close(fd)
 

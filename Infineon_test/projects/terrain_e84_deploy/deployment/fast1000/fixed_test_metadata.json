@@ -1,0 +1,51 @@
+{
+  "profile": "fast1000",
+  "sample_rate_hz": 1000,
+  "sample_index": 878,
+  "split": "test",
+  "surface_family": "warped_multisine",
+  "expected_label": 0,
+  "expected_class": "concrete",
+  "input_shape": [
+    1,
+    50,
+    10
+  ],
+  "input_dtype": "int8",
+  "input_scale": 0.07983536273241043,
+  "input_zero_point": 3,
+  "input_sha256": "77389783c1e3d558c2c616d6cca5279879a6b56f22be58628bf2f1314538be2d",
+  "host_output_raw": [
+    114,
+    -114,
+    -128,
+    -128
+  ],
+  "host_class": 0,
+  "output_shape": [
+    1,
+    4
+  ],
+  "output_dtype": "int8",
+  "output_scale": 0.00390625,
+  "output_zero_point": -128,
+  "cpu_model_name": "TERRAIN_FAST1000_CPU",
+  "u55_model_name": "TERRAIN_FAST1000_U55",
+  "source_model": "/d/shin/Infineon/simulation/outputs/terrain_dataset_v1_expanded_1000hz_int8_seed_20260807/noisy_fusion_int8.tflite",
+  "source_model_size_bytes": 7048,
+  "source_model_sha256": "6f123c7727e3879e3a6c8ef41f55617a70d48a975fa44921042251b06049e74a",
+  "source_dataset": "/d/shin/Infineon/simulation/outputs/terrain_dataset_v1_expanded_1000hz_full/dataset_noisy.npz",
+  "source_dataset_sha256": "2517a8e61a6c2c0aef61da0c05d7f1d32613d571b2d7807945b9a00729ff2ea8",
+  "operators": [
+    "CONV_2D",
+    "EXPAND_DIMS",
+    "FULLY_CONNECTED",
+    "MEAN",
+    "RESHAPE",
+    "SOFTMAX"
+  ],
+  "u55_model_path": "/d/shin/Infineon/Infineon_test/projects/terrain_e84_deploy/deployment/fast1000/vela/noisy_fusion_int8_vela.tflite",
+  "u55_model_size_bytes": 7776,
+  "u55_model_sha256": "0a782badf8ac3066bb332d56ec76cabd89a04da67896eb870369fee33f291924",
+  "u55_accelerator_config": "ethos-u55-128"
+}

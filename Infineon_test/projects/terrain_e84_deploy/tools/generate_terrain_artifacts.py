@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate reproducible CM55/U55 model arrays and one fixed terrain test tensor."""
+"""Generate overwrite-safe CM55/U55 artifacts and one fixed terrain tensor."""
 
 from __future__ import annotations
 
@@ -9,6 +9,7 @@ import json
 import os
 import struct
 import subprocess
+from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
@@ -17,22 +18,60 @@ import numpy as np
 PROJECT = Path(__file__).resolve().parents[1]
 REPO = PROJECT.parents[2]
 SIMULATION = REPO / "simulation"
-MODEL = (
-    SIMULATION
-    / "outputs/terrain_dataset_v1_expanded_int8_seed_20260809/noisy_fusion_int8.tflite"
-)
-DATASET = SIMULATION / "outputs/terrain_dataset_v1_expanded/dataset_noisy.npz"
-NORMALIZATION = (
-    SIMULATION
-    / "outputs/terrain_dataset_v1_expanded_cnn_seed_20260809_e120/normalization.json"
-)
-MODEL_SHA256 = "f5d34f48b765d89f61cebe7e15eb9ee27a78b1c823950bca67043b6d4fa96df4"
-DATASET_SHA256 = "ee84861570a1ae1244c54957219b9896c29a1756be97d4d02353f9699ac264ec"
-SAMPLE_INDEX = 878
 CLASS_NAMES = ("concrete", "marble", "ice", "sand")
 MODEL_DIR = PROJECT / "proj_cm55/mtb_ml_gen/mtb_ml_models"
 DATA_DIR = PROJECT / "proj_cm55/mtb_ml_gen/mtb_ml_regression_data"
-REPORT_DIR = PROJECT / "deployment"
+DEPLOYMENT_DIR = PROJECT / "deployment"
+EXPECTED_OPERATORS = {
+    "EXPAND_DIMS",
+    "CONV_2D",
+    "RESHAPE",
+    "MEAN",
+    "FULLY_CONNECTED",
+    "SOFTMAX",
+}
+
+
+@dataclass(frozen=True)
+class DeploymentProfile:
+    key: str
+    sample_rate_hz: int
+    model: Path
+    deployment_metadata: Path
+    dataset: Path
+    dataset_sha256: str
+    sample_index: int
+    cpu_name: str
+    u55_name: str
+    report_dir: Path
+
+
+PROFILES = {
+    "100hz": DeploymentProfile(
+        key="100hz",
+        sample_rate_hz=100,
+        model=SIMULATION / "outputs/terrain_dataset_v1_expanded_int8_seed_20260809/noisy_fusion_int8.tflite",
+        deployment_metadata=SIMULATION / "outputs/terrain_dataset_v1_expanded_int8_seed_20260809/deployment_metadata.json",
+        dataset=SIMULATION / "outputs/terrain_dataset_v1_expanded/dataset_noisy.npz",
+        dataset_sha256="ee84861570a1ae1244c54957219b9896c29a1756be97d4d02353f9699ac264ec",
+        sample_index=878,
+        cpu_name="TERRAIN_CPU",
+        u55_name="TERRAIN_U55",
+        report_dir=DEPLOYMENT_DIR,
+    ),
+    "fast1000": DeploymentProfile(
+        key="fast1000",
+        sample_rate_hz=1000,
+        model=SIMULATION / "outputs/terrain_dataset_v1_expanded_1000hz_int8_seed_20260807/noisy_fusion_int8.tflite",
+        deployment_metadata=SIMULATION / "outputs/terrain_dataset_v1_expanded_1000hz_int8_seed_20260807/deployment_metadata.json",
+        dataset=SIMULATION / "outputs/terrain_dataset_v1_expanded_1000hz_full/dataset_noisy.npz",
+        dataset_sha256="2517a8e61a6c2c0aef61da0c05d7f1d32613d571b2d7807945b9a00729ff2ea8",
+        sample_index=878,
+        cpu_name="TERRAIN_FAST1000_CPU",
+        u55_name="TERRAIN_FAST1000_U55",
+        report_dir=DEPLOYMENT_DIR / "fast1000",
+    ),
+}
 
 
 def sha256(path: Path) -> str:
@@ -45,6 +84,19 @@ def c_bytes(values: bytes, columns: int = 16) -> str:
         row = values[offset : offset + columns]
         rows.append("    " + ", ".join(f"0x{value:02x}" for value in row) + ",")
     return "\n".join(rows)
+
+
+def model_paths(name: str) -> tuple[Path, Path]:
+    stem = f"{name}_tflm_model_int8x8"
+    return MODEL_DIR / f"{stem}.h", MODEL_DIR / f"{stem}.c"
+
+
+def regression_paths(name: str) -> tuple[Path, ...]:
+    return tuple(
+        DATA_DIR / f"{name}_tflm_{kind}_data_int8x8.{suffix}"
+        for kind in ("x", "y")
+        for suffix in ("h", "c")
+    )
 
 
 def write_model(name: str, model: bytes, arena_size: int, provenance: str) -> None:
@@ -76,11 +128,14 @@ uint8_t {name}_model_bin[{name}_MODEL_BIN_LEN] __attribute__((aligned(16))) = {{
 {c_bytes(model)}
 }};
 """
-    (MODEL_DIR / f"{stem}.h").write_text(header, encoding="utf-8")
-    (MODEL_DIR / f"{stem}.c").write_text(source, encoding="utf-8")
+    header_path, source_path = model_paths(name)
+    header_path.write_text(header, encoding="utf-8")
+    source_path.write_text(source, encoding="utf-8")
 
 
-def write_regression(name: str, quantized: np.ndarray, output: np.ndarray) -> None:
+def write_regression(
+    name: str, quantized: np.ndarray, output: np.ndarray, sample_index: int
+) -> None:
     # mtb_ml_x_file_header_t: INT8=2, one sample, 500 elements, non-RNN=-1.
     x_data = struct.pack("<iiii", 2, 1, int(quantized.size), -1) + quantized.tobytes()
     y_data = output.tobytes()
@@ -88,7 +143,7 @@ def write_regression(name: str, quantized: np.ndarray, output: np.ndarray) -> No
         stem = f"{name}_tflm_{kind}_data_int8x8"
         symbol = f"{name}_{kind}_data_bin"
         guard = f"{stem.upper()}_H"
-        header = f"""/* Generated fixed Host regression tensor; dataset sample {SAMPLE_INDEX}. */
+        header = f"""/* Generated fixed Host regression tensor; dataset sample {sample_index}. */
 #ifndef {guard}
 #define {guard}
 #include <stdint.h>
@@ -96,7 +151,7 @@ extern const uint8_t {symbol}[];
 #define {name}_{kind.upper()}_DATA_BIN_LEN ({len(values)}u)
 #endif
 """
-        source = f"""/* Generated fixed Host regression tensor; dataset sample {SAMPLE_INDEX}. */
+        source = f"""/* Generated fixed Host regression tensor; dataset sample {sample_index}. */
 #include "{stem}.h"
 const uint8_t {symbol}[{name}_{kind.upper()}_DATA_BIN_LEN] __attribute__((aligned(4))) = {{
 {c_bytes(values)}
@@ -106,20 +161,56 @@ const uint8_t {symbol}[{name}_{kind.upper()}_DATA_BIN_LEN] __attribute__((aligne
         (DATA_DIR / f"{stem}.c").write_text(source, encoding="utf-8")
 
 
-def host_golden() -> tuple[np.ndarray, np.ndarray, dict[str, object]]:
+def validate_source(profile: DeploymentProfile) -> dict[str, object]:
+    for path in (profile.model, profile.deployment_metadata, profile.dataset):
+        if not path.is_file():
+            raise FileNotFoundError(path)
+    metadata = json.loads(profile.deployment_metadata.read_text(encoding="utf-8"))
+    tflite = metadata["tflite"]
+    actual_model_hash = sha256(profile.model)
+    actual_dataset_hash = sha256(profile.dataset)
+    if actual_model_hash != str(tflite["sha256"]):
+        raise RuntimeError("model hash does not match deployment_metadata.json")
+    if profile.model.stat().st_size != int(tflite["size_bytes"]):
+        raise RuntimeError("model size does not match deployment_metadata.json")
+    if actual_dataset_hash != profile.dataset_sha256:
+        raise RuntimeError("dataset hash does not match the deployment profile")
+    if int(metadata["sample_rate_hz"]) != profile.sample_rate_hz:
+        raise RuntimeError("sample rate does not match the deployment profile")
+    if tuple(tflite["input"]["shape"]) != (1, 50, 10):
+        raise RuntimeError("model input must be int8 (1,50,10)")
+    if tuple(tflite["output"]["shape"]) != (1, 4):
+        raise RuntimeError("model output must be int8 (1,4)")
+    if tflite["input"]["dtype"] != "int8" or tflite["output"]["dtype"] != "int8":
+        raise RuntimeError("model must expose strict INT8 input/output")
+    operators = {
+        str(value) for value in tflite.get("operators", EXPECTED_OPERATORS)
+    }
+    unexpected = operators - EXPECTED_OPERATORS
+    missing = EXPECTED_OPERATORS - operators
+    if unexpected or missing:
+        raise RuntimeError(
+            f"unexpected operator set; missing={sorted(missing)}, extra={sorted(unexpected)}"
+        )
+    return metadata
+
+
+def host_golden(
+    profile: DeploymentProfile, deployment_metadata: dict[str, object]
+) -> tuple[np.ndarray, np.ndarray, dict[str, object]]:
     os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "3")
     import tensorflow as tf
 
-    with np.load(DATASET, allow_pickle=False) as dataset:
-        x = np.asarray(dataset["X"][SAMPLE_INDEX], dtype=np.float32)
-        label = int(dataset["y"][SAMPLE_INDEX])
-        split = str(dataset["split"][SAMPLE_INDEX])
-        family = str(dataset["surface_family"][SAMPLE_INDEX])
-    stats = json.loads(NORMALIZATION.read_text(encoding="utf-8"))["noisy/fusion"]
+    with np.load(profile.dataset, allow_pickle=False) as dataset:
+        x = np.asarray(dataset["X"][profile.sample_index], dtype=np.float32)
+        label = int(dataset["y"][profile.sample_index])
+        split = str(dataset["split"][profile.sample_index])
+        family = str(dataset["surface_family"][profile.sample_index])
+    stats = deployment_metadata["normalization"]
     standardized = (x - np.asarray(stats["mean"], np.float32)) / np.asarray(
         stats["std"], np.float32
     )
-    interpreter = tf.lite.Interpreter(model_path=str(MODEL))
+    interpreter = tf.lite.Interpreter(model_path=str(profile.model))
     interpreter.allocate_tensors()
     input_detail = interpreter.get_input_details()[0]
     output_detail = interpreter.get_output_details()[0]
@@ -133,7 +224,9 @@ def host_golden() -> tuple[np.ndarray, np.ndarray, dict[str, object]]:
     if split != "test" or int(np.argmax(output)) != label:
         raise RuntimeError("fixed sample is not a correctly classified test sample")
     metadata = {
-        "sample_index": SAMPLE_INDEX,
+        "profile": profile.key,
+        "sample_rate_hz": profile.sample_rate_hz,
+        "sample_index": profile.sample_index,
         "split": split,
         "surface_family": family,
         "expected_label": label,
@@ -145,19 +238,21 @@ def host_golden() -> tuple[np.ndarray, np.ndarray, dict[str, object]]:
         "input_sha256": hashlib.sha256(quantized.tobytes()).hexdigest(),
         "host_output_raw": output.tolist(),
         "host_class": int(np.argmax(output)),
+        "output_shape": [1, len(output)],
+        "output_dtype": "int8",
         "output_scale": float(output_detail["quantization"][0]),
         "output_zero_point": int(output_detail["quantization"][1]),
     }
     return quantized, output, metadata
 
 
-def vela_model() -> bytes:
-    output_dir = REPORT_DIR / "vela"
+def vela_model(profile: DeploymentProfile) -> tuple[bytes, Path]:
+    output_dir = profile.report_dir / "vela"
     output_dir.mkdir(parents=True, exist_ok=True)
     subprocess.run(
         [
             "vela",
-            str(MODEL),
+            str(profile.model),
             "--output-dir",
             str(output_dir),
             "--accelerator-config",
@@ -172,32 +267,104 @@ def vela_model() -> bytes:
         ],
         check=True,
     )
-    return (output_dir / "noisy_fusion_int8_vela.tflite").read_bytes()
+    compiled_path = output_dir / f"{profile.model.stem}_vela.tflite"
+    return compiled_path.read_bytes(), compiled_path
+
+
+def target_paths(profile: DeploymentProfile, backend: str) -> list[Path]:
+    names = []
+    if backend in ("cpu", "all"):
+        names.append(profile.cpu_name)
+    if backend in ("u55", "all"):
+        names.append(profile.u55_name)
+    paths = []
+    for name in names:
+        paths.extend(model_paths(name))
+        paths.extend(regression_paths(name))
+    paths.append(profile.report_dir / "fixed_test_metadata.json")
+    if backend in ("u55", "all"):
+        paths.append(profile.report_dir / "vela" / f"{profile.model.stem}_vela.tflite")
+    return paths
+
+
+def ensure_writable_targets(paths: list[Path], force: bool) -> None:
+    existing = [path for path in paths if path.exists()]
+    if existing and not force:
+        formatted = "\n".join(f"  {path}" for path in existing)
+        raise FileExistsError(
+            "refusing to overwrite generated artifacts; pass --force only after "
+            f"confirming the selected profile:\n{formatted}"
+        )
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--profile", choices=tuple(PROFILES), default="100hz")
     parser.add_argument("--backend", choices=("cpu", "u55", "all"), default="all")
+    parser.add_argument(
+        "--verify-only",
+        action="store_true",
+        help="validate source identity/I/O/operators and compute the Host golden without writes or Vela",
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="allow overwriting artifacts for the explicitly selected profile",
+    )
     args = parser.parse_args()
-    if sha256(MODEL) != MODEL_SHA256 or sha256(DATASET) != DATASET_SHA256:
-        raise RuntimeError("canonical model or dataset hash does not match the handoff")
+    profile = PROFILES[args.profile]
+    source_metadata = validate_source(profile)
+    quantized, output, metadata = host_golden(profile, source_metadata)
+    metadata.update(
+        {
+            "cpu_model_name": profile.cpu_name,
+            "u55_model_name": profile.u55_name,
+            "source_model": str(profile.model),
+            "source_model_size_bytes": profile.model.stat().st_size,
+            "source_model_sha256": sha256(profile.model),
+            "source_dataset": str(profile.dataset),
+            "source_dataset_sha256": profile.dataset_sha256,
+            "operators": sorted(EXPECTED_OPERATORS),
+        }
+    )
+    if args.verify_only:
+        print(json.dumps(metadata, indent=2))
+        return
+
+    targets = target_paths(profile, args.backend)
+    ensure_writable_targets(targets, args.force)
     MODEL_DIR.mkdir(parents=True, exist_ok=True)
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    REPORT_DIR.mkdir(parents=True, exist_ok=True)
-    quantized, output, metadata = host_golden()
+    profile.report_dir.mkdir(parents=True, exist_ok=True)
     if args.backend in ("cpu", "all"):
-        write_model("TERRAIN_CPU", MODEL.read_bytes(), 8192, "canonical raw strict-INT8 TFLite")
-        write_regression("TERRAIN_CPU", quantized, output)
+        cpu_payload = profile.model.read_bytes()
+    else:
+        cpu_payload = None
     if args.backend in ("u55", "all"):
-        compiled = vela_model()
-        write_model("TERRAIN_U55", compiled, 4096, "Vela 4.2.0, ethos-u55-128")
-        write_regression("TERRAIN_U55", quantized, output)
+        compiled, compiled_path = vela_model(profile)
+    else:
+        compiled, compiled_path = None, None
+    if cpu_payload is not None:
+        write_model(
+            profile.cpu_name,
+            cpu_payload,
+            8192,
+            f"{profile.key} raw strict-INT8 TFLite",
+        )
+        write_regression(profile.cpu_name, quantized, output, profile.sample_index)
+    if compiled is not None and compiled_path is not None:
+        write_model(
+            profile.u55_name,
+            compiled,
+            4096,
+            f"{profile.key}, Vela ethos-u55-128",
+        )
+        write_regression(profile.u55_name, quantized, output, profile.sample_index)
+        metadata["u55_model_path"] = str(compiled_path)
         metadata["u55_model_size_bytes"] = len(compiled)
+        metadata["u55_model_sha256"] = hashlib.sha256(compiled).hexdigest()
         metadata["u55_accelerator_config"] = "ethos-u55-128"
-    metadata["source_model"] = str(MODEL)
-    metadata["source_model_sha256"] = MODEL_SHA256
-    metadata["source_dataset_sha256"] = DATASET_SHA256
-    (REPORT_DIR / "fixed_test_metadata.json").write_text(
+    (profile.report_dir / "fixed_test_metadata.json").write_text(
         json.dumps(metadata, indent=2) + "\n", encoding="utf-8"
     )
     print(json.dumps(metadata, indent=2))
