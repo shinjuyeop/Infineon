@@ -201,7 +201,12 @@ sink/tilt onset을 연구한다. 기존 4-class classifier와 deployment artifac
 - [x] HIL replay artifact와 6-run smoke/diagnostic plot
 - [x] 사용자 pilot 36/full 420-run generation과 physical validity 검토
 - [x] terrain-independent physical hazard metadata revision 2와 split별 separation
-- [ ] 후속 승인 뒤 detector training, INT8/E84, reflex rule 및 E2E 측정
+- [x] leakage-safe Float Host detector training/evaluation pipeline 및 1-epoch smoke
+- [x] 사용자 full 5/10/15/20/30/50 ms 학습과 validation-only failure diagnosis
+- [x] Slip 5 ms GAP/Max/GAP+Max 최소 ablation; GAP+Max validation gate 통과
+- [ ] Slip validation candidate의 고정 test 평가
+- [ ] Sink/Tilt tilt-only failure에 대한 task/feature/oracle-label 설계 결정
+- [ ] 후속 승인 뒤 selected detector INT8/E84, reflex rule 및 E2E 측정
 
 Fast Layer KPI는 transition→hazard detection `<50 ms`, 우선 연구 목표는
 `<=20 ms` observation 가능성이다. Reflex command 변경 `<30 ms`는 아직

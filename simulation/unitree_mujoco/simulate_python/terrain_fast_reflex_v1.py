@@ -72,17 +72,23 @@ class FastReflexTrace:
         return self.sink | self.tilt
 
 
-def _robust_upper(values: np.ndarray, percentile: float = 99.0) -> float:
+def _robust_upper(
+    values: np.ndarray, percentile: float = 99.0, mad_multiplier: float = 6.0
+) -> float:
     finite = np.asarray(values, dtype=np.float64)
     finite = finite[np.isfinite(finite)]
     if finite.size == 0:
         raise ValueError("normal calibration has no finite samples")
     center = float(np.median(finite))
     mad = float(np.median(np.abs(finite - center)))
-    return float(max(np.percentile(finite, percentile), center + 6.0 * mad))
+    return float(max(np.percentile(finite, percentile), center + mad_multiplier * mad))
 
 
-def calibrate_hazard_thresholds(normal_traces: list[FastReflexTrace]) -> HazardThresholds:
+def calibrate_hazard_thresholds(
+    normal_traces: list[FastReflexTrace],
+    percentile: float = 99.0,
+    mad_multiplier: float = 6.0,
+) -> HazardThresholds:
     """Derive oracle thresholds from train-side normal runs only.
 
     Calibration uses the post-transition 0..99 ms interval under the same pulse,
@@ -104,16 +110,24 @@ def calibrate_hazard_thresholds(normal_traces: list[FastReflexTrace]) -> HazardT
     return HazardThresholds(
         minimum_load_N=minimum_load,
         slip_speed_mps=_robust_upper(
-            oracle[loaded, ORACLE_INDEX["foot_horizontal_speed_mps"]]
+            oracle[loaded, ORACLE_INDEX["foot_horizontal_speed_mps"]],
+            percentile,
+            mad_multiplier,
         ),
         sink_depth_m=_robust_upper(
-            oracle[loaded, ORACLE_INDEX["foot_sink_depth_m"]]
+            oracle[loaded, ORACLE_INDEX["foot_sink_depth_m"]],
+            percentile,
+            mad_multiplier,
         ),
         downward_speed_mps=_robust_upper(
-            np.maximum(0.0, -oracle[loaded, ORACLE_INDEX["foot_velocity_z_mps"]])
+            np.maximum(0.0, -oracle[loaded, ORACLE_INDEX["foot_velocity_z_mps"]]),
+            percentile,
+            mad_multiplier,
         ),
         tilt_change_rad=_robust_upper(
-            oracle[loaded, ORACLE_INDEX["foot_tilt_change_rad"]]
+            oracle[loaded, ORACLE_INDEX["foot_tilt_change_rad"]],
+            percentile,
+            mad_multiplier,
         ),
     )
 

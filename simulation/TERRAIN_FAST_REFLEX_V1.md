@@ -223,3 +223,91 @@ directory는 이미 생성되었으므로 다시 실행할 필요가 없다.
   --input-dir ../../outputs/terrain_fast_reflex_v1_full \
   --output-dir ../../outputs/terrain_fast_reflex_v1_full_corrected_v2 --plot
 ```
+
+## Float Host binary-detector pipeline (ready, full result pending)
+
+`terrain_fast_reflex_detector_v1.py`와
+`run_terrain_fast_reflex_detector_v1.py`가 corrected-v2 raw 150-sample trace에서
+독립적인 `slip` 및 `sink_tilt` detector dataset을 만든다. Primary label은
+미래 scenario intent가 아니라 각 sliding window `[t-L+1,t]` 끝점의 physical
+oracle state다. 따라서 hazard onset 전 transition prefix는 음성이고 anticipation
+결과와 detection 결과를 섞지 않는다. 기존 transition/hazard-aligned prefix
+artifact는 audit/diagnostic에는 쓸 수 있지만 primary detector의 run label로
+그대로 학습하지 않는다.
+
+Canonical negative는 all-non-target-negative다. 즉 slip detector에는 slip이 없는
+sink/tilt endpoint도 음성이고, sink/tilt detector에는 sink/tilt가 없는 slip
+endpoint도 음성이다. 다른 hazard까지 없는 clean-negative-only FPR은 진단 열로만
+기록한다. Train은 endpoint 0–99 ms를 2 ms stride로 subsample하고 run-balanced 뒤
+binary class-balanced weight를 적용한다. Validation/test와 offline replay는 1 ms
+stride다. 모든 derived window는 원 run의 family split을 그대로 유지하며,
+normalization은 detector/window별 train window에서만 계산한다.
+
+모든 5/10/15/20/30/50 ms 모델은 다음 동일 family를 사용한다.
+
+```text
+Input(L,10) -> Conv1D(12,k5,same,relu) -> Conv1D(16,k3,same,relu)
+            -> GlobalAveragePooling1D -> Dense(1,sigmoid)
+```
+
+모델은 1,221 parameters이며 convolution+dense MAC은 `1,176*L+16`이다.
+Decision threshold는 validation all-non-target FPR 5% 이하에서 recall 최대,
+동률이면 더 낮은 FPR와 높은 threshold 순으로 고정한다. Test에서 재조정하지
+않는다. Offline replay는 1 kHz, 3회 연속 positive의 세 번째 endpoint를 stable
+detection으로 기록한다. transition→detection과 hazard onset→detection을 분리하고,
+onset 전 firing은 별도 anticipation lead로 기록한다.
+
+Threshold sensitivity는 test family를 제외하고 canonical p99/MAD6/3 samples
+주변의 percentile 99.5/99.9, MAD 4/8, confirmation 2/5를 비교한다. Train+validation
+target coverage는 Ice 98.67–100%, Sand 100%, median onset은 Ice 26–28 ms와 Sand
+19 ms로 유지됐다. Ice p95는 54.3–68.7 ms로 tail sensitivity가 있으나 target
+존재/중앙 onset 결론은 뒤집히지 않아 revision-2 canonical threshold를 유지한다.
+
+1-epoch smoke는 corrected-v2의 scenario/split당 2 runs, 두 detector의 10 ms
+window로 통과했다. 이는 pipeline/shape/inference 검증일 뿐 detector 성능이나
+최종 window 결과가 아니다. Full training 전까지 상태는 **pipeline ready;
+performance pending**다. Float Host 결과가 확정되기 전에는 INT8/Vela/E84 또는
+reflex firmware로 진행하지 않는다.
+
+## Full detector result와 validation-only failure diagnosis
+
+사용자가 seed `20260812`로 두 detector × 5/10/15/20/30/50 ms Float Host full
+training을 완료했다. 기존 endpoint 기준 `FPR<=5%, recall>=95%` gate는 Slip
+5 ms recall 84.63%, Sink/Tilt 50 ms recall 87.01%가 최고여서 모두 실패했다.
+Test ablation은 기존 runner가 산출했지만 후속 model/window/threshold/persistence/
+pooling 선택에는 읽거나 사용하지 않았다.
+
+`run_terrain_fast_reflex_validation_v1.py`는 validation 120 runs만 대상으로 기존
+prediction을 재생성하고 다음 false-alarm 정의를 분리한다.
+
+- endpoint FPR: 모든 target-negative 1 ms endpoint 중 positive 비율
+- run-pre-onset FPR: target onset 전(무-target run은 전체 replay) stable firing이
+  한 번이라도 있는 validation run / 전체 validation run
+- target-negative, 완전 physical-hazard-free, normal-terrain run FPR: 각각의
+  명시된 denominator에 대한 별도 diagnostic
+
+Persistence 1/2/3/5/8과 validation-score 41 quantiles를 제한적으로 결합했다.
+기존 Slip 5 ms GAP는 endpoint threshold/persistence 3에서 run recall 92.19%,
+run FPR 5.00%였다. Run-level policy의 최선은 recall 93.75%, FPR 2.50%로 95%
+gate에 미달했다. Onset 직후 0–2 ms endpoint recall은 5 ms에서 66.15%지만
+50 ms GAP에서 10.94%로 감소해 짧은 slip transient의 평균 희석과 일치했다.
+
+허용된 최소 architecture ablation으로 Slip 5 ms의 pooling만 비교했다.
+GlobalMax는 1,221 parameters, GAP+Max는 1,237 parameters다. Validation-only
+run-level 선택 결과 GAP+Max, threshold `0.7317748725`, persistence 3이 64 target
+runs 중 62개(96.875%)를 검출하고 pre-onset false alarm 6/120(5.00%)이었다.
+Hazard-onset→detection median/p95는 3.0/12.85 ms다. 이 구성은 validation gate와
+`<=20 ms` observation 목표를 통과했지만 test는 아직 실행하지 않은 candidate다.
+
+Sink/Tilt validation target 45 runs는 sink-only 0, tilt-only 15, sink+tilt 30으로
+구성된다. 기존 모델은 모든 window에서 sink+tilt run recall 100%인 반면 tilt-only
+run recall은 최대 13.33%였다. Run FPR 5% 이하 threshold×persistence 조건에서는
+최고 recall이 30/45=66.67%에 머물렀다. 이는 단순 observation/GAP 문제보다
+heterogeneous target 및 tilt-only observability 문제가 지배적이라는 근거이므로
+Sink/Tilt pooling 재학습은 확대하지 않았다. Sink/Tilt는 gate 실패 상태이며
+INT8/E84 대상이 아니다.
+
+상세 artifact는
+`simulation/outputs/terrain_fast_reflex_detector_validation_v1`의 summary/CSV/plot에
+있다. 다음 단계는 Slip candidate의 고정 test 평가와 Sink/Tilt task/physical
+feature/oracle-label 설계 검토이며, 그 승인 전 INT8/E84로 진행하지 않는다.
