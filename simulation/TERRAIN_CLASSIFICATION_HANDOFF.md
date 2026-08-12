@@ -66,6 +66,22 @@ candidate는 별도 artifact로 `pulse_onset_rate_ablation [0.25,0.30)` at 1000 
 - Gait-based dataset과 locomotion-controller integration
 - Real FSR/BMI270 gain, bias, orientation, bandwidth, noise calibration
 
+## Terrain Transition Fast Reflex v1
+
+현재 primary 연구는 기존 4-class artifact를 변경하지 않는 별도 Fast Reflex
+layer다. `run_terrain_fast_reflex_v1.py`가 continuous qpos/qvel 상태에서
+Marble→Ice/Sand contact parameter를 temporal switch하고, native 1 kHz
+Fusion10과 분리된 MuJoCo oracle을 `[-50,+100) ms`로 저장한다. Slip/sink/tilt
+threshold는 train-family normal transition만으로 calibration한다. 6-run smoke와
+pilot/full 명령은 `TERRAIN_FAST_REFLEX_V1.md`에 기록한다. Ice locomotion policy
+재학습과 full walking classifier는 deferred다.
+
+사용자가 36-run pilot과 420-run full을 실행했고 raw trace는 모두 유효했다.
+Normal-terrain scenario에서도 실제 slip/tilt oracle이 발생할 수 있으므로
+revision 2는 scenario intent와 physical hazard를 분리한다. Authoritative output은
+`terrain_fast_reflex_v1_{pilot,full}_corrected_v2`이며 이전 derived manifest와
+hazard-aligned window는 superseded다.
+
 ### SUPERSEDED FOR CURRENT DATASET
 
 - Pelvis IMU를 AI 입력으로 사용

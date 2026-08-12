@@ -186,7 +186,38 @@ INT8 export/parity:
 - [ ] Real FSR/BMI270 orientation, gain, bias, range, noise calibration
   (deferred; current Digital Twin/UART HIL milestone에는 불필요)
 
-## 다음 milestone
+## 현재 우선순위
+
+### Primary: Terrain Transition Fast Reflex HIL
+
+별도 `terrain_fast_reflex_v1` pipeline에서 Marble→Ice slip과 Marble→Sand
+sink/tilt onset을 연구한다. 기존 4-class classifier와 deployment artifact는
+유지한다.
+
+- [x] continuous qpos/qvel temporal contact-parameter switch
+- [x] native 1 kHz Fusion10 `[-50,+100) ms` transition trace
+- [x] train-normal-calibrated slip/sink/tilt MuJoCo oracle ground truth
+- [x] transition/hazard aligned 1/2/5/10/15/20/30/50 ms prefix export
+- [x] HIL replay artifact와 6-run smoke/diagnostic plot
+- [x] 사용자 pilot 36/full 420-run generation과 physical validity 검토
+- [x] terrain-independent physical hazard metadata revision 2와 split별 separation
+- [ ] 후속 승인 뒤 detector training, INT8/E84, reflex rule 및 E2E 측정
+
+Fast Layer KPI는 transition→hazard detection `<50 ms`, 우선 연구 목표는
+`<=20 ms` observation 가능성이다. Reflex command 변경 `<30 ms`는 아직
+측정하지 않는다. 상세 protocol과 실행 명령은
+`TERRAIN_FAST_REFLEX_V1.md`를 참조한다.
+
+### Deferred
+
+- Ice low-friction locomotion-policy 재학습
+- Full walking touchdown classifier generation/training
+- 1 kHz asynchronous E84 transport와 reflex firmware/control rule
+
+기존 Walking Touchdown foundation은 삭제하지 않고 후속 locomotion/sim-to-real
+고도화 작업으로 보존한다.
+
+## 이전 milestone
 
 ### Native 1 kHz / 50 ms terrain classification feasibility
 
