@@ -662,12 +662,10 @@ def main() -> None:
         selection["gates"] = final_scope["gates"]
         # Save the selected scope after its authoritative gate is known.
         (output/"scenario_selection.json").write_text(json.dumps(selection,indent=2)+"\n",encoding="utf-8")
-    if args.final_scope_pilot:
+    if args.final_scope_pilot or args.final_scope_full:
         (output/"deployment_scope.json").write_text(json.dumps(DEPLOYMENT_SCOPE,indent=2)+"\n",encoding="utf-8")
         evaluation=frozen_scope_gate([{key:str(value) if isinstance(value,(int,float)) else value for key,value in row.items()} for row in rows])
         selection["pilot_ready"]=evaluation["pilot_pass"]; selection["gates"]=evaluation["gates"]
-    if args.final_scope_full:
-        (output/"deployment_scope.json").write_text(json.dumps(DEPLOYMENT_SCOPE,indent=2)+"\n",encoding="utf-8")
     if args.plot:
         plots=output/"plots";plots.mkdir(exist_ok=True)
         for mode in sorted({config.mode for config in configs}):

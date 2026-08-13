@@ -239,9 +239,14 @@ sink/tilt onset을 연구한다. 기존 4-class classifier와 deployment artifac
 - [x] Fast Reflex v2 100-row final-scope physical pilot: shared frozen-policy
   audit PASS; legacy generation summary gate was diagnostic/tilt based and is
   preserved only as historical output
-- [ ] User-run Fast Reflex v2 target-centred full physical dataset: normal,
-  confirmed-Slip scenario, and Sink-dominant only (225 rows); train/validation
-  only, final test sealed, then physical dataset-validity audit before training
+- [x] Fast Reflex v2 target-centred 225-run physical dataset: frozen-scope
+  audit PASS; final test sealed
+- [x] Fast Reflex v2 causal detector-dataset foundation and 1-epoch small
+  smoke: confirmed-Slip/Sustained-Sink endpoint targets, train-only
+  normalization, causal windows, model save/load, and replay foundation
+- [ ] User-run Fast Reflex v2 validation-only detector training: Slip 5/10/20
+  ms and Sink 10/20/30/50 ms, threshold/persistence frozen only after a
+  separately approved validation analysis; final test remains sealed
 - [ ] 후속 승인 뒤 selected detector INT8/E84, reflex rule 및 E2E 측정
 
 다음 milestone은 frozen Slip 결과를 그대로 종료 상태로 보존하고, Sand v2를

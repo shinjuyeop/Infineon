@@ -162,6 +162,26 @@ Sink-dominant: 3 × 5 × 3 × 5 = 225 rows. The full gate requires all valid,
 native 1 kHz, split-safe rows, zero normal Confirmed/Sink, family-spread Slip
 and Sink positives, and zero final-test materialization.
 
+### Causal detector-dataset foundation
+
+The user-generated 225-run full physical artifact passed the frozen scope and
+is read only. `terrain_fast_reflex_v2_detector.py` builds train/validation-only
+Fusion10 endpoint datasets from it: Slip labels are current `confirmed_slip`;
+Sink labels are current `sustained_sink`. Scenario names never label windows,
+so a Sink run with Confirmed Slip is positive for both independent binaries.
+Pre-onset endpoints remain negative; Incipient and Tilt are stored only as
+metadata diagnostics. Windows are causal `[t-L+1,t]`, 1 kHz, train stride 2 ms
+and validation stride 1 ms; normalization is fit only from each train window
+set. Final test remains sealed.
+
+The generated dataset has 6,750 train and 9,000 validation windows per
+detector/window. Slip positive ratios are 3.33% train / 2.64% validation;
+Sink is 21.85% / 22.39%. A 1-epoch small-subset smoke completed for Slip 5 ms
+(GAP+Max, 1,237 parameters) and Sink 20 ms (GAP, 1,221 parameters), with
+finite loss, validation inference, model save/load, and persistence-3 replay
+foundation. Its fixed-0.5 metrics are plumbing evidence only: they are not a
+candidate selection, threshold, persistence, or detector-performance claim.
+
 ## Implemented v2 foundation
 
 `terrain_fast_reflex_v2.py` and `run_terrain_fast_reflex_v2.py` implement a
