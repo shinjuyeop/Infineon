@@ -224,6 +224,12 @@ sink/tilt onset을 연구한다. 기존 4-class classifier와 deployment artifac
 - [x] Fast Reflex v2 front/rear pitch-torque rejection audit: orientation was
   produced only by reducing loaded contact, so the seven-run train-only design
   is isolated from defaults and does not authorize pilot generation
+- [x] Fast Reflex v2 localized-compliance front/rear rejection audit: bilateral
+  contact was retained, but soft-rear rotation was too small and soft-front
+  Tilt was contaminated by preceding Sink; left/right was correctly not swept
+- [ ] Fast Reflex v2 approved localized compliant-layer/height physical design,
+  bounded train-only front/rear calibration only; keep torque rejected and
+  do not run a pilot until all scenario gates are independently ready
 - [ ] 후속 승인 뒤 selected detector INT8/E84, reflex rule 및 E2E 측정
 
 다음 milestone은 frozen Slip 결과를 그대로 종료 상태로 보존하고, Sand v2를

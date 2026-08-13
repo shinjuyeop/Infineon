@@ -54,6 +54,30 @@ This candidate is intentionally isolated behind
 The unresolved redesign is localized compliant support asymmetry, rather than
 larger body torque or any oracle-threshold change.
 
+### Localized compliant-support result: REJECTED
+
+The front/rear primary sweep used no torque, horizontal pulse, vertical pulse,
+or initial-pose change. It used Marble's native hard contact versus bounded
+Sand-derived contacts: slightly compliant `(solref=(.060,1.5),
+solimp=(.65,.88,.012,.5,2))` and moderately compliant
+`(.070,1.5)/(.60,.86,.015,.5,2)`, compared with native Sand
+`(.050,1.5)/(.70,.90,.010,.5,2)`. Actual left-sole contact-centre x extrema
+are -0.050 to +0.120 m, so seam x=0.035/0.052/0.069 m represents
+50/60/70% rear support.
+
+All six asymmetric candidates retained Ground A, Ground B, and loaded contact
+for 100% of the 150-sample trace, with no gross rotation. Hard-front/soft-rear
+created only 19.0 um differential settlement and no Tilt. Hard-rear/soft-front
+created 48.5 um and a Tilt onset at 10 ms, but Sink occurred first at 1 ms;
+it is rejected as excessive-sink contamination. This is not a contact-loss
+failure, but no candidate satisfies the requested Tilt-without-Sink mechanism.
+No left/right smoke was run because the front/rear primary criterion failed.
+The authoritative artifact is
+`outputs/terrain_fast_reflex_v2_local_compliance_calibration_final_v2`.
+The next physical candidate is a localized compliant *layer/height* design
+that can create differential settlement without making the soft half's global
+vertical response cross the Sink condition; no threshold change is authorized.
+
 ## Implemented v2 foundation
 
 `terrain_fast_reflex_v2.py` and `run_terrain_fast_reflex_v2.py` implement a

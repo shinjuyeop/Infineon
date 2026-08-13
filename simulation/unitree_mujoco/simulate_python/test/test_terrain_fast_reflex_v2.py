@@ -12,7 +12,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from terrain_fast_reflex_v2 import (  # noqa: E402
     TRACE_SAMPLES, V2_ORACLE_CHANNELS, V2_ORACLE_INDEX, V2Calibration,
     calibration_scenario_configs, default_scenario_configs, label_v2,
-    front_rear_torque_calibration_configs, validate_final_test_request, validate_state_order,
+    front_rear_torque_calibration_configs, local_compliance_calibration_configs,
+    validate_final_test_request, validate_state_order,
 )
 
 
@@ -61,6 +62,13 @@ class FastReflexV2Test(unittest.TestCase):
         torque_configs = front_rear_torque_calibration_configs()
         self.assertEqual(len(torque_configs), 7)
         self.assertTrue(any(config.pitch_torque_Nm > 0.0 for config in torque_configs))
+
+    def test_local_compliance_seams_use_measured_sole_extent_ratios(self) -> None:
+        configs = local_compliance_calibration_configs()
+        self.assertEqual(len(configs), 7)
+        seams = {config.seam_offset_m for config in configs if config.mode == "tilt_dominant"}
+        self.assertEqual(seams, {.035, .052, .069})
+        self.assertTrue(all(config.pitch_torque_Nm == 0.0 for config in configs))
 
 
 if __name__ == "__main__":

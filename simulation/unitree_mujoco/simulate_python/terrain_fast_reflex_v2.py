@@ -104,6 +104,27 @@ def front_rear_torque_calibration_configs() -> tuple[ScenarioPhysicsConfig, ...]
     return tuple(configs)
 
 
+def local_compliance_calibration_configs() -> tuple[ScenarioPhysicsConfig, ...]:
+    """Seven train-only candidates from the measured 170 mm sole x extent.
+
+    Ground A is x < seam (rear) and B is x >= seam (front).  The seams
+    0.035/0.052/0.069 m correspond to 50/60/70% rear support between the
+    measured contact-centre extrema -0.050 and +0.120 m.
+    """
+    configs = [default_scenario_configs()[0]]
+    for share, seam in ((50, .035), (60, .052), (70, .069)):
+        configs.append(ScenarioPhysicsConfig(
+            f"local_fr_hard_front_soft_rear_{share}", "tilt_dominant", "front_rear",
+            "sand_slightly_compliant", "marble", .50, 0., 0., 1., 0., seam,
+        ))
+    for share, seam in ((50, .035), (60, .052), (70, .069)):
+        configs.append(ScenarioPhysicsConfig(
+            f"local_fr_hard_rear_soft_front_{share}", "tilt_dominant", "front_rear",
+            "marble", "sand_moderately_compliant", .50, 0., 0., 1., 0., seam,
+        ))
+    return tuple(configs)
+
+
 @dataclass(frozen=True)
 class V2Calibration:
     minimum_load_N: float

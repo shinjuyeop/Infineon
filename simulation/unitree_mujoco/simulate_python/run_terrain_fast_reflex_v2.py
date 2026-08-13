@@ -21,7 +21,8 @@ from terrain_fast_reflex_v2 import (
     RELATIVE_TRANSITION_TIME_MS, SCHEMA_NAME, SCHEMA_VERSION, SENSOR_RATE_HZ,
     TRACE_POST_MS, TRACE_PRE_MS, TRACE_SAMPLES, V2_ORACLE_CHANNELS, V2_ORACLE_INDEX,
     ScenarioPhysicsConfig, calibration_scenario_configs, calibrate_v2,
-    default_scenario_configs, front_rear_torque_calibration_configs, label_v2, onset_ms, validate_final_test_request,
+    default_scenario_configs, front_rear_torque_calibration_configs,
+    local_compliance_calibration_configs, label_v2, onset_ms, validate_final_test_request,
     validate_state_order,
 )
 from terrain_profiles import TERRAIN_PROFILES, apply_terrain_profile
@@ -45,6 +46,7 @@ class RawRun:
     timestamps_s: np.ndarray
     sensors: np.ndarray
     oracle: np.ndarray
+    sole_positions_m: np.ndarray
     qpos_delta: float
     qvel_delta: float
     wall_time_s: float
@@ -65,6 +67,8 @@ def parse_args() -> argparse.Namespace:
                         help="bounded train-only physical candidate sweep; no threshold candidates")
     parser.add_argument("--front-rear-torque-calibration", action="store_true",
                         help="bounded rejected-design audit; not eligible as pilot selection")
+    parser.add_argument("--local-compliance-calibration", action="store_true",
+                        help="bounded train-only localized compliant-support experiment")
     parser.add_argument("--scenario-selection", type=Path,
                         help="frozen selected_configs JSON from a prior train-only calibration")
     parser.add_argument("--audit-existing", type=Path,
@@ -102,7 +106,7 @@ def protocol(args: argparse.Namespace, configs: tuple[ScenarioPhysicsConfig, ...
         "dataset_name": SCHEMA_NAME, "schema_version": SCHEMA_VERSION,
         "status": "v2 physical dataset foundation; no detector training",
         "modes": sorted({config.mode for config in configs}), "scenario_configs": [config.as_dict() for config in configs],
-        "scenario_calibration": bool(args.scenario_calibration or args.front_rear_torque_calibration), "physics_rate_hz": 2000, "sensor_rate_hz": SENSOR_RATE_HZ,
+        "scenario_calibration": bool(args.scenario_calibration or args.front_rear_torque_calibration or args.local_compliance_calibration), "physics_rate_hz": 2000, "sensor_rate_hz": SENSOR_RATE_HZ,
         "physics_timestep_s": PHYSICS_TIMESTEP_S, "physics_steps_per_sample": PHYSICS_STEPS_PER_SAMPLE,
         "trace_interval_ms": [-TRACE_PRE_MS, TRACE_POST_MS], "trace_shape": [TRACE_SAMPLES, 10],
         "settle_time_s": SETTLE_TIME_S, "transition_time_s": TRANSITION_TIME_S,
@@ -195,7 +199,8 @@ def run_one(config: ScenarioPhysicsConfig, family: str, surface_index: int, run_
     exciter = HorizontalPulseExciter(model, data, pulse)
     reader = G1HilSensorReader(model, data); foot_ids = frozenset(reader.left_foot_geom_ids)
     body = model.body("left_ankle_roll_link").id; velocity = np.zeros(6); wrench = np.zeros(6)
-    times=[]; sensors=[]; raw=[]; steps=0; switched=False; qpos_delta=qvel_delta=0.; start=time.perf_counter()
+    sole_ids = [model.geom(f"left_foot_contact_{index}").id for index in range(1, 5)]
+    times=[]; sensors=[]; raw=[]; sole_positions=[]; steps=0; switched=False; qpos_delta=qvel_delta=0.; start=time.perf_counter()
     while data.time + 1e-12 < DURATION_S:
         if config.switch_to_ice and not switched and data.time >= TRANSITION_TIME_S - 1e-12:
             qpos_before, qvel_before = data.qpos.copy(), data.qvel.copy()
@@ -210,6 +215,7 @@ def run_one(config: ScenarioPhysicsConfig, family: str, surface_index: int, run_
         if steps % PHYSICS_STEPS_PER_SAMPLE == 0:
             times.append(float(data.time)); sensors.append(reader.read_vector())
             raw.append(_foot_oracle(model, data, ground_ids, foot_ids, body, velocity, wrench))
+            sole_positions.append(data.geom_xpos[sole_ids].copy())
     times=np.asarray(times); sensors=np.asarray(sensors); raw=np.asarray(raw)
     select=(times >= TRANSITION_TIME_S - TRACE_PRE_MS / 1000 - 1e-9) & (times < TRANSITION_TIME_S + TRACE_POST_MS / 1000 - 1e-9)
     family_info=family_for_name(family)
@@ -222,7 +228,7 @@ def run_one(config: ScenarioPhysicsConfig, family: str, surface_index: int, run_
               "pitch_torque_Nm":config.pitch_torque_Nm,
               "pulse_duration_s":config.force_duration_s,"pulse_direction_x":config.direction_x,"pulse_direction_y":config.direction_y,
               "support_ratio":config.support_ratio,"material_switch_to_ice":int(config.switch_to_ice),"run_index":run_index}
-    return RawRun(metadata, times[select], sensors[select], _postprocess(raw[select]), qpos_delta, qvel_delta, time.perf_counter()-start)
+    return RawRun(metadata, times[select], sensors[select], _postprocess(raw[select]), np.asarray(sole_positions)[select], qpos_delta, qvel_delta, time.perf_counter()-start)
 
 
 def _row(raw: RawRun, labels: dict[str, np.ndarray]) -> dict[str, object]:
@@ -232,6 +238,13 @@ def _row(raw: RawRun, labels: dict[str, np.ndarray]) -> dict[str, object]:
     left_right = fsr[:, [0, 2]].sum(axis=1) - fsr[:, [1, 3]].sum(axis=1)
     normalizer = np.maximum(fsr_sum, 1e-6)
     gyro_xy = np.linalg.norm(raw.sensors[:, 7:9], axis=1)
+    front_z, rear_z = raw.sole_positions_m[:, 2:4, 2].mean(axis=1), raw.sole_positions_m[:, :2, 2].mean(axis=1)
+    front_settlement, rear_settlement = front_z[TRACE_PRE_MS] - front_z, rear_z[TRACE_PRE_MS] - rear_z
+    differential = front_settlement - rear_settlement
+    contact = raw.oracle[:, V2_ORACLE_INDEX["left_contact"]] > .5
+    loaded = contact & (raw.oracle[:, V2_ORACLE_INDEX["contact_normal_force_N"]] >= 1e-6)
+    a_contact = raw.oracle[:, V2_ORACLE_INDEX["ground_a_contact"]] > .5
+    b_contact = raw.oracle[:, V2_ORACLE_INDEX["ground_b_contact"]] > .5
     out={**raw.metadata,"calibration_provenance":"train-normal only","valid":int(np.isfinite(raw.sensors).all() and np.isfinite(raw.oracle).all()),
          "invalid_reason":"","qpos_transition_max_abs_delta":raw.qpos_delta,"qvel_transition_max_abs_delta":raw.qvel_delta,
          "ground_a_contact_samples":int(raw.oracle[:, V2_ORACLE_INDEX["ground_a_contact"]].sum()),
@@ -244,7 +257,11 @@ def _row(raw: RawRun, labels: dict[str, np.ndarray]) -> dict[str, object]:
          "gyro_xy_magnitude_peak_rad_s":float(gyro_xy.max()), "gyro_xy_integral_rad":float(gyro_xy.sum()*.001),
          "foot_sink_depth_peak_m":float(raw.oracle[:, V2_ORACLE_INDEX["foot_sink_depth_m"]].max()),
          "foot_tilt_change_peak_rad":float(raw.oracle[:, V2_ORACLE_INDEX["foot_tilt_change_rad"]].max()),
-         "foot_horizontal_speed_peak_mps":float(raw.oracle[:, V2_ORACLE_INDEX["foot_horizontal_speed_mps"]].max())}
+         "foot_horizontal_speed_peak_mps":float(raw.oracle[:, V2_ORACLE_INDEX["foot_horizontal_speed_mps"]].max()),
+         "ground_a_contact_coverage":float(a_contact.mean()), "ground_b_contact_coverage":float(b_contact.mean()),
+         "loaded_contact_coverage":float(loaded.mean()), "front_settlement_peak_m":float(front_settlement.max()),
+         "rear_settlement_peak_m":float(rear_settlement.max()), "differential_settlement_peak_m":float(np.max(np.abs(differential))),
+         "gross_rotation":int(raw.oracle[:, V2_ORACLE_INDEX["foot_tilt_change_rad"]].max() > .10)}
     for name in ("slip_risk","confirmed_slip","sustained_sink","sustained_tilt"):
         onset=onset_ms(labels[name]); out[f"{name}_onset_time_s"]="" if onset is None else float(raw.timestamps_s[TRACE_PRE_MS+onset])
         out[f"{name}_onset_ms"]="" if onset is None else onset
@@ -303,6 +320,7 @@ def save(output: Path, raw_runs: list[RawRun], labels: list[dict[str, np.ndarray
                         run_id=np.asarray([r.metadata["run_id"] for r in raw_runs]))
     np.savez_compressed(output / "oracle_diagnostics.npz", oracle=np.asarray([r.oracle for r in raw_runs],np.float32),
                         oracle_channels=np.asarray(V2_ORACLE_CHANNELS), sample_time_s=np.asarray([r.timestamps_s for r in raw_runs]),
+                        sole_contact_centres_m=np.asarray([r.sole_positions_m for r in raw_runs],np.float32),
                         **{name:np.asarray([item[name] for item in labels],bool) for name in labels[0]}, run_id=np.asarray([r.metadata["run_id"] for r in raw_runs]))
     with (output / "manifest.csv").open("w",newline="",encoding="utf-8") as stream:
         writer=csv.DictWriter(stream,fieldnames=list(rows[0])); writer.writeheader(); writer.writerows(rows)
@@ -336,6 +354,60 @@ def plot_coverage(output: Path, coverage: list[dict[str, object]]) -> None:
     fig.savefig(output / "scenario_coverage.png", dpi=140); plt.close(fig)
 
 
+def local_compliance_artifacts(output: Path, raw: list[RawRun], labels: list[dict[str, np.ndarray]], rows: list[dict[str, object]], configs: tuple[ScenarioPhysicsConfig, ...]) -> None:
+    """Write explicit physical-selection evidence for localized support only."""
+    config_by_id = {config.config_id: config for config in configs}
+    fields = ("scenario_config_id", "support_orientation", "boundary_position_m", "support_ratio", "ground_a_material", "ground_b_material", "ground_a_solref", "ground_a_solimp", "ground_b_solref", "ground_b_solimp", "vertical_pulse_magnitude_N", "ground_a_contact_coverage", "ground_b_contact_coverage", "loaded_contact_coverage", "differential_settlement_peak_m", "foot_tilt_change_peak_rad", "gyro_xy_magnitude_peak_rad_s", "sustained_tilt_onset_ms", "sustained_sink_onset_ms", "gross_rotation", "valid", "selection_status", "rejection_reason")
+    sweep=[]
+    for row in rows:
+        config=config_by_id[str(row["scenario_config_id"])]
+        orientation = "normal" if config.mode == "normal_sand" else ("hard_front_soft_rear" if config.material_b == "marble" else "hard_rear_soft_front")
+        retained = min(float(row["ground_a_contact_coverage"]), float(row["ground_b_contact_coverage"])) >= .75 and float(row["loaded_contact_coverage"]) >= .75
+        tilt = row["sustained_tilt_onset_ms"] != ""; sink = row["sustained_sink_onset_ms"] != ""
+        accepted = config.mode != "normal_sand" and retained and tilt and not sink and not int(row["gross_rotation"])
+        if accepted: reason=""
+        elif config.mode == "normal_sand": reason="normal_control"
+        elif not retained: reason="contact_loss"
+        elif int(row["gross_rotation"]): reason="gross_rotation"
+        elif sink: reason="excessive_sink_before_tilt"
+        else: reason="insufficient_differential_settlement_or_rotation"
+        a, b = TERRAIN_PROFILES[str(row["ground_a_material"])], TERRAIN_PROFILES[str(row["ground_b_material"])]
+        sweep.append({"scenario_config_id":row["scenario_config_id"],"support_orientation":orientation,"boundary_position_m":row["boundary_position_m"],"support_ratio":row["support_ratio"],"ground_a_material":row["ground_a_material"],"ground_b_material":row["ground_b_material"],"ground_a_solref":a.solref,"ground_a_solimp":a.solimp,"ground_b_solref":b.solref,"ground_b_solimp":b.solimp,"vertical_pulse_magnitude_N":row["vertical_pulse_magnitude_N"],"ground_a_contact_coverage":row["ground_a_contact_coverage"],"ground_b_contact_coverage":row["ground_b_contact_coverage"],"loaded_contact_coverage":row["loaded_contact_coverage"],"differential_settlement_peak_m":row["differential_settlement_peak_m"],"foot_tilt_change_peak_rad":row["foot_tilt_change_peak_rad"],"gyro_xy_magnitude_peak_rad_s":row["gyro_xy_magnitude_peak_rad_s"],"sustained_tilt_onset_ms":row["sustained_tilt_onset_ms"],"sustained_sink_onset_ms":row["sustained_sink_onset_ms"],"gross_rotation":row["gross_rotation"],"valid":row["valid"],"selection_status":"accepted" if accepted else "rejected","rejection_reason":reason})
+    with (output / "localized_compliance_sweep.csv").open("w",newline="",encoding="utf-8") as stream:
+        writer=csv.DictWriter(stream,fieldnames=fields); writer.writeheader(); writer.writerows(sweep)
+    accepted=[item for item in sweep if item["selection_status"] == "accepted"]
+    selected = max(accepted, key=lambda item: (item["loaded_contact_coverage"], min(item["ground_a_contact_coverage"], item["ground_b_contact_coverage"]))) if accepted else None
+    (output / "selected_config.json").write_text(json.dumps({"status":"LOCAL_COMPLIANCE_DESIGN_ACCEPTED" if selected else "LOCAL_COMPLIANCE_DESIGN_REJECTED", "selected":selected, "selection_order":["physical validity","bilateral contact retention","loaded contact retention","differential settlement","sustained tilt","low gross disturbance"]},indent=2)+"\n",encoding="utf-8")
+    rejected=[item for item in sweep if item["selection_status"] == "rejected" and item["rejection_reason"] != "normal_control"]
+    with (output / "rejected_configs.csv").open("w",newline="",encoding="utf-8") as stream:
+        writer=csv.DictWriter(stream,fieldnames=fields); writer.writeheader(); writer.writerows(rejected)
+    state="LOCAL_COMPLIANCE_DESIGN_ACCEPTED" if selected else "LOCAL_COMPLIANCE_DESIGN_REJECTED"
+    (output / "calibration_summary.md").write_text(f"# {state}\n\nTrain-only localized-compliance calibration; no threshold or label changes.\n\nRuns: {len(rows)}; accepted candidates: {len(accepted)}.\n\nBoth localized designs retained A/B and loaded contact in this trace. Soft-rear had insufficient differential settlement; soft-front created Tilt only with preceding Sink. In contrast, the rejected body-torque design reduced contact before producing no sustained Tilt.\n",encoding="utf-8")
+
+
+def plot_local_compliance(output: Path, raw_runs: list[RawRun], labels: list[dict[str, np.ndarray]]) -> None:
+    """Normal plus physically representative rejected support comparison plots."""
+    import matplotlib; matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    plots = output / "plots"; plots.mkdir(exist_ok=True)
+    choices = [next(i for i, raw in enumerate(raw_runs) if raw.metadata["mode"] == "normal_sand"),
+               next(i for i, raw in enumerate(raw_runs) if "hard_rear_soft_front" in str(raw.metadata["scenario_config_id"]))]
+    for index in choices:
+        raw, state = raw_runs[index], labels[index]
+        x=RELATIVE_TRANSITION_TIME_MS; sole=raw.sole_positions_m
+        front, rear=sole[:,2:4,2].mean(1),sole[:,:2,2].mean(1)
+        front_settle, rear_settle=front[TRACE_PRE_MS]-front,rear[TRACE_PRE_MS]-rear
+        fsr=raw.sensors[:,:4]; total=np.maximum(fsr.sum(1),1e-6); imbalance=(fsr[:,2:].sum(1)-fsr[:,:2].sum(1))/total
+        angular=np.linalg.norm(raw.oracle[:,[V2_ORACLE_INDEX["foot_angular_velocity_x_rad_s"],V2_ORACLE_INDEX["foot_angular_velocity_y_rad_s"]]],axis=1)
+        fig,axis=plt.subplots(5,1,figsize=(10,11),sharex=True)
+        axis[0].step(x,raw.oracle[:,V2_ORACLE_INDEX["ground_a_contact"]],where="post",label="A"); axis[0].step(x,raw.oracle[:,V2_ORACLE_INDEX["ground_b_contact"]],where="post",label="B"); axis[0].legend(); axis[0].set_ylabel("contact")
+        axis[1].plot(x,front_settle,label="front");axis[1].plot(x,rear_settle,label="rear");axis[1].plot(x,front_settle-rear_settle,label="delta");axis[1].legend();axis[1].set_ylabel("settlement m")
+        axis[2].plot(x,raw.oracle[:,V2_ORACLE_INDEX["foot_tilt_change_rad"]],label="tilt");axis[2].plot(x,angular,label="angular");axis[2].legend()
+        axis[3].plot(x,fsr);axis[3].plot(x,imbalance,label="norm F-R",lw=2);axis[3].legend(ncol=3,fontsize=8);axis[3].set_ylabel("FSR / imbalance")
+        axis[4].plot(x,raw.sensors[:,7],label="gyro x");axis[4].plot(x,raw.sensors[:,8],label="gyro y");axis[4].step(x,state["sustained_tilt"],where="post",label="tilt state");axis[4].step(x,state["sustained_sink"],where="post",label="sink state");axis[4].legend(ncol=2,fontsize=8)
+        axis[-1].set_xlabel("ms relative transition");fig.suptitle(str(raw.metadata["scenario_config_id"]));fig.tight_layout();fig.savefig(plots/f"local_compliance_{raw.metadata['scenario_config_id']}.png",dpi=140);plt.close(fig)
+
+
 def main() -> None:
     args=parse_args()
     if args.audit_existing is not None:
@@ -354,7 +426,7 @@ def main() -> None:
             raise ValueError("invalid Fusion10/timestamp artifact")
         print(f"V2_AUDIT_PASS runs={len(sensors)} native_spacing_ms=1 final_test_materialized=0 source={source}")
         return
-    if sum(bool(item) for item in (args.scenario_calibration, args.front_rear_torque_calibration, args.scenario_selection is not None)) > 1:
+    if sum(bool(item) for item in (args.scenario_calibration, args.front_rear_torque_calibration, args.local_compliance_calibration, args.scenario_selection is not None)) > 1:
         raise ValueError("choose one scenario calibration/selection source")
     if args.scenario_calibration:
         configs=tuple(config for config in calibration_scenario_configs() if config.mode in args.modes)
@@ -362,6 +434,10 @@ def main() -> None:
             raise ValueError("scenario calibration is train-only")
     elif args.front_rear_torque_calibration:
         configs=tuple(config for config in front_rear_torque_calibration_configs() if config.mode in args.modes)
+        if any(family_for_name(name).split != "train" for name in _families(args)):
+            raise ValueError("scenario calibration is train-only")
+    elif args.local_compliance_calibration:
+        configs=tuple(config for config in local_compliance_calibration_configs() if config.mode in args.modes)
         if any(family_for_name(name).split != "train" for name in _families(args)):
             raise ValueError("scenario calibration is train-only")
     elif args.scenario_selection is not None:
@@ -393,17 +469,24 @@ def main() -> None:
     with (output/"scenario_coverage.csv").open("w",newline="",encoding="utf-8") as stream:
         writer=csv.DictWriter(stream,fieldnames=list(coverage[0])); writer.writeheader(); writer.writerows(coverage)
     selection=_selection(configs,coverage)
+    if args.local_compliance_calibration:
+        # This is a single-mode feasibility study, never a full pilot gate.
+        selection["pilot_ready"] = False
+        selection["gates"]["localized_compliance_feasibility_only"] = True
     (output/"scenario_configs.json").write_text(json.dumps([config.as_dict() for config in configs],indent=2)+"\n",encoding="utf-8")
     (output/"scenario_selection.json").write_text(json.dumps(selection,indent=2)+"\n",encoding="utf-8")
+    if args.local_compliance_calibration:
+        local_compliance_artifacts(output, raw, labels, rows, configs)
+        plot_local_compliance(output, raw, labels)
     if args.plot:
-        plots=output/"plots";plots.mkdir()
+        plots=output/"plots";plots.mkdir(exist_ok=True)
         for mode in sorted({config.mode for config in configs}):
             i=next(i for i,r in enumerate(raw) if r.metadata["mode"]==mode);plot_smoke(plots,raw[i],labels[i])
         plot_coverage(plots, coverage)
     summary=[f"{SCHEMA_NAME} schema_version={SCHEMA_VERSION}",f"runs={len(raw)} valid={sum(r['valid'] for r in rows)}", "native_sampling=1000Hz physics=2000Hz spacing=1ms", "final_test_materialized=0",f"calibration={json.dumps(calibration.as_dict(),sort_keys=True)}"]
     for mode in sorted({config.mode for config in configs}):
         subset=[r for r in rows if r["mode"]==mode];summary.append(f"{mode}: runs={len(subset)} risk={sum(r['slip_risk_onset_ms']!='' for r in subset)} sink={sum(r['sustained_sink_onset_ms']!='' for r in subset)} tilt={sum(r['sustained_tilt_onset_ms']!='' for r in subset)}")
-    summary.extend([f"scenario_calibration={int(args.scenario_calibration or args.front_rear_torque_calibration)}",f"pilot_ready={selection['pilot_ready']}",f"scenario_gates={json.dumps(selection['gates'],sort_keys=True)}"])
+    summary.extend([f"scenario_calibration={int(args.scenario_calibration or args.front_rear_torque_calibration or args.local_compliance_calibration)}",f"pilot_ready={selection['pilot_ready']}",f"scenario_gates={json.dumps(selection['gates'],sort_keys=True)}"])
     (output/"summary.txt").write_text("\n".join(summary)+"\n",encoding="utf-8");print("\n".join(summary))
 
 

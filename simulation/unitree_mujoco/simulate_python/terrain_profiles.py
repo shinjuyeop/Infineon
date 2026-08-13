@@ -52,6 +52,20 @@ TERRAIN_PROFILES = {
         solimp=(0.70, 0.90, 0.010, 0.5, 2.0),
         description="softer, more damped and lower-impedance PoC contact",
     ),
+    "sand_slightly_compliant": TerrainProfile(
+        name="sand_slightly_compliant",
+        friction=(0.70, 0.010, 0.0010),
+        solref=(0.060, 1.5),
+        solimp=(0.65, 0.88, 0.012, 0.5, 2.0),
+        description="bounded softer variant derived from native Sand",
+    ),
+    "sand_moderately_compliant": TerrainProfile(
+        name="sand_moderately_compliant",
+        friction=(0.70, 0.010, 0.0010),
+        solref=(0.070, 1.5),
+        solimp=(0.60, 0.86, 0.015, 0.5, 2.0),
+        description="bounded more-compliant variant derived from native Sand",
+    ),
 }
 
 
