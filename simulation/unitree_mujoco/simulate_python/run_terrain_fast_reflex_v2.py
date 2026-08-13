@@ -23,7 +23,7 @@ from terrain_fast_reflex_v2 import (
     ScenarioPhysicsConfig, calibration_scenario_configs, calibrate_v2,
     default_scenario_configs, front_rear_torque_calibration_configs,
     final_tilt_physics_calibration_configs, local_compliance_calibration_configs,
-    label_v2, onset_ms, validate_final_test_request,
+    DEPLOYMENT_SCOPE, final_scope_calibration_configs, label_v2, onset_ms, sand_sink_hazard, validate_final_test_request,
     validate_state_order,
 )
 from terrain_profiles import TERRAIN_PROFILES, apply_terrain_profile
@@ -75,6 +75,8 @@ def parse_args() -> argparse.Namespace:
                         help="bounded train-only localized compliant-support experiment")
     parser.add_argument("--final-tilt-physics-calibration", action="store_true",
                         help="last bounded hard-backed-layer/height-offset train-only experiment")
+    parser.add_argument("--final-scope-calibration", action="store_true",
+                        help="bounded train-only Slip Risk and Sand Sink deployment-scope calibration")
     parser.add_argument("--scenario-selection", type=Path,
                         help="frozen selected_configs JSON from a prior train-only calibration")
     parser.add_argument("--audit-existing", type=Path,
@@ -112,7 +114,8 @@ def protocol(args: argparse.Namespace, configs: tuple[ScenarioPhysicsConfig, ...
         "dataset_name": SCHEMA_NAME, "schema_version": SCHEMA_VERSION,
         "status": "v2 physical dataset foundation; no detector training",
         "modes": sorted({config.mode for config in configs}), "scenario_configs": [config.as_dict() for config in configs],
-        "scenario_calibration": bool(args.scenario_calibration or args.front_rear_torque_calibration or args.local_compliance_calibration), "physics_rate_hz": 2000, "sensor_rate_hz": SENSOR_RATE_HZ,
+        "fast_reflex_v2_deployment_scope": DEPLOYMENT_SCOPE,
+        "scenario_calibration": bool(args.scenario_calibration or args.front_rear_torque_calibration or args.local_compliance_calibration or args.final_tilt_physics_calibration or args.final_scope_calibration), "physics_rate_hz": 2000, "sensor_rate_hz": SENSOR_RATE_HZ,
         "physics_timestep_s": PHYSICS_TIMESTEP_S, "physics_steps_per_sample": PHYSICS_STEPS_PER_SAMPLE,
         "trace_interval_ms": [-TRACE_PRE_MS, TRACE_POST_MS], "trace_shape": [TRACE_SAMPLES, 10],
         "settle_time_s": SETTLE_TIME_S, "transition_time_s": TRANSITION_TIME_S,
@@ -277,7 +280,7 @@ def _row(raw: RawRun, labels: dict[str, np.ndarray]) -> dict[str, object]:
          "loaded_contact_coverage":float(loaded.mean()), "front_settlement_peak_m":float(front_settlement.max()),
          "rear_settlement_peak_m":float(rear_settlement.max()), "differential_settlement_peak_m":float(np.max(np.abs(differential))),
          "gross_rotation":int(raw.oracle[:, V2_ORACLE_INDEX["foot_tilt_change_rad"]].max() > .10)}
-    for name in ("slip_risk","confirmed_slip","sustained_sink","sustained_tilt"):
+    for name in ("incipient_risk", "slip_risk","confirmed_slip","sustained_sink","sustained_tilt"):
         onset=onset_ms(labels[name]); out[f"{name}_onset_time_s"]="" if onset is None else float(raw.timestamps_s[TRACE_PRE_MS+onset])
         out[f"{name}_onset_ms"]="" if onset is None else onset
     return out
@@ -297,6 +300,7 @@ def _coverage(rows: list[dict[str, object]]) -> list[dict[str, object]]:
         result.append({"scenario_config_id": config_id, "mode": group[0]["mode"], "runs": len(group),
                        "valid_runs": sum(int(row["valid"]) for row in group),
                        "slip_risk_runs": has("slip_risk"), "confirmed_slip_runs": has("confirmed_slip"),
+                       "incipient_runs": has("incipient_risk"),
                        "sink_runs": has("sustained_sink"), "tilt_runs": has("sustained_tilt"),
                        "sink_and_tilt_runs": sum(row["sustained_sink_onset_ms"] != "" and row["sustained_tilt_onset_ms"] != "" for row in group),
                        "median_hazard_onset_ms": "" if not onsets else float(np.median(onsets)),
@@ -454,6 +458,68 @@ def final_tilt_physics_artifacts(output: Path, rows: list[dict[str, object]], co
     (output/"summary.md").write_text(f"# {status}\n\nTrain-only 50/50 front/rear final bounded physical design calibration. No oracle threshold or label changes; final-test materialization is zero.\n\nUnique candidates: {len(items)}; accepted: {len(accepted)}.\n",encoding="utf-8")
 
 
+def final_scope_artifacts(output: Path, raw: list[RawRun], labels: list[dict[str, np.ndarray]], rows: list[dict[str, object]], configs: tuple[ScenarioPhysicsConfig, ...]) -> dict[str, object]:
+    fields=("mode","config_id","runs","valid","slip_risk_runs","incipient_runs","confirmed_slip_runs","sink_runs","tilt_runs","sink_and_tilt_runs","loaded_contact_coverage","max_horizontal_speed","max_vertical_displacement","max_downward_velocity","max_orientation_deviation","gross_failure","selection_status","rejection_reason")
+    items=[]
+    for config, row, state in zip(configs, rows, labels):
+        confirmed=row["confirmed_slip_onset_ms"] != ""; incipient=row["incipient_risk_onset_ms"] != ""; sink=row["sustained_sink_onset_ms"] != ""; tilt=row["sustained_tilt_onset_ms"] != ""
+        gross=bool(int(row["gross_rotation"]) or float(row["loaded_contact_coverage"]) < .75)
+        if config.mode == "normal_sand": accept=not (row["slip_risk_onset_ms"] != "" or sink)
+        elif config.mode == "slip_risk_dominant": accept=(incipient or confirmed) and not gross
+        elif config.mode == "sink_dominant": accept=sink and not gross
+        else: accept=sink and tilt and not gross
+        reason="" if accept else "normal_hazard" if config.mode == "normal_sand" else "gross_failure" if gross else "missing_required_oracle_coverage"
+        items.append({"mode":config.mode,"config_id":config.config_id,"runs":1,"valid":row["valid"],"slip_risk_runs":int(row["slip_risk_onset_ms"] != ""),"incipient_runs":int(incipient),"confirmed_slip_runs":int(confirmed),"sink_runs":int(sink),"tilt_runs":int(tilt),"sink_and_tilt_runs":int(sink and tilt),"loaded_contact_coverage":row["loaded_contact_coverage"],"max_horizontal_speed":row["foot_horizontal_speed_peak_mps"],"max_vertical_displacement":row["foot_sink_depth_peak_m"],"max_downward_velocity":float(max(0., -raw[len(items)].oracle[:, V2_ORACLE_INDEX["foot_velocity_z_mps"]].min())),"max_orientation_deviation":row["foot_tilt_change_peak_rad"],"gross_failure":int(gross),"selection_status":"selected" if accept else "rejected","rejection_reason":reason})
+    with (output/"scenario_coverage.csv").open("w",newline="",encoding="utf-8") as f:
+        writer=csv.DictWriter(f,fieldnames=fields);writer.writeheader();writer.writerows(items)
+    selected=[item for item in items if item["selection_status"] == "selected"]
+    by_mode={mode:[item for item in selected if item["mode"] == mode] for mode in ("normal_sand","slip_risk_dominant","sink_dominant","sink_and_tilt")}
+    slip=by_mode["slip_risk_dominant"]
+    gate={"normal_hazard_free":bool(by_mode["normal_sand"]),"slip_risk":any(item["slip_risk_runs"] for item in slip),"incipient":any(item["incipient_runs"] for item in slip),"confirmed":any(item["confirmed_slip_runs"] for item in slip),"sand_sink":bool(by_mode["sink_dominant"]),"sand_sink_tilt":bool(by_mode["sink_and_tilt"]),"native_1khz":True,"final_test_materialized_0":True}
+    # Confirmed labels have no separate incipient interval under the frozen
+    # binary union rule; ordering remains enforced by validate_state_order.
+    frozen=[]
+    for mode, candidates in by_mode.items():
+        if mode == "normal_sand" and candidates: frozen.append(candidates[0])
+        elif mode == "slip_risk_dominant":
+            incipient_item=next((item for item in candidates if item["incipient_runs"]), None)
+            confirmed_item=next((item for item in candidates if item["confirmed_slip_runs"]), None)
+            if incipient_item is not None: frozen.append(incipient_item)
+            if confirmed_item is not None: frozen.append(confirmed_item)
+        elif candidates: frozen.append(candidates[0])
+    frozen=[item for item in frozen if item is not None]
+    selected_payload={"status":"PILOT_READY" if all(gate.values()) else "PILOT_NOT_READY","deployment_scope":DEPLOYMENT_SCOPE,"pilot_ready":bool(all(gate.values())),"gates":gate,"selected_configs":frozen}
+    (output/"selected_configs.json").write_text(json.dumps(selected_payload,indent=2)+"\n",encoding="utf-8")
+    with (output/"rejected_configs.csv").open("w",newline="",encoding="utf-8") as f:
+        writer=csv.DictWriter(f,fieldnames=fields);writer.writeheader();writer.writerows([item for item in items if item["selection_status"] == "rejected"])
+    (output/"deployment_scope.json").write_text(json.dumps(DEPLOYMENT_SCOPE,indent=2)+"\n",encoding="utf-8")
+    (output/"calibration_summary.md").write_text(f"# {selected_payload['status']}\n\nFinal scope: Slip Risk and Sand Sink Hazard. Isolated Sand Tilt-only is diagnostic-only and excluded after bounded Digital Twin physical-design rejection.\n\nTrain-only runs: {len(items)}. Final test materialized: 0.\n",encoding="utf-8")
+    return selected_payload
+
+
+def plot_final_scope(output: Path, raw_runs: list[RawRun], labels: list[dict[str, np.ndarray]]) -> None:
+    import matplotlib; matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    plots=output/"plots"; plots.mkdir(exist_ok=True)
+    wanted=("slip_ice_100", "sink_symmetric_100", "sink_tilt_asymmetric_120")
+    for config_id in wanted:
+        index=next(i for i, raw in enumerate(raw_runs) if raw.metadata["scenario_config_id"] == config_id)
+        raw,state=raw_runs[index],labels[index];x=RELATIVE_TRANSITION_TIME_MS
+        fsr=raw.sensors[:,:4]; speed=raw.oracle[:,V2_ORACLE_INDEX["foot_horizontal_speed_mps"]];trend=np.maximum(0,np.diff(speed,prepend=speed[0]))
+        fig,axis=plt.subplots(4,1,figsize=(10,9),sharex=True)
+        if config_id.startswith("slip"):
+            axis[0].plot(x,speed,label="horizontal speed");axis[0].plot(x,trend,label="speed trend");axis[0].legend()
+            axis[1].plot(x,raw.oracle[:,V2_ORACLE_INDEX["contact_normal_force_N"]],label="Fn");axis[1].plot(x,raw.oracle[:,V2_ORACLE_INDEX["Ft_over_Fn"]],label="Ft/Fn");axis[1].legend()
+            axis[2].plot(x,fsr);axis[2].set_ylabel("FSR N")
+            axis[3].plot(x,raw.sensors[:,4:]);axis[3].step(x,state["incipient_risk"],where="post",label="incipient");axis[3].step(x,state["confirmed_slip"],where="post",label="confirmed");axis[3].legend(ncol=3,fontsize=8)
+        else:
+            axis[0].plot(x,raw.oracle[:,V2_ORACLE_INDEX["foot_sink_depth_m"]],label="sink depth");axis[0].plot(x,-raw.oracle[:,V2_ORACLE_INDEX["foot_velocity_z_mps"]],label="downward velocity");axis[0].legend()
+            axis[1].plot(x,raw.oracle[:,V2_ORACLE_INDEX["contact_normal_force_N"]],label="Fn");axis[1].plot(x,raw.oracle[:,V2_ORACLE_INDEX["foot_tilt_change_rad"]],label="tilt");axis[1].legend()
+            axis[2].plot(x,fsr);axis[2].set_ylabel("FSR N")
+            axis[3].step(x,state["sustained_sink"],where="post",label="sink");axis[3].step(x,state["sustained_tilt"],where="post",label="tilt");axis[3].legend();axis[3].plot(x,raw.sensors[:,7:9])
+        axis[-1].set_xlabel("ms relative transition");fig.suptitle(config_id);fig.tight_layout();fig.savefig(plots/f"final_scope_{config_id}.png",dpi=140);plt.close(fig)
+
+
 def main() -> None:
     args=parse_args()
     if args.audit_existing is not None:
@@ -472,7 +538,7 @@ def main() -> None:
             raise ValueError("invalid Fusion10/timestamp artifact")
         print(f"V2_AUDIT_PASS runs={len(sensors)} native_spacing_ms=1 final_test_materialized=0 source={source}")
         return
-    if sum(bool(item) for item in (args.scenario_calibration, args.front_rear_torque_calibration, args.local_compliance_calibration, args.final_tilt_physics_calibration, args.scenario_selection is not None)) > 1:
+    if sum(bool(item) for item in (args.scenario_calibration, args.front_rear_torque_calibration, args.local_compliance_calibration, args.final_tilt_physics_calibration, args.final_scope_calibration, args.scenario_selection is not None)) > 1:
         raise ValueError("choose one scenario calibration/selection source")
     if args.scenario_calibration:
         configs=tuple(config for config in calibration_scenario_configs() if config.mode in args.modes)
@@ -488,6 +554,10 @@ def main() -> None:
             raise ValueError("scenario calibration is train-only")
     elif args.final_tilt_physics_calibration:
         configs=tuple(config for config in final_tilt_physics_calibration_configs() if config.mode in args.modes)
+        if any(family_for_name(name).split != "train" for name in _families(args)):
+            raise ValueError("scenario calibration is train-only")
+    elif args.final_scope_calibration:
+        configs=tuple(config for config in final_scope_calibration_configs() if config.mode in args.modes)
         if any(family_for_name(name).split != "train" for name in _families(args)):
             raise ValueError("scenario calibration is train-only")
     elif args.scenario_selection is not None:
@@ -533,6 +603,13 @@ def main() -> None:
         selection["gates"]["final_tilt_physics_feasibility_only"] = True
         final_tilt_physics_artifacts(output, rows, configs)
         plot_local_compliance(output, raw, labels)
+    if args.final_scope_calibration:
+        final_scope=final_scope_artifacts(output, raw, labels, rows, configs)
+        plot_final_scope(output, raw, labels)
+        selection["pilot_ready"]=final_scope["pilot_ready"]
+        selection["gates"] = final_scope["gates"]
+        # Save the selected scope after its authoritative gate is known.
+        (output/"scenario_selection.json").write_text(json.dumps(selection,indent=2)+"\n",encoding="utf-8")
     if args.plot:
         plots=output/"plots";plots.mkdir(exist_ok=True)
         for mode in sorted({config.mode for config in configs}):
@@ -541,7 +618,7 @@ def main() -> None:
     summary=[f"{SCHEMA_NAME} schema_version={SCHEMA_VERSION}",f"runs={len(raw)} valid={sum(r['valid'] for r in rows)}", "native_sampling=1000Hz physics=2000Hz spacing=1ms", "final_test_materialized=0",f"calibration={json.dumps(calibration.as_dict(),sort_keys=True)}"]
     for mode in sorted({config.mode for config in configs}):
         subset=[r for r in rows if r["mode"]==mode];summary.append(f"{mode}: runs={len(subset)} risk={sum(r['slip_risk_onset_ms']!='' for r in subset)} sink={sum(r['sustained_sink_onset_ms']!='' for r in subset)} tilt={sum(r['sustained_tilt_onset_ms']!='' for r in subset)}")
-    summary.extend([f"scenario_calibration={int(args.scenario_calibration or args.front_rear_torque_calibration or args.local_compliance_calibration or args.final_tilt_physics_calibration)}",f"pilot_ready={selection['pilot_ready']}",f"scenario_gates={json.dumps(selection['gates'],sort_keys=True)}"])
+    summary.extend([f"scenario_calibration={int(args.scenario_calibration or args.front_rear_torque_calibration or args.local_compliance_calibration or args.final_tilt_physics_calibration or args.final_scope_calibration)}",f"pilot_ready={selection['pilot_ready']}",f"scenario_gates={json.dumps(selection['gates'],sort_keys=True)}"])
     (output/"summary.txt").write_text("\n".join(summary)+"\n",encoding="utf-8");print("\n".join(summary))
 
 

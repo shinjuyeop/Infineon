@@ -231,6 +231,12 @@ sink/tilt onset을 연구한다. 기존 4-class classifier와 deployment artifac
   `SAND_TILT_PHYSICAL_DESIGN_REJECTED`; isolated Sand Tilt-only is not
   physically validated in the current Digital Twin and must not drive pilot or
   deployment scope
+- [x] Fast Reflex v2 deployment-scope decision: Slip Risk and Sand Sink Hazard
+  only; isolated Sand Tilt-only excluded as a bounded Digital Twin limitation
+- [ ] Fast Reflex v2 pre-pilot decision on the frozen Slip Risk state policy:
+  bounded physical Marble-to-Ice sweep supplied Confirmed but no separate
+  Incipient interval, so do not generate a pilot until the required coverage
+  gate is explicitly resolved without test-driven threshold tuning
 - [ ] 후속 승인 뒤 selected detector INT8/E84, reflex rule 및 E2E 측정
 
 다음 milestone은 frozen Slip 결과를 그대로 종료 상태로 보존하고, Sand v2를

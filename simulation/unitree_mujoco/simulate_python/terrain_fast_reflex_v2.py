@@ -18,6 +18,12 @@ RELATIVE_TRANSITION_TIME_MS = np.arange(-TRACE_PRE_MS, TRACE_POST_MS, dtype=np.i
 MODES = ("normal_sand", "slip_risk_dominant", "sink_dominant", "tilt_dominant",
          "boundary_front_rear", "boundary_left_right", "sink_and_tilt")
 FINAL_TEST_SPLIT = "final_test"
+DEPLOYMENT_SCOPE = {
+    "slip_risk": "enabled",
+    "sand_sink_hazard": "enabled",
+    "sand_isolated_tilt": "excluded",
+    "tilt_exclusion_reason": "current MuJoCo contact-model limitation after bounded physical-design audit",
+}
 
 # Kept explicitly local so schema-only tests do not need MuJoCo; names/units
 # remain byte-for-byte aligned with the preserved v1 oracle contract.
@@ -146,6 +152,34 @@ def final_tilt_physics_calibration_configs() -> tuple[ScenarioPhysicsConfig, ...
             .50, 0., 0., 1., 0., .035, hard_backed_layer=True, height_offset_m=um * 1e-6,
         ))
     return tuple(configs)
+
+
+def final_scope_calibration_configs() -> tuple[ScenarioPhysicsConfig, ...]:
+    """Ten train-only controls and physically pre-screened final-scope candidates."""
+    return (
+        ScenarioPhysicsConfig("normal_sand_scope", "normal_sand", "front_rear", "sand", "sand", .50, 0., 0., 1., 0.),
+        ScenarioPhysicsConfig("normal_marble_scope", "normal_sand", "front_rear", "marble", "marble", .50, 0., 0., 1., 0.),
+        ScenarioPhysicsConfig("slip_ice_safe", "slip_risk_dominant", "front_rear", "marble", "marble", .50, 0., 0., 1., 0., switch_to_ice=True),
+        ScenarioPhysicsConfig("slip_ice_5", "slip_risk_dominant", "front_rear", "marble", "marble", .50, 5., 0., 1., 0., switch_to_ice=True),
+        ScenarioPhysicsConfig("slip_ice_20", "slip_risk_dominant", "front_rear", "marble", "marble", .50, 20., 0., 1., 0., switch_to_ice=True),
+        ScenarioPhysicsConfig("slip_ice_50", "slip_risk_dominant", "front_rear", "marble", "marble", .50, 50., 0., 1., 0., switch_to_ice=True),
+        ScenarioPhysicsConfig("slip_ice_60", "slip_risk_dominant", "front_rear", "marble", "marble", .50, 60., 0., 1., 0., switch_to_ice=True),
+        ScenarioPhysicsConfig("slip_ice_70", "slip_risk_dominant", "front_rear", "marble", "marble", .50, 70., 0., 1., 0., switch_to_ice=True),
+        ScenarioPhysicsConfig("slip_ice_80", "slip_risk_dominant", "front_rear", "marble", "marble", .50, 80., 0., 1., 0., switch_to_ice=True),
+        ScenarioPhysicsConfig("slip_ice_90", "slip_risk_dominant", "front_rear", "marble", "marble", .50, 90., 0., 1., 0., switch_to_ice=True),
+        ScenarioPhysicsConfig("slip_ice_100", "slip_risk_dominant", "front_rear", "marble", "marble", .50, 100., 0., 1., 0., switch_to_ice=True),
+        ScenarioPhysicsConfig("slip_ice_100_long", "slip_risk_dominant", "front_rear", "marble", "marble", .50, 100., 0., 1., 0., switch_to_ice=True, force_duration_s=.200),
+        ScenarioPhysicsConfig("slip_ice_120_long", "slip_risk_dominant", "front_rear", "marble", "marble", .50, 120., 0., 1., 0., switch_to_ice=True, force_duration_s=.200),
+        ScenarioPhysicsConfig("sink_symmetric_100", "sink_dominant", "front_rear", "sand", "sand", .50, 0., 100., 1., 0.),
+        ScenarioPhysicsConfig("sink_symmetric_180", "sink_dominant", "front_rear", "sand", "sand", .50, 0., 180., 1., 0.),
+        ScenarioPhysicsConfig("sink_tilt_asymmetric_120", "sink_and_tilt", "front_rear", "marble", "sand", .50, 120., 120., 1., 0., .020),
+        ScenarioPhysicsConfig("sink_tilt_asymmetric_180", "sink_and_tilt", "front_rear", "marble", "sand", .50, 120., 180., 1., 0., .020),
+    )
+
+
+def sand_sink_hazard(labels: dict[str, np.ndarray]) -> np.ndarray:
+    """Deployment binary target: Sink-only and Sink+Tilt are both positive."""
+    return np.asarray(labels["sustained_sink"], bool)
 
 
 @dataclass(frozen=True)

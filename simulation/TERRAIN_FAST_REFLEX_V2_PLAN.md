@@ -98,6 +98,25 @@ contact-model limitation. Slip Fast Reflex and physically strong Sink or
 Sink+Tilt remain separate viable research responses; do not represent a Sand
 Tilt-only detector as physically validated or start its deployment path.
 
+## Final deployment scope decision
+
+Fast Reflex v2 deployment scope is now explicitly **Slip Risk Detector** plus
+**Sand Sink Hazard Detector**. Sand Sink Hazard is binary `sustained_sink`, so
+both Sink-only and Sink+Tilt are positive; the Tilt oracle remains for severity
+and subgroup diagnostics only. Isolated Sand Tilt-only is excluded because of
+the documented bounded Digital Twin physical-design rejection, not because a
+threshold was changed.
+
+The final-scope train-only calibration artifact is
+`outputs/terrain_fast_reflex_v2_final_scope_calibration_final_v2`. Its normal
+Sand and Marble controls are hazard-free; symmetric Sand vertical-load and
+asymmetric Sink+Tilt candidates retain loaded contact and create Sink/Sink+Tilt
+without gross rotation. Marble-to-Ice 100 N creates Confirmed Slip. However,
+the bounded 0/5/20/50/60/70/80/90/100 N plus 100/120 N 200-ms pulse sweep did
+not produce an isolated `incipient_risk` interval under the frozen v2 rule:
+the only Slip positive went directly to Confirmed. Therefore scope gate is
+`PILOT_READY=false`; no pilot, dataset, detector, or deployment is authorized.
+
 ## Implemented v2 foundation
 
 `terrain_fast_reflex_v2.py` and `run_terrain_fast_reflex_v2.py` implement a
