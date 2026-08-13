@@ -110,15 +110,27 @@ def final_windows(sensors: np.ndarray, labels: dict[str, np.ndarray], rows: list
     return {"x": norm.transform(np.asarray(x)), "y": np.asarray(y, np.int8), "run_id": np.asarray(run), "endpoint_ms": np.asarray(endpoint, np.int16), "family": np.asarray(family), "mode": np.asarray(mode)}
 
 
+def prepare_evaluation_output(evaluation_output: Path) -> Path:
+    """Permit only the known empty pre-model-load staging directory to resume."""
+    if evaluation_output.exists():
+        names = {item.name for item in evaluation_output.iterdir()}
+        plots = evaluation_output / "plots"
+        if names != {"plots"} or not plots.is_dir() or any(plots.iterdir()):
+            raise FileExistsError(f"refusing non-pristine final evaluation output: {evaluation_output}")
+    else:
+        evaluation_output.mkdir(parents=True)
+        plots = evaluation_output / "plots"; plots.mkdir()
+    return plots
+
+
 def evaluate(final_output: Path, evaluation_output: Path) -> None:
     if not (final_output / "FINAL_TEST_MATERIALIZED").is_file(): raise ValueError("missing FINAL_TEST_MATERIALIZED marker")
-    if evaluation_output.exists(): raise FileExistsError(f"final evaluation output exists: {evaluation_output}")
     with (final_output / "manifest.csv").open() as f: rows = list(csv.DictReader(f))
     if any(r["split"] != "final_test" or r["surface_family"] not in FAMILIES for r in rows): raise ValueError("unexpected final split/family")
     with np.load(final_output / "inputs_fusion10.npz", allow_pickle=False) as z: sensors = z["sensors"]
     with np.load(final_output / "oracle_diagnostics.npz", allow_pickle=False) as z: labels = {k: z[k] for k in ("confirmed_slip", "sustained_sink")}
     import tensorflow as tf
-    evaluation_output.mkdir(parents=True); plots = evaluation_output / "plots"; plots.mkdir()
+    plots = prepare_evaluation_output(evaluation_output)
     gate = {}
     for detector, config in FROZEN.items():
         data = final_windows(sensors, labels, rows, detector)
@@ -138,7 +150,9 @@ def main() -> None:
     if a.action == "run":
         if not a.execute_final_test: raise ValueError("run is fail-closed; require --execute-final-test")
         print(json.dumps(verify_preflight(final_output, evaluation_output), indent=2)); materialize(final_output)
-        evaluator = a.evaluation_python.resolve()
+        # Do not resolve a venv's python symlink: that loses its pyvenv prefix
+        # and silently runs the incompatible system interpreter.
+        evaluator = a.evaluation_python
         if not evaluator.is_file(): raise FileNotFoundError(f"evaluation Python is unavailable: {evaluator}")
         subprocess.run([str(evaluator), str(Path(__file__).resolve()), "evaluate", "--final-output", str(final_output), "--evaluation-output", str(evaluation_output)], check=True)
         print(f"FINAL_TEST_ONE_SHOT_COMPLETE final={final_output} evaluation={evaluation_output}"); return

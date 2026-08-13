@@ -37,8 +37,13 @@ simulations must not be re-run. The replacement untouched reservation is 90
 runs: normal, Slip, and Sink modes × two fresh held-out realizations × five
 reserved surface indices (9110--9114) × three runs, session seed 20260903 and
 excitation offset 921000. `materialize()` now creates its empty output directory
-before any simulation; any subsequent failure leaves that directory in place
-and therefore fail-closes replay. Old v1 test families (`warped_multisine`,
+before any simulation; any subsequent materialization failure leaves that
+directory in place and therefore fail-closes replay. A separate evaluator
+environment fault after final materialization but before any model load left
+only an empty `plots/` staging directory; this exact pristine staging state may
+resume evaluation read-only, while any metric/prediction/plot output is refused.
+The evaluator must receive the venv path without resolving its Python symlink.
+Old v1 test families (`warped_multisine`,
 `smooth_random_patches`) are permanently excluded. `INT8_READY=true` is
 permitted only if both frozen final host gates pass; a failure requires a new
 version/protocol rather than post-test threshold adjustment.

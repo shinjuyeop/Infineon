@@ -5,7 +5,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from run_terrain_fast_reflex_v2_final import FROZEN, SURFACE_INDICES, FINAL_SESSION_SEED, FINAL_EXCITATION_OFFSET, planned_runs, verify_preflight, verify_selected_values
+from run_terrain_fast_reflex_v2_final import FROZEN, SURFACE_INDICES, FINAL_SESSION_SEED, FINAL_EXCITATION_OFFSET, planned_runs, prepare_evaluation_output, verify_preflight, verify_selected_values
 from terrain_fast_reflex_v2 import validate_final_test_request
 
 
@@ -37,6 +37,15 @@ class V2FinalProtocolTest(unittest.TestCase):
         for family in ("warped_multisine", "smooth_random_patches"):
             with self.assertRaisesRegex(ValueError, "ineligible"):
                 validate_final_test_request([family], True)
+
+    def test_only_empty_pre_model_load_evaluation_staging_can_resume(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / "evaluation"
+            self.assertEqual(prepare_evaluation_output(output), output / "plots")
+            self.assertEqual(prepare_evaluation_output(output), output / "plots")
+            (output / "slip_final_metrics.json").write_text("{}")
+            with self.assertRaisesRegex(FileExistsError, "non-pristine"):
+                prepare_evaluation_output(output)
 
 
 if __name__ == "__main__":
