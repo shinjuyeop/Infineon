@@ -59,6 +59,7 @@ class ScenarioPhysicsConfig:
     seam_offset_m: float = 0.0
     switch_to_ice: bool = False
     force_duration_s: float = .100
+    pitch_torque_Nm: float = 0.0
 
     def as_dict(self) -> dict[str, object]:
         return asdict(self)
@@ -89,6 +90,17 @@ def calibration_scenario_configs() -> tuple[ScenarioPhysicsConfig, ...]:
         configs.append(ScenarioPhysicsConfig(f"boundary_lr_offset_{offset:+.3f}", "boundary_left_right", "left_right", "marble", "sand", .50, 120., 0., 0., 1., offset))
     for force in (120., 180., 240.):
         configs.append(ScenarioPhysicsConfig(f"sink_tilt_vertical_{int(force)}", "sink_and_tilt", "front_rear", "marble", "sand", .50, 120., force, 1., 0., .020))
+    return tuple(configs)
+
+
+def front_rear_torque_calibration_configs() -> tuple[ScenarioPhysicsConfig, ...]:
+    """Seven-run rejected-design audit: torque is isolated from pilot defaults."""
+    configs = [default_scenario_configs()[0]]
+    for torque in (8., 16., 24.):
+        configs.extend((
+            ScenarioPhysicsConfig(f"tilt_fr_torque_{int(torque)}", "tilt_dominant", "front_rear", "marble", "sand", .50, 0., 0., 1., 0., 0., pitch_torque_Nm=torque),
+            ScenarioPhysicsConfig(f"boundary_fr_torque_{int(torque)}", "boundary_front_rear", "front_rear", "marble", "sand", .50, 0., 0., 1., 0., 0., pitch_torque_Nm=torque),
+        ))
     return tuple(configs)
 
 

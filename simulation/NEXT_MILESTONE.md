@@ -221,6 +221,9 @@ sink/tilt onset을 연구한다. 기존 4-class classifier와 deployment artifac
 - [ ] Fast Reflex v2 approved bounded redesign for loaded front/rear tilt
   coverage, then a fresh train-only calibration; do not generate a pilot until
   `scenario_selection.json` reports `pilot_ready=true`
+- [x] Fast Reflex v2 front/rear pitch-torque rejection audit: orientation was
+  produced only by reducing loaded contact, so the seven-run train-only design
+  is isolated from defaults and does not authorize pilot generation
 - [ ] 후속 승인 뒤 selected detector INT8/E84, reflex rule 및 E2E 측정
 
 다음 milestone은 frozen Slip 결과를 그대로 종료 상태로 보존하고, Sand v2를

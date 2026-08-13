@@ -40,6 +40,20 @@ pilot. The next approval must choose a bounded physical redesign for
 front/rear tilt (for example localized support asymmetry), then rerun only its
 small train-only candidates.
 
+### Rejected front/rear torque design
+
+A subsequent seven-run train-only audit applied 8, 16, and 24 Nm bounded pitch
+torques, with an unchanged normal control. It is preserved in
+`outputs/terrain_fast_reflex_v2_front_rear_torque_calibration`. The torque did
+produce orientation departures (0.0447, 0.5067, and 3.1344 rad respectively),
+but it reduced loaded contact (Ground A/B contact samples 74/94, 69/86, and
+67/83) and made no sustained-Tilt label. The 8 Nm case instead produced a
+Sink event; larger torques were clearly excessive rotational disturbances.
+This candidate is intentionally isolated behind
+`--front-rear-torque-calibration` and is not part of default/pilot selection.
+The unresolved redesign is localized compliant support asymmetry, rather than
+larger body torque or any oracle-threshold change.
+
 ## Implemented v2 foundation
 
 `terrain_fast_reflex_v2.py` and `run_terrain_fast_reflex_v2.py` implement a

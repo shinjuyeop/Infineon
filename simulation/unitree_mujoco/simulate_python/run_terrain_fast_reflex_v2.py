@@ -21,7 +21,7 @@ from terrain_fast_reflex_v2 import (
     RELATIVE_TRANSITION_TIME_MS, SCHEMA_NAME, SCHEMA_VERSION, SENSOR_RATE_HZ,
     TRACE_POST_MS, TRACE_PRE_MS, TRACE_SAMPLES, V2_ORACLE_CHANNELS, V2_ORACLE_INDEX,
     ScenarioPhysicsConfig, calibration_scenario_configs, calibrate_v2,
-    default_scenario_configs, label_v2, onset_ms, validate_final_test_request,
+    default_scenario_configs, front_rear_torque_calibration_configs, label_v2, onset_ms, validate_final_test_request,
     validate_state_order,
 )
 from terrain_profiles import TERRAIN_PROFILES, apply_terrain_profile
@@ -63,6 +63,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--plot", action="store_true")
     parser.add_argument("--scenario-calibration", action="store_true",
                         help="bounded train-only physical candidate sweep; no threshold candidates")
+    parser.add_argument("--front-rear-torque-calibration", action="store_true",
+                        help="bounded rejected-design audit; not eligible as pilot selection")
     parser.add_argument("--scenario-selection", type=Path,
                         help="frozen selected_configs JSON from a prior train-only calibration")
     parser.add_argument("--audit-existing", type=Path,
@@ -100,7 +102,7 @@ def protocol(args: argparse.Namespace, configs: tuple[ScenarioPhysicsConfig, ...
         "dataset_name": SCHEMA_NAME, "schema_version": SCHEMA_VERSION,
         "status": "v2 physical dataset foundation; no detector training",
         "modes": sorted({config.mode for config in configs}), "scenario_configs": [config.as_dict() for config in configs],
-        "scenario_calibration": bool(args.scenario_calibration), "physics_rate_hz": 2000, "sensor_rate_hz": SENSOR_RATE_HZ,
+        "scenario_calibration": bool(args.scenario_calibration or args.front_rear_torque_calibration), "physics_rate_hz": 2000, "sensor_rate_hz": SENSOR_RATE_HZ,
         "physics_timestep_s": PHYSICS_TIMESTEP_S, "physics_steps_per_sample": PHYSICS_STEPS_PER_SAMPLE,
         "trace_interval_ms": [-TRACE_PRE_MS, TRACE_POST_MS], "trace_shape": [TRACE_SAMPLES, 10],
         "settle_time_s": SETTLE_TIME_S, "transition_time_s": TRANSITION_TIME_S,
@@ -158,6 +160,13 @@ def _apply_vertical_pulse(data, body_id: int, time_s: float, config: ScenarioPhy
         data.xfrc_applied[body_id, 2] -= config.vertical_force_N * np.sin(np.pi * phase)
 
 
+def _apply_pitch_torque(data, body_id: int, time_s: float, config: ScenarioPhysicsConfig) -> None:
+    """A bounded mechanical pitch disturbance with no imposed vertical force."""
+    phase = (time_s - TRANSITION_TIME_S) / config.force_duration_s
+    if 0.0 <= phase < 1.0:
+        data.xfrc_applied[body_id, 4] += config.pitch_torque_Nm * np.sin(np.pi * phase)
+
+
 def _offset_seam(model, layout: str, offset_m: float) -> None:
     if not offset_m:
         return
@@ -196,6 +205,7 @@ def run_one(config: ScenarioPhysicsConfig, family: str, surface_index: int, run_
             qpos_delta, qvel_delta = float(np.max(np.abs(data.qpos-qpos_before))), float(np.max(np.abs(data.qvel-qvel_before)))
             switched=True
         support.apply(); exciter.apply(float(data.time)); _apply_vertical_pulse(data, exciter.body_id, float(data.time), config)
+        _apply_pitch_torque(data, exciter.body_id, float(data.time), config)
         mujoco.mj_step(model, data); steps += 1
         if steps % PHYSICS_STEPS_PER_SAMPLE == 0:
             times.append(float(data.time)); sensors.append(reader.read_vector())
@@ -209,6 +219,7 @@ def run_one(config: ScenarioPhysicsConfig, family: str, surface_index: int, run_
               "settle_time_s":SETTLE_TIME_S,"ground_layout":config.layout,"ground_a_material":config.material_a,"ground_b_material":config.material_b,
               "boundary_orientation":"front_rear" if config.layout == "front_rear" else "left_right","boundary_position_m":config.seam_offset_m,
               "pulse_magnitude_N":config.horizontal_force_N,"vertical_pulse_magnitude_N":config.vertical_force_N,
+              "pitch_torque_Nm":config.pitch_torque_Nm,
               "pulse_duration_s":config.force_duration_s,"pulse_direction_x":config.direction_x,"pulse_direction_y":config.direction_y,
               "support_ratio":config.support_ratio,"material_switch_to_ice":int(config.switch_to_ice),"run_index":run_index}
     return RawRun(metadata, times[select], sensors[select], _postprocess(raw[select]), qpos_delta, qvel_delta, time.perf_counter()-start)
@@ -343,10 +354,14 @@ def main() -> None:
             raise ValueError("invalid Fusion10/timestamp artifact")
         print(f"V2_AUDIT_PASS runs={len(sensors)} native_spacing_ms=1 final_test_materialized=0 source={source}")
         return
-    if args.scenario_calibration and args.scenario_selection is not None:
-        raise ValueError("choose either --scenario-calibration or --scenario-selection")
+    if sum(bool(item) for item in (args.scenario_calibration, args.front_rear_torque_calibration, args.scenario_selection is not None)) > 1:
+        raise ValueError("choose one scenario calibration/selection source")
     if args.scenario_calibration:
         configs=tuple(config for config in calibration_scenario_configs() if config.mode in args.modes)
+        if any(family_for_name(name).split != "train" for name in _families(args)):
+            raise ValueError("scenario calibration is train-only")
+    elif args.front_rear_torque_calibration:
+        configs=tuple(config for config in front_rear_torque_calibration_configs() if config.mode in args.modes)
         if any(family_for_name(name).split != "train" for name in _families(args)):
             raise ValueError("scenario calibration is train-only")
     elif args.scenario_selection is not None:
@@ -388,7 +403,7 @@ def main() -> None:
     summary=[f"{SCHEMA_NAME} schema_version={SCHEMA_VERSION}",f"runs={len(raw)} valid={sum(r['valid'] for r in rows)}", "native_sampling=1000Hz physics=2000Hz spacing=1ms", "final_test_materialized=0",f"calibration={json.dumps(calibration.as_dict(),sort_keys=True)}"]
     for mode in sorted({config.mode for config in configs}):
         subset=[r for r in rows if r["mode"]==mode];summary.append(f"{mode}: runs={len(subset)} risk={sum(r['slip_risk_onset_ms']!='' for r in subset)} sink={sum(r['sustained_sink_onset_ms']!='' for r in subset)} tilt={sum(r['sustained_tilt_onset_ms']!='' for r in subset)}")
-    summary.extend([f"scenario_calibration={int(args.scenario_calibration)}",f"pilot_ready={selection['pilot_ready']}",f"scenario_gates={json.dumps(selection['gates'],sort_keys=True)}"])
+    summary.extend([f"scenario_calibration={int(args.scenario_calibration or args.front_rear_torque_calibration)}",f"pilot_ready={selection['pilot_ready']}",f"scenario_gates={json.dumps(selection['gates'],sort_keys=True)}"])
     (output/"summary.txt").write_text("\n".join(summary)+"\n",encoding="utf-8");print("\n".join(summary))
 
 

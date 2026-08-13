@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from terrain_fast_reflex_v2 import (  # noqa: E402
     TRACE_SAMPLES, V2_ORACLE_CHANNELS, V2_ORACLE_INDEX, V2Calibration,
     calibration_scenario_configs, default_scenario_configs, label_v2,
-    validate_final_test_request, validate_state_order,
+    front_rear_torque_calibration_configs, validate_final_test_request, validate_state_order,
 )
 
 
@@ -56,6 +56,11 @@ class FastReflexV2Test(unittest.TestCase):
         self.assertNotEqual(configs["boundary_left_right"].seam_offset_m, 0.0)
         self.assertTrue(configs["slip_risk_dominant"].switch_to_ice)
         self.assertEqual(configs["normal_sand"].horizontal_force_N, 0.0)
+        self.assertEqual(configs["normal_sand"].pitch_torque_Nm, 0.0)
+        self.assertEqual(configs["tilt_dominant"].pitch_torque_Nm, 0.0)
+        torque_configs = front_rear_torque_calibration_configs()
+        self.assertEqual(len(torque_configs), 7)
+        self.assertTrue(any(config.pitch_torque_Nm > 0.0 for config in torque_configs))
 
 
 if __name__ == "__main__":
