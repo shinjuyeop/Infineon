@@ -24,6 +24,15 @@ one-shot reservation is indices 9110--9114, session 20260903, and excitation
 offset 921000; it keeps all frozen detector values unchanged and creates the
 empty final directory before simulation so a partial run remains fail-closed.
 
+## Fast Reflex v2 strict INT8 preparation
+
+Strict INT8 TFLite artifacts were converted from the frozen Float Slip 5 ms and
+Sink 20 ms models using only deterministic train representative windows. Their
+validation-only Float↔INT8 endpoint/replay parity passed, so `VELA_READY=true`.
+Final-test artifacts were not read for INT8 inference. The next approval is
+Vela optimization for Ethos-U55-128 only; E84 build/flash/inference and HIL
+remain out of scope.
+
 상태: **expanded dataset, host INT8 parity, KIT_PSE84_AI E84 deployment,
 TRN1 full-window HIL, TRN2 continuous sample-stream HIL 및 실제 MuJoCo
 live-loop → physical E84 integration, native 1 kHz/50 ms feasibility 및

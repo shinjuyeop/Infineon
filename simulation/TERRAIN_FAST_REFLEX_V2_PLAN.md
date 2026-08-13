@@ -48,6 +48,25 @@ Old v1 test families (`warped_multisine`,
 permitted only if both frozen final host gates pass; a failure requires a new
 version/protocol rather than post-test threshold adjustment.
 
+## Strict INT8 deployment preparation
+
+The completed Float final-host test was not regenerated or inferred during
+INT8 preparation. `run_terrain_fast_reflex_v2_int8.py` reuses the existing
+`terrain_int8.py` strict converter (`TFLITE_BUILTINS_INT8`, INT8 input/output,
+no Flex or floating tensors). It verifies the frozen model and normalization
+SHA256 before conversion, uses 128 deterministic train-only representative
+windows (seed 20260813; balanced label/family strata), and evaluates only the
+existing validation split. Normalization stays outside the TFLite model.
+
+Both artifacts passed the frozen validation parity gate: INT8 causal FPR <=5%,
+run-recall delta no worse than -1 percentage point, and p95 latency regression
+no more than 5 ms. `VELA_READY=true`. The next, separately approved Vela-only
+commands are `vela --accelerator-config ethos-u55-128 --config
+../../outputs/terrain_fast_reflex_v2_int8/slip/model_int8.tflite --output-dir
+../../outputs/terrain_fast_reflex_v2_vela/slip` and the equivalent `sink`
+path. Suggested E84 names are `FAST_REFLEX_SLIP_V2_U55` and
+`FAST_REFLEX_SINK_V2_U55`; no Vela, E84, or HIL action was performed here.
+
 ## 2026-08 scenario-physics calibration update
 
 The 90-run pilot found insufficient physical failure-mode coverage; its oracle

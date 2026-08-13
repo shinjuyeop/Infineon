@@ -81,6 +81,44 @@ def inspect_tflite_model(path: str | Path) -> tuple[TensorQuantization, TensorQu
     return input_spec, output_spec
 
 
+def inspect_binary_tflite_model(path: str | Path, window_ms: int) -> tuple[TensorQuantization, TensorQuantization, list[str]]:
+    """Strict no-Flex INT8 audit for a Fast Reflex binary `(L,10)->(1,)` model."""
+    tf = require_tensorflow(); interpreter = tf.lite.Interpreter(model_path=str(Path(path))); interpreter.allocate_tensors()
+    ops = [str(d.get("op_name", "")) for d in interpreter._get_ops_details() if str(d.get("op_name", "")) != "DELEGATE"]
+    if any(not op or op.startswith("Flex") for op in ops): raise ValueError(f"Flex/invalid ops prohibited: {ops}")
+    floating = [str(d["name"]) for d in interpreter.get_tensor_details() if np.issubdtype(np.dtype(d["dtype"]), np.floating)]
+    if floating: raise ValueError("full-INT8 model contains floating tensors: " + ", ".join(floating))
+    inputs, outputs = interpreter.get_input_details(), interpreter.get_output_details()
+    if len(inputs) != 1 or len(outputs) != 1: raise ValueError("binary model must have exactly one input/output")
+    inp, out = _tensor_quantization(inputs[0]), _tensor_quantization(outputs[0])
+    if inp.dtype != "int8" or out.dtype != "int8" or inp.shape != (1, window_ms, 10) or out.shape not in ((1, 1), (1,)):
+        raise ValueError(f"unexpected binary INT8 interface input={inp} output={out}")
+    return inp, out, ops
+
+
+def export_full_int8_binary(model: Any, representative_samples: np.ndarray, output_path: str | Path, window_ms: int) -> tuple[TensorQuantization, TensorQuantization, list[str]]:
+    samples = np.asarray(representative_samples, np.float32)
+    if samples.ndim != 3 or samples.shape[1:] != (window_ms, 10) or not len(samples) or not np.isfinite(samples).all(): raise ValueError("invalid binary representative samples")
+    tf = require_tensorflow()
+    def representative_dataset():
+        for sample in samples: yield [sample[None, ...]]
+    converter = tf.lite.TFLiteConverter.from_keras_model(model); converter.optimizations = [tf.lite.Optimize.DEFAULT]; converter.representative_dataset = representative_dataset
+    converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS_INT8]; converter.inference_input_type = tf.int8; converter.inference_output_type = tf.int8
+    output = Path(output_path); output.parent.mkdir(parents=True, exist_ok=True); output.write_bytes(converter.convert())
+    return inspect_binary_tflite_model(output, window_ms)
+
+
+def predict_tflite_binary(path: str | Path, standardized: np.ndarray, window_ms: int) -> tuple[np.ndarray, np.ndarray]:
+    values = np.asarray(standardized, np.float32)
+    if values.ndim != 3 or values.shape[1:] != (window_ms, 10): raise ValueError("unexpected binary inference shape")
+    tf = require_tensorflow(); interpreter = tf.lite.Interpreter(model_path=str(Path(path))); interpreter.allocate_tensors()
+    inp, out, _ = inspect_binary_tflite_model(path, window_ms); input_detail, output_detail = interpreter.get_input_details()[0], interpreter.get_output_details()[0]
+    raw = np.empty(len(values), np.int8)
+    for i, sample in enumerate(values):
+        interpreter.set_tensor(input_detail["index"], quantize(sample[None], inp)); interpreter.invoke(); raw[i] = interpreter.get_tensor(output_detail["index"]).reshape(-1)[0]
+    return dequantize(raw, out).reshape(-1), raw
+
+
 def list_tflite_operators(path: str | Path) -> list[str]:
     """Return the ordered builtin operator names used by a validated model."""
     tf = require_tensorflow()

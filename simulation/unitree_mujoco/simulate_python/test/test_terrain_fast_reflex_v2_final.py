@@ -7,6 +7,8 @@ from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from run_terrain_fast_reflex_v2_final import FROZEN, SURFACE_INDICES, FINAL_SESSION_SEED, FINAL_EXCITATION_OFFSET, planned_runs, prepare_evaluation_output, verify_preflight, verify_selected_values
 from terrain_fast_reflex_v2 import validate_final_test_request
+from run_terrain_fast_reflex_v2_int8 import quant_threshold
+from terrain_int8 import TensorQuantization
 
 
 class V2FinalProtocolTest(unittest.TestCase):
@@ -46,6 +48,12 @@ class V2FinalProtocolTest(unittest.TestCase):
             (output / "slip_final_metrics.json").write_text("{}")
             with self.assertRaisesRegex(FileExistsError, "non-pristine"):
                 prepare_evaluation_output(output)
+
+    def test_int8_threshold_reference_math(self):
+        spec = TensorQuantization((1, 5, 10), "int8", .00390625, -128)
+        value = quant_threshold(.9719217419624332, spec)
+        self.assertEqual(value["quantized_threshold"], 121)
+        self.assertAlmostEqual(value["effective_dequantized_threshold"], .97265625)
 
 
 if __name__ == "__main__":
