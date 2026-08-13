@@ -1,5 +1,13 @@
 # Terrain Classification Milestone Status
 
+## Fast Reflex v2 E84/U55 audit
+
+Separate frozen-artifact Vela outputs use the existing E84 fast1000 command:
+U55-128, Performance, Sram_Only, arena cache 2936012, and Vela's default
+High_End_Embedded system. Slip has one CPU `Max` fallback and must prove its
+mixed delegate path with a fixed board golden test; Sink is fully NPU delegated.
+No flash, board inference, or HIL was performed.
+
 ## Fast Reflex v2 validation selection
 
 The 225-run Fast Reflex v2 dataset and seven frozen user-trained detector

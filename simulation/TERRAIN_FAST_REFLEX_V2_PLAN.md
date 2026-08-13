@@ -1,5 +1,23 @@
 # Terrain Fast Reflex v2 experiment plan
 
+## E84/U55 Vela audit
+
+The established `terrain_e84_deploy` fast1000 generator invokes Vela with
+`--accelerator-config ethos-u55-128 --optimise Performance --memory-mode
+Sram_Only --arena-cache-size 2936012`; it does not pass `--system-config`, so
+the recorded system is Vela's `Ethos_U55_High_End_Embedded` default. Frozen v2
+INT8 artifacts were separately compiled with that exact command into
+`outputs/terrain_fast_reflex_v2_vela_e84/` without modifying the source INT8
+files. Slip is 6,272 bytes, 6,024 MACs, and 8 NPU + 1 CPU `Max` operator;
+Sink is 5,056 bytes, 23,856 MACs, and 6/6 NPU operators.
+
+The E84 project embeds Vela flatbuffers as generated `uint8_t` arrays selected
+by `NN_MODEL_NAME` and passed as `mtb_ml_model_bin_t` to `ml_validation.c`.
+There is no source-visible explicit `REDUCE_MAX` resolver registration in the
+checked-in app, so Slip mixed-U55 runtime readiness remains unproven until a
+fixed golden board run. Sink's fully delegated artifact is ready for the same
+generation/build path. No board flash, runtime inference, or HIL was done.
+
 Status: **v2 dataset foundation implemented and train-only six-run smoke
 verified**. No full v2 dataset was generated, no detector was trained, and no
 new test evaluation was run. v1 artifacts remain immutable research records.
