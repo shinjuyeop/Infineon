@@ -259,7 +259,9 @@ def main() -> None:
         print(json.dumps(payload,indent=2)); print("Dry run only. Use --execute; final test remains fail-closed."); return
     output=(args.output_dir or OUTPUT_DIR).resolve()
     if output.exists() and any(output.iterdir()): raise FileExistsError(f"refusing to overwrite {output}")
-    output.mkdir(parents=True)
+    # A previous dry/failed invocation may have created an empty directory.
+    # It has no artifact to protect, unlike any non-empty output above.
+    output.mkdir(parents=True, exist_ok=True)
     raw=[]
     for mode in args.modes:
         for family in _families(args):
