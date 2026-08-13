@@ -56,6 +56,15 @@ NN_MODEL_NAME=TERRAIN_CPU
 # fixed: run the generated test-partition tensor once at boot
 # hil:   receive TRN1 full windows or TRN2 INT8 samples over KitProg3 UART
 TERRAIN_MODE?=fixed
+ifneq (,$(findstring FAST_REFLEX_,$(NN_MODEL_NAME)))
+DEFINES+=FAST_REFLEX_GOLDEN
+endif
+ifeq (FAST_REFLEX_SLIP_V2_U55,$(NN_MODEL_NAME))
+DEFINES+=FAST_REFLEX_THRESHOLD_RAW=121
+endif
+ifeq (FAST_REFLEX_SINK_V2_U55,$(NN_MODEL_NAME))
+DEFINES+=FAST_REFLEX_THRESHOLD_RAW=124
+endif
 ifeq (hil, $(TERRAIN_MODE))
 DEFINES+=TERRAIN_HIL
 endif

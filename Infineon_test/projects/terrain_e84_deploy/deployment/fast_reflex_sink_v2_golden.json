@@ -1,0 +1,22 @@
+{
+  "validation_only": true,
+  "vectors": 6,
+  "threshold_raw": 124,
+  "source_raw_model_expected": [
+    114,
+    100,
+    114,
+    123,
+    124,
+    126
+  ],
+  "u55_exact_expected": [
+    114,
+    100,
+    114,
+    124,
+    124,
+    126
+  ],
+  "u55_baseline_provenance": "first E84 U55 fixed transcript"
+}

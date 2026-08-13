@@ -641,6 +641,22 @@ cy_rslt_t ml_validation_local_task(void)
                    mtb_ml_utils_find_max(result_buffer[output_idx], model_output_size[output_idx]),
                    mtb_ml_utils_find_max(output_reference, model_output_size[output_idx]));
 
+#if defined(FAST_REFLEX_GOLDEN)
+            {
+                bool raw_match = true;
+                for (int value_idx = 0; value_idx < model_output_size[output_idx]; value_idx++)
+                {
+                    if (result_buffer[output_idx][value_idx] != output_reference[value_idx]) raw_match = false;
+                }
+                printf("FRV2 vec=%d raw=%d expected=%d decision=%d expected_decision=%d raw_exact=%s\r\n", j,
+                       (int) result_buffer[output_idx][0], (int) output_reference[0],
+                       ((int) result_buffer[output_idx][0] >= FAST_REFLEX_THRESHOLD_RAW),
+                       ((int) output_reference[0] >= FAST_REFLEX_THRESHOLD_RAW), raw_match ? "PASS" : "FAIL");
+                if (raw_match) correct_result[output_idx]++;
+                continue;
+            }
+#endif
+
             /* Check if the results are accurate enough */
             if (mtb_ml_utils_find_max(result_buffer[output_idx], model_output_size[output_idx]) ==
                 mtb_ml_utils_find_max(output_reference, model_output_size[output_idx]))

@@ -1,0 +1,22 @@
+{
+  "validation_only": true,
+  "vectors": 6,
+  "threshold_raw": 121,
+  "source_raw_model_expected": [
+    120,
+    121,
+    120,
+    120,
+    120,
+    122
+  ],
+  "u55_exact_expected": [
+    120,
+    121,
+    120,
+    120,
+    120,
+    122
+  ],
+  "u55_baseline_provenance": "raw strict-INT8 host golden; U55 board baseline not yet established"
+}

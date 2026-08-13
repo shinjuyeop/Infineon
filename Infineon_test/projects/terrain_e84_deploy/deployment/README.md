@@ -2,6 +2,16 @@
 
 ## 1000 Hz / 50-sample fast candidate (E84/U55 fixed and Host-golden HIL verified)
 
+## Fast Reflex v2 fixed golden preparation
+
+`FAST_REFLEX_SINK_V2_U55` and `FAST_REFLEX_SLIP_V2_U55` are generated from
+frozen Vela artifacts and contain six validation-only INT8 vectors each. Build
+them with `TERRAIN_MODE=fixed`; UART prints `FRV2 vec=... raw=... expected=...
+decision=... raw_exact=PASS`. Sink's expected values use the recorded first-U55
+baseline because a normal Host TFLite interpreter cannot execute Vela's
+`ethos-u` custom op. Slip's mixed CPU/NPU runtime is not validated until board
+execution. Neither profile uses final-test samples.
+
 The fast candidate is intentionally separate from the deployed 100 Hz model:
 
 | Path | Model name | Source |
