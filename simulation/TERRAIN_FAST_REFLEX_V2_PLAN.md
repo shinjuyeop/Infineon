@@ -17,6 +17,27 @@ then maximum recall, then lower p95 onset-to-stable latency, then shorter
 window. Train is never used for selection and the final-test split remains
 sealed (materialization and inference both zero).
 
+## Final host-test protocol: frozen before materialization
+
+`run_terrain_fast_reflex_v2_final.py` is the only final-test path. Its default
+`preflight` is read-only; `run --execute-final-test` is explicitly required to
+materialize and immediately evaluate the one-shot reservation. It freezes Slip
+to 5 ms, `0.9719217419624332`, persistence 3, and Sink to 20 ms,
+`0.9836072999238968`, persistence 1. Existing model and normalization SHA256
+values are verified before execution. The primary final host gate is unchanged:
+overall causal run FPR <=5%, where the numerator is negative-only runs with a
+stable firing plus target-positive runs with a pre-onset stable firing, divided
+by all final runs. Pre-onset Slip firing remains a false alarm and separately
+reported anticipation diagnostic.
+
+The final reservation is 90 runs: normal, Slip, and Sink modes × two fresh
+held-out realizations × five reserved surface indices (9100--9104) × three
+runs. Session seed 20260902 and excitation offset 920000 are retained from
+the authoritative reservation. Old v1 test families (`warped_multisine`,
+`smooth_random_patches`) are permanently excluded. `INT8_READY=true` is
+permitted only if both frozen final host gates pass; a failure requires a new
+version/protocol rather than post-test threshold adjustment.
+
 ## 2026-08 scenario-physics calibration update
 
 The 90-run pilot found insufficient physical failure-mode coverage; its oracle

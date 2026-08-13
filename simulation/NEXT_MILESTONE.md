@@ -10,6 +10,13 @@ when overall causal run FPR is at most 5%, then ranks recall, p95 latency, and
 shorter window. Final test remains sealed until both selected JSON artifacts
 report a valid candidate; no final-test data may be materialized or inferred.
 
+The next approved user action is only the frozen final-host one-shot command.
+Slip is fixed at 5 ms / threshold 0.971921742 / persistence 3; Sink at 20 ms /
+threshold 0.983607300 / persistence 1. Preflight verifies SHA256 integrity,
+selection values, `FINAL_TEST_READY=true`, and nonexistent final output before
+any materialization. The final test remains untouched until that explicit user
+command; it is not part of this preparation milestone.
+
 상태: **expanded dataset, host INT8 parity, KIT_PSE84_AI E84 deployment,
 TRN1 full-window HIL, TRN2 continuous sample-stream HIL 및 실제 MuJoCo
 live-loop → physical E84 integration, native 1 kHz/50 ms feasibility 및
