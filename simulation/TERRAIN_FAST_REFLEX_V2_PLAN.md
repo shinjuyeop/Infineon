@@ -4,6 +4,19 @@ Status: **v2 dataset foundation implemented and train-only six-run smoke
 verified**. No full v2 dataset was generated, no detector was trained, and no
 new test evaluation was run. v1 artifacts remain immutable research records.
 
+## Validation-only detector selection protocol
+
+The 225-run final-scope dataset passed its frozen policy gate, and the seven
+user-trained candidate artifacts are preserved: Slip 5/10/20 ms (GAP +
+GlobalMax, 1,237 parameters) and Sink 10/20/30/50 ms (GAP, 1,221 parameters).
+`run_terrain_fast_reflex_v2_validation.py` selects only from Slip 5/10 ms and
+Sink 10/20/30 ms by read-only validation replay. It uses only crosshatch and
+rounded-ridges validation windows, empirical validation-score boundaries, and
+persistence 1/2/3/5/8 ms. Selection is frozen as overall causal run FPR <=5%,
+then maximum recall, then lower p95 onset-to-stable latency, then shorter
+window. Train is never used for selection and the final-test split remains
+sealed (materialization and inference both zero).
+
 ## 2026-08 scenario-physics calibration update
 
 The 90-run pilot found insufficient physical failure-mode coverage; its oracle

@@ -1,5 +1,15 @@
 # Terrain Classification Milestone Status
 
+## Fast Reflex v2 validation selection
+
+The 225-run Fast Reflex v2 dataset and seven frozen user-trained detector
+artifacts are ready for a validation-only threshold/persistence sweep. The
+selection tool evaluates Slip 5/10 ms and Sink 10/20/30 ms using only the
+crosshatch and rounded-ridges validation families. It freezes a candidate only
+when overall causal run FPR is at most 5%, then ranks recall, p95 latency, and
+shorter window. Final test remains sealed until both selected JSON artifacts
+report a valid candidate; no final-test data may be materialized or inferred.
+
 상태: **expanded dataset, host INT8 parity, KIT_PSE84_AI E84 deployment,
 TRN1 full-window HIL, TRN2 continuous sample-stream HIL 및 실제 MuJoCo
 live-loop → physical E84 integration, native 1 kHz/50 ms feasibility 및
