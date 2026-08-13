@@ -311,3 +311,68 @@ INT8/E84 대상이 아니다.
 `simulation/outputs/terrain_fast_reflex_detector_validation_v1`의 summary/CSV/plot에
 있다. 다음 단계는 Slip candidate의 고정 test 평가와 Sink/Tilt task/physical
 feature/oracle-label 설계 검토이며, 그 승인 전 INT8/E84로 진행하지 않는다.
+
+## Frozen Slip one-shot test와 Sand Tilt validation 분석
+
+Slip validation candidate는 test materialization 전에 다음 값으로 동결했다.
+
+```text
+Conv1D(12,k5) -> Conv1D(16,k3) -> GAP+GlobalMax -> Dense(1)
+window=5 ms, threshold=0.7317748725, persistence=3
+parameters=1,237, MAC=5,912, seed=20260812
+```
+
+`warped_multisine`와 `smooth_random_patches` 소유 test 120 runs에 대해 모델
+inference를 정확히 한 번 실행했다. Target recall은 64/65=98.46%였지만,
+pre-onset false alarm은 9/120=7.50%여서 사전 gate의 5% 한계를 넘었다. 따라서
+판정은 **Slip Host Final Gate FAIL**이다. Hazard onset부터 stable detection까지
+median/p95/max는 2/10.25/42 ms였다. Test 결과를 본 뒤 threshold, persistence,
+window, pooling, normalization, seed 또는 모델을 변경하거나 재학습하지 않았다.
+최종 artifact는 `simulation/outputs/terrain_fast_reflex_slip_final_test_v1`에 있다.
+
+| Metric | Validation | Test |
+|---|---:|---:|
+| Window | 5 ms | 5 ms |
+| Run recall | 96.875% | 98.462% |
+| Pre-onset run FPR | 5.00% | 7.50% |
+| Median onset latency | 3.0 ms | 2.0 ms |
+| p95 onset latency | 12.85 ms | 10.25 ms |
+
+```text
+Slip FINAL HOST GATE: FAIL
+```
+
+Sand는 test split을 전혀 사용하지 않고 train 180 + validation 120 runs만
+분석했다. FSR contact 위치는 모델 XML의 local coordinate를 근거로 rear=(1,2),
+front=(3,4), left=(1,3), right=(2,4)로 매핑했다. IMU site에는 별도 quaternion이
+없지만 실제 보드 축 보정은 아직 없으므로 분석과 후보 입력에는 raw
+`gyro_x/gyro_y` 명칭을 유지한다.
+
+Validation Tilt-only 15 runs의 oracle maximum tilt는 0.000381--0.000595 rad,
+median 0.000445 rad로 canonical 0.000347 rad threshold의 1.10--1.72배에 불과했다.
+그럼에도 onset-relative 5 ms에서 normalized front/rear FSR imbalance는
+Tilt-only와 completely hazard-free Normal 사이 ROC-AUC/PR-AUC 1.000,
+Cohen's d 5.00이었고, 5 ms gyro XY integral도 ROC-AUC 0.905였다. 즉 raw
+Fusion10에 정보가 전혀 없다는 가설은 지지되지 않지만, 신호가 매우 작은 oracle
+boundary 부근이고 기존 joint CNN이 강한 Sink+Tilt mode에 치우친 representation/
+multi-mode 문제가 함께 존재한다.
+
+Train-score threshold 후보와 validation `run FPR<=5%` 선택만 사용한 경량 rule과
+logistic baseline을 평가했다. 최종 authoritative 결과는
+`simulation/outputs/terrain_fast_reflex_sand_tilt_final_validation_v1`에 저장한다.
+단일 feature separation이 높아도 전체 100 ms replay에서 false alarm을 억제하면
+지속적인 Tilt-only run 검출로 이어지지 않았으며, 기존 CNN과 lightweight path의
+OR 조합도 95% recall gate를 통과하지 못했다. Sand candidate는 아직 확보되지
+않았고 Sand test, INT8, Vela, E84, UART 및 reflex firmware는 실행하지 않았다.
+
+| Detector | Window | Sand run recall | Tilt-only recall | Run FPR | Median latency |
+|---|---:|---:|---:|---:|---:|
+| Existing CNN | 20 ms | 66.67% | 0.00% | 0.83% | 12.0 ms |
+| Physical rule | 50 ms | 44.44% | 26.67% | 5.00% | 17.5 ms |
+| Logistic | 50 ms | 60.00% | 13.33% | 4.17% | 10.0 ms |
+| Combined OR | 50 ms | 75.56% | 26.67% | 5.00% | 11.0 ms |
+
+Sand validation gates: recall `>=95%` **FAIL**, run FPR `<=5%` **PASS**,
+observation `<=20 ms` **FAIL**. Small MLP는 rule/logistic의 causal replay가
+onset-aligned separation을 재현하지 못해 추가 capacity의 근거가 없으므로 실행하지
+않았다.

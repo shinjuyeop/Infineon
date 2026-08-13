@@ -204,9 +204,17 @@ sink/tilt onset을 연구한다. 기존 4-class classifier와 deployment artifac
 - [x] leakage-safe Float Host detector training/evaluation pipeline 및 1-epoch smoke
 - [x] 사용자 full 5/10/15/20/30/50 ms 학습과 validation-only failure diagnosis
 - [x] Slip 5 ms GAP/Max/GAP+Max 최소 ablation; GAP+Max validation gate 통과
-- [ ] Slip validation candidate의 고정 test 평가
-- [ ] Sink/Tilt tilt-only failure에 대한 task/feature/oracle-label 설계 결정
+- [x] Slip validation candidate의 one-shot 고정 test 평가; recall 98.46%,
+  pre-onset run FPR 7.50%로 **Host Final Gate FAIL**, test 기반 재튜닝 없음
+- [x] Sink/Tilt Tilt-only 15-run validation audit, sensor observability와
+  physical rule/logistic/combined replay; test 미사용, Sand gate 미달
 - [ ] 후속 승인 뒤 selected detector INT8/E84, reflex rule 및 E2E 측정
+
+다음 milestone은 frozen Slip 결과를 그대로 종료 상태로 보존하고, Sand v2를
+별도 experiment로 설계하는 것이다. 우선 Tilt-only 경계의 physical significance와
+run-level로 지속되는 FSR spatial signal을 재검토하고, 필요하면 label/task를
+사전에 재정의한 새 train/validation protocol을 만든다. 현재 결과로 INT8/E84나
+firmware 단계로 이동하지 않는다.
 
 Fast Layer KPI는 transition→hazard detection `<50 ms`, 우선 연구 목표는
 `<=20 ms` observation 가능성이다. Reflex command 변경 `<30 ms`는 아직
