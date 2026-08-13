@@ -1,0 +1,8 @@
+<mujoco model="g1 fast reflex v2 front rear boundary">
+  <include file="g1_29dof.xml"/>
+  <worldbody>
+    <!-- Adjacent tops meet at x=0; no hfield/global parameter switch. -->
+    <geom name="ground_a" type="box" size="1.5 1.0 0.05" pos="-1.5 0 -0.05" rgba="0.55 0.55 0.60 1"/>
+    <geom name="ground_b" type="box" size="1.5 1.0 0.05" pos="1.5 0 -0.05" rgba="0.75 0.55 0.30 1"/>
+  </worldbody>
+</mujoco>

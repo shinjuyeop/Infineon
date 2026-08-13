@@ -1,8 +1,89 @@
 # Terrain Fast Reflex v2 experiment plan
 
-Status: **planning only**. No v2 dataset was generated, no detector was trained,
-and no new test evaluation was run. v1 artifacts remain immutable research
-records.
+Status: **v2 dataset foundation implemented and train-only six-run smoke
+verified**. No full v2 dataset was generated, no detector was trained, and no
+new test evaluation was run. v1 artifacts remain immutable research records.
+
+## Implemented v2 foundation
+
+`terrain_fast_reflex_v2.py` and `run_terrain_fast_reflex_v2.py` implement a
+separate `terrain_fast_reflex_v2` schema. Raw AI data remains native 1 kHz
+Fusion10; MuJoCo-only state/contact diagnostics and labels are stored separately
+in `oracle_diagnostics.npz`. The runner is overwrite-safe and its default
+family set contains only train/validation ownership. Passing either old v1 test
+family fails closed, including with `--include-final-test`; the protocol reserves
+the deterministic final-test surface-seed range 9100--9199, session seed
+20260902, and excitation offset 920000, but has no generation command yet.
+
+The implementation has two adjacent, independently profiled box ground geoms:
+front/rear uses an x=0 seam and left/right uses a y=0.1185 m seam under the
+nominal left sole. They are real simultaneous MuJoCo contacts in one continuous
+state, not signal composition. Per-run metadata stores both material profiles,
+layout/orientation/position, and contact-sample counts for each ground geom.
+
+Labels are generated in two passes: fresh v2 train `normal_sand` traces provide
+robust percentile/MAD calibration; the frozen result then creates `safe`,
+`incipient_risk`, `confirmed_slip`, binary `slip_risk`, `sustained_sink`, and
+`sustained_tilt`. Slip Risk includes Confirmed Slip; sustained Sand labels each
+require loaded contact, physical magnitude conditions, and persistence.
+Orientation/angular rate and depth/downward velocity stay oracle-only. FSR
+spatial imbalance and raw gyro axes are diagnostics, not physical labels.
+
+The six-run train-only smoke ran each mode once. All six traces were finite,
+continuous, and 2 kHz/1 kHz aligned; both front/rear and left/right boundary
+runs contacted both independently profiled ground geoms. Under the deliberately
+tiny one-normal-run calibration, no run crossed the conservative sustained
+hazard thresholds. This is expectedly not a detector result and was not fixed
+by threshold tuning. It confirms schema/contact/path validity only; a balanced
+pilot is needed to establish physical mode coverage.
+
+Smoke artifact: `simulation/outputs/terrain_fast_reflex_v2_smoke_v4`.
+
+### Approved next user-run commands (do not run in this milestone)
+
+Pilot generation is 6 modes × 5 train/validation families × 1 surface × 3 runs
+= **90 runs**. Expected simulation wall time is approximately 0.4--1.5 minutes
+and compressed artifact size approximately 0.5--3 MiB (uncompressed traces are
+about 1.5 MiB). It writes
+`simulation/outputs/terrain_fast_reflex_v2_pilot` and must end with
+`terrain_fast_reflex_v2 schema_version=2`, `native_sampling=1000Hz
+physics=2000Hz spacing=1ms`, and `final_test_materialized=0`.
+
+```bash
+cd /d/shin/Infineon/simulation/unitree_mujoco/simulate_python
+../../venv/bin/python run_terrain_fast_reflex_v2.py --execute \
+  --output-dir ../../outputs/terrain_fast_reflex_v2_pilot \
+  --families multisine filtered_random sparse_aggregate crosshatch rounded_ridges \
+  --surfaces-per-family 1 --runs-per-surface 3 --plot
+```
+
+Pilot read-only validation/schema audit (no inference or training):
+
+```bash
+cd /d/shin/Infineon/simulation/unitree_mujoco/simulate_python
+../../venv/bin/python run_terrain_fast_reflex_v2.py \
+  --audit-existing ../../outputs/terrain_fast_reflex_v2_pilot
+```
+
+It must print `V2_AUDIT_PASS`, `native_spacing_ms=1`, and
+`final_test_materialized=0`.
+
+Full train/validation generation is 6 modes × 5 families × 3 surfaces × 5 runs
+= **450 runs**. Expected simulation wall time is approximately 2--8 minutes and
+compressed artifact size approximately 3--15 MiB (uncompressed traces are
+about 7.6 MiB). It writes `simulation/outputs/terrain_fast_reflex_v2_full` and
+uses the same normal-completion lines as pilot.
+
+```bash
+cd /d/shin/Infineon/simulation/unitree_mujoco/simulate_python
+../../venv/bin/python run_terrain_fast_reflex_v2.py --execute \
+  --output-dir ../../outputs/terrain_fast_reflex_v2_full \
+  --families multisine filtered_random sparse_aggregate crosshatch rounded_ridges \
+  --surfaces-per-family 3 --runs-per-surface 5 --plot
+```
+
+There is intentionally no final-test generation command. The reservation is
+fail-closed until a separately approved fresh-seed final-test design exists.
 
 ## Preserved v1 result
 

@@ -211,6 +211,9 @@ sink/tilt onset을 연구한다. 기존 4-class classifier와 deployment artifac
 - [x] Fast Reflex v2 experiment planning: frozen Slip pre-onset physical audit,
   fresh final-holdout policy, Sand sustained-hazard/failure-mode/boundary-step
   protocol; no new dataset, training, or test evaluation
+- [x] Fast Reflex v2 schema/dataset foundation and train-only six-mode smoke:
+  two-pass train-normal labels, fail-closed final-test reservation, and real
+  Marble/Sand front/rear plus left/right boundary geoms; full generation pending
 - [ ] 후속 승인 뒤 selected detector INT8/E84, reflex rule 및 E2E 측정
 
 다음 milestone은 frozen Slip 결과를 그대로 종료 상태로 보존하고, Sand v2를
