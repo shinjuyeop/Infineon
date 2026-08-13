@@ -19,10 +19,12 @@ MODES = ("normal_sand", "slip_risk_dominant", "sink_dominant", "tilt_dominant",
          "boundary_front_rear", "boundary_left_right", "sink_and_tilt")
 FINAL_TEST_SPLIT = "final_test"
 DEPLOYMENT_SCOPE = {
-    "slip_risk": "enabled",
-    "sand_sink_hazard": "enabled",
-    "sand_isolated_tilt": "excluded",
-    "tilt_exclusion_reason": "current MuJoCo contact-model limitation after bounded physical-design audit",
+    "frozen_before_pilot": True,
+    "slip_hazard": {"enabled": True, "target": "confirmed_slip"},
+    "sand_sink_hazard": {"enabled": True, "target": "sustained_sink"},
+    "incipient_slip": {"deployment_target": False, "diagnostic_only": True},
+    "sand_isolated_tilt": {"deployment_target": False, "diagnostic_only": True,
+                            "reason": "current MuJoCo contact-model limitation after bounded physical-design audit"},
 }
 
 # Kept explicitly local so schema-only tests do not need MuJoCo; names/units
@@ -180,6 +182,21 @@ def final_scope_calibration_configs() -> tuple[ScenarioPhysicsConfig, ...]:
 def sand_sink_hazard(labels: dict[str, np.ndarray]) -> np.ndarray:
     """Deployment binary target: Sink-only and Sink+Tilt are both positive."""
     return np.asarray(labels["sustained_sink"], bool)
+
+
+def slip_hazard(labels: dict[str, np.ndarray]) -> np.ndarray:
+    """Frozen deployment binary target; Incipient remains diagnostic-only."""
+    return np.asarray(labels["confirmed_slip"], bool)
+
+
+def final_scope_pilot_configs() -> tuple[ScenarioPhysicsConfig, ...]:
+    """Frozen physical configs for a post-ready four-mode pilot, not generated here."""
+    return (
+        ScenarioPhysicsConfig("normal_sand_scope", "normal_sand", "front_rear", "sand", "sand", .50, 0., 0., 1., 0.),
+        ScenarioPhysicsConfig("slip_ice_100", "slip_risk_dominant", "front_rear", "marble", "marble", .50, 100., 0., 1., 0., switch_to_ice=True),
+        ScenarioPhysicsConfig("sink_symmetric_100", "sink_dominant", "front_rear", "sand", "sand", .50, 0., 100., 1., 0.),
+        ScenarioPhysicsConfig("sink_tilt_asymmetric_120", "sink_and_tilt", "front_rear", "marble", "sand", .50, 120., 120., 1., 0., .020),
+    )
 
 
 @dataclass(frozen=True)

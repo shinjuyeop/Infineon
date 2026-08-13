@@ -233,10 +233,12 @@ sink/tilt onset을 연구한다. 기존 4-class classifier와 deployment artifac
   deployment scope
 - [x] Fast Reflex v2 deployment-scope decision: Slip Risk and Sand Sink Hazard
   only; isolated Sand Tilt-only excluded as a bounded Digital Twin limitation
-- [ ] Fast Reflex v2 pre-pilot decision on the frozen Slip Risk state policy:
-  bounded physical Marble-to-Ice sweep supplied Confirmed but no separate
-  Incipient interval, so do not generate a pilot until the required coverage
-  gate is explicitly resolved without test-driven threshold tuning
+- [x] Fast Reflex v2 pre-pilot target-policy freeze: Slip Hazard is confirmed
+  slip and Incipient is diagnostic-only; revised train-only scope gate passes
+  without changing a threshold, label, or historical artifact
+- [ ] User-run Fast Reflex v2 final-scope physical pilot: four frozen modes,
+  train/validation only, final test sealed; no detector/deployment work until
+  that physical dataset-validity audit passes
 - [ ] 후속 승인 뒤 selected detector INT8/E84, reflex rule 및 E2E 측정
 
 다음 milestone은 frozen Slip 결과를 그대로 종료 상태로 보존하고, Sand v2를

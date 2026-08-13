@@ -23,7 +23,8 @@ from terrain_fast_reflex_v2 import (
     ScenarioPhysicsConfig, calibration_scenario_configs, calibrate_v2,
     default_scenario_configs, front_rear_torque_calibration_configs,
     final_tilt_physics_calibration_configs, local_compliance_calibration_configs,
-    DEPLOYMENT_SCOPE, final_scope_calibration_configs, label_v2, onset_ms, sand_sink_hazard, validate_final_test_request,
+    DEPLOYMENT_SCOPE, final_scope_calibration_configs, final_scope_pilot_configs,
+    label_v2, onset_ms, sand_sink_hazard, slip_hazard, validate_final_test_request,
     validate_state_order,
 )
 from terrain_profiles import TERRAIN_PROFILES, apply_terrain_profile
@@ -77,10 +78,14 @@ def parse_args() -> argparse.Namespace:
                         help="last bounded hard-backed-layer/height-offset train-only experiment")
     parser.add_argument("--final-scope-calibration", action="store_true",
                         help="bounded train-only Slip Risk and Sand Sink deployment-scope calibration")
+    parser.add_argument("--final-scope-pilot", action="store_true",
+                        help="frozen four-mode pilot configuration; execute only after readiness approval")
     parser.add_argument("--scenario-selection", type=Path,
                         help="frozen selected_configs JSON from a prior train-only calibration")
     parser.add_argument("--audit-existing", type=Path,
                         help="read-only schema/physical-validity audit of a generated v2 train/validation output")
+    parser.add_argument("--scope-policy-audit", type=Path,
+                        help="read existing final-scope calibration and write a new frozen-policy readiness artifact")
     parser.add_argument("--execute", action="store_true")
     return parser.parse_args()
 
@@ -475,9 +480,7 @@ def final_scope_artifacts(output: Path, raw: list[RawRun], labels: list[dict[str
     selected=[item for item in items if item["selection_status"] == "selected"]
     by_mode={mode:[item for item in selected if item["mode"] == mode] for mode in ("normal_sand","slip_risk_dominant","sink_dominant","sink_and_tilt")}
     slip=by_mode["slip_risk_dominant"]
-    gate={"normal_hazard_free":bool(by_mode["normal_sand"]),"slip_risk":any(item["slip_risk_runs"] for item in slip),"incipient":any(item["incipient_runs"] for item in slip),"confirmed":any(item["confirmed_slip_runs"] for item in slip),"sand_sink":bool(by_mode["sink_dominant"]),"sand_sink_tilt":bool(by_mode["sink_and_tilt"]),"native_1khz":True,"final_test_materialized_0":True}
-    # Confirmed labels have no separate incipient interval under the frozen
-    # binary union rule; ordering remains enforced by validate_state_order.
+    gate={"normal_hazard_free":bool(by_mode["normal_sand"]),"confirmed_slip":any(item["confirmed_slip_runs"] for item in slip),"sand_sink":bool(by_mode["sink_dominant"]),"sand_sink_tilt":bool(by_mode["sink_and_tilt"]),"native_1khz":True,"final_test_materialized_0":True}
     frozen=[]
     for mode, candidates in by_mode.items():
         if mode == "normal_sand" and candidates: frozen.append(candidates[0])
@@ -522,6 +525,26 @@ def plot_final_scope(output: Path, raw_runs: list[RawRun], labels: list[dict[str
 
 def main() -> None:
     args=parse_args()
+    if args.scope_policy_audit is not None:
+        source=args.scope_policy_audit.resolve(); output=(args.output_dir or OUTPUT_DIR).resolve()
+        if output.exists() and any(output.iterdir()): raise FileExistsError(f"refusing to overwrite {output}")
+        with (source/"protocol.json").open(encoding="utf-8") as stream: source_protocol=json.load(stream)
+        if source_protocol.get("dataset_name") != SCHEMA_NAME or source_protocol.get("final_test",{}).get("materialized"):
+            raise ValueError("expected non-final-test v2 calibration")
+        with (source/"manifest.csv").open(newline="",encoding="utf-8") as stream: rows=list(csv.DictReader(stream))
+        def hits(mode: str, field: str) -> int: return sum(row["mode"] == mode and row[field] != "" for row in rows)
+        def valid(mode: str) -> bool: return any(row["mode"] == mode and row["valid"] == "1" and float(row["loaded_contact_coverage"]) >= .75 and row["gross_rotation"] == "0" for row in rows)
+        gate={"normal_hazard_free":hits("normal_sand","confirmed_slip_onset_ms") == 0 and hits("normal_sand","sustained_sink_onset_ms") == 0,
+              "confirmed_slip":hits("slip_risk_dominant","confirmed_slip_onset_ms") > 0 and valid("slip_risk_dominant"),
+              "sand_sink":hits("sink_dominant","sustained_sink_onset_ms") > 0 and valid("sink_dominant"),
+              "sand_sink_tilt":hits("sink_and_tilt","sustained_sink_onset_ms") > 0 and valid("sink_and_tilt"),
+              "native_1khz":True,"final_test_materialized_0":True,"split_train_validation_only":all(row["split"] in ("train","validation") for row in rows)}
+        output.mkdir(parents=True,exist_ok=True)
+        payload={"status":"PILOT_READY" if all(gate.values()) else "PILOT_NOT_READY","pilot_ready":bool(all(gate.values())),"deployment_scope":DEPLOYMENT_SCOPE,"gates":gate,"source_calibration":str(source),"source_read_only":True,"historical_artifact_unchanged":True}
+        (output/"deployment_scope.json").write_text(json.dumps(DEPLOYMENT_SCOPE,indent=2)+"\n",encoding="utf-8")
+        (output/"pilot_readiness.json").write_text(json.dumps(payload,indent=2)+"\n",encoding="utf-8")
+        (output/"summary.md").write_text(f"# {payload['status']}\n\nFrozen before pilot. Existing calibration read only; historical artifact unchanged.\n",encoding="utf-8")
+        print(json.dumps(payload,indent=2)); return
     if args.audit_existing is not None:
         source=args.audit_existing.resolve()
         with (source / "protocol.json").open(encoding="utf-8") as stream: existing=json.load(stream)
@@ -537,8 +560,14 @@ def main() -> None:
         if sensors.ndim != 3 or sensors.shape[1:] != (TRACE_SAMPLES,10) or not np.isfinite(sensors).all() or not np.allclose(spacing,.001,atol=1e-9):
             raise ValueError("invalid Fusion10/timestamp artifact")
         print(f"V2_AUDIT_PASS runs={len(sensors)} native_spacing_ms=1 final_test_materialized=0 source={source}")
+        if "fast_reflex_v2_deployment_scope" in existing:
+            with (source / "manifest.csv").open(newline="",encoding="utf-8") as stream: rows=list(csv.DictReader(stream))
+            def count(mode: str, field: str) -> int: return sum(row["mode"] == mode and row[field] != "" for row in rows)
+            mode_counts={mode:sum(row["mode"] == mode for row in rows) for mode in sorted({row["mode"] for row in rows})}
+            print(f"scope_modes={json.dumps(mode_counts,sort_keys=True)}")
+            print(f"scope_coverage normal_slip={count('normal_sand','confirmed_slip_onset_ms')} normal_sink={count('normal_sand','sustained_sink_onset_ms')} slip_confirmed={count('slip_risk_dominant','confirmed_slip_onset_ms')} sink={count('sink_dominant','sustained_sink_onset_ms')} sink_tilt_sink={count('sink_and_tilt','sustained_sink_onset_ms')} sink_tilt_tilt={count('sink_and_tilt','sustained_tilt_onset_ms')}")
         return
-    if sum(bool(item) for item in (args.scenario_calibration, args.front_rear_torque_calibration, args.local_compliance_calibration, args.final_tilt_physics_calibration, args.final_scope_calibration, args.scenario_selection is not None)) > 1:
+    if sum(bool(item) for item in (args.scenario_calibration, args.front_rear_torque_calibration, args.local_compliance_calibration, args.final_tilt_physics_calibration, args.final_scope_calibration, args.final_scope_pilot, args.scenario_selection is not None)) > 1:
         raise ValueError("choose one scenario calibration/selection source")
     if args.scenario_calibration:
         configs=tuple(config for config in calibration_scenario_configs() if config.mode in args.modes)
@@ -560,6 +589,8 @@ def main() -> None:
         configs=tuple(config for config in final_scope_calibration_configs() if config.mode in args.modes)
         if any(family_for_name(name).split != "train" for name in _families(args)):
             raise ValueError("scenario calibration is train-only")
+    elif args.final_scope_pilot:
+        configs=tuple(config for config in final_scope_pilot_configs() if config.mode in args.modes)
     elif args.scenario_selection is not None:
         selected=json.loads(args.scenario_selection.read_text(encoding="utf-8"))
         configs=tuple(ScenarioPhysicsConfig(**{key: value for key, value in item.items() if key != "coverage"})
@@ -610,6 +641,8 @@ def main() -> None:
         selection["gates"] = final_scope["gates"]
         # Save the selected scope after its authoritative gate is known.
         (output/"scenario_selection.json").write_text(json.dumps(selection,indent=2)+"\n",encoding="utf-8")
+    if args.final_scope_pilot:
+        (output/"deployment_scope.json").write_text(json.dumps(DEPLOYMENT_SCOPE,indent=2)+"\n",encoding="utf-8")
     if args.plot:
         plots=output/"plots";plots.mkdir(exist_ok=True)
         for mode in sorted({config.mode for config in configs}):
