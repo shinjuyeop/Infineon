@@ -199,6 +199,12 @@ def final_scope_pilot_configs() -> tuple[ScenarioPhysicsConfig, ...]:
     )
 
 
+def final_scope_full_configs() -> tuple[ScenarioPhysicsConfig, ...]:
+    """Target-centred full dataset: normal, confirmed Slip, and Sand Sink."""
+    return tuple(config for config in final_scope_pilot_configs()
+                 if config.mode != "sink_and_tilt")
+
+
 @dataclass(frozen=True)
 class V2Calibration:
     minimum_load_N: float

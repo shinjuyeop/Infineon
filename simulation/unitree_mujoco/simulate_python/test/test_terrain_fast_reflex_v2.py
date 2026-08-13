@@ -15,7 +15,7 @@ from terrain_fast_reflex_v2 import (  # noqa: E402
     front_rear_torque_calibration_configs, local_compliance_calibration_configs,
     final_tilt_physics_calibration_configs, validate_final_test_request, validate_state_order,
     DEPLOYMENT_SCOPE, final_scope_calibration_configs, sand_sink_hazard,
-    final_scope_pilot_configs, slip_hazard,
+    final_scope_pilot_configs, final_scope_full_configs, slip_hazard,
 )
 
 
@@ -88,6 +88,7 @@ class FastReflexV2Test(unittest.TestCase):
         self.assertFalse(sand_sink_hazard({"sustained_sink": np.array([False]), "sustained_tilt": np.array([False])})[0])
         self.assertTrue(np.array_equal(slip_hazard({"confirmed_slip":np.array([False,True]),"incipient_risk":np.array([True,False])}),[False,True]))
         self.assertEqual({config.mode for config in final_scope_pilot_configs()}, {"normal_sand","slip_risk_dominant","sink_dominant","sink_and_tilt"})
+        self.assertEqual({config.mode for config in final_scope_full_configs()}, {"normal_sand","slip_risk_dominant","sink_dominant"})
 
 
 if __name__ == "__main__":

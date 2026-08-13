@@ -24,7 +24,7 @@ from terrain_fast_reflex_v2 import (
     default_scenario_configs, front_rear_torque_calibration_configs,
     final_tilt_physics_calibration_configs, local_compliance_calibration_configs,
     DEPLOYMENT_SCOPE, final_scope_calibration_configs, final_scope_pilot_configs,
-    label_v2, onset_ms, sand_sink_hazard, slip_hazard, validate_final_test_request,
+    final_scope_full_configs, label_v2, onset_ms, sand_sink_hazard, slip_hazard, validate_final_test_request,
     validate_state_order,
 )
 from terrain_profiles import TERRAIN_PROFILES, apply_terrain_profile
@@ -80,6 +80,8 @@ def parse_args() -> argparse.Namespace:
                         help="bounded train-only Slip Risk and Sand Sink deployment-scope calibration")
     parser.add_argument("--final-scope-pilot", action="store_true",
                         help="frozen four-mode pilot configuration; execute only after readiness approval")
+    parser.add_argument("--final-scope-full", action="store_true",
+                        help="frozen target-centred full configuration; execute only after pilot review approval")
     parser.add_argument("--scenario-selection", type=Path,
                         help="frozen selected_configs JSON from a prior train-only calibration")
     parser.add_argument("--audit-existing", type=Path,
@@ -500,6 +502,27 @@ def final_scope_artifacts(output: Path, raw: list[RawRun], labels: list[dict[str
     return selected_payload
 
 
+def frozen_scope_gate(rows: list[dict[str, object]]) -> dict[str, object]:
+    """One target-policy gate shared by generation, policy audit, and artifact audit."""
+    modes={row["mode"] for row in rows}
+    def valid(row: dict[str, object]) -> bool:
+        return row["valid"] == "1" and float(row["loaded_contact_coverage"]) >= .75 and row["gross_rotation"] == "0"
+    def count(mode: str, field: str) -> int:
+        return sum(row["mode"] == mode and row[field] != "" for row in rows)
+    normal=[row for row in rows if row["mode"] == "normal_sand"]
+    gate={"all_runs_valid":bool(rows) and all(valid(row) for row in rows),
+          "normal_hazard_free":bool(normal) and all(row["confirmed_slip_onset_ms"] == "" and row["sustained_sink_onset_ms"] == "" and valid(row) for row in normal),
+          "confirmed_slip":count("slip_risk_dominant","confirmed_slip_onset_ms") > 0,
+          "sand_sink":count("sink_dominant","sustained_sink_onset_ms") > 0,
+          "native_1khz":all(row["sensor_rate_hz"] == "1000" and row["physics_rate_hz"] == "2000" for row in rows),
+          "split_train_validation_only":all(row["split"] in ("train","validation") for row in rows),
+          "final_test_materialized_0":True}
+    if "sink_and_tilt" in modes:
+        gate["sink_tilt_sink"]=count("sink_and_tilt","sustained_sink_onset_ms") > 0
+    matrix={mode:{"confirmed_slip":count(mode,"confirmed_slip_onset_ms"),"incipient_risk":count(mode,"incipient_risk_onset_ms"),"sustained_sink":count(mode,"sustained_sink_onset_ms"),"sustained_tilt":count(mode,"sustained_tilt_onset_ms"),"runs":sum(row["mode"] == mode for row in rows)} for mode in sorted(modes)}
+    return {"pilot_pass":bool(all(gate.values())),"gates":gate,"target_matrix":matrix}
+
+
 def plot_final_scope(output: Path, raw_runs: list[RawRun], labels: list[dict[str, np.ndarray]]) -> None:
     import matplotlib; matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -532,15 +555,9 @@ def main() -> None:
         if source_protocol.get("dataset_name") != SCHEMA_NAME or source_protocol.get("final_test",{}).get("materialized"):
             raise ValueError("expected non-final-test v2 calibration")
         with (source/"manifest.csv").open(newline="",encoding="utf-8") as stream: rows=list(csv.DictReader(stream))
-        def hits(mode: str, field: str) -> int: return sum(row["mode"] == mode and row[field] != "" for row in rows)
-        def valid(mode: str) -> bool: return any(row["mode"] == mode and row["valid"] == "1" and float(row["loaded_contact_coverage"]) >= .75 and row["gross_rotation"] == "0" for row in rows)
-        gate={"normal_hazard_free":hits("normal_sand","confirmed_slip_onset_ms") == 0 and hits("normal_sand","sustained_sink_onset_ms") == 0,
-              "confirmed_slip":hits("slip_risk_dominant","confirmed_slip_onset_ms") > 0 and valid("slip_risk_dominant"),
-              "sand_sink":hits("sink_dominant","sustained_sink_onset_ms") > 0 and valid("sink_dominant"),
-              "sand_sink_tilt":hits("sink_and_tilt","sustained_sink_onset_ms") > 0 and valid("sink_and_tilt"),
-              "native_1khz":True,"final_test_materialized_0":True,"split_train_validation_only":all(row["split"] in ("train","validation") for row in rows)}
+        evaluation=frozen_scope_gate(rows); gate=evaluation["gates"]
         output.mkdir(parents=True,exist_ok=True)
-        payload={"status":"PILOT_READY" if all(gate.values()) else "PILOT_NOT_READY","pilot_ready":bool(all(gate.values())),"deployment_scope":DEPLOYMENT_SCOPE,"gates":gate,"source_calibration":str(source),"source_read_only":True,"historical_artifact_unchanged":True}
+        payload={"status":"PILOT_READY" if evaluation["pilot_pass"] else "PILOT_NOT_READY","pilot_ready":evaluation["pilot_pass"],"pilot_pass":evaluation["pilot_pass"],"deployment_scope":DEPLOYMENT_SCOPE,"gates":gate,"target_matrix":evaluation["target_matrix"],"source_calibration":str(source),"source_read_only":True,"historical_artifact_unchanged":True}
         (output/"deployment_scope.json").write_text(json.dumps(DEPLOYMENT_SCOPE,indent=2)+"\n",encoding="utf-8")
         (output/"pilot_readiness.json").write_text(json.dumps(payload,indent=2)+"\n",encoding="utf-8")
         (output/"summary.md").write_text(f"# {payload['status']}\n\nFrozen before pilot. Existing calibration read only; historical artifact unchanged.\n",encoding="utf-8")
@@ -562,12 +579,14 @@ def main() -> None:
         print(f"V2_AUDIT_PASS runs={len(sensors)} native_spacing_ms=1 final_test_materialized=0 source={source}")
         if "fast_reflex_v2_deployment_scope" in existing:
             with (source / "manifest.csv").open(newline="",encoding="utf-8") as stream: rows=list(csv.DictReader(stream))
-            def count(mode: str, field: str) -> int: return sum(row["mode"] == mode and row[field] != "" for row in rows)
             mode_counts={mode:sum(row["mode"] == mode for row in rows) for mode in sorted({row["mode"] for row in rows})}
             print(f"scope_modes={json.dumps(mode_counts,sort_keys=True)}")
-            print(f"scope_coverage normal_slip={count('normal_sand','confirmed_slip_onset_ms')} normal_sink={count('normal_sand','sustained_sink_onset_ms')} slip_confirmed={count('slip_risk_dominant','confirmed_slip_onset_ms')} sink={count('sink_dominant','sustained_sink_onset_ms')} sink_tilt_sink={count('sink_and_tilt','sustained_sink_onset_ms')} sink_tilt_tilt={count('sink_and_tilt','sustained_tilt_onset_ms')}")
+            evaluation=frozen_scope_gate(rows)
+            print(f"frozen_scope_gates={json.dumps(evaluation['gates'],sort_keys=True)}")
+            print(f"frozen_scope_matrix={json.dumps(evaluation['target_matrix'],sort_keys=True)}")
+            print(f"PILOT_PASS={str(evaluation['pilot_pass']).lower()}")
         return
-    if sum(bool(item) for item in (args.scenario_calibration, args.front_rear_torque_calibration, args.local_compliance_calibration, args.final_tilt_physics_calibration, args.final_scope_calibration, args.final_scope_pilot, args.scenario_selection is not None)) > 1:
+    if sum(bool(item) for item in (args.scenario_calibration, args.front_rear_torque_calibration, args.local_compliance_calibration, args.final_tilt_physics_calibration, args.final_scope_calibration, args.final_scope_pilot, args.final_scope_full, args.scenario_selection is not None)) > 1:
         raise ValueError("choose one scenario calibration/selection source")
     if args.scenario_calibration:
         configs=tuple(config for config in calibration_scenario_configs() if config.mode in args.modes)
@@ -591,6 +610,8 @@ def main() -> None:
             raise ValueError("scenario calibration is train-only")
     elif args.final_scope_pilot:
         configs=tuple(config for config in final_scope_pilot_configs() if config.mode in args.modes)
+    elif args.final_scope_full:
+        configs=tuple(config for config in final_scope_full_configs() if config.mode in args.modes)
     elif args.scenario_selection is not None:
         selected=json.loads(args.scenario_selection.read_text(encoding="utf-8"))
         configs=tuple(ScenarioPhysicsConfig(**{key: value for key, value in item.items() if key != "coverage"})
@@ -642,6 +663,10 @@ def main() -> None:
         # Save the selected scope after its authoritative gate is known.
         (output/"scenario_selection.json").write_text(json.dumps(selection,indent=2)+"\n",encoding="utf-8")
     if args.final_scope_pilot:
+        (output/"deployment_scope.json").write_text(json.dumps(DEPLOYMENT_SCOPE,indent=2)+"\n",encoding="utf-8")
+        evaluation=frozen_scope_gate([{key:str(value) if isinstance(value,(int,float)) else value for key,value in row.items()} for row in rows])
+        selection["pilot_ready"]=evaluation["pilot_pass"]; selection["gates"]=evaluation["gates"]
+    if args.final_scope_full:
         (output/"deployment_scope.json").write_text(json.dumps(DEPLOYMENT_SCOPE,indent=2)+"\n",encoding="utf-8")
     if args.plot:
         plots=output/"plots";plots.mkdir(exist_ok=True)
