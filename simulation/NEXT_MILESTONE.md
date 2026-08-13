@@ -208,6 +208,9 @@ sink/tilt onset을 연구한다. 기존 4-class classifier와 deployment artifac
   pre-onset run FPR 7.50%로 **Host Final Gate FAIL**, test 기반 재튜닝 없음
 - [x] Sink/Tilt Tilt-only 15-run validation audit, sensor observability와
   physical rule/logistic/combined replay; test 미사용, Sand gate 미달
+- [x] Fast Reflex v2 experiment planning: frozen Slip pre-onset physical audit,
+  fresh final-holdout policy, Sand sustained-hazard/failure-mode/boundary-step
+  protocol; no new dataset, training, or test evaluation
 - [ ] 후속 승인 뒤 selected detector INT8/E84, reflex rule 및 E2E 측정
 
 다음 milestone은 frozen Slip 결과를 그대로 종료 상태로 보존하고, Sand v2를
