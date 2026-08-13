@@ -214,6 +214,13 @@ sink/tilt onset을 연구한다. 기존 4-class classifier와 deployment artifac
 - [x] Fast Reflex v2 schema/dataset foundation and train-only six-mode smoke:
   two-pass train-normal labels, fail-closed final-test reservation, and real
   Marble/Sand front/rear plus left/right boundary geoms; full generation pending
+- [x] Fast Reflex v2 bounded train-only scenario-physics calibration: explicit
+  config serialization, Marble-to-Ice slip mode, vertical-load/seam sweeps,
+  coverage/selection artifacts, and preserved non-ready physical outcome;
+  thresholds, v1 records, final-test rows, training, and INT8/E84 untouched
+- [ ] Fast Reflex v2 approved bounded redesign for loaded front/rear tilt
+  coverage, then a fresh train-only calibration; do not generate a pilot until
+  `scenario_selection.json` reports `pilot_ready=true`
 - [ ] 후속 승인 뒤 selected detector INT8/E84, reflex rule 및 E2E 측정
 
 다음 milestone은 frozen Slip 결과를 그대로 종료 상태로 보존하고, Sand v2를

@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from pathlib import Path
 import time
 
@@ -20,7 +20,9 @@ from terrain_fast_reflex_v2 import (
     FINAL_TEST_SPLIT, MODES, PHYSICS_STEPS_PER_SAMPLE, PHYSICS_TIMESTEP_S,
     RELATIVE_TRANSITION_TIME_MS, SCHEMA_NAME, SCHEMA_VERSION, SENSOR_RATE_HZ,
     TRACE_POST_MS, TRACE_PRE_MS, TRACE_SAMPLES, V2_ORACLE_CHANNELS, V2_ORACLE_INDEX,
-    calibrate_v2, label_v2, onset_ms, validate_final_test_request, validate_state_order,
+    ScenarioPhysicsConfig, calibration_scenario_configs, calibrate_v2,
+    default_scenario_configs, label_v2, onset_ms, validate_final_test_request,
+    validate_state_order,
 )
 from terrain_profiles import TERRAIN_PROFILES, apply_terrain_profile
 
@@ -32,8 +34,9 @@ SCENES = {
     "front_rear": SCENE_DIR / "scene_fast_reflex_v2_front_rear.xml",
     "left_right": SCENE_DIR / "scene_fast_reflex_v2_left_right.xml",
 }
-TRANSITION_TIME_S, DURATION_S = .250, .400
-PULSE_DURATION_S, PULSE_MAGNITUDE_N = .100, 80.0
+# Let the initially posed robot settle before an event.  The old .250 s
+# transition left a normal-sand vertical transient inside the event window.
+SETTLE_TIME_S, TRANSITION_TIME_S, DURATION_S = .500, .650, .800
 
 
 @dataclass(frozen=True)
@@ -58,6 +61,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--include-final-test", action="store_true",
                         help="explicitly materialize reserved final-test rows; prohibited for normal smoke/pilot")
     parser.add_argument("--plot", action="store_true")
+    parser.add_argument("--scenario-calibration", action="store_true",
+                        help="bounded train-only physical candidate sweep; no threshold candidates")
+    parser.add_argument("--scenario-selection", type=Path,
+                        help="frozen selected_configs JSON from a prior train-only calibration")
     parser.add_argument("--audit-existing", type=Path,
                         help="read-only schema/physical-validity audit of a generated v2 train/validation output")
     parser.add_argument("--execute", action="store_true")
@@ -78,23 +85,25 @@ def _families(args: argparse.Namespace) -> list[str]:
     return result
 
 
-def candidate_count(args: argparse.Namespace) -> int:
-    return len(args.modes) * len(_families(args)) * args.surfaces_per_family * args.runs_per_surface
+def candidate_count(args: argparse.Namespace, configs: tuple[ScenarioPhysicsConfig, ...]) -> int:
+    return len(configs) * len(_families(args)) * args.surfaces_per_family * args.runs_per_surface
 
 
-def protocol(args: argparse.Namespace) -> dict[str, object]:
+def protocol(args: argparse.Namespace, configs: tuple[ScenarioPhysicsConfig, ...]) -> dict[str, object]:
     families = _families(args)
     if args.surfaces_per_family < 1 or args.runs_per_surface < 1:
         raise ValueError("positive surface/run counts required")
-    if "normal_sand" not in args.modes:
+    if not any(config.mode == "normal_sand" for config in configs):
         raise ValueError("normal_sand train rows are required for calibration")
-    count = candidate_count(args)
+    count = candidate_count(args, configs)
     return {
         "dataset_name": SCHEMA_NAME, "schema_version": SCHEMA_VERSION,
         "status": "v2 physical dataset foundation; no detector training",
-        "modes": list(args.modes), "physics_rate_hz": 2000, "sensor_rate_hz": SENSOR_RATE_HZ,
+        "modes": sorted({config.mode for config in configs}), "scenario_configs": [config.as_dict() for config in configs],
+        "scenario_calibration": bool(args.scenario_calibration), "physics_rate_hz": 2000, "sensor_rate_hz": SENSOR_RATE_HZ,
         "physics_timestep_s": PHYSICS_TIMESTEP_S, "physics_steps_per_sample": PHYSICS_STEPS_PER_SAMPLE,
         "trace_interval_ms": [-TRACE_PRE_MS, TRACE_POST_MS], "trace_shape": [TRACE_SAMPLES, 10],
+        "settle_time_s": SETTLE_TIME_S, "transition_time_s": TRANSITION_TIME_S,
         "input_channels": HIL_SENSOR_CHANNELS, "oracle_channels": V2_ORACLE_CHANNELS,
         "state_schema": ["safe", "incipient_risk", "confirmed_slip", "slip_risk",
                          "sustained_sink", "sustained_tilt"],
@@ -112,17 +121,6 @@ def protocol(args: argparse.Namespace) -> dict[str, object]:
         "estimated_runtime_s": [count * .25, count * 1.0],
         "overwrite_policy": "refuse non-empty output", "boundary": "two adjacent independent box geoms; continuous MuJoCo state",
     }
-
-
-def mode_config(mode: str) -> tuple[str, str, str, str, float, float, float]:
-    """layout, ground A/B material, support ratio, force magnitude, force direction."""
-    if mode == "normal_sand": return "front_rear", "sand", "sand", .70, 0., 1., 0.
-    if mode == "sink_dominant": return "front_rear", "sand", "sand", .48, 0., 1., 0.
-    if mode == "tilt_dominant": return "front_rear", "marble", "sand", .70, 40., 1., 0.
-    if mode == "boundary_front_rear": return "front_rear", "marble", "sand", .70, 80., 1., 0.
-    if mode == "boundary_left_right": return "left_right", "marble", "sand", .70, 80., 0., 1.
-    if mode == "sink_and_tilt": return "front_rear", "marble", "sand", .48, 80., 1., 0.
-    raise ValueError(mode)
 
 
 def _foot_oracle(model, data, ground_ids, foot_ids, body_id, velocity, wrench) -> tuple[float, ...]:
@@ -153,39 +151,67 @@ def _postprocess(raw: np.ndarray) -> np.ndarray:
     return np.column_stack((raw[:, :13], speed, depth, tilt, raw[:, 13:]))
 
 
-def run_one(mode: str, family: str, surface_index: int, run_index: int) -> RawRun:
-    layout, material_a, material_b, support_ratio, force, dx, dy = mode_config(mode)
-    model = mujoco.MjModel.from_xml_path(str(SCENES[layout])); model.opt.timestep = PHYSICS_TIMESTEP_S
+def _apply_vertical_pulse(data, body_id: int, time_s: float, config: ScenarioPhysicsConfig) -> None:
+    """Add a bounded downward half-sine load without modifying label logic."""
+    phase = (time_s - TRANSITION_TIME_S) / config.force_duration_s
+    if 0.0 <= phase < 1.0:
+        data.xfrc_applied[body_id, 2] -= config.vertical_force_N * np.sin(np.pi * phase)
+
+
+def _offset_seam(model, layout: str, offset_m: float) -> None:
+    if not offset_m:
+        return
+    axis = 0 if layout == "front_rear" else 1
+    # Shift both adjacent box centers together: they remain adjacent and the
+    # actual contact fraction moves relative to the already continuous foot.
+    for name in ("ground_a", "ground_b"):
+        model.geom_pos[model.geom(name).id, axis] += offset_m
+
+
+def run_one(config: ScenarioPhysicsConfig, family: str, surface_index: int, run_index: int) -> RawRun:
+    model = mujoco.MjModel.from_xml_path(str(SCENES[config.layout])); model.opt.timestep = PHYSICS_TIMESTEP_S
+    _offset_seam(model, config.layout, config.seam_offset_m)
     data = mujoco.MjData(model)
-    for name, material in (("ground_a", material_a), ("ground_b", material_b)):
+    for name, material in (("ground_a", config.material_a), ("ground_b", config.material_b)):
         apply_terrain_profile(model, TERRAIN_PROFILES[material], name)
     ground_ids = [model.geom("ground_a").id, model.geom("ground_b").id]
     spec = make_expanded_run_specification("sand", family, surface_index, run_index)
-    condition = ExcitationCondition(f"{mode}_{family}_s{surface_index:02d}_r{run_index:03d}",
+    condition = ExcitationCondition(f"{config.config_id}_{family}_s{surface_index:02d}_r{run_index:03d}",
                                    spec.initial_velocity_x, spec.initial_velocity_y, spec.base_height_offset,
                                    spec.base_roll_deg, spec.base_pitch_deg)
     qpos, dof = apply_excitation_condition(model, data, condition)
-    support = VerticalElasticBandSupport(model, data, qpos, dof, support_ratio)
-    pulse = HorizontalPulse(TRANSITION_TIME_S, PULSE_DURATION_S, force, dx, dy)
+    support = VerticalElasticBandSupport(model, data, qpos, dof, config.support_ratio)
+    pulse = HorizontalPulse(TRANSITION_TIME_S, config.force_duration_s, config.horizontal_force_N,
+                            config.direction_x, config.direction_y)
     exciter = HorizontalPulseExciter(model, data, pulse)
     reader = G1HilSensorReader(model, data); foot_ids = frozenset(reader.left_foot_geom_ids)
     body = model.body("left_ankle_roll_link").id; velocity = np.zeros(6); wrench = np.zeros(6)
-    times=[]; sensors=[]; raw=[]; steps=0; start=time.perf_counter()
+    times=[]; sensors=[]; raw=[]; steps=0; switched=False; qpos_delta=qvel_delta=0.; start=time.perf_counter()
     while data.time + 1e-12 < DURATION_S:
-        support.apply(); exciter.apply(float(data.time)); mujoco.mj_step(model, data); steps += 1
+        if config.switch_to_ice and not switched and data.time >= TRANSITION_TIME_S - 1e-12:
+            qpos_before, qvel_before = data.qpos.copy(), data.qvel.copy()
+            apply_terrain_profile(model, TERRAIN_PROFILES["ice"], "ground_a")
+            apply_terrain_profile(model, TERRAIN_PROFILES["ice"], "ground_b")
+            mujoco.mj_forward(model, data)
+            qpos_delta, qvel_delta = float(np.max(np.abs(data.qpos-qpos_before))), float(np.max(np.abs(data.qvel-qvel_before)))
+            switched=True
+        support.apply(); exciter.apply(float(data.time)); _apply_vertical_pulse(data, exciter.body_id, float(data.time), config)
+        mujoco.mj_step(model, data); steps += 1
         if steps % PHYSICS_STEPS_PER_SAMPLE == 0:
             times.append(float(data.time)); sensors.append(reader.read_vector())
             raw.append(_foot_oracle(model, data, ground_ids, foot_ids, body, velocity, wrench))
     times=np.asarray(times); sensors=np.asarray(sensors); raw=np.asarray(raw)
     select=(times >= TRANSITION_TIME_S - TRACE_PRE_MS / 1000 - 1e-9) & (times < TRANSITION_TIME_S + TRACE_POST_MS / 1000 - 1e-9)
     family_info=family_for_name(family)
-    metadata={"schema_version":SCHEMA_VERSION,"mode":mode,"surface_family":family,"surface_seed":surface_index,
-              "session_id":f"v2_{family_info.split}_{mode}_surface_{surface_index:02d}","run_id":condition.run_id,
+    metadata={"schema_version":SCHEMA_VERSION,"mode":config.mode,"scenario_config_id":config.config_id,"surface_family":family,"surface_seed":surface_index,
+              "session_id":f"v2_{family_info.split}_{config.config_id}_surface_{surface_index:02d}","run_id":condition.run_id,
               "split":family_info.split,"physics_rate_hz":2000,"sensor_rate_hz":1000,"transition_time_s":TRANSITION_TIME_S,
-              "ground_layout":layout,"ground_a_material":material_a,"ground_b_material":material_b,
-              "boundary_orientation":"front_rear" if layout == "front_rear" else "left_right","boundary_position_m":0.,
-              "pulse_magnitude_N":force,"support_ratio":support_ratio,"run_index":run_index}
-    return RawRun(metadata, times[select], sensors[select], _postprocess(raw[select]), 0., 0., time.perf_counter()-start)
+              "settle_time_s":SETTLE_TIME_S,"ground_layout":config.layout,"ground_a_material":config.material_a,"ground_b_material":config.material_b,
+              "boundary_orientation":"front_rear" if config.layout == "front_rear" else "left_right","boundary_position_m":config.seam_offset_m,
+              "pulse_magnitude_N":config.horizontal_force_N,"vertical_pulse_magnitude_N":config.vertical_force_N,
+              "pulse_duration_s":config.force_duration_s,"pulse_direction_x":config.direction_x,"pulse_direction_y":config.direction_y,
+              "support_ratio":config.support_ratio,"material_switch_to_ice":int(config.switch_to_ice),"run_index":run_index}
+    return RawRun(metadata, times[select], sensors[select], _postprocess(raw[select]), qpos_delta, qvel_delta, time.perf_counter()-start)
 
 
 def _row(raw: RawRun, labels: dict[str, np.ndarray]) -> dict[str, object]:
@@ -204,11 +230,60 @@ def _row(raw: RawRun, labels: dict[str, np.ndarray]) -> dict[str, object]:
          "normalized_front_rear_imbalance_peak":float(np.max(np.abs(front_rear / normalizer))),
          "normalized_left_right_imbalance_peak":float(np.max(np.abs(left_right / normalizer))),
          "fsr_spatial_variance_peak":float(np.max(fsr.var(axis=1))), "fsr_range_peak_N":float(np.max(np.ptp(fsr,axis=1))),
-         "gyro_xy_magnitude_peak_rad_s":float(gyro_xy.max()), "gyro_xy_integral_rad":float(gyro_xy.sum()*.001)}
+         "gyro_xy_magnitude_peak_rad_s":float(gyro_xy.max()), "gyro_xy_integral_rad":float(gyro_xy.sum()*.001),
+         "foot_sink_depth_peak_m":float(raw.oracle[:, V2_ORACLE_INDEX["foot_sink_depth_m"]].max()),
+         "foot_tilt_change_peak_rad":float(raw.oracle[:, V2_ORACLE_INDEX["foot_tilt_change_rad"]].max()),
+         "foot_horizontal_speed_peak_mps":float(raw.oracle[:, V2_ORACLE_INDEX["foot_horizontal_speed_mps"]].max())}
     for name in ("slip_risk","confirmed_slip","sustained_sink","sustained_tilt"):
         onset=onset_ms(labels[name]); out[f"{name}_onset_time_s"]="" if onset is None else float(raw.timestamps_s[TRACE_PRE_MS+onset])
         out[f"{name}_onset_ms"]="" if onset is None else onset
     return out
+
+
+def _coverage(rows: list[dict[str, object]]) -> list[dict[str, object]]:
+    """Train-only event coverage used to choose physics, never thresholds."""
+    groups: dict[str, list[dict[str, object]]] = {}
+    for row in rows:
+        groups.setdefault(str(row["scenario_config_id"]), []).append(row)
+    result = []
+    for config_id, group in groups.items():
+        def has(name: str) -> int:
+            return sum(row[f"{name}_onset_ms"] != "" for row in group)
+        onsets = [float(row["sustained_sink_onset_ms"]) for row in group if row["sustained_sink_onset_ms"] != ""]
+        onsets += [float(row["sustained_tilt_onset_ms"]) for row in group if row["sustained_tilt_onset_ms"] != ""]
+        result.append({"scenario_config_id": config_id, "mode": group[0]["mode"], "runs": len(group),
+                       "valid_runs": sum(int(row["valid"]) for row in group),
+                       "slip_risk_runs": has("slip_risk"), "confirmed_slip_runs": has("confirmed_slip"),
+                       "sink_runs": has("sustained_sink"), "tilt_runs": has("sustained_tilt"),
+                       "sink_and_tilt_runs": sum(row["sustained_sink_onset_ms"] != "" and row["sustained_tilt_onset_ms"] != "" for row in group),
+                       "median_hazard_onset_ms": "" if not onsets else float(np.median(onsets)),
+                       "max_sink_depth_m": float(max(row["foot_sink_depth_peak_m"] for row in group)),
+                       "max_orientation_deviation_rad": float(max(row["foot_tilt_change_peak_rad"] for row in group)),
+                       "max_horizontal_speed_mps": float(max(row["foot_horizontal_speed_peak_mps"] for row in group))})
+    return result
+
+
+def _selection(configs: tuple[ScenarioPhysicsConfig, ...], coverage: list[dict[str, object]]) -> dict[str, object]:
+    by_id = {config.config_id: config for config in configs}
+    selected = []
+    for mode in sorted({config.mode for config in configs}):
+        candidates = [row for row in coverage if row["mode"] == mode]
+        def key(row: dict[str, object]) -> tuple[float, ...]:
+            if mode == "normal_sand": return (-float(row["slip_risk_runs"] + row["sink_runs"] + row["tilt_runs"]),)
+            if mode == "slip_risk_dominant": return (float(row["confirmed_slip_runs"]), float(row["slip_risk_runs"]), -float(row["sink_runs"] + row["tilt_runs"]))
+            if mode == "sink_dominant": return (float(row["sink_runs"]), -float(row["tilt_runs"]))
+            if mode in ("tilt_dominant", "boundary_front_rear", "boundary_left_right"): return (float(row["tilt_runs"]), -float(row["sink_runs"]))
+            return (float(row["sink_and_tilt_runs"]), float(row["sink_runs"] + row["tilt_runs"]))
+        winner = max(candidates, key=key)
+        selected.append({**by_id[str(winner["scenario_config_id"])].as_dict(), "coverage": winner})
+    gate = {
+        "normal_hazard_free": all(item["coverage"]["slip_risk_runs"] == 0 and item["coverage"]["sink_runs"] == 0 and item["coverage"]["tilt_runs"] == 0 for item in selected if item["mode"] == "normal_sand"),
+        "slip_risk_and_confirmed": all(item["coverage"]["slip_risk_runs"] > 0 and item["coverage"]["confirmed_slip_runs"] > 0 for item in selected if item["mode"] == "slip_risk_dominant"),
+        "sink": all(item["coverage"]["sink_runs"] > 0 for item in selected if item["mode"] in ("sink_dominant", "sink_and_tilt")),
+        "tilt": all(item["coverage"]["tilt_runs"] > 0 for item in selected if item["mode"] != "normal_sand"),
+    }
+    return {"selection_basis": "train-only physical event coverage and mode specificity; thresholds unchanged",
+            "selected_configs": selected, "gates": gate, "pilot_ready": bool(all(gate.values()))}
 
 
 def save(output: Path, raw_runs: list[RawRun], labels: list[dict[str, np.ndarray]], rows: list[dict[str, object]], payload: dict[str, object]) -> None:
@@ -236,6 +311,20 @@ def plot_smoke(output: Path, raw: RawRun, labels: dict[str,np.ndarray]) -> None:
     ax[-1].set_xlabel("ms relative transition");fig.suptitle(str(raw.metadata["run_id"]));fig.tight_layout();fig.savefig(output/f"{raw.metadata['mode']}.png",dpi=140);plt.close(fig)
 
 
+def plot_coverage(output: Path, coverage: list[dict[str, object]]) -> None:
+    import matplotlib; matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    labels = [str(item["scenario_config_id"]) for item in coverage]
+    x = np.arange(len(labels)); width = .20
+    fig, axis = plt.subplots(figsize=(max(10, len(labels) * .65), 5))
+    for offset, name, title in ((-.3, "slip_risk_runs", "risk"), (-.1, "confirmed_slip_runs", "confirmed"),
+                                (.1, "sink_runs", "sink"), (.3, "tilt_runs", "tilt")):
+        axis.bar(x + offset * width, [item[name] for item in coverage], width, label=title)
+    axis.set_xticks(x, labels, rotation=60, ha="right"); axis.set_ylabel("train runs with event"); axis.legend(ncol=4)
+    axis.set_title("Fast Reflex v2 scenario physical-event coverage (train-only)"); fig.tight_layout()
+    fig.savefig(output / "scenario_coverage.png", dpi=140); plt.close(fig)
+
+
 def main() -> None:
     args=parse_args()
     if args.audit_existing is not None:
@@ -254,7 +343,20 @@ def main() -> None:
             raise ValueError("invalid Fusion10/timestamp artifact")
         print(f"V2_AUDIT_PASS runs={len(sensors)} native_spacing_ms=1 final_test_materialized=0 source={source}")
         return
-    payload=protocol(args)
+    if args.scenario_calibration and args.scenario_selection is not None:
+        raise ValueError("choose either --scenario-calibration or --scenario-selection")
+    if args.scenario_calibration:
+        configs=tuple(config for config in calibration_scenario_configs() if config.mode in args.modes)
+        if any(family_for_name(name).split != "train" for name in _families(args)):
+            raise ValueError("scenario calibration is train-only")
+    elif args.scenario_selection is not None:
+        selected=json.loads(args.scenario_selection.read_text(encoding="utf-8"))
+        configs=tuple(ScenarioPhysicsConfig(**{key: value for key, value in item.items() if key != "coverage"})
+                      for item in selected["selected_configs"] if item["mode"] in args.modes)
+    else:
+        configs=tuple(config for config in default_scenario_configs() if config.mode in args.modes)
+    if not configs: raise ValueError("no scenario configs selected")
+    payload=protocol(args, configs)
     if not args.execute:
         print(json.dumps(payload,indent=2)); print("Dry run only. Use --execute; final test remains fail-closed."); return
     output=(args.output_dir or OUTPUT_DIR).resolve()
@@ -263,22 +365,30 @@ def main() -> None:
     # It has no artifact to protect, unlike any non-empty output above.
     output.mkdir(parents=True, exist_ok=True)
     raw=[]
-    for mode in args.modes:
+    for config in configs:
         for family in _families(args):
             for si in range(args.surfaces_per_family):
-                for ri in range(args.runs_per_surface): raw.append(run_one(mode,family,si,ri))
+                for ri in range(args.runs_per_surface): raw.append(run_one(config,family,si,ri))
     normals=[r.oracle for r in raw if r.metadata["mode"] == "normal_sand" and r.metadata["split"] == "train"]
     calibration=calibrate_v2(normals); labels=[label_v2(r.oracle,calibration) for r in raw]
     for item in labels: validate_state_order(item)
     rows=[_row(r,l) for r,l in zip(raw,labels)]; payload["calibration"]=calibration.as_dict(); payload["measured"]={"runs":len(raw),"valid_runs":sum(r["valid"] for r in rows),"final_test_materialized":0,"wall_time_s":sum(r.wall_time_s for r in raw)}
     save(output,raw,labels,rows,payload)
+    coverage=_coverage(rows)
+    with (output/"scenario_coverage.csv").open("w",newline="",encoding="utf-8") as stream:
+        writer=csv.DictWriter(stream,fieldnames=list(coverage[0])); writer.writeheader(); writer.writerows(coverage)
+    selection=_selection(configs,coverage)
+    (output/"scenario_configs.json").write_text(json.dumps([config.as_dict() for config in configs],indent=2)+"\n",encoding="utf-8")
+    (output/"scenario_selection.json").write_text(json.dumps(selection,indent=2)+"\n",encoding="utf-8")
     if args.plot:
         plots=output/"plots";plots.mkdir()
-        for mode in args.modes:
+        for mode in sorted({config.mode for config in configs}):
             i=next(i for i,r in enumerate(raw) if r.metadata["mode"]==mode);plot_smoke(plots,raw[i],labels[i])
+        plot_coverage(plots, coverage)
     summary=[f"{SCHEMA_NAME} schema_version={SCHEMA_VERSION}",f"runs={len(raw)} valid={sum(r['valid'] for r in rows)}", "native_sampling=1000Hz physics=2000Hz spacing=1ms", "final_test_materialized=0",f"calibration={json.dumps(calibration.as_dict(),sort_keys=True)}"]
-    for mode in args.modes:
+    for mode in sorted({config.mode for config in configs}):
         subset=[r for r in rows if r["mode"]==mode];summary.append(f"{mode}: runs={len(subset)} risk={sum(r['slip_risk_onset_ms']!='' for r in subset)} sink={sum(r['sustained_sink_onset_ms']!='' for r in subset)} tilt={sum(r['sustained_tilt_onset_ms']!='' for r in subset)}")
+    summary.extend([f"scenario_calibration={int(args.scenario_calibration)}",f"pilot_ready={selection['pilot_ready']}",f"scenario_gates={json.dumps(selection['gates'],sort_keys=True)}"])
     (output/"summary.txt").write_text("\n".join(summary)+"\n",encoding="utf-8");print("\n".join(summary))
 
 

@@ -4,6 +4,42 @@ Status: **v2 dataset foundation implemented and train-only six-run smoke
 verified**. No full v2 dataset was generated, no detector was trained, and no
 new test evaluation was run. v1 artifacts remain immutable research records.
 
+## 2026-08 scenario-physics calibration update
+
+The 90-run pilot found insufficient physical failure-mode coverage; its oracle
+threshold formulas and two-pass train-normal calibration were deliberately not
+changed. The one normal-sand sink was audited as
+`normal_sand_rounded_ridges_s00_r001`: it started 41 ms after transition at
+0.2575 mm reference-relative depth and -6.08 mm/s vertical velocity, with Fn
+59.7 N and FSR `[23.31, 20.78, 8.22, 7.40]` N. This is a small settling/
+reference transient, so the new runner provides a 0.65 s settle period before
+the same `[-50,+100)` ms event window rather than redefining the label.
+
+`ScenarioPhysicsConfig` now keeps each physical design explicit: layout,
+Marble/Sand profiles, support ratio, tangential and vertical half-sine loads,
+direction, duration, seam offset, and an optional continuous Marble-to-Ice
+profile switch. The switch retains qpos/qvel (recorded transition deltas) and
+the v2 labels still consume oracle state only. `slip_risk_dominant` is a new
+mode; it uses Marble-to-Ice plus bounded tangential excitation. Two real box
+geoms remain adjacent; seam offsets move both geoms together relative to the
+foot, never compose signals.
+
+Two train-only, one-run-per-candidate bounded sweeps (19 candidates each) were
+run without final-test materialization. The initial artifact is
+`outputs/terrain_fast_reflex_v2_scenario_calibration`; its support-ratio
+refinement is `outputs/terrain_fast_reflex_v2_scenario_calibration_refined_v2`.
+Both preserve config JSON, per-config coverage CSV, selection JSON, manifest,
+oracle/input NPZs, and plots. Normal remained hazard-free and Marble-to-Ice
+produced both Risk and Confirmed Slip. Symmetric vertical loading produced
+Sink, and combined loading produced Sink+Tilt. However, the front/rear
+tilt/boundary candidates did not satisfy the loaded-contact sustained-Tilt
+condition; vertical loading also coupled Sink and Tilt. Therefore both
+selection files correctly state `pilot_ready=false`. This is a physical
+coverage finding, not permission to tune thresholds or run the 90/105-run
+pilot. The next approval must choose a bounded physical redesign for
+front/rear tilt (for example localized support asymmetry), then rerun only its
+small train-only candidates.
+
 ## Implemented v2 foundation
 
 `terrain_fast_reflex_v2.py` and `run_terrain_fast_reflex_v2.py` implement a

@@ -11,7 +11,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from terrain_fast_reflex_v2 import (  # noqa: E402
     TRACE_SAMPLES, V2_ORACLE_CHANNELS, V2_ORACLE_INDEX, V2Calibration,
-    label_v2, validate_final_test_request, validate_state_order,
+    calibration_scenario_configs, default_scenario_configs, label_v2,
+    validate_final_test_request, validate_state_order,
 )
 
 
@@ -42,6 +43,19 @@ class FastReflexV2Test(unittest.TestCase):
         oracle[60:62, V2_ORACLE_INDEX["foot_velocity_z_mps"]] = -.5
         calibration = V2Calibration(10, .9, .9, 1., .1, .1, 1., 1., persistence_samples=3)
         self.assertFalse(label_v2(oracle, calibration)["sustained_sink"].any())
+
+    def test_scenario_configs_serialize_and_include_slip(self) -> None:
+        configs = calibration_scenario_configs()
+        self.assertEqual(len(configs), 19)
+        self.assertIn("slip_risk_dominant", {config.mode for config in configs})
+        self.assertTrue(all(config.as_dict()["config_id"] == config.config_id for config in configs))
+
+    def test_default_mode_layout_and_seam_are_explicit(self) -> None:
+        configs = {config.mode: config for config in default_scenario_configs()}
+        self.assertEqual(configs["boundary_left_right"].layout, "left_right")
+        self.assertNotEqual(configs["boundary_left_right"].seam_offset_m, 0.0)
+        self.assertTrue(configs["slip_risk_dominant"].switch_to_ice)
+        self.assertEqual(configs["normal_sand"].horizontal_force_N, 0.0)
 
 
 if __name__ == "__main__":

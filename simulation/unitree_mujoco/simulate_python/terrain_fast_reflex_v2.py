@@ -15,8 +15,8 @@ TRACE_PRE_MS = 50
 TRACE_POST_MS = 100
 TRACE_SAMPLES = TRACE_PRE_MS + TRACE_POST_MS
 RELATIVE_TRANSITION_TIME_MS = np.arange(-TRACE_PRE_MS, TRACE_POST_MS, dtype=np.int16)
-MODES = ("normal_sand", "sink_dominant", "tilt_dominant", "boundary_front_rear",
-         "boundary_left_right", "sink_and_tilt")
+MODES = ("normal_sand", "slip_risk_dominant", "sink_dominant", "tilt_dominant",
+         "boundary_front_rear", "boundary_left_right", "sink_and_tilt")
 FINAL_TEST_SPLIT = "final_test"
 
 # Kept explicitly local so schema-only tests do not need MuJoCo; names/units
@@ -41,6 +41,55 @@ def validate_final_test_request(families: list[str], include_final_test: bool) -
         raise ValueError("final-test family requested without --include-final-test")
     if forbidden:
         raise ValueError("v1 test families are permanently ineligible for v2 final test")
+
+
+@dataclass(frozen=True)
+class ScenarioPhysicsConfig:
+    """Physical controls only; calibration thresholds are deliberately absent."""
+    config_id: str
+    mode: str
+    layout: str
+    material_a: str
+    material_b: str
+    support_ratio: float
+    horizontal_force_N: float
+    vertical_force_N: float
+    direction_x: float
+    direction_y: float
+    seam_offset_m: float = 0.0
+    switch_to_ice: bool = False
+    force_duration_s: float = .100
+
+    def as_dict(self) -> dict[str, object]:
+        return asdict(self)
+
+
+def default_scenario_configs() -> tuple[ScenarioPhysicsConfig, ...]:
+    return (
+        ScenarioPhysicsConfig("normal_settled", "normal_sand", "front_rear", "sand", "sand", .50, 0., 0., 1., 0.),
+        ScenarioPhysicsConfig("slip_ice_120", "slip_risk_dominant", "front_rear", "marble", "marble", .50, 120., 0., 1., 0., switch_to_ice=True),
+        ScenarioPhysicsConfig("sink_vertical_180", "sink_dominant", "front_rear", "sand", "sand", .50, 0., 180., 1., 0.),
+        ScenarioPhysicsConfig("tilt_fr_offset_030", "tilt_dominant", "front_rear", "marble", "sand", .50, 100., 0., 1., 0., .030),
+        ScenarioPhysicsConfig("boundary_fr_offset_020", "boundary_front_rear", "front_rear", "marble", "sand", .50, 100., 0., 1., 0., .020),
+        ScenarioPhysicsConfig("boundary_lr_offset_015", "boundary_left_right", "left_right", "marble", "sand", .50, 100., 0., 0., 1., .015),
+        ScenarioPhysicsConfig("sink_tilt_vertical_160", "sink_and_tilt", "front_rear", "marble", "sand", .50, 100., 160., 1., 0., .020),
+    )
+
+
+def calibration_scenario_configs() -> tuple[ScenarioPhysicsConfig, ...]:
+    """Nineteen bounded train-only physical candidates, not threshold candidates."""
+    configs = [default_scenario_configs()[0]]
+    for force in (100., 140., 180.):
+        configs.append(ScenarioPhysicsConfig(f"slip_ice_{int(force)}", "slip_risk_dominant", "front_rear", "marble", "marble", .50, force, 0., 1., 0., switch_to_ice=True))
+    for force in (100., 180., 260.):
+        configs.append(ScenarioPhysicsConfig(f"sink_vertical_{int(force)}", "sink_dominant", "front_rear", "sand", "sand", .50, 0., force, 1., 0.))
+    for offset in (-.030, 0., .030):
+        configs.append(ScenarioPhysicsConfig(f"tilt_fr_offset_{offset:+.3f}", "tilt_dominant", "front_rear", "marble", "sand", .50, 120., 0., 1., 0., offset))
+        configs.append(ScenarioPhysicsConfig(f"boundary_fr_offset_{offset:+.3f}", "boundary_front_rear", "front_rear", "marble", "sand", .50, 120., 0., 1., 0., offset))
+        configs.append(ScenarioPhysicsConfig(f"boundary_lr_offset_{offset:+.3f}", "boundary_left_right", "left_right", "marble", "sand", .50, 120., 0., 0., 1., offset))
+    for force in (120., 180., 240.):
+        configs.append(ScenarioPhysicsConfig(f"sink_tilt_vertical_{int(force)}", "sink_and_tilt", "front_rear", "marble", "sand", .50, 120., force, 1., 0., .020))
+    return tuple(configs)
 
 
 @dataclass(frozen=True)
