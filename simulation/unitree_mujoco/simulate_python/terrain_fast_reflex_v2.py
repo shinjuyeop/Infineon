@@ -60,6 +60,8 @@ class ScenarioPhysicsConfig:
     switch_to_ice: bool = False
     force_duration_s: float = .100
     pitch_torque_Nm: float = 0.0
+    hard_backed_layer: bool = False
+    height_offset_m: float = 0.0
 
     def as_dict(self) -> dict[str, object]:
         return asdict(self)
@@ -121,6 +123,27 @@ def local_compliance_calibration_configs() -> tuple[ScenarioPhysicsConfig, ...]:
         configs.append(ScenarioPhysicsConfig(
             f"local_fr_hard_rear_soft_front_{share}", "tilt_dominant", "front_rear",
             "marble", "sand_moderately_compliant", .50, 0., 0., 1., 0., seam,
+        ))
+    return tuple(configs)
+
+
+def final_tilt_physics_calibration_configs() -> tuple[ScenarioPhysicsConfig, ...]:
+    """Last bounded 50/50 front/rear ground-physics feasibility sweep."""
+    configs = [default_scenario_configs()[0]]
+    for material in ("sand_slightly_compliant", "sand_moderately_compliant"):
+        configs.append(ScenarioPhysicsConfig(
+            f"layer_hard_rear_soft_front_{material.removeprefix('sand_')}", "tilt_dominant", "front_rear",
+            "marble", material, .50, 0., 0., 1., 0., .035, hard_backed_layer=True,
+        ))
+    for um in (25, 50, 75, 100):
+        configs.append(ScenarioPhysicsConfig(
+            f"height_hard_rear_front_plus_{um}um", "tilt_dominant", "front_rear",
+            "marble", "marble", .50, 0., 0., 1., 0., .035, height_offset_m=um * 1e-6,
+        ))
+    for um in (25, 50):
+        configs.append(ScenarioPhysicsConfig(
+            f"layer_height_{um}um", "tilt_dominant", "front_rear", "marble", "sand_slightly_compliant",
+            .50, 0., 0., 1., 0., .035, hard_backed_layer=True, height_offset_m=um * 1e-6,
         ))
     return tuple(configs)
 

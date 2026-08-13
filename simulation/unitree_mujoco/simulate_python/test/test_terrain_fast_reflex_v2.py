@@ -13,7 +13,7 @@ from terrain_fast_reflex_v2 import (  # noqa: E402
     TRACE_SAMPLES, V2_ORACLE_CHANNELS, V2_ORACLE_INDEX, V2Calibration,
     calibration_scenario_configs, default_scenario_configs, label_v2,
     front_rear_torque_calibration_configs, local_compliance_calibration_configs,
-    validate_final_test_request, validate_state_order,
+    final_tilt_physics_calibration_configs, validate_final_test_request, validate_state_order,
 )
 
 
@@ -69,6 +69,12 @@ class FastReflexV2Test(unittest.TestCase):
         seams = {config.seam_offset_m for config in configs if config.mode == "tilt_dominant"}
         self.assertEqual(seams, {.035, .052, .069})
         self.assertTrue(all(config.pitch_torque_Nm == 0.0 for config in configs))
+
+    def test_final_tilt_physics_is_bounded_and_torque_free(self) -> None:
+        configs = final_tilt_physics_calibration_configs()
+        self.assertEqual(len(configs), 9)
+        self.assertTrue(np.allclose(sorted({config.height_offset_m for config in configs if config.height_offset_m}), [25e-6, 50e-6, 75e-6, 100e-6]))
+        self.assertTrue(all(config.horizontal_force_N == config.vertical_force_N == config.pitch_torque_Nm == 0.0 for config in configs))
 
 
 if __name__ == "__main__":

@@ -227,9 +227,10 @@ sink/tilt onset을 연구한다. 기존 4-class classifier와 deployment artifac
 - [x] Fast Reflex v2 localized-compliance front/rear rejection audit: bilateral
   contact was retained, but soft-rear rotation was too small and soft-front
   Tilt was contaminated by preceding Sink; left/right was correctly not swept
-- [ ] Fast Reflex v2 approved localized compliant-layer/height physical design,
-  bounded train-only front/rear calibration only; keep torque rejected and
-  do not run a pilot until all scenario gates are independently ready
+- [x] Fast Reflex v2 terminal bounded hard-backed-layer/height audit:
+  `SAND_TILT_PHYSICAL_DESIGN_REJECTED`; isolated Sand Tilt-only is not
+  physically validated in the current Digital Twin and must not drive pilot or
+  deployment scope
 - [ ] 후속 승인 뒤 selected detector INT8/E84, reflex rule 및 E2E 측정
 
 다음 milestone은 frozen Slip 결과를 그대로 종료 상태로 보존하고, Sand v2를

@@ -22,7 +22,8 @@ from terrain_fast_reflex_v2 import (
     TRACE_POST_MS, TRACE_PRE_MS, TRACE_SAMPLES, V2_ORACLE_CHANNELS, V2_ORACLE_INDEX,
     ScenarioPhysicsConfig, calibration_scenario_configs, calibrate_v2,
     default_scenario_configs, front_rear_torque_calibration_configs,
-    local_compliance_calibration_configs, label_v2, onset_ms, validate_final_test_request,
+    final_tilt_physics_calibration_configs, local_compliance_calibration_configs,
+    label_v2, onset_ms, validate_final_test_request,
     validate_state_order,
 )
 from terrain_profiles import TERRAIN_PROFILES, apply_terrain_profile
@@ -35,6 +36,7 @@ SCENES = {
     "front_rear": SCENE_DIR / "scene_fast_reflex_v2_front_rear.xml",
     "left_right": SCENE_DIR / "scene_fast_reflex_v2_left_right.xml",
 }
+LAYER_SCENE = SCENE_DIR / "scene_fast_reflex_v2_front_rear_layer.xml"
 # Let the initially posed robot settle before an event.  The old .250 s
 # transition left a normal-sand vertical transient inside the event window.
 SETTLE_TIME_S, TRANSITION_TIME_S, DURATION_S = .500, .650, .800
@@ -47,6 +49,8 @@ class RawRun:
     sensors: np.ndarray
     oracle: np.ndarray
     sole_positions_m: np.ndarray
+    backing_contact: np.ndarray
+    max_penetration_m: float
     qpos_delta: float
     qvel_delta: float
     wall_time_s: float
@@ -69,6 +73,8 @@ def parse_args() -> argparse.Namespace:
                         help="bounded rejected-design audit; not eligible as pilot selection")
     parser.add_argument("--local-compliance-calibration", action="store_true",
                         help="bounded train-only localized compliant-support experiment")
+    parser.add_argument("--final-tilt-physics-calibration", action="store_true",
+                        help="last bounded hard-backed-layer/height-offset train-only experiment")
     parser.add_argument("--scenario-selection", type=Path,
                         help="frozen selected_configs JSON from a prior train-only calibration")
     parser.add_argument("--audit-existing", type=Path,
@@ -171,22 +177,28 @@ def _apply_pitch_torque(data, body_id: int, time_s: float, config: ScenarioPhysi
         data.xfrc_applied[body_id, 4] += config.pitch_torque_Nm * np.sin(np.pi * phase)
 
 
-def _offset_seam(model, layout: str, offset_m: float) -> None:
-    if not offset_m:
-        return
+def _offset_seam(model, layout: str, offset_m: float, height_offset_m: float = 0.0) -> None:
     axis = 0 if layout == "front_rear" else 1
     # Shift both adjacent box centers together: they remain adjacent and the
     # actual contact fraction moves relative to the already continuous foot.
-    for name in ("ground_a", "ground_b"):
-        model.geom_pos[model.geom(name).id, axis] += offset_m
+    for name in ("ground_a", "ground_b", "ground_b_backing"):
+        if name not in {model.geom(i).name for i in range(model.ngeom)}:
+            continue
+        geom_id=model.geom(name).id
+        model.geom_pos[geom_id, axis] += offset_m
+        if name.startswith("ground_b"):
+            model.geom_pos[geom_id, 2] += height_offset_m
 
 
 def run_one(config: ScenarioPhysicsConfig, family: str, surface_index: int, run_index: int) -> RawRun:
-    model = mujoco.MjModel.from_xml_path(str(SCENES[config.layout])); model.opt.timestep = PHYSICS_TIMESTEP_S
-    _offset_seam(model, config.layout, config.seam_offset_m)
+    scene = LAYER_SCENE if config.hard_backed_layer else SCENES[config.layout]
+    model = mujoco.MjModel.from_xml_path(str(scene)); model.opt.timestep = PHYSICS_TIMESTEP_S
+    _offset_seam(model, config.layout, config.seam_offset_m, config.height_offset_m)
     data = mujoco.MjData(model)
     for name, material in (("ground_a", config.material_a), ("ground_b", config.material_b)):
         apply_terrain_profile(model, TERRAIN_PROFILES[material], name)
+    if config.hard_backed_layer:
+        apply_terrain_profile(model, TERRAIN_PROFILES["marble"], "ground_b_backing")
     ground_ids = [model.geom("ground_a").id, model.geom("ground_b").id]
     spec = make_expanded_run_specification("sand", family, surface_index, run_index)
     condition = ExcitationCondition(f"{config.config_id}_{family}_s{surface_index:02d}_r{run_index:03d}",
@@ -200,7 +212,8 @@ def run_one(config: ScenarioPhysicsConfig, family: str, surface_index: int, run_
     reader = G1HilSensorReader(model, data); foot_ids = frozenset(reader.left_foot_geom_ids)
     body = model.body("left_ankle_roll_link").id; velocity = np.zeros(6); wrench = np.zeros(6)
     sole_ids = [model.geom(f"left_foot_contact_{index}").id for index in range(1, 5)]
-    times=[]; sensors=[]; raw=[]; sole_positions=[]; steps=0; switched=False; qpos_delta=qvel_delta=0.; start=time.perf_counter()
+    backing_id = model.geom("ground_b_backing").id if config.hard_backed_layer else None
+    times=[]; sensors=[]; raw=[]; sole_positions=[]; backing=[]; steps=0; max_penetration=0.; switched=False; qpos_delta=qvel_delta=0.; start=time.perf_counter()
     while data.time + 1e-12 < DURATION_S:
         if config.switch_to_ice and not switched and data.time >= TRANSITION_TIME_S - 1e-12:
             qpos_before, qvel_before = data.qpos.copy(), data.qvel.copy()
@@ -216,6 +229,8 @@ def run_one(config: ScenarioPhysicsConfig, family: str, surface_index: int, run_
             times.append(float(data.time)); sensors.append(reader.read_vector())
             raw.append(_foot_oracle(model, data, ground_ids, foot_ids, body, velocity, wrench))
             sole_positions.append(data.geom_xpos[sole_ids].copy())
+            backing.append(False if backing_id is None else any(backing_id in (int(data.contact[i].geom1), int(data.contact[i].geom2)) and ((int(data.contact[i].geom1) in foot_ids) or (int(data.contact[i].geom2) in foot_ids)) for i in range(data.ncon)))
+            max_penetration=max(max_penetration, max((max(0., -float(data.contact[i].dist)) for i in range(data.ncon)), default=0.))
     times=np.asarray(times); sensors=np.asarray(sensors); raw=np.asarray(raw)
     select=(times >= TRANSITION_TIME_S - TRACE_PRE_MS / 1000 - 1e-9) & (times < TRANSITION_TIME_S + TRACE_POST_MS / 1000 - 1e-9)
     family_info=family_for_name(family)
@@ -225,10 +240,10 @@ def run_one(config: ScenarioPhysicsConfig, family: str, surface_index: int, run_
               "settle_time_s":SETTLE_TIME_S,"ground_layout":config.layout,"ground_a_material":config.material_a,"ground_b_material":config.material_b,
               "boundary_orientation":"front_rear" if config.layout == "front_rear" else "left_right","boundary_position_m":config.seam_offset_m,
               "pulse_magnitude_N":config.horizontal_force_N,"vertical_pulse_magnitude_N":config.vertical_force_N,
-              "pitch_torque_Nm":config.pitch_torque_Nm,
+              "pitch_torque_Nm":config.pitch_torque_Nm,"hard_backed_layer":int(config.hard_backed_layer),"height_offset_m":config.height_offset_m,
               "pulse_duration_s":config.force_duration_s,"pulse_direction_x":config.direction_x,"pulse_direction_y":config.direction_y,
               "support_ratio":config.support_ratio,"material_switch_to_ice":int(config.switch_to_ice),"run_index":run_index}
-    return RawRun(metadata, times[select], sensors[select], _postprocess(raw[select]), np.asarray(sole_positions)[select], qpos_delta, qvel_delta, time.perf_counter()-start)
+    return RawRun(metadata, times[select], sensors[select], _postprocess(raw[select]), np.asarray(sole_positions)[select], np.asarray(backing)[select], max_penetration, qpos_delta, qvel_delta, time.perf_counter()-start)
 
 
 def _row(raw: RawRun, labels: dict[str, np.ndarray]) -> dict[str, object]:
@@ -248,7 +263,7 @@ def _row(raw: RawRun, labels: dict[str, np.ndarray]) -> dict[str, object]:
     out={**raw.metadata,"calibration_provenance":"train-normal only","valid":int(np.isfinite(raw.sensors).all() and np.isfinite(raw.oracle).all()),
          "invalid_reason":"","qpos_transition_max_abs_delta":raw.qpos_delta,"qvel_transition_max_abs_delta":raw.qvel_delta,
          "ground_a_contact_samples":int(raw.oracle[:, V2_ORACLE_INDEX["ground_a_contact"]].sum()),
-         "ground_b_contact_samples":int(raw.oracle[:, V2_ORACLE_INDEX["ground_b_contact"]].sum()),"wall_time_s":raw.wall_time_s,
+         "ground_b_contact_samples":int(raw.oracle[:, V2_ORACLE_INDEX["ground_b_contact"]].sum()),"backing_contact_samples":int(raw.backing_contact.sum()),"max_penetration_m":raw.max_penetration_m,"wall_time_s":raw.wall_time_s,
          "fsr_sum_max_N":float(fsr_sum.max()), "front_minus_rear_peak_N":float(np.max(np.abs(front_rear))),
          "left_minus_right_peak_N":float(np.max(np.abs(left_right))),
          "normalized_front_rear_imbalance_peak":float(np.max(np.abs(front_rear / normalizer))),
@@ -321,6 +336,7 @@ def save(output: Path, raw_runs: list[RawRun], labels: list[dict[str, np.ndarray
     np.savez_compressed(output / "oracle_diagnostics.npz", oracle=np.asarray([r.oracle for r in raw_runs],np.float32),
                         oracle_channels=np.asarray(V2_ORACLE_CHANNELS), sample_time_s=np.asarray([r.timestamps_s for r in raw_runs]),
                         sole_contact_centres_m=np.asarray([r.sole_positions_m for r in raw_runs],np.float32),
+                        backing_contact=np.asarray([r.backing_contact for r in raw_runs],bool),
                         **{name:np.asarray([item[name] for item in labels],bool) for name in labels[0]}, run_id=np.asarray([r.metadata["run_id"] for r in raw_runs]))
     with (output / "manifest.csv").open("w",newline="",encoding="utf-8") as stream:
         writer=csv.DictWriter(stream,fieldnames=list(rows[0])); writer.writeheader(); writer.writerows(rows)
@@ -390,8 +406,10 @@ def plot_local_compliance(output: Path, raw_runs: list[RawRun], labels: list[dic
     import matplotlib; matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     plots = output / "plots"; plots.mkdir(exist_ok=True)
-    choices = [next(i for i, raw in enumerate(raw_runs) if raw.metadata["mode"] == "normal_sand"),
-               next(i for i, raw in enumerate(raw_runs) if "hard_rear_soft_front" in str(raw.metadata["scenario_config_id"]))]
+    normal_index=next(i for i, raw in enumerate(raw_runs) if raw.metadata["mode"] == "normal_sand")
+    candidate_indices=[i for i, raw in enumerate(raw_runs) if raw.metadata["mode"] != "normal_sand"]
+    representative=max(candidate_indices, key=lambda i: raw_runs[i].oracle[:, V2_ORACLE_INDEX["foot_tilt_change_rad"]].max())
+    choices = [normal_index, representative]
     for index in choices:
         raw, state = raw_runs[index], labels[index]
         x=RELATIVE_TRANSITION_TIME_MS; sole=raw.sole_positions_m
@@ -406,6 +424,34 @@ def plot_local_compliance(output: Path, raw_runs: list[RawRun], labels: list[dic
         axis[3].plot(x,fsr);axis[3].plot(x,imbalance,label="norm F-R",lw=2);axis[3].legend(ncol=3,fontsize=8);axis[3].set_ylabel("FSR / imbalance")
         axis[4].plot(x,raw.sensors[:,7],label="gyro x");axis[4].plot(x,raw.sensors[:,8],label="gyro y");axis[4].step(x,state["sustained_tilt"],where="post",label="tilt state");axis[4].step(x,state["sustained_sink"],where="post",label="sink state");axis[4].legend(ncol=2,fontsize=8)
         axis[-1].set_xlabel("ms relative transition");fig.suptitle(str(raw.metadata["scenario_config_id"]));fig.tight_layout();fig.savefig(plots/f"local_compliance_{raw.metadata['scenario_config_id']}.png",dpi=140);plt.close(fig)
+
+
+def final_tilt_physics_artifacts(output: Path, rows: list[dict[str, object]], configs: tuple[ScenarioPhysicsConfig, ...]) -> None:
+    fields=("config_id","kind","height_offset_m","hard_backed_layer","ground_a_material","ground_b_material","ground_a_contact_coverage","ground_b_contact_coverage","loaded_contact_coverage","backing_contact_samples","differential_settlement_peak_m","foot_tilt_change_peak_rad","gyro_xy_magnitude_peak_rad_s","sustained_tilt_onset_ms","sustained_sink_onset_ms","max_penetration_m","gross_rotation","valid","selection_status","rejection_reason")
+    by_id={config.config_id:config for config in configs}; items=[]
+    for row in rows:
+        config=by_id[str(row["scenario_config_id"])]
+        retain=min(float(row["ground_a_contact_coverage"]),float(row["ground_b_contact_coverage"])) >= .75 and float(row["loaded_contact_coverage"]) >= .75
+        tilt=row["sustained_tilt_onset_ms"] != ""; sink=row["sustained_sink_onset_ms"] != ""
+        accepted=config.mode != "normal_sand" and retain and tilt and not sink and not int(row["gross_rotation"])
+        if accepted: reason=""
+        elif config.mode == "normal_sand": reason="normal_control"
+        elif not retain: reason="contact_loss"
+        elif config.hard_backed_layer and int(row["backing_contact_samples"]) > 0: reason="simultaneous_top_and_backing_contact"
+        elif int(row["gross_rotation"]): reason="gross_rotation"
+        elif sink: reason="sink_before_or_with_tilt"
+        else: reason="insufficient_tilt"
+        kind="hard_backed_plus_height" if config.hard_backed_layer and config.height_offset_m else "hard_backed_layer" if config.hard_backed_layer else "height_offset" if config.height_offset_m else "normal"
+        items.append({"config_id":config.config_id,"kind":kind,"height_offset_m":config.height_offset_m,"hard_backed_layer":int(config.hard_backed_layer),"ground_a_material":config.material_a,"ground_b_material":config.material_b,"ground_a_contact_coverage":row["ground_a_contact_coverage"],"ground_b_contact_coverage":row["ground_b_contact_coverage"],"loaded_contact_coverage":row["loaded_contact_coverage"],"backing_contact_samples":row["backing_contact_samples"],"differential_settlement_peak_m":row["differential_settlement_peak_m"],"foot_tilt_change_peak_rad":row["foot_tilt_change_peak_rad"],"gyro_xy_magnitude_peak_rad_s":row["gyro_xy_magnitude_peak_rad_s"],"sustained_tilt_onset_ms":row["sustained_tilt_onset_ms"],"sustained_sink_onset_ms":row["sustained_sink_onset_ms"],"max_penetration_m":row["max_penetration_m"],"gross_rotation":row["gross_rotation"],"valid":row["valid"],"selection_status":"accepted" if accepted else "rejected","rejection_reason":reason})
+    with (output/"candidate_sweep.csv").open("w",newline="",encoding="utf-8") as f:
+        writer=csv.DictWriter(f,fieldnames=fields);writer.writeheader();writer.writerows(items)
+    accepted=[item for item in items if item["selection_status"] == "accepted"]
+    selected=min(accepted,key=lambda x:(x["height_offset_m"],x["differential_settlement_peak_m"])) if accepted else None
+    status="SAND_TILT_V2_SELECTED" if selected else "SAND_TILT_PHYSICAL_DESIGN_REJECTED"
+    (output/"selected_config.json").write_text(json.dumps({"status":status,"selected":selected},indent=2)+"\n",encoding="utf-8")
+    with (output/"rejected_configs.csv").open("w",newline="",encoding="utf-8") as f:
+        writer=csv.DictWriter(f,fieldnames=fields);writer.writeheader();writer.writerows([item for item in items if item["selection_status"] == "rejected" and item["kind"] != "normal"])
+    (output/"summary.md").write_text(f"# {status}\n\nTrain-only 50/50 front/rear final bounded physical design calibration. No oracle threshold or label changes; final-test materialization is zero.\n\nUnique candidates: {len(items)}; accepted: {len(accepted)}.\n",encoding="utf-8")
 
 
 def main() -> None:
@@ -426,7 +472,7 @@ def main() -> None:
             raise ValueError("invalid Fusion10/timestamp artifact")
         print(f"V2_AUDIT_PASS runs={len(sensors)} native_spacing_ms=1 final_test_materialized=0 source={source}")
         return
-    if sum(bool(item) for item in (args.scenario_calibration, args.front_rear_torque_calibration, args.local_compliance_calibration, args.scenario_selection is not None)) > 1:
+    if sum(bool(item) for item in (args.scenario_calibration, args.front_rear_torque_calibration, args.local_compliance_calibration, args.final_tilt_physics_calibration, args.scenario_selection is not None)) > 1:
         raise ValueError("choose one scenario calibration/selection source")
     if args.scenario_calibration:
         configs=tuple(config for config in calibration_scenario_configs() if config.mode in args.modes)
@@ -438,6 +484,10 @@ def main() -> None:
             raise ValueError("scenario calibration is train-only")
     elif args.local_compliance_calibration:
         configs=tuple(config for config in local_compliance_calibration_configs() if config.mode in args.modes)
+        if any(family_for_name(name).split != "train" for name in _families(args)):
+            raise ValueError("scenario calibration is train-only")
+    elif args.final_tilt_physics_calibration:
+        configs=tuple(config for config in final_tilt_physics_calibration_configs() if config.mode in args.modes)
         if any(family_for_name(name).split != "train" for name in _families(args)):
             raise ValueError("scenario calibration is train-only")
     elif args.scenario_selection is not None:
@@ -478,6 +528,11 @@ def main() -> None:
     if args.local_compliance_calibration:
         local_compliance_artifacts(output, raw, labels, rows, configs)
         plot_local_compliance(output, raw, labels)
+    if args.final_tilt_physics_calibration:
+        selection["pilot_ready"] = False
+        selection["gates"]["final_tilt_physics_feasibility_only"] = True
+        final_tilt_physics_artifacts(output, rows, configs)
+        plot_local_compliance(output, raw, labels)
     if args.plot:
         plots=output/"plots";plots.mkdir(exist_ok=True)
         for mode in sorted({config.mode for config in configs}):
@@ -486,7 +541,7 @@ def main() -> None:
     summary=[f"{SCHEMA_NAME} schema_version={SCHEMA_VERSION}",f"runs={len(raw)} valid={sum(r['valid'] for r in rows)}", "native_sampling=1000Hz physics=2000Hz spacing=1ms", "final_test_materialized=0",f"calibration={json.dumps(calibration.as_dict(),sort_keys=True)}"]
     for mode in sorted({config.mode for config in configs}):
         subset=[r for r in rows if r["mode"]==mode];summary.append(f"{mode}: runs={len(subset)} risk={sum(r['slip_risk_onset_ms']!='' for r in subset)} sink={sum(r['sustained_sink_onset_ms']!='' for r in subset)} tilt={sum(r['sustained_tilt_onset_ms']!='' for r in subset)}")
-    summary.extend([f"scenario_calibration={int(args.scenario_calibration or args.front_rear_torque_calibration or args.local_compliance_calibration)}",f"pilot_ready={selection['pilot_ready']}",f"scenario_gates={json.dumps(selection['gates'],sort_keys=True)}"])
+    summary.extend([f"scenario_calibration={int(args.scenario_calibration or args.front_rear_torque_calibration or args.local_compliance_calibration or args.final_tilt_physics_calibration)}",f"pilot_ready={selection['pilot_ready']}",f"scenario_gates={json.dumps(selection['gates'],sort_keys=True)}"])
     (output/"summary.txt").write_text("\n".join(summary)+"\n",encoding="utf-8");print("\n".join(summary))
 
 

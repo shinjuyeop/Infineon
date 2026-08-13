@@ -78,6 +78,26 @@ The next physical candidate is a localized compliant *layer/height* design
 that can create differential settlement without making the soft half's global
 vertical response cross the Sink condition; no threshold change is authorized.
 
+### Final bounded Tilt physics result: SAND_TILT_PHYSICAL_DESIGN_REJECTED
+
+The final train-only 50/50 front/rear sweep is preserved at
+`outputs/terrain_fast_reflex_v2_final_tilt_physics_calibration_v2`. It tested
+nine unique configurations: normal, two 0.10 mm Sand-derived compliant caps
+over Marble backing, four Marble front-height offsets (25/50/75/100 um), and
+two cap-plus-height offsets (25/50 um). All imposed body torque, horizontal
+and vertical pulse, and initial-pose disturbance remained zero.
+
+Both hard-backed cap candidates retained A/B and loaded contact at 100%, but
+the backing contacted in all 150 trace samples simultaneously with the cap;
+the intended sequential compliant-travel mechanism was not realized. Height
+offsets retained contacts but yielded only 0.96--1.25 um differential
+settlement and 0.0000106--0.0000137 rad orientation departure, with no Tilt
+or Sink. No final candidate produced sustained Tilt. This is the terminal
+bounded-design result: isolated Sand Tilt-only is a current Digital Twin
+contact-model limitation. Slip Fast Reflex and physically strong Sink or
+Sink+Tilt remain separate viable research responses; do not represent a Sand
+Tilt-only detector as physically validated or start its deployment path.
+
 ## Implemented v2 foundation
 
 `terrain_fast_reflex_v2.py` and `run_terrain_fast_reflex_v2.py` implement a
