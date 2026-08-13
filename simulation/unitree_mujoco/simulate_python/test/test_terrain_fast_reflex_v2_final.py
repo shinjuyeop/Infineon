@@ -5,7 +5,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from run_terrain_fast_reflex_v2_final import FROZEN, planned_runs, verify_preflight, verify_selected_values
+from run_terrain_fast_reflex_v2_final import FROZEN, SURFACE_INDICES, FINAL_SESSION_SEED, FINAL_EXCITATION_OFFSET, planned_runs, verify_preflight, verify_selected_values
 from terrain_fast_reflex_v2 import validate_final_test_request
 
 
@@ -14,6 +14,7 @@ class V2FinalProtocolTest(unittest.TestCase):
         self.assertEqual((FROZEN["slip"]["window_ms"], FROZEN["slip"]["persistence"]), (5, 3))
         self.assertEqual((FROZEN["sink"]["window_ms"], FROZEN["sink"]["persistence"]), (20, 1))
         self.assertEqual(planned_runs(), 90)
+        self.assertEqual((min(SURFACE_INDICES), max(SURFACE_INDICES), FINAL_SESSION_SEED, FINAL_EXCITATION_OFFSET), (9110, 9114, 20260903, 921000))
 
     def test_alternative_selection_values_are_rejected(self):
         for key, value in (("threshold", .5), ("window_ms", 10), ("persistence", 2)):

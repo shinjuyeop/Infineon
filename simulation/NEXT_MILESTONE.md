@@ -17,6 +17,13 @@ selection values, `FINAL_TEST_READY=true`, and nonexistent final output before
 any materialization. The final test remains untouched until that explicit user
 command; it is not part of this preparation milestone.
 
+The original reserved final command encountered an output-directory creation
+defect after simulation but before any data, marker, inference, or metrics were
+persisted. Its reservation is retired and must not be repeated. The replacement
+one-shot reservation is indices 9110--9114, session 20260903, and excitation
+offset 921000; it keeps all frozen detector values unchanged and creates the
+empty final directory before simulation so a partial run remains fail-closed.
+
 상태: **expanded dataset, host INT8 parity, KIT_PSE84_AI E84 deployment,
 TRN1 full-window HIL, TRN2 continuous sample-stream HIL 및 실제 MuJoCo
 live-loop → physical E84 integration, native 1 kHz/50 ms feasibility 및

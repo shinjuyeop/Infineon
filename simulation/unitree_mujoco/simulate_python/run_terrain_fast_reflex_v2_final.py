@@ -23,8 +23,10 @@ SOURCE_OUTPUT = ROOT / "outputs/terrain_fast_reflex_v2_final_scope_full"
 DATASET = ROOT / "outputs/terrain_fast_reflex_v2_detector_dataset"
 FAMILIES = ("final_fresh_crosshatch", "final_fresh_rounded_ridges")
 PHYSICAL_FAMILIES = ("crosshatch", "rounded_ridges")
-SURFACE_INDICES = tuple(range(9100, 9105))
+SURFACE_INDICES = tuple(range(9110, 9115))
 RUNS_PER_SURFACE = 3
+FINAL_SESSION_SEED = 20260903
+FINAL_EXCITATION_OFFSET = 921000
 FROZEN = {
     "slip": {"target": "confirmed_slip", "window_ms": 5, "threshold": 0.9719217419624332, "persistence": 3, "pooling": "GAP + GlobalMax", "parameters": 1237, "model": ROOT / "outputs/terrain_fast_reflex_v2_detector_training_slip/slip_5ms/model.keras", "normalization": DATASET / "slip_5ms/normalization.json", "model_sha256": "4751c73be3047ad968caa16574f4bac7537369392435e928c7c8d2ad0051d377", "normalization_sha256": "67f8f6256626d55fe0dd33a1631836234216dbcafe473a66df304554033a65df"},
     "sink": {"target": "sustained_sink", "window_ms": 20, "threshold": 0.9836072999238968, "persistence": 1, "pooling": "GAP", "parameters": 1221, "model": ROOT / "outputs/terrain_fast_reflex_v2_detector_training_sink/sink_20ms/model.keras", "normalization": DATASET / "sink_20ms/normalization.json", "model_sha256": "8447152ffe17dcf75943aca6008fbab19b2b64a28c041ba3cc6573e329833453", "normalization_sha256": "5949d27423d81bbe6ccfe586b35d6f9727717d5eb35bc4f07c91750a793848f1"},
@@ -65,7 +67,7 @@ def verify_preflight(final_output: Path, evaluation_output: Path | None = None) 
             value = sha256(config[key]); expected = config[f"{key}_sha256"]
             if value != expected: raise ValueError(f"{detector} {key} SHA256 mismatch")
             hashes[f"{detector}_{key}"] = value
-    return {"FINAL_TEST_READY": True, "final_test_materialized": 0, "output_must_not_exist": str(final_output.resolve()), "evaluation_output_must_not_exist": None if evaluation_output is None else str(evaluation_output.resolve()), "planned_runs": planned_runs(), "families": FAMILIES, "physical_morphology_realizations": PHYSICAL_FAMILIES, "surface_index_reservation": [min(SURFACE_INDICES), max(SURFACE_INDICES)], "session_seed": 20260902, "excitation_seed_offset": 920000, "modes": ["normal_sand", "slip_risk_dominant", "sink_dominant"], "frozen_hashes": hashes, "detectors": frozen_public()}
+    return {"FINAL_TEST_READY": True, "final_test_materialized": 0, "output_must_not_exist": str(final_output.resolve()), "evaluation_output_must_not_exist": None if evaluation_output is None else str(evaluation_output.resolve()), "planned_runs": planned_runs(), "families": FAMILIES, "physical_morphology_realizations": PHYSICAL_FAMILIES, "surface_index_reservation": [min(SURFACE_INDICES), max(SURFACE_INDICES)], "session_seed": FINAL_SESSION_SEED, "excitation_seed_offset": FINAL_EXCITATION_OFFSET, "modes": ["normal_sand", "slip_risk_dominant", "sink_dominant"], "frozen_hashes": hashes, "detectors": frozen_public()}
 
 
 def final_rows() -> tuple[list[Any], list[dict[str, Any]], dict[str, Any]]:
@@ -80,7 +82,7 @@ def final_rows() -> tuple[list[Any], list[dict[str, Any]], dict[str, Any]]:
             for index in SURFACE_INDICES:
                 for run_index in range(RUNS_PER_SURFACE):
                     item = run_one(config, physical, index, run_index)
-                    item.metadata.update({"split": "final_test", "surface_family": family, "surface_seed": index, "session_id": f"v2_final_20260902_{family}_{index}", "reserved_surface_index": index, "excitation_seed_offset": 920000})
+                    item.metadata.update({"split": "final_test", "surface_family": family, "surface_seed": index, "session_id": f"v2_final_{FINAL_SESSION_SEED}_{family}_{index}", "reserved_surface_index": index, "excitation_seed_offset": FINAL_EXCITATION_OFFSET})
                     raw.append(item)
     labels = [label_v2(item.oracle, calibration) for item in raw]
     for value in labels: validate_state_order(value)
@@ -89,9 +91,10 @@ def final_rows() -> tuple[list[Any], list[dict[str, Any]], dict[str, Any]]:
 
 def materialize(final_output: Path) -> None:
     from run_terrain_fast_reflex_v2 import _row, save
+    final_output.mkdir(parents=True, exist_ok=False)
     raw, labels, calibration = final_rows()
     rows = [_row(item, label) for item, label in zip(raw, labels)]
-    protocol = {"dataset_name": "terrain_fast_reflex_v2", "schema_version": 2, "final_test": {"materialized": True, "one_shot": True, "marker": "FINAL_TEST_MATERIALIZED"}, "status": "untouched final reservation materialized exactly once", "split": "final_test", "modes": ["normal_sand", "slip_risk_dominant", "sink_dominant"], "families": FAMILIES, "physical_morphology_realizations": PHYSICAL_FAMILIES, "surface_index_reservation": list(SURFACE_INDICES), "session_seed": 20260902, "excitation_seed_offset": 920000, "candidate_runs": len(raw), "calibration": calibration, "frozen_detector_configs": frozen_public(), "v1_test_families_ineligible": ["warped_multisine", "smooth_random_patches"]}
+    protocol = {"dataset_name": "terrain_fast_reflex_v2", "schema_version": 2, "final_test": {"materialized": True, "one_shot": True, "marker": "FINAL_TEST_MATERIALIZED"}, "status": "untouched final reservation materialized exactly once", "split": "final_test", "modes": ["normal_sand", "slip_risk_dominant", "sink_dominant"], "families": FAMILIES, "physical_morphology_realizations": PHYSICAL_FAMILIES, "surface_index_reservation": list(SURFACE_INDICES), "session_seed": FINAL_SESSION_SEED, "excitation_seed_offset": FINAL_EXCITATION_OFFSET, "candidate_runs": len(raw), "calibration": calibration, "frozen_detector_configs": frozen_public(), "v1_test_families_ineligible": ["warped_multisine", "smooth_random_patches"]}
     save(final_output, raw, labels, rows, protocol)
     (final_output / "frozen_detector_configs.json").write_text(json.dumps(frozen_public(), indent=2) + "\n")
     (final_output / "FINAL_TEST_MATERIALIZED").write_text("one-shot final materialization completed; regeneration forbidden\n")

@@ -30,10 +30,15 @@ stable firing plus target-positive runs with a pre-onset stable firing, divided
 by all final runs. Pre-onset Slip firing remains a false alarm and separately
 reported anticipation diagnostic.
 
-The final reservation is 90 runs: normal, Slip, and Sink modes × two fresh
-held-out realizations × five reserved surface indices (9100--9104) × three
-runs. Session seed 20260902 and excitation offset 920000 are retained from
-the authoritative reservation. Old v1 test families (`warped_multisine`,
+The first final reservation (9100--9104/session 20260902/offset 920000) was
+executed once but failed before any output file, marker, model inference, or
+metric was written because the output directory was not created. Its 90
+simulations must not be re-run. The replacement untouched reservation is 90
+runs: normal, Slip, and Sink modes × two fresh held-out realizations × five
+reserved surface indices (9110--9114) × three runs, session seed 20260903 and
+excitation offset 921000. `materialize()` now creates its empty output directory
+before any simulation; any subsequent failure leaves that directory in place
+and therefore fail-closes replay. Old v1 test families (`warped_multisine`,
 `smooth_random_patches`) are permanently excluded. `INT8_READY=true` is
 permitted only if both frozen final host gates pass; a failure requires a new
 version/protocol rather than post-test threshold adjustment.
