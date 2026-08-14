@@ -73,7 +73,7 @@ def replay(port:Path,source:Path,manifest:dict,timeout:float)->dict:
             while time.monotonic()<end and m is None:
                 reply=line(fd,max(.01,end-time.monotonic())); m=RESULT.search(reply)
             if m is None: raise RuntimeError('no FRV2_RESULT; verify frv2_sink_hil firmware: '+reply.decode(errors='replace'))
-            replies.append({key:(int(value) if value.isdigit() else value) for key,value in m.groupdict().items()}); seq+=min(BATCH,len(samples)-start)
+            replies.append({key:(int(value) if value.isdigit() else value.decode()) for key,value in m.groupdict().items()}); seq+=min(BATCH,len(samples)-start)
         runs.append({'run':run,**t,'replies':replies})
     finally: os.close(fd)
     return {'runs':runs}
