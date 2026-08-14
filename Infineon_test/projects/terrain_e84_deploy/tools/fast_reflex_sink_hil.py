@@ -63,7 +63,11 @@ def line(fd:int,timeout:float)->bytes:
     raise TimeoutError(d.decode(errors='replace'))
 def replay(port:Path,source:Path,manifest:dict,timeout:float)->dict:
     with np.load(source/'inputs_fusion10.npz',allow_pickle=False) as z: raw=np.asarray(z['sensors'],np.float32); ids={str(x):i for i,x in enumerate(z['run_id'])}
-    fd=os.open(port,os.O_RDWR|os.O_NOCTTY|os.O_NONBLOCK); configure(fd); termios.tcflush(fd,termios.TCIOFLUSH); runs=[]
+    fd=os.open(port,os.O_RDWR|os.O_NOCTTY|os.O_NONBLOCK); configure(fd); termios.tcflush(fd,termios.TCIOFLUSH)
+    ready=line(fd,timeout)
+    if b'FRV2_READY' not in ready:
+        raise RuntimeError('expected FRV2_READY; verify the frv2_sink_hil firmware and 1000000 baud: '+ready.decode(errors='replace'))
+    runs=[]
     try:
       for run,t in enumerate(manifest['traces']):
         samples=raw[ids[t['run_id']]]; seq=0; replies=[]
