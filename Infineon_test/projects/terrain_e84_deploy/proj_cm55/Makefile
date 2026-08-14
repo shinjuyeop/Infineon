@@ -72,6 +72,9 @@ endif
 ifeq (frv2_sink_hil, $(TERRAIN_MODE))
 DEFINES+=FAST_REFLEX_SINK_HIL
 endif
+ifeq (frv2_slip_hil, $(TERRAIN_MODE))
+DEFINES+=FAST_REFLEX_SLIP_HIL
+endif
 
 # Folder name containing the model and regression data
 NN_MODEL_FOLDER=mtb_ml_gen

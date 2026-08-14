@@ -491,6 +491,17 @@ Batch summaries avoid per-sample UART prints.  Hardware HIL remains unrun;
 the sealed final test is rejected by the host loader.  Slip HIL is deferred
 until this Sink board gate passes.
 
+## Final E84 continuous-HIL status
+
+`FAST_REFLEX_SINK_V2_U55` and `FAST_REFLEX_SLIP_V2_U55` have now both been
+replayed on KIT_PSE84_AI using the validation-only FRV2 block transport at
+1 kHz logical cadence. Sink uses a 20-sample window/raw threshold 124/persist
+1; Slip uses 5 samples/raw 121/persist 3. Each six-run replay reported zero
+drops, CRC errors, and deadline misses. This deployment replay is distinct
+from the sealed one-shot Final Host Test. Direct per-sample raw-output parity
+telemetry remains a technical limitation; fixed-golden raw parity remains the
+authoritative exact-output check.
+
 Use only the existing E84-computable Fusion10 derivations:
 
 - FSR: sum; front-rear and left-right difference; normalized imbalance; spatial

@@ -476,24 +476,41 @@ cy_rslt_t ml_validation_hil_task(void)
  *   "FRV2" | u16 payload_len | u32 first_sequence | u16 count | count*10*f32 |
  *   u32 crc32(payload).  count is deliberately capped at 20: 800 byte payload
  * fits the existing blocking UART API while amortising response RTT. */
-#if defined(FAST_REFLEX_SINK_HIL)
-#define FRV2_CHANNELS 10u
+#if defined(FAST_REFLEX_SINK_HIL) || defined(FAST_REFLEX_SLIP_HIL)
+#if defined(FAST_REFLEX_SLIP_HIL)
+#define FRV2_WINDOW 5u
+#define FRV2_THRESHOLD 121
+#define FRV2_PERSISTENCE 3u
+#define FRV2_INPUT_SCALE 0.0939839631319046f
+static const float frv2_mean[10] = {31.594806671f,31.777748108f,13.546282768f,13.864206314f,-.086954400f,.008436359f,9.803998947f,.000235322f,-.003542150f,-.001164354f};
+static const float frv2_std[10] = {8.742906570f,8.528360367f,3.996133566f,3.821703196f,.583785653f,.310120761f,.621062100f,.010392545f,.010778599f,.007863495f};
+#else
 #define FRV2_WINDOW 20u
+#define FRV2_THRESHOLD 124
+#define FRV2_PERSISTENCE 1u
+#define FRV2_INPUT_SCALE 0.09580779820680618f
+static const float frv2_mean[10] = {31.530698776f,31.693687439f,13.539832115f,13.843737602f,-.073472634f,.008472550f,9.797912598f,.000206427f,-.003185092f,-.001231437f};
+static const float frv2_std[10] = {8.335794449f,8.145730972f,3.759648561f,3.584739923f,.541470349f,.275717556f,.565855443f,.009250504f,.010388087f,.007618863f};
+#endif
+#define FRV2_CHANNELS 10u
 #define FRV2_MAX_BATCH 20u
 #define FRV2_PAYLOAD_HEADER 6u
 #define FRV2_SAMPLE_BYTES (FRV2_CHANNELS * 4u)
 #define FRV2_DEADLINE_CYCLES 400000u /* 1 ms at the fixed 400 MHz CM55 clock */
-static const float frv2_mean[FRV2_CHANNELS] = {31.530698776f,31.693687439f,13.539832115f,13.843737602f,-0.073472634f,0.008472550f,9.797912598f,0.000206427f,-0.003185092f,-0.001231437f};
-static const float frv2_std[FRV2_CHANNELS] = {8.335794449f,8.145730972f,3.759648561f,3.584739923f,0.541470349f,0.275717556f,0.565855443f,0.009250504f,0.010388087f,0.007618863f};
 static int8_t frv2_ring[FRV2_WINDOW][FRV2_CHANNELS];
 static uint16_t frv2_write, frv2_fill;
-static uint32_t frv2_last_sequence, frv2_drops, frv2_crc_errors, frv2_deadline_miss;
+static uint32_t frv2_last_sequence, frv2_drops, frv2_crc_errors, frv2_deadline_miss, frv2_consecutive;
 static bool frv2_have_sequence;
 
-static void frv2_reset(void) { frv2_write=0u; frv2_fill=0u; frv2_have_sequence=false; }
+static void frv2_reset(void) { frv2_write=0u; frv2_fill=0u; frv2_consecutive=0u; frv2_have_sequence=false; }
 static int8_t frv2_quantize(float raw, uint16_t ch)
 {
-    long q = lrintf(((raw - frv2_mean[ch]) / frv2_std[ch]) / 0.09580779820680618f - 8.0f);
+    long q = lrintf(((raw - frv2_mean[ch]) / frv2_std[ch]) / FRV2_INPUT_SCALE +
+#if defined(FAST_REFLEX_SLIP_HIL)
+                    -6.0f);
+#else
+                    -8.0f);
+#endif
     return (int8_t)((q < -128l) ? -128l : ((q > 127l) ? 127l : q));
 }
 static void frv2_window(int8_t *out)
@@ -518,7 +535,7 @@ static cy_rslt_t frv2_handle(uint16_t length)
     for (uint16_t sample=0u;sample<count;sample++) {
         for (uint16_t ch=0u;ch<FRV2_CHANNELS;ch++) { union {uint32_t u; float f;} v; uint16_t off=FRV2_PAYLOAD_HEADER+sample*FRV2_SAMPLE_BYTES+ch*4u; v.u=(uint32_t)payload[off]|((uint32_t)payload[off+1]<<8)|((uint32_t)payload[off+2]<<16)|((uint32_t)payload[off+3]<<24); frv2_ring[frv2_write][ch]=frv2_quantize(v.f,ch); }
         frv2_write=(frv2_write+1u)%FRV2_WINDOW; if(frv2_fill<FRV2_WINDOW) frv2_fill++;
-        if(frv2_fill==FRV2_WINDOW) { frv2_window(window); cy_rslt_t r=terrain_invoke(window); if(r!=CY_RSLT_SUCCESS)return r; int8_t raw=result_buffer[0][0]; raw_crc=terrain_crc32((uint8_t*)&raw,1u) ^ raw_crc; q_crc=terrain_crc32((uint8_t*)window,sizeof(window)) ^ q_crc; inferred++; fires+=(raw>=124); if(model_obj->m_cpu_cycles>max_cpu)max_cpu=model_obj->m_cpu_cycles; if(model_obj->m_cpu_cycles>FRV2_DEADLINE_CYCLES)frv2_deadline_miss++; }
+        if(frv2_fill==FRV2_WINDOW) { frv2_window(window); cy_rslt_t r=terrain_invoke(window); if(r!=CY_RSLT_SUCCESS)return r; int8_t raw=result_buffer[0][0]; raw_crc=terrain_crc32((uint8_t*)&raw,1u) ^ raw_crc; q_crc=terrain_crc32((uint8_t*)window,sizeof(window)) ^ q_crc; inferred++; frv2_consecutive=(raw>=FRV2_THRESHOLD)?frv2_consecutive+1u:0u; fires+=(frv2_consecutive>=FRV2_PERSISTENCE); if(model_obj->m_cpu_cycles>max_cpu)max_cpu=model_obj->m_cpu_cycles; if(model_obj->m_cpu_cycles>FRV2_DEADLINE_CYCLES)frv2_deadline_miss++; }
     }
     frv2_last_sequence=sequence+count-1u; frv2_have_sequence=true;
     printf("FRV2_RESULT seq=%lu,count=%u,inferred=%lu,fires=%lu,drops=%lu,crc_errors=%lu,deadline_miss=%lu,quant_digest=%08lx,raw_digest=%08lx,max_cpu_cyc=%lu\r\n",(unsigned long)sequence,(unsigned)count,(unsigned long)inferred,(unsigned long)fires,(unsigned long)frv2_drops,(unsigned long)frv2_crc_errors,(unsigned long)frv2_deadline_miss,(unsigned long)q_crc,(unsigned long)raw_crc,(unsigned long)max_cpu);
@@ -527,10 +544,10 @@ static cy_rslt_t frv2_handle(uint16_t length)
 cy_rslt_t ml_validation_fast_reflex_sink_hil_task(void)
 {
     if (model_obj->input_concat_bytes != FRV2_WINDOW*FRV2_CHANNELS || model_output_size[0] != 1) return MTB_ML_RESULT_INPUT_ERROR;
-    frv2_reset(); printf("FRV2_READY protocol=FRV2,batch_max=20,sample_rate_hz=1000,window=20,baud=1000000,threshold_raw=124,persistence=1\r\n");
+    frv2_reset(); printf("FRV2_READY protocol=FRV2,batch_max=20,sample_rate_hz=1000,window=%u,baud=1000000,threshold_raw=%u,persistence=%u\r\n",(unsigned)FRV2_WINDOW,(unsigned)FRV2_THRESHOLD,(unsigned)FRV2_PERSISTENCE);
     for (;;) { uint8_t p[4]; do {p[0]=terrain_uart_get_byte();} while(p[0]!='F'); p[1]=terrain_uart_get_byte();p[2]=terrain_uart_get_byte();p[3]=terrain_uart_get_byte(); if(p[1]=='R'&&p[2]=='V'&&p[3]=='2'){cy_rslt_t r=frv2_handle(terrain_uart_get_u16());if(r!=CY_RSLT_SUCCESS)return r;} }
 }
-#endif /* FAST_REFLEX_SINK_HIL */
+#endif /* FAST_REFLEX_*_HIL */
 
 /*******************************************************************************
 * Function Name: ml_validation_local_task

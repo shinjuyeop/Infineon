@@ -365,6 +365,12 @@ firmware-build scope only, not a board HIL PASS claim.  The next action is a
 user-run Sink flash and smoke/validation replay, followed by parity/timing gate
 review before any Slip continuous-HIL work.
 
+#### Complete: Fast Reflex v2 E84 continuous HIL
+
+Sink and Slip continuous replay completed on the authoritative ACM1 board.
+The current deployment scope is complete: no further detector tuning or HIL
+work is required. Preserve final-host and HIL results as separate gates.
+
 1. 1 kHz에 맞는 batched/asynchronous UART와 E84 ring-buffer cadence를 별도
    milestone로 설계한다. 기존 TRN1/TRN2 100 Hz path는 유지한다.
 2. Async transport 전에는 fixed regression 결과를 real-time 1 kHz streaming
