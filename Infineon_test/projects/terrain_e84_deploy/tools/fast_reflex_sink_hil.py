@@ -63,17 +63,16 @@ def line(fd:int,timeout:float)->bytes:
     raise TimeoutError(d.decode(errors='replace'))
 def replay(port:Path,source:Path,manifest:dict,timeout:float)->dict:
     with np.load(source/'inputs_fusion10.npz',allow_pickle=False) as z: raw=np.asarray(z['sensors'],np.float32); ids={str(x):i for i,x in enumerate(z['run_id'])}
-    fd=os.open(port,os.O_RDWR|os.O_NOCTTY|os.O_NONBLOCK); configure(fd); termios.tcflush(fd,termios.TCIOFLUSH)
-    ready=line(fd,timeout)
-    if b'FRV2_READY' not in ready:
-        raise RuntimeError('expected FRV2_READY; verify the frv2_sink_hil firmware and 1000000 baud: '+ready.decode(errors='replace'))
-    runs=[]
+    fd=os.open(port,os.O_RDWR|os.O_NOCTTY|os.O_NONBLOCK); configure(fd); termios.tcflush(fd,termios.TCIOFLUSH); runs=[]
     try:
       for run,t in enumerate(manifest['traces']):
         samples=raw[ids[t['run_id']]]; seq=0; replies=[]
         for start in range(0,len(samples),BATCH):
-            frame=build_frame(seq,samples[start:start+BATCH]); os.write(fd,frame); reply=line(fd,timeout); m=RESULT.search(reply)
-            if not m: raise RuntimeError(reply.decode(errors='replace'))
+            frame=build_frame(seq,samples[start:start+BATCH]); os.write(fd,frame)
+            end=time.monotonic()+timeout; reply=b''; m=None
+            while time.monotonic()<end and m is None:
+                reply=line(fd,max(.01,end-time.monotonic())); m=RESULT.search(reply)
+            if m is None: raise RuntimeError('no FRV2_RESULT; verify frv2_sink_hil firmware: '+reply.decode(errors='replace'))
             replies.append(m.groupdict() if hasattr(m,'groupdict') else {'line':reply.decode()}); seq+=min(BATCH,len(samples)-start)
         runs.append({'run':run,**t,'replies':replies})
     finally: os.close(fd)
