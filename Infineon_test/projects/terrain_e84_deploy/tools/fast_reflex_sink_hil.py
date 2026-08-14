@@ -16,7 +16,7 @@ OUT=ROOT/'simulation/outputs/terrain_fast_reflex_v2_sink_hil'
 MEAN=np.array([31.530698776245117,31.693687438964844,13.53983211517334,13.843737602233887,-.07347263395786285,.008472549729049206,9.79791259765625,.000206427022931166,-.0031850915402173996,-.001231436850503087],np.float32)
 STD=np.array([8.335794448852539,8.145730972290039,3.759648561477661,3.584739923477173,.5414703488349915,.275717556476593,.5658554434776306,.009250503964722157,.010388086549937725,.007618863135576248],np.float32)
 SCALE=np.float32(.09580779820680618); ZERO=-8; THRESHOLD=124; BATCH=20
-RESULT=re.compile(rb'FRV2_RESULT seq=(\d+),count=(\d+),inferred=(\d+),fires=(\d+),drops=(\d+),crc_errors=(\d+),deadline_miss=(\d+),quant_digest=([0-9a-f]+),raw_digest=([0-9a-f]+),max_cpu_cyc=(\d+)')
+RESULT=re.compile(rb'FRV2_RESULT seq=(?P<seq>\d+),count=(?P<count>\d+),inferred=(?P<inferred>\d+),fires=(?P<fires>\d+),drops=(?P<drops>\d+),crc_errors=(?P<crc_errors>\d+),deadline_miss=(?P<deadline_miss>\d+),quant_digest=(?P<quant_digest>[0-9a-f]+),raw_digest=(?P<raw_digest>[0-9a-f]+),max_cpu_cyc=(?P<max_cpu_cyc>\d+)')
 
 def guard(source:Path)->None:
     text=str(source).lower()
@@ -73,7 +73,7 @@ def replay(port:Path,source:Path,manifest:dict,timeout:float)->dict:
             while time.monotonic()<end and m is None:
                 reply=line(fd,max(.01,end-time.monotonic())); m=RESULT.search(reply)
             if m is None: raise RuntimeError('no FRV2_RESULT; verify frv2_sink_hil firmware: '+reply.decode(errors='replace'))
-            replies.append(m.groupdict() if hasattr(m,'groupdict') else {'line':reply.decode()}); seq+=min(BATCH,len(samples)-start)
+            replies.append({key:(int(value) if value.isdigit() else value) for key,value in m.groupdict().items()}); seq+=min(BATCH,len(samples)-start)
         runs.append({'run':run,**t,'replies':replies})
     finally: os.close(fd)
     return {'runs':runs}
