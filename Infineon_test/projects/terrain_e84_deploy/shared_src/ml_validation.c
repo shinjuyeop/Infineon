@@ -512,7 +512,8 @@ static cy_rslt_t frv2_handle(uint16_t length)
     uint32_t sequence=(uint32_t)payload[0]|((uint32_t)payload[1]<<8)|((uint32_t)payload[2]<<16)|((uint32_t)payload[3]<<24);
     uint16_t count=(uint16_t)payload[4]|((uint16_t)payload[5]<<8);
     if (count==0u || count>FRV2_MAX_BATCH || length != FRV2_PAYLOAD_HEADER+count*FRV2_SAMPLE_BYTES) { printf("FRV2_ERROR code=bad_count\r\n"); return CY_RSLT_SUCCESS; }
-    if (frv2_have_sequence && sequence != frv2_last_sequence+1u) { frv2_drops += (sequence>frv2_last_sequence) ? sequence-frv2_last_sequence-1u : 1u; frv2_reset(); }
+    if (sequence == 0u) { frv2_reset(); frv2_drops=0u; frv2_crc_errors=0u; frv2_deadline_miss=0u; }
+    else if (frv2_have_sequence && sequence != frv2_last_sequence+1u) { frv2_drops += (sequence>frv2_last_sequence) ? sequence-frv2_last_sequence-1u : 1u; frv2_reset(); }
     int8_t window[FRV2_WINDOW*FRV2_CHANNELS]; uint32_t raw_crc=0xffffffffu, q_crc=0xffffffffu, inferred=0u, fires=0u, max_cpu=0u;
     for (uint16_t sample=0u;sample<count;sample++) {
         for (uint16_t ch=0u;ch<FRV2_CHANNELS;ch++) { union {uint32_t u; float f;} v; uint16_t off=FRV2_PAYLOAD_HEADER+sample*FRV2_SAMPLE_BYTES+ch*4u; v.u=(uint32_t)payload[off]|((uint32_t)payload[off+1]<<8)|((uint32_t)payload[off+2]<<16)|((uint32_t)payload[off+3]<<24); frv2_ring[frv2_write][ch]=frv2_quantize(v.f,ch); }
