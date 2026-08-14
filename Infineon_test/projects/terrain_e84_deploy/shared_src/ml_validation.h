@@ -49,6 +49,7 @@ cy_rslt_t ml_validation_init(mtb_ml_profile_config_t profile_cfg,
 #ifndef USE_STREAM_DATA
 cy_rslt_t ml_validation_local_task(void);
 cy_rslt_t ml_validation_hil_task(void);
+cy_rslt_t ml_validation_fast_reflex_sink_hil_task(void);
 #else
 cy_rslt_t ml_validation_stream_task(mtb_ml_stream_interface_t *iface);
 #endif

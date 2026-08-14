@@ -355,6 +355,16 @@ training, INT8 export 또는 E84 deployment를 완료 처리하지 않는다.
 
 ### 그 밖의 후속 작업
 
+#### Prepared: Fast Reflex v2 Sink continuous HIL
+
+Use `FAST_REFLEX_SINK_V2_U55` with `TERRAIN_MODE=frv2_sink_hil` and the
+`tools/fast_reflex_sink_hil.py` client.  Its six deterministic source traces
+are validation-only and oracle-labelled (`sustained_sink`, never scenario
+names); final-test identifiers are fail-closed.  This is preparation and local
+firmware-build scope only, not a board HIL PASS claim.  The next action is a
+user-run Sink flash and smoke/validation replay, followed by parity/timing gate
+review before any Slip continuous-HIL work.
+
 1. 1 kHz에 맞는 batched/asynchronous UART와 E84 ring-buffer cadence를 별도
    milestone로 설계한다. 기존 TRN1/TRN2 100 Hz path는 유지한다.
 2. Async transport 전에는 fixed regression 결과를 real-time 1 kHz streaming

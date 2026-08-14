@@ -479,6 +479,18 @@ test, not part of this planning milestone.
 
 ## v2 sensor features and detector order
 
+## Sink continuous 1 kHz HIL preparation (deployment parity only)
+
+The frozen `FAST_REFLEX_SINK_V2_U55` path now has a separate
+`TERRAIN_MODE=frv2_sink_hil` firmware mode.  It does not reuse the synchronous
+TRN2 request/response loop: `FRV2` reuses its little-endian length and CRC-32
+framing, carrying up to 20 raw IEEE-754 Fusion10 samples per UART block.  The
+CM55 applies frozen train-only normalization, ties-to-even INT8 quantization,
+and a causal 20x10 ring; after warm-up it invokes U55 once per logical sample.
+Batch summaries avoid per-sample UART prints.  Hardware HIL remains unrun;
+the sealed final test is rejected by the host loader.  Slip HIL is deferred
+until this Sink board gate passes.
+
 Use only the existing E84-computable Fusion10 derivations:
 
 - FSR: sum; front-rear and left-right difference; normalized imbalance; spatial
