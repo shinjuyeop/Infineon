@@ -18,6 +18,7 @@ from terrain_cnn import (  # noqa: E402
     FUSION_CHANNEL_NAMES,
     ChannelNormalizer,
     build_compact_1d_cnn,
+    estimate_model_macs,
     estimate_model_resources,
     evaluation_rows,
     mutual_pair_confusion,
@@ -50,6 +51,7 @@ class TerrainCnnTest(unittest.TestCase):
             self.assertEqual(estimate.parameters, expected[group])
             self.assertLessEqual(estimate.float_activation_working_set_bytes, 5_600)
             self.assertLess(estimate.int8_parameter_payload_bytes, 1_400)
+        self.assertEqual(estimate_model_macs(10), 58_864)
 
     def test_dataset_validation_rejects_family_leakage(self) -> None:
         x = np.zeros((12, 50, 10), dtype=np.float32)
@@ -79,6 +81,16 @@ class TerrainCnnTest(unittest.TestCase):
         for channels in (4, 6, 10):
             model = build_compact_1d_cnn(channels, seed=1)
             self.assertEqual(model.count_params(), estimate_model_resources(channels).parameters)
+
+    @unittest.skipUnless(importlib.util.find_spec("tensorflow"), "TensorFlow is an optional CNN dependency")
+    def test_endpoint_aware_aggregators_preserve_shape_and_causal_range(self) -> None:
+        last = build_compact_1d_cnn(10, seed=1, aggregation="last_step")
+        recent = build_compact_1d_cnn(10, seed=1, aggregation="recent", recent_k=8)
+        self.assertEqual(last.output_shape, (None, 4))
+        self.assertEqual(recent.output_shape, (None, 4))
+        self.assertEqual(last.get_layer("endpoint_only").cropping, (49, 0))
+        self.assertEqual(recent.get_layer("recent_8_ms").cropping, (42, 0))
+        self.assertEqual(last.count_params(), recent.count_params())
 
 
 if __name__ == "__main__":

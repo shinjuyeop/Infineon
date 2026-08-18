@@ -44,6 +44,46 @@ retention gate를 통과하지 못했다. 따라서 `TERRAIN_TRANSITION_AWARE_V2
 `TERRAIN_ARCHITECTURE_CHANGE_NEEDED=false`: architecture가 아니라 static/transition
 sampling mixture와 static retention을 다음 data-level iteration에서 조정해야 한다.
 
+## Transition-Aware Terrain Classifier v2.1 mixture result
+
+Static-heavy mixtures (75:25, 77.5:22.5, and 80:20) and one bounded
+static-Marble contribution correction were evaluated with the endpoint label,
+Fusion10, 1 kHz / 50 ms window, T1 persistence 3, train-only normalization,
+and train-only strict-INT8 calibration unchanged. No mixture satisfied both
+the 96.098% static INT8 retention gate and the frozen per-direction transition
+gate. In particular, Ice→Marble (Case C) occupancy remained below 80%; the
+77.5:22.5 + Marble 1.10 correction reached 79.75% in Float validation but
+only 74.83% after INT8 and also missed static retention. Existing fresh
+transition tests and the 12-run diagnostic were excluded from these choices.
+
+상태: **TERRAIN_ARCHITECTURE_CHANGE_NEEDED=true**. This is evidence for a
+minimal temporal-aggregation change, not a larger CNN, RNN, Transformer, or a
+window/sample-rate change.
+
+## Terrain v3 endpoint-aware aggregation ablation
+
+Terrain v3 freezes the v2.1 77.5:22.5 data mixture (1,916 static and 555
+transition training windows; no global inverse-frequency weighting) and uses
+the existing family/source-run-disjoint transition validation partition as an
+architecture-selection reservation. The transition test partition and the
+12-run diagnostic are not read for selection.
+
+The Conv1D(12,k=5) → Conv1D(16,k=3) front end is unchanged. Three equal-cost
+aggregation heads were compared across seeds 20260821/22/23: full GAP,
+last-step feature, and recent-8-ms average. The recent-8-ms head reached
+Float Case-C occupancy 84.64% and strict-INT8 occupancy 84.72% with stable
+detection in all directions, validating the endpoint-aware aggregation
+hypothesis. However, its selected strict-INT8 static accuracy was 92.627%,
+below the 96.098% retention gate. It is therefore not frozen, and no new fresh
+transition test or diagnostic replay was opened.
+
+상태: **TERRAIN_ENDPOINT_AWARE_ARCHITECTURE_READY=false**,
+**TERRAIN_ENDPOINT_AWARE_INT8_READY=false**,
+**TERRAIN_LARGER_ARCHITECTURE_NEEDED=true**. The next milestone should first
+separate the observed static-domain regression from aggregation choice (for
+example a leakage-safe static/domain training reservation or a causal
+front-end/window study), before considering a materially larger model.
+
 ## Fast Reflex v2 E84/U55 audit
 
 Separate frozen-artifact Vela outputs use the existing E84 fast1000 command:

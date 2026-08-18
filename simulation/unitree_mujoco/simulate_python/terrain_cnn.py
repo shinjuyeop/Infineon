@@ -112,8 +112,10 @@ def estimate_model_resources(channels: int) -> ModelResourceEstimate:
     )
 
 
-def build_compact_1d_cnn(channels: int, seed: int = 20260807):
-    """Build the identical architecture family used for every channel ablation."""
+def build_compact_1d_cnn(
+    channels: int, seed: int = 20260807, aggregation: str = "gap", recent_k: int = 8,
+):
+    """Build the compact causal-window CNN with an explicit temporal aggregator."""
     if channels <= 0:
         raise ValueError("channels must be positive")
     try:
@@ -122,6 +124,10 @@ def build_compact_1d_cnn(channels: int, seed: int = 20260807):
         raise RuntimeError(
             "TensorFlow is required for CNN training; install requirements-cnn.txt"
         ) from exc
+    if aggregation not in {"gap", "last_step", "recent"}:
+        raise ValueError(f"unsupported temporal aggregation: {aggregation}")
+    if aggregation == "recent" and not 1 <= recent_k <= TIME_STEPS:
+        raise ValueError(f"recent_k must be in [1, {TIME_STEPS}]")
     tf.keras.utils.set_random_seed(seed)
     inputs = tf.keras.Input(shape=(TIME_STEPS, channels), name="terrain_window")
     values = tf.keras.layers.Conv1D(
@@ -130,11 +136,29 @@ def build_compact_1d_cnn(channels: int, seed: int = 20260807):
     values = tf.keras.layers.Conv1D(
         CONV2_FILTERS, CONV2_KERNEL, padding="same", activation="relu", name="conv2"
     )(values)
-    values = tf.keras.layers.GlobalAveragePooling1D(name="global_average_pool")(values)
+    if aggregation == "gap":
+        values = tf.keras.layers.GlobalAveragePooling1D(name="global_average_pool")(values)
+    elif aggregation == "last_step":
+        values = tf.keras.layers.Cropping1D((TIME_STEPS - 1, 0), name="endpoint_only")(values)
+        values = tf.keras.layers.Flatten(name="endpoint_feature")(values)
+    else:
+        values = tf.keras.layers.Cropping1D((TIME_STEPS - recent_k, 0), name=f"recent_{recent_k}_ms")(values)
+        values = tf.keras.layers.GlobalAveragePooling1D(name="recent_average_pool")(values)
     outputs = tf.keras.layers.Dense(CLASS_COUNT, activation="softmax", name="class_scores")(
         values
     )
-    return tf.keras.Model(inputs=inputs, outputs=outputs, name=f"terrain_cnn_c{channels}")
+    return tf.keras.Model(inputs=inputs, outputs=outputs, name=f"terrain_cnn_{aggregation}_c{channels}")
+
+
+def estimate_model_macs(channels: int) -> int:
+    """Multiply-accumulates for one `(50, channels)` inference, excluding pooling."""
+    if channels <= 0:
+        raise ValueError("channels must be positive")
+    return (
+        TIME_STEPS * CONV1_KERNEL * channels * CONV1_FILTERS
+        + TIME_STEPS * CONV2_KERNEL * CONV1_FILTERS * CONV2_FILTERS
+        + CONV2_FILTERS * CLASS_COUNT
+    )
 
 
 def evaluation_rows(
