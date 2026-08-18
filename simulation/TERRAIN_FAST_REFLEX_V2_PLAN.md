@@ -1,5 +1,20 @@
 # Terrain Fast Reflex v2 experiment plan
 
+## Terrain Transition v1 handoff (post-v2; v2 remains frozen)
+
+`run_terrain_transition.py` is a separate continuous-state pilot foundation,
+not a replacement for this plan or any v2 artifact.  It reuses the v2 G1
+sensor, 2 kHz physics / 1 kHz Fusion10 path, adjacent-ground scene, and frozen
+`confirmed_slip`/`sustained_sink` oracle calibration.  At T0 it switches the
+contact profiles in one live MuJoCo run; qpos and qvel are audited as exactly
+unchanged.  Its four initial cases are Marble→Ice, Marble→Sand, Ice→Marble,
+and Sand→Marble (Marble is the initial representative hard terrain).
+
+The v1 pilot records T0 and T2.  A future read-only replay should apply the
+existing terrain normalizer/classifier sliding over `transition_traces.npz` to
+produce T1, then apply the frozen v2 INT8 host path to produce T3.  Scenario
+names never label a hazard in either step.
+
 ## E84/U55 Vela audit
 
 The established `terrain_e84_deploy` fast1000 generator invokes Vela with

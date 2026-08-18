@@ -1,5 +1,20 @@
 # Terrain Classification Milestone Status
 
+## Terrain Transition v1 pilot
+
+상태: **TERRAIN_TRANSITION_V1_PILOT_READY=true**. Fast Reflex v2의 frozen
+dataset/model/INT8/E84/HIL 결과와 분리된 `terrain_transition_v1` physical-trace
+foundation을 추가했다. 하나의 2 kHz MuJoCo run에서 qpos/qvel reset 없이 T0=650 ms에
+두 adjacent ground geom의 contact profile을 동시에 temporal switch하고, native 1 kHz
+Fusion10 및 v2의 frozen physical oracle을 전 구간에 저장한다.
+
+초기 hard terrain은 Marble이며, pilot은 각 3회씩 A Marble→Ice, B Marble→Sand,
+C Ice→Marble, D Sand→Marble을 생성했다. T0는 elapsed native-sensor tick 650으로
+manifest에 보존되며 `transition_traces.npz`의 `sample_time_s`가 array time의
+authoritative source다. 다음 단계는 이 raw trace를 기존 terrain normalization과
+sliding classifier에 연결해 T1 stable terrain detection을 계산하고, frozen Fast
+Reflex v2 replay로 T3를 계산하여 T0/T1/T2/T3 timeline을 완성하는 것이다.
+
 ## Fast Reflex v2 E84/U55 audit
 
 Separate frozen-artifact Vela outputs use the existing E84 fast1000 command:
