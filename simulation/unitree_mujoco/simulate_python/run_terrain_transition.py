@@ -85,15 +85,16 @@ def label(oracle: np.ndarray, transition_sample: int) -> dict[str, np.ndarray]:
             "confirmed_slip": confirmed, "sustained_sink": sink, "sustained_tilt": tilt}
 
 
-def run_one(case_id: str, run_index: int) -> Run:
+def run_one(case_id: str, run_index: int, family: str = "multisine", surface_index: int | None = None) -> Run:
     case = CASES[case_id]
     model = mujoco.MjModel.from_xml_path(str(SCENES["front_rear"]))
     model.opt.timestep = PHYSICS_TIMESTEP_S
     for ground in ("ground_a", "ground_b"):
         apply_terrain_profile(model, TERRAIN_PROFILES[case["before"]], ground)
     data = mujoco.MjData(model)
-    spec = make_expanded_run_specification("sand", "multisine", run_index, run_index)
-    condition = ExcitationCondition(f"transition_{case_id}_{run_index:02d}", spec.initial_velocity_x,
+    surface_index = run_index if surface_index is None else surface_index
+    spec = make_expanded_run_specification("sand", family, surface_index, run_index)
+    condition = ExcitationCondition(f"transition_{case_id}_{family}_{surface_index:02d}_{run_index:02d}", spec.initial_velocity_x,
         spec.initial_velocity_y, spec.base_height_offset, spec.base_roll_deg, spec.base_pitch_deg)
     qpos, dof = apply_excitation_condition(model, data, condition)
     support = VerticalElasticBandSupport(model, data, qpos, dof, .50)
@@ -137,8 +138,8 @@ def run_one(case_id: str, run_index: int) -> Run:
     tilt = np.linalg.norm(raw_array[:, 10:12] - raw_array[transition_sample, 10:12], axis=1)
     oracle = np.column_stack((raw_array[:, :13], speed, depth, tilt, raw_array[:, 13:]))
     metadata = {"run_id": condition.run_id, "case_id": case_id, "case_name": case["name"],
-        "terrain_before": case["before"], "terrain_after": case["after"], "surface_family": "multisine",
-        "surface_realization": run_index, "seed": MASTER_SEED + run_index, "run_index": run_index,
+        "terrain_before": case["before"], "terrain_after": case["after"], "surface_family": family,
+        "surface_realization": surface_index, "seed": MASTER_SEED + surface_index * 100 + run_index, "run_index": run_index,
         "physics_rate_hz": 2000, "sensor_rate_hz": 1000, "physics_timestep_s": PHYSICS_TIMESTEP_S,
         "transition_t0_ms": TRANSITION_TIME_S * 1000., "transition_sample": transition_sample,
         "transition_type": "temporal_contact_profile_switch", "horizontal_force_N": case["horizontal_force_N"],

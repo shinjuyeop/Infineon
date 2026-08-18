@@ -22,6 +22,12 @@ an explicit diagnostic: A/B recognize the target before their physical hazard,
 but C Ice→Marble reaches stable Marble in only 2/3 traces; transition-aware
 Terrain training is therefore the next model-data milestone.
 
+The first transition-aware, unchanged-architecture v2 experiment improved the
+diagnostic C recovery to 3/3 and retains the frozen Fast Reflex T2/T3 semantics.
+It is not promoted: its 95.45% strict-INT8 static-test accuracy is 1.64pp below
+the 97.10% static baseline, beyond the predeclared 1.0pp retention limit.
+The next work is data-mixture calibration, not Fast Reflex or CNN changes.
+
 ## E84/U55 Vela audit
 
 The established `terrain_e84_deploy` fast1000 generator invokes Vela with

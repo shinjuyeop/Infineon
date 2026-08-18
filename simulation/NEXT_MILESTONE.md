@@ -32,6 +32,18 @@ Marble에 도달했고 pre/post static-window class occupancy도 낮아,
 아니라 frozen static training distribution을 보완하는 transition-aware 1 kHz
 windows와 direction-balanced continuous traces 추가다.
 
+## Transition-Aware Terrain Classifier v2
+
+336개의 새 continuous transition run(방향별 84; train/validation/test
+=144/96/96)을 기존 static 1 kHz dataset과 source-run/family-disjoint하게
+결합했다. 동일 Conv1D architecture의 transition-aware candidate는 fresh
+transition test에서 네 방향 모두 stable detection 100%를 달성했고, diagnostic
+Ice→Marble도 2/3에서 3/3, occupancy 38.7%에서 75.6%로 개선됐다. 다만 strict INT8
+static test accuracy는 95.45%로 기존 97.10%보다 1.64pp 낮아 predeclared 1.0pp
+retention gate를 통과하지 못했다. 따라서 `TERRAIN_TRANSITION_AWARE_V2_READY=false`,
+`TERRAIN_ARCHITECTURE_CHANGE_NEEDED=false`: architecture가 아니라 static/transition
+sampling mixture와 static retention을 다음 data-level iteration에서 조정해야 한다.
+
 ## Fast Reflex v2 E84/U55 audit
 
 Separate frozen-artifact Vela outputs use the existing E84 fast1000 command:
