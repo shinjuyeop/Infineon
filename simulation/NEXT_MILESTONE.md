@@ -39,7 +39,7 @@ windows와 direction-balanced continuous traces 추가다.
 결합했다. 동일 Conv1D architecture의 transition-aware candidate는 fresh
 transition test에서 네 방향 모두 stable detection 100%를 달성했고, diagnostic
 Ice→Marble도 2/3에서 3/3, occupancy 38.7%에서 75.6%로 개선됐다. 다만 strict INT8
-static test accuracy는 95.45%로 기존 97.10%보다 1.64pp 낮아 predeclared 1.0pp
+static test accuracy는 95.76%로 기존 97.10%보다 1.33pp 낮아 predeclared 1.0pp
 retention gate를 통과하지 못했다. 따라서 `TERRAIN_TRANSITION_AWARE_V2_READY=false`,
 `TERRAIN_ARCHITECTURE_CHANGE_NEEDED=false`: architecture가 아니라 static/transition
 sampling mixture와 static retention을 다음 data-level iteration에서 조정해야 한다.
