@@ -81,8 +81,9 @@ def transition_windows(traces,rows):
         y.extend([LABEL[r['terrain_before'] if e<T0 else r['terrain_after']] for e in ends]);s.extend([r['split']]*len(ends));rid.extend([r['run_id']]*len(ends))
     return np.concatenate(x),np.asarray(y),np.asarray(s),np.asarray(rid)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--output-dir',type=Path,default=OUT);p.add_argument('--execute',action='store_true');p.add_argument('--resume',action='store_true',help='resume after a generated-run artifact; never regenerates physics');a=p.parse_args();out=a.output_dir.resolve()
- protocol={"dataset":"terrain_transition_aware_v2","runs":336,"directions":{k:84 for k in CASES},"families":FAMILIES,"split_unit":"family + surface realization + source run","window_label":"label(t)=terrain_gt(t), causal [t-49,t]","sampling":"20 pre + 20 boundary + 20 early/late post endpoints per run","architecture":"Conv1D(12,k=5)-Conv1D(16,k=3)-GlobalAveragePooling-Dense(4)","seeds":SEEDS,"selection":"max validation transition detection rate, then occupancy, then static validation accuracy","gates":{"each_direction_detection_rate":.9,"each_direction_occupancy":.8,"static_accuracy_drop_pp":1.0},"diagnostic_benchmark_excluded":str(SIM/'outputs/terrain_transition_v1_pilot')}
+ p=argparse.ArgumentParser();p.add_argument('--output-dir',type=Path,default=OUT);p.add_argument('--execute',action='store_true');p.add_argument('--resume',action='store_true',help='resume after a generated-run artifact; never regenerates physics');p.add_argument('--static-fraction',type=float,default=.8);p.add_argument('--static-marble-weight',type=float,default=1.0,help='bounded static-only Marble contribution correction');p.add_argument('--candidate-only',action='store_true',help='train/select from train/validation only; do not evaluate test or diagnostics');a=p.parse_args();out=a.output_dir.resolve()
+ if not 0.0<a.static_fraction<1.0 or a.static_marble_weight<1.0:raise ValueError('invalid mixture or static marble weight')
+ protocol={"dataset":"terrain_transition_aware_v2","runs":336,"directions":{k:84 for k in CASES},"families":FAMILIES,"split_unit":"family + surface realization + source run","window_label":"label(t)=terrain_gt(t), causal [t-49,t]","sampling":"20 pre + 20 boundary + 20 early/late post endpoints per run","architecture":"Conv1D(12,k=5)-Conv1D(16,k=3)-GlobalAveragePooling-Dense(4)","seeds":SEEDS,"selection":"max validation transition detection rate, then occupancy, then static validation accuracy","mixture":{"requested_static_fraction":a.static_fraction,"global_inverse_frequency_weighting":False,"static_marble_weight":a.static_marble_weight},"gates":{"each_direction_detection_rate":.9,"each_direction_occupancy":.8,"static_accuracy_drop_pp":1.0},"diagnostic_benchmark_excluded":str(SIM/'outputs/terrain_transition_v1_pilot')}
  if not a.execute:print(json.dumps(protocol,indent=2));return
  if out.exists() and any(out.iterdir()) and not a.resume:raise FileExistsError(out)
  if a.resume:
@@ -99,18 +100,22 @@ def main():
  # equal number of transition items, stratified by endpoint class. This avoids
  # the new transition corpus overwhelming the established static domain.
  static_train=np.flatnonzero(train & (np.arange(len(x)) < len(sx))); transition_train=np.flatnonzero(train & (np.arange(len(x)) >= len(sx)))
- rng_fit=np.random.default_rng(20260821); labels_present=sorted(set(y[transition_train].tolist())); per=max(1,len(static_train)//len(labels_present)); fit_indices=np.concatenate((static_train,*[rng_fit.choice(transition_train[y[transition_train]==k],per,replace=False) for k in labels_present]))
+ rng_fit=np.random.default_rng(20260833); labels_present=sorted(set(y[transition_train].tolist())); transition_count=round(len(static_train)*(1.0-a.static_fraction)/a.static_fraction);per=max(1,transition_count//len(labels_present)); fit_indices=np.concatenate((static_train,*[rng_fit.choice(transition_train[y[transition_train]==k],per,replace=False) for k in labels_present]));protocol["mixture"]["effective_static_windows"]=int(len(static_train));protocol["mixture"]["effective_transition_windows"]=int(len(fit_indices)-len(static_train));protocol["mixture"]["effective_static_fraction"]=float(len(static_train)/len(fit_indices))
  import tensorflow as tf
  candidates=[]
  for seed in SEEDS:
-  tf.keras.backend.clear_session();m=build_compact_1d_cnn(10,seed);m.compile(optimizer=tf.keras.optimizers.Adam(1e-3),loss='sparse_categorical_crossentropy',metrics=['accuracy'])
-  counts=np.bincount(y[fit_indices],minlength=4);weights=np.asarray([len(y[fit_indices])/(4*counts[k]) for k in y[fit_indices]],np.float32)
-  print(f"training seed={seed}",flush=True)
-  h=m.fit(xn[fit_indices],y[fit_indices],sample_weight=weights,validation_data=(xn[val],y[val]),epochs=60,batch_size=128,callbacks=[tf.keras.callbacks.EarlyStopping(monitor='val_loss',patience=8,restore_best_weights=True)],verbose=2)
-  path=out/f'candidate_seed_{seed}.keras';m.save(path);vi=[i for i,r in enumerate(rows) if r['split']=='validation'];tm=aggregate(transition_metrics(m,norm,traces[vi],[rows[i] for i in vi]))
-  sp=np.argmax(m.predict(xn[val & (np.arange(len(x))<len(sx))],verbose=0),1);syv=y[val & (np.arange(len(x))<len(sx))];candidates.append({"seed":seed,"path":str(path),"epochs":len(h.history['loss']),"transition":tm,"static_validation_accuracy":float((sp==syv).mean()),"static_validation_macro_f1":macro_f1(syv,sp)})
+  tf.keras.backend.clear_session();path=out/f'candidate_seed_{seed}.keras'
+  if a.resume and path.exists():
+   print(f"resuming completed seed={seed}",flush=True);m=tf.keras.models.load_model(path,compile=False);epochs=None
+  else:
+   m=build_compact_1d_cnn(10,seed);m.compile(optimizer=tf.keras.optimizers.Adam(1e-3),loss='sparse_categorical_crossentropy',metrics=['accuracy']);weights=np.ones(len(fit_indices),np.float32);weights[(fit_indices<len(sx))&(y[fit_indices]==LABEL['marble'])]=a.static_marble_weight
+   print(f"training seed={seed}",flush=True);h=m.fit(xn[fit_indices],y[fit_indices],sample_weight=weights,validation_data=(xn[val],y[val]),epochs=60,batch_size=128,callbacks=[tf.keras.callbacks.EarlyStopping(monitor='val_loss',patience=8,restore_best_weights=True)],verbose=2);epochs=len(h.history['loss']);m.save(path)
+  vi=[i for i,r in enumerate(rows) if r['split']=='validation'];tm=aggregate(transition_metrics(m,norm,traces[vi],[rows[i] for i in vi]))
+  sp=np.argmax(m.predict(xn[val & (np.arange(len(x))<len(sx))],verbose=0),1);syv=y[val & (np.arange(len(x))<len(sx))];candidates.append({"seed":seed,"path":str(path),"epochs":epochs,"transition":tm,"static_validation_accuracy":float((sp==syv).mean()),"static_validation_macro_f1":macro_f1(syv,sp)})
  def key(c):return (min(v['detection_rate'] for v in c['transition'].values()),np.mean([v['occupancy_mean'] for v in c['transition'].values()]),c['static_validation_accuracy'])
  selected=max(candidates,key=key);model=tf.keras.models.load_model(selected['path'],compile=False);model.save(out/'selected_model.keras')
+ if a.candidate_only:
+  (out/'dataset_protocol.json').write_text(json.dumps(protocol,indent=2)+'\n');(out/'candidate_selection.json').write_text(json.dumps({"protocol":protocol,"candidates":candidates,"selected":selected},indent=2)+'\n');(out/'normalization.json').write_text(json.dumps(norm.as_dict(),indent=2)+'\n');print(json.dumps({"candidates":candidates,"selected":selected,"effective_mixture":protocol["mixture"]},indent=2));return
  static={}
  for name,mask in (("validation",val & (np.arange(len(x))<len(sx))),("test",test & (np.arange(len(x))<len(sx)))):
   pp=np.argmax(model.predict(xn[mask],verbose=0),1);static[name]={"accuracy":float((pp==y[mask]).mean()),"macro_f1":macro_f1(y[mask],pp)}
