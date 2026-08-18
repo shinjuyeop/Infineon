@@ -15,6 +15,23 @@ authoritative source다. 다음 단계는 이 raw trace를 기존 terrain normal
 sliding classifier에 연결해 T1 stable terrain detection을 계산하고, frozen Fast
 Reflex v2 replay로 T3를 계산하여 T0/T1/T2/T3 timeline을 완성하는 것이다.
 
+## Terrain Transition v1 AI replay
+
+상태: **TERRAIN_TRANSITION_AI_REPLAY_COMPLETE=true**. Frozen strict-INT8
+`fast1000` Terrain classifier (50 samples / 1 kHz / Fusion10)와 frozen v2
+strict-INT8 Slip 5 ms 및 Sink 20 ms detector를 12개 continuous trace에 read-only
+replay했다. T1은 새 terrain class가 3개의 1 ms causal endpoint에서 연속된 세 번째
+endpoint이며, T3는 detector의 raw INT8 threshold와 frozen persistence endpoint다.
+
+A는 Terrain T1-T0 median 43 ms, Slip T2-T0 median 69 ms, T3-T2 median 5 ms였다.
+B는 각각 2 ms, 19 ms, 42 ms였다. A/B 모두 hazard-positive run에서 T1이 T2보다
+앞섰고 early firing은 없었다. 단 A non-hazard run 하나는 detector firing을 보여
+transition-integration false firing으로 별도 기록했다. C Ice→Marble은 2/3만 stable
+Marble에 도달했고 pre/post static-window class occupancy도 낮아,
+**TERRAIN_MODEL_CHANGE_RECOMMENDED=true**다. 다음 최소 개선은 architecture 변경이
+아니라 frozen static training distribution을 보완하는 transition-aware 1 kHz
+windows와 direction-balanced continuous traces 추가다.
+
 ## Fast Reflex v2 E84/U55 audit
 
 Separate frozen-artifact Vela outputs use the existing E84 fast1000 command:

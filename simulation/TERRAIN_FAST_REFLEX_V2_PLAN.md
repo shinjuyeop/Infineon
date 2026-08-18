@@ -15,6 +15,13 @@ existing terrain normalizer/classifier sliding over `transition_traces.npz` to
 produce T1, then apply the frozen v2 INT8 host path to produce T3.  Scenario
 names never label a hazard in either step.
 
+That replay is now complete in `run_terrain_transition_ai_replay.py`. It uses
+the immutable fast1000 Terrain INT8 model and the v2 Slip-5/Sink-20 raw-INT8
+artifacts. It does not revise v2 final-host metrics. The integration result is
+an explicit diagnostic: A/B recognize the target before their physical hazard,
+but C Ice→Marble reaches stable Marble in only 2/3 traces; transition-aware
+Terrain training is therefore the next model-data milestone.
+
 ## E84/U55 Vela audit
 
 The established `terrain_e84_deploy` fast1000 generator invokes Vela with
