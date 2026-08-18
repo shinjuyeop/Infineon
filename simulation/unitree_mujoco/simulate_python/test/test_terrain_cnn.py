@@ -92,6 +92,16 @@ class TerrainCnnTest(unittest.TestCase):
         self.assertEqual(recent.get_layer("recent_8_ms").cropping, (42, 0))
         self.assertEqual(last.count_params(), recent.count_params())
 
+    @unittest.skipUnless(importlib.util.find_spec("tensorflow"), "TensorFlow is an optional CNN dependency")
+    def test_global_recent_concat_is_global_then_recent_and_has_small_cost(self) -> None:
+        model = build_compact_1d_cnn(10, seed=1, aggregation="global_recent", recent_k=8)
+        self.assertEqual(model.output_shape, (None, 4))
+        self.assertEqual(model.get_layer("recent_8_ms").cropping, (42, 0))
+        concat = model.get_layer("global_recent_concat")
+        self.assertEqual([tensor.shape[-1] for tensor in concat.input], [16, 16])
+        self.assertEqual(model.count_params(), estimate_model_resources(10, "global_recent").parameters)
+        self.assertEqual(model.count_params() - estimate_model_resources(10).parameters, 64)
+
 
 if __name__ == "__main__":
     unittest.main()

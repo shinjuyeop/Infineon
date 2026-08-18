@@ -71,14 +71,17 @@ class ModelResourceEstimate:
     int8_activation_working_set_bytes: int
 
 
-def estimate_model_resources(channels: int) -> ModelResourceEstimate:
+def estimate_model_resources(channels: int, aggregation: str = "gap") -> ModelResourceEstimate:
     if channels <= 0:
         raise ValueError("channels must be positive")
     conv1_weights = CONV1_KERNEL * channels * CONV1_FILTERS
     conv1_bias = CONV1_FILTERS
     conv2_weights = CONV2_KERNEL * CONV1_FILTERS * CONV2_FILTERS
     conv2_bias = CONV2_FILTERS
-    dense_weights = CONV2_FILTERS * CLASS_COUNT
+    if aggregation not in {"gap", "last_step", "recent", "global_recent"}:
+        raise ValueError(f"unsupported temporal aggregation: {aggregation}")
+    dense_inputs = CONV2_FILTERS * (2 if aggregation == "global_recent" else 1)
+    dense_weights = dense_inputs * CLASS_COUNT
     dense_bias = CLASS_COUNT
     parameters = (
         conv1_weights
@@ -99,8 +102,8 @@ def estimate_model_resources(channels: int) -> ModelResourceEstimate:
     activation_elements = max(
         TIME_STEPS * channels + TIME_STEPS * CONV1_FILTERS,
         TIME_STEPS * CONV1_FILTERS + TIME_STEPS * CONV2_FILTERS,
-        TIME_STEPS * CONV2_FILTERS + CONV2_FILTERS,
-        CONV2_FILTERS + CLASS_COUNT,
+        TIME_STEPS * CONV2_FILTERS + dense_inputs,
+        dense_inputs + CLASS_COUNT,
     )
     return ModelResourceEstimate(
         channels=channels,
@@ -124,7 +127,7 @@ def build_compact_1d_cnn(
         raise RuntimeError(
             "TensorFlow is required for CNN training; install requirements-cnn.txt"
         ) from exc
-    if aggregation not in {"gap", "last_step", "recent"}:
+    if aggregation not in {"gap", "last_step", "recent", "global_recent"}:
         raise ValueError(f"unsupported temporal aggregation: {aggregation}")
     if aggregation == "recent" and not 1 <= recent_k <= TIME_STEPS:
         raise ValueError(f"recent_k must be in [1, {TIME_STEPS}]")
@@ -141,9 +144,14 @@ def build_compact_1d_cnn(
     elif aggregation == "last_step":
         values = tf.keras.layers.Cropping1D((TIME_STEPS - 1, 0), name="endpoint_only")(values)
         values = tf.keras.layers.Flatten(name="endpoint_feature")(values)
-    else:
+    elif aggregation == "recent":
         values = tf.keras.layers.Cropping1D((TIME_STEPS - recent_k, 0), name=f"recent_{recent_k}_ms")(values)
         values = tf.keras.layers.GlobalAveragePooling1D(name="recent_average_pool")(values)
+    else:
+        global_values = tf.keras.layers.GlobalAveragePooling1D(name="global_average_pool")(values)
+        recent_values = tf.keras.layers.Cropping1D((TIME_STEPS - recent_k, 0), name=f"recent_{recent_k}_ms")(values)
+        recent_values = tf.keras.layers.GlobalAveragePooling1D(name="recent_average_pool")(recent_values)
+        values = tf.keras.layers.Concatenate(name="global_recent_concat")([global_values, recent_values])
     outputs = tf.keras.layers.Dense(CLASS_COUNT, activation="softmax", name="class_scores")(
         values
     )

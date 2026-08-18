@@ -84,6 +84,37 @@ separate the observed static-domain regression from aggregation choice (for
 example a leakage-safe static/domain training reservation or a causal
 front-end/window study), before considering a materially larger model.
 
+## Terrain v3.1 Global + Recent fusion
+
+Terrain v3.1 keeps the same Conv1D front end and frozen 77.5:22.5 mixture,
+but concatenates a 16-feature GlobalAveragePool branch and a 16-feature recent
+endpoint branch before the four-class Dense head. A new architecture-selection
+reservation holds out `run_index=3` from every original transition-training
+family/realization/case: 108 train runs and 36 disjoint selection runs (nine
+per direction). The static artifact has no run/realization metadata, so its
+existing static validation split remains the documented limitation.
+
+GAP, Global+Recent-8, and Global+Recent-16 all used three seeds. Global+
+Recent-8 seed 20260823 was selected because its minimum direction occupancy
+margin was materially stronger than GAP's near-threshold margin while it also
+had the strongest static validation of the robust candidates. It achieved
+Float/INT8 Case-C occupancy 90.74%/92.07% and all A/B/C/D stable detection
+on the reservation. Its strict INT8 static accuracy was only 94.43%, below
+the frozen 96.098% retention gate. The model is therefore not frozen; no new
+fresh transition test or 12-run diagnostic replay was opened.
+
+The fusion adds only 64 parameters (1,336 total, 58,864 convolution/Dense
+MACs, 8,776-byte strict INT8 flatbuffer) and converts without Flex or floating
+tensors using builtin Conv2D, Mean, StridedSlice, Concatenation, FullyConnected
+and Softmax. Thus deployment operation compatibility is not the blocker.
+
+상태: **TERRAIN_GLOBAL_RECENT_FUSION_READY=false**,
+**TERRAIN_GLOBAL_RECENT_FUSION_INT8_READY=false**,
+**TERRAIN_LARGER_ARCHITECTURE_NEEDED=true**. The remaining evidence points to
+the static-versus-transition domain/training conflict rather than missing
+endpoint context alone; a leakage-safe static run/realization corpus plus a
+causal-front-end or window ablation is the next bounded milestone.
+
 ## Fast Reflex v2 E84/U55 audit
 
 Separate frozen-artifact Vela outputs use the existing E84 fast1000 command:
