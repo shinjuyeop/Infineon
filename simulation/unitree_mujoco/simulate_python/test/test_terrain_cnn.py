@@ -102,6 +102,15 @@ class TerrainCnnTest(unittest.TestCase):
         self.assertEqual(model.count_params(), estimate_model_resources(10, "global_recent").parameters)
         self.assertEqual(model.count_params() - estimate_model_resources(10).parameters, 64)
 
+    @unittest.skipUnless(importlib.util.find_spec("tensorflow"), "TensorFlow is an optional CNN dependency")
+    def test_variable_causal_window_lengths_preserve_endpoint_shape(self) -> None:
+        for steps in (20, 30, 50):
+            model = build_compact_1d_cnn(10, seed=1, time_steps=steps)
+            self.assertEqual(model.input_shape, (None, steps, 10))
+            self.assertEqual(model.output_shape, (None, 4))
+            self.assertEqual(model.count_params(), estimate_model_resources(10, time_steps=steps).parameters)
+            self.assertEqual(estimate_model_macs(10, steps), 1176 * steps + 64)
+
 
 if __name__ == "__main__":
     unittest.main()

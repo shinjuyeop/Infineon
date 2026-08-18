@@ -115,6 +115,28 @@ the static-versus-transition domain/training conflict rather than missing
 endpoint context alone; a leakage-safe static run/realization corpus plus a
 causal-front-end or window ablation is the next bounded milestone.
 
+## Terrain v4 provenance static corpus and causal-window checkpoint
+
+Terrain v4 losslessly repackages the authoritative 1 kHz noisy Fusion10 static
+simulation output with source run, family, surface-realization, physics/sensor
+seed, rate, and configuration provenance. It does not replace the historical
+97.098% result. The new corpus excludes the already-used legacy static
+validation families, reserves complete `s06`/`s07` train-family surface
+realizations for architecture selection, and retains the original held-out test
+families. Its audit currently reports 1,437 train, 479 architecture-selection,
+and 1,275 static-test runs with zero source-run and realization leakage.
+
+A new static-only GAP/50-ms reference was trained on this split. Selected seed
+20260921 achieved selection accuracy 96.242% and strict-INT8 static-test
+accuracy 94.902%; the v4 static retention threshold is therefore predeclared
+as 93.902% (reference minus one percentage point), while the historical 97.098%
+gate remains preserved for prior milestones. The bounded 20/30/50 ms
+baseline-vs-causal Conv sweep uses the same 77.5:22.5 static:transition
+mixture, train-only normalization, and endpoint labels. It is resume-safe;
+20-ms baseline three-seed training and 20-ms causal seed one artifacts have
+been materialized, with the remaining seeds pending continuation. Transition
+tests, fresh test, and diagnostic remain sealed.
+
 ## Fast Reflex v2 E84/U55 audit
 
 Separate frozen-artifact Vela outputs use the existing E84 fast1000 command:
