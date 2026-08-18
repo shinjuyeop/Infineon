@@ -41,6 +41,17 @@ def transition_metrics(model, norm, traces, rows):
         target=LABEL[r['terrain_after']];t1=stable(full[i],target);post=full[i,T0:]
         result.append({"run_id":r['run_id'],"case_id":r['case_id'],"split":r.get('split','diagnostic'),"detected":t1 is not None,"t1_ms":None if t1 is None else t1-T0,"occupancy":float((post==target).mean()),"switches":int(np.count_nonzero(np.diff(post)!=0))})
     return result
+def transition_metrics_int8(path, norm, traces, rows):
+    """Evaluate a named strict-INT8 artifact without falling back to OUT/int8."""
+    full=np.full((len(traces),800),-1,np.int8)
+    for i,x in enumerate(traces):
+        windows=np.asarray([x[e-49:e+1] for e in range(49,800)],np.float32)
+        full[i,49:]=np.argmax(predict_tflite(path,norm.transform(windows)),1)
+    result=[]
+    for i,r in enumerate(rows):
+        target=LABEL[r['terrain_after']];t1=stable(full[i],target);post=full[i,T0:]
+        result.append({"run_id":r['run_id'],"case_id":r['case_id'],"split":r.get('split','diagnostic'),"detected":t1 is not None,"t1_ms":None if t1 is None else t1-T0,"occupancy":float((post==target).mean()),"switches":int(np.count_nonzero(np.diff(post)!=0))})
+    return result
 def aggregate(rows):
     out={}
     for c in CASES:
