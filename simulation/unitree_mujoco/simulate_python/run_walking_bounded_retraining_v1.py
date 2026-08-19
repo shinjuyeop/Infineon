@@ -1034,8 +1034,9 @@ def hazard_holdout(
             & np.asarray(trace["pre_fall_valid"], bool)
             & ~np.asarray(trace["touchdown_transient"], bool)
         )
+        threshold = float(selection["selected_probability_threshold"])
         fire = stable_fire(
-            probability, float(selection["selected_probability_threshold"]),
+            probability, threshold,
             int(selection["selected_runtime_persistence"]), eligible,
         )
         physical = physical_oracle(trace, detector)
@@ -1053,7 +1054,8 @@ def hazard_holdout(
         )
         chosen = first_model if physical_fire is None else post_model
         threshold_crossing = (
-            None if chosen is None else chosen - int(selection["selected_runtime_persistence"]) + 1
+            None if chosen is None
+            else chosen - int(selection["selected_runtime_persistence"]) + 1
         )
         episode = None if physical_fire is None else int(trace["contact_episode_id"][physical_fire])
         physical_valid_onset = None
@@ -1081,10 +1083,12 @@ def hazard_holdout(
                 None if physical_fire is None else physical_fire - int(physical_valid_onset)
             ),
             "physical_oracle_fire_to_model_positive_ms": (
-                None if post_model is None else post_model - int(physical_fire)
+                None if threshold_crossing is None or physical_fire is None
+                else threshold_crossing - int(physical_fire)
             ),
             "probability_crossing_to_stable_fire_ms": (
-                None if chosen is None else chosen - int(threshold_crossing) + 1
+                None if chosen is None or threshold_crossing is None
+                else chosen - int(threshold_crossing)
             ),
             "touchdown_to_model_stable_fire_ms": (
                 None if chosen is None or touchdown is None else chosen - touchdown

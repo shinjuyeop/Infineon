@@ -1,3 +1,4 @@
+import csv
 import hashlib
 import inspect
 import json
@@ -161,6 +162,15 @@ def test_generated_artifacts_and_model_reload_parity_when_present():
         assert checkpoint_keys
         for key in checkpoint_keys:
             assert np.array_equal(np.unique(provenance[key]), [DEVELOPMENT_CHECKPOINT])
+    with (OUTPUT / "latency_metrics.csv").open(newline="", encoding="utf-8") as stream:
+        latency_rows = list(csv.DictReader(stream))
+    for row in latency_rows:
+        if row["physical_oracle_fire_sample"] and row["model_stable_fire_sample"]:
+            physical = int(row["physical_oracle_fire_sample"])
+            crossing = int(row["model_probability_threshold_crossing_sample"])
+            stable = int(row["model_stable_fire_sample"])
+            assert int(row["physical_oracle_fire_to_model_positive_ms"]) == crossing - physical
+            assert int(row["probability_crossing_to_stable_fire_ms"]) == stable - crossing
     assert lock["fd5b9f0_outer_trace_access_count_before_lock"] == 0
     assert lock["new_sink_holdout_runs_before_lock"] == 0
     assert all(item["parity"] for item in summary["model_reload_parity"].values())
