@@ -1,7 +1,8 @@
-# MuJoCo Terrain Dataset v1 Pilot
+# Terrain Dataset v1 Pilot (Historical)
 
-상태: **simulation/host 검증용 현재 production candidate**. Real sensor로
-calibration하지 않았으며 E84에 deploy하지 않았다.
+상태: **historical simulation/host pilot**. 이 문서는 현재 frozen Terrain v4
+candidate가 아니며, real sensor calibration 또는 E84 deployment evidence를
+주장하지 않는다.
 
 이 pipeline은 `Infineon_HIL` 아래의 legacy synthetic `(50, 5)` dataset과
 분리되어 있다. Schema는 `(N, 50, 10)`이며 FSR 4채널 뒤에 left-foot
@@ -65,7 +66,7 @@ realization과 session은 서로 겹치지 않는다.
 Fusion은 FSR-only보다 우수하지만, **이 pilot만으로 Fusion이 IMU-only보다
 우수하다고 결론낼 수 없다**. 이 한계는 후속 expanded milestone에서 unseen
 procedural surface family와 동일한 small 1D-CNN architecture를 사용해 다시
-평가했다. 완료 결과는 `EXPANDED_DATASET_V1_RESULTS.md`를 참조한다.
+평가했다. 완료 결과는 `TERRAIN_DATASET_V1_HISTORICAL_RESULTS.md`를 참조한다.
 
 ## 상태 경계
 

@@ -1,4 +1,25 @@
-# Terrain Classification Milestone Status
+# Terrain Research Status
+
+이 문서는 terrain 연구의 정본 상태 기록이다. 아래의 오래된 milestone은 결과
+provenance를 위해 시간순으로 보존한다. 현재의 모델·배포 판단에는 먼저 다음
+frozen v4 요약을 사용한다.
+
+## Current frozen decision
+
+- **Model:** baseline Conv1D front-end, 1 kHz / 50 ms causal Fusion10 window,
+  selected seed `20260823`; `TERRAIN_CAUSAL_WINDOW_READY=true` 및
+  `TERRAIN_CAUSAL_WINDOW_INT8_READY=true`
+- **Model gates:** leakage-safe static-retention 및 realization-held-out
+  transition validation은 strict INT8에서 모두 PASS. fresh transition test도
+  frozen model 변경 없이 PASS.
+- **Runtime gates:** target-runtime bounded parity 및 asynchronous 1 kHz T4B1
+  HIL은 PASS; original Float-host raw-exact parity는 two-vector rounding
+  difference 때문에 source-of-truth gate가 아니다.
+- **System:** frozen Terrain v4 + Fast Reflex host integration은 완료됐다.
+  Fast Reflex 자체의 physical/deployment scope는 별도 v2 문서를 따른다.
+
+세부 수치, hash, reservation과 limitation은 아래 Terrain v4 및 system sections에
+기록한다.
 
 ## Terrain Transition v1 pilot
 
@@ -324,7 +345,12 @@ fast1000 E84/U55 fixed regression 완료**.
 
 기존 1,200-run pilot와 historical output은 변경하지 않았다. Expanded output은
 `simulation/outputs/terrain_dataset_v1_expanded*`에 있으며 gitignored이다. 최종
-host 결과는 `EXPANDED_DATASET_V1_RESULTS.md`에 기록한다.
+host 결과는 `TERRAIN_DATASET_V1_HISTORICAL_RESULTS.md`에 기록한다.
+
+## Historical milestones (superseded status snapshots)
+
+이 아래 항목은 Dataset v1/초기 Fast Reflex 진행 당시의 체크포인트를 보존한
+기록이다. 현재 priority 또는 deployment readiness로 해석하지 않는다.
 
 ## 완료된 Dataset 설계
 
@@ -392,7 +418,7 @@ alignment, kernel scratch buffer를 포함한 deployment RAM 실측값이 아니
 - RandomForest reference baseline
 
 3-seed noisy Fusion은 98.95 +/- 0.40%였고 모든 seed에서 IMU-only보다
-우수했다. 상세 결과는 `EXPANDED_DATASET_V1_RESULTS.md`를 참조한다.
+우수했다. 상세 결과는 `TERRAIN_DATASET_V1_HISTORICAL_RESULTS.md`를 참조한다.
 
 ## 완료된 INT8 host gate
 
@@ -492,7 +518,7 @@ INT8 export/parity:
 - [ ] Real FSR/BMI270 orientation, gain, bias, range, noise calibration
   (deferred; current Digital Twin/UART HIL milestone에는 불필요)
 
-## 현재 우선순위
+## Historical priority snapshot
 
 ### Primary: Terrain Transition Fast Reflex HIL
 

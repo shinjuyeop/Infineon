@@ -1,6 +1,7 @@
-# Expanded Dataset v1, CNN Ablation 및 INT8 Parity
+# Terrain Dataset v1 Expanded Results (Historical)
 
-상태: **host-side milestone gate 통과; E84 deployment 미착수**.
+상태: **historical host-side milestone**. 이 기록의 original Dataset v1 model은
+후속 v4 frozen model과 deployment 판단을 대체하지 않는다.
 
 이 문서는 generated-result evidence를 기록한다. Raw simulation data, Keras
 model, TFLite artifact는 gitignored `simulation/outputs/` 아래에 유지한다. 이

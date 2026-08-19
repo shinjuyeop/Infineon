@@ -1,8 +1,9 @@
-# Terrain Classification Handoff
+# Terrain Research Guide
 
-MuJoCo terrain-classification 작업의 canonical reset handoff 문서이다. 다음
-작업 전 `TERRAIN_DATASET_V1.md`, `EXPANDED_DATASET_V1_RESULTS.md`,
-`NEXT_MILESTONE.md`와 함께 읽는다.
+MuJoCo terrain 연구의 canonical reset/maintenance 안내서이다. 현재 판단은
+먼저 `TERRAIN_RESEARCH_STATUS.md`를 읽고, 필요한 경우 이 문서의 source/test
+map과 `TERRAIN_RUNBOOK.md`를 사용한다. `TERRAIN_DATASET_V1_PILOT.md` 및
+`TERRAIN_DATASET_V1_HISTORICAL_RESULTS.md`는 historical evidence다.
 
 ## 현재 pipeline
 
@@ -15,24 +16,20 @@ Terrain parameters and procedural surface
                     ↓
     domain variation + sensor imperfections
                     ↓
- canonical baseline: medium_response [0.15, 0.65) at 100 Hz
+ frozen Terrain v4: causal endpoint window at 1 kHz / 50 ms
                     ↓
                   (50, 10)
                     ↓
- surface/session-disjoint train/validation/test
+ provenance/run/realization-disjoint train/selection/test
                     ↓
  strict INT8 classifier → KIT_PSE84_AI CM55/U55
 ```
 
-Low-frequency Dataset v1 dynamics의 operational MuJoCo timestep은 0.5 ms
-(2 kHz)이다. Raw high-frequency contact vibration이 수렴했다는 의미는 아니다.
-
-Sampling-rate/observation-window ablation은 이 baseline을 보존하고 native
-500 Hz/100 ms와 1000 Hz/50 ms를 비교했다. Full 3-seed와 strict INT8 host
-gate를 통과한 fast candidate는 1000 Hz, 50 samples, 50 ms이며 상세 결과는
-`TERRAIN_RATE_ABLATION.md`에 있다. 이후 별도 `TERRAIN_FAST1000_CPU` 및
-`TERRAIN_FAST1000_U55` artifact를 생성했고 E84/U55 fixed regression과 Host
-golden HIL parity를 통과했다.
+Dataset v1의 0.5 ms (2 kHz) operational physics timestep은 low-frequency
+classification modelling choice이며 raw high-frequency contact vibration
+convergence를 주장하지 않는다. v4의 1 kHz/50 ms candidate가 strict-INT8
+model gate와 target-runtime asynchronous HIL gate를 통과했다. Historical
+sampling-rate evidence는 `TERRAIN_RATE_ABLATION.md`에 보존한다.
 
 ## 설계 결정
 
@@ -41,8 +38,8 @@ golden HIL parity를 통과했다.
 - AI channel: `foot_force_1..4`, accelerometer XYZ, gyroscope XYZ
 - IMU site: `left_ankle_roll_link`에 rigidly attached된 left foot/ankle
 - Class: concrete=0, marble=1, ice=2, sand=3
-- Canonical window: `medium_response`, `[0.15, 0.65)`
-- Input shape: `(50, 10)` at 100 Hz
+- Frozen v4 window: endpoint-labelled 50 samples at 1 kHz (50 ms)
+- Input shape: `(50, 10)`; `window=[t-49,...,t]`, `label=terrain_gt(t)`
 - Split unit: surface family/seed, session, run group; random window split 금지
 - Test data는 training에 사용하지 않은 surface family/realization 사용
 - MuJoCo friction, slip, load distribution, CoP-related response, surface
@@ -121,8 +118,9 @@ Fusion은 FSR-only보다 우수하지만 IMU-only보다 우수하다고 결론�
 Expanded dataset은 4,453 valid window를 생성했다. 3-seed noisy Fusion accuracy는
 98.95 +/- 0.40%였다. Validation 기준으로 선택한 seed의 strict full-INT8 host
 accuracy는 99.29%였고 float 대비 delta는 -0.079 percentage point였다. 전체
-근거는 `EXPANDED_DATASET_V1_RESULTS.md`, E84 deployment 및 continuous HIL
-결과와 남은 live-integration 항목은 `NEXT_MILESTONE.md`에 기록한다.
+과거 Dataset v1 근거는 `TERRAIN_DATASET_V1_HISTORICAL_RESULTS.md`에 보존한다.
+현재 E84 deployment, continuous HIL과 남은 integration 항목은
+`TERRAIN_RESEARCH_STATUS.md`에 기록한다.
 
 ## E84 deployment gate
 
@@ -216,7 +214,6 @@ Dataset-v1 test accuracy를 대체하지 않는다.
 
 ## Reset recovery
 
-Full reset 후 이 문서, `EXPANDED_DATASET_V1_RESULTS.md`,
-`NEXT_MILESTONE.md`, `CLEANUP_AUDIT.md` 순서로 읽는다. Model/contact
-representation을 의도적으로 바꾸지 않는 한 historical physics study를 다시
-실행하지 않는다.
+Full reset 후 `TERRAIN_RESEARCH_STATUS.md`, 이 문서, `TERRAIN_RUNBOOK.md`
+순서로 읽는다. Model/contact representation을 의도적으로 바꾸지 않는 한
+historical physics study를 다시 실행하지 않는다.

@@ -1,4 +1,4 @@
-# Terrain Transition Fast Reflex v1
+# Terrain Transition Fast Reflex v1 (Historical Foundation)
 
 상태: **continuous-state temporal transition schema, physical hazard ground
 truth, native 1 kHz trace/window export와 6-run smoke 완료; neural-network

@@ -1,4 +1,4 @@
-# Terrain Fast Reflex v2 experiment plan
+# Terrain Fast Reflex v2
 
 ## Terrain Transition v1 handoff (post-v2; v2 remains frozen)
 

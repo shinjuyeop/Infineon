@@ -1,13 +1,14 @@
-# Terrain Classification 명령어 Runbook
+# Terrain Runbook
 
-이 문서는 `/d/shin/Infineon`의 현재 terrain-classification 작업을 다시 확인하거나
-재현할 때 사용하는 명령을 모은 실행 안내서이다. 현재 기준 pipeline은 다음과
-같다.
+이 문서는 `/d/shin/Infineon`의 terrain 작업을 다시 확인하거나 재현할 때 사용하는
+명령을 모은 실행 안내서이다. 현재 frozen candidate는 Terrain v4이며, historical
+Dataset v1 command도 재현성 목적으로 아래에 보존한다. v4 gate와 artifact
+identity는 `TERRAIN_RESEARCH_STATUS.md`가 정본이다.
 
 ```text
-MuJoCo full-body G1 → FSR4 + left-foot IMU6 → 100 Hz
-→ medium_response (50 samples) → surface-family-disjoint split
-→ Fusion10 1D-CNN → strict full-INT8 host parity
+MuJoCo full-body G1 → FSR4 + left-foot IMU6 → 1 kHz
+→ causal endpoint 50 ms (50 samples) → provenance-safe split
+→ Fusion10 1D-CNN → strict full-INT8 / target-runtime parity
 ```
 
 현재까지 생성된 dataset, Keras model, TFLite model과 plot은
@@ -93,7 +94,8 @@ sha256sum \
   simulation/outputs/terrain_dataset_v1_expanded_int8_seed_20260809/noisy_fusion_int8.tflite
 ```
 
-기록된 정상 hash는 `EXPANDED_DATASET_V1_RESULTS.md`에 있다.
+기록된 historical Dataset v1 hash는 `TERRAIN_DATASET_V1_HISTORICAL_RESULTS.md`에
+있다.
 
 ## 3. MuJoCo G1 화면 확인
 

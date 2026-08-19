@@ -1,4 +1,4 @@
-# Walking Touchdown Dataset v1
+# Terrain Walking Touchdown v1
 
 상태: **acquisition foundation, contact-model audit와 Ice/Sand stability sweep
 완료; Sand walking support는 해결했지만 Ice policy gate가 실패하여 full

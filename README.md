@@ -21,47 +21,49 @@ Simulator의 terrain profile은 controlled signal-separation 실험을 위한 �
 Third-party license와 attribution 파일은 해당 source tree에 그대로 보존한다.
 이 repository는 upstream project를 대체하거나 재라이선스하지 않는다.
 
-## 주요 문서
+## Terrain 연구 문서
 
-- [`simulation/TERRAIN_DATASET_V1.md`](simulation/TERRAIN_DATASET_V1.md):
-  leakage-safe MuJoCo `(N, 50, 10)` pilot와 legacy synthetic `(50, 5)` pipeline의
-  경계
-- [`simulation/TERRAIN_CLASSIFICATION_HANDOFF.md`](simulation/TERRAIN_CLASSIFICATION_HANDOFF.md):
-  현재 설계, 실험 이력, repository map, reset handoff
-- [`simulation/CLEANUP_AUDIT.md`](simulation/CLEANUP_AUDIT.md):
-  source/generated/vendor 경계와 보수적 cleanup 판단
-- [`simulation/NEXT_MILESTONE.md`](simulation/NEXT_MILESTONE.md):
-  expanded dataset/1D-CNN milestone과 E84 진행 gate
-- [`simulation/EXPANDED_DATASET_V1_RESULTS.md`](simulation/EXPANDED_DATASET_V1_RESULTS.md):
-  expanded dataset, 3-seed CNN, strict INT8 host-parity 최종 결과
-- [`simulation/COMMAND_RUNBOOK.md`](simulation/COMMAND_RUNBOOK.md):
-  환경 확인, simulation preview, dataset/CNN/INT8 재현, test 명령 모음
+현재 frozen Terrain v4의 상태와 배포 준비도는 아래 순서로 확인한다.
+
+- [`simulation/TERRAIN_RESEARCH_STATUS.md`](simulation/TERRAIN_RESEARCH_STATUS.md):
+  현재 gate, frozen v4 모델/INT8/runtime HIL 결과와 전체 연구 이력의 정본
+- [`simulation/TERRAIN_RESEARCH_GUIDE.md`](simulation/TERRAIN_RESEARCH_GUIDE.md):
+  설계 결정, source/test map, reset 시 읽을 순서
+- [`simulation/TERRAIN_RUNBOOK.md`](simulation/TERRAIN_RUNBOOK.md):
+  재현·검증 명령과 안전한 output-directory 규칙
 - [`Infineon_test/projects/terrain_e84_deploy/deployment/README.md`](Infineon_test/projects/terrain_e84_deploy/deployment/README.md):
-  E84 Cortex-M55/Ethos-U55 배포, 메모리·latency 실측 및 UART HIL 재현 절차
+  E84 Cortex-M55/Ethos-U55 배포 및 UART HIL 절차
+
+다음은 현재 후보를 대체하지 않는 보존용 연구 기록이다.
+
+- [`simulation/TERRAIN_DATASET_V1_PILOT.md`](simulation/TERRAIN_DATASET_V1_PILOT.md),
+  [`simulation/TERRAIN_DATASET_V1_HISTORICAL_RESULTS.md`](simulation/TERRAIN_DATASET_V1_HISTORICAL_RESULTS.md):
+  Dataset v1 pilot 및 expanded-dataset 결과
+- [`simulation/TERRAIN_RATE_ABLATION.md`](simulation/TERRAIN_RATE_ABLATION.md):
+  과거 sampling-rate/observation-window 근거
+- [`simulation/TERRAIN_FAST_REFLEX_V1.md`](simulation/TERRAIN_FAST_REFLEX_V1.md),
+  [`simulation/TERRAIN_FAST_REFLEX_V2.md`](simulation/TERRAIN_FAST_REFLEX_V2.md):
+  terrain과 분리된 Fast Reflex 연구
+- [`simulation/TERRAIN_WALKING_TOUCHDOWN_V1.md`](simulation/TERRAIN_WALKING_TOUCHDOWN_V1.md):
+  보행 touchdown 후속 연구
 
 ## 현재 terrain-classification 후보
 
 ```text
 Terrain → MuJoCo full-body G1 → FSR4 + foot IMU6
-        → domain variation → sensor noise
-        → medium_response → (50, 10)
-        → surface-disjoint train/validation/test → strict INT8 classifier
-        → live MuJoCo 100 Hz TRN2 → physical PSoC Edge E84 / Ethos-U55
-        → terrain result + Host shadow logging
+        → domain variation → sensor noise → 1 kHz causal 50 ms Fusion10 window
+        → provenance/surface-realization-disjoint split → strict INT8 classifier
+        → batched asynchronous T4B1 → physical PSoC Edge E84 / Ethos-U55
+        → terrain result + target-runtime shadow logging
 ```
 
-E84 deployment와 1 Mbaud KitProg3 UART full-window 및 100 Hz continuous
-sample-stream HIL을 실제 KIT_PSE84_AI에서 검증했다. E84의 50x10 ring
-buffer가 1,000 samples를 drop/timeout 없이 처리했으며 Host와 E84의 raw INT8
-output/class가 일치한다. Pelvis IMU와 slip/contact trace는 diagnostic 전용이다.
-Legacy 실험과 synthetic `(50, 5)` HIL pipeline은 보존하지만 Dataset v1
-입력에는 사용하지 않는다.
-
-실행 중인 MuJoCo의 2 kHz controlled-excitation loop도 실제 E84에 연결했다.
-네 terrain의 400 live samples/204 inference에서 reference INT8 Host shadow와
-E84 raw output/class가 204/204 exact match했고 100 Hz deadline miss, drop,
-timeout, device error는 모두 0이었다. 이 live stream은 clean virtual sensor를
-사용하며 sensor noise는 Dataset 생성 시의 offline augmentation이다.
+Frozen v4는 leakage-safe static/transition reservations와 fresh transition test를
+통과했다. E84/U55 target runtime은 fixed-golden bounded raw parity 및 1 kHz
+asynchronous T4B1 HIL gate를 통과했다. 원본 Float host와 board는 두 saturated
+vector에서 비우승 logit 차이가 있으므로 raw-exact host parity를 주장하지 않으며,
+target-runtime parity policy를 사용한다. Pelvis IMU와 slip/contact trace는
+diagnostic 전용이고 legacy synthetic `(50, 5)` pipeline은 현재 입력에 사용하지
+않는다.
 
 ## G1 horizontal-pulse preview
 
