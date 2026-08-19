@@ -1,0 +1,42 @@
+{
+  "pilot_runs": 17,
+  "run_counts": {
+    "hard_negative": 9,
+    "slip_candidate": 3,
+    "sink_candidate": 5
+  },
+  "fall_runs": 3,
+  "first_fall_censored_samples": 2996,
+  "normal_contact_anchor_drift_run_max_m": 0.008933439521696398,
+  "ice_contact_anchor_drift_run_min_m": 0.1303936943976871,
+  "slip_motion_separated_from_normal": true,
+  "normal_contact_penetration_run_max_m": 0.0037352325661355558,
+  "normal_surface_relative_sole_depth_run_max_m": 0.0037352325661355592,
+  "sink_candidate_positive_evidence_runs": 5,
+  "sink_candidate_positive_evidence_profiles": [
+    "sand_solref_interpolation_1of3",
+    "sand_solref_interpolation_2of3",
+    "sand_native",
+    "sand_slightly_compliant",
+    "sand_moderately_compliant"
+  ],
+  "gates": {
+    "WALKING_HAZARD_GT_RECORDER_READY": true,
+    "WALKING_FIRST_FALL_CENSOR_READY": true,
+    "WALKING_CONTACT_ANCHOR_DRIFT_READY": true,
+    "WALKING_TERRAIN_RELATIVE_PENETRATION_READY": true,
+    "WALKING_SLIP_POSITIVE_ACQUISITION_READY": true,
+    "WALKING_SINK_POSITIVE_ACQUISITION_READY": true,
+    "WALKING_HARD_NEGATIVE_SOURCE_READY": true,
+    "WALKING_BOUNDED_RETRAINING_AUTHORIZED": true
+  },
+  "WALKING_HAZARD_GT_RECORDER_READY": true,
+  "WALKING_FIRST_FALL_CENSOR_READY": true,
+  "WALKING_CONTACT_ANCHOR_DRIFT_READY": true,
+  "WALKING_TERRAIN_RELATIVE_PENETRATION_READY": true,
+  "WALKING_SLIP_POSITIVE_ACQUISITION_READY": true,
+  "WALKING_SINK_POSITIVE_ACQUISITION_READY": true,
+  "WALKING_HARD_NEGATIVE_SOURCE_READY": true,
+  "WALKING_BOUNDED_RETRAINING_AUTHORIZED": true,
+  "wall_time_s": 14.34264930197969
+}

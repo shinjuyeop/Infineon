@@ -1,0 +1,13 @@
+run_id,acquisition_role,terrain_name,profile_name,walking_speed_mps,fall_occurred,first_fall_sample,stable_loaded_contact_pre_fall,max_anchor_drift_post_touchdown_m,normal_run_max_envelope_m,physically_separated_from_normal
+marble_native_0p10_r00,hard_negative,marble,marble,0.1,False,,True,0.005379270964192248,0.008933439521696398,False
+concrete_native_0p10_r00,hard_negative,concrete,concrete,0.1,False,,True,0.0027511247592683476,0.008933439521696398,False
+sand_hardened_0p10_r00,hard_negative,sand,sand_walking_support_v1_hardened,0.1,False,,True,0.00847934463569885,0.008933439521696398,False
+marble_native_0p15_r00,hard_negative,marble,marble,0.15,False,,True,0.005825873515556211,0.008933439521696398,False
+concrete_native_0p15_r00,hard_negative,concrete,concrete,0.15,False,,True,0.0028718015222581935,0.008933439521696398,False
+sand_hardened_0p15_r00,hard_negative,sand,sand_walking_support_v1_hardened,0.15,False,,True,0.008818387579137403,0.008933439521696398,False
+marble_native_0p20_r00,hard_negative,marble,marble,0.2,False,,True,0.005870414462588111,0.008933439521696398,False
+concrete_native_0p20_r00,hard_negative,concrete,concrete,0.2,False,,True,0.0031884799221529544,0.008933439521696398,False
+sand_hardened_0p20_r00,hard_negative,sand,sand_walking_support_v1_hardened,0.2,False,,True,0.008933439521696398,0.008933439521696398,False
+ice_native_0p10_r00,slip_candidate,ice,ice,0.1,False,,True,0.13585931684765867,0.008933439521696398,True
+ice_native_0p15_r00,slip_candidate,ice,ice,0.15,False,,True,0.1303936943976871,0.008933439521696398,True
+ice_native_0p20_r00,slip_candidate,ice,ice,0.2,False,,True,0.14274049859582216,0.008933439521696398,True

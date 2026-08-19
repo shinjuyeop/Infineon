@@ -1,0 +1,500 @@
+{
+  "dataset": "walking_hazard_ground_truth_v1_pilot",
+  "purpose": "train-only positive-acquisition evidence before label/threshold calibration",
+  "split": "train_only",
+  "test_or_final_data_used": false,
+  "no_retraining_or_threshold_freeze": true,
+  "terrain_name_never_labels_hazard": true,
+  "air_samples_are_always_hazard_negative": true,
+  "rate_hz": 1000,
+  "physics_timestep_s": 0.0005,
+  "physics_steps_per_endpoint": 2,
+  "duration_s": 3.0,
+  "contact_model": {
+    "mode": "foot-spheres-only",
+    "reason": "reuse the qualified walking foundation runtime isolation without editing source XML",
+    "source_xml_unchanged": true,
+    "nonfoot_contact_recorded": true,
+    "note": "nonfoot terrain collisions are disabled by this inherited runtime mode; height/orientation fall gates remain active"
+  },
+  "coordinates": {
+    "frame": "MuJoCo world frame; z is world up",
+    "foot_xyz": "world position of body left_ankle_roll_link; ankle z is diagnostic only",
+    "foot_velocity_xyz": "world-frame linear velocity of body left_ankle_roll_link",
+    "pelvis_xyz": "world position of body pelvis",
+    "sole_geoms": [
+      "left_foot_contact_1",
+      "left_foot_contact_2",
+      "left_foot_contact_3",
+      "left_foot_contact_4"
+    ],
+    "sole_lowest_point_z": "minimum over geom_xpos[z] - sphere radius for the four named sole spheres",
+    "ground_geoms": [
+      "ground_source",
+      "ground_target"
+    ],
+    "surface_top_z": "fixed box world center z plus oriented world-z half extent; both pilot boxes have top z=0 m",
+    "sole_to_surface_relative_depth": "surface_top_z - sole_lowest_point_z; positive means below the fixed top plane",
+    "contact_penetration": "maximum max(0, -contact.dist) over named left-sole sphere/ground contacts"
+  },
+  "contact_episode": {
+    "definition": "contiguous raw MuJoCo left-sole/ground contact",
+    "anchor": "world x/y of left_ankle_roll_link at the first contact endpoint",
+    "reset": "every AIR-to-contact transition",
+    "loaded_contact": "raw contact and FSR sum >= 5 N",
+    "touchdown_transient_samples": 10,
+    "stable_loaded_post_touchdown_samples": 20,
+    "loaded_penetration_reference": "first loaded endpoint in the current raw contact episode"
+  },
+  "fall_censor": {
+    "first_fall_sample": "first 1-kHz endpoint with base z<0.55 m, pelvis upright-z<0.55, nonfoot surface contact, or nonfinite state",
+    "calibration_mask": "sample index strictly less than first_fall_sample",
+    "post_fall_trace_retained_for_diagnosis": true
+  },
+  "separation_gates": {
+    "slip": "minimum pre-fall Ice run maximum post-touchdown anchor drift exceeds maximum normal-control run value",
+    "sink": "a predeclared candidate has stable pre-fall loaded contact and its run maximum contact penetration or positive surface-relative depth exceeds the normal run maximum",
+    "threshold_frozen": false
+  },
+  "controller": {
+    "name": "unitreerobotics/unitree_rl_mjlab pretrained G1-29DOF velocity policy",
+    "upstream_revision": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+    "tested_policy_sha256": "2a66ca6336eadb3c0b34b557763f3e06d01ff8fcf6260dd4cedbd69d6093fc28",
+    "policy_path": "/d/shin/Infineon/simulation/unitree_rl_mjlab/deploy/robots/g1/config/policy/velocity/v0/exported/policy.onnx",
+    "policy_sha256": "2a66ca6336eadb3c0b34b557763f3e06d01ff8fcf6260dd4cedbd69d6093fc28"
+  },
+  "channels": [
+    "foot_force_1",
+    "foot_force_2",
+    "foot_force_3",
+    "foot_force_4",
+    "accel_x",
+    "accel_y",
+    "accel_z",
+    "gyro_x",
+    "gyro_y",
+    "gyro_z"
+  ],
+  "trace_layout": {
+    "endpoint_arrays": "shape [runs, samples, ...] in traces.npz",
+    "run_constant_metadata_arrays": [
+      "run_id",
+      "terrain_name",
+      "profile_name",
+      "acquisition_role",
+      "walking_speed_mps"
+    ],
+    "metadata_association": "run-constant arrays at index r apply to every endpoint in endpoint arrays[r]"
+  },
+  "conditions": [
+    {
+      "run_id": "marble_native_0p10_r00",
+      "condition_name": "marble_native",
+      "terrain_name": "marble",
+      "profile_name": "marble",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.1,
+      "friction": [
+        0.45,
+        0.003,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "concrete_native_0p10_r00",
+      "condition_name": "concrete_native",
+      "terrain_name": "concrete",
+      "profile_name": "concrete",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.1,
+      "friction": [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_hardened_0p10_r00",
+      "condition_name": "sand_hardened",
+      "terrain_name": "sand",
+      "profile_name": "sand_walking_support_v1_hardened",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.1,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "ice_native_0p10_r00",
+      "condition_name": "ice_native",
+      "terrain_name": "ice",
+      "profile_name": "ice",
+      "acquisition_role": "slip_candidate",
+      "walking_speed_mps": 0.1,
+      "friction": [
+        0.05,
+        0.001,
+        1e-05
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "marble_native_0p15_r00",
+      "condition_name": "marble_native",
+      "terrain_name": "marble",
+      "profile_name": "marble",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.15,
+      "friction": [
+        0.45,
+        0.003,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "concrete_native_0p15_r00",
+      "condition_name": "concrete_native",
+      "terrain_name": "concrete",
+      "profile_name": "concrete",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.15,
+      "friction": [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_hardened_0p15_r00",
+      "condition_name": "sand_hardened",
+      "terrain_name": "sand",
+      "profile_name": "sand_walking_support_v1_hardened",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.15,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "ice_native_0p15_r00",
+      "condition_name": "ice_native",
+      "terrain_name": "ice",
+      "profile_name": "ice",
+      "acquisition_role": "slip_candidate",
+      "walking_speed_mps": 0.15,
+      "friction": [
+        0.05,
+        0.001,
+        1e-05
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "marble_native_0p20_r00",
+      "condition_name": "marble_native",
+      "terrain_name": "marble",
+      "profile_name": "marble",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.2,
+      "friction": [
+        0.45,
+        0.003,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "concrete_native_0p20_r00",
+      "condition_name": "concrete_native",
+      "terrain_name": "concrete",
+      "profile_name": "concrete",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.2,
+      "friction": [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_hardened_0p20_r00",
+      "condition_name": "sand_hardened",
+      "terrain_name": "sand",
+      "profile_name": "sand_walking_support_v1_hardened",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.2,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "ice_native_0p20_r00",
+      "condition_name": "ice_native",
+      "terrain_name": "ice",
+      "profile_name": "ice",
+      "acquisition_role": "slip_candidate",
+      "walking_speed_mps": 0.2,
+      "friction": [
+        0.05,
+        0.001,
+        1e-05
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p10_r00",
+      "condition_name": "sand_solref_interpolation_1of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.1,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.026666666666666665,
+        1.1666666666666667
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p10_r00",
+      "condition_name": "sand_solref_interpolation_2of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.1,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.03833333333333333,
+        1.3333333333333333
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_native_0p10_r00",
+      "condition_name": "sand_native",
+      "terrain_name": "sand",
+      "profile_name": "sand_native",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.1,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.05,
+        1.5
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_slightly_compliant_0p10_r00",
+      "condition_name": "sand_slightly_compliant",
+      "terrain_name": "sand",
+      "profile_name": "sand_slightly_compliant",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.1,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.06,
+        1.5
+      ],
+      "solimp": [
+        0.65,
+        0.88,
+        0.012,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_moderately_compliant_0p10_r00",
+      "condition_name": "sand_moderately_compliant",
+      "terrain_name": "sand",
+      "profile_name": "sand_moderately_compliant",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.1,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.07,
+        1.5
+      ],
+      "solimp": [
+        0.6,
+        0.86,
+        0.015,
+        0.5,
+        2.0
+      ]
+    }
+  ],
+  "overwrite_policy": "refuse any non-empty output directory"
+}
