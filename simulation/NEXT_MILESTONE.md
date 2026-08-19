@@ -255,6 +255,16 @@ Status: **TERRAIN_V4_TARGET_RUNTIME_PARITY_GATE=PASS**,
 is complete; the next milestone is frozen Terrain-state to Fast-Reflex system
 decision integration.
 
+## Terrain + Fast Reflex System v1
+
+Frozen host replay now combines Terrain v4 stable transitions with independent
+Slip/Sink stable firing into A (hard→Ice), B (hard→Sand), C (Ice→hard), and D
+(Sand→hard). `HAZARD_REFLEX_REQUIRED` is never suppressed by terrain context;
+`CASE_REFLEX_REQUIRED` requires A+Slip or B+Sink, while C/D emit symbolic
+recovery only. The 12-run diagnostic mapped all four cases correctly, emitted
+all six C/D recovery events, and preserved the known A hazard-negative Slip
+false firing as a system-level false reflex rather than retuning it.
+
 ## Fast Reflex v2 E84/U55 audit
 
 Separate frozen-artifact Vela outputs use the existing E84 fast1000 command:
