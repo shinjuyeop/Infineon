@@ -12,7 +12,7 @@ from hil_sensor import LEFT_FOOT_CONTACT_GEOM_NAMES
 
 
 os.environ.setdefault("PYGAME_HIDE_SUPPORT_PROMPT", "1")
-from unitree_sdk2py_bridge import ElasticBand  # noqa: E402
+from elastic_band import ElasticBand  # noqa: E402
 
 
 @dataclass(frozen=True)

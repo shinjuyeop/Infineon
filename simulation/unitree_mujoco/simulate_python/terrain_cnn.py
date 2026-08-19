@@ -5,7 +5,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import numpy as np
-from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
 
 
 TIME_STEPS = 50
@@ -179,9 +178,13 @@ def evaluation_rows(
         raise ValueError("probability shape does not match labels/classes")
     prediction = np.argmax(probabilities, axis=1)
     labels = np.arange(len(terrain_names))
-    precision, recall, f1, support = precision_recall_fscore_support(
-        y_true, prediction, labels=labels, zero_division=0
-    )
+    matrix = np.zeros((len(labels), len(labels)), dtype=np.int64)
+    for actual, predicted in zip(y_true, prediction):
+        matrix[int(actual), int(predicted)] += 1
+    support = matrix.sum(axis=1)
+    precision = np.divide(np.diag(matrix), matrix.sum(axis=0), out=np.zeros(len(labels)), where=matrix.sum(axis=0) != 0)
+    recall = np.divide(np.diag(matrix), support, out=np.zeros(len(labels)), where=support != 0)
+    f1 = np.divide(2 * precision * recall, precision + recall, out=np.zeros(len(labels)), where=(precision + recall) != 0)
     rows: list[dict[str, object]] = [
         {
             "class": "overall",
@@ -203,7 +206,6 @@ def evaluation_rows(
                 "support": int(support[index]),
             }
         )
-    matrix = confusion_matrix(y_true, prediction, labels=labels)
     matrix_rows = [
         {
             "actual": terrain_names[actual],

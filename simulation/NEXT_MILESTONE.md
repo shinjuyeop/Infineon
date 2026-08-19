@@ -130,12 +130,53 @@ A new static-only GAP/50-ms reference was trained on this split. Selected seed
 20260921 achieved selection accuracy 96.242% and strict-INT8 static-test
 accuracy 94.902%; the v4 static retention threshold is therefore predeclared
 as 93.902% (reference minus one percentage point), while the historical 97.098%
-gate remains preserved for prior milestones. The bounded 20/30/50 ms
-baseline-vs-causal Conv sweep uses the same 77.5:22.5 static:transition
-mixture, train-only normalization, and endpoint labels. It is resume-safe;
-20-ms baseline three-seed training and 20-ms causal seed one artifacts have
-been materialized, with the remaining seeds pending continuation. Transition
-tests, fresh test, and diagnostic remain sealed.
+gate remains preserved for prior milestones.
+
+The completed bounded 20/30/50-ms sweep freezes a 77.5:22.5 static:transition
+mixture, removes global inverse-frequency weighting, fits normalization only on
+the v4 train partition, and uses `window=[t-L+1,...,t]`, `label=terrain_gt(t)`.
+The legacy transition validation/test and old diagnostic were excluded from
+selection. Instead, the original transition train partition was re-reserved at
+the complete surface-realization level: `s00/s01` are 96 train runs and `s02`
+is a 48-run architecture-selection reservation (12 per A/B/C/D), with zero
+source-run and realization leakage. Family overlap is intentional and recorded.
+
+All six window/front-end configurations were evaluated at three seeds. The
+predeclared ordering chose the simplest eligible front-end and then the longer
+context: baseline Conv, 50 ms, seed 20260823. Float selection static accuracy
+was 96.868% (macro F1 96.888%); A/B/C/D stable detection was 100% and target
+occupancy was 87.61/98.22/84.00/94.39%. Case C had 18 post-transition switches,
+T1 median 6 ms, and T1 p95 36.8 ms. It has 1,272 parameters and 58,864 MACs.
+
+Candidate-specific strict INT8 used that Float SHA256
+`c0a189cd4b01a3fb1474d89fedd8926c51f9dcc223ae0d849d7078adcafc3dc8`, a
+train-only 256-window calibration set, and produced INT8 SHA256
+`5c1b7e96688db22f455f8835cd1ade84644af5a4ca5574cff84986cd735ab84c`.
+Static-test accuracy was 95.137% (reference 94.902%, threshold 93.902%), so
+`STATIC_RETENTION_GATE=PASS`. On the realization-held-out transition reservation
+the strict-INT8 A/B/C/D occupancies were 82.06/97.28/92.00/98.94% with 100%
+stable detection, so `TRANSITION_VALIDATION_GATE=PASS`.
+
+The one-shot fresh transition test was then materialized without any model
+change: `filtered_random`, previously unused realization `s08`, runs `r004..006`
+(12 total). It is source-run/realization-disjoint from v4 train and selection
+and all 12 physical runs passed continuity, rate, Fusion10-finiteness, and
+terrain-GT audit. Strict INT8 fresh A/B/C/D occupancy was
+88.89/98.44/84.00/99.56%, again with 100% stable detection. The preserved 12-run
+diagnostic was consequently replayed read-only with frozen Fast Reflex: Case C
+T1-T0 median/p95 was 5.0/24.8 ms and post-target occupancy 78.22%; all three C
+runs reached stable Marble. No Fast Reflex artifact, threshold, persistence, or
+oracle changed.
+
+Status: **TERRAIN_CAUSAL_WINDOW_READY=true**,
+**TERRAIN_CAUSAL_WINDOW_INT8_READY=true**, and
+**TERRAIN_LARGER_MODEL_NEEDED=false**. The evidence answers the bounded
+milestone question positively: on this leakage-safe v4 protocol, a 50-ms
+baseline causal-observation window is sufficient; a larger model is not
+currently justified. Remaining limitations are simulation-only provenance and
+the small (three-run-per-direction) fresh reservation; the next milestone should
+be deployment parity and a separately reserved broader-domain/family fresh test,
+not additional architecture search.
 
 ## Fast Reflex v2 E84/U55 audit
 

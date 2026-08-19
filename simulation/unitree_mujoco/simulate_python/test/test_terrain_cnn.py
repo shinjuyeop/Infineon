@@ -23,6 +23,7 @@ from terrain_cnn import (  # noqa: E402
     evaluation_rows,
     mutual_pair_confusion,
 )
+from run_terrain_causal_window_v4 import transition_audit, transition_split  # noqa: E402
 from train_terrain_1d_cnn import validate_dataset_arrays  # noqa: E402
 from hil_sensor import HIL_SENSOR_CHANNELS  # noqa: E402
 
@@ -75,6 +76,23 @@ class TerrainCnnTest(unittest.TestCase):
         )
         self.assertEqual((count, support), (2, 4))
         self.assertEqual(ratio, 0.5)
+
+    def test_v4_transition_reservation_is_realization_disjoint(self) -> None:
+        rows = [
+            {"split": "train", "surface_realization": "0", "surface_family": "multi", "run_id": "a", "case_id": "A"},
+            {"split": "train", "surface_realization": "2", "surface_family": "multi", "run_id": "b", "case_id": "A"},
+            {"split": "train", "surface_realization": "0", "surface_family": "multi", "run_id": "c", "case_id": "B"},
+            {"split": "train", "surface_realization": "2", "surface_family": "multi", "run_id": "d", "case_id": "B"},
+            {"split": "train", "surface_realization": "0", "surface_family": "multi", "run_id": "e", "case_id": "C"},
+            {"split": "train", "surface_realization": "2", "surface_family": "multi", "run_id": "f", "case_id": "C"},
+            {"split": "train", "surface_realization": "0", "surface_family": "multi", "run_id": "g", "case_id": "D"},
+            {"split": "train", "surface_realization": "2", "surface_family": "multi", "run_id": "h", "case_id": "D"},
+        ]
+        self.assertEqual(transition_split(rows[0]), "train")
+        self.assertEqual(transition_split(rows[1]), "architecture_selection")
+        audit = transition_audit(rows)
+        self.assertFalse(audit["source_run_id_leakage"])
+        self.assertFalse(audit["surface_realization_leakage"])
 
     @unittest.skipUnless(importlib.util.find_spec("tensorflow"), "TensorFlow is an optional CNN dependency")
     def test_keras_parameter_count_matches_estimate(self) -> None:

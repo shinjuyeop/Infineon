@@ -14,10 +14,8 @@ from pathlib import Path
 
 import numpy as np
 
-from run_terrain_transition_aware_v2 import SIM, STATIC
-
-
-SOURCE = STATIC.parent
+SIM = Path(__file__).resolve().parents[2]
+SOURCE = SIM / "outputs/terrain_dataset_v1_expanded_1000hz_full"
 OUT = SIM / "outputs/terrain_static_provenance_v4"
 SURFACE_PATTERN = re.compile(r"_s(?P<surface>\d+)_r(?P<run>\d+)$")
 
