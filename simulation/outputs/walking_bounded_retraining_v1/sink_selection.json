@@ -1,0 +1,29 @@
+{
+  "detector": "sink",
+  "selection_data": "existing validation + d2209cd v02 only",
+  "holdout_runs_accessed_before_selection": 0,
+  "architecture_unchanged": true,
+  "window_ms": 20,
+  "mixture_ratio": 1.0,
+  "training_seed": 20261002,
+  "model_path": "models/sink_walking_candidate.keras",
+  "model_sha256": "c99c8addd39cfafbea5f3b042b8ce57d558cf5a310ccd0e285e01560c4dc36d0",
+  "normalization_path": "normalization/sink.json",
+  "normalization_sha256": "a44859b3eff543d64cf61b5c612500a42171a4ae7bafab68f7823ebd715660cb",
+  "parameters": 1221,
+  "candidate_gate_pass": false,
+  "selection_rationale": "all mandatory gates, then walking normal FPR, walking positive recall, static/controlled retention, p95 latency, unchanged model size, deterministic ties",
+  "production_artifact_replaced": false,
+  "selected_probability_threshold": 1.0,
+  "selected_runtime_persistence": 1,
+  "controlled_validation_causal_run_fpr": 0.0,
+  "controlled_validation_run_recall": 0.0,
+  "walking_normal_false_positive_runs": 0,
+  "walking_positive_run_recall": 0.0,
+  "walking_anticipation_runs": 0,
+  "walking_p95_stable_latency_ms": 0.0,
+  "diagnostic_fallback_selected": true,
+  "validation_gate_failure_reasons": [
+    "no runtime configuration for this trained candidate passed every mandatory validation gate"
+  ]
+}

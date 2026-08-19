@@ -1,0 +1,29 @@
+{
+  "detector": "slip",
+  "selection_data": "existing validation + d2209cd v02 only",
+  "holdout_runs_accessed_before_selection": 0,
+  "architecture_unchanged": true,
+  "window_ms": 5,
+  "mixture_ratio": 0.5,
+  "training_seed": 20261002,
+  "model_path": "models/slip_walking_candidate.keras",
+  "model_sha256": "e89ab3a99bd147b6e33847dfaffdd01cae539e6a975f5f6bcd46b4aa226fd130",
+  "normalization_path": "normalization/slip.json",
+  "normalization_sha256": "0eb3a256febd0aa84c07dfbfdb30fa28176a20374d294a77b6dfa5debd2c08c3",
+  "parameters": 1237,
+  "candidate_gate_pass": false,
+  "selection_rationale": "all mandatory gates, then walking normal FPR, walking positive recall, static/controlled retention, p95 latency, unchanged model size, deterministic ties",
+  "production_artifact_replaced": false,
+  "selected_probability_threshold": 0.9999994039535522,
+  "selected_runtime_persistence": 5,
+  "controlled_validation_causal_run_fpr": 0.0,
+  "controlled_validation_run_recall": 0.0,
+  "walking_normal_false_positive_runs": 0,
+  "walking_positive_run_recall": 1.0,
+  "walking_anticipation_runs": 0,
+  "walking_p95_stable_latency_ms": 23.299999999999997,
+  "diagnostic_fallback_selected": true,
+  "validation_gate_failure_reasons": [
+    "no runtime configuration for this trained candidate passed every mandatory validation gate"
+  ]
+}

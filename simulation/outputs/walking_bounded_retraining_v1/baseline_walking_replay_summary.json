@@ -1,0 +1,105 @@
+{
+  "terrain_walking_validation": {
+    "accuracy": 0.4736377396569122,
+    "macro_accuracy": 0.2527102251190341,
+    "class_metrics": {
+      "concrete": {
+        "support": 5068,
+        "recall": 0.0
+      },
+      "marble": {
+        "support": 5036,
+        "recall": 0.006354249404289118
+      },
+      "ice": {
+        "support": 5676,
+        "recall": 0.09901338971106413
+      },
+      "sand": {
+        "support": 15932,
+        "recall": 0.9054732613607833
+      }
+    }
+  },
+  "slip_walking_validation": {
+    "runs": 18,
+    "normal_runs": 9,
+    "normal_false_positive_runs": 9,
+    "physical_positive_runs": 3,
+    "detected_positive_runs": 3,
+    "positive_run_recall": 1.0,
+    "anticipation_runs": 3,
+    "label_mask_violation_samples": 0,
+    "latency_median_ms": 49.0,
+    "latency_p95_ms": 79.6,
+    "latency_max_ms": 83,
+    "profile_results": {
+      "ice": {
+        "physical_positive_runs": 3,
+        "detected_runs": 3,
+        "detected_speeds_mps": [
+          0.1,
+          0.15,
+          0.2
+        ]
+      }
+    }
+  },
+  "slip_controlled_validation": {
+    "runs": 90,
+    "negative_runs": 73,
+    "positive_runs": 17,
+    "overall_causal_run_fpr": 0.03333333333333333,
+    "negative_false_positive_runs": 0,
+    "anticipation_runs": 3,
+    "run_recall": 0.8235294117647058,
+    "latency_median_ms": 8.5,
+    "latency_p95_ms": 52.599999999999994,
+    "latency_max_ms": 63.0
+  },
+  "sink_walking_validation": {
+    "runs": 18,
+    "normal_runs": 9,
+    "normal_false_positive_runs": 9,
+    "physical_positive_runs": 6,
+    "detected_positive_runs": 6,
+    "positive_run_recall": 1.0,
+    "anticipation_runs": 6,
+    "label_mask_violation_samples": 0,
+    "latency_median_ms": 32.0,
+    "latency_p95_ms": 348.59999999999985,
+    "latency_max_ms": 527,
+    "profile_results": {
+      "sand_solref_interpolation_1of3": {
+        "physical_positive_runs": 3,
+        "detected_runs": 3,
+        "detected_speeds_mps": [
+          0.1,
+          0.15,
+          0.2
+        ]
+      },
+      "sand_solref_interpolation_2of3": {
+        "physical_positive_runs": 3,
+        "detected_runs": 3,
+        "detected_speeds_mps": [
+          0.1,
+          0.15,
+          0.2
+        ]
+      }
+    }
+  },
+  "sink_controlled_validation": {
+    "runs": 90,
+    "negative_runs": 60,
+    "positive_runs": 30,
+    "overall_causal_run_fpr": 0.0,
+    "negative_false_positive_runs": 0,
+    "anticipation_runs": 0,
+    "run_recall": 1.0,
+    "latency_median_ms": 4.0,
+    "latency_p95_ms": 7.0,
+    "latency_max_ms": 8.0
+  }
+}

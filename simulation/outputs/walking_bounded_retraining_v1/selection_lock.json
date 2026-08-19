@@ -1,0 +1,11 @@
+{
+  "all_three_selections_completed": true,
+  "selection_artifact_sha256": {
+    "terrain": "6be167e745b08d18d03bcf604b299f709f5fc974e3cb23bb1de9d7c8207777f6",
+    "slip": "c520ba42ff997542072f9e180a76971ed052f36246324dfc211d2b7bc26e6e90",
+    "sink": "581006293d2f1c2da26e03029a54eac140bf93c9ccc166ad8ad309c0bb4b44e8"
+  },
+  "fd5b9f0_outer_trace_access_count_before_lock": 0,
+  "new_sink_holdout_runs_before_lock": 0,
+  "locked_before_holdout": true
+}

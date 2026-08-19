@@ -1,0 +1,317 @@
+{
+  "aggregate_csv": "dataset_manifest.csv",
+  "aggregate_csv_sha256": "8dd5b93d0cf85e8f403d69820fa33e959ae93672718d8918d5b8f737c1407a47",
+  "window_level_provenance": {
+    "path": "walking_window_provenance.npz",
+    "sha256": "29dbbbf156f09638e21aa5ada5d463195f5322cafcadcde5e49efe232809c797",
+    "arrays": {
+      "terrain_walking_train": {
+        "y": [
+          8459
+        ],
+        "run_id": [
+          8459
+        ],
+        "endpoint_sample": [
+          8459
+        ],
+        "variation_index": [
+          8459
+        ],
+        "speed": [
+          8459
+        ],
+        "terrain": [
+          8459
+        ],
+        "profile": [
+          8459
+        ],
+        "episode": [
+          8459
+        ],
+        "gait_phase": [
+          8459
+        ],
+        "pre_fall_valid": [
+          8459
+        ],
+        "physical_oracle_state": [
+          8459
+        ],
+        "source_checkpoint": [
+          8459
+        ],
+        "endpoint_time_s": [
+          8459
+        ],
+        "split_ownership": [
+          8459
+        ]
+      },
+      "terrain_walking_validation": {
+        "y": [
+          31712
+        ],
+        "run_id": [
+          31712
+        ],
+        "endpoint_sample": [
+          31712
+        ],
+        "variation_index": [
+          31712
+        ],
+        "speed": [
+          31712
+        ],
+        "terrain": [
+          31712
+        ],
+        "profile": [
+          31712
+        ],
+        "episode": [
+          31712
+        ],
+        "gait_phase": [
+          31712
+        ],
+        "pre_fall_valid": [
+          31712
+        ],
+        "physical_oracle_state": [
+          31712
+        ],
+        "source_checkpoint": [
+          31712
+        ],
+        "endpoint_time_s": [
+          31712
+        ],
+        "split_ownership": [
+          31712
+        ]
+      },
+      "slip_walking_train": {
+        "y": [
+          10473
+        ],
+        "run_id": [
+          10473
+        ],
+        "endpoint_sample": [
+          10473
+        ],
+        "variation_index": [
+          10473
+        ],
+        "speed": [
+          10473
+        ],
+        "terrain": [
+          10473
+        ],
+        "profile": [
+          10473
+        ],
+        "episode": [
+          10473
+        ],
+        "gait_phase": [
+          10473
+        ],
+        "pre_fall_valid": [
+          10473
+        ],
+        "physical_oracle_state": [
+          10473
+        ],
+        "source_checkpoint": [
+          10473
+        ],
+        "endpoint_time_s": [
+          10473
+        ],
+        "split_ownership": [
+          10473
+        ]
+      },
+      "slip_walking_validation": {
+        "y": [
+          51904
+        ],
+        "run_id": [
+          51904
+        ],
+        "endpoint_sample": [
+          51904
+        ],
+        "variation_index": [
+          51904
+        ],
+        "speed": [
+          51904
+        ],
+        "terrain": [
+          51904
+        ],
+        "profile": [
+          51904
+        ],
+        "episode": [
+          51904
+        ],
+        "gait_phase": [
+          51904
+        ],
+        "pre_fall_valid": [
+          51904
+        ],
+        "physical_oracle_state": [
+          51904
+        ],
+        "source_checkpoint": [
+          51904
+        ],
+        "endpoint_time_s": [
+          51904
+        ],
+        "split_ownership": [
+          51904
+        ]
+      },
+      "sink_walking_train": {
+        "y": [
+          10174
+        ],
+        "run_id": [
+          10174
+        ],
+        "endpoint_sample": [
+          10174
+        ],
+        "variation_index": [
+          10174
+        ],
+        "speed": [
+          10174
+        ],
+        "terrain": [
+          10174
+        ],
+        "profile": [
+          10174
+        ],
+        "episode": [
+          10174
+        ],
+        "gait_phase": [
+          10174
+        ],
+        "pre_fall_valid": [
+          10174
+        ],
+        "physical_oracle_state": [
+          10174
+        ],
+        "source_checkpoint": [
+          10174
+        ],
+        "endpoint_time_s": [
+          10174
+        ],
+        "split_ownership": [
+          10174
+        ]
+      },
+      "sink_walking_validation": {
+        "y": [
+          51634
+        ],
+        "run_id": [
+          51634
+        ],
+        "endpoint_sample": [
+          51634
+        ],
+        "variation_index": [
+          51634
+        ],
+        "speed": [
+          51634
+        ],
+        "terrain": [
+          51634
+        ],
+        "profile": [
+          51634
+        ],
+        "episode": [
+          51634
+        ],
+        "gait_phase": [
+          51634
+        ],
+        "pre_fall_valid": [
+          51634
+        ],
+        "physical_oracle_state": [
+          51634
+        ],
+        "source_checkpoint": [
+          51634
+        ],
+        "endpoint_time_s": [
+          51634
+        ],
+        "split_ownership": [
+          51634
+        ]
+      }
+    },
+    "every_walking_window_provenance": [
+      "source_checkpoint",
+      "run_id",
+      "variation_index",
+      "speed",
+      "terrain",
+      "profile",
+      "episode",
+      "gait_phase",
+      "endpoint_sample",
+      "endpoint_time_s",
+      "pre_fall_valid",
+      "physical_oracle_state",
+      "split_ownership"
+    ]
+  },
+  "existing_source_window_provenance": {
+    "terrain": "/d/shin/Infineon/simulation/outputs/terrain_static_provenance_v4/dataset_noisy_provenance.npz",
+    "slip": "/d/shin/Infineon/simulation/outputs/terrain_fast_reflex_v2_detector_dataset/slip_5ms",
+    "sink": "/d/shin/Infineon/simulation/outputs/terrain_fast_reflex_v2_detector_dataset/sink_20ms"
+  },
+  "run_and_episode_split_integrity": {
+    "run_leakage_count": 0,
+    "episode_leakage_count": 0,
+    "leaking_runs": [],
+    "leaking_episodes": [],
+    "split_leakage_count": 0,
+    "walking_train_runs": 36,
+    "walking_validation_runs": 18,
+    "train_variations": [
+      0,
+      1
+    ],
+    "validation_variations": [
+      2
+    ],
+    "outer_variations_excluded": [
+      3,
+      4,
+      5
+    ],
+    "outer_run_count_accessed_before_selection": 0,
+    "sample_or_episode_random_split": false
+  }
+}

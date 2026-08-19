@@ -1,0 +1,23 @@
+{
+  "run_leakage_count": 0,
+  "episode_leakage_count": 0,
+  "leaking_runs": [],
+  "leaking_episodes": [],
+  "split_leakage_count": 0,
+  "walking_train_runs": 36,
+  "walking_validation_runs": 18,
+  "train_variations": [
+    0,
+    1
+  ],
+  "validation_variations": [
+    2
+  ],
+  "outer_variations_excluded": [
+    3,
+    4,
+    5
+  ],
+  "outer_run_count_accessed_before_selection": 0,
+  "sample_or_episode_random_split": false
+}

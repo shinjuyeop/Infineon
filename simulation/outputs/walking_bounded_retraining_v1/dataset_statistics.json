@@ -1,0 +1,145 @@
+{
+  "sources": {
+    "terrain_static_train_windows": 1437,
+    "terrain_static_validation_windows": 479,
+    "slip_controlled_train_windows": 6750,
+    "slip_controlled_validation_windows": 9000,
+    "sink_controlled_train_windows": 6750,
+    "sink_controlled_validation_windows": 9000,
+    "walking_train_runs": 36,
+    "walking_validation_runs": 18,
+    "terrain_static_train_class_counts": {
+      "concrete": 360,
+      "marble": 360,
+      "ice": 360,
+      "sand": 357
+    },
+    "terrain_static_validation_class_counts": {
+      "concrete": 120,
+      "marble": 120,
+      "ice": 120,
+      "sand": 119
+    },
+    "slip_controlled_train_class_counts": {
+      "negative": 6525,
+      "positive": 225
+    },
+    "slip_controlled_validation_class_counts": {
+      "negative": 8762,
+      "positive": 238
+    },
+    "sink_controlled_train_class_counts": {
+      "negative": 5275,
+      "positive": 1475
+    },
+    "sink_controlled_validation_class_counts": {
+      "negative": 6985,
+      "positive": 2015
+    }
+  },
+  "walking_windows": {
+    "terrain_walking_train": {
+      "windows": 8459,
+      "class_counts": {
+        "concrete": 1388,
+        "marble": 1410,
+        "ice": 1536,
+        "sand": 4125
+      },
+      "unique_runs": 36,
+      "gait_phase_counts": {
+        "LOADING": 2275,
+        "MID_STANCE": 2304,
+        "PUSH_OFF": 1988,
+        "TOUCHDOWN": 1892
+      }
+    },
+    "terrain_walking_validation": {
+      "windows": 31712,
+      "class_counts": {
+        "concrete": 5068,
+        "marble": 5036,
+        "ice": 5676,
+        "sand": 15932
+      },
+      "unique_runs": 18,
+      "gait_phase_counts": {
+        "LOADING": 2653,
+        "MID_STANCE": 25621,
+        "PUSH_OFF": 1115,
+        "TOUCHDOWN": 2323
+      }
+    },
+    "slip_walking_train": {
+      "windows": 10473,
+      "class_counts": {
+        "negative": 9182,
+        "positive": 1291
+      },
+      "unique_runs": 36,
+      "gait_phase_counts": {
+        "AIR": 2304,
+        "LOADING": 2570,
+        "MID_STANCE": 2752,
+        "PUSH_OFF": 2262,
+        "TOUCHDOWN": 585
+      }
+    },
+    "slip_walking_validation": {
+      "windows": 51904,
+      "class_counts": {
+        "negative": 51209,
+        "positive": 695
+      },
+      "unique_runs": 18,
+      "gait_phase_counts": {
+        "AIR": 22194,
+        "LOADING": 2653,
+        "MID_STANCE": 25621,
+        "PUSH_OFF": 1115,
+        "TOUCHDOWN": 321
+      }
+    },
+    "sink_walking_train": {
+      "windows": 10174,
+      "class_counts": {
+        "negative": 8990,
+        "positive": 1184
+      },
+      "unique_runs": 36,
+      "gait_phase_counts": {
+        "AIR": 2304,
+        "LOADING": 2291,
+        "MID_STANCE": 3173,
+        "PUSH_OFF": 1988,
+        "TOUCHDOWN": 418
+      }
+    },
+    "sink_walking_validation": {
+      "windows": 51634,
+      "class_counts": {
+        "negative": 45722,
+        "positive": 5912
+      },
+      "unique_runs": 18,
+      "gait_phase_counts": {
+        "AIR": 21924,
+        "LOADING": 2653,
+        "MID_STANCE": 25621,
+        "PUSH_OFF": 1115,
+        "TOUCHDOWN": 321
+      }
+    }
+  },
+  "mixture_grid": [
+    0.25,
+    0.5,
+    1.0
+  ],
+  "training_seeds": [
+    20261001,
+    20261002,
+    20261003
+  ],
+  "walking_sample_duplication": false
+}

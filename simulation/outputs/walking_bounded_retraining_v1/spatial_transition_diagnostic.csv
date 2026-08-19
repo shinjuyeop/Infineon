@@ -1,0 +1,13 @@
+run_id,case_id,terrain_before,terrain_after,fall_confounded,frozen_case_correct,candidate_predictions,candidate_three_endpoint_correct,candidate_improved,candidate_regressed,read_only_diagnostic_not_training_or_selection
+walking_A_00,A,marble,ice,True,False,sand|sand|sand,False,False,False,True
+walking_A_01,A,marble,ice,True,False,sand|sand|sand,False,False,False,True
+walking_A_02,A,marble,ice,True,False,sand|sand|sand,False,False,False,True
+walking_B_00,B,marble,sand,True,True,sand|sand|sand,True,False,False,True
+walking_B_01,B,marble,sand,True,True,sand|sand|sand,True,False,False,True
+walking_B_02,B,marble,sand,True,True,sand|sand|sand,True,False,False,True
+walking_C_00,C,ice,marble,True,True,sand|sand|sand,False,False,True,True
+walking_C_01,C,ice,marble,True,True,sand|sand|sand,False,False,True,True
+walking_C_02,C,ice,marble,True,True,sand|sand|sand,False,False,True,True
+walking_D_00,D,sand,marble,True,False,sand|sand|sand,False,False,False,True
+walking_D_01,D,sand,marble,True,False,sand|sand|sand,False,False,False,True
+walking_D_02,D,sand,marble,True,False,sand|sand|sand,False,False,False,True

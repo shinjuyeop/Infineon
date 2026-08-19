@@ -1,0 +1,23 @@
+{
+  "detector": "terrain",
+  "selection_data": "existing validation + d2209cd v02 only",
+  "holdout_runs_accessed_before_selection": 0,
+  "architecture_unchanged": true,
+  "window_ms": 50,
+  "mixture_ratio": 1.0,
+  "training_seed": 20261001,
+  "model_path": "models/terrain_walking_candidate.keras",
+  "model_sha256": "49ff0672b3a0374e8e05756e6d39a93c33e0380c6cce055a8ccc9d4a6d7732c1",
+  "normalization_path": "normalization/terrain.json",
+  "normalization_sha256": "43df9c0e379c04827231b71b4e5b72dad7049adb5902d699ed34766ab4a002c6",
+  "parameters": 1272,
+  "candidate_gate_pass": true,
+  "selection_rationale": "all mandatory gates, then walking normal FPR, walking positive recall, static/controlled retention, p95 latency, unchanged model size, deterministic ties",
+  "production_artifact_replaced": false,
+  "selected_probability_threshold": null,
+  "selected_runtime_persistence": 3,
+  "static_validation_accuracy": 0.954070981210856,
+  "walking_validation_accuracy": 0.4751513622603431,
+  "walking_validation_macro_accuracy": 0.2534067193987221,
+  "walking_class_recall_json": "{\"concrete\": {\"recall\": 0.0, \"support\": 5068}, \"ice\": {\"recall\": 0.09866102889358704, \"support\": 5676}, \"marble\": {\"recall\": 0.006354249404289118, \"support\": 5036}, \"sand\": {\"recall\": 0.9086115992970123, \"support\": 15932}}"
+}

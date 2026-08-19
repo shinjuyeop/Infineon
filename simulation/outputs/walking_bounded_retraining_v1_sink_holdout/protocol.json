@@ -1,0 +1,215 @@
+{
+  "dataset": "walking_bounded_retraining_v1_sink_holdout",
+  "created_after_all_detector_selection_artifacts": true,
+  "selection_artifact_sha256_before_collection": {
+    "terrain": "6be167e745b08d18d03bcf604b299f709f5fc974e3cb23bb1de9d7c8207777f6",
+    "slip": "c520ba42ff997542072f9e180a76971ed052f36246324dfc211d2b7bc26e6e90",
+    "sink": "581006293d2f1c2da26e03029a54eac140bf93c9ccc166ad8ad309c0bb4b44e8"
+  },
+  "selection_adjustment_after_holdout_forbidden": true,
+  "sample_rate_hz": 1000,
+  "duration_s": 3.0,
+  "physics_timestep_s": 0.0005,
+  "matrix": "sand 1of3/2of3 x 0.10/0.15/0.20 x v03/v04/v05 = 18",
+  "physical_oracle": "loaded_penetration_change_m >=0.0055m for 20ms, loaded/post-touchdown/pre-fall",
+  "conditions": [
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p10_v03",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "speed_mps": 0.1,
+      "variation": {
+        "index": 3,
+        "seed": 202608193,
+        "initial_locomotion_phase_fraction": 0.16666666666666666,
+        "command_onset_delay_s": 0.06
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p10_v03",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "speed_mps": 0.1,
+      "variation": {
+        "index": 3,
+        "seed": 202608193,
+        "initial_locomotion_phase_fraction": 0.16666666666666666,
+        "command_onset_delay_s": 0.06
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p15_v03",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "speed_mps": 0.15,
+      "variation": {
+        "index": 3,
+        "seed": 202608193,
+        "initial_locomotion_phase_fraction": 0.16666666666666666,
+        "command_onset_delay_s": 0.06
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p15_v03",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "speed_mps": 0.15,
+      "variation": {
+        "index": 3,
+        "seed": 202608193,
+        "initial_locomotion_phase_fraction": 0.16666666666666666,
+        "command_onset_delay_s": 0.06
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p20_v03",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "speed_mps": 0.2,
+      "variation": {
+        "index": 3,
+        "seed": 202608193,
+        "initial_locomotion_phase_fraction": 0.16666666666666666,
+        "command_onset_delay_s": 0.06
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p20_v03",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "speed_mps": 0.2,
+      "variation": {
+        "index": 3,
+        "seed": 202608193,
+        "initial_locomotion_phase_fraction": 0.16666666666666666,
+        "command_onset_delay_s": 0.06
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p10_v04",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "speed_mps": 0.1,
+      "variation": {
+        "index": 4,
+        "seed": 202608194,
+        "initial_locomotion_phase_fraction": 0.5,
+        "command_onset_delay_s": 0.08
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p10_v04",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "speed_mps": 0.1,
+      "variation": {
+        "index": 4,
+        "seed": 202608194,
+        "initial_locomotion_phase_fraction": 0.5,
+        "command_onset_delay_s": 0.08
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p15_v04",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "speed_mps": 0.15,
+      "variation": {
+        "index": 4,
+        "seed": 202608194,
+        "initial_locomotion_phase_fraction": 0.5,
+        "command_onset_delay_s": 0.08
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p15_v04",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "speed_mps": 0.15,
+      "variation": {
+        "index": 4,
+        "seed": 202608194,
+        "initial_locomotion_phase_fraction": 0.5,
+        "command_onset_delay_s": 0.08
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p20_v04",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "speed_mps": 0.2,
+      "variation": {
+        "index": 4,
+        "seed": 202608194,
+        "initial_locomotion_phase_fraction": 0.5,
+        "command_onset_delay_s": 0.08
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p20_v04",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "speed_mps": 0.2,
+      "variation": {
+        "index": 4,
+        "seed": 202608194,
+        "initial_locomotion_phase_fraction": 0.5,
+        "command_onset_delay_s": 0.08
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p10_v05",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "speed_mps": 0.1,
+      "variation": {
+        "index": 5,
+        "seed": 202608195,
+        "initial_locomotion_phase_fraction": 0.8333333333333334,
+        "command_onset_delay_s": 0.1
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p10_v05",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "speed_mps": 0.1,
+      "variation": {
+        "index": 5,
+        "seed": 202608195,
+        "initial_locomotion_phase_fraction": 0.8333333333333334,
+        "command_onset_delay_s": 0.1
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p15_v05",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "speed_mps": 0.15,
+      "variation": {
+        "index": 5,
+        "seed": 202608195,
+        "initial_locomotion_phase_fraction": 0.8333333333333334,
+        "command_onset_delay_s": 0.1
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p15_v05",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "speed_mps": 0.15,
+      "variation": {
+        "index": 5,
+        "seed": 202608195,
+        "initial_locomotion_phase_fraction": 0.8333333333333334,
+        "command_onset_delay_s": 0.1
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p20_v05",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "speed_mps": 0.2,
+      "variation": {
+        "index": 5,
+        "seed": 202608195,
+        "initial_locomotion_phase_fraction": 0.8333333333333334,
+        "command_onset_delay_s": 0.1
+      }
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p20_v05",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "speed_mps": 0.2,
+      "variation": {
+        "index": 5,
+        "seed": 202608195,
+        "initial_locomotion_phase_fraction": 0.8333333333333334,
+        "command_onset_delay_s": 0.1
+      }
+    }
+  ]
+}

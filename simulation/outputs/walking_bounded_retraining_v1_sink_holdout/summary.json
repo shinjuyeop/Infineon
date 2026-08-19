@@ -1,0 +1,56 @@
+{
+  "runs": 18,
+  "falls": 2,
+  "pre_fall_only_evaluation": true,
+  "selection_artifact_sha256_before_collection": {
+    "terrain": "6be167e745b08d18d03bcf604b299f709f5fc974e3cb23bb1de9d7c8207777f6",
+    "slip": "c520ba42ff997542072f9e180a76971ed052f36246324dfc211d2b7bc26e6e90",
+    "sink": "581006293d2f1c2da26e03029a54eac140bf93c9ccc166ad8ad309c0bb4b44e8"
+  },
+  "candidate_metrics": {
+    "runs": 18,
+    "normal_runs": 0,
+    "normal_false_positive_runs": 0,
+    "physical_positive_runs": 18,
+    "detected_positive_runs": 2,
+    "positive_run_recall": 0.1111111111111111,
+    "anticipation_runs": 0,
+    "label_mask_violation_samples": 0,
+    "latency_median_ms": 1482.5,
+    "latency_p95_ms": 1568.45,
+    "latency_max_ms": 1578,
+    "profile_results": {
+      "sand_solref_interpolation_1of3": {
+        "physical_positive_runs": 9,
+        "detected_runs": 0,
+        "detected_speeds_mps": []
+      },
+      "sand_solref_interpolation_2of3": {
+        "physical_positive_runs": 9,
+        "detected_runs": 2,
+        "detected_speeds_mps": [
+          0.1,
+          0.15
+        ]
+      }
+    },
+    "model_inference_compute_ms_per_window": 0.01567056977511418,
+    "probability_threshold_endpoint_metrics": {
+      "support": 28947,
+      "positive_support": 16073,
+      "precision": 0.8333333333333334,
+      "recall": 0.0006221613886642195,
+      "false_positive_rate": 0.00015535187199005747
+    },
+    "stable_persistence_endpoint_metrics": {
+      "support": 28947,
+      "positive_support": 16073,
+      "precision": 0.8333333333333334,
+      "recall": 0.0006221613886642195,
+      "false_positive_rate": 0.00015535187199005747
+    }
+  },
+  "complete_profiles": [],
+  "WALKING_SINK_HOLDOUT_READY": false,
+  "selection_or_threshold_adjusted_after_holdout": false
+}
