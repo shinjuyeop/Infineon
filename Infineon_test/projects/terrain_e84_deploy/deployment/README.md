@@ -1,5 +1,37 @@
 # Terrain INT8 on-device validation
 
+## Frozen Terrain v4 (50 ms / 1 kHz) deployment audit
+
+`terrain_v4/` is generated only by
+`tools/generate_terrain_v4_artifacts.py`.  It guards the frozen Float SHA256
+`c0a189cd4b01a3fb1474d89fedd8926c51f9dcc223ae0d849d7078adcafc3dc8` and source
+Strict-INT8 SHA256
+`5c1b7e96688db22f455f8835cd1ade84644af5a4ca5574cff84986cd735ab84c`, then writes
+separate `TERRAIN_CAUSAL_WINDOW_V4_CPU` and
+`TERRAIN_CAUSAL_WINDOW_V4_U55` C arrays.  The U55 Vela artifact is 7,872 B,
+SHA256 `72081a9c9a85c979919348b5eb7a60190f90195ed04770ceacc93cf193847afe`, with
+37/37 NPU operators and no CPU fallback.
+
+Build either fixed/HIL runtime without substituting a legacy terrain model:
+
+```sh
+make build NN_MODEL_NAME=TERRAIN_CAUSAL_WINDOW_V4_CPU TERRAIN_MODE=fixed
+make build NN_MODEL_NAME=TERRAIN_CAUSAL_WINDOW_V4_U55 TERRAIN_MODE=hil
+make qprogram NN_MODEL_NAME=TERRAIN_CAUSAL_WINDOW_V4_U55 TERRAIN_MODE=hil \
+  MTB_PROBE_SERIAL=13070E98012D2400
+python tools/terrain_v4_e84_client.py golden \
+  --output deployment/terrain_v4/e84_golden.json
+python tools/terrain_v4_e84_client.py stream --rate-hz 1000 \
+  --output deployment/terrain_v4/e84_stream_1khz.json
+```
+
+The selection-only golden run on the physical PSE846GPS2DBZC4A matched 10/12
+source raw vectors (12/12 classes); two saturated vectors have a reproducible
+TFLM/U55 rounding difference.  The 1 kHz synchronous USB-UART TRN2 replay had
+zero device/CRC/sequence errors but a 1.605 ms median RTT and cannot meet a
+1 ms end-to-end cadence.  Thus these artifacts are retained for parity and
+transport follow-up, not marked deployment-ready.
+
 ## 1000 Hz / 50-sample fast candidate (E84/U55 fixed and Host-golden HIL verified)
 
 ## Fast Reflex v2 fixed golden preparation

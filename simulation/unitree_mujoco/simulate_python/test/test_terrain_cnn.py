@@ -24,6 +24,7 @@ from terrain_cnn import (  # noqa: E402
     mutual_pair_confusion,
 )
 from run_terrain_causal_window_v4 import transition_audit, transition_split  # noqa: E402
+from run_terrain_v4_broader_generalization import reservation  # noqa: E402
 from train_terrain_1d_cnn import validate_dataset_arrays  # noqa: E402
 from hil_sensor import HIL_SENSOR_CHANNELS  # noqa: E402
 
@@ -93,6 +94,14 @@ class TerrainCnnTest(unittest.TestCase):
         audit = transition_audit(rows)
         self.assertFalse(audit["source_run_id_leakage"])
         self.assertFalse(audit["surface_realization_leakage"])
+
+    def test_v4_broader_reservation_is_frozen_and_bounded(self) -> None:
+        broader = reservation()
+        self.assertTrue(broader["freeze_before_results"])
+        self.assertEqual(broader["families"], ("crosshatch", "rounded_ridges", "warped_multisine"))
+        self.assertEqual(broader["surface_realizations"], (8, 9))
+        self.assertEqual(broader["run_indices"], (4, 5))
+        self.assertEqual(broader["runs"], 48)
 
     @unittest.skipUnless(importlib.util.find_spec("tensorflow"), "TensorFlow is an optional CNN dependency")
     def test_keras_parameter_count_matches_estimate(self) -> None:

@@ -1,0 +1,70 @@
+Warning: No configuration file specified. Using a default of ['/home/alswoghd/.local/lib/python3.10/site-packages/ethosu/config_files/Arm/vela.ini']. Compilation may be invalid or non-optimal.
+Warning: No system configuration specified. Using a default of Ethos_U55_High_End_Embedded. Compilation may be invalid or non-optimal.
+Info: Changing const_mem_area from Sram to OnChipFlash. This will use the same characteristics as Sram.
+
+Network summary for baseline_50_seed_20260823_strict_int8
+Accelerator configuration               Ethos_U55_128
+System configuration             Ethos_U55_High_End_Embedded
+Memory mode                                 Sram_Only
+Accelerator clock                                 500 MHz
+Design peak SRAM bandwidth                       3.73 GB/s
+Design peak On-chip Flash bandwidth              3.73 GB/s
+
+Total SRAM used                                  1.56 KiB
+Total On-chip Flash used                         6.33 KiB
+
+CPU operators = 0 (0.0%)
+NPU operators = 37 (100.0%)
+   NPU: Memcpy = terrain_cnn_gap_c10_1/conv1_1/convolution/ExpandDims (inputs [1, 50, 10] [], outputs [1, 1, 50, 10])
+   NPU: Conv2DBias = terrain_cnn_gap_c10_1/conv1_1/Relu;terrain_cnn_gap_c10_1/conv1_1/BiasAdd;terrain_cnn_gap_c10_1/conv1_1/convolution/Squeeze;terrain_cnn_gap_c10_1/conv1_1/Squeeze;terrain_cnn_gap_c10_1/conv1_1/convolution (inputs [1, 1, 50, 10] [1, 5, 10, 12] [12], outputs [1, 1, 50, 12])
+   NPU: Conv2DBias = terrain_cnn_gap_c10_1/conv2_1/Relu;terrain_cnn_gap_c10_1/conv2_1/BiasAdd;terrain_cnn_gap_c10_1/conv2_1/convolution/Squeeze;terrain_cnn_gap_c10_1/conv2_1/Squeeze;terrain_cnn_gap_c10_1/conv2_1/convolution (inputs [1, 1, 50, 12] [1, 3, 12, 16] [16], outputs [1, 50, 16])
+   NPU: DepthwiseConv2DBias = terrain_cnn_gap_c10_1/global_average_pool_1/Meanterrain_cnn_gap_c10_1/global_average_pool_1/Mean_conv_0 (inputs [1, 50, 16] [1, 50, 1, 16] [16], outputs [1, 1, 1, 16])
+   NPU: Mul = terrain_cnn_gap_c10_1/global_average_pool_1/Mean_mul (inputs [1, 1, 1, 16] [1, 1, 1, 1], outputs [1, 16])
+   NPU: FullyConnected = terrain_cnn_gap_c10_1/class_scores_1/MatMul;terrain_cnn_gap_c10_1/class_scores_1/BiasAdd (inputs [1, 16] [16, 4] [4], outputs [1, 4])
+   NPU: MaxPool = StatefulPartitionedCall_1:0_maxpool0 (inputs [1, 4], outputs [1, 1, 1, 1])
+   NPU: Sub = StatefulPartitionedCall_1:0_sub1 (inputs [1, 4] [1, 1, 1, 1] [1, 1, 1, 256], outputs [1, 1, 1, 4])
+   NPU: SHR = StatefulPartitionedCall_1:0_shr2 (inputs [1, 1, 1, 4] [1, 1, 1, 1], outputs [1, 1, 1, 4])
+   NPU: ReduceSum = StatefulPartitionedCall_1:0_reduce_sum3 (inputs [1, 1, 1, 4], outputs [1, 1, 1, 1])
+   NPU: CLZ = StatefulPartitionedCall_1:0_clz4 (inputs [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Sub = StatefulPartitionedCall_1:0_sub5 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Sub = StatefulPartitionedCall_1:0_sub6 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: SHL = StatefulPartitionedCall_1:0_shl7 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Sub = StatefulPartitionedCall_1:0_sub8 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: SHL = StatefulPartitionedCall_1:0_shl9 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Add = StatefulPartitionedCall_1:0_add10 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Mul = StatefulPartitionedCall_1:0_mul11 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Add = StatefulPartitionedCall_1:0_add12 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Mul = StatefulPartitionedCall_1:0_mul13 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Sub = StatefulPartitionedCall_1:0_sub14 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Mul = StatefulPartitionedCall_1:0_mul15 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Mul = StatefulPartitionedCall_1:0_mul16 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Add = StatefulPartitionedCall_1:0_add17 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Mul = StatefulPartitionedCall_1:0_mul18 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Sub = StatefulPartitionedCall_1:0_sub19 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Mul = StatefulPartitionedCall_1:0_mul20 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Mul = StatefulPartitionedCall_1:0_mul21 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Add = StatefulPartitionedCall_1:0_add22 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Mul = StatefulPartitionedCall_1:0_mul23 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Sub = StatefulPartitionedCall_1:0_sub24 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Mul = StatefulPartitionedCall_1:0_mul25 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Mul = StatefulPartitionedCall_1:0_mul26 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Add = StatefulPartitionedCall_1:0_add27 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Mul = StatefulPartitionedCall_1:0_mul28 (inputs [1, 1, 1, 1] [1, 1, 1, 1], outputs [1, 1, 1, 1])
+   NPU: Mul = StatefulPartitionedCall_1:0_mul29 (inputs [1, 1, 1, 4] [1, 1, 1, 1], outputs [1, 1, 1, 4])
+   NPU: SHR = StatefulPartitionedCall_1:0_shr30 (inputs [1, 1, 1, 4] [1, 1, 1, 1], outputs [1, 4])
+
+Average SRAM bandwidth                           0.73 GB/s
+Input   SRAM bandwidth                           0.00 MB/batch
+Weight  SRAM bandwidth                           0.00 MB/batch
+Output  SRAM bandwidth                           0.00 MB/batch
+Total   SRAM bandwidth                           0.01 MB/batch
+Total   SRAM bandwidth            per input      0.01 MB/inference (batch size 1)
+
+Average On-chip Flash bandwidth                  0.49 GB/s
+Input   On-chip Flash bandwidth                  0.00 MB/batch
+Weight  On-chip Flash bandwidth                  0.00 MB/batch
+Output  On-chip Flash bandwidth                  0.00 MB/batch
+Total   On-chip Flash bandwidth                  0.00 MB/batch
+Total   On-chip Flash bandwidth   per input      0.00 MB/inference (batch size 1)
+
+Neural network macs                             59672 MACs/batch

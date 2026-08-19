@@ -1,0 +1,312 @@
+{
+  "golden_count": 12,
+  "raw_exact_pass": 10,
+  "class_pass": 10,
+  "cpu_cycles": [
+    225637,
+    179053,
+    170258,
+    168126,
+    167834,
+    165538,
+    165622,
+    165238,
+    166414,
+    166162,
+    166149,
+    164660
+  ],
+  "npu_cycles": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "rows": [
+    {
+      "vector_id": "static_0",
+      "raw_exact": true,
+      "host_raw": [
+        67,
+        -69,
+        -126,
+        -128
+      ],
+      "board_raw": [
+        67,
+        -69,
+        -126,
+        -128
+      ],
+      "raw0": 67,
+      "raw1": -69,
+      "raw2": -126,
+      "raw3": -128,
+      "class": 0,
+      "cpu_cycles": 225637,
+      "npu_cycles": 0
+    },
+    {
+      "vector_id": "static_1",
+      "raw_exact": true,
+      "host_raw": [
+        -128,
+        124,
+        -124,
+        -128
+      ],
+      "board_raw": [
+        -128,
+        124,
+        -124,
+        -128
+      ],
+      "raw0": -128,
+      "raw1": 124,
+      "raw2": -124,
+      "raw3": -128,
+      "class": 1,
+      "cpu_cycles": 179053,
+      "npu_cycles": 0
+    },
+    {
+      "vector_id": "static_2",
+      "raw_exact": false,
+      "host_raw": [
+        -128,
+        -106,
+        106,
+        -128
+      ],
+      "board_raw": [
+        -128,
+        -116,
+        116,
+        -128
+      ],
+      "raw0": -128,
+      "raw1": -116,
+      "raw2": 116,
+      "raw3": -128,
+      "class": 2,
+      "cpu_cycles": 170258,
+      "npu_cycles": 0
+    },
+    {
+      "vector_id": "static_3",
+      "raw_exact": true,
+      "host_raw": [
+        -128,
+        -128,
+        -128,
+        127
+      ],
+      "board_raw": [
+        -128,
+        -128,
+        -128,
+        127
+      ],
+      "raw0": -128,
+      "raw1": -128,
+      "raw2": -128,
+      "raw3": 127,
+      "class": 3,
+      "cpu_cycles": 168126,
+      "npu_cycles": 0
+    },
+    {
+      "vector_id": "transition_A_649",
+      "raw_exact": true,
+      "host_raw": [
+        -127,
+        -93,
+        -117,
+        82
+      ],
+      "board_raw": [
+        -127,
+        -93,
+        -117,
+        82
+      ],
+      "raw0": -127,
+      "raw1": -93,
+      "raw2": -117,
+      "raw3": 82,
+      "class": 3,
+      "cpu_cycles": 167834,
+      "npu_cycles": 0
+    },
+    {
+      "vector_id": "transition_A_660",
+      "raw_exact": true,
+      "host_raw": [
+        -127,
+        -73,
+        -111,
+        55
+      ],
+      "board_raw": [
+        -127,
+        -73,
+        -111,
+        55
+      ],
+      "raw0": -127,
+      "raw1": -73,
+      "raw2": -111,
+      "raw3": 55,
+      "class": 3,
+      "cpu_cycles": 165538,
+      "npu_cycles": 0
+    },
+    {
+      "vector_id": "transition_B_649",
+      "raw_exact": true,
+      "host_raw": [
+        -127,
+        -93,
+        -117,
+        82
+      ],
+      "board_raw": [
+        -127,
+        -93,
+        -117,
+        82
+      ],
+      "raw0": -127,
+      "raw1": -93,
+      "raw2": -117,
+      "raw3": 82,
+      "class": 3,
+      "cpu_cycles": 165622,
+      "npu_cycles": 0
+    },
+    {
+      "vector_id": "transition_B_660",
+      "raw_exact": false,
+      "host_raw": [
+        -128,
+        -121,
+        -127,
+        120
+      ],
+      "board_raw": [
+        -128,
+        -126,
+        -127,
+        125
+      ],
+      "raw0": -128,
+      "raw1": -126,
+      "raw2": -127,
+      "raw3": 125,
+      "class": 3,
+      "cpu_cycles": 165238,
+      "npu_cycles": 0
+    },
+    {
+      "vector_id": "transition_C_649",
+      "raw_exact": true,
+      "host_raw": [
+        -128,
+        34,
+        -39,
+        -123
+      ],
+      "board_raw": [
+        -128,
+        34,
+        -39,
+        -123
+      ],
+      "raw0": -128,
+      "raw1": 34,
+      "raw2": -39,
+      "raw3": -123,
+      "class": 1,
+      "cpu_cycles": 166414,
+      "npu_cycles": 0
+    },
+    {
+      "vector_id": "transition_C_660",
+      "raw_exact": true,
+      "host_raw": [
+        -128,
+        28,
+        -42,
+        -114
+      ],
+      "board_raw": [
+        -128,
+        28,
+        -42,
+        -114
+      ],
+      "raw0": -128,
+      "raw1": 28,
+      "raw2": -42,
+      "raw3": -114,
+      "class": 1,
+      "cpu_cycles": 166162,
+      "npu_cycles": 0
+    },
+    {
+      "vector_id": "transition_D_649",
+      "raw_exact": true,
+      "host_raw": [
+        -128,
+        -80,
+        -80,
+        31
+      ],
+      "board_raw": [
+        -128,
+        -80,
+        -80,
+        31
+      ],
+      "raw0": -128,
+      "raw1": -80,
+      "raw2": -80,
+      "raw3": 31,
+      "class": 3,
+      "cpu_cycles": 166149,
+      "npu_cycles": 0
+    },
+    {
+      "vector_id": "transition_D_660",
+      "raw_exact": true,
+      "host_raw": [
+        -128,
+        126,
+        -126,
+        -128
+      ],
+      "board_raw": [
+        -128,
+        126,
+        -126,
+        -128
+      ],
+      "raw0": -128,
+      "raw1": 126,
+      "raw2": -126,
+      "raw3": -128,
+      "class": 1,
+      "cpu_cycles": 164660,
+      "npu_cycles": 0
+    }
+  ],
+  "TERRAIN_V4_E84_FIXED_PARITY": "FAIL"
+}

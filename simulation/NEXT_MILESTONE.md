@@ -178,6 +178,56 @@ the small (three-run-per-direction) fresh reservation; the next milestone should
 be deployment parity and a separately reserved broader-domain/family fresh test,
 not additional architecture search.
 
+## Terrain v4 broader-domain reservation and E84 deployment audit
+
+The v4 model, normalizer, label map, 1 kHz rate, 50 ms causal window, and
+threshold/persistence policy remained frozen.  No unused procedural family was
+available: all seven had already occurred in historical static or transition
+work.  The pre-result reservation therefore holds out six unused
+family-realizations (`crosshatch`, `rounded_ridges`, and `warped_multisine`,
+each `s08/s09`) and source runs `r004/r005`: 48 physical runs, 12 per direction.
+The audit has zero source-run, family-realization, and
+family-realization-source-run overlap with 4,826 historical source records;
+family overlap is explicitly retained as the unavoidable limitation.
+
+All 48 broader traces passed continuity, 1 kHz Fusion10 finiteness, and
+ground-truth checks.  Frozen strict-INT8 stable detection was 100% for A/B/C/D;
+occupancy was 89.56/96.83/84.50/98.11%, respectively.  Case C had 30 switches
+(2.5/run), T1 median/p95/max 9.5/53.6/58 ms, and 84.50% target occupancy.
+There was no severe persistent oscillation, so
+`TERRAIN_BROADER_GENERALIZATION_GATE=PASS`.  This is a realization/run-level
+generalization test, not a fully unseen-family claim.
+
+The frozen source Strict-INT8 flatbuffer (SHA256
+`5c1b7e96688db22f455f8835cd1ade84644af5a4ca5574cff84986cd735ab84c`) was
+generated as separate CPU and Vela U55-128 artifacts.  Vela produced a 7,872 B
+flatbuffer (SHA256
+`72081a9c9a85c979919348b5eb7a60190f90195ed04770ceacc93cf193847afe`), 58,864
+MACs, and 37/37 NPU operators with zero CPU fallback.  Both CPU and U55 HIL
+images built and the U55 image was flashed and verified on KitProg3
+`13070E98012D2400` / PSE846GPS2DBZC4A.
+
+The 12 selection-only `(50,10)` golden windows exposed a reproducible runtime
+rounding limitation: CPU TFLM and U55 each matched 10/12 source raw vectors
+exactly (all 12 classes matched), while two saturated vectors changed 5--10 raw
+logit counts without changing their class.  Therefore the required
+source-host-to-board raw-exact gate is honestly
+`TERRAIN_V4_E84_FIXED_PARITY=FAIL`, rather than being relaxed or calibrated on
+the test set.  U55 HIL median cycles were 5,919 CPU and 7,150 NPU.
+
+The actual 1 kHz synchronous TRN2 replay used three broader-reserved traces per
+direction: 9,600 samples and 9,012 board inferences, with zero dropped packets,
+CRC errors, sequence errors, or device errors.  It had 8,272/9,012 raw-exact
+and 8,892/9,012 class-exact host comparisons, with one A run delayed by 1 ms at
+stable T1 and all other T1s equal.  USB-UART request/response RTT was 1.605 ms
+median and 1.671 ms p95, producing 9,565 host deadline misses.  Consequently
+`TERRAIN_V4_1KHZ_HIL_GATE=FAIL` and
+`TERRAIN_V4_DEPLOYMENT_READY=false`: this is a transport/provenance-parity
+blocker, not evidence for more CNN capacity.  Preserve v4 model tuning as
+terminated; the next deployment milestone is an asynchronous/batched on-board
+sensor transport with a target-runtime golden reference, followed by the same
+frozen replay.
+
 ## Fast Reflex v2 E84/U55 audit
 
 Separate frozen-artifact Vela outputs use the existing E84 fast1000 command:

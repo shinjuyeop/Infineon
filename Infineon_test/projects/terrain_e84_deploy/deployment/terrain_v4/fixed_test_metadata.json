@@ -1,0 +1,246 @@
+{
+  "model_path": "/d/shin/Infineon/simulation/outputs/terrain_causal_window_v4/int8/baseline_50_seed_20260823_strict_int8.tflite",
+  "model_sha256": "5c1b7e96688db22f455f8835cd1ade84644af5a4ca5574cff84986cd735ab84c",
+  "float_sha256": "c0a189cd4b01a3fb1474d89fedd8926c51f9dcc223ae0d849d7078adcafc3dc8",
+  "normalization": "reconstructed only from v4 train static+transition partition",
+  "input_shape": [
+    1,
+    50,
+    10
+  ],
+  "class_mapping": {
+    "concrete": 0,
+    "marble": 1,
+    "ice": 2,
+    "sand": 3
+  },
+  "sample_rate_hz": 1000,
+  "window_ms": 50,
+  "golden_count": 12,
+  "vectors": [
+    {
+      "vector_id": "static_0",
+      "source": "v4_static_selection",
+      "label": 0,
+      "class": "concrete",
+      "endpoint": null,
+      "input_sha256": "eabc447bca679ab776ecddec7e22bc81f17607ce08dd7ce790aa10046ba447b1",
+      "host_raw": [
+        67,
+        -69,
+        -126,
+        -128
+      ],
+      "host_class": 0
+    },
+    {
+      "vector_id": "static_1",
+      "source": "v4_static_selection",
+      "label": 1,
+      "class": "marble",
+      "endpoint": null,
+      "input_sha256": "8d26ded4cf84829c37a9db78bdce5e07194eee322db3a9f6c094945ae1c1323b",
+      "host_raw": [
+        -128,
+        124,
+        -124,
+        -128
+      ],
+      "host_class": 1
+    },
+    {
+      "vector_id": "static_2",
+      "source": "v4_static_selection",
+      "label": 2,
+      "class": "ice",
+      "endpoint": null,
+      "input_sha256": "d008a8766171636754282ecb5b968d915604edf71e1f491789127d783a4c6e48",
+      "host_raw": [
+        -128,
+        -106,
+        106,
+        -128
+      ],
+      "host_class": 2
+    },
+    {
+      "vector_id": "static_3",
+      "source": "v4_static_selection",
+      "label": 3,
+      "class": "sand",
+      "endpoint": null,
+      "input_sha256": "0ada87a260b82210e8ab167121ac4a60c980a5c114749064fb105ee75a134bd5",
+      "host_raw": [
+        -128,
+        -128,
+        -128,
+        127
+      ],
+      "host_class": 3
+    },
+    {
+      "vector_id": "transition_A_649",
+      "source": "v4_transition_selection",
+      "case": "A",
+      "label": 1,
+      "class": "marble",
+      "endpoint": 649,
+      "input_sha256": "6ef7b055e5320668b67bb1f7c00d8c7e02b19d54c505d02c09b0668b60682b41",
+      "host_raw": [
+        -127,
+        -93,
+        -117,
+        82
+      ],
+      "host_class": 3
+    },
+    {
+      "vector_id": "transition_A_660",
+      "source": "v4_transition_selection",
+      "case": "A",
+      "label": 2,
+      "class": "ice",
+      "endpoint": 660,
+      "input_sha256": "59461da644007065bea26e4b6615d053f1d63c646c08c635b66376b509cecc20",
+      "host_raw": [
+        -127,
+        -73,
+        -111,
+        55
+      ],
+      "host_class": 3
+    },
+    {
+      "vector_id": "transition_B_649",
+      "source": "v4_transition_selection",
+      "case": "B",
+      "label": 1,
+      "class": "marble",
+      "endpoint": 649,
+      "input_sha256": "6ef7b055e5320668b67bb1f7c00d8c7e02b19d54c505d02c09b0668b60682b41",
+      "host_raw": [
+        -127,
+        -93,
+        -117,
+        82
+      ],
+      "host_class": 3
+    },
+    {
+      "vector_id": "transition_B_660",
+      "source": "v4_transition_selection",
+      "case": "B",
+      "label": 3,
+      "class": "sand",
+      "endpoint": 660,
+      "input_sha256": "1d5a9eaf23476055d3cb037f4c530fa9d73be44ecbaa590cf25a877b1739c931",
+      "host_raw": [
+        -128,
+        -121,
+        -127,
+        120
+      ],
+      "host_class": 3
+    },
+    {
+      "vector_id": "transition_C_649",
+      "source": "v4_transition_selection",
+      "case": "C",
+      "label": 2,
+      "class": "ice",
+      "endpoint": 649,
+      "input_sha256": "230c958dad34ad7d4ceee6ba99386ddc3364b6c62abaa9307bc94d1f9cd60d71",
+      "host_raw": [
+        -128,
+        34,
+        -39,
+        -123
+      ],
+      "host_class": 1
+    },
+    {
+      "vector_id": "transition_C_660",
+      "source": "v4_transition_selection",
+      "case": "C",
+      "label": 1,
+      "class": "marble",
+      "endpoint": 660,
+      "input_sha256": "909f694426ec530b88281f006b611064f375fc97da343d6654894d74c1dc765c",
+      "host_raw": [
+        -128,
+        28,
+        -42,
+        -114
+      ],
+      "host_class": 1
+    },
+    {
+      "vector_id": "transition_D_649",
+      "source": "v4_transition_selection",
+      "case": "D",
+      "label": 3,
+      "class": "sand",
+      "endpoint": 649,
+      "input_sha256": "295b1d56e1560012ec56290bf133fdf95499f1264504599fb52ff9e1774b0461",
+      "host_raw": [
+        -128,
+        -80,
+        -80,
+        31
+      ],
+      "host_class": 3
+    },
+    {
+      "vector_id": "transition_D_660",
+      "source": "v4_transition_selection",
+      "case": "D",
+      "label": 1,
+      "class": "marble",
+      "endpoint": 660,
+      "input_sha256": "ff39e7cd8bd5ea0fef93cc5422a9adf0ff91c6cc53b3d96ddadc119190aaaa3f",
+      "host_raw": [
+        -128,
+        126,
+        -126,
+        -128
+      ],
+      "host_class": 1
+    }
+  ],
+  "tensors": {
+    "input": {
+      "shape": [
+        1,
+        50,
+        10
+      ],
+      "dtype": "int8",
+      "scale": 0.13681577146053314,
+      "zero_point": 14
+    },
+    "output": {
+      "shape": [
+        1,
+        4
+      ],
+      "dtype": "int8",
+      "scale": 0.00390625,
+      "zero_point": -128
+    }
+  },
+  "vela_model_path": "/d/shin/Infineon/Infineon_test/projects/terrain_e84_deploy/deployment/terrain_v4/vela/baseline_50_seed_20260823_strict_int8_vela.tflite",
+  "vela_model_sha256": "72081a9c9a85c979919348b5eb7a60190f90195ed04770ceacc93cf193847afe",
+  "source_size_bytes": 6688,
+  "vela_size_bytes": 7872,
+  "macs": 58864,
+  "accelerator_config": "ethos-u55-128",
+  "vela_stdout": "/d/shin/Infineon/Infineon_test/projects/terrain_e84_deploy/deployment/terrain_v4/vela/vela_stdout.txt",
+  "fixed_vector_id": "static_0",
+  "host_output_raw": [
+    67,
+    -69,
+    -126,
+    -128
+  ],
+  "host_class": 0
+}
