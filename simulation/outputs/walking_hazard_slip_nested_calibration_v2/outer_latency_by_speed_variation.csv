@@ -1,0 +1,10 @@
+walking_speed_mps,variation_index,detected_episode_count,model_inference_latency,physical_onset_to_fire_mean_ms,physical_onset_to_fire_median_ms,physical_onset_to_fire_p95_ms,physical_onset_to_fire_max_ms,threshold_to_completion_mean_ms,threshold_to_completion_median_ms,threshold_to_completion_p95_ms,threshold_to_completion_max_ms
+0.1,3,4,not_applicable,59.0,46.5,93.34999999999998,101.0,3.0,3.0,3.0,3.0
+0.1,4,1,not_applicable,30.0,30.0,30.0,30.0,3.0,3.0,3.0,3.0
+0.1,5,5,not_applicable,77.6,58.0,198.19999999999996,233.0,3.0,3.0,3.0,3.0
+0.15,3,4,not_applicable,53.25,39.5,104.89999999999998,116.0,3.0,3.0,3.0,3.0
+0.15,4,5,not_applicable,84.8,61.0,163.39999999999998,181.0,3.0,3.0,3.0,3.0
+0.15,5,6,not_applicable,81.16666666666667,64.0,158.0,176.0,3.0,3.0,3.0,3.0
+0.2,3,4,not_applicable,47.75,36.0,91.59999999999998,100.0,3.0,3.0,3.0,3.0
+0.2,4,5,not_applicable,140.4,79.0,290.4,301.0,3.0,3.0,3.0,3.0
+0.2,5,7,not_applicable,61.714285714285715,58.0,91.39999999999998,101.0,3.0,3.0,3.0,3.0

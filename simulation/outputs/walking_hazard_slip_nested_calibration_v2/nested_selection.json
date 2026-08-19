@@ -1,0 +1,18 @@
+{
+  "threshold_m": 0.05,
+  "persistence_ms": 3,
+  "worst_fold_minimum_margin_m": 0.02441127363861753,
+  "worst_fold_p95_physical_onset_latency_ms": 168.0,
+  "mean_fold_physical_onset_latency_ms": 72.68927291346645,
+  "folds_passed": 3,
+  "all_folds_pass": true,
+  "best_worst_fold_margin_m": 0.02441127363861753,
+  "sufficient_margin_floor_m": 0.019529018910894026,
+  "selection_rule": "mandatory zero normal FP + all physical positives/all speeds + zero AIR/post-fall/touchdown violations in every selection and internal-validation partition; retain candidates within both 80% and 5 mm of best worst-fold margin; minimize worst-fold p95 then mean physical-onset latency; lower persistence then threshold are ties only",
+  "selected_without_outer_data": true,
+  "development_source_sha256": "1bbede7770400a844f75da2bce5157e4b50e5f8119ea5e893760943c7ed40423",
+  "outer_trace_count_at_selection": 0,
+  "outer_data_access_during_selection": false,
+  "selection_completed_before_outer_collection": true,
+  "production_runtime_threshold_changed": false
+}

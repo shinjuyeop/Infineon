@@ -1,0 +1,789 @@
+{
+  "policy": "leave one complete variation out; whole runs and episodes remain together",
+  "folds": [
+    {
+      "fold_id": 0,
+      "selection_variations": [
+        1,
+        2
+      ],
+      "internal_validation_variation": 0
+    },
+    {
+      "fold_id": 1,
+      "selection_variations": [
+        0,
+        2
+      ],
+      "internal_validation_variation": 1
+    },
+    {
+      "fold_id": 2,
+      "selection_variations": [
+        0,
+        1
+      ],
+      "internal_validation_variation": 2
+    }
+  ],
+  "test_or_final_used": false,
+  "run_fold_role_leakage_count": 0,
+  "runs": [
+    {
+      "fold_id": 0,
+      "run_id": "marble_native_0p10_v00",
+      "variation_index": 0,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "concrete_native_0p10_v00",
+      "variation_index": 0,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "sand_hardened_0p10_v00",
+      "variation_index": 0,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "ice_native_0p10_v00",
+      "variation_index": 0,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "marble_native_0p15_v00",
+      "variation_index": 0,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "concrete_native_0p15_v00",
+      "variation_index": 0,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "sand_hardened_0p15_v00",
+      "variation_index": 0,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "ice_native_0p15_v00",
+      "variation_index": 0,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "marble_native_0p20_v00",
+      "variation_index": 0,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "concrete_native_0p20_v00",
+      "variation_index": 0,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "sand_hardened_0p20_v00",
+      "variation_index": 0,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "ice_native_0p20_v00",
+      "variation_index": 0,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "marble_native_0p10_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "concrete_native_0p10_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "sand_hardened_0p10_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "ice_native_0p10_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "marble_native_0p15_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "concrete_native_0p15_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "sand_hardened_0p15_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "ice_native_0p15_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "marble_native_0p20_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "concrete_native_0p20_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "sand_hardened_0p20_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "ice_native_0p20_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "marble_native_0p10_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "concrete_native_0p10_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "sand_hardened_0p10_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "ice_native_0p10_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "marble_native_0p15_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "concrete_native_0p15_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "sand_hardened_0p15_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "ice_native_0p15_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "marble_native_0p20_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "concrete_native_0p20_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "sand_hardened_0p20_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 0,
+      "run_id": "ice_native_0p20_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "marble_native_0p10_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "concrete_native_0p10_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "sand_hardened_0p10_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "ice_native_0p10_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "marble_native_0p15_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "concrete_native_0p15_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "sand_hardened_0p15_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "ice_native_0p15_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "marble_native_0p20_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "concrete_native_0p20_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "sand_hardened_0p20_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "ice_native_0p20_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "marble_native_0p10_v01",
+      "variation_index": 1,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "concrete_native_0p10_v01",
+      "variation_index": 1,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "sand_hardened_0p10_v01",
+      "variation_index": 1,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "ice_native_0p10_v01",
+      "variation_index": 1,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "marble_native_0p15_v01",
+      "variation_index": 1,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "concrete_native_0p15_v01",
+      "variation_index": 1,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "sand_hardened_0p15_v01",
+      "variation_index": 1,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "ice_native_0p15_v01",
+      "variation_index": 1,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "marble_native_0p20_v01",
+      "variation_index": 1,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "concrete_native_0p20_v01",
+      "variation_index": 1,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "sand_hardened_0p20_v01",
+      "variation_index": 1,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "ice_native_0p20_v01",
+      "variation_index": 1,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "marble_native_0p10_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "concrete_native_0p10_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "sand_hardened_0p10_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "ice_native_0p10_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "marble_native_0p15_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "concrete_native_0p15_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "sand_hardened_0p15_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "ice_native_0p15_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "marble_native_0p20_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "concrete_native_0p20_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "sand_hardened_0p20_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 1,
+      "run_id": "ice_native_0p20_v02",
+      "variation_index": 2,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "marble_native_0p10_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "concrete_native_0p10_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "sand_hardened_0p10_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "ice_native_0p10_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "marble_native_0p15_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "concrete_native_0p15_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "sand_hardened_0p15_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "ice_native_0p15_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "marble_native_0p20_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "concrete_native_0p20_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "sand_hardened_0p20_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "ice_native_0p20_v00",
+      "variation_index": 0,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "marble_native_0p10_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "concrete_native_0p10_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "sand_hardened_0p10_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "ice_native_0p10_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "marble_native_0p15_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "concrete_native_0p15_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "sand_hardened_0p15_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "ice_native_0p15_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "marble_native_0p20_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "concrete_native_0p20_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "sand_hardened_0p20_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "ice_native_0p20_v01",
+      "variation_index": 1,
+      "fold_role": "selection",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "marble_native_0p10_v02",
+      "variation_index": 2,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "concrete_native_0p10_v02",
+      "variation_index": 2,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "sand_hardened_0p10_v02",
+      "variation_index": 2,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "ice_native_0p10_v02",
+      "variation_index": 2,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "marble_native_0p15_v02",
+      "variation_index": 2,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "concrete_native_0p15_v02",
+      "variation_index": 2,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "sand_hardened_0p15_v02",
+      "variation_index": 2,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "ice_native_0p15_v02",
+      "variation_index": 2,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "marble_native_0p20_v02",
+      "variation_index": 2,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "concrete_native_0p20_v02",
+      "variation_index": 2,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "sand_hardened_0p20_v02",
+      "variation_index": 2,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    },
+    {
+      "fold_id": 2,
+      "run_id": "ice_native_0p20_v02",
+      "variation_index": 2,
+      "fold_role": "internal_validation",
+      "ownership": "whole run and all contact episodes"
+    }
+  ]
+}
