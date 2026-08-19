@@ -1,0 +1,3 @@
+detector,frozen_oracle_semantic,walking_target_semantic,normal_control_runs,normal_false_positive_runs,positive_evidence_runs,positive_evidence_profiles,positive_motion_separated_from_normal,compatibility
+slip,loaded absolute foot horizontal speed above 0.0448878 m/s for 3 ms,"loaded stance-foot tangential drift relative to that contact episode's anchor, after touchdown transient",9,9,3,1,True,INCOMPATIBLE
+sink,ankle z drop from a single trace/T0 reference plus downward ankle speed,loaded sole penetration relative to the local terrain surface after stable contact,9,9,0,0,False,INCOMPATIBLE_AND_POSITIVE_GT_MISSING

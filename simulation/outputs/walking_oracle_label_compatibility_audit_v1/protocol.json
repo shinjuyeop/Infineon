@@ -1,0 +1,11 @@
+{
+  "analysis_only": true,
+  "frozen_assets_unchanged": true,
+  "normal_walking_controls": [
+    "concrete",
+    "marble",
+    "sand"
+  ],
+  "slip_semantic_question": "loaded stance-foot tangential drift relative to its contact anchor",
+  "sink_semantic_question": "loaded sole penetration relative to the local terrain surface"
+}

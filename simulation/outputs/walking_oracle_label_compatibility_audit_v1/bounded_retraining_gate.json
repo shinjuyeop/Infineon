@@ -1,0 +1,14 @@
+{
+  "hard_negative_source_ready": true,
+  "hard_negative_sources": [
+    "homogeneous Marble loaded gait phases",
+    "homogeneous Concrete loaded gait phases",
+    "homogeneous hardened-Sand loaded gait phases"
+  ],
+  "slip_positive_source_available": true,
+  "sink_positive_source_available": false,
+  "terrain_bounded_retraining_authorized": false,
+  "slip_bounded_retraining_authorized": false,
+  "sink_bounded_retraining_authorized": false,
+  "reason": "freeze retraining until contact-relative Slip threshold calibration and a real terrain-relative Sink positive acquisition are approved"
+}

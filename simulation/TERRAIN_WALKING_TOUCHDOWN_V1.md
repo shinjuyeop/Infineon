@@ -224,3 +224,36 @@ cd /d/shin/Infineon/simulation/unitree_mujoco/simulate_python
 
 This command is deliberately read-only with respect to all frozen model,
 normalization, threshold, persistence, physical-oracle, and System-v1 assets.
+
+## Walking Slip/Sink oracle-label compatibility audit v1
+
+`run_walking_oracle_label_compatibility_audit_v1.py` checks whether the frozen
+controlled-excitation physical labels preserve their meaning during normal
+walking.  It does not change the frozen oracle.  Loaded contact is segmented
+per gait episode so ordinary touchdown/loading/push-off can be separated from
+contact-anchor-relative tangential drift.
+
+```bash
+cd /d/shin/Infineon/simulation/unitree_mujoco/simulate_python
+../../venv/bin/python run_walking_oracle_label_compatibility_audit_v1.py \
+  --execute \
+  --output-dir ../../outputs/walking_oracle_label_compatibility_audit_v1
+```
+
+The resulting semantic contract is:
+
+- Walking Slip is excess tangential stance-foot motion relative to the current
+  loaded-contact anchor, not absolute world-frame foot speed.
+- Walking Sink is continued sole penetration relative to the local terrain
+  surface, not ankle-body height relative to trace start or touchdown.
+- Terrain identity never directly labels either hazard, and AIR is negative.
+
+The current frozen Slip and Sink oracles are incompatible with normal gait.
+Homogeneous Ice supplies separated contact-drift evidence for the Slip
+definition, but no threshold is frozen at this checkpoint.  Sink positive
+ground truth is absent because `walking-support-v1` replaces Sand `solref`
+with the Concrete value.  All spatial A/B/C/D traces are also confounded by a
+fall and lack a first-fall censor sample.  Therefore normal gait hard-negative
+sources are ready, but bounded Terrain/Slip/Sink retraining remains blocked
+until a contact-relative Slip calibration and terrain-relative Sink positive
+acquisition are approved.

@@ -1,0 +1,20 @@
+{
+  "normal_control_runs": 9,
+  "normal_control_terrain_profiles": 3,
+  "deterministic_replicates_per_homogeneous_profile": 3,
+  "frozen_slip_false_positive_runs": 9,
+  "frozen_sink_false_positive_runs": 9,
+  "normal_contact_anchor_drift_run_max_m": 0.008933439521696398,
+  "ice_contact_anchor_drift_run_min_m": 0.08815665042431275,
+  "normal_episode_anchor_drift_p95_m": 0.008714245794859988,
+  "ice_episode_anchor_drift_p95_m": 0.054558387118826886,
+  "slip_motion_separated_from_normal": true,
+  "all_spatial_transition_runs_fell": true,
+  "WALKING_FROZEN_SLIP_ORACLE_COMPATIBLE": false,
+  "WALKING_FROZEN_SINK_ORACLE_COMPATIBLE": false,
+  "WALKING_SLIP_LABEL_SEMANTICS_READY": true,
+  "WALKING_SINK_LABEL_SEMANTICS_READY": true,
+  "WALKING_SINK_POSITIVE_GROUND_TRUTH_READY": false,
+  "WALKING_BOUNDED_RETRAINING_AUTHORIZED": false,
+  "WALKING_ORACLE_LABEL_COMPATIBILITY_AUDIT_READY": true
+}

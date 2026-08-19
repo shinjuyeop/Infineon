@@ -1,0 +1,25 @@
+{
+  "version": "walking_slip_sink_semantics_v1",
+  "terrain_name_never_labels_hazard": true,
+  "air_samples_are_always_hazard_negative": true,
+  "slip": {
+    "event": "excess loaded stance-foot tangential motion relative to the contact anchor",
+    "minimum_context": "one loaded-contact episode with a separately represented touchdown transient",
+    "required_physical_observable": "foot-to-ground tangential relative displacement or an equivalent contact-point motion signal",
+    "forbidden_proxy": "absolute world-frame foot speed alone",
+    "current_evidence": "homogeneous Ice contact-anchor drift is separated from Marble/Concrete/hardened-Sand normal controls",
+    "status": "SEMANTICS_READY_THRESHOLD_NOT_CALIBRATED"
+  },
+  "sink": {
+    "event": "continued downward sole penetration relative to the local terrain surface during loaded contact",
+    "minimum_context": "stable loaded-contact reference followed by terrain-relative penetration",
+    "required_physical_observable": "local ground height/deformation or sole-ground contact penetration",
+    "forbidden_proxy": "ankle body z relative to trace start or touchdown",
+    "current_evidence": "none; walking-support-v1 replaces Sand solref with Concrete solref",
+    "status": "SEMANTICS_READY_POSITIVE_GROUND_TRUTH_MISSING"
+  },
+  "spatial_transition_use": {
+    "status": "DIAGNOSTIC_ONLY",
+    "reason": "all A/B/C/D runs fell and first-fall sample is not available for censoring"
+  }
+}
