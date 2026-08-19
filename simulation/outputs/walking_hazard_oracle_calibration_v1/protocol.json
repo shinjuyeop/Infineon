@@ -1,0 +1,1632 @@
+{
+  "dataset": "walking_hazard_oracle_calibration_v1",
+  "purpose": "physical-oracle replicate robustness and train-only calibration",
+  "starting_checkpoint": "40aa6afaa364040b0b2ce52883cd846cc437dab7",
+  "existing_pilot_overwritten": false,
+  "partitions": [
+    "calibration_train",
+    "calibration_validation"
+  ],
+  "test_or_final_data_used": false,
+  "model_retraining_performed": false,
+  "production_threshold_frozen_or_changed": false,
+  "terrain_identity_is_not_a_hazard_label": true,
+  "sample_rate_hz": 1000,
+  "duration_s": 3.0,
+  "physics_timestep_s": 0.0005,
+  "variation_design": {
+    "kind": "deterministic bounded initial locomotion-state variation",
+    "rationale": "phase-stratified initial policy state plus at most two 50-Hz command ticks of onset delay; no sensor, actuator, contact, or label noise",
+    "seed_semantics": "stable protocol identifier; actual phase and onset values are explicitly listed",
+    "split": "variation indices 0 and 1 train; index 2 held out for calibration validation",
+    "variations": [
+      {
+        "index": 0,
+        "seed": 202608190,
+        "initial_locomotion_phase_fraction": 0.0,
+        "command_onset_delay_s": 0.0
+      },
+      {
+        "index": 1,
+        "seed": 202608191,
+        "initial_locomotion_phase_fraction": 0.3333333333333333,
+        "command_onset_delay_s": 0.02
+      },
+      {
+        "index": 2,
+        "seed": 202608192,
+        "initial_locomotion_phase_fraction": 0.6666666666666666,
+        "command_onset_delay_s": 0.04
+      }
+    ]
+  },
+  "matrix": {
+    "normal_hard_negative": "Marble/Concrete/hardened Sand x 0.10/0.15/0.20 m/s x 3 variations",
+    "slip_candidate": "Ice x 0.10/0.15/0.20 m/s x 3 variations",
+    "sink_primary_candidate": "Sand solref interpolation 1of3/2of3 x 0.10/0.15/0.20 m/s x 3 variations",
+    "native_and_more_compliant_sand": "not reacquired; retained as fall diagnostics in the immutable 40aa6af pilot",
+    "run_count": 54
+  },
+  "physical_oracles": {
+    "slip": {
+      "primary": "contact-anchor-relative tangential drift",
+      "valid": "loaded and post-touchdown and pre-fall",
+      "auxiliary_only": "tangential velocity",
+      "threshold_grid_m": [
+        0.01,
+        0.015,
+        0.02,
+        0.03,
+        0.05,
+        0.075,
+        0.1
+      ]
+    },
+    "sink": {
+      "primary": "loaded_penetration_change_m from first loaded contact in episode",
+      "valid": "loaded and post-touchdown and pre-fall",
+      "audit_only": [
+        "absolute contact penetration",
+        "surface-relative sole depth"
+      ],
+      "threshold_grid_m": [
+        0.004,
+        0.0045,
+        0.005,
+        0.0055,
+        0.006,
+        0.007,
+        0.008
+      ]
+    },
+    "persistence_grid_ms": [
+      3,
+      5,
+      10,
+      20
+    ],
+    "selection": "among train-passing candidates, maximize complete positive profiles, then physical envelope margin, then persistence, then minimize latency",
+    "selected_threshold_is_production_frozen": false
+  },
+  "acceptance": {
+    "normal_validation_false_positive_runs": 0,
+    "slip_validation": "positive detection at every target speed",
+    "sink_validation": "one primary profile has no-fall stable physical evidence and detection at every target speed",
+    "air_post_fall_touchdown_transient_violations": 0,
+    "duplicate_replicates": 0,
+    "split_leakage": 0
+  },
+  "controller": {
+    "upstream_revision": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+    "tested_policy_sha256": "2a66ca6336eadb3c0b34b557763f3e06d01ff8fcf6260dd4cedbd69d6093fc28",
+    "policy_path": "/d/shin/Infineon/simulation/unitree_rl_mjlab/deploy/robots/g1/config/policy/velocity/v0/exported/policy.onnx",
+    "policy_sha256": "2a66ca6336eadb3c0b34b557763f3e06d01ff8fcf6260dd4cedbd69d6093fc28"
+  },
+  "channels": [
+    "foot_force_1",
+    "foot_force_2",
+    "foot_force_3",
+    "foot_force_4",
+    "accel_x",
+    "accel_y",
+    "accel_z",
+    "gyro_x",
+    "gyro_y",
+    "gyro_z"
+  ],
+  "conditions": [
+    {
+      "run_id": "marble_native_0p10_v00",
+      "condition_name": "marble_native",
+      "terrain_name": "marble",
+      "profile_name": "marble",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.1,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.45,
+        0.003,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "concrete_native_0p10_v00",
+      "condition_name": "concrete_native",
+      "terrain_name": "concrete",
+      "profile_name": "concrete",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.1,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_hardened_0p10_v00",
+      "condition_name": "sand_hardened",
+      "terrain_name": "sand",
+      "profile_name": "sand_walking_support_v1_hardened",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.1,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "ice_native_0p10_v00",
+      "condition_name": "ice_native",
+      "terrain_name": "ice",
+      "profile_name": "ice",
+      "acquisition_role": "slip_candidate",
+      "walking_speed_mps": 0.1,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.05,
+        0.001,
+        1e-05
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p10_v00",
+      "condition_name": "sand_solref_interpolation_1of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.1,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.026666666666666665,
+        1.1666666666666667
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p10_v00",
+      "condition_name": "sand_solref_interpolation_2of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.1,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.03833333333333333,
+        1.3333333333333333
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "marble_native_0p15_v00",
+      "condition_name": "marble_native",
+      "terrain_name": "marble",
+      "profile_name": "marble",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.15,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.45,
+        0.003,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "concrete_native_0p15_v00",
+      "condition_name": "concrete_native",
+      "terrain_name": "concrete",
+      "profile_name": "concrete",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.15,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_hardened_0p15_v00",
+      "condition_name": "sand_hardened",
+      "terrain_name": "sand",
+      "profile_name": "sand_walking_support_v1_hardened",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.15,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "ice_native_0p15_v00",
+      "condition_name": "ice_native",
+      "terrain_name": "ice",
+      "profile_name": "ice",
+      "acquisition_role": "slip_candidate",
+      "walking_speed_mps": 0.15,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.05,
+        0.001,
+        1e-05
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p15_v00",
+      "condition_name": "sand_solref_interpolation_1of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.15,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.026666666666666665,
+        1.1666666666666667
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p15_v00",
+      "condition_name": "sand_solref_interpolation_2of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.15,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.03833333333333333,
+        1.3333333333333333
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "marble_native_0p20_v00",
+      "condition_name": "marble_native",
+      "terrain_name": "marble",
+      "profile_name": "marble",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.2,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.45,
+        0.003,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "concrete_native_0p20_v00",
+      "condition_name": "concrete_native",
+      "terrain_name": "concrete",
+      "profile_name": "concrete",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.2,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_hardened_0p20_v00",
+      "condition_name": "sand_hardened",
+      "terrain_name": "sand",
+      "profile_name": "sand_walking_support_v1_hardened",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.2,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "ice_native_0p20_v00",
+      "condition_name": "ice_native",
+      "terrain_name": "ice",
+      "profile_name": "ice",
+      "acquisition_role": "slip_candidate",
+      "walking_speed_mps": 0.2,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.05,
+        0.001,
+        1e-05
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p20_v00",
+      "condition_name": "sand_solref_interpolation_1of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.2,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.026666666666666665,
+        1.1666666666666667
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p20_v00",
+      "condition_name": "sand_solref_interpolation_2of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.2,
+      "variation_index": 0,
+      "variation_seed": 202608190,
+      "initial_locomotion_phase_fraction": 0.0,
+      "command_onset_delay_s": 0.0,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.03833333333333333,
+        1.3333333333333333
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "marble_native_0p10_v01",
+      "condition_name": "marble_native",
+      "terrain_name": "marble",
+      "profile_name": "marble",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.1,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.45,
+        0.003,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "concrete_native_0p10_v01",
+      "condition_name": "concrete_native",
+      "terrain_name": "concrete",
+      "profile_name": "concrete",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.1,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_hardened_0p10_v01",
+      "condition_name": "sand_hardened",
+      "terrain_name": "sand",
+      "profile_name": "sand_walking_support_v1_hardened",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.1,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "ice_native_0p10_v01",
+      "condition_name": "ice_native",
+      "terrain_name": "ice",
+      "profile_name": "ice",
+      "acquisition_role": "slip_candidate",
+      "walking_speed_mps": 0.1,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.05,
+        0.001,
+        1e-05
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p10_v01",
+      "condition_name": "sand_solref_interpolation_1of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.1,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.026666666666666665,
+        1.1666666666666667
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p10_v01",
+      "condition_name": "sand_solref_interpolation_2of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.1,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.03833333333333333,
+        1.3333333333333333
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "marble_native_0p15_v01",
+      "condition_name": "marble_native",
+      "terrain_name": "marble",
+      "profile_name": "marble",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.15,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.45,
+        0.003,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "concrete_native_0p15_v01",
+      "condition_name": "concrete_native",
+      "terrain_name": "concrete",
+      "profile_name": "concrete",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.15,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_hardened_0p15_v01",
+      "condition_name": "sand_hardened",
+      "terrain_name": "sand",
+      "profile_name": "sand_walking_support_v1_hardened",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.15,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "ice_native_0p15_v01",
+      "condition_name": "ice_native",
+      "terrain_name": "ice",
+      "profile_name": "ice",
+      "acquisition_role": "slip_candidate",
+      "walking_speed_mps": 0.15,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.05,
+        0.001,
+        1e-05
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p15_v01",
+      "condition_name": "sand_solref_interpolation_1of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.15,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.026666666666666665,
+        1.1666666666666667
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p15_v01",
+      "condition_name": "sand_solref_interpolation_2of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.15,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.03833333333333333,
+        1.3333333333333333
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "marble_native_0p20_v01",
+      "condition_name": "marble_native",
+      "terrain_name": "marble",
+      "profile_name": "marble",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.2,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.45,
+        0.003,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "concrete_native_0p20_v01",
+      "condition_name": "concrete_native",
+      "terrain_name": "concrete",
+      "profile_name": "concrete",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.2,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_hardened_0p20_v01",
+      "condition_name": "sand_hardened",
+      "terrain_name": "sand",
+      "profile_name": "sand_walking_support_v1_hardened",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.2,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "ice_native_0p20_v01",
+      "condition_name": "ice_native",
+      "terrain_name": "ice",
+      "profile_name": "ice",
+      "acquisition_role": "slip_candidate",
+      "walking_speed_mps": 0.2,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.05,
+        0.001,
+        1e-05
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p20_v01",
+      "condition_name": "sand_solref_interpolation_1of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.2,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.026666666666666665,
+        1.1666666666666667
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p20_v01",
+      "condition_name": "sand_solref_interpolation_2of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.2,
+      "variation_index": 1,
+      "variation_seed": 202608191,
+      "initial_locomotion_phase_fraction": 0.3333333333333333,
+      "command_onset_delay_s": 0.02,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.03833333333333333,
+        1.3333333333333333
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "marble_native_0p10_v02",
+      "condition_name": "marble_native",
+      "terrain_name": "marble",
+      "profile_name": "marble",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.1,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.45,
+        0.003,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "concrete_native_0p10_v02",
+      "condition_name": "concrete_native",
+      "terrain_name": "concrete",
+      "profile_name": "concrete",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.1,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_hardened_0p10_v02",
+      "condition_name": "sand_hardened",
+      "terrain_name": "sand",
+      "profile_name": "sand_walking_support_v1_hardened",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.1,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "ice_native_0p10_v02",
+      "condition_name": "ice_native",
+      "terrain_name": "ice",
+      "profile_name": "ice",
+      "acquisition_role": "slip_candidate",
+      "walking_speed_mps": 0.1,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.05,
+        0.001,
+        1e-05
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p10_v02",
+      "condition_name": "sand_solref_interpolation_1of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.1,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.026666666666666665,
+        1.1666666666666667
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p10_v02",
+      "condition_name": "sand_solref_interpolation_2of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.1,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.03833333333333333,
+        1.3333333333333333
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "marble_native_0p15_v02",
+      "condition_name": "marble_native",
+      "terrain_name": "marble",
+      "profile_name": "marble",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.15,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.45,
+        0.003,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "concrete_native_0p15_v02",
+      "condition_name": "concrete_native",
+      "terrain_name": "concrete",
+      "profile_name": "concrete",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.15,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_hardened_0p15_v02",
+      "condition_name": "sand_hardened",
+      "terrain_name": "sand",
+      "profile_name": "sand_walking_support_v1_hardened",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.15,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "ice_native_0p15_v02",
+      "condition_name": "ice_native",
+      "terrain_name": "ice",
+      "profile_name": "ice",
+      "acquisition_role": "slip_candidate",
+      "walking_speed_mps": 0.15,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.05,
+        0.001,
+        1e-05
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p15_v02",
+      "condition_name": "sand_solref_interpolation_1of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.15,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.026666666666666665,
+        1.1666666666666667
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p15_v02",
+      "condition_name": "sand_solref_interpolation_2of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.15,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.03833333333333333,
+        1.3333333333333333
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "marble_native_0p20_v02",
+      "condition_name": "marble_native",
+      "terrain_name": "marble",
+      "profile_name": "marble",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.2,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.45,
+        0.003,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "concrete_native_0p20_v02",
+      "condition_name": "concrete_native",
+      "terrain_name": "concrete",
+      "profile_name": "concrete",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.2,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_hardened_0p20_v02",
+      "condition_name": "sand_hardened",
+      "terrain_name": "sand",
+      "profile_name": "sand_walking_support_v1_hardened",
+      "acquisition_role": "hard_negative",
+      "walking_speed_mps": 0.2,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "ice_native_0p20_v02",
+      "condition_name": "ice_native",
+      "terrain_name": "ice",
+      "profile_name": "ice",
+      "acquisition_role": "slip_candidate",
+      "walking_speed_mps": 0.2,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.05,
+        0.001,
+        1e-05
+      ],
+      "solref": [
+        0.015,
+        1.0
+      ],
+      "solimp": [
+        0.95,
+        0.99,
+        0.001,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_1of3_0p20_v02",
+      "condition_name": "sand_solref_interpolation_1of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_1of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.2,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.026666666666666665,
+        1.1666666666666667
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    },
+    {
+      "run_id": "sand_solref_interpolation_2of3_0p20_v02",
+      "condition_name": "sand_solref_interpolation_2of3",
+      "terrain_name": "sand",
+      "profile_name": "sand_solref_interpolation_2of3",
+      "acquisition_role": "sink_candidate",
+      "walking_speed_mps": 0.2,
+      "variation_index": 2,
+      "variation_seed": 202608192,
+      "initial_locomotion_phase_fraction": 0.6666666666666666,
+      "command_onset_delay_s": 0.04,
+      "friction": [
+        0.7,
+        0.01,
+        0.001
+      ],
+      "solref": [
+        0.03833333333333333,
+        1.3333333333333333
+      ],
+      "solimp": [
+        0.7,
+        0.9,
+        0.01,
+        0.5,
+        2.0
+      ]
+    }
+  ],
+  "overwrite_policy": "refuse any non-empty output directory"
+}

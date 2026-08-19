@@ -1,0 +1,87 @@
+{
+  "runs": 54,
+  "run_counts": {
+    "hard_negative": 27,
+    "slip_candidate": 9,
+    "sink_candidate": 18
+  },
+  "variation_count": 3,
+  "duplicate_pair_count": 0,
+  "split_integrity": {
+    "train_run_count": 36,
+    "validation_run_count": 18,
+    "run_overlap_count": 0,
+    "episode_overlap_count": 0,
+    "unknown_episode_run_count": 0,
+    "leaking_episodes": [],
+    "unknown_episode_runs": [],
+    "split_leakage_count": 0
+  },
+  "fall_runs": 1,
+  "selected_candidates": {
+    "slip": {
+      "threshold_m": 0.075,
+      "persistence_ms": 20,
+      "production_frozen": false
+    },
+    "sink": {
+      "threshold_m": 0.0055,
+      "persistence_ms": 20,
+      "production_frozen": false
+    }
+  },
+  "envelopes": {
+    "slip_calibration_train": {
+      "normal_run_max_m": 0.016771160430382383,
+      "positive_run_min_max_m": 0.1303936943976871
+    },
+    "slip_calibration_validation": {
+      "normal_run_max_m": 0.013210608737598172,
+      "positive_run_min_max_m": 0.07441127363861753
+    },
+    "sink_calibration_train": {
+      "normal_run_max_m": 0.004294271603264094,
+      "positive_run_min_max_m": 0.006403968922677472
+    },
+    "sink_calibration_validation": {
+      "normal_run_max_m": 0.0036307742598676723,
+      "positive_run_min_max_m": 0.006053937709824361
+    }
+  },
+  "validation_normal_false_positive_runs": 0,
+  "validation_slip_detected_speeds_mps": [
+    0.1,
+    0.15
+  ],
+  "validation_slip_missing_speeds_mps": [
+    0.2
+  ],
+  "validation_sink_profiles_all_speeds": [
+    "sand_solref_interpolation_1of3",
+    "sand_solref_interpolation_2of3"
+  ],
+  "validation_label_violation_count": 0,
+  "air_positive_count": 0,
+  "post_fall_positive_count": 0,
+  "touchdown_transient_positive_count": 0,
+  "thresholds_frozen": false,
+  "models_retrained": false,
+  "failure_reasons": [
+    "held-out Slip validation had no detection at speeds 0.20 m/s"
+  ],
+  "gates": {
+    "WALKING_GT_REPLICATE_DIVERSITY_READY": true,
+    "WALKING_SLIP_ORACLE_CALIBRATION_READY": false,
+    "WALKING_SINK_ORACLE_CALIBRATION_READY": true,
+    "WALKING_ORACLE_SPLIT_INTEGRITY_READY": true,
+    "WALKING_ORACLE_ROBUSTNESS_READY": false,
+    "WALKING_BOUNDED_RETRAINING_READY": false
+  },
+  "WALKING_GT_REPLICATE_DIVERSITY_READY": true,
+  "WALKING_SLIP_ORACLE_CALIBRATION_READY": false,
+  "WALKING_SINK_ORACLE_CALIBRATION_READY": true,
+  "WALKING_ORACLE_SPLIT_INTEGRITY_READY": true,
+  "WALKING_ORACLE_ROBUSTNESS_READY": false,
+  "WALKING_BOUNDED_RETRAINING_READY": false,
+  "wall_time_s": 47.159495261032134
+}
