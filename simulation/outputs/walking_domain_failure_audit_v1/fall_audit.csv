@@ -1,0 +1,13 @@
+run_id,terrain,forward_displacement_m,fall_occurred,first_fall_sample,first_fall_time_s,fall_reason,min_pelvis_height_m,left_contact_count,right_contact_count,sample_count
+homogeneous_marble_00,marble,0.5279021474795191,False,,,,0.7771451155981557,14,0,3000
+homogeneous_marble_01,marble,0.5279021474795191,False,,,,0.7771451155981557,14,0,3000
+homogeneous_marble_02,marble,0.5279021474795191,False,,,,0.7771451155981557,14,0,3000
+homogeneous_ice_00,ice,0.18987087607243974,False,,,,0.7100801524264418,148,0,3000
+homogeneous_ice_01,ice,0.18987087607243974,False,,,,0.7100801524264418,148,0,3000
+homogeneous_ice_02,ice,0.18987087607243974,False,,,,0.7100801524264418,148,0,3000
+homogeneous_sand_00,sand,0.4714190585082444,False,,,,0.7764970784569772,12,0,3000
+homogeneous_sand_01,sand,0.4714190585082444,False,,,,0.7764970784569772,12,0,3000
+homogeneous_sand_02,sand,0.4714190585082444,False,,,,0.7764970784569772,12,0,3000
+homogeneous_concrete_00,concrete,0.5231952951687829,False,,,,0.7770654060348169,12,0,3000
+homogeneous_concrete_01,concrete,0.5231952951687829,False,,,,0.7770654060348169,12,0,3000
+homogeneous_concrete_02,concrete,0.5231952951687829,False,,,,0.7770654060348169,12,0,3000

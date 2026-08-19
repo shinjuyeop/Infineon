@@ -1,0 +1,5 @@
+case,target,transition_fall_count,baseline_fall_count,classification
+A,ice,3,0,MIXED_UNRESOLVED
+B,sand,3,0,MIXED_UNRESOLVED
+C,marble,3,0,MIXED_UNRESOLVED
+D,marble,3,0,MIXED_UNRESOLVED

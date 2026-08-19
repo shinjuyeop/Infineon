@@ -1,0 +1,12 @@
+{
+  "frozen": true,
+  "no_retraining_or_retuning": true,
+  "phase_rule": "AIR FSR<5N; TOUCHDOWN first 10 loaded ms; LOADING next 20 ms; PUSH_OFF final 10 loaded ms; remainder MID_STANCE",
+  "adapter": "offline only: update terrain state only in loaded-contact endpoints; AIR holds last loaded state",
+  "homogeneous_terrains": [
+    "marble",
+    "ice",
+    "sand",
+    "concrete"
+  ]
+}

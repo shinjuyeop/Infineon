@@ -1,0 +1,36 @@
+{
+  "homogeneous": {
+    "marble": {
+      "runs": 3,
+      "falls": 0,
+      "forward_displacement_median": 0.5279021474795191,
+      "first_fall_time_s": null
+    },
+    "ice": {
+      "runs": 3,
+      "falls": 0,
+      "forward_displacement_median": 0.18987087607243974,
+      "first_fall_time_s": null
+    },
+    "sand": {
+      "runs": 3,
+      "falls": 0,
+      "forward_displacement_median": 0.4714190585082444,
+      "first_fall_time_s": null
+    },
+    "concrete": {
+      "runs": 3,
+      "falls": 0,
+      "forward_displacement_median": 0.5231952951687829,
+      "first_fall_time_s": null
+    }
+  },
+  "terrain_adapter_accuracy": {
+    "raw": 9,
+    "adapter": 9
+  },
+  "TERRAIN_WALKING_STATUS": "RETRAINING_RECOMMENDED",
+  "SLIP_WALKING_STATUS": "HARD_NEGATIVE_RETRAINING_RECOMMENDED",
+  "SINK_WALKING_STATUS": "HARD_NEGATIVE_RETRAINING_RECOMMENDED",
+  "WALKING_DOMAIN_FAILURE_AUDIT_READY": true
+}

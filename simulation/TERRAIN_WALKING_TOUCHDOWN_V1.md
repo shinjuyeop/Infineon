@@ -203,3 +203,24 @@ The runner intentionally records a fall separately from target-contact and
 trace validity.  Thus an OOD Ice/Sand policy failure can still supply a valid
 pre-fall target-contact diagnostic without being silently promoted to a
 physical walking pass.
+
+## Walking-domain failure audit v1
+
+`run_walking_domain_failure_audit_v1.py` is the follow-up, frozen analysis
+checkpoint.  It collects three deterministic homogeneous runs for Marble,
+Ice, Sand and Concrete, then compares them with the preserved spatial pilot.
+It records five FSR-derived phases at every 1 kHz endpoint: AIR (`FSR < 5 N`),
+the first 10 loaded ms (`TOUCHDOWN`), the next 20 ms (`LOADING`), final 10
+loaded ms (`PUSH_OFF`), and `MID_STANCE` otherwise.  The contact-valid
+Terrain adapter is an offline counterfactual only; AIR endpoints hold the
+last valid loaded terrain state and do not create a transition.
+
+```bash
+cd /d/shin/Infineon/simulation/unitree_mujoco/simulate_python
+../../venv/bin/python run_walking_domain_failure_audit_v1.py --execute \
+  --output-dir ../../outputs/walking_domain_failure_audit_v1 \
+  --runs-per-terrain 3 --duration-s 3.0 --walking-speed 0.20
+```
+
+This command is deliberately read-only with respect to all frozen model,
+normalization, threshold, persistence, physical-oracle, and System-v1 assets.

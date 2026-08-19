@@ -1,0 +1,13 @@
+run_id,raw_system_case,adapter_system_case,raw_correct,adapter_correct,raw_switches,adapter_air_samples,T0
+walking_A_00,B,B,False,False,43,2449,596
+walking_A_01,B,B,False,False,43,2449,596
+walking_A_02,B,B,False,False,43,2449,596
+walking_B_00,B,B,True,True,44,2446,596
+walking_B_01,B,B,True,True,44,2446,596
+walking_B_02,B,B,True,True,44,2446,596
+walking_C_00,C,C,True,True,37,2720,445
+walking_C_01,C,C,True,True,37,2720,445
+walking_C_02,C,C,True,True,37,2720,445
+walking_D_00,D,D,True,True,38,2444,612
+walking_D_01,D,D,True,True,38,2444,612
+walking_D_02,D,D,True,True,38,2444,612
