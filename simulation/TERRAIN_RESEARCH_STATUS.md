@@ -53,7 +53,8 @@ MUJOCO_GL=egl ../../venv/bin/python visualize_terrain_transition.py \
 ```
 
 `--speed`는 interactive viewer의 wall-clock pacing만 바꾸며 physics timestep을
-바꾸지 않는다. Regression test는 headless와 viewer-disabled path의 Fusion10,
+바꾸지 않는다. Viewer는 기본으로 최종 frame을 5초 유지하며
+`--hold-seconds 0`으로 비활성화하거나 원하는 초로 변경할 수 있다. Regression test는 headless와 viewer-disabled path의 Fusion10,
 oracle, terrain GT, T0, final qpos/qvel 및 Slip/Sink labels가 exact-match임을
 확인한다.
 

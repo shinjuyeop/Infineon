@@ -46,17 +46,19 @@ class TransitionVisualObserver:
         *,
         show_viewer: bool,
         speed: float,
+        hold_seconds: float,
         record_path: Path | None,
         record_fps: int,
         width: int,
         height: int,
     ) -> None:
-        if speed <= 0.0:
-            raise ValueError("speed must be positive")
+        if speed <= 0.0 or hold_seconds < 0.0:
+            raise ValueError("speed must be positive and hold_seconds must not be negative")
         if record_fps <= 0 or width <= 0 or height <= 0:
             raise ValueError("record fps and dimensions must be positive")
         self.show_viewer = show_viewer
         self.speed = speed
+        self.hold_seconds = hold_seconds
         self.record_path = record_path
         self.record_fps = record_fps
         self.width = width
@@ -185,6 +187,12 @@ class TransitionVisualObserver:
             if self.renderer is not None:
                 self.renderer.close()
             if self.viewer is not None:
+                if self.completed and self.hold_seconds > 0.0:
+                    print(f"Holding final frame for {self.hold_seconds:g} s; close the viewer to exit early.")
+                    deadline = time.perf_counter() + self.hold_seconds
+                    while self.viewer.is_running() and time.perf_counter() < deadline:
+                        self.viewer.sync()
+                        time.sleep(0.02)
                 self.viewer.close()
                 for thread in self.viewer_threads:
                     thread.join()
@@ -198,6 +206,7 @@ def run_visualization(
     surface_index: int | None = None,
     viewer: bool = True,
     speed: float = 1.0,
+    hold_seconds: float = 5.0,
     record_path: Path | None = None,
     record_fps: int = 30,
     width: int = 640,
@@ -213,6 +222,7 @@ def run_visualization(
     if viewer or record_path is not None:
         visual = TransitionVisualObserver(
             show_viewer=viewer, speed=speed, record_path=record_path,
+            hold_seconds=hold_seconds,
             record_fps=record_fps, width=width, height=height,
         )
         observer = visual
@@ -233,6 +243,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--viewer", dest="viewer", action="store_true", help="open the interactive MuJoCo viewer (default)")
     parser.add_argument("--no-viewer", dest="viewer", action="store_false", help="run the same visual runner without a GUI")
     parser.add_argument("--speed", type=float, default=1.0, help="viewer wall-clock playback multiplier; physics remains 2 kHz")
+    parser.add_argument("--hold-seconds", type=float, default=5.0, help="keep the final viewer frame visible after physics completes; 0 disables")
     parser.add_argument("--record", action="store_true", help="write an offscreen MP4 using ffmpeg")
     parser.add_argument("--output", type=Path, help="MP4 path; default is outputs/terrain_transition_visualization/case_<id>.mp4")
     parser.add_argument("--record-fps", type=int, default=30)
@@ -241,8 +252,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     args = parser.parse_args(argv)
     if args.run_index < 0 or args.surface_index is not None and args.surface_index < 0:
         parser.error("run and surface indices must be non-negative")
-    if args.speed <= 0.0:
-        parser.error("--speed must be positive")
+    if args.speed <= 0.0 or args.hold_seconds < 0.0:
+        parser.error("--speed must be positive and --hold-seconds must not be negative")
     if args.record_fps <= 0 or args.width <= 0 or args.height <= 0:
         parser.error("record fps and dimensions must be positive")
     if args.output is not None and not args.record:
@@ -258,6 +269,7 @@ def main(argv: list[str] | None = None) -> None:
     run = run_visualization(
         args.case, run_index=args.run_index, family=args.surface_family,
         surface_index=args.surface_index, viewer=args.viewer, speed=args.speed,
+        hold_seconds=args.hold_seconds,
         record_path=record_path, record_fps=args.record_fps, width=args.width, height=args.height,
     )
     print(

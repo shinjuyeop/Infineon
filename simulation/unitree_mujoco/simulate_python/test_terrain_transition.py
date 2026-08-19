@@ -32,12 +32,14 @@ class TerrainTransitionTest(unittest.TestCase):
             args = visualization.parse_args([
                 "--case", case_id, "--run-index", "2", "--surface-family",
                 "filtered_random", "--surface-index", "4", "--no-viewer",
+                "--hold-seconds", "0",
             ])
             self.assertEqual(args.case, case_id)
             self.assertEqual(args.run_index, 2)
             self.assertEqual(args.surface_family, "filtered_random")
             self.assertEqual(args.surface_index, 4)
             self.assertFalse(args.viewer)
+            self.assertEqual(args.hold_seconds, 0.0)
 
     def test_t0_observer_event_is_aligned_with_frozen_profile_switch(self):
         events = []
