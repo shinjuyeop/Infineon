@@ -32,6 +32,12 @@ zero device/CRC/sequence errors but a 1.605 ms median RTT and cannot meet a
 1 ms end-to-end cadence.  Thus these artifacts are retained for parity and
 transport follow-up, not marked deployment-ready.
 
+`TERRAIN_MODE=async_hil` now supplies the completed v4 runtime path.  It reuses
+Fast Reflex FRV2's 20-sample CRC batch framing as `T4B1`, returning compact
+`T4R1` per-inference raw/class/stable records and resettable counters.  Its
+frozen 12-run replay passes the separate target-runtime parity and async 1 kHz
+gates; the old synchronous TRN2 gates remain historical FAIL records.
+
 ## 1000 Hz / 50-sample fast candidate (E84/U55 fixed and Host-golden HIL verified)
 
 ## Fast Reflex v2 fixed golden preparation

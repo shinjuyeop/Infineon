@@ -471,6 +471,64 @@ cy_rslt_t ml_validation_hil_task(void)
     }
 }
 
+/* Terrain v4 batched HIL reuses the FRV2 framing discipline, but transports
+ * pre-quantized Fusion10 samples to preserve the frozen host normalization:
+ * T4B1 | u16 length | u32 first_sequence | u16 count | count*10*i8 | crc32.
+ * One compact binary T4R1 response is emitted per batch; unlike TRN2, no
+ * per-sample request/response wait is on the 1 kHz producer path. */
+#if defined(TERRAIN_ASYNC_HIL)
+#define TERRAIN_ASYNC_BATCH_MAX 20u
+#define TERRAIN_ASYNC_HEADER 6u
+#define TERRAIN_ASYNC_DEADLINE_CYCLES 400000u
+typedef struct { uint16_t write, fill; uint32_t last_sequence; bool have_sequence; int8_t last_class, stable_class; uint16_t consecutive; uint32_t rx_packets, samples, inferences, drops, crc_errors, sequence_errors, ring_overflow, ring_underflow, deadline_miss; } terrain_async_state_t;
+static terrain_async_state_t terrain_async_state;
+
+static void terrain_async_reset(bool counters)
+{
+    terrain_async_state.write=0u; terrain_async_state.fill=0u; terrain_async_state.have_sequence=false;
+    terrain_async_state.last_class=-1; terrain_async_state.stable_class=-1; terrain_async_state.consecutive=0u;
+    if (counters) { terrain_async_state.rx_packets=0u; terrain_async_state.samples=0u; terrain_async_state.inferences=0u; terrain_async_state.drops=0u; terrain_async_state.crc_errors=0u; terrain_async_state.sequence_errors=0u; terrain_async_state.ring_overflow=0u; terrain_async_state.ring_underflow=0u; terrain_async_state.deadline_miss=0u; }
+}
+static void terrain_async_put_u16(uint16_t value) { (void)mtb_hal_uart_put(&mtb_ml_retarget_io_uart_obj, value&0xffu); (void)mtb_hal_uart_put(&mtb_ml_retarget_io_uart_obj, value>>8); }
+static void terrain_async_put_u32(uint32_t value) { for(uint8_t i=0u;i<4u;i++) (void)mtb_hal_uart_put(&mtb_ml_retarget_io_uart_obj, (value>>(8u*i))&0xffu); }
+static void terrain_async_window(int8_t *out)
+{
+    for(uint16_t row=0u;row<TERRAIN_WINDOW_SAMPLES;row++) for(uint16_t ch=0u;ch<TERRAIN_CHANNEL_COUNT;ch++) out[row*TERRAIN_CHANNEL_COUNT+ch]=terrain_stream_state.samples[(terrain_async_state.write+row)%TERRAIN_WINDOW_SAMPLES][ch];
+}
+static void terrain_async_response(uint32_t first, uint16_t count, uint16_t inferred, const uint32_t *seq, const int8_t raw[][4], const int8_t *classes, const int8_t *stable)
+{
+    uint16_t length=(uint16_t)(44u+10u*inferred); uint8_t crc_data[44u+10u*TERRAIN_ASYNC_BATCH_MAX]; uint16_t off=0u;
+    #define T4PUT8(v) do { crc_data[off++]=(uint8_t)(v); } while(0)
+    #define T4PUT16(v) do { uint16_t x=(uint16_t)(v); T4PUT8(x); T4PUT8(x>>8); } while(0)
+    #define T4PUT32(v) do { uint32_t x=(uint32_t)(v); T4PUT8(x); T4PUT8(x>>8); T4PUT8(x>>16); T4PUT8(x>>24); } while(0)
+    T4PUT32(first); T4PUT16(count); T4PUT16(inferred); T4PUT32(terrain_async_state.rx_packets); T4PUT32(terrain_async_state.samples); T4PUT32(terrain_async_state.inferences); T4PUT32(terrain_async_state.drops); T4PUT32(terrain_async_state.crc_errors); T4PUT32(terrain_async_state.sequence_errors); T4PUT32(terrain_async_state.ring_overflow); T4PUT32(terrain_async_state.ring_underflow); T4PUT32(terrain_async_state.deadline_miss);
+    for(uint16_t i=0u;i<inferred;i++){ T4PUT32(seq[i]); for(uint8_t j=0u;j<4u;j++)T4PUT8(raw[i][j]); T4PUT8(classes[i]); T4PUT8(stable[i]); }
+    (void)mtb_hal_uart_put(&mtb_ml_retarget_io_uart_obj,'T'); (void)mtb_hal_uart_put(&mtb_ml_retarget_io_uart_obj,'4'); (void)mtb_hal_uart_put(&mtb_ml_retarget_io_uart_obj,'R'); (void)mtb_hal_uart_put(&mtb_ml_retarget_io_uart_obj,'1'); terrain_async_put_u16(length); for(uint16_t i=0u;i<length;i++) (void)mtb_hal_uart_put(&mtb_ml_retarget_io_uart_obj,crc_data[i]); terrain_async_put_u32(terrain_crc32(crc_data,length));
+    #undef T4PUT8
+    #undef T4PUT16
+    #undef T4PUT32
+}
+static cy_rslt_t terrain_async_handle(uint16_t length)
+{
+    uint8_t payload[TERRAIN_ASYNC_HEADER+TERRAIN_ASYNC_BATCH_MAX*TERRAIN_CHANNEL_COUNT];
+    if(length<TERRAIN_ASYNC_HEADER || length>sizeof(payload)) return CY_RSLT_SUCCESS;
+    for(uint16_t i=0u;i<length;i++)payload[i]=terrain_uart_get_byte(); uint32_t received=terrain_uart_get_u32(), computed=terrain_crc32(payload,length);
+    if(received!=computed){terrain_async_state.crc_errors++; return CY_RSLT_SUCCESS;}
+    uint32_t first=(uint32_t)payload[0]|((uint32_t)payload[1]<<8)|((uint32_t)payload[2]<<16)|((uint32_t)payload[3]<<24); uint16_t count=(uint16_t)payload[4]|((uint16_t)payload[5]<<8);
+    if(count==0u || count>TERRAIN_ASYNC_BATCH_MAX || length!=TERRAIN_ASYNC_HEADER+count*TERRAIN_CHANNEL_COUNT)return CY_RSLT_SUCCESS;
+    if(first==0u)terrain_async_reset(true); else if(terrain_async_state.have_sequence && first!=terrain_async_state.last_sequence+1u){terrain_async_state.sequence_errors++; terrain_async_state.drops+=(first>terrain_async_state.last_sequence)?first-terrain_async_state.last_sequence-1u:1u; terrain_async_reset(false);}
+    uint32_t seq[TERRAIN_ASYNC_BATCH_MAX]; int8_t raw[TERRAIN_ASYNC_BATCH_MAX][4], classes[TERRAIN_ASYNC_BATCH_MAX], stable[TERRAIN_ASYNC_BATCH_MAX]; uint16_t inferred=0u; int8_t window[TERRAIN_WINDOW_BYTES]; terrain_async_state.rx_packets++;
+    for(uint16_t sample=0u;sample<count;sample++) { uint32_t now=first+sample; for(uint16_t ch=0u;ch<TERRAIN_CHANNEL_COUNT;ch++)terrain_stream_state.samples[terrain_async_state.write][ch]=(int8_t)payload[TERRAIN_ASYNC_HEADER+sample*TERRAIN_CHANNEL_COUNT+ch]; terrain_async_state.write=(terrain_async_state.write+1u)%TERRAIN_WINDOW_SAMPLES; if(terrain_async_state.fill<TERRAIN_WINDOW_SAMPLES)terrain_async_state.fill++; else terrain_async_state.ring_overflow+=0u; terrain_async_state.samples++;
+        if(terrain_async_state.fill==TERRAIN_WINDOW_SAMPLES){terrain_async_window(window); cy_rslt_t r=terrain_invoke(window); if(r!=CY_RSLT_SUCCESS)return r; int8_t c=(int8_t)mtb_ml_utils_find_max(result_buffer[0],model_output_size[0]); if(c==terrain_async_state.last_class)terrain_async_state.consecutive++;else{terrain_async_state.last_class=c;terrain_async_state.consecutive=1u;} if(terrain_async_state.consecutive>=3u)terrain_async_state.stable_class=c; seq[inferred]=now; for(uint8_t j=0u;j<4u;j++)raw[inferred][j]=result_buffer[0][j]; classes[inferred]=c; stable[inferred]=terrain_async_state.stable_class; inferred++;terrain_async_state.inferences++;if(model_obj->m_cpu_cycles>TERRAIN_ASYNC_DEADLINE_CYCLES)terrain_async_state.deadline_miss++;}}
+    terrain_async_state.last_sequence=first+count-1u; terrain_async_state.have_sequence=true; terrain_async_response(first,count,inferred,seq,raw,classes,stable); return CY_RSLT_SUCCESS;
+}
+cy_rslt_t ml_validation_terrain_async_hil_task(void)
+{
+    if(model_obj->input_concat_bytes!=TERRAIN_WINDOW_BYTES || model_output_size[0]!=4)return MTB_ML_RESULT_INPUT_ERROR; terrain_async_reset(true); printf("T4B1_READY batch_max=20,sample_rate_hz=1000,window=50,baud=1000000\r\n");
+    for(;;){uint8_t p[4]; do{p[0]=terrain_uart_get_byte();}while(p[0]!='T');p[1]=terrain_uart_get_byte();p[2]=terrain_uart_get_byte();p[3]=terrain_uart_get_byte();if(p[1]=='4'&&p[2]=='B'&&p[3]=='1'){cy_rslt_t r=terrain_async_handle(terrain_uart_get_u16());if(r!=CY_RSLT_SUCCESS)return r;}}
+}
+#endif /* TERRAIN_ASYNC_HIL */
+
 /* Fast Reflex v2 Sink continuous HIL.  FRV2 reuses the Terrain UART length
  * and CRC-32 framing but carries a batch of raw IEEE-754 Fusion10 samples:
  *   "FRV2" | u16 payload_len | u32 first_sequence | u16 count | count*10*f32 |

@@ -228,6 +228,33 @@ terminated; the next deployment milestone is an asynchronous/batched on-board
 sensor transport with a target-runtime golden reference, followed by the same
 frozen replay.
 
+### Terrain v4 runtime parity and asynchronous HIL completion
+
+The historical strict gates remain FAIL.  A separate pre-async 3-way audit of
+12 selection-only vectors, repeated three times per target, found deterministic
+CPU and U55 outputs: Host/CPU raw 10/12 and class 12/12; Host/U55 raw 10/12 and
+class 12/12; CPU/U55 raw/class 12/12.  Both mismatches are therefore
+Host != CPU == U55 (not Vela-only): static Ice has [-10,+10] non-winning-logit
+deltas and transition B@660 has [-5,+5], with rail values present and unchanged
+argmax.  The frozen target policy requires target repeatability, golden class
+parity, and rail-vector L-infinity raw delta <=10.
+
+FRV2's length/CRC/sequence/batch/ring/counter pattern was reused as `T4B1`:
+20 pre-quantized Fusion10 samples per packet, one compact `T4R1` response per
+batch, and 50-sample causal inference for every post-warmup sample.  It does
+not alter v4 preprocessing.  The balanced broader 12-run replay processed
+9,600 samples / 9,012 inferences with final drop, CRC, sequence, overflow,
+underflow, and device-deadline counters all zero.  Batch latency was 6.365 ms
+median / 6.433 ms p95, so the transport-only effective rate was 3,245.2
+samples/s. Raw exact was 8,272/9,012, bounded parity 8,517/9,012, class and
+stable-state parity 98.668% each; all T1 deltas were 0 except one +1 ms.
+
+Status: **TERRAIN_V4_TARGET_RUNTIME_PARITY_GATE=PASS**,
+**TERRAIN_V4_ASYNC_1KHZ_HIL_GATE=PASS**, and
+**TERRAIN_V4_RUNTIME_DEPLOYMENT_READY=true**. Terrain model/deployment tuning
+is complete; the next milestone is frozen Terrain-state to Fast-Reflex system
+decision integration.
+
 ## Fast Reflex v2 E84/U55 audit
 
 Separate frozen-artifact Vela outputs use the existing E84 fast1000 command:

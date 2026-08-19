@@ -53,7 +53,7 @@
 * Macros
 *******************************************************************************/
 /* Default UART baudrate */
-#if defined(TERRAIN_HIL) || defined(FAST_REFLEX_SINK_HIL) || defined(FAST_REFLEX_SLIP_HIL)
+#if defined(TERRAIN_HIL) || defined(TERRAIN_ASYNC_HIL) || defined(FAST_REFLEX_SINK_HIL) || defined(FAST_REFLEX_SLIP_HIL)
     #define UART_DEFAULT_STREAM_BAUD_RATE   (1000000u)
 #elif USE_STREAM_DATA
     #define UART_DEFAULT_STREAM_BAUD_RATE   (1000000u)
@@ -150,6 +150,8 @@ static void cm55_ml_profiler_task(void * arg)
     {
 #if defined(TERRAIN_HIL)
         result = ml_validation_hil_task();
+#elif defined(TERRAIN_ASYNC_HIL)
+        result = ml_validation_terrain_async_hil_task();
 #elif defined(FAST_REFLEX_SINK_HIL) || defined(FAST_REFLEX_SLIP_HIL)
         result = ml_validation_fast_reflex_sink_hil_task();
 #elif USE_STREAM_DATA

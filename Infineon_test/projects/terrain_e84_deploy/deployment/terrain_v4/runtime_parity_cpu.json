@@ -1,0 +1,633 @@
+{
+  "runtime": "cpu",
+  "repeats": 3,
+  "rows": [
+    {
+      "vector_id": "static_0",
+      "host_raw": [
+        67,
+        -69,
+        -126,
+        -128
+      ],
+      "host_class": 0,
+      "target_raw": [
+        67,
+        -69,
+        -126,
+        -128
+      ],
+      "target_class": 0,
+      "repeatability_exact": true,
+      "repeat_raw": [
+        [
+          67,
+          -69,
+          -126,
+          -128
+        ],
+        [
+          67,
+          -69,
+          -126,
+          -128
+        ],
+        [
+          67,
+          -69,
+          -126,
+          -128
+        ]
+      ],
+      "repeat_classes": [
+        0,
+        0,
+        0
+      ],
+      "host_target_delta": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "saturated": true,
+      "winner_saturated": false,
+      "argmax_margin": 136
+    },
+    {
+      "vector_id": "static_1",
+      "host_raw": [
+        -128,
+        124,
+        -124,
+        -128
+      ],
+      "host_class": 1,
+      "target_raw": [
+        -128,
+        124,
+        -124,
+        -128
+      ],
+      "target_class": 1,
+      "repeatability_exact": true,
+      "repeat_raw": [
+        [
+          -128,
+          124,
+          -124,
+          -128
+        ],
+        [
+          -128,
+          124,
+          -124,
+          -128
+        ],
+        [
+          -128,
+          124,
+          -124,
+          -128
+        ]
+      ],
+      "repeat_classes": [
+        1,
+        1,
+        1
+      ],
+      "host_target_delta": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "saturated": true,
+      "winner_saturated": false,
+      "argmax_margin": 248
+    },
+    {
+      "vector_id": "static_2",
+      "host_raw": [
+        -128,
+        -106,
+        106,
+        -128
+      ],
+      "host_class": 2,
+      "target_raw": [
+        -128,
+        -116,
+        116,
+        -128
+      ],
+      "target_class": 2,
+      "repeatability_exact": true,
+      "repeat_raw": [
+        [
+          -128,
+          -116,
+          116,
+          -128
+        ],
+        [
+          -128,
+          -116,
+          116,
+          -128
+        ],
+        [
+          -128,
+          -116,
+          116,
+          -128
+        ]
+      ],
+      "repeat_classes": [
+        2,
+        2,
+        2
+      ],
+      "host_target_delta": [
+        0,
+        -10,
+        10,
+        0
+      ],
+      "saturated": true,
+      "winner_saturated": false,
+      "argmax_margin": 212
+    },
+    {
+      "vector_id": "static_3",
+      "host_raw": [
+        -128,
+        -128,
+        -128,
+        127
+      ],
+      "host_class": 3,
+      "target_raw": [
+        -128,
+        -128,
+        -128,
+        127
+      ],
+      "target_class": 3,
+      "repeatability_exact": true,
+      "repeat_raw": [
+        [
+          -128,
+          -128,
+          -128,
+          127
+        ],
+        [
+          -128,
+          -128,
+          -128,
+          127
+        ],
+        [
+          -128,
+          -128,
+          -128,
+          127
+        ]
+      ],
+      "repeat_classes": [
+        3,
+        3,
+        3
+      ],
+      "host_target_delta": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "saturated": true,
+      "winner_saturated": true,
+      "argmax_margin": 255
+    },
+    {
+      "vector_id": "transition_A_649",
+      "host_raw": [
+        -127,
+        -93,
+        -117,
+        82
+      ],
+      "host_class": 3,
+      "target_raw": [
+        -127,
+        -93,
+        -117,
+        82
+      ],
+      "target_class": 3,
+      "repeatability_exact": true,
+      "repeat_raw": [
+        [
+          -127,
+          -93,
+          -117,
+          82
+        ],
+        [
+          -127,
+          -93,
+          -117,
+          82
+        ],
+        [
+          -127,
+          -93,
+          -117,
+          82
+        ]
+      ],
+      "repeat_classes": [
+        3,
+        3,
+        3
+      ],
+      "host_target_delta": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "saturated": true,
+      "winner_saturated": false,
+      "argmax_margin": 175
+    },
+    {
+      "vector_id": "transition_A_660",
+      "host_raw": [
+        -127,
+        -73,
+        -111,
+        55
+      ],
+      "host_class": 3,
+      "target_raw": [
+        -127,
+        -73,
+        -111,
+        55
+      ],
+      "target_class": 3,
+      "repeatability_exact": true,
+      "repeat_raw": [
+        [
+          -127,
+          -73,
+          -111,
+          55
+        ],
+        [
+          -127,
+          -73,
+          -111,
+          55
+        ],
+        [
+          -127,
+          -73,
+          -111,
+          55
+        ]
+      ],
+      "repeat_classes": [
+        3,
+        3,
+        3
+      ],
+      "host_target_delta": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "saturated": true,
+      "winner_saturated": false,
+      "argmax_margin": 128
+    },
+    {
+      "vector_id": "transition_B_649",
+      "host_raw": [
+        -127,
+        -93,
+        -117,
+        82
+      ],
+      "host_class": 3,
+      "target_raw": [
+        -127,
+        -93,
+        -117,
+        82
+      ],
+      "target_class": 3,
+      "repeatability_exact": true,
+      "repeat_raw": [
+        [
+          -127,
+          -93,
+          -117,
+          82
+        ],
+        [
+          -127,
+          -93,
+          -117,
+          82
+        ],
+        [
+          -127,
+          -93,
+          -117,
+          82
+        ]
+      ],
+      "repeat_classes": [
+        3,
+        3,
+        3
+      ],
+      "host_target_delta": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "saturated": true,
+      "winner_saturated": false,
+      "argmax_margin": 175
+    },
+    {
+      "vector_id": "transition_B_660",
+      "host_raw": [
+        -128,
+        -121,
+        -127,
+        120
+      ],
+      "host_class": 3,
+      "target_raw": [
+        -128,
+        -126,
+        -127,
+        125
+      ],
+      "target_class": 3,
+      "repeatability_exact": true,
+      "repeat_raw": [
+        [
+          -128,
+          -126,
+          -127,
+          125
+        ],
+        [
+          -128,
+          -126,
+          -127,
+          125
+        ],
+        [
+          -128,
+          -126,
+          -127,
+          125
+        ]
+      ],
+      "repeat_classes": [
+        3,
+        3,
+        3
+      ],
+      "host_target_delta": [
+        0,
+        -5,
+        0,
+        5
+      ],
+      "saturated": true,
+      "winner_saturated": false,
+      "argmax_margin": 241
+    },
+    {
+      "vector_id": "transition_C_649",
+      "host_raw": [
+        -128,
+        34,
+        -39,
+        -123
+      ],
+      "host_class": 1,
+      "target_raw": [
+        -128,
+        34,
+        -39,
+        -123
+      ],
+      "target_class": 1,
+      "repeatability_exact": true,
+      "repeat_raw": [
+        [
+          -128,
+          34,
+          -39,
+          -123
+        ],
+        [
+          -128,
+          34,
+          -39,
+          -123
+        ],
+        [
+          -128,
+          34,
+          -39,
+          -123
+        ]
+      ],
+      "repeat_classes": [
+        1,
+        1,
+        1
+      ],
+      "host_target_delta": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "saturated": true,
+      "winner_saturated": false,
+      "argmax_margin": 73
+    },
+    {
+      "vector_id": "transition_C_660",
+      "host_raw": [
+        -128,
+        28,
+        -42,
+        -114
+      ],
+      "host_class": 1,
+      "target_raw": [
+        -128,
+        28,
+        -42,
+        -114
+      ],
+      "target_class": 1,
+      "repeatability_exact": true,
+      "repeat_raw": [
+        [
+          -128,
+          28,
+          -42,
+          -114
+        ],
+        [
+          -128,
+          28,
+          -42,
+          -114
+        ],
+        [
+          -128,
+          28,
+          -42,
+          -114
+        ]
+      ],
+      "repeat_classes": [
+        1,
+        1,
+        1
+      ],
+      "host_target_delta": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "saturated": true,
+      "winner_saturated": false,
+      "argmax_margin": 70
+    },
+    {
+      "vector_id": "transition_D_649",
+      "host_raw": [
+        -128,
+        -80,
+        -80,
+        31
+      ],
+      "host_class": 3,
+      "target_raw": [
+        -128,
+        -80,
+        -80,
+        31
+      ],
+      "target_class": 3,
+      "repeatability_exact": true,
+      "repeat_raw": [
+        [
+          -128,
+          -80,
+          -80,
+          31
+        ],
+        [
+          -128,
+          -80,
+          -80,
+          31
+        ],
+        [
+          -128,
+          -80,
+          -80,
+          31
+        ]
+      ],
+      "repeat_classes": [
+        3,
+        3,
+        3
+      ],
+      "host_target_delta": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "saturated": true,
+      "winner_saturated": false,
+      "argmax_margin": 111
+    },
+    {
+      "vector_id": "transition_D_660",
+      "host_raw": [
+        -128,
+        126,
+        -126,
+        -128
+      ],
+      "host_class": 1,
+      "target_raw": [
+        -128,
+        126,
+        -126,
+        -128
+      ],
+      "target_class": 1,
+      "repeatability_exact": true,
+      "repeat_raw": [
+        [
+          -128,
+          126,
+          -126,
+          -128
+        ],
+        [
+          -128,
+          126,
+          -126,
+          -128
+        ],
+        [
+          -128,
+          126,
+          -126,
+          -128
+        ]
+      ],
+      "repeat_classes": [
+        1,
+        1,
+        1
+      ],
+      "host_target_delta": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "saturated": true,
+      "winner_saturated": true,
+      "argmax_margin": 252
+    }
+  ],
+  "raw_exact": 10,
+  "class_exact": 12,
+  "repeatability_exact": true
+}

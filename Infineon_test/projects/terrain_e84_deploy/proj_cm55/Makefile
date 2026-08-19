@@ -55,6 +55,7 @@ NN_MODEL_NAME=TERRAIN_CPU
 
 # fixed: run the generated test-partition tensor once at boot
 # hil:   receive TRN1 full windows or TRN2 INT8 samples over KitProg3 UART
+# async_hil: batched FRV2-style INT8 Fusion10 Terrain v4 HIL
 # frv2_sink_hil: receive asynchronous/batched raw Fusion10 replay for Sink v2
 TERRAIN_MODE?=fixed
 ifneq (,$(findstring FAST_REFLEX_,$(NN_MODEL_NAME)))
@@ -68,6 +69,9 @@ DEFINES+=FAST_REFLEX_THRESHOLD_RAW=124
 endif
 ifeq (hil, $(TERRAIN_MODE))
 DEFINES+=TERRAIN_HIL
+endif
+ifeq (async_hil, $(TERRAIN_MODE))
+DEFINES+=TERRAIN_ASYNC_HIL
 endif
 ifeq (frv2_sink_hil, $(TERRAIN_MODE))
 DEFINES+=FAST_REFLEX_SINK_HIL
