@@ -12,6 +12,7 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 import time
+from typing import Callable, Literal
 
 import mujoco
 import numpy as np
@@ -58,6 +59,27 @@ class Run:
     oracle: np.ndarray
     terrain_gt: np.ndarray
     state: dict[str, float]
+    final_qpos: np.ndarray
+    final_qvel: np.ndarray
+
+
+@dataclass(frozen=True)
+class TransitionObserverFrame:
+    """Read-only simulation state delivered to optional visual observers.
+
+    Observers may render or sleep, but must not change ``model`` or ``data``.
+    The core calls them after initialization, immediately after the frozen T0
+    profile switch, after each physics step, and once when the run finishes.
+    """
+
+    phase: Literal["initialize", "transition", "step", "finish"]
+    case_id: str
+    terrain: str
+    physics_steps: int
+    transitioned: bool
+
+
+TransitionObserver = Callable[[mujoco.MjModel, mujoco.MjData, TransitionObserverFrame], None]
 
 
 def _sustained(mask: np.ndarray, samples: int) -> np.ndarray:
@@ -85,7 +107,20 @@ def label(oracle: np.ndarray, transition_sample: int) -> dict[str, np.ndarray]:
             "confirmed_slip": confirmed, "sustained_sink": sink, "sustained_tilt": tilt}
 
 
-def run_one(case_id: str, run_index: int, family: str = "multisine", surface_index: int | None = None) -> Run:
+def run_one(
+    case_id: str,
+    run_index: int,
+    family: str = "multisine",
+    surface_index: int | None = None,
+    observer: TransitionObserver | None = None,
+) -> Run:
+    """Run one frozen transition trace, optionally notifying a visual observer.
+
+    ``observer`` is deliberately observational: it receives the exact model and
+    data used by headless generation but never changes the physics path.  This
+    keeps viewer and recorder execution bit-for-bit comparable with headless
+    runs when the observer is disabled.
+    """
     case = CASES[case_id]
     model = mujoco.MjModel.from_xml_path(str(SCENES["front_rear"]))
     model.opt.timestep = PHYSICS_TIMESTEP_S
@@ -105,6 +140,8 @@ def run_one(case_id: str, run_index: int, family: str = "multisine", surface_ind
     body = model.body("left_ankle_roll_link").id; velocity = np.zeros(6); wrench = np.zeros(6)
     times: list[float] = []; sensors: list[np.ndarray] = []; raw: list[tuple[float, ...]] = []
     switched = False; transition_sample = -1; state: dict[str, float] = {}; steps = 0; start = time.perf_counter()
+    if observer is not None:
+        observer(model, data, TransitionObserverFrame("initialize", case_id, case["before"], steps, False))
     while data.time + 1e-12 < DURATION_S:
         if not switched and data.time >= TRANSITION_TIME_S - 1e-12:
             # mj_step advances qpos before returning; refresh derived body
@@ -123,11 +160,15 @@ def run_one(case_id: str, run_index: int, family: str = "multisine", surface_ind
                 "foot_velocity_abs_delta_mps": abs(float(np.linalg.norm(velocity)) - before_speed),
                 "contact_count_before": float(before_contacts), "contact_count_after_forward": float(data.ncon)}
             switched = True
+            if observer is not None:
+                observer(model, data, TransitionObserverFrame("transition", case_id, case["after"], steps, True))
         support.apply(); exciter.apply(float(data.time));
         # Reuses the v2 bounded vertical load mechanism; it changes no labels.
         class Config: vertical_force_N = float(case["vertical_force_N"]); force_duration_s = .100
         _apply_vertical_pulse(data, exciter.body_id, float(data.time), Config())
         mujoco.mj_step(model, data); steps += 1
+        if observer is not None:
+            observer(model, data, TransitionObserverFrame("step", case_id, case["after"] if switched else case["before"], steps, switched))
         if steps % PHYSICS_STEPS_PER_SAMPLE == 0:
             times.append(float(data.time)); sensors.append(reader.read_vector())
             raw.append(_foot_oracle(model, data, ground_ids, foot_ids, body, velocity, wrench))
@@ -145,7 +186,13 @@ def run_one(case_id: str, run_index: int, family: str = "multisine", surface_ind
         "transition_type": "temporal_contact_profile_switch", "horizontal_force_N": case["horizontal_force_N"],
         "vertical_force_N": case["vertical_force_N"], "wall_time_s": time.perf_counter() - start}
     terrain = np.where(np.arange(len(times)) < transition_sample, case["before"], case["after"])
-    return Run(metadata, np.asarray(times), np.asarray(sensors), oracle, terrain, state)
+    run = Run(
+        metadata, np.asarray(times), np.asarray(sensors), oracle, terrain, state,
+        data.qpos.copy(), data.qvel.copy(),
+    )
+    if observer is not None:
+        observer(model, data, TransitionObserverFrame("finish", case_id, case["after"], steps, True))
+    return run
 
 
 def onset_ms(mask: np.ndarray, transition_sample: int) -> float | None:

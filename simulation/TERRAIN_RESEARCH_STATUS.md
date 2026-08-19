@@ -21,6 +21,42 @@ frozen v4 요약을 사용한다.
 세부 수치, hash, reservation과 limitation은 아래 Terrain v4 및 system sections에
 기록한다.
 
+## Transition 3D visualization
+
+Frozen Terrain Transition v1 physics를 직접 확인하는 visual-only runner는
+`simulation/unitree_mujoco/simulate_python/visualize_terrain_transition.py`다.
+이 runner는 authoritative `run_terrain_transition.run_one()`을 그대로 호출한다.
+따라서 2 kHz physics, 1 kHz Fusion10 sampling, T0=650 ms contact-profile
+switch, excitation, qpos/qvel continuity를 변경하지 않는다.
+
+```bash
+cd simulation/unitree_mujoco/simulate_python
+../../venv/bin/python visualize_terrain_transition.py --case A
+../../venv/bin/python visualize_terrain_transition.py --case B --speed 0.5
+../../venv/bin/python visualize_terrain_transition.py --case C --speed 0.25
+../../venv/bin/python visualize_terrain_transition.py --case D
+```
+
+`--run-index`, `--surface-family`, `--surface-index`로 deterministic existing
+realization을 지정할 수 있다. Viewer의 terminal status는 case, simulation time,
+source/target terrain 및 T0를 출력하고, floor RGBA는 Marble/ice/sand/concrete를
+visual-only 색으로 즉시 전환한다. GUI 없이 동일 path를 실행하려면
+`--no-viewer`를 사용한다.
+
+Offscreen MP4 recording은 EGL/OSMesa-capable MuJoCo renderer와 `ffmpeg`가 있을
+때 다음처럼 쓴다. 생성 output은 gitignored다.
+
+```bash
+MUJOCO_GL=egl ../../venv/bin/python visualize_terrain_transition.py \
+  --case A --no-viewer --record \
+  --output ../../outputs/terrain_transition_visualization/case_a.mp4
+```
+
+`--speed`는 interactive viewer의 wall-clock pacing만 바꾸며 physics timestep을
+바꾸지 않는다. Regression test는 headless와 viewer-disabled path의 Fusion10,
+oracle, terrain GT, T0, final qpos/qvel 및 Slip/Sink labels가 exact-match임을
+확인한다.
+
 ## Terrain Transition v1 pilot
 
 상태: **TERRAIN_TRANSITION_V1_PILOT_READY=true**. Fast Reflex v2의 frozen
