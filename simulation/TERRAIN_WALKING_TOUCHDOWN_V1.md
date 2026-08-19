@@ -170,3 +170,36 @@ native_sampling=1000Hz physics=2000Hz steps_per_sample=2 timestamp_spacing=1ms
 실행 뒤 `summary.txt`, `protocol.json`, `runs.csv`, `manifest.csv`와 마지막
 console log를 다음 검토에 전달한다. Full generation 결과를 검토하기 전에는
 CNN/INT8/E84 단계를 시작하지 않는다.
+
+## Spatial Terrain Transition v1 pilot
+
+`run_walking_terrain_transition_v1.py` is a separate, read-only frozen-model
+walking evaluation.  It reuses `UnitreeG1PretrainedController` unchanged and
+uses two adjacent box grounds, whose source/target material profiles are set
+once before simulation begins.  No temporal material switch is used.
+
+The fixed seam is `x=0.25 m`, selected from the existing 0.20 m/s policy's
+observed left-foot touchdown path.  The monitored left foot is expected to
+make its first target touchdown after crossing that seam. `T_BOUNDARY_CROSS`
+is the first target-ground sole-contact point (not the ankle-origin) crossing
+sample, `T_TOUCHDOWN` is its first target contact,
+and authoritative `T0` is the first target-dominant contact whose left FSR
+sum is at least 5 N.  Per-sample source and target normal-force contributions
+are retained, so simultaneous/mixed boundary contact remains auditable.
+
+The following command produces 12 deterministic pilot traces (A/B/C/D times
+three), their physical/oracle diagnostics, frozen Terrain v4 / Fast Reflex v2
+/ System v1 replay, and representative plots.  It does not train or tune any
+model, threshold, persistence, or control response.
+
+```bash
+cd /d/shin/Infineon/simulation/unitree_mujoco/simulate_python
+../../venv/bin/python run_walking_terrain_transition_v1.py --execute \
+  --output-dir ../../outputs/walking_terrain_transition_v1_pilot \
+  --runs-per-case 3 --duration-s 3.0 --walking-speed 0.20
+```
+
+The runner intentionally records a fall separately from target-contact and
+trace validity.  Thus an OOD Ice/Sand policy failure can still supply a valid
+pre-fall target-contact diagnostic without being silently promoted to a
+physical walking pass.

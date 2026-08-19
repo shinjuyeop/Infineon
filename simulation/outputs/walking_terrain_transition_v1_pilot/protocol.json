@@ -1,0 +1,40 @@
+{
+  "dataset": "walking_terrain_transition_v1",
+  "spatial_materials_fixed_at_simulation_start": true,
+  "boundary_x_m": 0.25,
+  "T_BOUNDARY_CROSS": "first monitored sole target-ground contact; uses contact point rather than ankle origin",
+  "T0": "first monitored left-foot target-dominant valid loaded contact (FSR sum >= 5 N)",
+  "air_semantics": "System receives no new stable terrain until post-T0 three-endpoint target prediction",
+  "controller": "existing Unitree G1 29-DOF ONNX wrapper; observation/action/control period unchanged",
+  "cases": {
+    "A": [
+      "marble",
+      "ice"
+    ],
+    "B": [
+      "marble",
+      "sand"
+    ],
+    "C": [
+      "ice",
+      "marble"
+    ],
+    "D": [
+      "sand",
+      "marble"
+    ]
+  },
+  "rate_hz": 1000,
+  "fusion10": [
+    "foot_force_1",
+    "foot_force_2",
+    "foot_force_3",
+    "foot_force_4",
+    "accel_x",
+    "accel_y",
+    "accel_z",
+    "gyro_x",
+    "gyro_y",
+    "gyro_z"
+  ]
+}
