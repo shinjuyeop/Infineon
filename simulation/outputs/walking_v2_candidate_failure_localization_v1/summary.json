@@ -1,0 +1,132 @@
+{
+  "artifact": "walking_v2_candidate_failure_localization_v1",
+  "candidate_readiness_remains_false": true,
+  "correctness_fix_applied": true,
+  "holdout_runs": 0,
+  "new_runs": 0,
+  "next_step": "JOINT_TERRAIN_SLIP_REDESIGN",
+  "outer_content_load_count": 1,
+  "outer_content_used_by_audit": false,
+  "production_system_int8_changed": false,
+  "readiness": {
+    "WALKING_INT8_PREPARATION_AUTHORIZED": false,
+    "WALKING_SYSTEM_V2_MIGRATION_AUTHORIZED": false,
+    "WALKING_V2_CORRECTED_RERUN_AUTHORIZED": false,
+    "WALKING_V2_CORRECTNESS_FIX_READY": true,
+    "WALKING_V2_FAILURE_AUDIT_DATA_READY": true,
+    "WALKING_V2_FAILURE_AUDIT_PROVENANCE_READY": false,
+    "WALKING_V2_HOLDOUT_AUTHORIZED": false,
+    "WALKING_V2_SLIP_FLOAT_CANDIDATE_READY": false,
+    "WALKING_V2_SLIP_REDESIGN_AUTHORIZED": true,
+    "WALKING_V2_SLIP_ROOT_CAUSE_LOCALIZED": true,
+    "WALKING_V2_SLIP_TRACE_REPLAY_READY": true,
+    "WALKING_V2_SLIP_VIOLATIONS_RECONCILED": true,
+    "WALKING_V2_TERRAIN_FLOAT_CANDIDATE_READY": false,
+    "WALKING_V2_TERRAIN_REDESIGN_AUTHORIZED": true,
+    "WALKING_V2_TERRAIN_REFERENCE_REPRODUCED": true,
+    "WALKING_V2_TERRAIN_ROOT_CAUSE_LOCALIZED": true
+  },
+  "slip": {
+    "invalid_exact_meaning": "53 positive endpoint-foot state samples after the first-fall boundary; not 53 episodes or all positive events",
+    "legacy_invalid_count": 53,
+    "primary_cause": "SLIP_RAW_SCORE_TIMING_SEPARABILITY_FAILURE",
+    "r0_actionable_detected": 17,
+    "r0_actionable_total": 68,
+    "r0_physical_detected": 17,
+    "r0_physical_total": 69,
+    "r0_run_coverage": 1.0,
+    "r4_evaluable_invalid": 0,
+    "r4_first_actionable_recall": 0.22058823529411764,
+    "r4_physical_episode_recall": 0.21739130434782608,
+    "r4_post_fall_state_outputs_reported_separately": 53,
+    "r4_too_early": 40,
+    "secondary_causes": [
+      "SLIP_POSTFALL_MASK_ACCOUNTING_BUG",
+      "SLIP_UNOWNED_EARLY_STATE_DETECTION_ATTRIBUTION_BUG"
+    ],
+    "too_early_classification": {
+      "genuinely_over_100ms_before_next_independent_physical_episode": 40
+    },
+    "too_early_count": 40,
+    "variant_invariants": {
+      "invalid_rows": 53,
+      "model_signature": "ac021ae2958721f12432a52a844e867b607397845aece9bd4b9f44a1ee743206",
+      "too_early_rows": 40,
+      "trace_rows": 27936,
+      "variant_hysteresis_count": 1,
+      "variant_model_sha_count": 1,
+      "variant_persistence_count": 1,
+      "variant_threshold_count": 1
+    }
+  },
+  "starting_checkpoint": "679a4c52693f403cc3b262a7f13070fe7a494b7b",
+  "terrain": {
+    "balancing_applied": true,
+    "population_summary": {
+      "both": 15023,
+      "diagnostic_duplicates": 0,
+      "diagnostic_only": 322,
+      "foot_mismatch": 0,
+      "label_mismatch": 0,
+      "mask_mismatch": 1404,
+      "missing": 10895,
+      "phase_mismatch": 0,
+      "t2_duplicates": 0,
+      "t2_only": 2176,
+      "timestamp_mismatch": 0,
+      "window_mismatch": 26976
+    },
+    "primary_cause": "TERRAIN_MODEL_UNDERCAPACITY",
+    "reference_reproduced": true,
+    "replayed_accuracy": 0.9456500488758554,
+    "replayed_macro_recall": 0.9094796501531782,
+    "secondary_causes": [
+      "TERRAIN_DIAGNOSTIC_METRIC_NOT_COMPARABLE",
+      "TERRAIN_POPULATION_MISMATCH"
+    ],
+    "shadow_matrix": {
+      "A": {
+        "accuracy": 0.9456500488758554,
+        "class_recalls": "{\"concrete\": 0.8720173535791758, \"ice\": 0.9870664315108759, \"marble\": 0.8004434589800443, \"sand\": 0.978391356542617}",
+        "confusion_matrix": "[[1608, 170, 0, 66], [311, 1444, 0, 49], [0, 13, 1679, 9], [88, 32, 96, 9780]]",
+        "macro_recall": 0.9094796501531782,
+        "pipeline": "diagnostic_probe_on_diagnostic_tensor",
+        "sample_count": 15345,
+        "worst_class_recall": 0.8004434589800443
+      },
+      "B": {
+        "accuracy": 0.6538937764744216,
+        "class_recalls": "{\"concrete\": 0.5591106290672451, \"ice\": 0.8606701940035273, \"marble\": 0.3558758314855876, \"sand\": 0.6899759903961584}",
+        "confusion_matrix": "[[1031, 549, 19, 245], [785, 642, 36, 341], [21, 20, 1464, 196], [1471, 1494, 134, 6897]]",
+        "macro_recall": 0.6164081612381296,
+        "pipeline": "stored_T2_on_diagnostic_population",
+        "sample_count": 15345,
+        "worst_class_recall": 0.3558758314855876
+      },
+      "C": {
+        "accuracy": 0.7419617419617419,
+        "class_recalls": "{\"concrete\": 0.3041769041769042, \"ice\": 0.9117408906882591, \"marble\": 0.1957277694982613, \"sand\": 0.8890553318977624}",
+        "confusion_matrix": "[[619, 242, 35, 1139], [425, 394, 47, 1147], [48, 30, 2252, 140], [376, 525, 284, 9496]]",
+        "macro_recall": 0.5751752240652968,
+        "pipeline": "diagnostic_probe_recipe_on_T2_tensor",
+        "sample_count": 17199,
+        "worst_class_recall": 0.1957277694982613
+      },
+      "D": {
+        "accuracy": 0.6549217977789407,
+        "class_recalls": "{\"concrete\": 0.5371007371007371, \"ice\": 0.8502024291497976, \"marble\": 0.3611525086934923, \"sand\": 0.6875760696563992}",
+        "confusion_matrix": "[[1093, 594, 54, 294], [832, 727, 71, 383], [62, 59, 2100, 249], [1497, 1561, 279, 7344]]",
+        "macro_recall": 0.6090079361501065,
+        "pipeline": "stored_T2_on_T2_tensor",
+        "sample_count": 17199,
+        "worst_class_recall": 0.3611525086934923
+      }
+    },
+    "stored_accuracy": 0.9456500488758554,
+    "stored_macro_recall": 0.9094796501531782,
+    "t2_verified_macs": 1928
+  },
+  "train_runs": 72,
+  "validation_runs": 48,
+  "wall_time_s": 64.66856366605498
+}

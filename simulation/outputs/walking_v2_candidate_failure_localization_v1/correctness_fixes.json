@@ -1,0 +1,37 @@
+{
+  "fixes": [
+    {
+      "after": "invalid = AIR + touchdown; post-fall state outputs reported separately",
+      "before": "invalid = AIR + touchdown + post-fall positive state samples",
+      "candidate_readiness_changed": false,
+      "corrected_invalid": 0,
+      "file": "simulation/unitree_mujoco/simulate_python/run_walking_v2_bilateral_bounded_training.py",
+      "id": "STRICT_FIRST_FALL_INVALID_ACCOUNTING",
+      "legacy_invalid": 53,
+      "model_or_threshold_changed": false,
+      "old_artifact_overwritten": false
+    },
+    {
+      "after": "detection activation must originate at or after that episode's risk-window start",
+      "before": "any active latch inside a later episode risk window counted as its detection",
+      "candidate_readiness_changed": false,
+      "corrected_detected_physical_episodes": 15,
+      "file": "simulation/unitree_mujoco/simulate_python/run_walking_v2_bilateral_bounded_training.py",
+      "id": "ORIGINATING_RISK_WINDOW_DETECTION_ATTRIBUTION",
+      "legacy_detected_physical_episodes": 17,
+      "model_or_threshold_changed": false,
+      "old_artifact_overwritten": false
+    }
+  ],
+  "no_fix_required": [
+    "contact loss reset",
+    "new touchdown reset",
+    "episode merge",
+    "originating episode ownership",
+    "affected foot attribution",
+    "Terrain balancing",
+    "Terrain normalization",
+    "frame canonicalization",
+    "MAC accounting"
+  ]
+}

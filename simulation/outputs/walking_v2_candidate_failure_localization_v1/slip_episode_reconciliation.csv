@@ -1,0 +1,10 @@
+stage,count,change_from_previous,rule
+raw_oracle_crossings,101,,offline false-to-true crossings
+physical_slip_episodes,69,-32,merge <=50 ms chatter within one contact episode
+first_actionable_events,68,-1,first per contact; later only after >100 ms cooldown
+detected_physical_episodes_R0,17,-52,"state firing in [onset-100 ms, episode end)"
+detected_first_actionable_R0,17,-51,same detection restricted to actionable events
+covered_valid_ice_runs_R0,6,,at least one detected actionable event per valid Ice run
+too_early_positive_endpoint_foot_samples_R0,40,,>100 ms before next same-contact physical onset
+post_fall_positive_endpoint_foot_samples_R0,53,,positive state after first-fall boundary; legacy invalid numerator
+corrected_evaluable_invalid_samples_R4,0,-53,post-fall state outputs reported but excluded by censor

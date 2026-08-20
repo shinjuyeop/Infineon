@@ -1,0 +1,37 @@
+{
+  "slip": {
+    "primary": "SLIP_RAW_SCORE_TIMING_SEPARABILITY_FAILURE",
+    "primary_evidence": "all 40 too-early rows are genuine >100 ms early activations and R1-R4 do not remove them",
+    "ruled_out": [
+      "contact_loss_reset_failure",
+      "new_touchdown_reset_failure",
+      "physical_episode_merge_mismatch",
+      "previous_physical_episode_latch_carry_over",
+      "affected_foot_attribution_bug",
+      "reporting_count_error_for_too_early"
+    ],
+    "secondary": [
+      "SLIP_POSTFALL_MASK_ACCOUNTING_BUG",
+      "SLIP_UNOWNED_EARLY_STATE_DETECTION_ATTRIBUTION_BUG"
+    ]
+  },
+  "terrain": {
+    "objective_finding": "balancing was applied exactly; aggressive 1,440-row retention is a bounded-design limitation, not an implementation omission",
+    "primary": "TERRAIN_MODEL_UNDERCAPACITY",
+    "primary_evidence": [
+      "A exact macro recall 0.90948 vs B 0.619 on the same diagnostic population",
+      "C diagnostic objective on the T2 tensor remains macro recall below 0.60",
+      "50 ms/97-feature T2 discards the diagnostic tensor's 200 ms temporal range and std/min/max/MAD/RMS statistics"
+    ],
+    "ruled_out": [
+      "TERRAIN_LABEL_ALIGNMENT_BUG",
+      "TERRAIN_NORMALIZATION_MISMATCH",
+      "TERRAIN_BALANCING_NOT_APPLIED",
+      "TERRAIN_FRAME_OR_FOOT_AGGREGATION_BUG"
+    ],
+    "secondary": [
+      "TERRAIN_DIAGNOSTIC_METRIC_NOT_COMPARABLE",
+      "TERRAIN_POPULATION_MISMATCH"
+    ]
+  }
+}

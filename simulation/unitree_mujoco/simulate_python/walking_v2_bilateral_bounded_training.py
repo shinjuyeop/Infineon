@@ -477,6 +477,32 @@ def affected_foot_correct(
     )
 
 
+def originating_risk_window_detections(
+    firing: np.ndarray,
+    endpoints: np.ndarray,
+    detected_indices: np.ndarray,
+    risk_start_sample: int,
+) -> np.ndarray:
+    """Reject a latched detection whose activation began before this risk window.
+
+    This is offline episode attribution only. It does not alter detector state or
+    use an oracle as a runtime input.
+    """
+    state = np.asarray(firing, bool)
+    endpoint_values = np.asarray(endpoints, int)
+    selected = np.asarray(detected_indices, int)
+    if state.shape != endpoint_values.shape or selected.ndim != 1:
+        raise ValueError("detection attribution arrays must align")
+    rising = state & ~np.r_[False, state[:-1]]
+    rising_indices = np.flatnonzero(rising)
+    owned = []
+    for index in selected:
+        previous = rising_indices[rising_indices <= index]
+        if len(previous) and endpoint_values[previous[-1]] >= risk_start_sample:
+            owned.append(int(index))
+    return np.asarray(owned, dtype=np.int64)
+
+
 def terrain_gate(metrics: dict[str, object]) -> bool:
     return bool(
         float(metrics["overall_accuracy"]) >= 0.85
@@ -506,6 +532,29 @@ def slip_gate(metrics: dict[str, object]) -> bool:
         and float(metrics["median_warning_margin_ms"]) >= 20.0
         and float(metrics["pre_onset_detection_fraction"]) >= 0.80
         and bool(metrics["reset_invariant_pass"])
+    )
+
+
+def evaluation_invalid_firing_count(
+    air_firings: int,
+    touchdown_firings: int,
+    post_fall_state_outputs: int,
+    *,
+    strict_first_fall_censor: bool,
+) -> int:
+    """Count evaluable invalid firings without erasing post-fall diagnostics.
+
+    A first-fall-censored sample is outside the evaluation population.  The
+    detector may still produce a counterfactual state there because fall state
+    is not a runtime input, but that output must be reported separately instead
+    of being added to the invalid-evaluation numerator.
+    """
+    if min(air_firings, touchdown_firings, post_fall_state_outputs) < 0:
+        raise ValueError("firing counts must be nonnegative")
+    return int(
+        air_firings
+        + touchdown_firings
+        + (0 if strict_first_fall_censor else post_fall_state_outputs)
     )
 
 

@@ -1,0 +1,10 @@
+stage,diagnostic,T2,mismatch_count,first_mismatch_sample_key
+raw Fusion20,same stored trace,same stored trace,0,
+frame canonicalization/slot order,frozen bilateral canonical,frozen bilateral canonical,762312,expected right-foot frame transform; both pipelines consume identical canonical output
+causal window,200 ms,50 ms,15023,"{""run_id"": ""concrete_native_0p10_v03"", ""foot"": ""left"", ""endpoint_sample"": 199}"
+shared foot feature,80 stats/foot,40 compact conv summaries/foot,not_shape_comparable,first both-population row
+bilateral fusion,164,97,not_shape_comparable,first both-population row
+mask,loaded & age>10; post-fall retained,loaded & non-AIR & pre-fall,1404,"{""run_id"": ""concrete_native_0p10_v03"", ""foot"": ""left"", ""endpoint_sample"": 199}"
+normalization provenance,all diagnostic train rows,balanced T2 train subset,expected_feature_and_population_difference,
+class labels,0..3 frozen order,0..3 frozen order,0,
+sample weighting/balancing,all rows + class_weight=balanced,uniform 15-row subsample of each class/phase/foot/speed group,objective_difference,

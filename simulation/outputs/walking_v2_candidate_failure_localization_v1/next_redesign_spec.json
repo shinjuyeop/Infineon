@@ -1,0 +1,15 @@
+{
+  "next_step": "JOINT_TERRAIN_SLIP_REDESIGN",
+  "slip": {
+    "authorization": true,
+    "no_threshold_tuning_here": true,
+    "preserve": "stored threshold/config only for this audit; any future design requires a new bounded protocol",
+    "requirement": "redesign score/task state separation for genuine early activations; censor fix alone is insufficient"
+  },
+  "terrain": {
+    "authorization": true,
+    "must_compare": "same joined population plus locked diagnostic reference",
+    "no_search_performed_here": true,
+    "requirement": "redesign architecture before bounded rerun; preserve bilateral shared weights but restore temporal distribution/range information within resource limits"
+  }
+}

@@ -39,10 +39,12 @@ from walking_v2_bilateral_bounded_training import (
     deterministic_slip_selection,
     deterministic_terrain_selection,
     episode_semantics_contract,
+    evaluation_invalid_firing_count,
     first_actionable_events,
     fit_linear_float,
     holdout_authorized,
     input_contract,
+    originating_risk_window_detections,
     physical_slip_episodes,
     raw_slip_crossings,
     risk_firing_is_too_early,
@@ -445,6 +447,9 @@ def evaluate_slip(
                     & endpoint_prefall
                 )
                 detected_indices = eligible_indices[current_fire[eligible_indices]]
+                detected_indices = originating_risk_window_detections(
+                    current_fire, endpoints, detected_indices, risk_start,
+                )
                 detected = bool(len(detected_indices))
                 is_actionable = (episode.start, episode.end_exclusive) in actionable_keys
                 first_detection = int(endpoints[detected_indices[0]]) if detected else None
@@ -497,7 +502,10 @@ def evaluate_slip(
             speed = float(metadata["speed_mps"])
             speed_run_total[speed] += 1
             speed_run_detected[speed] += int(run_detected)
-    invalid = air_firing + touchdown_firing + post_fall_firing
+    invalid = evaluation_invalid_firing_count(
+        air_firing, touchdown_firing, post_fall_firing,
+        strict_first_fall_censor=True,
+    )
     metrics: dict[str, object] = {
         "architecture": architecture, "seed": seed,
         "threshold": config.threshold,
@@ -524,6 +532,7 @@ def evaluate_slip(
         "air_firings": air_firing,
         "touchdown_firings": touchdown_firing,
         "post_fall_firings": post_fall_firing,
+        "post_fall_state_outputs_excluded_by_censor": post_fall_firing,
         "invalid_firings": invalid,
         "median_warning_margin_ms": float(np.median(warning_margins)) if warning_margins else -1.0,
         "pre_onset_detection_fraction": pre_onset_detections / len(warning_margins) if warning_margins else 0.0,

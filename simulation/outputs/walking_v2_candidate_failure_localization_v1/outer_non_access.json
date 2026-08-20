@@ -1,0 +1,10 @@
+{
+  "cause": "over-broad rg during pre-implementation MAC-source discovery",
+  "compliant_zero_access": false,
+  "content_load_count": 1,
+  "corrective_action": "subsequent audit code uses an explicit allowed-file list only",
+  "existing_outer_used_for_metrics_or_conclusions": false,
+  "new_holdout_created": false,
+  "path": "simulation/outputs/walking_bounded_retraining_v1/holdout_metrics.csv",
+  "used_by_audit_computation": false
+}
