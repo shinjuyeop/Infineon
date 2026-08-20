@@ -1,0 +1,464 @@
+{
+  "starting_checkpoint": "3a58e07498c859dd4be52709d84f4117b227f110",
+  "upstream_provenance": {
+    "starting_checkpoint": "3a58e07498c859dd4be52709d84f4117b227f110",
+    "development_checkpoint": "d2209cdb49c496839a16396f201ab0322515171b",
+    "verified_files": {
+      "simulation/outputs/walking_hazard_oracle_calibration_v1/protocol.json": "3e8f2c70a81b3e686f1967818981cada408ec2549abe31d5d57b53d919c224a3",
+      "simulation/outputs/walking_hazard_oracle_calibration_v1/manifest.json": "b1360af75e6d57d59270df1bde3939b41d70a537067ae9754c044bda7a041aa8",
+      "simulation/outputs/walking_hazard_oracle_calibration_v1/traces.npz": "1bbede7770400a844f75da2bce5157e4b50e5f8119ea5e893760943c7ed40423",
+      "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+      "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/protocol.json": "0f54fec4e116b6407ac98b79e5c52af28f3ef22b80d052b5da0b69d6082cb50a",
+      "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/manifest.csv": "adeb35399c8f027fcc1b0f85e838f15808efa92513b8dcaa27c7080f27c4f0e6",
+      "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/inputs_fusion10.npz": "1c8e2140bce179da2cbaabba37d08f4b81496b1ce35699947fb7b0bd4c1de388",
+      "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/oracle_diagnostics.npz": "ee963c87adea9ba574032b36818cebe28edfa0e891eec6edd6153035fb424927",
+      "simulation/outputs/terrain_static_provenance_v4/dataset_noisy_provenance.npz": "4174c4f04f0199a3ff91acbc491181eaa7ec6612cdf5a6ff876e1a619327b2a3",
+      "simulation/outputs/terrain_static_reference_v4/selected_model.keras": "adcfa113b679327dc5bac0d4df7dcfceeb2f4dd703960665ecc491581d77df3b",
+      "simulation/outputs/terrain_static_reference_v4/normalization.json": "13ffc43275e142b6e9bd17cd367a99ff019746087ab7f5ce79a7cea0b9a25830",
+      "simulation/outputs/walking_bounded_retraining_v1/summary.json": "ccc55ae83237cd1febfd5ca99b2f40bd13202b83f1d8c02d766896e54274d8d2",
+      "simulation/outputs/walking_bounded_retraining_v1/holdout_metrics.csv": "befd0f2a078fe44bccf77b82ef16957d9847949293464b705fdddd7cf30e2c61",
+      "simulation/outputs/walking_bounded_retraining_v1/models/terrain_walking_candidate.keras": "49ff0672b3a0374e8e05756e6d39a93c33e0380c6cce055a8ccc9d4a6d7732c1",
+      "simulation/outputs/walking_bounded_retraining_v1/normalization/terrain.json": "43df9c0e379c04827231b71b4e5b72dad7049adb5902d699ed34766ab4a002c6",
+      "simulation/outputs/walking_bounded_retraining_v1_sink_holdout/summary.json": "cfed5bc332f22090e9341916fdeff6e43da133bdc41d0c64fb534d409aa11668"
+    },
+    "mismatch_count": 0
+  },
+  "data_integrity": {
+    "walking_train_runs": 36,
+    "walking_validation_runs": 18,
+    "run_episode_split": {
+      "run_leakage_count": 0,
+      "episode_leakage_count": 0,
+      "leaking_runs": [],
+      "leaking_episodes": [],
+      "split_leakage_count": 0
+    },
+    "future_sample_leakage_count": 0,
+    "outer_trace_access_count": 0,
+    "spatial_training_or_selection_access_count": 0,
+    "sample_rate_hz": 1000,
+    "deterministic_reload_parity": {
+      "terrain": true,
+      "hazard_probes": {
+        "artifact": "hazard_diagnostic_probes.npz",
+        "probes": {
+          "slip__raw_5ms": {
+            "parity": true,
+            "parameters": 81
+          },
+          "slip__raw_10ms": {
+            "parity": true,
+            "parameters": 81
+          },
+          "slip__raw_20ms": {
+            "parity": true,
+            "parameters": 81
+          },
+          "slip__raw_50ms": {
+            "parity": true,
+            "parameters": 81
+          },
+          "slip__raw_100ms": {
+            "parity": true,
+            "parameters": 81
+          },
+          "sink__raw_20ms": {
+            "parity": true,
+            "parameters": 81
+          },
+          "sink__stateful_20ms": {
+            "parity": true,
+            "parameters": 105
+          },
+          "sink__raw_50ms": {
+            "parity": true,
+            "parameters": 81
+          },
+          "sink__stateful_50ms": {
+            "parity": true,
+            "parameters": 105
+          },
+          "sink__raw_100ms": {
+            "parity": true,
+            "parameters": 81
+          },
+          "sink__stateful_100ms": {
+            "parity": true,
+            "parameters": 105
+          },
+          "sink__raw_200ms": {
+            "parity": true,
+            "parameters": 81
+          },
+          "sink__stateful_200ms": {
+            "parity": true,
+            "parameters": 105
+          }
+        }
+      }
+    }
+  },
+  "terrain": {
+    "conclusion": {
+      "primary": "OBSERVABLE_WITH_CURRENT_INPUT",
+      "secondary": "CONTROLLED_WALKING_DOMAIN_CONFLICT"
+    },
+    "root_cause": {
+      "primary": "existing CNN training/objective permits a Sand-majority solution while retaining static validation",
+      "secondary": "walking train/validation class and phase imbalance amplifies the collapse; phase-only views are not uniformly separable"
+    },
+    "selected_diagnostic_view": "class_phase_balanced",
+    "selected_probe": {
+      "accuracy": 0.7806823915237134,
+      "macro_accuracy": 0.7786974937437638,
+      "worst_class_recall": 0.6395027624309392,
+      "majority_class_prediction_rate": 0.43529263370333,
+      "class_recall": {
+        "concrete": 0.6395027624309392,
+        "marble": 0.7339158061953932,
+        "ice": 0.9675828047921071,
+        "sand": 0.7737886015566157
+      },
+      "prediction_distribution": {
+        "concrete": 0.1857656407669021,
+        "marble": 0.18346367305751765,
+        "ice": 0.19547805247225025,
+        "sand": 0.43529263370333
+      },
+      "collapse_gate": {
+        "walking_macro_accuracy_at_least_0p70": true,
+        "worst_class_recall_at_least_0p50": true,
+        "majority_prediction_rate_at_most_0p60": true,
+        "class_collapse_absent": true,
+        "pass": true
+      }
+    },
+    "frozen_walking_v02": {
+      "accuracy": 0.4736377396569122,
+      "macro_accuracy": 0.2527102251190341,
+      "worst_class_recall": 0.0,
+      "majority_class_prediction_rate": 0.8471871846619576,
+      "class_recall": {
+        "concrete": 0.0,
+        "marble": 0.006354249404289118,
+        "ice": 0.09901338971106413,
+        "sand": 0.9054732613607833
+      },
+      "prediction_distribution": {
+        "concrete": 0.0,
+        "marble": 0.11459384460141271,
+        "ice": 0.038218970736629665,
+        "sand": 0.8471871846619576
+      },
+      "collapse_gate": {
+        "walking_macro_accuracy_at_least_0p70": false,
+        "worst_class_recall_at_least_0p50": false,
+        "majority_prediction_rate_at_most_0p60": false,
+        "class_collapse_absent": false,
+        "pass": false
+      }
+    },
+    "float_candidate_walking_v02": {
+      "accuracy": 0.4751513622603431,
+      "macro_accuracy": 0.2534067193987221,
+      "worst_class_recall": 0.0,
+      "majority_class_prediction_rate": 0.8493945509586277,
+      "class_recall": {
+        "concrete": 0.0,
+        "marble": 0.006354249404289118,
+        "ice": 0.09866102889358704,
+        "sand": 0.9086115992970123
+      },
+      "prediction_distribution": {
+        "concrete": 0.0,
+        "marble": 0.11257568113017154,
+        "ice": 0.03802976791120081,
+        "sand": 0.8493945509586277
+      },
+      "collapse_gate": {
+        "walking_macro_accuracy_at_least_0p70": false,
+        "worst_class_recall_at_least_0p50": false,
+        "majority_prediction_rate_at_most_0p60": false,
+        "class_collapse_absent": false,
+        "pass": false
+      }
+    },
+    "dispersion": {
+      "mean_within_class": 7.146513764817095,
+      "mean_between_centroid": 4.232654373553006,
+      "pca_explained_variance_ratio": [
+        0.24933644893162688,
+        0.14355398123353197
+      ]
+    },
+    "sand_collapse_cause": "not a Fusion10 information absence: the balanced simple probe separates walking classes; the existing static-retention objective and Sand-heavy/midstance-heavy walking distribution admit collapse",
+    "locked_outer_read_only": {
+      "accuracy": 0.27970094757889247,
+      "macro_accuracy": 0.2720897223723793,
+      "class_metrics": {
+        "concrete": {
+          "support": 14732,
+          "recall": 0.0
+        },
+        "marble": {
+          "support": 14665,
+          "recall": 0.016979202182066142
+        },
+        "ice": {
+          "support": 13152,
+          "recall": 0.10819647201946472
+        },
+        "sand": {
+          "support": 14966,
+          "recall": 0.9631832152879861
+        }
+      }
+    },
+    "spatial_result": "A/B/C/D remain fall-confounded diagnostic-only and were not opened",
+    "diagnostic_probe_is_production_candidate": false
+  },
+  "slip": {
+    "conclusion": {
+      "primary": "LABEL_TASK_INCOMPATIBLE",
+      "secondary": "OBSERVABLE_WITH_LONGER_HISTORY"
+    },
+    "best_fixed_diagnostic": {
+      "detector": "slip",
+      "window_ms": 100,
+      "feature_set": "Fusion10_raw_summary",
+      "group": "aggregate",
+      "profile": "all",
+      "speed_mps": "all",
+      "train_samples": 5508,
+      "train_runs": 36,
+      "validation_samples": 29574,
+      "validation_runs": 18,
+      "endpoint_balanced_accuracy": 0.6638027532889025,
+      "endpoint_recall": 0.3539568345323741,
+      "endpoint_fpr": 0.026351327954569063,
+      "walking_positive_run_recall": 1.0,
+      "walking_detected_runs": 3,
+      "walking_physical_positive_runs": 3,
+      "walking_normal_fp_runs": 0,
+      "anticipation_runs": 3,
+      "latency_median_ms": 0.0,
+      "latency_p95_ms": 12.599999999999998,
+      "controlled_endpoint_recall": 0.0,
+      "controlled_endpoint_fpr": 0.0,
+      "threshold": 0.9809102907405636,
+      "threshold_source": "v00/v01 walking hard-negative maximum + one float step",
+      "runtime_persistence": 1,
+      "mask_violation_samples": 0,
+      "production_candidate": false
+    },
+    "confirmed_and_precursor_simultaneously_compatible": false,
+    "pre_oracle_firing_interpretation": "causal precursor, not label leakage: all score windows end at t; risk targets alone inspect future oracle state",
+    "single_stateless_5ms_semantically_sufficient": false,
+    "locked_outer_read_only": {
+      "runs": 36,
+      "normal_runs": 27,
+      "normal_false_positive_runs": 6,
+      "physical_positive_runs": 9,
+      "detected_positive_runs": 9,
+      "positive_run_recall": 1.0,
+      "anticipation_runs": 3,
+      "label_mask_violation_samples": 0,
+      "latency_median_ms": 16.0,
+      "latency_p95_ms": 390.2,
+      "latency_max_ms": 393,
+      "profile_results": {
+        "ice": {
+          "physical_positive_runs": 9,
+          "detected_runs": 9,
+          "detected_speeds_mps": [
+            0.1,
+            0.15,
+            0.2
+          ]
+        }
+      },
+      "model_inference_compute_ms_per_window": 0.015667489059030416,
+      "probability_threshold_endpoint_metrics": {
+        "support": 53101,
+        "positive_support": 2411,
+        "precision": 0.32539118065433853,
+        "recall": 0.3795105765242638,
+        "false_positive_rate": 0.03742355494180312
+      },
+      "stable_persistence_endpoint_metrics": {
+        "support": 53101,
+        "positive_support": 2411,
+        "precision": 0.3181818181818182,
+        "recall": 0.2061385317295728,
+        "false_positive_rate": 0.021010061156046558
+      }
+    }
+  },
+  "sink": {
+    "conclusion": {
+      "primary": "OBSERVABLE_WITH_LONGER_HISTORY",
+      "secondary": "LABEL_TASK_INCOMPATIBLE"
+    },
+    "best_raw_diagnostic": {
+      "detector": "sink",
+      "window_ms": 20,
+      "feature_set": "Fusion10_raw_summary",
+      "group": "aggregate",
+      "profile": "all",
+      "speed_mps": "all",
+      "train_samples": 6000,
+      "train_runs": 36,
+      "validation_samples": 29710,
+      "validation_runs": 18,
+      "endpoint_balanced_accuracy": 0.5005332503123663,
+      "endpoint_recall": 0.002537212449255751,
+      "endpoint_fpr": 0.0014707118245230692,
+      "walking_positive_run_recall": 0.0,
+      "walking_detected_runs": 0,
+      "walking_physical_positive_runs": 6,
+      "walking_normal_fp_runs": 0,
+      "anticipation_runs": 0,
+      "latency_median_ms": null,
+      "latency_p95_ms": null,
+      "controlled_endpoint_recall": 0.0,
+      "controlled_endpoint_fpr": 0.0,
+      "threshold": 0.9798601341245963,
+      "threshold_source": "v00/v01 walking hard-negative maximum + one float step",
+      "runtime_persistence": 1,
+      "mask_violation_samples": 0,
+      "production_candidate": false
+    },
+    "best_stateful_diagnostic": {
+      "detector": "sink",
+      "window_ms": 200,
+      "feature_set": "Fusion10_plus_stateful_contact_reference",
+      "group": "aggregate",
+      "profile": "all",
+      "speed_mps": "all",
+      "train_samples": 6000,
+      "train_runs": 36,
+      "validation_samples": 28243,
+      "validation_runs": 18,
+      "endpoint_balanced_accuracy": 0.897985036477588,
+      "endpoint_recall": 0.9409863945578232,
+      "endpoint_fpr": 0.14501632160264724,
+      "walking_positive_run_recall": 1.0,
+      "walking_detected_runs": 6,
+      "walking_physical_positive_runs": 6,
+      "walking_normal_fp_runs": 9,
+      "anticipation_runs": 3,
+      "latency_median_ms": 5.0,
+      "latency_p95_ms": 11.0,
+      "controlled_endpoint_recall": null,
+      "controlled_endpoint_fpr": null,
+      "threshold": 0.6087813580096226,
+      "threshold_source": "v00/v01 walking hard-negative maximum + one float step",
+      "runtime_persistence": 1,
+      "mask_violation_samples": 0,
+      "production_candidate": false
+    },
+    "best_stateful_safety_diagnostic": {
+      "detector": "sink",
+      "window_ms": 20,
+      "feature_set": "Fusion10_plus_stateful_contact_reference",
+      "group": "aggregate",
+      "profile": "all",
+      "speed_mps": "all",
+      "train_samples": 6000,
+      "train_runs": 36,
+      "validation_samples": 29710,
+      "validation_runs": 18,
+      "endpoint_balanced_accuracy": 0.6318050913638141,
+      "endpoint_recall": 0.3159675236806495,
+      "endpoint_fpr": 0.05235734095302126,
+      "walking_positive_run_recall": 0.8333333333333334,
+      "walking_detected_runs": 5,
+      "walking_physical_positive_runs": 6,
+      "walking_normal_fp_runs": 8,
+      "anticipation_runs": 6,
+      "latency_median_ms": 0.0,
+      "latency_p95_ms": 0.0,
+      "controlled_endpoint_recall": null,
+      "controlled_endpoint_fpr": null,
+      "threshold": 0.9912345184051953,
+      "threshold_source": "v00/v01 walking hard-negative maximum + one float step",
+      "runtime_persistence": 1,
+      "mask_violation_samples": 0,
+      "production_candidate": false
+    },
+    "stateful_contact_reference_required": true,
+    "stateful_contact_reference_sufficient": false,
+    "normal_fp_zero_and_effective_recall_simultaneous": true,
+    "normal_fp_zero_recall_without_anticipation_simultaneous": false,
+    "locked_outer_read_only": {
+      "runs": 18,
+      "normal_runs": 0,
+      "normal_false_positive_runs": 0,
+      "physical_positive_runs": 18,
+      "detected_positive_runs": 2,
+      "positive_run_recall": 0.1111111111111111,
+      "anticipation_runs": 0,
+      "label_mask_violation_samples": 0,
+      "latency_median_ms": 1482.5,
+      "latency_p95_ms": 1568.45,
+      "latency_max_ms": 1578,
+      "profile_results": {
+        "sand_solref_interpolation_1of3": {
+          "physical_positive_runs": 9,
+          "detected_runs": 0,
+          "detected_speeds_mps": []
+        },
+        "sand_solref_interpolation_2of3": {
+          "physical_positive_runs": 9,
+          "detected_runs": 2,
+          "detected_speeds_mps": [
+            0.1,
+            0.15
+          ]
+        }
+      },
+      "model_inference_compute_ms_per_window": 0.01567056977511418,
+      "probability_threshold_endpoint_metrics": {
+        "support": 28947,
+        "positive_support": 16073,
+        "precision": 0.8333333333333334,
+        "recall": 0.0006221613886642195,
+        "false_positive_rate": 0.00015535187199005747
+      },
+      "stable_persistence_endpoint_metrics": {
+        "support": 28947,
+        "positive_support": 16073,
+        "precision": 0.8333333333333334,
+        "recall": 0.0006221613886642195,
+        "false_positive_rate": 0.00015535187199005747
+      }
+    }
+  },
+  "fusion10_scope": {
+    "possible": "walking terrain with balanced diagnostic objective; hazard precursors and confirmed events with longer causal/contact history",
+    "not_demonstrated": "production-safe unified controlled+walking Slip/Sink at frozen safety gates"
+  },
+  "readiness": {
+    "UPSTREAM_ARTIFACT_SHA_READY": true,
+    "RUN_EPISODE_SPLIT_LEAKAGE_ZERO": true,
+    "FUTURE_SAMPLE_LEAKAGE_ZERO": true,
+    "AIR_TOUCHDOWN_POSTFALL_MASK_INVARIANT": true,
+    "EXACT_1KHZ_TIMESTAMP_SCHEMA_READY": true,
+    "DETERMINISTIC_RELOAD_PARITY_READY": true,
+    "OUTER_NON_ACCESS_READY": true,
+    "TERRAIN_CURRENT_WALKING_READY": false,
+    "TERRAIN_DIAGNOSTIC_OBSERVABLE": true,
+    "SLIP_CONFIRMED_AND_PRECURSOR_COMPATIBLE": false,
+    "SINK_ZERO_FP_EFFECTIVE_RECALL_READY": true,
+    "SINK_CONFIRMED_SEMANTICS_READY": false,
+    "WALKING_BOUNDED_RETRAINING_V2_AUTHORIZED": false,
+    "WALKING_INT8_PREPARATION_AUTHORIZED": false,
+    "PRODUCTION_CANDIDATE_READY": false
+  },
+  "next_step": "stateful detector prototype",
+  "production_artifacts_changed": false,
+  "physical_oracles_changed": false,
+  "thresholds_changed": false,
+  "int8_vela_e84_hil_system_final_changed": false,
+  "wall_time_s": 76.59982402296737
+}

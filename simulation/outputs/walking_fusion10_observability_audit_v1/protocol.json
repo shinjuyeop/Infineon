@@ -1,0 +1,112 @@
+{
+  "audit": "walking_fusion10_observability_audit_v1",
+  "starting_checkpoint": "3a58e07498c859dd4be52709d84f4117b227f110",
+  "purpose": "diagnostic observability and label-task compatibility; no production candidate selection",
+  "sample_rate_hz": 1000,
+  "channels": [
+    "foot_force_1",
+    "foot_force_2",
+    "foot_force_3",
+    "foot_force_4",
+    "accel_x",
+    "accel_y",
+    "accel_z",
+    "gyro_x",
+    "gyro_y",
+    "gyro_z"
+  ],
+  "development_boundary": {
+    "walking_train": "d2209cd variations v00/v01",
+    "walking_validation": "d2209cd variation v02",
+    "controlled": "existing Fast Reflex v2 train/validation only",
+    "static_terrain": "existing Terrain v4 train/architecture-selection only"
+  },
+  "outer_boundary": {
+    "fd5b9f0_v03_v04_v05_trace_access_count": 0,
+    "new_sink_holdout_trace_access_count": 0,
+    "spatial_trace_access_count": 0,
+    "locked_bounded_summary_read_after_diagnostic_choices": true,
+    "outer_experiment_rerun": false
+  },
+  "windows_ms": {
+    "terrain": [
+      50
+    ],
+    "slip": [
+      5,
+      10,
+      20,
+      50,
+      100
+    ],
+    "sink": [
+      20,
+      50,
+      100,
+      200
+    ]
+  },
+  "risk_horizons_ms": [
+    20,
+    50,
+    100
+  ],
+  "terrain_views": [
+    "all_loaded",
+    "touchdown_first_50ms",
+    "loading",
+    "midstance",
+    "push_off",
+    "phase_balanced",
+    "class_balanced",
+    "class_phase_balanced"
+  ],
+  "probe_contract": {
+    "models": [
+      "logistic_regression",
+      "shrinkage_LDA"
+    ],
+    "feature": "mean/std/min/max/first/last/delta/diff-rms per Fusion10 channel",
+    "seed": 20260820,
+    "confirmed_event_threshold": "v00/v01 walking hard-negative maximum + one floating-point step",
+    "risk_horizon_endpoint_threshold": 0.5,
+    "runtime_persistence": 1,
+    "hyperparameter_sweep": false,
+    "production_candidate": false
+  },
+  "causality": {
+    "window": "inclusive [t-L+1,t]",
+    "future_input_samples": 0,
+    "risk_horizon_future": "target definition only, never an input",
+    "stateful_sink": "reference and accumulation begin at first loaded sample of current contact episode and end at t"
+  },
+  "physical_oracle_immutable": {
+    "slip": {
+      "anchor_drift_m": 0.05,
+      "persistence_ms": 3
+    },
+    "sink": {
+      "terrain_relative_penetration_change_m": 0.0055,
+      "persistence_ms": 20
+    }
+  },
+  "terrain_readiness_gate": {
+    "walking_macro_accuracy_min": 0.7,
+    "worst_class_recall_min": 0.5,
+    "majority_prediction_rate_max": 0.6,
+    "class_collapse": "fail when worst recall <0.10 or majority prediction >0.70",
+    "frozen_relative_retention_alone_can_pass": false,
+    "spatial_is_diagnostic_only": true
+  },
+  "forbidden_changes": [
+    "production model",
+    "production normalization",
+    "runtime thresholds",
+    "frozen detector",
+    "physical oracle",
+    "INT8/Vela",
+    "E84/HIL",
+    "System-v1",
+    "final-test artifacts"
+  ]
+}

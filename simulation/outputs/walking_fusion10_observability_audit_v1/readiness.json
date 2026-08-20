@@ -1,0 +1,23 @@
+{
+  "gates": {
+    "UPSTREAM_ARTIFACT_SHA_READY": true,
+    "RUN_EPISODE_SPLIT_LEAKAGE_ZERO": true,
+    "FUTURE_SAMPLE_LEAKAGE_ZERO": true,
+    "AIR_TOUCHDOWN_POSTFALL_MASK_INVARIANT": true,
+    "EXACT_1KHZ_TIMESTAMP_SCHEMA_READY": true,
+    "DETERMINISTIC_RELOAD_PARITY_READY": true,
+    "OUTER_NON_ACCESS_READY": true,
+    "TERRAIN_CURRENT_WALKING_READY": false,
+    "TERRAIN_DIAGNOSTIC_OBSERVABLE": true,
+    "SLIP_CONFIRMED_AND_PRECURSOR_COMPATIBLE": false,
+    "SINK_ZERO_FP_EFFECTIVE_RECALL_READY": true,
+    "SINK_CONFIRMED_SEMANTICS_READY": false,
+    "WALKING_BOUNDED_RETRAINING_V2_AUTHORIZED": false,
+    "WALKING_INT8_PREPARATION_AUTHORIZED": false,
+    "PRODUCTION_CANDIDATE_READY": false
+  },
+  "overall_ready": false,
+  "diagnostic_only": true,
+  "next_step": "stateful detector prototype",
+  "production_candidate_approved": false
+}

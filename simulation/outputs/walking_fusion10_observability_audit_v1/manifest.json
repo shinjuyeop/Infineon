@@ -1,0 +1,219 @@
+{
+  "artifact": "walking_fusion10_observability_audit_v1",
+  "starting_checkpoint": "3a58e07498c859dd4be52709d84f4117b227f110",
+  "generated_files": [
+    {
+      "path": "audit.md",
+      "sha256": "cb22b7c6011ce6a6ce7758f6f36cff20e68e24b67621075895f79cfbf3396685",
+      "bytes": 2900,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "diagnostic_arrays.npz",
+      "sha256": "8dba1b671c0c3d757a1ddba50e76e56b721d2ffc4bcde349b9997547f1e301ff",
+      "bytes": 32518,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "domain_compatibility.csv",
+      "sha256": "a31bcfeff763627bd4abc0450809e0801ea4ea19c61537ea7aac7dcc73a36ed0",
+      "bytes": 27551,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "hazard_diagnostic_probes.npz",
+      "sha256": "b844ccfb15369979646c97b740009c3c8512046c39462c7f9b00113723390a9d",
+      "bytes": 43122,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "plots/sink_window_ablation.png",
+      "sha256": "04ea46d7da7860b85fbe53744105d505573f181bc8be41bbed4c3b015278973e",
+      "bytes": 74082,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "plots/slip_window_ablation.png",
+      "sha256": "20bf5dde9e71bf823e53f6d94e77f143c5685b2c98cc5b9ea067988670527190",
+      "bytes": 63177,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "plots/terrain_pca.png",
+      "sha256": "b06c3adcf7e0079b96b1b3302e1328773460ff62192028518497c24fc4e7c108",
+      "bytes": 116992,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "plots/terrain_prediction_distribution.png",
+      "sha256": "c3590e66be67757258fb55174cace23831971ec0fb60e465771cea21cee168f9",
+      "bytes": 38285,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "protocol.json",
+      "sha256": "eff9bc7df4a4e20169793651a020b9e27a4e7c60c7cd1dc92772c5abc58eb29f",
+      "bytes": 2920,
+      "depends_on": [
+        "simulation/outputs/walking_hazard_oracle_calibration_v1/protocol.json",
+        "simulation/outputs/walking_hazard_oracle_calibration_v1/manifest.json",
+        "simulation/outputs/walking_hazard_oracle_calibration_v1/traces.npz",
+        "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+        "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/protocol.json",
+        "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/manifest.csv",
+        "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/inputs_fusion10.npz",
+        "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/oracle_diagnostics.npz",
+        "simulation/outputs/terrain_static_provenance_v4/dataset_noisy_provenance.npz",
+        "simulation/outputs/terrain_static_reference_v4/selected_model.keras",
+        "simulation/outputs/terrain_static_reference_v4/normalization.json",
+        "simulation/outputs/walking_bounded_retraining_v1/summary.json",
+        "simulation/outputs/walking_bounded_retraining_v1/holdout_metrics.csv",
+        "simulation/outputs/walking_bounded_retraining_v1/models/terrain_walking_candidate.keras",
+        "simulation/outputs/walking_bounded_retraining_v1/normalization/terrain.json",
+        "simulation/outputs/walking_bounded_retraining_v1_sink_holdout/summary.json"
+      ]
+    },
+    {
+      "path": "readiness.json",
+      "sha256": "2f823302884045a5a8518d4c2bf960a2bd5f4cf7ede082cb05c650eb3f2badfc",
+      "bytes": 848,
+      "depends_on": [
+        "protocol.json",
+        "summary.json"
+      ]
+    },
+    {
+      "path": "sink_feature_correlation.csv",
+      "sha256": "990b94edfcaf125e9580ff42fade72ff835cb4eb493f9f12bcab8cdb350fee95",
+      "bytes": 7112,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "sink_window_ablation.csv",
+      "sha256": "d7dcda21facb1e5562d20ec53484b46bdba5e1a7d8667704b9817eb292355ebf",
+      "bytes": 8166,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "slip_semantics_compatibility.csv",
+      "sha256": "e7011cd7cba211a16ee3aba22d168916f6872ecbaf2e0e9f553e079ace672e72",
+      "bytes": 11900,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "slip_window_ablation.csv",
+      "sha256": "cdb2cc46c598b4cef9284f5855bd58b6f6a0cde97d9e9f31e143bb5e6139bd51",
+      "bytes": 4070,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "summary.json",
+      "sha256": "9aa84e85af7692bd81bef28ad0c34c65163a74473934268fa94b05bad6b3fc17",
+      "bytes": 17508,
+      "depends_on": [
+        "simulation/outputs/walking_hazard_oracle_calibration_v1/protocol.json",
+        "simulation/outputs/walking_hazard_oracle_calibration_v1/manifest.json",
+        "simulation/outputs/walking_hazard_oracle_calibration_v1/traces.npz",
+        "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+        "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/protocol.json",
+        "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/manifest.csv",
+        "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/inputs_fusion10.npz",
+        "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/oracle_diagnostics.npz",
+        "simulation/outputs/terrain_static_provenance_v4/dataset_noisy_provenance.npz",
+        "simulation/outputs/terrain_static_reference_v4/selected_model.keras",
+        "simulation/outputs/terrain_static_reference_v4/normalization.json",
+        "simulation/outputs/walking_bounded_retraining_v1/summary.json",
+        "simulation/outputs/walking_bounded_retraining_v1/holdout_metrics.csv",
+        "simulation/outputs/walking_bounded_retraining_v1/models/terrain_walking_candidate.keras",
+        "simulation/outputs/walking_bounded_retraining_v1/normalization/terrain.json",
+        "simulation/outputs/walking_bounded_retraining_v1_sink_holdout/summary.json"
+      ]
+    },
+    {
+      "path": "terrain_confusion.csv",
+      "sha256": "8b45774dfabbf75b2a86497b7b16fbcf2507128afc90332732c80df3624fec2d",
+      "bytes": 1705,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "terrain_diagnostic_probe.npz",
+      "sha256": "140028e11f7e7f75fb6eaba4fba00a921f9eadea428e180ff76e1c0b3acbecec",
+      "bytes": 4840,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "terrain_phase_class_balance.csv",
+      "sha256": "9043fb8ae35bba344844802ce1eb43f010f9a668c7805807a8cf57ba8b80dc76",
+      "bytes": 1310,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "terrain_probe_metrics.csv",
+      "sha256": "d5a750f8ee36d37352895ba70f5cecd8d51d358629f2c3b66052a544cc2d6246",
+      "bytes": 14113,
+      "depends_on": [
+        "protocol.json"
+      ]
+    },
+    {
+      "path": "terrain_separability.csv",
+      "sha256": "3d78d19df76c18589921a73fdc5a32fd39441fee010e2cd6c2fd1e0f161e7c7a",
+      "bytes": 6237,
+      "depends_on": [
+        "protocol.json"
+      ]
+    }
+  ],
+  "hash_graph_complete": true,
+  "manifest_self_hash_excluded": true,
+  "immutable_upstream_sha256": {
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/protocol.json": "3e8f2c70a81b3e686f1967818981cada408ec2549abe31d5d57b53d919c224a3",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/manifest.json": "b1360af75e6d57d59270df1bde3939b41d70a537067ae9754c044bda7a041aa8",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/traces.npz": "1bbede7770400a844f75da2bce5157e4b50e5f8119ea5e893760943c7ed40423",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+    "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/protocol.json": "0f54fec4e116b6407ac98b79e5c52af28f3ef22b80d052b5da0b69d6082cb50a",
+    "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/manifest.csv": "adeb35399c8f027fcc1b0f85e838f15808efa92513b8dcaa27c7080f27c4f0e6",
+    "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/inputs_fusion10.npz": "1c8e2140bce179da2cbaabba37d08f4b81496b1ce35699947fb7b0bd4c1de388",
+    "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/oracle_diagnostics.npz": "ee963c87adea9ba574032b36818cebe28edfa0e891eec6edd6153035fb424927",
+    "simulation/outputs/terrain_static_provenance_v4/dataset_noisy_provenance.npz": "4174c4f04f0199a3ff91acbc491181eaa7ec6612cdf5a6ff876e1a619327b2a3",
+    "simulation/outputs/terrain_static_reference_v4/selected_model.keras": "adcfa113b679327dc5bac0d4df7dcfceeb2f4dd703960665ecc491581d77df3b",
+    "simulation/outputs/terrain_static_reference_v4/normalization.json": "13ffc43275e142b6e9bd17cd367a99ff019746087ab7f5ce79a7cea0b9a25830",
+    "simulation/outputs/walking_bounded_retraining_v1/summary.json": "ccc55ae83237cd1febfd5ca99b2f40bd13202b83f1d8c02d766896e54274d8d2",
+    "simulation/outputs/walking_bounded_retraining_v1/holdout_metrics.csv": "befd0f2a078fe44bccf77b82ef16957d9847949293464b705fdddd7cf30e2c61",
+    "simulation/outputs/walking_bounded_retraining_v1/models/terrain_walking_candidate.keras": "49ff0672b3a0374e8e05756e6d39a93c33e0380c6cce055a8ccc9d4a6d7732c1",
+    "simulation/outputs/walking_bounded_retraining_v1/normalization/terrain.json": "43df9c0e379c04827231b71b4e5b72dad7049adb5902d699ed34766ab4a002c6",
+    "simulation/outputs/walking_bounded_retraining_v1_sink_holdout/summary.json": "cfed5bc332f22090e9341916fdeff6e43da133bdc41d0c64fb534d409aa11668"
+  },
+  "outer_trace_access_count": 0,
+  "production_artifacts_changed": false
+}

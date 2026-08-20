@@ -1,0 +1,21 @@
+detector,window_ms,feature_set,group,profile,speed_mps,train_samples,train_runs,validation_samples,validation_runs,endpoint_balanced_accuracy,endpoint_recall,endpoint_fpr,walking_positive_run_recall,walking_detected_runs,walking_physical_positive_runs,walking_normal_fp_runs,anticipation_runs,latency_median_ms,latency_p95_ms,controlled_endpoint_recall,controlled_endpoint_fpr,threshold,threshold_source,runtime_persistence,mask_violation_samples,production_candidate
+slip,5,Fusion10_raw_summary,aggregate,all,all,5508,36,29710,18,0.6508285840739781,0.3338129496402878,0.03215578149233155,1.0,3,3,7,3,26.0,26.9,0.0,0.0,0.9655139084927523,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,5,Fusion10_raw_summary,profile_speed,ice,0.1,,,,,,,,1.0,1,1,,1,27.0,,,,0.9655139084927523,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,5,Fusion10_raw_summary,profile_speed,ice,0.15,,,,,,,,1.0,1,1,,1,17.0,,,,0.9655139084927523,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,5,Fusion10_raw_summary,profile_speed,ice,0.2,,,,,,,,1.0,1,1,,1,26.0,,,,0.9655139084927523,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,10,Fusion10_raw_summary,aggregate,all,all,5508,36,29710,18,0.7582980522354476,0.5712230215827339,0.0546269171118387,1.0,3,3,9,3,27.0,29.7,0.0,0.0,0.886904194396564,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,10,Fusion10_raw_summary,profile_speed,ice,0.1,,,,,,,,1.0,1,1,,1,30.0,,,,0.886904194396564,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,10,Fusion10_raw_summary,profile_speed,ice,0.15,,,,,,,,1.0,1,1,,1,17.0,,,,0.886904194396564,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,10,Fusion10_raw_summary,profile_speed,ice,0.2,,,,,,,,1.0,1,1,,1,27.0,,,,0.886904194396564,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,20,Fusion10_raw_summary,aggregate,all,all,5508,36,29710,18,0.8591893054572368,0.7956834532374101,0.07730484232293641,1.0,3,3,9,3,26.0,26.0,0.0,0.0,0.7136004596653253,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,20,Fusion10_raw_summary,profile_speed,ice,0.1,,,,,,,,1.0,1,1,,1,25.0,,,,0.7136004596653253,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,20,Fusion10_raw_summary,profile_speed,ice,0.15,,,,,,,,1.0,1,1,,1,26.0,,,,0.7136004596653253,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,20,Fusion10_raw_summary,profile_speed,ice,0.2,,,,,,,,1.0,1,1,,1,26.0,,,,0.7136004596653253,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,50,Fusion10_raw_summary,aggregate,all,all,5508,36,29710,18,0.8485836524645526,0.7525179856115108,0.05535068068240565,1.0,3,3,1,3,0.0,0.0,0.0,0.0,0.8483116071164569,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,50,Fusion10_raw_summary,profile_speed,ice,0.1,,,,,,,,1.0,1,1,,1,0.0,,,,0.8483116071164569,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,50,Fusion10_raw_summary,profile_speed,ice,0.15,,,,,,,,1.0,1,1,,1,0.0,,,,0.8483116071164569,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,50,Fusion10_raw_summary,profile_speed,ice,0.2,,,,,,,,1.0,1,1,,1,0.0,,,,0.8483116071164569,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,100,Fusion10_raw_summary,aggregate,all,all,5508,36,29574,18,0.6638027532889025,0.3539568345323741,0.026351327954569063,1.0,3,3,0,3,0.0,12.599999999999998,0.0,0.0,0.9809102907405636,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,100,Fusion10_raw_summary,profile_speed,ice,0.1,,,,,,,,1.0,1,1,,1,0.0,,,,0.9809102907405636,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,100,Fusion10_raw_summary,profile_speed,ice,0.15,,,,,,,,1.0,1,1,,1,14.0,,,,0.9809102907405636,v00/v01 walking hard-negative maximum + one float step,1,0,False
+slip,100,Fusion10_raw_summary,profile_speed,ice,0.2,,,,,,,,1.0,1,1,,1,0.0,,,,0.9809102907405636,v00/v01 walking hard-negative maximum + one float step,1,0,False
