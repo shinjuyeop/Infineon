@@ -1,0 +1,24 @@
+{
+  "outer_content_load_count": 0,
+  "new_sink_holdout_content_load_count": 0,
+  "spatial_content_load_count": 0,
+  "final_test_content_load_count": 0,
+  "outer_experiments_rerun": false,
+  "hash_only_files": [
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/outer_validation_manifest.json",
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/outer_validation_traces.npz"
+  ],
+  "loaded_content_files": [
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/manifest.json",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/traces.npz",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/slip_stateful_metrics.csv",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/sink_stateful_metrics.csv",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/reset_invariant_audit.csv",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/models/sink_20ms_raw_risk.npz",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/models/sink_50ms_raw_risk.npz",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/models/sink_200ms_raw_risk.npz",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/models/sink_200ms_stateful_risk.npz",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/models/slip_100ms_stateful_risk.npz",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/models/slip_100ms_stateful_confirmed.npz"
+  ]
+}

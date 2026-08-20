@@ -1,0 +1,55 @@
+{
+  "version": 2,
+  "proposal_only": true,
+  "production_implementation_changed": false,
+  "states": {
+    "NO_HAZARD": {
+      "entry": "reset, cooldown completion, or stable contact without evidence",
+      "maintain": "no approved risk output",
+      "release": "slip_risk true",
+      "minimum_dwell_ms": 0,
+      "hysteresis": "risk-on threshold is owned by locked detector"
+    },
+    "RISK": {
+      "entry": "slip_risk true in stable contact",
+      "maintain": "risk above hysteresis-off or minimum dwell incomplete",
+      "release": "evidence persistent -> EVIDENCE_PERSISTENT; evidence clears -> COOLDOWN",
+      "minimum_dwell_ms": 20,
+      "hysteresis": "locked on/off score thresholds"
+    },
+    "EVIDENCE_PERSISTENT": {
+      "entry": "independent slip_evidence_persistent true after RISK",
+      "maintain": "persistent evidence or recovery request latched",
+      "release": "controller accepts request -> RECOVERY_REQUIRED; evidence clears -> COOLDOWN",
+      "minimum_dwell_ms": 20,
+      "hysteresis": "independent persistence/off threshold"
+    },
+    "RECOVERY_REQUIRED": {
+      "entry": "approved controller policy accepts persistent evidence",
+      "maintain": "single reflex command latch",
+      "release": "command completion, evidence clear, or contact reset -> COOLDOWN/NO_HAZARD",
+      "minimum_dwell_ms": 50,
+      "hysteresis": "controller-owned latch; no repeated command"
+    },
+    "COOLDOWN": {
+      "entry": "risk/evidence release or reflex completion",
+      "maintain": "250 ms or remainder of contact episode",
+      "release": "cooldown elapsed with no evidence; contact reset immediately clears",
+      "minimum_dwell_ms": 250,
+      "hysteresis": "new risk cannot duplicate the latched reflex"
+    }
+  },
+  "common_reset_and_arbitration": {
+    "contact_loss": "immediate reset to NO_HAZARD and clear all latches",
+    "new_touchdown": "start a new episode in NO_HAZARD; no prior evidence carries over",
+    "fall_censor": "offline evaluation terminates; runtime safety supervisor is outside this proposal",
+    "duplicate_reflex": "one trigger latch per contact episode; suppress retrigger through COOLDOWN",
+    "simultaneous_slip_sink": "Slip is the only enabled hazard; Sink remains diagnostic until separately ready",
+    "terrain_priority": "slip_risk is not suppressed by Terrain context; Terrain transition is contextual metadata"
+  },
+  "trigger_semantics": {
+    "slip": "slip_risk may trigger; never wait for slip_physical_active",
+    "sink": "production trigger prohibited until operational-label readiness",
+    "physical_oracle_input": false
+  }
+}

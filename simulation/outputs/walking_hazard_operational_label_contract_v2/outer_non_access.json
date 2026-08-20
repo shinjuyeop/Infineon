@@ -1,0 +1,11 @@
+{
+  "outer_content_load_count": 0,
+  "new_sink_holdout_content_load_count": 0,
+  "spatial_content_load_count": 0,
+  "final_test_content_load_count": 0,
+  "outer_experiments_rerun": false,
+  "hash_only_files": [
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/outer_validation_manifest.json",
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/outer_validation_traces.npz"
+  ]
+}

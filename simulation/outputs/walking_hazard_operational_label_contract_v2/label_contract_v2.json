@@ -1,0 +1,275 @@
+{
+  "version": 2,
+  "offline_only": {
+    "slip_physical_onset": {
+      "namespace": "offline-only",
+      "purpose": "mark first physical Slip sample per episode",
+      "generation_criterion": "rising edge of locked 50 mm anchor-drift/3 ms physical oracle",
+      "allowed_information": [
+        "simulator anchor drift",
+        "loaded-contact validity"
+      ],
+      "future_information": "none",
+      "runtime_available": false,
+      "valid_region": "valid loaded pre-fall contact",
+      "reset_condition": "new episode/contact loss/fall censor",
+      "AIR_touchdown_post_fall": "always false",
+      "fast_reflex_relation": "evaluation anchor only; never triggers reflex",
+      "false_positive_definition": "not applicable",
+      "early_warning_definition": "not applicable",
+      "latency_anchor": "this onset sample"
+    },
+    "slip_physical_active": {
+      "namespace": "offline-only",
+      "purpose": "measure physically active Slip",
+      "generation_criterion": "locked anchor-drift oracle active after persistence",
+      "allowed_information": [
+        "simulator anchor drift",
+        "loaded-contact validity"
+      ],
+      "future_information": "none",
+      "runtime_available": false,
+      "valid_region": "valid loaded pre-fall contact",
+      "reset_condition": "contact loss/new episode/fall censor",
+      "AIR_touchdown_post_fall": "always false",
+      "fast_reflex_relation": "evaluation only",
+      "false_positive_definition": "runtime firing without risk-target support",
+      "early_warning_definition": "not applicable",
+      "latency_anchor": "slip_physical_onset"
+    },
+    "sink_physical_onset": {
+      "namespace": "offline-only",
+      "purpose": "mark first physical penetration event sample",
+      "generation_criterion": "rising edge of locked 5.5 mm/20 ms penetration-change oracle",
+      "allowed_information": [
+        "simulator penetration",
+        "loaded-contact validity"
+      ],
+      "future_information": "none",
+      "runtime_available": false,
+      "valid_region": "valid loaded pre-fall contact",
+      "reset_condition": "new episode/contact loss/fall censor",
+      "AIR_touchdown_post_fall": "always false",
+      "fast_reflex_relation": "evaluation anchor only",
+      "false_positive_definition": "not applicable",
+      "early_warning_definition": "not applicable",
+      "latency_anchor": "this onset sample"
+    },
+    "sink_physical_active": {
+      "namespace": "offline-only",
+      "purpose": "measure sustained physical penetration",
+      "generation_criterion": "locked penetration-change oracle active after persistence",
+      "allowed_information": [
+        "simulator penetration",
+        "loaded-contact validity"
+      ],
+      "future_information": "none",
+      "runtime_available": false,
+      "valid_region": "valid loaded pre-fall contact",
+      "reset_condition": "contact loss/new episode/fall censor",
+      "AIR_touchdown_post_fall": "always false",
+      "fast_reflex_relation": "physical oracle only; no production trigger",
+      "false_positive_definition": "not applicable",
+      "early_warning_definition": "not applicable",
+      "latency_anchor": "sink_physical_onset"
+    },
+    "fall_censor": {
+      "namespace": "offline-only",
+      "purpose": "exclude samples at and after first fall",
+      "generation_criterion": "first false pre_fall_valid sample through run end",
+      "allowed_information": [
+        "simulator fall diagnostic"
+      ],
+      "future_information": "none; first fall only",
+      "runtime_available": false,
+      "valid_region": "whole trace",
+      "reset_condition": "new run",
+      "AIR_touchdown_post_fall": "defines post-fall rather than being excluded",
+      "fast_reflex_relation": "never triggers reflex",
+      "false_positive_definition": "not applicable",
+      "early_warning_definition": "not applicable",
+      "latency_anchor": "first fall"
+    },
+    "valid_loaded_contact": {
+      "namespace": "offline-only",
+      "purpose": "define calibration/evaluation support",
+      "generation_criterion": "loaded_contact AND not touchdown transient AND before first fall",
+      "allowed_information": [
+        "simulator contact",
+        "FSR load",
+        "fall censor"
+      ],
+      "future_information": "none",
+      "runtime_available": false,
+      "valid_region": "stable loaded pre-fall contact",
+      "reset_condition": "contact loss/new episode/fall censor",
+      "AIR_touchdown_post_fall": "false",
+      "fast_reflex_relation": "gates offline metrics only",
+      "false_positive_definition": "not applicable",
+      "early_warning_definition": "not applicable",
+      "latency_anchor": "touchdown/loading completion"
+    }
+  },
+  "runtime_capable": {
+    "slip_risk": {
+      "namespace": "runtime-capable",
+      "purpose": "causal Fast Reflex trigger candidate",
+      "generation_criterion": "locked D 100 ms causal Fusion10 score/state machine",
+      "allowed_information": [
+        "current/past Fusion10",
+        "causal contact/touchdown state"
+      ],
+      "future_information": "runtime: none; offline target may look up to 100 ms to physical onset",
+      "runtime_available": true,
+      "valid_region": "causally inferred stable contact",
+      "reset_condition": "contact loss/new touchdown/fall censor",
+      "AIR_touchdown_post_fall": "must be false",
+      "fast_reflex_relation": "may trigger Slip reflex without physical confirmation",
+      "false_positive_definition": "normal-run firing or >100 ms pre-onset firing",
+      "early_warning_definition": "0..100 ms before onset is valid; active/post-onset firing is detection",
+      "latency_anchor": "slip_physical_onset for offline margin only"
+    },
+    "slip_evidence_persistent": {
+      "namespace": "runtime-capable",
+      "purpose": "report sustained causal Slip evidence",
+      "generation_criterion": "independent persistent score/hysteresis state; not physical truth",
+      "allowed_information": [
+        "current/past Fusion10",
+        "prior score/state"
+      ],
+      "future_information": "none",
+      "runtime_available": true,
+      "valid_region": "causally inferred stable contact",
+      "reset_condition": "contact loss/new touchdown/fall censor",
+      "AIR_touchdown_post_fall": "must be false",
+      "fast_reflex_relation": "may maintain/latch a reflex already triggered by slip_risk",
+      "false_positive_definition": "persistence on normal run",
+      "early_warning_definition": "not an oracle-anticipation label",
+      "latency_anchor": "slip_risk entry"
+    },
+    "sink_support_degradation_risk": {
+      "namespace": "runtime-capable-proposal",
+      "purpose": "predict physically grounded support loss",
+      "generation_criterion": "future estimator target is candidate B; no approved runtime estimator exists",
+      "allowed_information": [
+        "future implementation: current/past deployable sensors only"
+      ],
+      "future_information": "none at runtime; simulator physical quantities are label-only",
+      "runtime_available": false,
+      "valid_region": "causally inferred stable contact",
+      "reset_condition": "contact loss/new touchdown/fall censor",
+      "AIR_touchdown_post_fall": "must be false",
+      "fast_reflex_relation": "production trigger prohibited until readiness",
+      "false_positive_definition": "normal walking firing",
+      "early_warning_definition": "not approved",
+      "latency_anchor": "candidate physical onset"
+    },
+    "sink_evidence_persistent": {
+      "namespace": "runtime-capable-proposal",
+      "purpose": "report sustained Sink evidence",
+      "generation_criterion": "independent causal persistence; current prototype is not ready",
+      "allowed_information": [
+        "future implementation: current/past deployable sensors only"
+      ],
+      "future_information": "none",
+      "runtime_available": false,
+      "valid_region": "causally inferred stable contact",
+      "reset_condition": "contact loss/new touchdown/fall censor",
+      "AIR_touchdown_post_fall": "must be false",
+      "fast_reflex_relation": "production trigger prohibited",
+      "false_positive_definition": "persistence during normal gait",
+      "early_warning_definition": "not approved",
+      "latency_anchor": "sink risk entry"
+    },
+    "contact_state": {
+      "namespace": "runtime-capable",
+      "purpose": "scope detector state causally",
+      "generation_criterion": "FSR hysteresis and touchdown elapsed state",
+      "allowed_information": [
+        "current/past FSR"
+      ],
+      "future_information": "none",
+      "runtime_available": true,
+      "valid_region": "whole stream",
+      "reset_condition": "contact loss/new touchdown/explicit reset",
+      "AIR_touchdown_post_fall": "AIR/LOADING are explicit states",
+      "fast_reflex_relation": "gates but never proves hazard",
+      "false_positive_definition": "not applicable",
+      "early_warning_definition": "not applicable",
+      "latency_anchor": "FSR contact-on"
+    },
+    "recovery_required": {
+      "namespace": "runtime-capable-proposal",
+      "purpose": "request controller recovery arbitration",
+      "generation_criterion": "evidence-persistent plus controller policy; no recovery benefit is claimed",
+      "allowed_information": [
+        "approved hazard state",
+        "controller latch/state"
+      ],
+      "future_information": "none",
+      "runtime_available": false,
+      "valid_region": "contact episode",
+      "reset_condition": "contact loss/new touchdown/cooldown completion",
+      "AIR_touchdown_post_fall": "must be false",
+      "fast_reflex_relation": "controller request, not physical oracle",
+      "false_positive_definition": "request without approved operational evidence",
+      "early_warning_definition": "not applicable",
+      "latency_anchor": "request transition"
+    }
+  },
+  "deprecated_or_ambiguous": {
+    "slip": {
+      "namespace": "deprecated-ambiguous",
+      "purpose": "legacy overloaded boolean",
+      "generation_criterion": "historically dataset oracle or runtime detector firing depending context",
+      "allowed_information": [
+        "context dependent"
+      ],
+      "future_information": "ambiguous",
+      "runtime_available": false,
+      "valid_region": "ambiguous",
+      "reset_condition": "ambiguous",
+      "AIR_touchdown_post_fall": "ambiguous",
+      "fast_reflex_relation": "replace runtime use with slip_risk and offline use with slip_physical_active",
+      "false_positive_definition": "ambiguous",
+      "early_warning_definition": "ambiguous",
+      "latency_anchor": "ambiguous"
+    },
+    "sink": {
+      "namespace": "deprecated-ambiguous",
+      "purpose": "legacy overloaded boolean",
+      "generation_criterion": "historically penetration/tilt label or runtime detector firing",
+      "allowed_information": [
+        "context dependent"
+      ],
+      "future_information": "ambiguous",
+      "runtime_available": false,
+      "valid_region": "ambiguous",
+      "reset_condition": "ambiguous",
+      "AIR_touchdown_post_fall": "ambiguous",
+      "fast_reflex_relation": "replace offline use with sink_physical_active; no runtime trigger yet",
+      "false_positive_definition": "ambiguous",
+      "early_warning_definition": "ambiguous",
+      "latency_anchor": "ambiguous"
+    },
+    "hazard_confirmed": {
+      "namespace": "deprecated-ambiguous",
+      "purpose": "legacy confirmation name",
+      "generation_criterion": "could mean physical oracle or persistent sensor evidence",
+      "allowed_information": [
+        "context dependent"
+      ],
+      "future_information": "ambiguous",
+      "runtime_available": false,
+      "valid_region": "ambiguous",
+      "reset_condition": "ambiguous",
+      "AIR_touchdown_post_fall": "ambiguous",
+      "fast_reflex_relation": "replace with hazard-specific physical/evidence fields",
+      "false_positive_definition": "ambiguous",
+      "early_warning_definition": "ambiguous",
+      "latency_anchor": "ambiguous"
+    }
+  },
+  "namespace_unique": true,
+  "physical_oracle_is_runtime_contract": false
+}

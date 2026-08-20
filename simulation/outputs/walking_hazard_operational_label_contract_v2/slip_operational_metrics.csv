@@ -1,0 +1,23 @@
+row_type,candidate_id,physical_positive_runs,risk_covered_runs,normal_runs,normal_risk_fp_runs,too_early_fp_runs,invalid_firing_samples,evidence_persistent_positive_runs,speed_coverage,deterministic_replay_parity_exact,prior_locked_metric_parity,reset_invariant_pass,reaction_time_margin,controlled_domain,sample_size_limitation,speed_mps,positive_runs,covered_runs,run_id,profile,role,physical_positive,physical_onset_sample,risk_covered,first_risk_sample,normal_risk_fp,too_early_fp,evidence_persistent_run
+aggregate,D_touchdown_reference_100ms,3,3,9,0,0,0,1,"{""0.10"": {""covered_runs"": 1, ""positive_runs"": 1}, ""0.15"": {""covered_runs"": 1, ""positive_runs"": 1}, ""0.20"": {""covered_runs"": 1, ""positive_runs"": 1}}",True,"{""normal_risk_fp_runs"": true, ""risk_covered_runs"": true, ""too_early_runs"": true}",True,"{""aligned_risk_events"": 9, ""margin_max_ms"": 100.0, ""margin_median_ms"": 60.0, ""margin_min_ms"": 9.0, ""margin_p05_ms"": 9.0, ""physical_events"": 21, ""pre_onset_warning_events"": 9}","{""frozen_baseline_recall"": 0.8235294117647058, ""locked_D_detected_runs"": 0, ""locked_D_recall"": 0.0, ""not_relabeled_or_hidden"": true, ""positive_runs"": 17}","3 positive v02 runs, one at each speed; a new blind holdout is required",,,,,,,,,,,,,
+speed,,,,,,,,,,,,,,,,0.10,1,1,,,,,,,,,,
+speed,,,,,,,,,,,,,,,,0.15,1,1,,,,,,,,,,
+speed,,,,,,,,,,,,,,,,0.20,1,1,,,,,,,,,,
+run,,,,,,,0,,,,,,,,,0.1,,,marble_native_0p10_v02,marble,hard_negative,False,,False,,False,False,False
+run,,,,,,,0,,,,,,,,,0.1,,,concrete_native_0p10_v02,concrete,hard_negative,False,,False,,False,False,False
+run,,,,,,,0,,,,,,,,,0.1,,,sand_hardened_0p10_v02,sand_walking_support_v1_hardened,hard_negative,False,,False,,False,False,False
+run,,,,,,,0,,,,,,,,,0.1,,,ice_native_0p10_v02,ice,slip_candidate,True,158,True,149,False,False,False
+run,,,,,,,0,,,,,,,,,0.1,,,sand_solref_interpolation_1of3_0p10_v02,sand_solref_interpolation_1of3,sink_candidate,False,,False,,False,False,False
+run,,,,,,,0,,,,,,,,,0.1,,,sand_solref_interpolation_2of3_0p10_v02,sand_solref_interpolation_2of3,sink_candidate,False,,False,,False,False,False
+run,,,,,,,0,,,,,,,,,0.15,,,marble_native_0p15_v02,marble,hard_negative,False,,False,,False,False,False
+run,,,,,,,0,,,,,,,,,0.15,,,concrete_native_0p15_v02,concrete,hard_negative,False,,False,,False,False,False
+run,,,,,,,0,,,,,,,,,0.15,,,sand_hardened_0p15_v02,sand_walking_support_v1_hardened,hard_negative,False,,False,,False,False,False
+run,,,,,,,0,,,,,,,,,0.15,,,ice_native_0p15_v02,ice,slip_candidate,True,158,True,145,False,False,True
+run,,,,,,,0,,,,,,,,,0.15,,,sand_solref_interpolation_1of3_0p15_v02,sand_solref_interpolation_1of3,sink_candidate,False,,False,,False,False,False
+run,,,,,,,0,,,,,,,,,0.15,,,sand_solref_interpolation_2of3_0p15_v02,sand_solref_interpolation_2of3,sink_candidate,False,,False,,False,False,False
+run,,,,,,,0,,,,,,,,,0.2,,,marble_native_0p20_v02,marble,hard_negative,False,,False,,False,False,False
+run,,,,,,,0,,,,,,,,,0.2,,,concrete_native_0p20_v02,concrete,hard_negative,False,,False,,False,False,False
+run,,,,,,,0,,,,,,,,,0.2,,,sand_hardened_0p20_v02,sand_walking_support_v1_hardened,hard_negative,False,,False,,False,False,False
+run,,,,,,,0,,,,,,,,,0.2,,,ice_native_0p20_v02,ice,slip_candidate,True,159,True,150,False,False,False
+run,,,,,,,0,,,,,,,,,0.2,,,sand_solref_interpolation_1of3_0p20_v02,sand_solref_interpolation_1of3,sink_candidate,False,,False,,False,False,False
+run,,,,,,,0,,,,,,,,,0.2,,,sand_solref_interpolation_2of3_0p20_v02,sand_solref_interpolation_2of3,sink_candidate,False,,False,,False,False,False

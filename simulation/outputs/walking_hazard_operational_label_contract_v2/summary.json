@@ -1,0 +1,236 @@
+{
+  "artifact": "walking_hazard_operational_label_contract_v2",
+  "starting_checkpoint": "3e52218524a4d2b59e431049a040c31e7c0b7902",
+  "scope": "read-only development label/reflex contract audit",
+  "physical_offline_runtime_separation": {
+    "physical_ground_truth": "offline simulation oracle only",
+    "operational_risk": "causal runtime warning; physical future used only to build/evaluate offline target",
+    "runtime_confirmation": "persistent sensor evidence, explicitly not physical confirmation"
+  },
+  "data": {
+    "development_runs": 54,
+    "validation_runs": 18,
+    "sample_rate_hz": 1000,
+    "trace_schema": [
+      3000,
+      10
+    ],
+    "split_integrity": {
+      "run_leakage_count": 0,
+      "episode_leakage_count": 0,
+      "leaking_runs": [],
+      "leaking_episodes": [],
+      "split_leakage_count": 0
+    },
+    "outer_content_load_count": 0
+  },
+  "slip": {
+    "candidate_id": "D_touchdown_reference_100ms",
+    "physical_positive_runs": 3,
+    "risk_covered_runs": 3,
+    "normal_runs": 9,
+    "normal_risk_fp_runs": 0,
+    "too_early_fp_runs": 0,
+    "invalid_firing_samples": 0,
+    "evidence_persistent_positive_runs": 1,
+    "speed_coverage": {
+      "0.10": {
+        "positive_runs": 1,
+        "covered_runs": 1
+      },
+      "0.15": {
+        "positive_runs": 1,
+        "covered_runs": 1
+      },
+      "0.20": {
+        "positive_runs": 1,
+        "covered_runs": 1
+      }
+    },
+    "deterministic_replay_parity_exact": true,
+    "prior_locked_metric_parity": {
+      "risk_covered_runs": true,
+      "normal_risk_fp_runs": true,
+      "too_early_runs": true
+    },
+    "reset_invariant_pass": true,
+    "reaction_time_margin": {
+      "physical_events": 21,
+      "aligned_risk_events": 9,
+      "pre_onset_warning_events": 9,
+      "margin_median_ms": 60.0,
+      "margin_p05_ms": 9.0,
+      "margin_min_ms": 9.0,
+      "margin_max_ms": 100.0
+    },
+    "controlled_domain": {
+      "positive_runs": 17,
+      "locked_D_detected_runs": 0,
+      "locked_D_recall": 0.0,
+      "frozen_baseline_recall": 0.8235294117647058,
+      "not_relabeled_or_hidden": true
+    },
+    "sample_size_limitation": "3 positive v02 runs, one at each speed; a new blind holdout is required"
+  },
+  "sink": {
+    "candidates": {
+      "A_penetration_risk": {
+        "candidate_id": "A_penetration_risk",
+        "all_validation_positive_runs": 9,
+        "all_validation_negative_runs": 9,
+        "positive_target_runs": 6,
+        "negative_target_runs": 0,
+        "normal_positive_overlap_runs": 0,
+        "cross_hazard_slip_candidate_positive_runs": 3,
+        "profile_speed_coverage": {
+          "sand_solref_interpolation_1of3": {
+            "0.10": 1,
+            "0.15": 1,
+            "0.20": 1
+          },
+          "sand_solref_interpolation_2of3": {
+            "0.10": 1,
+            "0.15": 1,
+            "0.20": 1
+          }
+        },
+        "stable_prefall_positive_runs": 6,
+        "positive_duration_ms": 5912,
+        "onset_count": 37,
+        "fall_confounded_samples": 0,
+        "invalid_contamination_samples": 0,
+        "physical_independent_of_fusion10": true,
+        "validity_gate_uses_loaded_contact_but_positive_criterion_is_physical": true,
+        "reproducible_fixed_definition": true,
+        "physical_label_ready": true,
+        "minimum_locked_score_separation_evidence": false,
+        "operational_label_ready": false,
+        "normal_fp_not_renamed": true,
+        "fast_reflex_reason": "penetration plus support/base degradation could justify unloading or recovery arbitration; benefit remains untested",
+        "closed_loop_recovery_effect_claimed": false
+      },
+      "B_support_degradation_risk": {
+        "candidate_id": "B_support_degradation_risk",
+        "all_validation_positive_runs": 0,
+        "all_validation_negative_runs": 18,
+        "positive_target_runs": 0,
+        "negative_target_runs": 6,
+        "normal_positive_overlap_runs": 0,
+        "cross_hazard_slip_candidate_positive_runs": 0,
+        "profile_speed_coverage": {
+          "sand_solref_interpolation_1of3": {
+            "0.10": 0,
+            "0.15": 0,
+            "0.20": 0
+          },
+          "sand_solref_interpolation_2of3": {
+            "0.10": 0,
+            "0.15": 0,
+            "0.20": 0
+          }
+        },
+        "stable_prefall_positive_runs": 0,
+        "positive_duration_ms": 0,
+        "onset_count": 0,
+        "fall_confounded_samples": 0,
+        "invalid_contamination_samples": 0,
+        "physical_independent_of_fusion10": true,
+        "validity_gate_uses_loaded_contact_but_positive_criterion_is_physical": true,
+        "reproducible_fixed_definition": true,
+        "physical_label_ready": false,
+        "minimum_locked_score_separation_evidence": false,
+        "operational_label_ready": false,
+        "normal_fp_not_renamed": true,
+        "fast_reflex_reason": "penetration plus support/base degradation could justify unloading or recovery arbitration; benefit remains untested",
+        "closed_loop_recovery_effect_claimed": false
+      },
+      "C_recovery_required_sink": {
+        "candidate_id": "C_recovery_required_sink",
+        "all_validation_positive_runs": 0,
+        "all_validation_negative_runs": 18,
+        "positive_target_runs": 0,
+        "negative_target_runs": 6,
+        "normal_positive_overlap_runs": 0,
+        "cross_hazard_slip_candidate_positive_runs": 0,
+        "profile_speed_coverage": {
+          "sand_solref_interpolation_1of3": {
+            "0.10": 0,
+            "0.15": 0,
+            "0.20": 0
+          },
+          "sand_solref_interpolation_2of3": {
+            "0.10": 0,
+            "0.15": 0,
+            "0.20": 0
+          }
+        },
+        "stable_prefall_positive_runs": 0,
+        "positive_duration_ms": 0,
+        "onset_count": 0,
+        "fall_confounded_samples": 0,
+        "invalid_contamination_samples": 0,
+        "physical_independent_of_fusion10": true,
+        "validity_gate_uses_loaded_contact_but_positive_criterion_is_physical": true,
+        "reproducible_fixed_definition": true,
+        "physical_label_ready": false,
+        "minimum_locked_score_separation_evidence": false,
+        "operational_label_ready": false,
+        "normal_fp_not_renamed": true,
+        "fast_reflex_reason": "penetration plus support/base degradation could justify unloading or recovery arbitration; benefit remains untested",
+        "closed_loop_recovery_effect_claimed": false
+      }
+    },
+    "physical_label_ready": true,
+    "operational_label_ready": false,
+    "primary_conclusion": "SINK_PHYSICAL_ORACLE_ONLY",
+    "secondary_conclusion": "ADDITIONAL_SENSOR_OBSERVATION_REQUIRED"
+  },
+  "contact_infrastructure_read_only": {
+    "phase_agreement": 0.9282777777777778,
+    "touchdown_detected": "323/323",
+    "touchdown_median_latency_ms": 0.0,
+    "state_reset_audits": "162/162 pass"
+  },
+  "action_utility_claim": {
+    "available_reaction_time_margin_only": true,
+    "false_trigger_burden_only": true,
+    "fall_reduction_claimed": false,
+    "stability_improvement_claimed": false,
+    "recovery_success_claimed": false,
+    "closed_loop_safety_benefit_claimed": false
+  },
+  "final_questions": {
+    "slip_risk_fast_reflex_candidate": "yes; as an operational risk trigger candidate requiring a new blind holdout",
+    "slip_physical_confirmation_runtime_required": "no; physical confirmation is offline-only and waiting would discard the usable precursor",
+    "sink_physically_valid_observable_operational_label": "a reproducible physical penetration oracle exists, but no candidate is currently operationally observable at acceptable normal burden",
+    "sink_additional_sensor_or_state_required": "yes; support/base state not confounded with normal gait is required",
+    "legacy_system_v1_ambiguity": "slip/sink mix physical labels with detector firing, RECOVERY_REQUIRED collides with terrain-transition recovery, and derived mismatch/dual flags inherit both ambiguities",
+    "blind_validation_target": "locked 100 ms slip_risk contract, including coverage, margin, normal/too-early/invalid burden, reset, and controlled compatibility"
+  },
+  "readiness": {
+    "WALKING_OPERATIONAL_LABEL_DATA_READY": true,
+    "WALKING_OPERATIONAL_LABEL_SPLIT_INTEGRITY_READY": true,
+    "WALKING_OPERATIONAL_LABEL_CAUSAL_CONTRACT_READY": true,
+    "WALKING_SLIP_RISK_LABEL_READY": true,
+    "WALKING_SLIP_REFLEX_CONTRACT_READY": true,
+    "WALKING_SLIP_NEW_BLIND_HOLDOUT_AUTHORIZED": true,
+    "WALKING_SINK_PHYSICAL_LABEL_READY": true,
+    "WALKING_SINK_OPERATIONAL_LABEL_READY": false,
+    "WALKING_SINK_REFLEX_CONTRACT_READY": false,
+    "WALKING_SYSTEM_SCHEMA_MIGRATION_AUTHORIZED": false,
+    "WALKING_BOUNDED_RETRAINING_V2_AUTHORIZED": false,
+    "WALKING_INT8_PREPARATION_AUTHORIZED": false
+  },
+  "readiness_dependency_graph": {
+    "schema_complete": true,
+    "slip_holdout_dependency_pass": true,
+    "sink_reflex_dependency_pass": true,
+    "forced_false_authorizations_pass": true
+  },
+  "next_step": "SLIP_OPERATIONAL_RISK_BLIND_HOLDOUT",
+  "model_training_runs": 0,
+  "production_or_system_changes": 0,
+  "int8_or_vela_executed": false,
+  "immutable_upstream_mismatch_count": 0,
+  "wall_time_s": 41.65511807904113
+}

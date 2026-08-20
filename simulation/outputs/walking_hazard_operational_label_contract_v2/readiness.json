@@ -1,0 +1,21 @@
+{
+  "gates": {
+    "WALKING_OPERATIONAL_LABEL_DATA_READY": true,
+    "WALKING_OPERATIONAL_LABEL_SPLIT_INTEGRITY_READY": true,
+    "WALKING_OPERATIONAL_LABEL_CAUSAL_CONTRACT_READY": true,
+    "WALKING_SLIP_RISK_LABEL_READY": true,
+    "WALKING_SLIP_REFLEX_CONTRACT_READY": true,
+    "WALKING_SLIP_NEW_BLIND_HOLDOUT_AUTHORIZED": true,
+    "WALKING_SINK_PHYSICAL_LABEL_READY": true,
+    "WALKING_SINK_OPERATIONAL_LABEL_READY": false,
+    "WALKING_SINK_REFLEX_CONTRACT_READY": false,
+    "WALKING_SYSTEM_SCHEMA_MIGRATION_AUTHORIZED": false,
+    "WALKING_BOUNDED_RETRAINING_V2_AUTHORIZED": false,
+    "WALKING_INT8_PREPARATION_AUTHORIZED": false
+  },
+  "diagnostic_contract_only": true,
+  "system_schema_migration_authorized": false,
+  "bounded_retraining_v2_authorized": false,
+  "int8_preparation_authorized": false,
+  "next_step": "SLIP_OPERATIONAL_RISK_BLIND_HOLDOUT"
+}

@@ -1,0 +1,128 @@
+{
+  "contract": "walking_hazard_operational_label_contract_v2",
+  "starting_checkpoint": "3e52218524a4d2b59e431049a040c31e7c0b7902",
+  "written_before_trace_load_and_label_execution": true,
+  "scope": "read-only label/action-utility audit and versioned proposal",
+  "training_runs": 0,
+  "model_or_threshold_changes": 0,
+  "data": {
+    "development_train": "v00/v01 label-quality audit only",
+    "development_validation": "v02 contract evaluation",
+    "run_episode_overlap_allowed": false,
+    "outer_content_load_count": 0,
+    "new_sink_holdout_content_load_count": 0,
+    "spatial_content_load_count": 0,
+    "final_test_content_load_count": 0
+  },
+  "namespace": {
+    "offline_only": [
+      "slip_physical_onset",
+      "slip_physical_active",
+      "sink_physical_onset",
+      "sink_physical_active",
+      "fall_censor",
+      "valid_loaded_contact"
+    ],
+    "runtime_capable": [
+      "slip_risk",
+      "slip_evidence_persistent",
+      "sink_support_degradation_risk",
+      "sink_evidence_persistent",
+      "contact_state",
+      "recovery_required"
+    ],
+    "deprecated_or_ambiguous": [
+      "slip",
+      "sink",
+      "hazard_confirmed"
+    ]
+  },
+  "slip": {
+    "risk_horizon_ms": 100,
+    "replay_candidate": "D_touchdown_reference_100ms",
+    "target": "valid contact AND (0..100 ms before physical onset OR physical active)",
+    "too_early": "runtime firing more than 100 ms before first physical onset",
+    "normal_fp": "any runtime firing in a hard-negative run",
+    "gate": {
+      "risk_coverage": "3/3",
+      "per_speed": "1/1",
+      "normal_risk_fp": "0/9",
+      "too_early_runs": 0,
+      "invalid_firing_samples": 0,
+      "future_leakage": 0,
+      "deterministic_replay": "exact",
+      "reset": "pass",
+      "controlled_domain": "recorded separately; not relabeled"
+    }
+  },
+  "sink_candidates": {
+    "A_penetration_risk": {
+      "criterion": "locked 5.5 mm episode-relative penetration, 20 ms persistence",
+      "threshold_m": 0.0055,
+      "persistence_ms": 20
+    },
+    "B_support_degradation_risk": {
+      "criterion": "A AND (touchdown-relative pelvis drop >=10 mm OR downward speed >=0.05 m/s), 20 ms",
+      "drop_m": 0.01,
+      "downward_speed_mps": 0.05,
+      "persistence_ms": 20
+    },
+    "C_recovery_required_sink": {
+      "criterion": "B AND pelvis drop >=20 mm AND downward speed >=0.05 m/s, 20 ms",
+      "drop_m": 0.02,
+      "downward_speed_mps": 0.05,
+      "persistence_ms": 20
+    }
+  },
+  "sink_score_evidence": {
+    "locked_scores": [
+      "A_stateless_20ms",
+      "B_causal_50ms",
+      "C_dual_history_200ms",
+      "D_touchdown_stateful_200ms"
+    ],
+    "no_refit": true,
+    "minimum_separation": "AUROC >=0.70, positive median > stable-negative p95, all positive runs detected at locked threshold, zero normal-run score FP"
+  },
+  "sink_gate": {
+    "physical_independence": true,
+    "normal_positive_runs": 0,
+    "profiles": 2,
+    "speeds_per_profile": 3,
+    "stable_prefall_positive_coverage": "all target runs",
+    "invalid_contamination_samples": 0,
+    "locked_score_minimum_separation": true
+  },
+  "reflex_proposal": {
+    "states": [
+      "NO_HAZARD",
+      "RISK",
+      "EVIDENCE_PERSISTENT",
+      "RECOVERY_REQUIRED",
+      "COOLDOWN"
+    ],
+    "slip_trigger": "slip_risk; do not wait for physical confirmation",
+    "sink_trigger": "disabled unless a later contract is ready"
+  },
+  "readiness_constraints": {
+    "WALKING_SYSTEM_SCHEMA_MIGRATION_AUTHORIZED": false,
+    "WALKING_BOUNDED_RETRAINING_V2_AUTHORIZED": false,
+    "WALKING_INT8_PREPARATION_AUTHORIZED": false
+  },
+  "next_step_priority": [
+    "SLIP_OPERATIONAL_RISK_BLIND_HOLDOUT",
+    "TARGETED_SINK_LABEL_ACQUISITION",
+    "ADDITIONAL_SENSOR_CONTRACT",
+    "SINK_RUNTIME_DETECTION_DEFERRED",
+    "STOP_WALKING_HAZARD_EXTENSION"
+  ],
+  "random_seed": 20260820,
+  "no_post_result_gate_or_threshold_change": true,
+  "claims_forbidden": [
+    "fall reduction",
+    "stability improvement",
+    "recovery success",
+    "closed-loop safety benefit",
+    "physical oracle as runtime input"
+  ]
+}

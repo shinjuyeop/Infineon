@@ -1,0 +1,7 @@
+legacy_field,legacy_semantics,v2_proposed_mapping,status
+slip,dataset physical label OR runtime detector firing,offline: slip_physical_active; runtime: slip_risk,ambiguous_deprecated
+sink,penetration/tilt label OR runtime detector firing,offline: sink_physical_active; runtime: disabled pending sink_support_degradation_risk readiness,ambiguous_deprecated
+HAZARD_REFLEX_REQUIRED,slip OR sink firing independent of terrain,enabled slip_risk OR future approved sink risk,proposal_only
+CASE_REFLEX_REQUIRED,case A+slip OR case B+sink,terrain-context match tag; must not suppress approved slip_risk,proposal_only
+RECOVERY_REQUIRED,Terrain transition case C/D symbolic recovery,rename terrain_transition_recovery_required; reserve recovery_required for controller arbitration,name_collision
+mismatch/dual-hazard flags,derived from ambiguous slip/sink booleans,derive only from explicit *_risk fields and readiness mask,proposal_only

@@ -1,0 +1,118 @@
+{
+  "artifact": "walking_hazard_operational_label_contract_v2",
+  "starting_checkpoint": "3e52218524a4d2b59e431049a040c31e7c0b7902",
+  "generated_files": [
+    {
+      "path": "accessed_file_manifest.json",
+      "sha256": "f076d408c8f0d4a6f960b16b2030b0cb78225aa43f893e0cf001a69446fff103",
+      "bytes": 1443
+    },
+    {
+      "path": "audit.md",
+      "sha256": "e07eafcf768844e398039f06758f28b889dd126ada834c90e20fdc2a9f2347c2",
+      "bytes": 1360
+    },
+    {
+      "path": "invalid_region_audit.csv",
+      "sha256": "a9b8fe442190c0a0ff37b56b143a0dfc2fe9a2727d4fc8ed7541d5f286d3723e",
+      "bytes": 4282
+    },
+    {
+      "path": "label_contract_v2.json",
+      "sha256": "ae7eff99e021faaf83f0ddb981a80390661b34365ac08bdb1a2e6bc024630572",
+      "bytes": 12087
+    },
+    {
+      "path": "label_quality.csv",
+      "sha256": "8bff9d53c85605a29911954d20116d5ff8d79aa9238588f3831e7ba44acf5551",
+      "bytes": 4834
+    },
+    {
+      "path": "legacy_mapping.csv",
+      "sha256": "70d0173e45b55d9ea3d818183f16e8740b2e9a8dc03f09a31861db5fb156dbe0",
+      "bytes": 928
+    },
+    {
+      "path": "outer_non_access.json",
+      "sha256": "ead33e253e8123a89545026209e9aebf371a4f82413a2f9d0d73ee4e46addee3",
+      "bytes": 411
+    },
+    {
+      "path": "protocol.json",
+      "sha256": "6f0a32d410d9800d538fdca2f124c1b7ccaff9bdf4298715e16e680d3ccad084",
+      "bytes": 4064
+    },
+    {
+      "path": "reaction_time_margin.csv",
+      "sha256": "c7a191fde1ac86433301ad741d9b87e046aae53e96efec3a5253470d61329dfc",
+      "bytes": 1177
+    },
+    {
+      "path": "readiness.json",
+      "sha256": "3db82543eeac1a3c24490f0d79b655b0533c8deff16d101aa0a7914ad746e4c5",
+      "bytes": 869
+    },
+    {
+      "path": "reflex_activation_contract_v2.json",
+      "sha256": "bd16292401df3ea1272e3caba080f2f4549f94857dfbac31138eec5dcf60940e",
+      "bytes": 2613
+    },
+    {
+      "path": "sink_candidate_label_timeline.png",
+      "sha256": "c41b1d597b555141f0591dbc67463c7a905323b4c0969f525f9a616af379ee2f",
+      "bytes": 89832
+    },
+    {
+      "path": "sink_label_candidate_metrics.csv",
+      "sha256": "e4a96752acf9cd8e278ae5d4e9806560ad1a180d5a360a15390dd9b79b7dece9",
+      "bytes": 12310
+    },
+    {
+      "path": "slip_operational_label_timeline.png",
+      "sha256": "1fcbdf8da63ca21d794973bba87c6eab29c18a399bf3fde13aaaec833173b352",
+      "bytes": 91156
+    },
+    {
+      "path": "slip_operational_metrics.csv",
+      "sha256": "5ac3d8c65b07ff727ddd26a4e16ede1ab0bf017bff62c6e04388f190aa6a0850",
+      "bytes": 3572
+    },
+    {
+      "path": "summary.json",
+      "sha256": "de264c3ba753d4a9507bd73903f93b7dbbc53ff1418c3cf1da9bcba27799fcb0",
+      "bytes": 9213
+    }
+  ],
+  "hash_graph_complete": true,
+  "manifest_self_hash_excluded": true,
+  "immutable_upstream_sha256": {
+    "simulation/outputs/walking_hazard_ground_truth_v1_pilot/protocol.json": "04f8302cd8b8232de0bec2ef742287a9fd4ad4422ac8eb8a6cad9d49d76aac88",
+    "simulation/outputs/walking_hazard_ground_truth_v1_pilot/summary.json": "96a4c29ce495aea1e7785ae95124652bf1017ac3d9618727d4ef17c9bc37aa10",
+    "simulation/outputs/walking_hazard_ground_truth_v1_pilot/traces.npz": "cba2cf5f4ce915135a8607ee384e5b9b04d76a4ab2bbc0e3608b27e0b8d946d7",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/protocol.json": "3e8f2c70a81b3e686f1967818981cada408ec2549abe31d5d57b53d919c224a3",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/manifest.json": "b1360af75e6d57d59270df1bde3939b41d70a537067ae9754c044bda7a041aa8",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/traces.npz": "1bbede7770400a844f75da2bce5157e4b50e5f8119ea5e893760943c7ed40423",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/protocol.json": "6d61335d2c861981f87b51fecb54061b7ad3b8157fd09687ca62e9fdd06aac92",
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/nested_selection.json": "72330c16397dc9aa2f416beb933518e22ce20f307f87e833c0399c198928896f",
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/outer_validation_manifest.json": "e04db778a49575ad7afbc6ee7c5f35a5b85a5ce0d7a7ef9664f4933020a138fd",
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/outer_validation_traces.npz": "4b7876eae0e7caa9411bcd106f01eedfeee6e342cde5e551e56ea52f5d6de1d3",
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/summary.json": "7a476799d72c40081d64a531f6ddd7e2591eb18d93d269fa74114bfa4f24970b",
+    "simulation/outputs/walking_bounded_retraining_v1/protocol.json": "f0bd7c3120ef61ccb72b903f27a8553ec951feec8b36c000e52b515f3cef68eb",
+    "simulation/outputs/walking_bounded_retraining_v1/selection_lock.json": "cf956ea105fff2335b48a503327d34f82f1c1d9d39efef4e6930728ff6e59162",
+    "simulation/outputs/walking_bounded_retraining_v1/summary.json": "ccc55ae83237cd1febfd5ca99b2f40bd13202b83f1d8c02d766896e54274d8d2",
+    "simulation/outputs/walking_bounded_retraining_v1/source_hashes.json": "e1353d47fef2802f5d40f0155da5aa7bffc35b1bf964a744cab5434830356740",
+    "simulation/outputs/walking_fusion10_observability_audit_v1/protocol.json": "eff9bc7df4a4e20169793651a020b9e27a4e7c60c7cd1dc92772c5abc58eb29f",
+    "simulation/outputs/walking_fusion10_observability_audit_v1/manifest.json": "3be0931dd918b6ba62a9f2c7e370e5469d5f10e03053ef0b4069d436e64348ef",
+    "simulation/outputs/walking_fusion10_observability_audit_v1/summary.json": "9aa84e85af7692bd81bef28ad0c34c65163a74473934268fa94b05bad6b3fc17",
+    "simulation/outputs/walking_fusion10_observability_audit_v1/readiness.json": "2f823302884045a5a8518d4c2bf960a2bd5f4cf7ede082cb05c650eb3f2badfc",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/protocol.json": "006520db18f42e9e37a284dd817be0d60dfc67bf6e25b48712bee53d52bfe28b",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/manifest.json": "9197f6d893513350932d6e48cd4413c708774b4e154c3c510ee469e5079802bf",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/summary.json": "7eaa92f603a0aef49a6873d18b771f6ae623a871e034c571d5ac5a04af272ffb",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/readiness.json": "255b601ec63b1325d1a9d80d872b1d325c402ca084a8306276f63e7cf14221e3"
+  },
+  "outer_content_load_count": 0,
+  "model_training_runs": 0,
+  "production_or_system_artifacts_changed": false,
+  "int8_or_vela_executed": false
+}
