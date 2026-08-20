@@ -1,0 +1,21 @@
+{
+  "corrected_mechanism": "explicit foot-geom/patch-geom pair contract, pair friction set before mj_step",
+  "evidence": {
+    "microbench_post_step1_mutation_identical_to_hard": true,
+    "mj_step1_effect": "collision and constraint construction already completed",
+    "v3_all_positive_control_full_traces_identical": true,
+    "v3_step_order": "controller.apply -> mj_step1 -> mutate data.contact.friction -> mj_step2"
+  },
+  "exactly_one_primary_selected": true,
+  "geom_priority_neutralized_v3_direct_mutation": false,
+  "primary_root_cause": "POST_CONSTRAINT_MUTATION",
+  "secondary_contributors": [
+    {
+      "caused_v3_identity": false,
+      "evidence": "equal-priority no-pair probe retained foot sliding friction 1.0 despite Ice ground 0.05",
+      "observed_effective_mu": 1.0,
+      "reason_not_primary": "v3 overwrote effective contact.friction directly, but did so after constraint construction",
+      "type": "GEOM_FRICTION_MAX_OVERRIDE"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "exact_paths_only": true,
+  "inputs": [
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3/run_manifest.csv",
+      "purpose": "quarantine all 216 failed runs"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3/summary.json",
+      "purpose": "verify failed physical support and trace identity"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3/readiness.json",
+      "purpose": "verify failed acquisition authorization state"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3/future_nested_fold_manifest.json",
+      "purpose": "quarantine unauthorized future folds"
+    },
+    {
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "immutable physical Slip oracle contract"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/summary.json",
+      "purpose": "locked Terrain reference"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/provenance.json",
+      "purpose": "locked Terrain provenance"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "immutable Terrain model"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "immutable Terrain normalization"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "immutable Terrain config"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "immutable Terrain lock"
+    },
+    {
+      "path": "simulation/unitree_rl_mjlab/deploy/robots/g1/config/policy/velocity/v0/exported/policy.onnx",
+      "purpose": "fixed walking policy runtime"
+    },
+    {
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/scene_walking_terrain_transition.xml",
+      "purpose": "fixed MuJoCo source scene runtime"
+    },
+    {
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/g1_29dof.xml",
+      "purpose": "fixed robot include runtime"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/terrain_profiles.py",
+      "purpose": "friction profile source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "physical signal derivation"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py",
+      "purpose": "frozen Slip oracle"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/bilateral_hil_sensor_v2.py",
+      "purpose": "Fusion20 runtime sensors"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/g1_upstream_locomotion.py",
+      "purpose": "fixed controller"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_bilateral_slip_targeted_acquisition_v3.py",
+      "purpose": "failed intervention source audit"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_bilateral_slip_targeted_acquisition_v3.py",
+      "purpose": "failed protocol source audit"
+    }
+  ]
+}

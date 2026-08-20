@@ -1,0 +1,10 @@
+{
+  "completed_and_retained_run_count": 36,
+  "failed_run_id_inferred_from_deterministic_sequence": "positive_0p20_right_early_native_strong_ice",
+  "exception_type": "ValueError",
+  "message": "loaded contact cannot be true in AIR",
+  "root_cause": "FSR hysteresis remained loaded for a physical-contact boundary sample",
+  "silently_discarded": false,
+  "status": "FAILED_ATTEMPT_RETAINED_FOR_AUDIT",
+  "trace_retention": "36 completed runs are retained in three trace archives; the exception occurred before the current run returned a complete trace"
+}

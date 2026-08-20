@@ -1,0 +1,8 @@
+{
+  "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+  "persistence_ms": 3,
+  "semantics_changed": false,
+  "sha256_after": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+  "sha256_before": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+  "threshold_m": 0.05
+}

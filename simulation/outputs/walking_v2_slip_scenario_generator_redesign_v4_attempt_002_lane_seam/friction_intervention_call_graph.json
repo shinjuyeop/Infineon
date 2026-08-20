@@ -1,0 +1,32 @@
+{
+  "corrected_v4_path": [
+    "friction_profiles()",
+    "patch_bounds()",
+    "MjSpec.from_file()",
+    "delete overlapping source/target floor geoms",
+    "add disjoint base tiles + real patch geom",
+    "add eight explicit sole/patch pairs",
+    "compile model",
+    "set target model.pair_friction before mj_step",
+    "mj_step collision",
+    "constraint construction with corrected friction",
+    "constraint solve",
+    "mj_contactForce evidence",
+    "integrated state"
+  ],
+  "failed_v3_path": [
+    "material_profiles()",
+    "patch_for_foot()",
+    "MjModel.from_xml_path()",
+    "G1BilateralSensorReaderV2.foot_geom_ids",
+    "apply_terrain_profile(concrete)",
+    "controller.apply()",
+    "mj_step1() [collision + constraint construction]",
+    "_target_ground_contacts()",
+    "_apply_patch_friction(data.contact)",
+    "mj_step2() [solve using already-built constraints]",
+    "integrated state"
+  ],
+  "privileged_values": "contact/world position/anchor drift/oracle used only for audit labels",
+  "runtime_detector_inputs": "Fusion20 virtual FSR/foot IMU only"
+}

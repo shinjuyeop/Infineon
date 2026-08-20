@@ -1,0 +1,30 @@
+{
+  "failed_attempt_policy": "retain, report, never relabel",
+  "forbidden_scope": "outer/holdout/spatial-final/final-test, training, deployment exports",
+  "full_216_run_acquisition_performed": false,
+  "implementation": "PRECOMPILED_TILED_PATCH_GEOM",
+  "model_training_or_selection_performed": false,
+  "moderate_grid_executed": false,
+  "moderate_grid_preregistered_if_needed": [
+    0.075,
+    0.1,
+    0.125
+  ],
+  "phase_activation_ms": {
+    "early": 0.0,
+    "late": 190.0,
+    "middle": 70.0
+  },
+  "positive_control_geometry": "identical within every pair",
+  "runtime_intervention": "explicit pair friction assigned before mj_step collision and constraint construction",
+  "scope": "physics generator audit and bounded proof only",
+  "slip_oracle": {
+    "changed": false,
+    "persistence_ms": 3,
+    "threshold_m": 0.05
+  },
+  "starting_checkpoint": "2824b7c86867045cd4c5897b445fffada4ef6635",
+  "surface_top_z_m": 0.0,
+  "task": "Walking v2 Slip Scenario Generator Redesign v4",
+  "unique_robot_pilot_cap": 48
+}

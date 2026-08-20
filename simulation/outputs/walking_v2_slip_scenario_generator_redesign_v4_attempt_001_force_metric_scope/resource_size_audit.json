@@ -1,0 +1,223 @@
+{
+  "all_files_within_limit": true,
+  "files": [
+    {
+      "bytes": 7135,
+      "mib": 0.006804466247558594,
+      "path": "artifact_access_log.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 1690,
+      "mib": 0.0016117095947265625,
+      "path": "audit.md",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 118,
+      "mib": 0.0001125335693359375,
+      "path": "duplicate_audit.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 62533,
+      "mib": 0.05963611602783203,
+      "path": "effective_friction_and_tangential_force.png",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 38811,
+      "mib": 0.03701305389404297,
+      "path": "failed_v3_quarantine_manifest.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 228,
+      "mib": 0.000217437744140625,
+      "path": "forbidden_path_policy.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 1082,
+      "mib": 0.0010318756103515625,
+      "path": "friction_intervention_call_graph.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 970,
+      "mib": 0.0009250640869140625,
+      "path": "friction_root_cause.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 2176,
+      "mib": 0.0020751953125,
+      "path": "geom_contact_contract.csv",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 3424,
+      "mib": 0.003265380859375,
+      "path": "input_allowlist.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 1,
+      "mib": 9.5367431640625e-07,
+      "path": "local_patch_contact_audit.csv",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 800,
+      "mib": 0.000762939453125,
+      "path": "local_patch_definition.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 20819,
+      "mib": 0.01985454559326172,
+      "path": "local_patch_positive_control_matched_trace.png",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 49631,
+      "mib": 0.047331809997558594,
+      "path": "microbench_displacement_by_friction_profile.png",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 1001,
+      "mib": 0.0009546279907226562,
+      "path": "microbench_manifest.csv",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 1936,
+      "mib": 0.0018463134765625,
+      "path": "microbench_metrics.csv",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 323987,
+      "mib": 0.3089780807495117,
+      "path": "microbench_traces.npz",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 20158,
+      "mib": 0.019224166870117188,
+      "path": "onset_distribution_by_phase.png",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 334,
+      "mib": 0.0003185272216796875,
+      "path": "oracle_immutable_verification.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 1,
+      "mib": 9.5367431640625e-07,
+      "path": "pilot_contact_force_metrics.csv",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 1,
+      "mib": 9.5367431640625e-07,
+      "path": "pilot_fall_censor_audit.csv",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 1,
+      "mib": 9.5367431640625e-07,
+      "path": "pilot_pair_parity.csv",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 1,
+      "mib": 9.5367431640625e-07,
+      "path": "pilot_physical_episode_ledger.csv",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 1,
+      "mib": 9.5367431640625e-07,
+      "path": "pilot_run_manifest.csv",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 1027,
+      "mib": 0.0009794235229492188,
+      "path": "protocol.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 4925,
+      "mib": 0.004696846008300781,
+      "path": "provenance.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 819,
+      "mib": 0.0007810592651367188,
+      "path": "readiness.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 4938,
+      "mib": 0.0047092437744140625,
+      "path": "resource_size_audit.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 903,
+      "mib": 0.0008611679077148438,
+      "path": "step_order_audit.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 2584,
+      "mib": 0.00246429443359375,
+      "path": "summary.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 18781,
+      "mib": 0.01791095733642578,
+      "path": "target_vs_contralateral_drift.png",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 785,
+      "mib": 0.0007486343383789062,
+      "path": "terrain_immutable_verification.json",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 215748,
+      "mib": 0.20575332641601562,
+      "path": "whole_surface_contact_audit.csv",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 51054,
+      "mib": 0.04868888854980469,
+      "path": "whole_surface_hard_vs_ice_anchor_drift.png",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 2033,
+      "mib": 0.0019388198852539062,
+      "path": "whole_surface_reference_metrics.csv",
+      "within_45_mib": true
+    },
+    {
+      "bytes": 708053,
+      "mib": 0.6752519607543945,
+      "path": "whole_surface_reference_traces.npz",
+      "within_45_mib": true
+    }
+  ],
+  "limit_mib": 45,
+  "maximum_file_mib": 0.6752519607543945
+}

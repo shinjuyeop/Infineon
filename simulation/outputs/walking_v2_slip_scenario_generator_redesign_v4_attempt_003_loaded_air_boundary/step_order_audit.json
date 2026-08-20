@@ -1,0 +1,26 @@
+{
+  "corrected_v4": {
+    "collision_already_generated": false,
+    "constraint_solve_sees_intervention": true,
+    "constraints_already_constructed": false,
+    "mutation_point": "before controller.apply and mj_step",
+    "mutation_target": "model.pair_friction on precompiled explicit pairs"
+  },
+  "failed_v3": {
+    "constraints_already_constructed": true,
+    "mutation_point": "after mj_step1",
+    "solver_effective": false
+  },
+  "integrator": "mjINT_EULER",
+  "microbench_evidence": {
+    "deterministic_replay_verified": true,
+    "displacement_monotonic_with_severity": true,
+    "effective_friction_order_verified": true,
+    "equal_priority_max_override_observed": true,
+    "equal_priority_observed_mu": 1.0,
+    "post_step1_mutation_identical_to_hard": true,
+    "post_step1_public_contact_field_changed": true,
+    "trajectory_divergence_verified": true
+  },
+  "rk4_split_used": false
+}
