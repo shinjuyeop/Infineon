@@ -1,0 +1,206 @@
+{
+  "events": [
+    {
+      "byte_count": 136644,
+      "operation": "read_json",
+      "purpose": "120-run development metadata",
+      "relative_path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json",
+      "sha256": "f95f054003ce01e6841c3a8c8c49d70a6afd5f236d33977950edd73d9b604841",
+      "status": "completed"
+    },
+    {
+      "byte_count": 4345,
+      "operation": "read_json",
+      "purpose": "bilateral corpus contract",
+      "relative_path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/summary.json",
+      "sha256": "413b837e2cf9a4b4c666d2d01aaf1d3c94f4e9e092a5523413a3c27a42701ce9",
+      "status": "completed"
+    },
+    {
+      "byte_count": 79248859,
+      "operation": "load_npz",
+      "purpose": "former 72-run development partition",
+      "relative_path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz",
+      "sha256": "3ff4f8a1f270a39287fbe274753de91a5b0750d1a160e3cc9b1de01174f2a6ca",
+      "status": "completed"
+    },
+    {
+      "byte_count": 53083935,
+      "operation": "load_npz",
+      "purpose": "former 48-run development partition",
+      "relative_path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz",
+      "sha256": "8c6a1db0eecdf8f63cf3d361d896e770968473dca1bdcf4c0b0f9ae240fe42f8",
+      "status": "completed"
+    },
+    {
+      "byte_count": 9213,
+      "operation": "read_json",
+      "purpose": "operational label contract",
+      "relative_path": "simulation/outputs/walking_hazard_operational_label_contract_v2/summary.json",
+      "sha256": "de264c3ba753d4a9507bd73903f93b7dbbc53ff1418c3cf1da9bcba27799fcb0",
+      "status": "completed"
+    },
+    {
+      "byte_count": 8838,
+      "operation": "read_json",
+      "purpose": "contact state contract",
+      "relative_path": "simulation/outputs/walking_stateful_hazard_prototype_v1/summary.json",
+      "sha256": "7eaa92f603a0aef49a6873d18b771f6ae623a871e034c571d5ac5a04af272ffb",
+      "status": "completed"
+    },
+    {
+      "byte_count": 5513,
+      "operation": "read_json",
+      "purpose": "development failure localization",
+      "relative_path": "simulation/outputs/walking_v2_candidate_failure_localization_v1/summary.json",
+      "sha256": "6e00d3bb2d0fa66a04110e0496ce117160d0e15f6dda80d178b33565ad106952",
+      "status": "completed"
+    },
+    {
+      "byte_count": 13809,
+      "operation": "sha256",
+      "purpose": "locked Terrain protocol reference",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/protocol.json",
+      "sha256": "a2440130374f2b5279bd3451a9db3b510239f97705462e2c0bbec892c4de083b",
+      "status": "completed"
+    },
+    {
+      "byte_count": 2460,
+      "operation": "sha256",
+      "purpose": "locked Terrain data reference",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/data_manifest.json",
+      "sha256": "3c4f60070706f958ab047beb854874524af533f53f0247eea38b6e7520a614fd",
+      "status": "completed"
+    },
+    {
+      "byte_count": 5327,
+      "operation": "sha256",
+      "purpose": "locked Terrain split reference",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/split_manifest.json",
+      "sha256": "ed1cc527ea1984229dc9d085478f95bc1552e8d62f1d8ae6ceff80cbe49ddf1f",
+      "status": "completed"
+    },
+    {
+      "byte_count": 32891,
+      "operation": "sha256",
+      "purpose": "locked Terrain validation reference",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_validation_metrics.csv",
+      "sha256": "0b38682c6964fc185967b1adf36285fb79a8d4bc5eea42308afa6474b692d661",
+      "status": "completed"
+    },
+    {
+      "byte_count": 4961,
+      "operation": "sha256",
+      "purpose": "locked Terrain resource reference",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/resource_report.json",
+      "sha256": "a6aa0060f17f9f8a580704273bae1563507719b92f2614003a971b8c909d4fd9",
+      "status": "completed"
+    },
+    {
+      "byte_count": 8548,
+      "operation": "read_json",
+      "purpose": "joint development diagnostic summary",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/summary.json",
+      "sha256": "3500ede308b722dadc924a23f9e2b4873f20c563e6e3a7b9d10e1ef04fafcff8",
+      "status": "completed"
+    },
+    {
+      "byte_count": 2168,
+      "operation": "read_json",
+      "purpose": "joint provenance reference",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/provenance.json",
+      "sha256": "ecbe61937f73ec8392b9083106419793a7a477072215d26981130c3069d9483a",
+      "status": "completed"
+    },
+    {
+      "byte_count": 724,
+      "operation": "read_json",
+      "purpose": "joint readiness reference",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/readiness.json",
+      "sha256": "e6fb211a7b85669fa99f7a3e023c52311a038eccfb2bff79c28053f29fc7cf00",
+      "status": "completed"
+    },
+    {
+      "byte_count": 77226,
+      "operation": "sha256",
+      "purpose": "initial model SHA",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "status": "completed"
+    },
+    {
+      "byte_count": 15767,
+      "operation": "sha256",
+      "purpose": "initial normalization SHA",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "sha256": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+      "status": "completed"
+    },
+    {
+      "byte_count": 1196,
+      "operation": "sha256",
+      "purpose": "initial config SHA",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "sha256": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+      "status": "completed"
+    },
+    {
+      "byte_count": 5276,
+      "operation": "read_json",
+      "purpose": "verify immutable Terrain lock content",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "status": "completed"
+    },
+    {
+      "byte_count": 5276,
+      "operation": "sha256",
+      "purpose": "initial Terrain selection lock SHA",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "status": "completed"
+    },
+    {
+      "byte_count": 77226,
+      "operation": "sha256",
+      "purpose": "final immutable model SHA",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "status": "completed"
+    },
+    {
+      "byte_count": 15767,
+      "operation": "sha256",
+      "purpose": "final immutable normalization SHA",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "sha256": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+      "status": "completed"
+    },
+    {
+      "byte_count": 1196,
+      "operation": "sha256",
+      "purpose": "final immutable config SHA",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "sha256": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+      "status": "completed"
+    },
+    {
+      "byte_count": 5276,
+      "operation": "sha256",
+      "purpose": "final immutable selection_lock SHA",
+      "relative_path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "status": "completed"
+    }
+  ],
+  "fail_closed": true,
+  "forbidden_tokens": [
+    "outer",
+    "holdout",
+    "final_test",
+    "final-test",
+    "spatial"
+  ],
+  "read_event_count": 24,
+  "version": "walking_v2_artifact_access_log_v1"
+}

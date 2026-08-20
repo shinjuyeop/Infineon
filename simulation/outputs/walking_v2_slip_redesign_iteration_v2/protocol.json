@@ -1,0 +1,277 @@
+{
+  "artifact": "walking_v2_slip_redesign_iteration_v2",
+  "candidate_matrix": [
+    {
+      "base_feature_architecture": "S2",
+      "early_margin": 0.15,
+      "family": "S4-A",
+      "feature": "full_200ms_stats_plus_contact",
+      "foot_threshold": 0.5,
+      "history_ms": 200,
+      "hysteresis": 0.05,
+      "normal_margin": 0.15,
+      "persistence_endpoints": 2,
+      "projection_width": 32,
+      "proposal_threshold": 0.65,
+      "seed": 202608221,
+      "state_threshold": 0.65,
+      "two_stage": false
+    },
+    {
+      "base_feature_architecture": "S2",
+      "early_margin": 0.15,
+      "family": "S4-A",
+      "feature": "full_200ms_stats_plus_contact",
+      "foot_threshold": 0.5,
+      "history_ms": 200,
+      "hysteresis": 0.05,
+      "normal_margin": 0.15,
+      "persistence_endpoints": 2,
+      "projection_width": 32,
+      "proposal_threshold": 0.65,
+      "seed": 202608222,
+      "state_threshold": 0.65,
+      "two_stage": false
+    },
+    {
+      "base_feature_architecture": "S2",
+      "early_margin": 0.15,
+      "family": "S4-A",
+      "feature": "full_200ms_stats_plus_contact",
+      "foot_threshold": 0.5,
+      "history_ms": 200,
+      "hysteresis": 0.05,
+      "normal_margin": 0.15,
+      "persistence_endpoints": 2,
+      "projection_width": 32,
+      "proposal_threshold": 0.65,
+      "seed": 202608223,
+      "state_threshold": 0.65,
+      "two_stage": false
+    },
+    {
+      "base_feature_architecture": "S3",
+      "early_margin": 0.18,
+      "family": "S4-B",
+      "feature": "full_50ms_plus_200ms_stats_plus_contact",
+      "foot_threshold": 0.55,
+      "history_ms": 200,
+      "hysteresis": 0.05,
+      "normal_margin": 0.18,
+      "persistence_endpoints": 2,
+      "projection_width": 32,
+      "proposal_threshold": 0.7,
+      "seed": 202608221,
+      "state_threshold": 0.7,
+      "two_stage": false
+    },
+    {
+      "base_feature_architecture": "S3",
+      "early_margin": 0.18,
+      "family": "S4-B",
+      "feature": "full_50ms_plus_200ms_stats_plus_contact",
+      "foot_threshold": 0.55,
+      "history_ms": 200,
+      "hysteresis": 0.05,
+      "normal_margin": 0.18,
+      "persistence_endpoints": 2,
+      "projection_width": 32,
+      "proposal_threshold": 0.7,
+      "seed": 202608222,
+      "state_threshold": 0.7,
+      "two_stage": false
+    },
+    {
+      "base_feature_architecture": "S3",
+      "early_margin": 0.18,
+      "family": "S4-B",
+      "feature": "full_50ms_plus_200ms_stats_plus_contact",
+      "foot_threshold": 0.55,
+      "history_ms": 200,
+      "hysteresis": 0.05,
+      "normal_margin": 0.18,
+      "persistence_endpoints": 2,
+      "projection_width": 32,
+      "proposal_threshold": 0.7,
+      "seed": 202608223,
+      "state_threshold": 0.7,
+      "two_stage": false
+    },
+    {
+      "base_feature_architecture": "S3",
+      "early_margin": 0.25,
+      "family": "S4-C",
+      "feature": "dual_timescale_proposal_plus_causal_verifier",
+      "foot_threshold": 0.6,
+      "history_ms": 200,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "projection_width": 40,
+      "proposal_threshold": 0.65,
+      "seed": 202608221,
+      "state_threshold": 0.65,
+      "two_stage": true
+    },
+    {
+      "base_feature_architecture": "S3",
+      "early_margin": 0.25,
+      "family": "S4-C",
+      "feature": "dual_timescale_proposal_plus_causal_verifier",
+      "foot_threshold": 0.6,
+      "history_ms": 200,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "projection_width": 40,
+      "proposal_threshold": 0.65,
+      "seed": 202608222,
+      "state_threshold": 0.65,
+      "two_stage": true
+    },
+    {
+      "base_feature_architecture": "S3",
+      "early_margin": 0.25,
+      "family": "S4-C",
+      "feature": "dual_timescale_proposal_plus_causal_verifier",
+      "foot_threshold": 0.6,
+      "history_ms": 200,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "projection_width": 40,
+      "proposal_threshold": 0.65,
+      "seed": 202608223,
+      "state_threshold": 0.65,
+      "two_stage": true
+    }
+  ],
+  "development_corpus": {
+    "old_72_48_independently_blind": false,
+    "runs": 120
+  },
+  "folds": {
+    "algorithm": "sorted variation IDs assigned round-robin; inner folds split outer-training variations by parity",
+    "contact_episode_leakage": false,
+    "group": "variation_index",
+    "inner_mining": 2,
+    "outer": 3,
+    "run_leakage": false,
+    "variation_leakage": false
+  },
+  "forbidden_actions": [
+    "outer/holdout/spatial/final access",
+    "new simulation acquisition",
+    "new blind corpus generation",
+    "Terrain writes",
+    "production/System/INT8/Vela/E84 writes",
+    "Sink runtime output"
+  ],
+  "gates": {
+    "affected_foot_accuracy_min": 0.9,
+    "air": 0,
+    "causal_and_resource": true,
+    "cross_foot_ownership": 0,
+    "each_speed_recall_min": 0.7,
+    "invalid": 0,
+    "latch_carryover": 0,
+    "normal_contact_episode_fp": 0,
+    "normal_run_fp": 0,
+    "pooled_actionable_recall_min": 0.8,
+    "post_fall_positive_attribution": 0,
+    "too_early": 0,
+    "touchdown": 0,
+    "zero_safety_in_every_fold": true
+  },
+  "offline_label_only": [
+    "slip_physical_active",
+    "future_physical_onset",
+    "pre_fall_valid"
+  ],
+  "resource_ceilings": {
+    "history_bytes": 32768,
+    "macs_per_tick": 60000,
+    "parameters": 30000,
+    "state_bytes": 4096
+  },
+  "runtime_inputs": [
+    "bilateral_canonical",
+    "force_loaded",
+    "contact_age",
+    "gait_phase_code"
+  ],
+  "runtime_state": {
+    "hard_resets": [
+      "contact_loss",
+      "new_touchdown"
+    ],
+    "per_foot_contact_owner": true,
+    "scores": [
+      "actionable",
+      "early_precursor",
+      "active_evidence",
+      "normal",
+      "foot",
+      "proposal"
+    ],
+    "simultaneous_rule": "choose max actionable-minus-early plus 0.25*(foot_score-0.5); exact tie selects left",
+    "timer_only_confirmation": false,
+    "touchdown_timestamp": true
+  },
+  "scope": "Slip-only nested development",
+  "selection_order": [
+    "actionable_recall_desc",
+    "minimum_speed_recall_desc",
+    "affected_foot_desc",
+    "warning_margin_desc",
+    "macs_asc",
+    "family",
+    "seed"
+  ],
+  "sink": "SINK_RUNTIME_DETECTION_DEFERRED",
+  "starting_checkpoint": "c85051ddc31888f0b8803adb807b959fe9cc165d",
+  "states": {
+    "ACTIONABLE_RISK": "same-contact onset in 1..100 ms",
+    "EARLY_PRECURSOR": "same-contact onset in 101..500 ms",
+    "NORMAL_NO_EVENT": "no same-contact onset within 500 ms",
+    "PHYSICAL_ACTIVE_EVIDENCE": "offline active label; runtime sensor evidence, never confirmation"
+  },
+  "terrain": "immutable; no retraining, reselection, modification, or regeneration",
+  "training": {
+    "balance_factors": [
+      "state",
+      "normal_or_physical_episode",
+      "terrain",
+      "speed",
+      "phase",
+      "foot",
+      "run",
+      "variation"
+    ],
+    "complete_eligible_population": true,
+    "destructive_downsampling": false,
+    "early_stop": "gradient tolerance or fixed iteration cap",
+    "hard_negative_cap_per_type_inner_fold": 256,
+    "hard_negative_ratio": 0.1,
+    "hard_negative_types": [
+      "high_normal",
+      "high_early_precursor",
+      "wrong_foot"
+    ],
+    "hard_negative_weight_multiplier": 5.0,
+    "learning_rate": "strong_wolfe_line_search",
+    "loss": "episode-balanced four-state cross-entropy plus auxiliary foot/proposal heads",
+    "max_iterations": 400,
+    "mining_fold_validation_use": false,
+    "mining_model": "S4-B fixed seed 202608221 fit only on inner-fit variations",
+    "optimizer": "LBFGS",
+    "separation_objective": "four-state cross-entropy plus fixed actionable-vs-early/normal runtime margins and paired-foot head",
+    "state_loss_weights": [
+      1.5,
+      2.0,
+      2.5,
+      1.5
+    ],
+    "tolerance": 1e-06
+  }
+}

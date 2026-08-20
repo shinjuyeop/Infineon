@@ -1,0 +1,13 @@
+{
+  "broad_repo_search_forbidden": true,
+  "case_insensitive_substrings": [
+    "outer",
+    "holdout",
+    "final_test",
+    "final-test",
+    "spatial"
+  ],
+  "fail_closed": true,
+  "previous_exposed_status": "EXPOSED_NON_BLIND_DIAGNOSTIC_ONLY",
+  "version": "walking_v2_slip_v2_forbidden_policy"
+}

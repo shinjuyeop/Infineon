@@ -1,0 +1,29 @@
+{
+  "all_120_runs_development": true,
+  "all_reads_completed": true,
+  "artifact_access_log_sha256": "e2fad8e1fb4e4e1ee8cba22967315197d174cf61a5f55405b3d91a549235afa5",
+  "barrier_pass": true,
+  "blind_artifact_generated": false,
+  "forbidden_read_count": 0,
+  "hash_graph": {
+    "allowlist": "3a02d3661e7ce14ca4ab82a71328d71e5164a75cb635eb8c4d8c2bcc037a15ff",
+    "candidate_matrix": "59d4bf377f69d12dacdd25d6dce4b9ef1ac9efbbfc440cdf4a5a0d2165bbc39d",
+    "development_manifest": "a5d59a48e35e96ede2abc6cecce22903fc0af091e3dc50a8fd73cb39ee5f6a93",
+    "fold_manifest": "1c3cf6d11b5ab6e0cf3e560e7c725c2b8f94949d9b620336d8f39154cc68aa1e",
+    "protocol": "cc47a70dc913a123d9739f68e325276938c65036dde5329d2bb6d8be4fda10b8",
+    "resource_report": "4634fa454ebb6d452d29fbb4940422756edcc4983b04cdb9c800c80aae554d2a",
+    "slip_lock": null,
+    "terrain_verification": "3df4ecdac151418453a07b8115679b22f422cef4ab1d959146021319e2c105f1"
+  },
+  "old_72_48_blind_claim": false,
+  "pretraining_hashes": {
+    "allowlist_sha256": "3a02d3661e7ce14ca4ab82a71328d71e5164a75cb635eb8c4d8c2bcc037a15ff",
+    "forbidden_policy_sha256": "b20b6f720de56467f334c814b167359867f6be91cc20f516bdcf6ca335cf71ae",
+    "protocol_sha256": "cc47a70dc913a123d9739f68e325276938c65036dde5329d2bb6d8be4fda10b8"
+  },
+  "previous_exposed_artifact_accessed": false,
+  "previous_exposed_status": "EXPOSED_NON_BLIND_DIAGNOSTIC_ONLY",
+  "reload_parity": {},
+  "terrain_byte_identical": true,
+  "version": "walking_v2_slip_v2_provenance"
+}

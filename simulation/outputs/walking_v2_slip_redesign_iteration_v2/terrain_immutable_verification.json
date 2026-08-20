@@ -1,0 +1,21 @@
+{
+  "byte_identical_before_after": true,
+  "final_sha256": {
+    "config": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+    "model": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+    "normalization": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+    "selection_lock": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835"
+  },
+  "initial_sha256": {
+    "config": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+    "model": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+    "normalization": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+    "selection_lock": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835"
+  },
+  "selected_candidate": "T2_seed_202608211",
+  "selection_lock_references_verified": true,
+  "terrain_files_written": 0,
+  "valid": true,
+  "verified_after_evaluation": true,
+  "verified_before_training": true
+}

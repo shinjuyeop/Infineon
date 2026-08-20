@@ -1,0 +1,101 @@
+{
+  "exact_paths_only": true,
+  "inputs": [
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json",
+      "purpose": "120-run development metadata"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/summary.json",
+      "purpose": "bilateral corpus contract"
+    },
+    {
+      "access": "npz",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz",
+      "purpose": "former 72-run development partition"
+    },
+    {
+      "access": "npz",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz",
+      "purpose": "former 48-run development partition"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_hazard_operational_label_contract_v2/summary.json",
+      "purpose": "operational label contract"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_stateful_hazard_prototype_v1/summary.json",
+      "purpose": "contact state contract"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_candidate_failure_localization_v1/summary.json",
+      "purpose": "development failure localization"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/protocol.json",
+      "purpose": "locked Terrain protocol reference"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/data_manifest.json",
+      "purpose": "locked Terrain data reference"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/split_manifest.json",
+      "purpose": "locked Terrain split reference"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_validation_metrics.csv",
+      "purpose": "locked Terrain validation reference"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/resource_report.json",
+      "purpose": "locked Terrain resource reference"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/summary.json",
+      "purpose": "joint development diagnostic summary"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/provenance.json",
+      "purpose": "joint provenance reference"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/readiness.json",
+      "purpose": "joint readiness reference"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "immutable Terrain candidate"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "immutable Terrain normalization"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "immutable Terrain config"
+    },
+    {
+      "access": "json_and_hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "immutable Terrain selection lock"
+    }
+  ],
+  "version": "walking_v2_slip_v2_allowlist"
+}
