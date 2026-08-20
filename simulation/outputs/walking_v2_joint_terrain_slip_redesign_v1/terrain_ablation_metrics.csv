@@ -1,0 +1,7 @@
+ablation,control,treatment,control_rows,treatment_rows,control_macro_recall,treatment_macro_recall,delta_pp,isolated,diagnostic_only,control_feature_difference,treatment_feature_difference,note
+history,50ms_full_statistics,200ms_full_statistics,24560,24560,0.7977538154593378,0.8687021292810936,7.094831382175581,True,True,,,
+temporal_statistics,200ms_compact_causal_conv_linear,200ms_full_statistics_linear,,,0.5791803688895494,0.8687021292810936,28.95217603915442,True,True,,,
+population_balance,destructive_equal_group_1440,weighted_full_24560,1440,24560,0.8060167696002283,0.8687021292810936,6.26853596808653,True,True,,,
+foot_encoder,duplicated_fixed_stat_operator,identity_shared_fixed_stat_operator,,,,,0.0,True,True,0.0,0.0,fixed encoder has no foot-specific trainable weights
+bilateral_aggregation,symmetric_only,symmetric_plus_own_minus_other,,,0.8579767978013386,0.8687021292810936,1.0725331479754963,True,True,,,
+model_capacity,linear_head,fixed_relu_width32_plus_linear_head,,,0.8687021292810936,0.8789404384233593,1.0238309142265756,True,True,,,

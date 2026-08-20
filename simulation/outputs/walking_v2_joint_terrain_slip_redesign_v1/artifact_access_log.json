@@ -1,0 +1,86 @@
+{
+  "events": [
+    {
+      "byte_count": 136644,
+      "operation": "read_json",
+      "purpose": "development split metadata and immutable run grouping",
+      "relative_path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json",
+      "sha256": "f95f054003ce01e6841c3a8c8c49d70a6afd5f236d33977950edd73d9b604841",
+      "status": "completed"
+    },
+    {
+      "byte_count": 4345,
+      "operation": "read_json",
+      "purpose": "upstream controlled bilateral dataset contract",
+      "relative_path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/summary.json",
+      "sha256": "413b837e2cf9a4b4c666d2d01aaf1d3c94f4e9e092a5523413a3c27a42701ce9",
+      "status": "completed"
+    },
+    {
+      "byte_count": 79248859,
+      "operation": "load_npz",
+      "purpose": "72-run development training tensors",
+      "relative_path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz",
+      "sha256": "3ff4f8a1f270a39287fbe274753de91a5b0750d1a160e3cc9b1de01174f2a6ca",
+      "status": "completed"
+    },
+    {
+      "byte_count": 53083935,
+      "operation": "load_npz",
+      "purpose": "48-run development validation tensors",
+      "relative_path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz",
+      "sha256": "8c6a1db0eecdf8f63cf3d361d896e770968473dca1bdcf4c0b0f9ae240fe42f8",
+      "status": "completed"
+    },
+    {
+      "byte_count": 9213,
+      "operation": "read_json",
+      "purpose": "immutable operational label compatibility",
+      "relative_path": "simulation/outputs/walking_hazard_operational_label_contract_v2/summary.json",
+      "sha256": "de264c3ba753d4a9507bd73903f93b7dbbc53ff1418c3cf1da9bcba27799fcb0",
+      "status": "completed"
+    },
+    {
+      "byte_count": 8838,
+      "operation": "read_json",
+      "purpose": "immutable contact-state compatibility",
+      "relative_path": "simulation/outputs/walking_stateful_hazard_prototype_v1/summary.json",
+      "sha256": "7eaa92f603a0aef49a6873d18b771f6ae623a871e034c571d5ac5a04af272ffb",
+      "status": "completed"
+    },
+    {
+      "byte_count": 5513,
+      "operation": "read_json",
+      "purpose": "a229dae development-only failure diagnosis and exposed-data disclosure",
+      "relative_path": "simulation/outputs/walking_v2_candidate_failure_localization_v1/summary.json",
+      "sha256": "6e00d3bb2d0fa66a04110e0496ce117160d0e15f6dda80d178b33565ad106952",
+      "status": "completed"
+    },
+    {
+      "byte_count": 28528,
+      "operation": "sha256",
+      "purpose": "hash-only controlled/static compatibility reference",
+      "relative_path": "simulation/outputs/terrain_static_reference_v4/selected_model.keras",
+      "sha256": "adcfa113b679327dc5bac0d4df7dcfceeb2f4dd703960665ecc491581d77df3b",
+      "status": "completed"
+    },
+    {
+      "byte_count": 518,
+      "operation": "sha256",
+      "purpose": "hash-only controlled/static normalization reference",
+      "relative_path": "simulation/outputs/terrain_static_reference_v4/normalization.json",
+      "sha256": "13ffc43275e142b6e9bd17cd367a99ff019746087ab7f5ce79a7cea0b9a25830",
+      "status": "completed"
+    }
+  ],
+  "fail_closed": true,
+  "forbidden_tokens": [
+    "outer",
+    "holdout",
+    "final_test",
+    "final-test",
+    "spatial"
+  ],
+  "read_event_count": 9,
+  "version": "walking_v2_artifact_access_log_v1"
+}

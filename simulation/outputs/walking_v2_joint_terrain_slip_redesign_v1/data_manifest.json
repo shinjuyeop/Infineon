@@ -1,0 +1,33 @@
+{
+  "blind_evaluation_runs": 0,
+  "failure_localization_sha256": "1b3e620a699af90a74b618e3ad3ae82ccb0533a875f1a70d6820400ca46b0702",
+  "input_sha256": {
+    "simulation/outputs/terrain_static_reference_v4/normalization.json": "13ffc43275e142b6e9bd17cd367a99ff019746087ab7f5ce79a7cea0b9a25830",
+    "simulation/outputs/terrain_static_reference_v4/selected_model.keras": "adcfa113b679327dc5bac0d4df7dcfceeb2f4dd703960665ecc491581d77df3b",
+    "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz": "3ff4f8a1f270a39287fbe274753de91a5b0750d1a160e3cc9b1de01174f2a6ca",
+    "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz": "8c6a1db0eecdf8f63cf3d361d896e770968473dca1bdcf4c0b0f9ae240fe42f8",
+    "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json": "f95f054003ce01e6841c3a8c8c49d70a6afd5f236d33977950edd73d9b604841",
+    "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/summary.json": "413b837e2cf9a4b4c666d2d01aaf1d3c94f4e9e092a5523413a3c27a42701ce9",
+    "simulation/outputs/walking_hazard_operational_label_contract_v2/summary.json": "de264c3ba753d4a9507bd73903f93b7dbbc53ff1418c3cf1da9bcba27799fcb0",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/summary.json": "7eaa92f603a0aef49a6873d18b771f6ae623a871e034c571d5ac5a04af272ffb",
+    "simulation/outputs/walking_v2_candidate_failure_localization_v1/summary.json": "6e00d3bb2d0fa66a04110e0496ce117160d0e15f6dda80d178b33565ad106952"
+  },
+  "offline_label_tensors": [
+    "slip_physical_active",
+    "pre_fall_valid"
+  ],
+  "operational_contract_sha256": "a7b62d9ff97f3e51a00c0b905e99a18fbd9f3fa01e94a315394d2f8209cca2aa",
+  "pretraining_barrier": {
+    "forbidden_path_policy_sha256": "ae5bf5faf0165100955c263b9e77385847c180cc531a768d101cbb9fecde184e",
+    "input_allowlist_sha256": "6a47cc49a66411cacdb153a8b6f5d262871a113139f1ff4a13919bb6358c4f88",
+    "protocol_sha256": "a2440130374f2b5279bd3451a9db3b510239f97705462e2c0bbec892c4de083b"
+  },
+  "runtime_tensor": "bilateral_canonical float32 [run,3000,20]",
+  "sample_rate_hz": 1000,
+  "samples_per_run": 3000,
+  "stateful_contract_sha256": "11b4487766dea3110000e929615bec034e4bc83ee922739e8f905c37f768e367",
+  "train_runs": 72,
+  "upstream_contract_sha256": "3b4463cba4ee3a71b18386c28be92c11d3db44a8aaed125c0c0284c83de13a8a",
+  "validation_runs": 48,
+  "version": "walking_v2_redesign_data_manifest_v1"
+}

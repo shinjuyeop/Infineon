@@ -1,0 +1,50 @@
+{
+  "architecture": "T2",
+  "architecture_spec": {
+    "aggregation": "dual_timescale_symmetric_plus_own_minus_other",
+    "encoder": "full_stats_50ms_plus_200ms",
+    "head": "fixed_relu_projection_plus_weighted_multinomial_logistic",
+    "history_ms": 200,
+    "projection_width": 24,
+    "statistics": [
+      "mean",
+      "std",
+      "min",
+      "max",
+      "last",
+      "delta",
+      "mean_abs_diff",
+      "rms"
+    ],
+    "task": "terrain"
+  },
+  "contact_gate": "force_loaded and contact_age_ms > 10 and not touchdown_transient",
+  "forbidden_runtime_inputs": [
+    "contact_penetration",
+    "fall_flag",
+    "foot_world_xyz",
+    "pre_fall_valid",
+    "profile_name",
+    "run_id",
+    "sink_physical_active",
+    "sink_risk_target",
+    "slip_physical_active",
+    "slip_risk_target",
+    "speed_mps",
+    "terrain_id",
+    "terrain_name",
+    "variation_index"
+  ],
+  "physical_oracle_runtime_input": false,
+  "post_fall_runtime_input": false,
+  "runtime_inputs": [
+    "bilateral_canonical",
+    "contact_age",
+    "force_loaded",
+    "gait_phase_code"
+  ],
+  "sand_semantics": "SAND_TERRAIN_CAUTION",
+  "seed": 202608211,
+  "sink_runtime_output": false,
+  "task": "terrain"
+}

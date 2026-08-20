@@ -1,0 +1,506 @@
+{
+  "ablations": {
+    "diagnostic_only": true,
+    "optimizer": "same frozen LBFGS configuration as candidates",
+    "seed": 202608211,
+    "selection_use": false,
+    "slip": [
+      "binary_vs_horizon_target",
+      "sample_vs_episode_balance",
+      "raw_vs_contact_state",
+      "50ms_vs_100ms_vs_200ms",
+      "single_vs_separate_heads"
+    ],
+    "terrain": [
+      "50ms_vs_200ms",
+      "compact_vs_full_statistics",
+      "weighted_full_vs_destructive_downsample",
+      "independent_vs_shared_encoder",
+      "symmetric_vs_asymmetric_aggregation",
+      "linear_vs_projected_capacity"
+    ]
+  },
+  "artifact": "walking_v2_joint_terrain_slip_redesign_v1",
+  "candidate_family_limits": {
+    "seeds_per_family": 3,
+    "slip": 3,
+    "terrain": 3
+  },
+  "candidate_matrix": {
+    "slip": [
+      {
+        "architecture": "S1",
+        "decision": "argmax_nonzero",
+        "encoder": "full_stats_100ms",
+        "history_ms": 100,
+        "persistence_endpoints": 1,
+        "projection_width": 48,
+        "seed": 202608211,
+        "target": [
+          "no_or_far",
+          "actionable_0_100ms",
+          "active_evidence"
+        ],
+        "task": "slip"
+      },
+      {
+        "architecture": "S1",
+        "decision": "argmax_nonzero",
+        "encoder": "full_stats_100ms",
+        "history_ms": 100,
+        "persistence_endpoints": 1,
+        "projection_width": 48,
+        "seed": 202608212,
+        "target": [
+          "no_or_far",
+          "actionable_0_100ms",
+          "active_evidence"
+        ],
+        "task": "slip"
+      },
+      {
+        "architecture": "S1",
+        "decision": "argmax_nonzero",
+        "encoder": "full_stats_100ms",
+        "history_ms": 100,
+        "persistence_endpoints": 1,
+        "projection_width": 48,
+        "seed": 202608213,
+        "target": [
+          "no_or_far",
+          "actionable_0_100ms",
+          "active_evidence"
+        ],
+        "task": "slip"
+      },
+      {
+        "architecture": "S2",
+        "decision": "argmax_nonzero",
+        "encoder": "full_stats_200ms",
+        "history_ms": 200,
+        "persistence_endpoints": 1,
+        "projection_width": 64,
+        "seed": 202608211,
+        "target": [
+          "no_or_far",
+          "tte_0_20",
+          "tte_21_40",
+          "tte_41_60",
+          "tte_61_80",
+          "tte_81_100",
+          "active_evidence"
+        ],
+        "task": "slip"
+      },
+      {
+        "architecture": "S2",
+        "decision": "argmax_nonzero",
+        "encoder": "full_stats_200ms",
+        "history_ms": 200,
+        "persistence_endpoints": 1,
+        "projection_width": 64,
+        "seed": 202608212,
+        "target": [
+          "no_or_far",
+          "tte_0_20",
+          "tte_21_40",
+          "tte_41_60",
+          "tte_61_80",
+          "tte_81_100",
+          "active_evidence"
+        ],
+        "task": "slip"
+      },
+      {
+        "architecture": "S2",
+        "decision": "argmax_nonzero",
+        "encoder": "full_stats_200ms",
+        "history_ms": 200,
+        "persistence_endpoints": 1,
+        "projection_width": 64,
+        "seed": 202608213,
+        "target": [
+          "no_or_far",
+          "tte_0_20",
+          "tte_21_40",
+          "tte_41_60",
+          "tte_61_80",
+          "tte_81_100",
+          "active_evidence"
+        ],
+        "task": "slip"
+      },
+      {
+        "active_persistence_endpoints": 1,
+        "active_threshold": 0.5,
+        "architecture": "S3",
+        "encoder": "full_stats_50ms_plus_200ms",
+        "history_ms": 200,
+        "projection_width": 32,
+        "risk_persistence_endpoints": 1,
+        "risk_threshold": 0.5,
+        "seed": 202608211,
+        "target": [
+          "actionable_risk_head",
+          "active_evidence_head"
+        ],
+        "task": "slip",
+        "timer_only_promotion": false
+      },
+      {
+        "active_persistence_endpoints": 1,
+        "active_threshold": 0.5,
+        "architecture": "S3",
+        "encoder": "full_stats_50ms_plus_200ms",
+        "history_ms": 200,
+        "projection_width": 32,
+        "risk_persistence_endpoints": 1,
+        "risk_threshold": 0.5,
+        "seed": 202608212,
+        "target": [
+          "actionable_risk_head",
+          "active_evidence_head"
+        ],
+        "task": "slip",
+        "timer_only_promotion": false
+      },
+      {
+        "active_persistence_endpoints": 1,
+        "active_threshold": 0.5,
+        "architecture": "S3",
+        "encoder": "full_stats_50ms_plus_200ms",
+        "history_ms": 200,
+        "projection_width": 32,
+        "risk_persistence_endpoints": 1,
+        "risk_threshold": 0.5,
+        "seed": 202608213,
+        "target": [
+          "actionable_risk_head",
+          "active_evidence_head"
+        ],
+        "task": "slip",
+        "timer_only_promotion": false
+      }
+    ],
+    "terrain": [
+      {
+        "aggregation": "symmetric_plus_own_minus_other",
+        "architecture": "T1",
+        "encoder": "full_stats_200ms",
+        "head": "weighted_multinomial_logistic",
+        "history_ms": 200,
+        "projection_width": 0,
+        "seed": 202608211,
+        "statistics": [
+          "mean",
+          "std",
+          "min",
+          "max",
+          "last",
+          "delta",
+          "mean_abs_diff",
+          "rms"
+        ],
+        "task": "terrain"
+      },
+      {
+        "aggregation": "symmetric_plus_own_minus_other",
+        "architecture": "T1",
+        "encoder": "full_stats_200ms",
+        "head": "weighted_multinomial_logistic",
+        "history_ms": 200,
+        "projection_width": 0,
+        "seed": 202608212,
+        "statistics": [
+          "mean",
+          "std",
+          "min",
+          "max",
+          "last",
+          "delta",
+          "mean_abs_diff",
+          "rms"
+        ],
+        "task": "terrain"
+      },
+      {
+        "aggregation": "symmetric_plus_own_minus_other",
+        "architecture": "T1",
+        "encoder": "full_stats_200ms",
+        "head": "weighted_multinomial_logistic",
+        "history_ms": 200,
+        "projection_width": 0,
+        "seed": 202608213,
+        "statistics": [
+          "mean",
+          "std",
+          "min",
+          "max",
+          "last",
+          "delta",
+          "mean_abs_diff",
+          "rms"
+        ],
+        "task": "terrain"
+      },
+      {
+        "aggregation": "dual_timescale_symmetric_plus_own_minus_other",
+        "architecture": "T2",
+        "encoder": "full_stats_50ms_plus_200ms",
+        "head": "fixed_relu_projection_plus_weighted_multinomial_logistic",
+        "history_ms": 200,
+        "projection_width": 24,
+        "seed": 202608211,
+        "statistics": [
+          "mean",
+          "std",
+          "min",
+          "max",
+          "last",
+          "delta",
+          "mean_abs_diff",
+          "rms"
+        ],
+        "task": "terrain"
+      },
+      {
+        "aggregation": "dual_timescale_symmetric_plus_own_minus_other",
+        "architecture": "T2",
+        "encoder": "full_stats_50ms_plus_200ms",
+        "head": "fixed_relu_projection_plus_weighted_multinomial_logistic",
+        "history_ms": 200,
+        "projection_width": 24,
+        "seed": 202608212,
+        "statistics": [
+          "mean",
+          "std",
+          "min",
+          "max",
+          "last",
+          "delta",
+          "mean_abs_diff",
+          "rms"
+        ],
+        "task": "terrain"
+      },
+      {
+        "aggregation": "dual_timescale_symmetric_plus_own_minus_other",
+        "architecture": "T2",
+        "encoder": "full_stats_50ms_plus_200ms",
+        "head": "fixed_relu_projection_plus_weighted_multinomial_logistic",
+        "history_ms": 200,
+        "projection_width": 24,
+        "seed": 202608213,
+        "statistics": [
+          "mean",
+          "std",
+          "min",
+          "max",
+          "last",
+          "delta",
+          "mean_abs_diff",
+          "rms"
+        ],
+        "task": "terrain"
+      },
+      {
+        "aggregation": "symmetric_plus_own_minus_other",
+        "architecture": "T3",
+        "encoder": "depthwise_causal_conv_bank",
+        "head": "fixed_relu_projection_plus_weighted_multinomial_logistic",
+        "history_ms": 200,
+        "kernels": [
+          5,
+          20,
+          50,
+          100,
+          200,
+          2
+        ],
+        "projection_width": 32,
+        "seed": 202608211,
+        "task": "terrain"
+      },
+      {
+        "aggregation": "symmetric_plus_own_minus_other",
+        "architecture": "T3",
+        "encoder": "depthwise_causal_conv_bank",
+        "head": "fixed_relu_projection_plus_weighted_multinomial_logistic",
+        "history_ms": 200,
+        "kernels": [
+          5,
+          20,
+          50,
+          100,
+          200,
+          2
+        ],
+        "projection_width": 32,
+        "seed": 202608212,
+        "task": "terrain"
+      },
+      {
+        "aggregation": "symmetric_plus_own_minus_other",
+        "architecture": "T3",
+        "encoder": "depthwise_causal_conv_bank",
+        "head": "fixed_relu_projection_plus_weighted_multinomial_logistic",
+        "history_ms": 200,
+        "kernels": [
+          5,
+          20,
+          50,
+          100,
+          200,
+          2
+        ],
+        "projection_width": 32,
+        "seed": 202608213,
+        "task": "terrain"
+      }
+    ]
+  },
+  "created_blind_evaluation_data": false,
+  "endpoint_stride_ms": 10,
+  "forbidden_actions": [
+    "blind evaluation access or generation",
+    "production model/normalization/threshold writes",
+    "System-v1/System-v2 migration",
+    "INT8/Vela/E84/HIL/final evaluation writes",
+    "Sink runtime output"
+  ],
+  "forbidden_runtime_inputs": [
+    "contact_penetration",
+    "fall_flag",
+    "foot_world_xyz",
+    "pre_fall_valid",
+    "profile_name",
+    "run_id",
+    "sink_physical_active",
+    "sink_risk_target",
+    "slip_physical_active",
+    "slip_risk_target",
+    "speed_mps",
+    "terrain_id",
+    "terrain_name",
+    "variation_index"
+  ],
+  "native_sample_rate_hz": 1000,
+  "resource_ceilings": {
+    "basis": "bounded below the repository's previously verified approximately 59.2k-MAC deployable runtime envelope; no INT8/E84 work is performed",
+    "history_bytes": 32768,
+    "macs_per_tick": 60000,
+    "parameter_count": 30000,
+    "persistent_state_bytes": 4096
+  },
+  "runtime_inputs": [
+    "bilateral_canonical",
+    "contact_age",
+    "force_loaded",
+    "gait_phase_code"
+  ],
+  "scope": "development-only validation selection and conditional selection locks",
+  "selection": {
+    "exactly_one_diagnostic_fallback_if_no_pass": true,
+    "gate_before_rank": true,
+    "slip_order": [
+      "actionable_recall_desc",
+      "min_speed_desc",
+      "affected_foot_desc",
+      "physical_recall_desc",
+      "warning_desc",
+      "macs_asc",
+      "family",
+      "seed"
+    ],
+    "terrain_order": [
+      "macro_recall_desc",
+      "worst_recall_desc",
+      "overall_desc",
+      "macs_asc",
+      "family",
+      "seed"
+    ]
+  },
+  "sink": {
+    "runtime_head_created": false,
+    "runtime_outputs": [],
+    "status": "SINK_RUNTIME_DETECTION_DEFERRED"
+  },
+  "slip_gates": {
+    "actionable_episode_recall_min": 0.8,
+    "affected_foot_accuracy_min": 0.9,
+    "air_firings": 0,
+    "both_affected_feet_covered": true,
+    "cross_foot_state_ownership": 0,
+    "each_speed_actionable_recall_min": 0.7,
+    "invalid_firings": 0,
+    "median_warning_margin_ms_min": 20,
+    "normal_contact_episode_fp": 0,
+    "normal_run_fp": 0,
+    "physical_episode_recall_min": 0.8,
+    "post_fall_positive_attributions": 0,
+    "pre_onset_detection_fraction_min": 0.8,
+    "previous_episode_latch_carryover": 0,
+    "timer_only_promotions": 0,
+    "too_early_activations": 0,
+    "touchdown_transient_firings": 0
+  },
+  "slip_semantics": {
+    "actionable_horizon_ms": [
+      0,
+      100
+    ],
+    "active_evidence": "sensor evidence head; never physical confirmation",
+    "authoritative_evaluation": "corrected_R4",
+    "hazard_bin_edges_ms": [
+      20,
+      40,
+      60,
+      80,
+      100
+    ],
+    "originating_state": "rising edge must begin inside same foot/contact risk window",
+    "physical_oracle_usage": "offline label and evaluation only",
+    "post_fall": "excluded from valid numerator/denominator and positive attribution"
+  },
+  "starting_checkpoint": "a229dae974dbfef44e7b9e3cb2b8095015f1a54d",
+  "static_compatibility": {
+    "sand_runtime_semantics": "SAND_TERRAIN_CAUTION",
+    "walking_candidate_replaces_frozen_controlled_detector": false
+  },
+  "terrain_gates": {
+    "air_transitions": 0,
+    "causality_and_bilateral_parity": true,
+    "class_balanced_majority_prediction_rate_strict_max": 0.6,
+    "class_collapse": false,
+    "each_speed_accuracy_min": 0.8,
+    "invalid_firings": 0,
+    "left_right_difference_pp_max": 10.0,
+    "macro_recall_min": 0.85,
+    "overall_accuracy_min": 0.85,
+    "sand_recall_min": 0.7,
+    "worst_class_recall_min": 0.7
+  },
+  "training": {
+    "early_stop_rule": "gradient tolerance 1e-6 or fixed 600-iteration cap",
+    "learning_rate": "strong_wolfe_line_search",
+    "max_iterations": 600,
+    "normalization": "weighted development-train only",
+    "optimizer": "LBFGS",
+    "projection": "fixed seeded Gaussian ReLU basis; original normalized features retained",
+    "slip_balance": "equal label mass; equal physical episode/normal contact mass within label",
+    "slip_population": "all stable pre-fall endpoints retained",
+    "terrain_balance_factors": [
+      "terrain",
+      "phase",
+      "foot",
+      "speed",
+      "run",
+      "variation"
+    ],
+    "terrain_population": "all eligible rows retained; deterministic 30-cycle marginal raking",
+    "terrain_startup_history": "endpoints begin at 49ms; missing past is causal first-observation edge padding",
+    "tolerance": 1e-06,
+    "validation_fitting": false
+  }
+}

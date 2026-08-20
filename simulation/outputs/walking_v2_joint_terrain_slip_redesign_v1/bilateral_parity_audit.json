@@ -1,0 +1,208 @@
+{
+  "all_bilateral_parity_pass": true,
+  "all_candidate_checks": [
+    {
+      "architecture": "T1",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "terrain",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "T1",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "terrain",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "T1",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "terrain",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "T2",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "terrain",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "T2",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "terrain",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "T2",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "terrain",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "T3",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "terrain",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "T3",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "terrain",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "T3",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "terrain",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "S1",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "slip",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "S1",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "slip",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "S1",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "slip",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "S2",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "slip",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "S2",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "slip",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "S2",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "slip",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "S3",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "slip",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "S3",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "slip",
+      "windows_checked": 16
+    },
+    {
+      "architecture": "S3",
+      "bilateral_feature_max_abs_error": 0.0,
+      "bilateral_model_max_abs_error": 0.0,
+      "bilateral_parity_pass": true,
+      "causal_check_pass": true,
+      "future_mutation_max_abs_error": 0.0,
+      "left_right_slot_swap": "left/right tensors and contact telemetry swapped together",
+      "task": "slip",
+      "windows_checked": 16
+    }
+  ],
+  "all_future_leakage_checks_pass": true,
+  "canonical_slot_order": [
+    "left Fusion10",
+    "right Fusion10"
+  ]
+}

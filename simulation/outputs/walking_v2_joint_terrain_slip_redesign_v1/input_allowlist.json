@@ -1,0 +1,52 @@
+{
+  "exact_paths_only": true,
+  "forbidden_namespace_entries": 0,
+  "inputs": [
+    {
+      "access": "read_json",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json",
+      "purpose": "development split metadata and immutable run grouping"
+    },
+    {
+      "access": "read_json",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/summary.json",
+      "purpose": "upstream controlled bilateral dataset contract"
+    },
+    {
+      "access": "load_npz",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz",
+      "purpose": "72-run development training tensors"
+    },
+    {
+      "access": "load_npz",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz",
+      "purpose": "48-run development validation tensors"
+    },
+    {
+      "access": "read_json",
+      "path": "simulation/outputs/walking_hazard_operational_label_contract_v2/summary.json",
+      "purpose": "immutable operational label compatibility"
+    },
+    {
+      "access": "read_json",
+      "path": "simulation/outputs/walking_stateful_hazard_prototype_v1/summary.json",
+      "purpose": "immutable contact-state compatibility"
+    },
+    {
+      "access": "read_json",
+      "path": "simulation/outputs/walking_v2_candidate_failure_localization_v1/summary.json",
+      "purpose": "a229dae development-only failure diagnosis and exposed-data disclosure"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/terrain_static_reference_v4/selected_model.keras",
+      "purpose": "hash-only controlled/static compatibility reference"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/terrain_static_reference_v4/normalization.json",
+      "purpose": "hash-only controlled/static normalization reference"
+    }
+  ],
+  "version": "walking_v2_redesign_input_allowlist_v1"
+}

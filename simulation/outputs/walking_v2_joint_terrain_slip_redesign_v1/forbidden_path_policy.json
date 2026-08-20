@@ -1,0 +1,22 @@
+{
+  "applies_to": [
+    "hash",
+    "JSON",
+    "NPZ",
+    "model",
+    "normalization",
+    "metrics"
+  ],
+  "broad_repo_search_forbidden": true,
+  "case_insensitive_substrings": [
+    "outer",
+    "holdout",
+    "final_test",
+    "final-test",
+    "spatial"
+  ],
+  "fail_closed": true,
+  "forbidden_artifact_status": "EXPOSED_NON_BLIND_DIAGNOSTIC_ONLY",
+  "spatial_policy": "all paths containing spatial are conservatively forbidden",
+  "version": "walking_v2_redesign_forbidden_path_policy_v1"
+}

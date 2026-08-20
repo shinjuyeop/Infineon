@@ -1,0 +1,194 @@
+{
+  "E84_or_Vela_execution_performed": false,
+  "all_candidates_within_ceiling": true,
+  "candidates": [
+    {
+      "architecture": "T1",
+      "history_bytes": 16000,
+      "macs_per_tick": 16656,
+      "parameter_count": 660,
+      "persistent_state_bytes": 32,
+      "seed": 202608211,
+      "task": "terrain",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "T1",
+      "history_bytes": 16000,
+      "macs_per_tick": 16656,
+      "parameter_count": 660,
+      "persistent_state_bytes": 32,
+      "seed": 202608212,
+      "task": "terrain",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "T1",
+      "history_bytes": 16000,
+      "macs_per_tick": 16656,
+      "parameter_count": 660,
+      "persistent_state_bytes": 32,
+      "seed": 202608213,
+      "task": "terrain",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "T2",
+      "history_bytes": 16000,
+      "macs_per_tick": 29168,
+      "parameter_count": 9196,
+      "persistent_state_bytes": 32,
+      "seed": 202608211,
+      "task": "terrain",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "T2",
+      "history_bytes": 16000,
+      "macs_per_tick": 29168,
+      "parameter_count": 9196,
+      "persistent_state_bytes": 32,
+      "seed": 202608212,
+      "task": "terrain",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "T2",
+      "history_bytes": 16000,
+      "macs_per_tick": 29168,
+      "parameter_count": 9196,
+      "persistent_state_bytes": 32,
+      "seed": 202608213,
+      "task": "terrain",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "T3",
+      "history_bytes": 16000,
+      "macs_per_tick": 12132,
+      "parameter_count": 12168,
+      "persistent_state_bytes": 32,
+      "seed": 202608211,
+      "task": "terrain",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "T3",
+      "history_bytes": 16000,
+      "macs_per_tick": 12132,
+      "parameter_count": 12168,
+      "persistent_state_bytes": 32,
+      "seed": 202608212,
+      "task": "terrain",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "T3",
+      "history_bytes": 16000,
+      "macs_per_tick": 12132,
+      "parameter_count": 12168,
+      "persistent_state_bytes": 32,
+      "seed": 202608213,
+      "task": "terrain",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "S1",
+      "history_bytes": 8000,
+      "macs_per_tick": 17120,
+      "parameter_count": 9171,
+      "persistent_state_bytes": 128,
+      "seed": 202608211,
+      "task": "slip",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "S1",
+      "history_bytes": 8000,
+      "macs_per_tick": 17120,
+      "parameter_count": 9171,
+      "persistent_state_bytes": 128,
+      "seed": 202608212,
+      "task": "slip",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "S1",
+      "history_bytes": 8000,
+      "macs_per_tick": 17120,
+      "parameter_count": 9171,
+      "persistent_state_bytes": 128,
+      "seed": 202608213,
+      "task": "slip",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "S2",
+      "history_bytes": 16000,
+      "macs_per_tick": 28944,
+      "parameter_count": 13015,
+      "persistent_state_bytes": 128,
+      "seed": 202608211,
+      "task": "slip",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "S2",
+      "history_bytes": 16000,
+      "macs_per_tick": 28944,
+      "parameter_count": 13015,
+      "persistent_state_bytes": 128,
+      "seed": 202608212,
+      "task": "slip",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "S2",
+      "history_bytes": 16000,
+      "macs_per_tick": 28944,
+      "parameter_count": 13015,
+      "persistent_state_bytes": 128,
+      "seed": 202608213,
+      "task": "slip",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "S3",
+      "history_bytes": 16000,
+      "macs_per_tick": 31488,
+      "parameter_count": 11522,
+      "persistent_state_bytes": 128,
+      "seed": 202608211,
+      "task": "slip",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "S3",
+      "history_bytes": 16000,
+      "macs_per_tick": 31488,
+      "parameter_count": 11522,
+      "persistent_state_bytes": 128,
+      "seed": 202608212,
+      "task": "slip",
+      "within_all_ceilings": true
+    },
+    {
+      "architecture": "S3",
+      "history_bytes": 16000,
+      "macs_per_tick": 31488,
+      "parameter_count": 11522,
+      "persistent_state_bytes": 128,
+      "seed": 202608213,
+      "task": "slip",
+      "within_all_ceilings": true
+    }
+  ],
+  "ceilings": {
+    "basis": "bounded below the repository's previously verified approximately 59.2k-MAC deployable runtime envelope; no INT8/E84 work is performed",
+    "history_bytes": 32768,
+    "macs_per_tick": 60000,
+    "parameter_count": 30000,
+    "persistent_state_bytes": 4096
+  },
+  "int8_conversion_performed": false
+}

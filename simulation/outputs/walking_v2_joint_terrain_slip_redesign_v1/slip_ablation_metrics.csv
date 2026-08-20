@@ -1,0 +1,7 @@
+ablation,control,treatment,control_recall,treatment_recall,control_too_early,treatment_too_early,isolated,diagnostic_only,control_normal_run_fp,treatment_normal_run_fp,raw_air_firings,raw_touchdown_firings,raw_post_fall_outputs,raw_normal_run_fp,treatment_air_firings,treatment_touchdown_firings,control_affected_foot_accuracy,treatment_affected_foot_accuracy,note
+target,binary_within_horizon_or_active,three_class_horizon_target,0.8088235294117647,0.8382352941176471,20,17,True,True,,,,,,,,,,,
+loss_balance,dense_sample_marginal_balance,episode_and_normal_contact_balance,0.8382352941176471,0.8382352941176471,,,True,True,14,16,,,,,,,,,
+state,raw_head_output,contact_scoped_per_foot,,,,,True,True,,,386,286,313,16,0,0,,,
+history,50ms,100ms,0.8235294117647058,0.8382352941176471,22,17,True,True,,,,,,,,,,,
+history,100ms,200ms,0.8382352941176471,0.8382352941176471,17,17,True,True,,,,,,,,,,,
+heads,S1_single_categorical,S3_separate_actionable_active,0.8382352941176471,0.8235294117647058,,,False,True,,,,,,,,,0.7931034482758621,0.8596491228070176,task family comparison

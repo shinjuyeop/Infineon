@@ -1,0 +1,44 @@
+{
+  "all_input_reads_completed": true,
+  "allowlist_entry_count": 9,
+  "artifact_access_log_sha256": "2b55bdb58052c828c7c334dca815ace06bf19c982f820d5a6f7efaaa09ebb702",
+  "barrier_pass": true,
+  "blindness_restoration_claimed": false,
+  "broad_repo_search_used_by_runner": false,
+  "exact_reload_parity": {
+    "terrain": {
+      "exact_reload_parity_pass": true,
+      "model_reload_max_abs_error": 0.0,
+      "normalization_mean_reload_max_abs_error": 0.0,
+      "normalization_scale_reload_max_abs_error": 0.0
+    }
+  },
+  "forbidden_read_count": 0,
+  "hash_graph": {
+    "data_manifest": "3c4f60070706f958ab047beb854874524af533f53f0247eea38b6e7520a614fd",
+    "protocol": "a2440130374f2b5279bd3451a9db3b510239f97705462e2c0bbec892c4de083b",
+    "resource_report": "a6aa0060f17f9f8a580704273bae1563507719b92f2614003a971b8c909d4fd9",
+    "slip_lock": null,
+    "slip_validation": "2247861d6abd268be8e4102e48c6a93937d45ebd9e0d4222ea2ed7ea4463eeb4",
+    "split_manifest": "ed1cc527ea1984229dc9d085478f95bc1552e8d62f1d8ae6ceff80cbe49ddf1f",
+    "terrain_lock": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+    "terrain_validation": "0b38682c6964fc185967b1adf36285fb79a8d4bc5eea42308afa6474b692d661"
+  },
+  "pretraining_hashes": {
+    "forbidden_path_policy_sha256": "ae5bf5faf0165100955c263b9e77385847c180cc531a768d101cbb9fecde184e",
+    "input_allowlist_sha256": "6a47cc49a66411cacdb153a8b6f5d262871a113139f1ff4a13919bb6358c4f88",
+    "protocol_sha256": "a2440130374f2b5279bd3451a9db3b510239f97705462e2c0bbec892c4de083b"
+  },
+  "previous_exposed_artifact_accessed": false,
+  "previous_exposed_artifact_status": "EXPOSED_NON_BLIND_DIAGNOSTIC_ONLY",
+  "previous_exposed_artifact_used": false,
+  "selection_data": [
+    "development_train",
+    "development_validation"
+  ],
+  "static_compatibility_hashes": {
+    "simulation/outputs/terrain_static_reference_v4/normalization.json": "13ffc43275e142b6e9bd17cd367a99ff019746087ab7f5ce79a7cea0b9a25830",
+    "simulation/outputs/terrain_static_reference_v4/selected_model.keras": "adcfa113b679327dc5bac0d4df7dcfceeb2f4dd703960665ecc491581d77df3b"
+  },
+  "version": "walking_v2_redesign_provenance_v1"
+}

@@ -1,0 +1,10 @@
+architecture,seed,raw_threshold_crossings,owned_contact_episodes,actionable_events,detected_events,detected_runs_any_event,detected_runs_all_events
+S1,202608211,101,69,68,57,6,1
+S1,202608212,101,69,68,57,6,2
+S1,202608213,101,69,68,57,6,1
+S2,202608211,101,69,68,56,6,0
+S2,202608212,101,69,68,58,6,0
+S2,202608213,101,69,68,58,6,0
+S3,202608211,101,69,68,56,6,0
+S3,202608212,101,69,68,57,6,1
+S3,202608213,101,69,68,54,6,0
