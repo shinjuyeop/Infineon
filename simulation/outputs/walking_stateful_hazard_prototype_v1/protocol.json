@@ -1,0 +1,227 @@
+{
+  "prototype": "walking_stateful_hazard_prototype_v1",
+  "starting_checkpoint": "817474b2bf46f3368cfee8d5ce62abbbd1dc20d3",
+  "scope": "development-only diagnostic prototype; not production retraining or INT8 preparation",
+  "written_before_data_load_and_candidate_execution": true,
+  "split": {
+    "train": "d2209cd v00/v01",
+    "validation_selection": "d2209cd v02",
+    "run_episode_overlap_allowed": false
+  },
+  "outer_boundary": {
+    "outer_content_loads": 0,
+    "outer_experiments_rerun": false,
+    "nested_outer_files": "SHA256 provenance only",
+    "new_sink_holdout_access": 0,
+    "spatial_access": 0,
+    "final_test_access": 0
+  },
+  "runtime_inputs": [
+    "current/past Fusion10",
+    "FSR hysteresis contact",
+    "time since touchdown",
+    "touchdown/loading reference",
+    "causal EMA/delta/slope/variance",
+    "cumulative evidence",
+    "previous state/score/persistence"
+  ],
+  "runtime_forbidden": [
+    "future sample",
+    "penetration ground truth",
+    "anchor drift ground truth",
+    "physical label flag",
+    "fall flag as detection feature",
+    "terrain ID",
+    "simulator gait phase",
+    "run/variation/speed/profile ID",
+    "validation truth routing"
+  ],
+  "risk_horizon_ms": {
+    "slip": 100,
+    "sink": 200
+  },
+  "candidates": {
+    "slip": [
+      {
+        "candidate_id": "A_stateless_100ms",
+        "history_ms": 100,
+        "feature": "raw",
+        "risk": false,
+        "machine": false,
+        "threshold_rule": "fixed_0p90",
+        "risk_persistence": 1,
+        "confirmed_persistence": 1,
+        "require_risk": false,
+        "confirmation_delta_min": 0.0
+      },
+      {
+        "candidate_id": "B_dual_persistence_100ms",
+        "history_ms": 100,
+        "feature": "raw",
+        "risk": true,
+        "machine": false,
+        "threshold_rule": "fixed_0p90",
+        "risk_persistence": 3,
+        "confirmed_persistence": 5,
+        "require_risk": false,
+        "confirmation_delta_min": 0.0
+      },
+      {
+        "candidate_id": "C_contact_gated_100ms",
+        "history_ms": 100,
+        "feature": "raw",
+        "risk": true,
+        "machine": true,
+        "threshold_rule": "train_safe",
+        "risk_persistence": 5,
+        "confirmed_persistence": 5,
+        "require_risk": true,
+        "confirmation_delta_min": 0.01
+      },
+      {
+        "candidate_id": "D_touchdown_reference_100ms",
+        "history_ms": 100,
+        "feature": "stateful",
+        "risk": true,
+        "machine": true,
+        "threshold_rule": "train_safe",
+        "risk_persistence": 5,
+        "confirmed_persistence": 5,
+        "require_risk": true,
+        "confirmation_delta_min": 0.01
+      }
+    ],
+    "sink": [
+      {
+        "candidate_id": "A_stateless_20ms",
+        "history_ms": 20,
+        "feature": "raw",
+        "risk": false,
+        "machine": false,
+        "threshold_rule": "train_safe",
+        "risk_persistence": 1,
+        "confirmed_persistence": 1,
+        "require_risk": false,
+        "confirmation_delta_min": 0.0
+      },
+      {
+        "candidate_id": "B_causal_50ms",
+        "history_ms": 50,
+        "feature": "raw",
+        "risk": false,
+        "machine": false,
+        "threshold_rule": "train_safe",
+        "risk_persistence": 1,
+        "confirmed_persistence": 1,
+        "require_risk": false,
+        "confirmation_delta_min": 0.0
+      },
+      {
+        "candidate_id": "C_dual_history_200ms",
+        "history_ms": 200,
+        "feature": "raw",
+        "risk": true,
+        "machine": false,
+        "threshold_rule": "fixed_0p90",
+        "risk_persistence": 5,
+        "confirmed_persistence": 10,
+        "require_risk": false,
+        "confirmation_delta_min": 0.0
+      },
+      {
+        "candidate_id": "D_touchdown_stateful_200ms",
+        "history_ms": 200,
+        "feature": "stateful",
+        "risk": true,
+        "machine": false,
+        "threshold_rule": "fixed_0p90",
+        "risk_persistence": 5,
+        "confirmed_persistence": 10,
+        "require_risk": false,
+        "confirmation_delta_min": 0.0
+      },
+      {
+        "candidate_id": "E_contact_gated_stateful_200ms",
+        "history_ms": 200,
+        "feature": "stateful",
+        "risk": true,
+        "machine": true,
+        "threshold_rule": "train_safe",
+        "risk_persistence": 5,
+        "confirmed_persistence": 10,
+        "require_risk": true,
+        "confirmation_delta_min": 0.01
+      }
+    ]
+  },
+  "candidate_count": 9,
+  "model_family": "two independent deterministic logistic probes (risk and confirmed) plus engineered causal state",
+  "feature_definition": {
+    "raw": "80 summary values over causal history",
+    "stateful": "raw + touchdown elapsed/channel delta/contact mean delta/EMA delta/exact channel variance/FSR deltas/valid bit",
+    "contact": "FSR sum on/off 5.0/2.5 N, 30 ms loading"
+  },
+  "threshold_candidates": [
+    0.9,
+    "train stable/hard-negative maximum plus one float step"
+  ],
+  "hysteresis_candidates": [
+    "off = 0.80 * on"
+  ],
+  "persistence_candidates_samples": [
+    1,
+    3,
+    5,
+    10
+  ],
+  "random_seed": 20260820,
+  "selection_priority": [
+    "invalid firing",
+    "normal confirmed run FP",
+    "pre-onset confirmed firing",
+    "confirmed recall",
+    "risk early-warning coverage",
+    "confirmed latency",
+    "parameter/state memory"
+  ],
+  "mandatory_common": {
+    "invalid_firing_samples": 0,
+    "normal_confirmed_fp_runs": 0,
+    "pre_onset_confirmed_runs": 0,
+    "future_leakage": 0,
+    "run_episode_leakage": 0,
+    "reload_parity": "exact",
+    "reset_invariant": true
+  },
+  "slip_gate": {
+    "physical_coverage": "3/3",
+    "risk_coverage": "3/3",
+    "confirmed_detection": "3/3",
+    "normal_risk_fp": "0/9",
+    "risk_horizon_ms": 100,
+    "confirmed_latency_median_ms_max": 100,
+    "controlled_recall_drop_pp_max": 10
+  },
+  "sink_gate": {
+    "physical_coverage": "6/6",
+    "confirmed_detection_min": "5/6",
+    "per_profile_detection_min": "2/3",
+    "normal_risk_fp": "0/9",
+    "normal_confirmed_fp": "0/9",
+    "confirmed_latency_median_ms_max": 250,
+    "controlled_recall_drop_pp_max": 10
+  },
+  "tie_break": "candidate order after all declared metrics/resource fields",
+  "failure_fallback": "select exactly one diagnostic best by fixed priority; keep readiness false and do not promote",
+  "forbidden_changes": [
+    "production Terrain/Slip/Sink",
+    "production normalization/threshold",
+    "frozen detector/oracle",
+    "bounded retraining v1 lock",
+    "INT8/Vela",
+    "E84/HIL",
+    "System-v1",
+    "final test",
+    "outer/holdout"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "sensor_rate_hz": 1000,
+  "runtime_api": "StatefulHazardMachine.step(fusion10_sample)",
+  "feature_rows": [
+    {
+      "feature": "Fusion10 current sample",
+      "definition": "current FSR4 + IMU6",
+      "e84_reproducible": "yes"
+    },
+    {
+      "feature": "causal history",
+      "definition": "ring buffer ending at current sample",
+      "e84_reproducible": "yes"
+    },
+    {
+      "feature": "FSR contact hysteresis",
+      "definition": "sum(FSR4), on=5.0 N/off=2.5 N",
+      "e84_reproducible": "yes"
+    },
+    {
+      "feature": "time since touchdown",
+      "definition": "integer samples since causal contact-on",
+      "e84_reproducible": "yes"
+    },
+    {
+      "feature": "touchdown reference",
+      "definition": "Fusion10 captured on causal contact-on",
+      "e84_reproducible": "yes"
+    },
+    {
+      "feature": "history statistics",
+      "definition": "mean/std/min/max/first/last/delta/diff RMS plus exact channel variance",
+      "e84_reproducible": "yes"
+    },
+    {
+      "feature": "EMA",
+      "definition": "0.95 previous + 0.05 current; delta from touchdown reference is a probe feature",
+      "e84_reproducible": "yes"
+    },
+    {
+      "feature": "cumulative evidence",
+      "definition": "contact-episode sum and count",
+      "e84_reproducible": "yes"
+    },
+    {
+      "feature": "previous state/score",
+      "definition": "bounded machine persistence and hysteresis",
+      "e84_reproducible": "yes"
+    }
+  ],
+  "forbidden_runtime_inputs": [
+    "future sample",
+    "penetration ground truth",
+    "anchor drift ground truth",
+    "physical label flag",
+    "fall flag as detection feature",
+    "terrain ID",
+    "simulator gait phase",
+    "run/variation/speed/profile ID",
+    "validation truth routing"
+  ],
+  "future_sample_count": 0,
+  "oracle_input_count": 0,
+  "simulator_phase_input_count": 0
+}

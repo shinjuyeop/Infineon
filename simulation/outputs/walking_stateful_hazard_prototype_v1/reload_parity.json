@@ -1,0 +1,26 @@
+{
+  "sink_20ms_raw": {
+    "samples": 1024,
+    "exact": true
+  },
+  "sink_50ms_raw": {
+    "samples": 1024,
+    "exact": true
+  },
+  "sink_200ms_raw": {
+    "samples": 1024,
+    "exact": true
+  },
+  "sink_200ms_stateful": {
+    "samples": 1024,
+    "exact": true
+  },
+  "slip_100ms_raw": {
+    "samples": 1024,
+    "exact": true
+  },
+  "slip_100ms_stateful": {
+    "samples": 1024,
+    "exact": true
+  }
+}

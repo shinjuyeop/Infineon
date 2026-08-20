@@ -1,0 +1,194 @@
+{
+  "artifact": "walking_stateful_hazard_prototype_v1",
+  "starting_checkpoint": "817474b2bf46f3368cfee8d5ce62abbbd1dc20d3",
+  "development_checkpoint": "d2209cdb49c496839a16396f201ab0322515171b",
+  "generated_files": [
+    {
+      "path": "accessed_file_manifest.json",
+      "sha256": "50b49d521305a3ae7d4d2f882561d6a0028a83d4cac816b16d640541b0b755e3",
+      "bytes": 896
+    },
+    {
+      "path": "audit.md",
+      "sha256": "dbfa0fbebca8a435e324f6d8e91a5d20dcba226eff5206438b2859b2a2005ce5",
+      "bytes": 980
+    },
+    {
+      "path": "candidate_selection.json",
+      "sha256": "dc87bc421db93d08f9c9bfa2f0c862f3c95699539334697774d5f05700ccbda9",
+      "bytes": 19540
+    },
+    {
+      "path": "contact_phase_metrics.csv",
+      "sha256": "704dceb81685a0bea36abbfa59d65b47719a9c55a1defb8bcb9b19325e85735e",
+      "bytes": 22018
+    },
+    {
+      "path": "invalid_firing_audit.csv",
+      "sha256": "01005dc3485793552e5dee9512caf7c74c4cae3df20c5b1a34ecfb7d403882cc",
+      "bytes": 10501
+    },
+    {
+      "path": "latency_metrics.csv",
+      "sha256": "7c27cabb967510ffe83835c44c2f32912d0fa0d31b35a32076da547420b2a9c1",
+      "bytes": 7151
+    },
+    {
+      "path": "models/sink_200ms_raw_confirmed.npz",
+      "sha256": "c2bd16301dcc37aa430bc569d799b3903880460dd705de7b89eacaa917262895",
+      "bytes": 2982
+    },
+    {
+      "path": "models/sink_200ms_raw_risk.npz",
+      "sha256": "13c89199cff7a07730026987d87bdd4982be1081bdc009ee1777a9643781a9ee",
+      "bytes": 2934
+    },
+    {
+      "path": "models/sink_200ms_stateful_confirmed.npz",
+      "sha256": "be8e6ad44104344e4ee23c73914965ff652daa7169041ec7ef27fdb3a0b576be",
+      "bytes": 4005
+    },
+    {
+      "path": "models/sink_200ms_stateful_risk.npz",
+      "sha256": "e6d9a5c3a3b5e3e7fdab06c934c21e6f86cbd2dfba99f5af77b87f97abf1dfbb",
+      "bytes": 3932
+    },
+    {
+      "path": "models/sink_20ms_raw_confirmed.npz",
+      "sha256": "0ace87e05e9d152353641aa1545180501b0b5bd9b5b4e0b54b035e3d6d30ff45",
+      "bytes": 2982
+    },
+    {
+      "path": "models/sink_20ms_raw_risk.npz",
+      "sha256": "9d055e8e3c99f84196c6163e7ea5739c9de2f724633db94ab9d3e456ede57d2c",
+      "bytes": 2953
+    },
+    {
+      "path": "models/sink_50ms_raw_confirmed.npz",
+      "sha256": "055ed203b87eedd97c43b9b5b92147751781660692fc62b949ca10011a7a10ff",
+      "bytes": 2986
+    },
+    {
+      "path": "models/sink_50ms_raw_risk.npz",
+      "sha256": "41978c355120e099edeff9ab61c341f69f6fd73a16dbf715f318fccd1bbeb0c2",
+      "bytes": 2947
+    },
+    {
+      "path": "models/slip_100ms_raw_confirmed.npz",
+      "sha256": "fd53625a946c4080da67110d124e4ba022240978dee1c3ddc019f4749fe0603b",
+      "bytes": 2981
+    },
+    {
+      "path": "models/slip_100ms_raw_risk.npz",
+      "sha256": "e70fd16b05a132ec95c1b35452ba6c3848cf47f3579b32ef68c02daa3fafbb1a",
+      "bytes": 2968
+    },
+    {
+      "path": "models/slip_100ms_stateful_confirmed.npz",
+      "sha256": "000bb3779c4812ea0eedbbb35d4f3e826f43c57857d153e3fe91cf4250007e99",
+      "bytes": 3994
+    },
+    {
+      "path": "models/slip_100ms_stateful_risk.npz",
+      "sha256": "183d086bc398072cd51f3787cb948339d64441aeb354913b3796ec4fa7de0f61",
+      "bytes": 3993
+    },
+    {
+      "path": "protocol.json",
+      "sha256": "006520db18f42e9e37a284dd817be0d60dfc67bf6e25b48712bee53d52bfe28b",
+      "bytes": 6569
+    },
+    {
+      "path": "readiness.json",
+      "sha256": "255b601ec63b1325d1a9d80d872b1d325c402ca084a8306276f63e7cf14221e3",
+      "bytes": 734
+    },
+    {
+      "path": "reload_parity.json",
+      "sha256": "0ccc030de9ddae73732d4454b7917da4e4e260db6e93d8a9d9c573ad783794ee",
+      "bytes": 407
+    },
+    {
+      "path": "reset_invariant_audit.csv",
+      "sha256": "96b23a278433b87a4f30eda154c1a216125786f2d15ee5adb343a7abf8d5c3e7",
+      "bytes": 13818
+    },
+    {
+      "path": "resource_estimate.csv",
+      "sha256": "02f59c52e45734133776b42fb53e12a67ee9e40134ee890a907e8f488a330121",
+      "bytes": 4924
+    },
+    {
+      "path": "runtime_feature_contract.json",
+      "sha256": "411da7be8aca44f3f7212870a731a8dbf3468686edc15422988291cde2278fed",
+      "bytes": 1860
+    },
+    {
+      "path": "sink_representative_diagnostics.npz",
+      "sha256": "fbe368e6bf2226549ce4e2eaa347ac8c17c4ee3f08fd95d0ea37b5f6a460f779",
+      "bytes": 28990
+    },
+    {
+      "path": "sink_representative_state_score_timeline.png",
+      "sha256": "2e7281af5425ea617f5795c7a8a6ccd7ca16e44d6f0a510b9808ed96b87a8340",
+      "bytes": 108927
+    },
+    {
+      "path": "sink_stateful_metrics.csv",
+      "sha256": "54d7f36d6f17893cbd17fbf84ead6dc4ac63298663155c50dcf4fd149a52d6ee",
+      "bytes": 33866
+    },
+    {
+      "path": "slip_representative_diagnostics.npz",
+      "sha256": "408aa3f2bcbdb6c9d2bb9ca88c26019455f369370a46f05f7605cd221caf5a08",
+      "bytes": 27352
+    },
+    {
+      "path": "slip_representative_state_score_timeline.png",
+      "sha256": "0912cb0354efab99ff85587048371945bc9acff9c8ee242658ee26c6a82f823a",
+      "bytes": 108470
+    },
+    {
+      "path": "slip_stateful_metrics.csv",
+      "sha256": "074a1aedd255d0954c5a7d69fdb8097780d0a7210d01e3203cafbd3fcca927dd",
+      "bytes": 27018
+    },
+    {
+      "path": "state_transition_definition.json",
+      "sha256": "6fd57411236336a666c9e5a1c9be4c2d48d6e5085e261aef642afb42827d1b34",
+      "bytes": 1354
+    },
+    {
+      "path": "summary.json",
+      "sha256": "7eaa92f603a0aef49a6873d18b771f6ae623a871e034c571d5ac5a04af272ffb",
+      "bytes": 8838
+    }
+  ],
+  "hash_graph_complete": true,
+  "manifest_self_hash_excluded": true,
+  "immutable_upstream_sha256": {
+    "simulation/outputs/walking_hazard_ground_truth_v1_pilot/protocol.json": "04f8302cd8b8232de0bec2ef742287a9fd4ad4422ac8eb8a6cad9d49d76aac88",
+    "simulation/outputs/walking_hazard_ground_truth_v1_pilot/summary.json": "96a4c29ce495aea1e7785ae95124652bf1017ac3d9618727d4ef17c9bc37aa10",
+    "simulation/outputs/walking_hazard_ground_truth_v1_pilot/traces.npz": "cba2cf5f4ce915135a8607ee384e5b9b04d76a4ab2bbc0e3608b27e0b8d946d7",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/protocol.json": "3e8f2c70a81b3e686f1967818981cada408ec2549abe31d5d57b53d919c224a3",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/manifest.json": "b1360af75e6d57d59270df1bde3939b41d70a537067ae9754c044bda7a041aa8",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/traces.npz": "1bbede7770400a844f75da2bce5157e4b50e5f8119ea5e893760943c7ed40423",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/protocol.json": "6d61335d2c861981f87b51fecb54061b7ad3b8157fd09687ca62e9fdd06aac92",
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/nested_selection.json": "72330c16397dc9aa2f416beb933518e22ce20f307f87e833c0399c198928896f",
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/outer_validation_manifest.json": "e04db778a49575ad7afbc6ee7c5f35a5b85a5ce0d7a7ef9664f4933020a138fd",
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/outer_validation_traces.npz": "4b7876eae0e7caa9411bcd106f01eedfeee6e342cde5e551e56ea52f5d6de1d3",
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/summary.json": "7a476799d72c40081d64a531f6ddd7e2591eb18d93d269fa74114bfa4f24970b",
+    "simulation/outputs/walking_bounded_retraining_v1/protocol.json": "f0bd7c3120ef61ccb72b903f27a8553ec951feec8b36c000e52b515f3cef68eb",
+    "simulation/outputs/walking_bounded_retraining_v1/selection_lock.json": "cf956ea105fff2335b48a503327d34f82f1c1d9d39efef4e6930728ff6e59162",
+    "simulation/outputs/walking_bounded_retraining_v1/summary.json": "ccc55ae83237cd1febfd5ca99b2f40bd13202b83f1d8c02d766896e54274d8d2",
+    "simulation/outputs/walking_bounded_retraining_v1/source_hashes.json": "e1353d47fef2802f5d40f0155da5aa7bffc35b1bf964a744cab5434830356740",
+    "simulation/outputs/walking_fusion10_observability_audit_v1/protocol.json": "eff9bc7df4a4e20169793651a020b9e27a4e7c60c7cd1dc92772c5abc58eb29f",
+    "simulation/outputs/walking_fusion10_observability_audit_v1/manifest.json": "3be0931dd918b6ba62a9f2c7e370e5469d5f10e03053ef0b4069d436e64348ef",
+    "simulation/outputs/walking_fusion10_observability_audit_v1/summary.json": "9aa84e85af7692bd81bef28ad0c34c65163a74473934268fa94b05bad6b3fc17",
+    "simulation/outputs/walking_fusion10_observability_audit_v1/readiness.json": "2f823302884045a5a8518d4c2bf960a2bd5f4cf7ede082cb05c650eb3f2badfc"
+  },
+  "outer_content_load_count": 0,
+  "production_artifacts_changed": false,
+  "int8_or_vela_executed": false
+}

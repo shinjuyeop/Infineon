@@ -1,0 +1,18 @@
+{
+  "outer_content_load_count": 0,
+  "new_sink_holdout_content_load_count": 0,
+  "spatial_content_load_count": 0,
+  "final_test_content_load_count": 0,
+  "loaded_development_files": [
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/manifest.json",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/traces.npz",
+    "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/protocol.json",
+    "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/manifest.csv",
+    "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/inputs_fusion10.npz",
+    "simulation/outputs/terrain_fast_reflex_v2_final_scope_full/oracle_diagnostics.npz"
+  ],
+  "hash_only_files": [
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/outer_validation_manifest.json",
+    "simulation/outputs/walking_hazard_slip_nested_calibration_v2/outer_validation_traces.npz"
+  ]
+}

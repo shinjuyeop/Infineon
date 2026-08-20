@@ -1,0 +1,62 @@
+{
+  "states": [
+    "AIR",
+    "LOADING",
+    "STABLE_CONTACT",
+    "HAZARD_RISK",
+    "HAZARD_CONFIRMED",
+    "RECOVERY",
+    "RESET"
+  ],
+  "transitions": [
+    {
+      "from": "AIR",
+      "to": "LOADING",
+      "guard": "FSR sum crosses contact_on"
+    },
+    {
+      "from": "LOADING",
+      "to": "STABLE_CONTACT",
+      "guard": "30 causal contact samples"
+    },
+    {
+      "from": "STABLE_CONTACT",
+      "to": "HAZARD_RISK",
+      "guard": "independent risk evidence + persistence"
+    },
+    {
+      "from": "HAZARD_RISK",
+      "to": "HAZARD_CONFIRMED",
+      "guard": "independent confirmed evidence + persistence; never elapsed-time-only"
+    },
+    {
+      "from": "HAZARD_RISK/HAZARD_CONFIRMED",
+      "to": "RECOVERY",
+      "guard": "both scores below hysteresis-off for recovery persistence"
+    },
+    {
+      "from": "any contact state",
+      "to": "RESET",
+      "guard": "contact loss, fall censor, episode boundary, or operator reset"
+    },
+    {
+      "from": "RESET",
+      "to": "AIR",
+      "guard": "next finite sample below contact_on"
+    }
+  ],
+  "independent_machines": [
+    "slip",
+    "sink"
+  ],
+  "runtime_outputs": [
+    "slip_risk",
+    "slip_confirmed",
+    "sink_risk",
+    "sink_confirmed",
+    "contact_state",
+    "time_since_touchdown",
+    "reset_reason"
+  ],
+  "confirmation_not_timer_promoted": true
+}

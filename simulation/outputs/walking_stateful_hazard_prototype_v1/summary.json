@@ -1,0 +1,271 @@
+{
+  "artifact": "walking_stateful_hazard_prototype_v1",
+  "starting_checkpoint": "817474b2bf46f3368cfee8d5ce62abbbd1dc20d3",
+  "development_checkpoint": "d2209cdb49c496839a16396f201ab0322515171b",
+  "scope": "development-only diagnostic prototype",
+  "data": {
+    "training_variations": [
+      "v00",
+      "v01"
+    ],
+    "selection_variations": [
+      "v02"
+    ],
+    "run_episode_split_integrity": {
+      "run_leakage_count": 0,
+      "episode_leakage_count": 0,
+      "leaking_runs": [],
+      "leaking_episodes": [],
+      "split_leakage_count": 0
+    },
+    "sensor_rate_hz": 1000,
+    "walking_trace_shape": [
+      3000,
+      10
+    ],
+    "outer_content_load_count": 0
+  },
+  "state_machine": {
+    "states": [
+      "AIR",
+      "LOADING",
+      "STABLE_CONTACT",
+      "HAZARD_RISK",
+      "HAZARD_CONFIRMED",
+      "RECOVERY",
+      "RESET"
+    ],
+    "transitions": [
+      {
+        "from": "AIR",
+        "to": "LOADING",
+        "guard": "FSR sum crosses contact_on"
+      },
+      {
+        "from": "LOADING",
+        "to": "STABLE_CONTACT",
+        "guard": "30 causal contact samples"
+      },
+      {
+        "from": "STABLE_CONTACT",
+        "to": "HAZARD_RISK",
+        "guard": "independent risk evidence + persistence"
+      },
+      {
+        "from": "HAZARD_RISK",
+        "to": "HAZARD_CONFIRMED",
+        "guard": "independent confirmed evidence + persistence; never elapsed-time-only"
+      },
+      {
+        "from": "HAZARD_RISK/HAZARD_CONFIRMED",
+        "to": "RECOVERY",
+        "guard": "both scores below hysteresis-off for recovery persistence"
+      },
+      {
+        "from": "any contact state",
+        "to": "RESET",
+        "guard": "contact loss, fall censor, episode boundary, or operator reset"
+      },
+      {
+        "from": "RESET",
+        "to": "AIR",
+        "guard": "next finite sample below contact_on"
+      }
+    ],
+    "independent_machines": [
+      "slip",
+      "sink"
+    ],
+    "runtime_outputs": [
+      "slip_risk",
+      "slip_confirmed",
+      "sink_risk",
+      "sink_confirmed",
+      "contact_state",
+      "time_since_touchdown",
+      "reset_reason"
+    ],
+    "confirmation_not_timer_promoted": true
+  },
+  "contact_phase": {
+    "evaluation_role": "read-only; simulator gait phase was never a runtime input",
+    "phase_segment_counts": {
+      "AIR": 332,
+      "LOADING": 317,
+      "STABLE": 749,
+      "RECOVERY": 735
+    },
+    "sample_agreement": 0.9282777777777778,
+    "touchdown_events": 323,
+    "touchdown_detected": 323,
+    "touchdown_latency_median_ms": 0.0,
+    "touchdown_latency_p95_abs_ms": 10.0,
+    "contact_state_ready": true
+  },
+  "detectors": {
+    "slip": {
+      "selected_candidate": "C_contact_gated_100ms",
+      "fallback": true,
+      "risk_ready": true,
+      "confirmed_ready": false,
+      "risk_gate_candidates": [
+        "D_touchdown_reference_100ms"
+      ],
+      "confirmed_gate_candidates": [],
+      "mandatory_gate_pass": false,
+      "conclusion": {
+        "primary": "RISK_ONLY_READY",
+        "secondary": "LABEL_SEMANTICS_REDESIGN_REQUIRED"
+      },
+      "selected_metrics": {
+        "detector": "slip",
+        "candidate_id": "C_contact_gated_100ms",
+        "candidate_order": 2,
+        "comparison": "C_contact_gated_100ms",
+        "history_ms": 100,
+        "feature_set": "raw",
+        "state_machine": true,
+        "risk_threshold": 0.9790168852127736,
+        "risk_off_threshold": 0.783213508170219,
+        "confirmed_threshold": 0.9999992932497566,
+        "confirmed_off_threshold": 0.7999994345998053,
+        "risk_persistence": 5,
+        "confirmed_persistence": 5,
+        "threshold_rule": "train_safe",
+        "train_samples": 48928,
+        "validation_runs": 18,
+        "normal_runs": 9,
+        "physical_positive_runs": 3,
+        "risk_run_coverage": 0.3333333333333333,
+        "risk_covered_runs": 1,
+        "normal_risk_fp_runs": 0,
+        "risk_too_early_runs": 0,
+        "confirmed_run_recall": 0.3333333333333333,
+        "confirmed_detected_runs": 1,
+        "normal_confirmed_fp_runs": 0,
+        "pre_onset_confirmed_runs": 0,
+        "confirmed_latency_median_ms": 2405.0,
+        "confirmed_latency_p95_ms": 2405.0,
+        "invalid_firing_samples": 0,
+        "reset_invariant_pass": true,
+        "reload_parity_exact": true,
+        "profile_results_json": "{\"ice\": {\"detected\": 1, \"physical\": 3, \"risk_covered\": 1}}",
+        "controlled_run_recall": 0.0,
+        "controlled_baseline_recall": 0.8235294117647058,
+        "controlled_retention_pass": false,
+        "host_inference_us_per_sample": 77.24041803696848,
+        "parameter_count": 162,
+        "persistent_state_bytes": 544,
+        "history_buffer_bytes": 4000,
+        "estimated_macs_per_1khz_sample": 8160,
+        "feature_count": 80,
+        "e84_u55_compatible": true,
+        "vela_unsupported_ops_expected": false,
+        "int8_or_vela_executed": false,
+        "risk_gate_pass": false,
+        "confirmed_gate_pass": false,
+        "mandatory_gate_pass": false,
+        "production_candidate": false
+      },
+      "controlled_retention": {
+        "positive_runs": 17,
+        "detected_runs": 0,
+        "run_recall": 0.0,
+        "negative_false_positive_runs": 0,
+        "frozen_baseline_recall": 0.8235294117647058,
+        "retention_pass": false
+      }
+    },
+    "sink": {
+      "selected_candidate": "A_stateless_20ms",
+      "fallback": true,
+      "risk_ready": false,
+      "confirmed_ready": false,
+      "risk_gate_candidates": [],
+      "confirmed_gate_candidates": [],
+      "mandatory_gate_pass": false,
+      "conclusion": {
+        "primary": "STATEFUL_HISTORY_INSUFFICIENT",
+        "secondary": "LABEL_SEMANTICS_REDESIGN_REQUIRED"
+      },
+      "selected_metrics": {
+        "detector": "sink",
+        "candidate_id": "A_stateless_20ms",
+        "candidate_order": 0,
+        "comparison": "A_stateless_20ms",
+        "history_ms": 20,
+        "feature_set": "raw",
+        "state_machine": false,
+        "risk_threshold": 0.9999999995857579,
+        "risk_off_threshold": 0.7999999996686064,
+        "confirmed_threshold": 0.999998975255682,
+        "confirmed_off_threshold": 0.7999991802045456,
+        "risk_persistence": 1,
+        "confirmed_persistence": 1,
+        "threshold_rule": "train_safe",
+        "train_samples": 48928,
+        "validation_runs": 18,
+        "normal_runs": 9,
+        "physical_positive_runs": 6,
+        "risk_run_coverage": 0.0,
+        "risk_covered_runs": 0,
+        "normal_risk_fp_runs": 0,
+        "risk_too_early_runs": 0,
+        "confirmed_run_recall": 0.0,
+        "confirmed_detected_runs": 0,
+        "normal_confirmed_fp_runs": 0,
+        "pre_onset_confirmed_runs": 0,
+        "confirmed_latency_median_ms": null,
+        "confirmed_latency_p95_ms": null,
+        "invalid_firing_samples": 0,
+        "reset_invariant_pass": true,
+        "reload_parity_exact": true,
+        "profile_results_json": "{\"sand_solref_interpolation_1of3\": {\"detected\": 0, \"physical\": 3, \"risk_covered\": 0}, \"sand_solref_interpolation_2of3\": {\"detected\": 0, \"physical\": 3, \"risk_covered\": 0}}",
+        "controlled_run_recall": 0.0,
+        "controlled_baseline_recall": 1.0,
+        "controlled_retention_pass": false,
+        "host_inference_us_per_sample": 63.80064725763751,
+        "parameter_count": 162,
+        "persistent_state_bytes": 544,
+        "history_buffer_bytes": 800,
+        "estimated_macs_per_1khz_sample": 1760,
+        "feature_count": 80,
+        "e84_u55_compatible": true,
+        "vela_unsupported_ops_expected": false,
+        "int8_or_vela_executed": false,
+        "risk_gate_pass": false,
+        "confirmed_gate_pass": false,
+        "mandatory_gate_pass": false,
+        "production_candidate": false
+      },
+      "controlled_retention": {
+        "positive_runs": 30,
+        "detected_runs": 0,
+        "run_recall": 0.0,
+        "negative_false_positive_runs": 0,
+        "frozen_baseline_recall": 1.0,
+        "retention_pass": false
+      }
+    }
+  },
+  "candidate_count": 9,
+  "validation_adaptive_changes": 0,
+  "readiness": {
+    "WALKING_STATEFUL_DATA_READY": true,
+    "WALKING_STATEFUL_SPLIT_INTEGRITY_READY": true,
+    "WALKING_CAUSAL_FEATURE_CONTRACT_READY": true,
+    "WALKING_CONTACT_STATE_READY": true,
+    "WALKING_SLIP_RISK_PROTOTYPE_READY": true,
+    "WALKING_SLIP_CONFIRMED_PROTOTYPE_READY": false,
+    "WALKING_SINK_RISK_PROTOTYPE_READY": false,
+    "WALKING_SINK_CONFIRMED_PROTOTYPE_READY": false,
+    "WALKING_STATEFUL_PROTOTYPE_READY": false,
+    "WALKING_BOUNDED_RETRAINING_V2_AUTHORIZED": false,
+    "WALKING_INT8_PREPARATION_AUTHORIZED": false
+  },
+  "production_candidate_approved": false,
+  "int8_or_vela_executed": false,
+  "immutable_upstream_mismatch_count": 0,
+  "wall_time_s": 142.23235944099724,
+  "next_step": "label/task redesign"
+}
