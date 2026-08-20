@@ -1,0 +1,40 @@
+{
+  "controlled_detector_replacement": false,
+  "excluded_inputs": [
+    "pelvis_imu",
+    "joint_kinematics",
+    "actuator_effort",
+    "tracking_residual",
+    "terrain_id",
+    "speed_profile_run_identity",
+    "MuJoCo_privileged_ground_truth",
+    "physical_Sink_input"
+  ],
+  "inputs": [
+    "bilateral_canonical",
+    "contact_age",
+    "force_loaded",
+    "gait_phase_code"
+  ],
+  "outputs": [
+    "terrain_class",
+    "sand_terrain_caution",
+    "left_slip_risk",
+    "right_slip_risk",
+    "affected_foot",
+    "slip_evidence_persistent",
+    "contact_state",
+    "reset_reason"
+  ],
+  "production_change": false,
+  "sand_semantics": "SAND_TERRAIN_CAUTION; never Sink detection",
+  "sink_runtime_outputs": [],
+  "terrain_classes": [
+    "concrete",
+    "marble",
+    "ice",
+    "sand"
+  ],
+  "version": "walking_v2_bilateral_runtime_scope_v1",
+  "walking_specific": true
+}

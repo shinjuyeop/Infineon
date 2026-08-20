@@ -1,0 +1,4 @@
+detector,sha256,walking_v2_replacement,replay_executed,status
+frozen Terrain,adcfa113b679327dc5bac0d4df7dcfceeb2f4dd703960665ecc491581d77df3b,False,False,immutable
+frozen Slip INT8,c414ef1135fc0d44f139960faba55027843d7a4d9574318478e2f49eae3db66d,False,False,immutable
+frozen Sink INT8,4dcccf97d5175876b6c5e6fb31dd2c74f67e4dd001042fd29d861c1aa8101948,False,False,immutable

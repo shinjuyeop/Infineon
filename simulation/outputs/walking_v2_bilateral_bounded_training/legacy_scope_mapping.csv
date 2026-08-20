@@ -1,0 +1,5 @@
+legacy_scope,walking_v2_scope,status
+left-foot Slip blind authorization,not transferred,v1-only
+controlled/static detector,diagnostic regression only,unchanged
+Sink runtime,no runtime head,deferred
+Sand class,SAND_TERRAIN_CAUTION,not Sink

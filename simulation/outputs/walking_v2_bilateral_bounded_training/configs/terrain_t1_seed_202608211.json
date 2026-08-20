@@ -1,0 +1,9 @@
+{
+  "architecture": "T1",
+  "encoder_fingerprint": "bb7d2fc92335d3c46478fefa7cc7bec73071d815fe39032f5897bfd89f5e8133",
+  "future_samples": 0,
+  "runtime_window_ms": 50,
+  "seed": 202608211,
+  "sink_head": false,
+  "task": "terrain"
+}

@@ -1,0 +1,32 @@
+{
+  "canonical_input_order": [
+    "left Fusion10",
+    "right Fusion10"
+  ],
+  "future_samples": 0,
+  "hardware_reproducible_virtual_signals_only": true,
+  "native_rate_hz": 1000,
+  "per_foot_channels": [
+    "fsr_rear_lateral",
+    "fsr_rear_medial",
+    "fsr_front_lateral",
+    "fsr_front_medial",
+    "accel_x",
+    "accel_y",
+    "accel_z",
+    "gyro_x",
+    "gyro_y",
+    "gyro_z"
+  ],
+  "raw_frame_allowed": false,
+  "runtime_contact_features": [
+    "per-foot contact state",
+    "time since touchdown",
+    "bilateral load ratio",
+    "single/double support"
+  ],
+  "shared_encoder": "one fixed weight object applied to both feet",
+  "slip_history_ms": 100,
+  "terrain_history_ms": 50,
+  "version": "walking_v2_bilateral_input_contract_v1"
+}

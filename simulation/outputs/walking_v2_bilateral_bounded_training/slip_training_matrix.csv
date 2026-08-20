@@ -1,0 +1,7 @@
+architecture,seed,balanced_train_rows,feature_count,class_foot_speed_group_count,train_only_normalization,validation_rows_used_for_fit,grid_candidate_count,model_path,normalization_path,config_path
+S1,202608211,2268,87,12,True,0,60,models/slip_s1_seed_202608211.npz,normalization/slip_s1_seed_202608211.json,configs/slip_s1_seed_202608211.json
+S1,202608212,2268,87,12,True,0,60,models/slip_s1_seed_202608212.npz,normalization/slip_s1_seed_202608212.json,configs/slip_s1_seed_202608212.json
+S1,202608213,2268,87,12,True,0,60,models/slip_s1_seed_202608213.npz,normalization/slip_s1_seed_202608213.json,configs/slip_s1_seed_202608213.json
+S2,202608211,2268,101,12,True,0,60,models/slip_s2_seed_202608211.npz,normalization/slip_s2_seed_202608211.json,configs/slip_s2_seed_202608211.json
+S2,202608212,2268,101,12,True,0,60,models/slip_s2_seed_202608212.npz,normalization/slip_s2_seed_202608212.json,configs/slip_s2_seed_202608212.json
+S2,202608213,2268,101,12,True,0,60,models/slip_s2_seed_202608213.npz,normalization/slip_s2_seed_202608213.json,configs/slip_s2_seed_202608213.json

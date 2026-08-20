@@ -1,0 +1,7 @@
+architecture,seed,balanced_train_rows,feature_count,class_phase_foot_speed_group_count,train_only_normalization,validation_rows_used_for_fit,model_path,normalization_path,config_path
+T1,202608211,1440,80,96,True,0,models/terrain_t1_seed_202608211.npz,normalization/terrain_t1_seed_202608211.json,configs/terrain_t1_seed_202608211.json
+T1,202608212,1440,80,96,True,0,models/terrain_t1_seed_202608212.npz,normalization/terrain_t1_seed_202608212.json,configs/terrain_t1_seed_202608212.json
+T1,202608213,1440,80,96,True,0,models/terrain_t1_seed_202608213.npz,normalization/terrain_t1_seed_202608213.json,configs/terrain_t1_seed_202608213.json
+T2,202608211,1440,97,96,True,0,models/terrain_t2_seed_202608211.npz,normalization/terrain_t2_seed_202608211.json,configs/terrain_t2_seed_202608211.json
+T2,202608212,1440,97,96,True,0,models/terrain_t2_seed_202608212.npz,normalization/terrain_t2_seed_202608212.json,configs/terrain_t2_seed_202608212.json
+T2,202608213,1440,97,96,True,0,models/terrain_t2_seed_202608213.npz,normalization/terrain_t2_seed_202608213.json,configs/terrain_t2_seed_202608213.json

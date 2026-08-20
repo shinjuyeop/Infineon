@@ -1,0 +1,12 @@
+{
+  "content_load_count": 0,
+  "existing_outer_reused": false,
+  "forbidden_namespaces": [
+    "outer_validation_traces",
+    "sink_holdout/traces",
+    "spatial",
+    "final_test"
+  ],
+  "holdout_authorized": false,
+  "new_holdout_created": false
+}

@@ -1,0 +1,10 @@
+{
+  "first_actionable_event": "first physical episode in a contact episode; a later episode is independently actionable only after 100 ms cooldown",
+  "new_episode": "contact loss/new touchdown, or re-entry beyond the merge gap",
+  "physical_episode": "merge active segments in one contact episode when the inactive gap is <= 50 ms",
+  "post_reflex_counterfactual": "reported separately; no recovery intervention was simulated",
+  "raw_oracle_crossing": "false-to-true transition of offline physical Slip active",
+  "risk_window": "0..100 ms before physical onset or physical active",
+  "threshold_chatter_double_counted": false,
+  "too_early": "firing more than 100 ms before the next onset in the same contact episode"
+}

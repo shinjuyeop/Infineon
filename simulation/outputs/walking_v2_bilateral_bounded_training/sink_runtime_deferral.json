@@ -1,0 +1,12 @@
+{
+  "dataset_provenance_retained": true,
+  "physical_oracle_retained_offline": true,
+  "runtime_head_created": false,
+  "runtime_outputs_forbidden": [
+    "sink_risk",
+    "sink_detected"
+  ],
+  "sand_prediction_is_sink": false,
+  "sand_runtime_meaning": "SAND_TERRAIN_CAUTION",
+  "status": "SINK_RUNTIME_DETECTION_DEFERRED"
+}

@@ -1,0 +1,431 @@
+{
+  "artifact": "walking_v2_bilateral_bounded_training",
+  "development_run_ids": {
+    "train": [
+      "marble_native_0p10_v00",
+      "concrete_native_0p10_v00",
+      "sand_hardened_0p10_v00",
+      "ice_native_0p10_v00",
+      "sand_solref_interpolation_1of3_0p10_v00",
+      "sand_solref_interpolation_2of3_0p10_v00",
+      "sand_solref_interpolation_3of4_stronger_v2_0p10_v00",
+      "sand_solref_interpolation_5of6_stronger_v2_0p10_v00",
+      "marble_native_0p15_v00",
+      "concrete_native_0p15_v00",
+      "sand_hardened_0p15_v00",
+      "ice_native_0p15_v00",
+      "sand_solref_interpolation_1of3_0p15_v00",
+      "sand_solref_interpolation_2of3_0p15_v00",
+      "sand_solref_interpolation_3of4_stronger_v2_0p15_v00",
+      "sand_solref_interpolation_5of6_stronger_v2_0p15_v00",
+      "marble_native_0p20_v00",
+      "concrete_native_0p20_v00",
+      "sand_hardened_0p20_v00",
+      "ice_native_0p20_v00",
+      "sand_solref_interpolation_1of3_0p20_v00",
+      "sand_solref_interpolation_2of3_0p20_v00",
+      "sand_solref_interpolation_3of4_stronger_v2_0p20_v00",
+      "sand_solref_interpolation_5of6_stronger_v2_0p20_v00",
+      "marble_native_0p10_v01",
+      "concrete_native_0p10_v01",
+      "sand_hardened_0p10_v01",
+      "ice_native_0p10_v01",
+      "sand_solref_interpolation_1of3_0p10_v01",
+      "sand_solref_interpolation_2of3_0p10_v01",
+      "sand_solref_interpolation_3of4_stronger_v2_0p10_v01",
+      "sand_solref_interpolation_5of6_stronger_v2_0p10_v01",
+      "marble_native_0p15_v01",
+      "concrete_native_0p15_v01",
+      "sand_hardened_0p15_v01",
+      "ice_native_0p15_v01",
+      "sand_solref_interpolation_1of3_0p15_v01",
+      "sand_solref_interpolation_2of3_0p15_v01",
+      "sand_solref_interpolation_3of4_stronger_v2_0p15_v01",
+      "sand_solref_interpolation_5of6_stronger_v2_0p15_v01",
+      "marble_native_0p20_v01",
+      "concrete_native_0p20_v01",
+      "sand_hardened_0p20_v01",
+      "ice_native_0p20_v01",
+      "sand_solref_interpolation_1of3_0p20_v01",
+      "sand_solref_interpolation_2of3_0p20_v01",
+      "sand_solref_interpolation_3of4_stronger_v2_0p20_v01",
+      "sand_solref_interpolation_5of6_stronger_v2_0p20_v01",
+      "marble_native_0p10_v02",
+      "concrete_native_0p10_v02",
+      "sand_hardened_0p10_v02",
+      "ice_native_0p10_v02",
+      "sand_solref_interpolation_1of3_0p10_v02",
+      "sand_solref_interpolation_2of3_0p10_v02",
+      "sand_solref_interpolation_3of4_stronger_v2_0p10_v02",
+      "sand_solref_interpolation_5of6_stronger_v2_0p10_v02",
+      "marble_native_0p15_v02",
+      "concrete_native_0p15_v02",
+      "sand_hardened_0p15_v02",
+      "ice_native_0p15_v02",
+      "sand_solref_interpolation_1of3_0p15_v02",
+      "sand_solref_interpolation_2of3_0p15_v02",
+      "sand_solref_interpolation_3of4_stronger_v2_0p15_v02",
+      "sand_solref_interpolation_5of6_stronger_v2_0p15_v02",
+      "marble_native_0p20_v02",
+      "concrete_native_0p20_v02",
+      "sand_hardened_0p20_v02",
+      "ice_native_0p20_v02",
+      "sand_solref_interpolation_1of3_0p20_v02",
+      "sand_solref_interpolation_2of3_0p20_v02",
+      "sand_solref_interpolation_3of4_stronger_v2_0p20_v02",
+      "sand_solref_interpolation_5of6_stronger_v2_0p20_v02"
+    ],
+    "validation": [
+      "marble_native_0p10_v03",
+      "concrete_native_0p10_v03",
+      "sand_hardened_0p10_v03",
+      "ice_native_0p10_v03",
+      "sand_solref_interpolation_1of3_0p10_v03",
+      "sand_solref_interpolation_2of3_0p10_v03",
+      "sand_solref_interpolation_3of4_stronger_v2_0p10_v03",
+      "sand_solref_interpolation_5of6_stronger_v2_0p10_v03",
+      "marble_native_0p15_v03",
+      "concrete_native_0p15_v03",
+      "sand_hardened_0p15_v03",
+      "ice_native_0p15_v03",
+      "sand_solref_interpolation_1of3_0p15_v03",
+      "sand_solref_interpolation_2of3_0p15_v03",
+      "sand_solref_interpolation_3of4_stronger_v2_0p15_v03",
+      "sand_solref_interpolation_5of6_stronger_v2_0p15_v03",
+      "marble_native_0p20_v03",
+      "concrete_native_0p20_v03",
+      "sand_hardened_0p20_v03",
+      "ice_native_0p20_v03",
+      "sand_solref_interpolation_1of3_0p20_v03",
+      "sand_solref_interpolation_2of3_0p20_v03",
+      "sand_solref_interpolation_3of4_stronger_v2_0p20_v03",
+      "sand_solref_interpolation_5of6_stronger_v2_0p20_v03",
+      "marble_native_0p10_v04",
+      "concrete_native_0p10_v04",
+      "sand_hardened_0p10_v04",
+      "ice_native_0p10_v04",
+      "sand_solref_interpolation_1of3_0p10_v04",
+      "sand_solref_interpolation_2of3_0p10_v04",
+      "sand_solref_interpolation_3of4_stronger_v2_0p10_v04",
+      "sand_solref_interpolation_5of6_stronger_v2_0p10_v04",
+      "marble_native_0p15_v04",
+      "concrete_native_0p15_v04",
+      "sand_hardened_0p15_v04",
+      "ice_native_0p15_v04",
+      "sand_solref_interpolation_1of3_0p15_v04",
+      "sand_solref_interpolation_2of3_0p15_v04",
+      "sand_solref_interpolation_3of4_stronger_v2_0p15_v04",
+      "sand_solref_interpolation_5of6_stronger_v2_0p15_v04",
+      "marble_native_0p20_v04",
+      "concrete_native_0p20_v04",
+      "sand_hardened_0p20_v04",
+      "ice_native_0p20_v04",
+      "sand_solref_interpolation_1of3_0p20_v04",
+      "sand_solref_interpolation_2of3_0p20_v04",
+      "sand_solref_interpolation_3of4_stronger_v2_0p20_v04",
+      "sand_solref_interpolation_5of6_stronger_v2_0p20_v04"
+    ]
+  },
+  "generated_files": [
+    {
+      "bytes": 1456,
+      "path": "audit.md",
+      "sha256": "6b2d511113e467bf68cf55c8ec07f94eff8d63cd02df326635d7b9f3751f9849"
+    },
+    {
+      "bytes": 4206,
+      "path": "candidate_selection.json",
+      "sha256": "bc90a1ff0619e3170a1811a2c738527b06dc014779d080f0f322b3fe6bcb6402"
+    },
+    {
+      "bytes": 450,
+      "path": "configs/slip_s1_seed_202608211.json",
+      "sha256": "d40bc7f9d83de388691bb786e8c63ef1bd0c4764959b04f7bba2d9a30cf09152"
+    },
+    {
+      "bytes": 450,
+      "path": "configs/slip_s1_seed_202608212.json",
+      "sha256": "98d5e9911f78f6acac8c7f5d07c6fd906985cc34742624a2f7616524a9aa1331"
+    },
+    {
+      "bytes": 450,
+      "path": "configs/slip_s1_seed_202608213.json",
+      "sha256": "2704a1323b519baf2c9a1cfe6a1bc68e46f8c05b81b8f8925e0ea2079828b691"
+    },
+    {
+      "bytes": 450,
+      "path": "configs/slip_s2_seed_202608211.json",
+      "sha256": "7b0b4ac76ca24e809aab574b6bab80d7af9a3253e533cd81f079ade013190535"
+    },
+    {
+      "bytes": 450,
+      "path": "configs/slip_s2_seed_202608212.json",
+      "sha256": "a5e54e2a34b9dfc5a6821315e9062ed4d960aa2c5c11b843800fe75e972a11e8"
+    },
+    {
+      "bytes": 450,
+      "path": "configs/slip_s2_seed_202608213.json",
+      "sha256": "ceb7fd409e8fecef7bb14a1c417212af83f16dac2326030bb29627d2b8c3a191"
+    },
+    {
+      "bytes": 234,
+      "path": "configs/terrain_t1_seed_202608211.json",
+      "sha256": "322236b4fb741259622cbdc5e5522d65de431a0eba96c0b38c0af6c2e1bec9ae"
+    },
+    {
+      "bytes": 234,
+      "path": "configs/terrain_t1_seed_202608212.json",
+      "sha256": "6885c253a6ff41e22b6ff33584b7d3c661dadef87c375de4a071319b3a7569b4"
+    },
+    {
+      "bytes": 234,
+      "path": "configs/terrain_t1_seed_202608213.json",
+      "sha256": "19bd7c51beffcbcf358a130152c38e7d088e5b0d9f3b05c36cb7e24c1fddee3c"
+    },
+    {
+      "bytes": 234,
+      "path": "configs/terrain_t2_seed_202608211.json",
+      "sha256": "f8f57158fa1b527a0502bf4d5d50ba705371dc657605ca465e18fd70dde32b8b"
+    },
+    {
+      "bytes": 234,
+      "path": "configs/terrain_t2_seed_202608212.json",
+      "sha256": "b0bb6d3babda79420bda2b86e7715acd5cc496279279e8a8414281289fdde334"
+    },
+    {
+      "bytes": 234,
+      "path": "configs/terrain_t2_seed_202608213.json",
+      "sha256": "d7bb94912d54574e222cbe8948a3961c712f4cf30db6a86fd3a5071757fbeefa"
+    },
+    {
+      "bytes": 372,
+      "path": "controlled_static_compatibility.csv",
+      "sha256": "b9e3d5c7cfd51827dcab9913acfc4a7b49b9d2f32f7b8e22663375eb6f70f461"
+    },
+    {
+      "bytes": 723,
+      "path": "episode_semantics.json",
+      "sha256": "7b4a975c922b1ac51914c7595c2273c02e33c06e8c3e309a288d2994f5edb6c6"
+    },
+    {
+      "bytes": 2970,
+      "path": "immutable_sha_audit.csv",
+      "sha256": "a1b17f559949c80977ae3e1c9952548a7c93cff72d1626f70fb67ee3677af12b"
+    },
+    {
+      "bytes": 239,
+      "path": "legacy_scope_mapping.csv",
+      "sha256": "ef3e446fa38789568d977eaec51607ec9fae2ad840942c02656a1da9707fb961"
+    },
+    {
+      "bytes": 3797,
+      "path": "models/slip_s1_seed_202608211.npz",
+      "sha256": "f2e2fca6d138ac9175512b35a264b4c364fbd766325aee36b79f792594b6109c"
+    },
+    {
+      "bytes": 3796,
+      "path": "models/slip_s1_seed_202608212.npz",
+      "sha256": "e8586403c156eff8a84e372d154d0eeb4d984f41cdaf3d0c746845a1b9e09298"
+    },
+    {
+      "bytes": 3794,
+      "path": "models/slip_s1_seed_202608213.npz",
+      "sha256": "071a0238802a66987f4fd0d5b5f8ed90c6d510ac0b0a3cfd3cdb0e313dd2c97c"
+    },
+    {
+      "bytes": 4153,
+      "path": "models/slip_s2_seed_202608211.npz",
+      "sha256": "9df68d312f83143e9d960cad690dea7c4cebe7c95ccb4bf081813a7ff0f589b6"
+    },
+    {
+      "bytes": 4153,
+      "path": "models/slip_s2_seed_202608212.npz",
+      "sha256": "b8cc484a41d3fe7ef3dd163b6902d4f4c52eed5dc94bd0f8124c404d09c11b01"
+    },
+    {
+      "bytes": 4156,
+      "path": "models/slip_s2_seed_202608213.npz",
+      "sha256": "c2643a5c080a2abf7f99fcb78fcf35c2694b00d3929c5512674ca33f4704c50c"
+    },
+    {
+      "bytes": 5528,
+      "path": "models/terrain_t1_seed_202608211.npz",
+      "sha256": "607114f11c441e2b171264de3a66a8b9a706d42975a454d1c60bd37b528eb163"
+    },
+    {
+      "bytes": 5521,
+      "path": "models/terrain_t1_seed_202608212.npz",
+      "sha256": "98234c87d28c8a65094b21ec2ad862eae6b36bebe45893225dbd1d1360d71043"
+    },
+    {
+      "bytes": 5525,
+      "path": "models/terrain_t1_seed_202608213.npz",
+      "sha256": "43f30504c5e87bdabb49fa949c9d20eaba431e69011ce19db8f642945158c7ed"
+    },
+    {
+      "bytes": 6141,
+      "path": "models/terrain_t2_seed_202608211.npz",
+      "sha256": "e6d3383bb892b4016667462d9e9fb72247d1a528ba82ff0d867644e827eba9f7"
+    },
+    {
+      "bytes": 6138,
+      "path": "models/terrain_t2_seed_202608212.npz",
+      "sha256": "869aac46389edb942365866eff2ff681f6d380f6f04718000199d4f51f126aff"
+    },
+    {
+      "bytes": 6126,
+      "path": "models/terrain_t2_seed_202608213.npz",
+      "sha256": "afd4050cdf21fb55afa5108936be63c344321a94f2b7d9c102a256e25f833363"
+    },
+    {
+      "bytes": 2982,
+      "path": "non_selection.json",
+      "sha256": "b35de57fdf7053fbdf1b994dae2066cc4e0e66c8689f605a0710a6b9efffdcbd"
+    },
+    {
+      "bytes": 4287,
+      "path": "normalization/slip_s1_seed_202608211.json",
+      "sha256": "64b76c9c4700be64d51ec13ee08da25352abd4f4af904261be2d331b911a5ad5"
+    },
+    {
+      "bytes": 4292,
+      "path": "normalization/slip_s1_seed_202608212.json",
+      "sha256": "fa5032005a09d5fb33b3fddf9cc577df323f94721d2c8ca14f8b4c60ca8b1d8a"
+    },
+    {
+      "bytes": 4286,
+      "path": "normalization/slip_s1_seed_202608213.json",
+      "sha256": "10e17f124f2f55e229452eefaa0a98fdf97a02b37e3beca939494a38bad70797"
+    },
+    {
+      "bytes": 4952,
+      "path": "normalization/slip_s2_seed_202608211.json",
+      "sha256": "7ab950f8a1b242c340fc194dbcd5e9666e091c09370fba7c40e849dbee27298e"
+    },
+    {
+      "bytes": 4960,
+      "path": "normalization/slip_s2_seed_202608212.json",
+      "sha256": "6901fff479bbac74a9e10aa829de204bf6866730a6176628620ceee4a0f7fd2b"
+    },
+    {
+      "bytes": 4957,
+      "path": "normalization/slip_s2_seed_202608213.json",
+      "sha256": "99dd18515d5c04d5b64ed74810fd05006f9affdd6b1833828b52318697678faf"
+    },
+    {
+      "bytes": 3972,
+      "path": "normalization/terrain_t1_seed_202608211.json",
+      "sha256": "6fc61071926008611767031a5e6ab0f4a13bc4e4f8fd3656a79bab7303a6c5d5"
+    },
+    {
+      "bytes": 3993,
+      "path": "normalization/terrain_t1_seed_202608212.json",
+      "sha256": "2fbf84a91bb4489c1e388367efd5202f287297112e3b61fe3a448d4c4cb3fc3c"
+    },
+    {
+      "bytes": 3980,
+      "path": "normalization/terrain_t1_seed_202608213.json",
+      "sha256": "634848b2cf9548a41900ad1d8569af44a441d290c77c48ad772390fef1d2de45"
+    },
+    {
+      "bytes": 4678,
+      "path": "normalization/terrain_t2_seed_202608211.json",
+      "sha256": "c0d149f856ec4eca6b524d37b52cd83ad476a5ed79db162669096da0d2780044"
+    },
+    {
+      "bytes": 4705,
+      "path": "normalization/terrain_t2_seed_202608212.json",
+      "sha256": "3038b66b17c8abda4602c9b65862a2d23b41502aef34d3e3b7b28859259cea7b"
+    },
+    {
+      "bytes": 4679,
+      "path": "normalization/terrain_t2_seed_202608213.json",
+      "sha256": "691bf93c33fa9a799ee8ed29c9e88645e60846a7f34ebc2a3cef7d3ef7bd668d"
+    },
+    {
+      "bytes": 250,
+      "path": "outer_non_access.json",
+      "sha256": "a624a202ca382ea6d5eb699bd76c34e0766de328f2ddf49f185717b263d6da6a"
+    },
+    {
+      "bytes": 7179,
+      "path": "protocol.json",
+      "sha256": "292fe5b09ddd2fc1bbbff20682d96906a92b3463c1bb10ee5d0fcb2fac192d73"
+    },
+    {
+      "bytes": 610,
+      "path": "readiness.json",
+      "sha256": "ee728275926663905ae20a80166b101368e90dd6dda755c0ae158831aa5fa5f1"
+    },
+    {
+      "bytes": 6303,
+      "path": "resource_estimate.csv",
+      "sha256": "f8ff5c6a2592ecb08363ade70209d837ef71ab76d34cd48a0ae9d2c8b77e94ff"
+    },
+    {
+      "bytes": 327,
+      "path": "sink_runtime_deferral.json",
+      "sha256": "aeec60bff9ce9d7324ed49cdcc3dfc0ea91aeaadbc96995f6a10823fc73946af"
+    },
+    {
+      "bytes": 9727,
+      "path": "slip_episode_metrics.csv",
+      "sha256": "17eacae94ed4814dafac2bfca938727c152955e0ef81b5651cc5fd71b157308f"
+    },
+    {
+      "bytes": 1077,
+      "path": "slip_training_matrix.csv",
+      "sha256": "62c11d1a0b9b463357057d78c06a31cb8289c4e372fdda9c04ef1fce0749c82e"
+    },
+    {
+      "bytes": 130898,
+      "path": "slip_validation_metrics.csv",
+      "sha256": "4aa4e47e1f762c1d2fcfe6217e53968c1308b297716060e8e65b1082383fc6aa"
+    },
+    {
+      "bytes": 3966,
+      "path": "summary.json",
+      "sha256": "ca88b00a3e99f4d2dd53c219b8b28dbfbaef903ed62cad418384a3d64ccd1033"
+    },
+    {
+      "bytes": 1095,
+      "path": "terrain_training_matrix.csv",
+      "sha256": "d22c941ef9e54acff08b34ef2d3732a575ef66eb78984f223a944b4a42cc7362"
+    },
+    {
+      "bytes": 4088,
+      "path": "terrain_validation_metrics.csv",
+      "sha256": "24e3170613bcba937ee271c8dc90ecefabb92580e1f2c4b6a3a3566417d8ec3f"
+    },
+    {
+      "bytes": 752,
+      "path": "walking_v2_input_contract.json",
+      "sha256": "6f9844ec9605a1a21c77356ac44d11c41d9c2b792463b178d2531605b6e63268"
+    },
+    {
+      "bytes": 883,
+      "path": "walking_v2_runtime_scope.json",
+      "sha256": "3b98addaa4d13d19f0eeccb745bf72622dbb4e18dd511c1d1e2010a925c08b68"
+    }
+  ],
+  "hash_graph_complete": true,
+  "holdout_content_load_count": 0,
+  "immutable_upstream_sha256": {
+    "simulation/outputs/terrain_fast_reflex_v2_int8/sink/model_int8.tflite": "4dcccf97d5175876b6c5e6fb31dd2c74f67e4dd001042fd29d861c1aa8101948",
+    "simulation/outputs/terrain_fast_reflex_v2_int8/slip/model_int8.tflite": "c414ef1135fc0d44f139960faba55027843d7a4d9574318478e2f49eae3db66d",
+    "simulation/outputs/terrain_static_reference_v4/normalization.json": "13ffc43275e142b6e9bd17cd367a99ff019746087ab7f5ce79a7cea0b9a25830",
+    "simulation/outputs/terrain_static_reference_v4/selected_model.keras": "adcfa113b679327dc5bac0d4df7dcfceeb2f4dd703960665ecc491581d77df3b",
+    "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz": "3ff4f8a1f270a39287fbe274753de91a5b0750d1a160e3cc9b1de01174f2a6ca",
+    "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz": "8c6a1db0eecdf8f63cf3d361d896e770968473dca1bdcf4c0b0f9ae240fe42f8",
+    "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json": "f95f054003ce01e6841c3a8c8c49d70a6afd5f236d33977950edd73d9b604841",
+    "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/summary.json": "413b837e2cf9a4b4c666d2d01aaf1d3c94f4e9e092a5523413a3c27a42701ce9",
+    "simulation/outputs/walking_bounded_retraining_v1/summary.json": "ccc55ae83237cd1febfd5ca99b2f40bd13202b83f1d8c02d766896e54274d8d2",
+    "simulation/outputs/walking_fusion10_observability_audit_v1/summary.json": "9aa84e85af7692bd81bef28ad0c34c65163a74473934268fa94b05bad6b3fc17",
+    "simulation/outputs/walking_hazard_ground_truth_v1_pilot/summary.json": "96a4c29ce495aea1e7785ae95124652bf1017ac3d9618727d4ef17c9bc37aa10",
+    "simulation/outputs/walking_hazard_operational_label_contract_v2/summary.json": "de264c3ba753d4a9507bd73903f93b7dbbc53ff1418c3cf1da9bcba27799fcb0",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/summary.json": "7eaa92f603a0aef49a6873d18b771f6ae623a871e034c571d5ac5a04af272ffb"
+  },
+  "manifest_self_hash_excluded": true,
+  "selection_lock_created": false
+}

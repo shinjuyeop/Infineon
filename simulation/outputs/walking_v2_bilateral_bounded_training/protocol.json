@@ -1,0 +1,180 @@
+{
+  "architectures": {
+    "shared_encoder_identity": "one exact fixed encoder object per window/task",
+    "shared_encoder_trainable": false,
+    "slip": [
+      "S1",
+      "S2"
+    ],
+    "terrain": [
+      "T1",
+      "T2"
+    ]
+  },
+  "artifact": "walking_v2_bilateral_bounded_training",
+  "conditional_holdout": {
+    "candidate_selection_independent": true,
+    "duration_s": 3.0,
+    "evaluate_exactly_once": true,
+    "existing_outer_or_holdout_reuse": false,
+    "gates": {
+      "slip": {
+        "affected_foot_accuracy_min": 0.9,
+        "each_speed_detection": "3/3",
+        "each_variation_detection": "3/3",
+        "first_actionable_event_recall": 1.0,
+        "ice_run_detection": "9/9",
+        "invalid_firings": 0,
+        "median_warning_margin_ms_min": 20.0,
+        "normal_run_fp": "0/27",
+        "physical_episode_recall_min": 0.8,
+        "pre_fall_mask_violations": 0,
+        "pre_onset_detection_fraction_min": 0.8,
+        "reset_invariant": true,
+        "too_early_firings": 0
+      },
+      "terrain": {
+        "air_transitions": 0,
+        "class_collapse": false,
+        "each_speed_accuracy_min": 0.8,
+        "each_terrain_coverage": true,
+        "each_variation_accuracy_min": 0.75,
+        "left_right_difference_pp_max": 10.0,
+        "macro_accuracy_min": 0.85,
+        "majority_prediction_rate_strict_max": 0.6,
+        "overall_accuracy_min": 0.85,
+        "worst_class_recall_min": 0.7
+      }
+    },
+    "namespace": "walking_v2_bilateral_blind_holdout",
+    "native_rate_hz": 1000,
+    "new_variations": [
+      "phase_delay_a",
+      "phase_delay_b",
+      "phase_delay_c"
+    ],
+    "normal_terrains": [
+      "marble",
+      "concrete",
+      "hardened_sand"
+    ],
+    "post_holdout_tuning_allowed": false,
+    "run_count": 36,
+    "seed_namespace": "walking_v2_blind_20260901",
+    "slip_terrain": "ice",
+    "speeds_mps": [
+      0.1,
+      0.15,
+      0.2
+    ]
+  },
+  "development": {
+    "holdout_runs": 0,
+    "train_runs": 72,
+    "validation_runs": 48
+  },
+  "development_gates": {
+    "slip": {
+      "affected_foot_accuracy_min": 0.9,
+      "all_speed_and_both_foot_coverage": true,
+      "first_actionable_event_recall": 1.0,
+      "invalid_firings": 0,
+      "median_warning_margin_ms_min": 20.0,
+      "normal_contact_episode_fp": 0,
+      "normal_run_fp": 0,
+      "physical_episode_recall_min": 0.8,
+      "pre_onset_detection_fraction_min": 0.8,
+      "reset_invariant": true,
+      "too_early_firings": 0,
+      "valid_ice_run_coverage": 1.0
+    },
+    "terrain": {
+      "air_transitions": 0,
+      "class_collapse": false,
+      "each_speed_accuracy_min": 0.8,
+      "left_right_difference_pp_max": 10.0,
+      "macro_accuracy_min": 0.85,
+      "majority_class_prediction_rate_strict_max": 0.6,
+      "overall_accuracy_min": 0.85,
+      "worst_class_recall_min": 0.7
+    }
+  },
+  "endpoint_stride_ms": 10,
+  "episode_semantics": {
+    "first_actionable_event": "first physical episode in a contact episode; a later episode is independently actionable only after 100 ms cooldown",
+    "new_episode": "contact loss/new touchdown, or re-entry beyond the merge gap",
+    "physical_episode": "merge active segments in one contact episode when the inactive gap is <= 50 ms",
+    "post_reflex_counterfactual": "reported separately; no recovery intervention was simulated",
+    "raw_oracle_crossing": "false-to-true transition of offline physical Slip active",
+    "risk_window": "0..100 ms before physical onset or physical active",
+    "threshold_chatter_double_counted": false,
+    "too_early": "firing more than 100 ms before the next onset in the same contact episode"
+  },
+  "forbidden_content_namespaces": [
+    "outer_validation_traces",
+    "sink_holdout/traces",
+    "spatial",
+    "final_test"
+  ],
+  "holdout_authorization": "both development gates plus written selection lock",
+  "normalization": "fit only on balanced development-train rows for each seed/architecture",
+  "production_or_system_or_int8_change": false,
+  "purpose": "bounded walking-specific Terrain and 100 ms Slip-risk float candidates",
+  "scope_sha256_pretraining": {
+    "input_contract": "a444451c53ba4c306d3a7ad045f5451ed83ddbe29b3f73e051c320c8c81a9cd0",
+    "runtime_scope": "8200eddf4768f8d19a29533b2eeab1ac358b7aa83919fa065f69113366ff5842",
+    "sink_deferral": "33ae143cfb0ef62f6ab9ad8c60436cf5624d98b3b57c166b7d0b12f2d858f5a8"
+  },
+  "seeds": [
+    202608211,
+    202608212,
+    202608213
+  ],
+  "slip_grid": {
+    "expanded_after_validation": false,
+    "hysteresis": [
+      0.05,
+      0.1
+    ],
+    "persistence_endpoints": [
+      1,
+      2,
+      3
+    ],
+    "threshold": [
+      0.3,
+      0.5,
+      0.7,
+      0.8,
+      0.9,
+      0.95,
+      0.98,
+      0.99,
+      0.995,
+      0.999
+    ]
+  },
+  "starting_checkpoint": "86ce118eca20dbd8cc3720bf533b8133f812b18c",
+  "terrain_evaluation_balance": "raw overall plus class-balanced collapse distribution",
+  "upstream_sha256": {
+    "simulation/outputs/terrain_fast_reflex_v2_int8/sink/model_int8.tflite": "4dcccf97d5175876b6c5e6fb31dd2c74f67e4dd001042fd29d861c1aa8101948",
+    "simulation/outputs/terrain_fast_reflex_v2_int8/slip/model_int8.tflite": "c414ef1135fc0d44f139960faba55027843d7a4d9574318478e2f49eae3db66d",
+    "simulation/outputs/terrain_static_reference_v4/normalization.json": "13ffc43275e142b6e9bd17cd367a99ff019746087ab7f5ce79a7cea0b9a25830",
+    "simulation/outputs/terrain_static_reference_v4/selected_model.keras": "adcfa113b679327dc5bac0d4df7dcfceeb2f4dd703960665ecc491581d77df3b",
+    "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz": "3ff4f8a1f270a39287fbe274753de91a5b0750d1a160e3cc9b1de01174f2a6ca",
+    "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz": "8c6a1db0eecdf8f63cf3d361d896e770968473dca1bdcf4c0b0f9ae240fe42f8",
+    "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json": "f95f054003ce01e6841c3a8c8c49d70a6afd5f236d33977950edd73d9b604841",
+    "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/summary.json": "413b837e2cf9a4b4c666d2d01aaf1d3c94f4e9e092a5523413a3c27a42701ce9",
+    "simulation/outputs/walking_bounded_retraining_v1/summary.json": "ccc55ae83237cd1febfd5ca99b2f40bd13202b83f1d8c02d766896e54274d8d2",
+    "simulation/outputs/walking_fusion10_observability_audit_v1/summary.json": "9aa84e85af7692bd81bef28ad0c34c65163a74473934268fa94b05bad6b3fc17",
+    "simulation/outputs/walking_hazard_ground_truth_v1_pilot/summary.json": "96a4c29ce495aea1e7785ae95124652bf1017ac3d9618727d4ef17c9bc37aa10",
+    "simulation/outputs/walking_hazard_operational_label_contract_v2/summary.json": "de264c3ba753d4a9507bd73903f93b7dbbc53ff1418c3cf1da9bcba27799fcb0",
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+    "simulation/outputs/walking_stateful_hazard_prototype_v1/summary.json": "7eaa92f603a0aef49a6873d18b771f6ae623a871e034c571d5ac5a04af272ffb"
+  },
+  "validation_use": "selection and fixed gate only; never model fitting",
+  "windows_ms": {
+    "slip": 100,
+    "terrain": 50
+  }
+}
