@@ -1,0 +1,17 @@
+{
+  "attempt": 1,
+  "failure_stage": "future_nested_fold_manifest_json_serialization",
+  "generated_simulation_run_count": 216,
+  "raw_trace_archive_completed": false,
+  "recoverable_evidence": [
+    "run_manifest.csv",
+    "physical_episode_ledger.csv",
+    "positive_source_audit.csv",
+    "control_source_audit.csv",
+    "fall_censor_audit.csv",
+    "pair_parity_audit.csv",
+    "duplicate_audit.json"
+  ],
+  "discarded_or_relabelled": false,
+  "recovery_contract": "Replay the exact frozen conditions and verify every reconstructed full_trace_sha256 against run_manifest.csv; preserve this archive and report both simulator invocation counts."
+}

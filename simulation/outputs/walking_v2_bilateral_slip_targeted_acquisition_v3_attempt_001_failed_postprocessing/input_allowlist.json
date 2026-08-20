@@ -1,0 +1,181 @@
+{
+  "exact_paths_only": true,
+  "inputs": [
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json",
+      "purpose": "existing 120-run development metadata"
+    },
+    {
+      "access": "npz",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz",
+      "purpose": "former train partition, reclassified development-only"
+    },
+    {
+      "access": "npz",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz",
+      "purpose": "former validation partition, reclassified development-only"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_hazard_operational_label_contract_v2/summary.json",
+      "purpose": "immutable operational-label contract"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "immutable physical-oracle calibration"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/protocol.json",
+      "purpose": "current development Slip semantics"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/summary.json",
+      "purpose": "current diagnostic fallback state"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/input_allowlist.json",
+      "purpose": "prior artifact-access contract"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/terrain_immutable_verification.json",
+      "purpose": "prior Terrain immutability evidence"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/summary.json",
+      "purpose": "locked Terrain selection summary"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/provenance.json",
+      "purpose": "locked Terrain provenance"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/readiness.json",
+      "purpose": "locked Terrain readiness"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/protocol.json",
+      "purpose": "locked Terrain protocol reference"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/data_manifest.json",
+      "purpose": "locked Terrain data_manifest reference"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/split_manifest.json",
+      "purpose": "locked Terrain split_manifest reference"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_validation_metrics.csv",
+      "purpose": "locked Terrain validation_metrics reference"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/resource_report.json",
+      "purpose": "locked Terrain resource_report reference"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "immutable Terrain model"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "immutable Terrain normalization"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "immutable Terrain config"
+    },
+    {
+      "access": "json_and_hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "immutable Terrain selection lock"
+    },
+    {
+      "access": "hash_and_runtime",
+      "path": "simulation/unitree_rl_mjlab/deploy/robots/g1/config/policy/velocity/v0/exported/policy.onnx",
+      "purpose": "fixed walking policy"
+    },
+    {
+      "access": "hash_and_runtime",
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/scene_walking_terrain_transition.xml",
+      "purpose": "fixed MuJoCo scene"
+    },
+    {
+      "access": "hash_and_runtime",
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/g1_29dof.xml",
+      "purpose": "fixed MuJoCo robot include"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/terrain_profiles.py",
+      "purpose": "existing material parameters"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "immutable physical signal derivation"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py",
+      "purpose": "immutable Slip oracle implementation"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/bilateral_hil_sensor_v2.py",
+      "purpose": "bilateral Fusion20 schema"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/g1_upstream_locomotion.py",
+      "purpose": "fixed controller implementation"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_bilateral_sensor_sink_observability_v2.py",
+      "purpose": "existing development acquisition implementation"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_bilateral_sink_observability_v2.py",
+      "purpose": "existing bilateral trace contract"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/test/test_walking_bilateral_sensor_sink_observability_v2.py",
+      "purpose": "existing schema regression contract"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_redesign_iteration_v2.py",
+      "purpose": "prior Slip development runner"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_redesign_iteration_v2.py",
+      "purpose": "prior Slip state contract"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_redesign_iteration_v2.py",
+      "purpose": "prior Slip regression contract"
+    }
+  ],
+  "version": "walking_v2_slip_acquisition_v3_allowlist"
+}

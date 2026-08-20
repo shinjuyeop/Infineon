@@ -1,0 +1,604 @@
+{
+  "all_accesses_completed": true,
+  "blocked_access_count": 0,
+  "events": [
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json",
+      "purpose": "existing 120-run development metadata",
+      "sha256": "f95f054003ce01e6841c3a8c8c49d70a6afd5f236d33977950edd73d9b604841",
+      "status": "completed"
+    },
+    {
+      "access": "npz",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz",
+      "purpose": "former train partition, reclassified development-only",
+      "sha256": "3ff4f8a1f270a39287fbe274753de91a5b0750d1a160e3cc9b1de01174f2a6ca",
+      "status": "completed"
+    },
+    {
+      "access": "npz",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz",
+      "purpose": "former validation partition, reclassified development-only",
+      "sha256": "8c6a1db0eecdf8f63cf3d361d896e770968473dca1bdcf4c0b0f9ae240fe42f8",
+      "status": "completed"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_hazard_operational_label_contract_v2/summary.json",
+      "purpose": "immutable operational-label contract",
+      "sha256": "de264c3ba753d4a9507bd73903f93b7dbbc53ff1418c3cf1da9bcba27799fcb0",
+      "status": "completed"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "immutable physical-oracle calibration",
+      "sha256": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+      "status": "completed"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/protocol.json",
+      "purpose": "current development Slip semantics",
+      "sha256": "cc47a70dc913a123d9739f68e325276938c65036dde5329d2bb6d8be4fda10b8",
+      "status": "completed"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/summary.json",
+      "purpose": "current diagnostic fallback state",
+      "sha256": "781de0b0629b50f48145b949a87862afd9d9a2fb6fcb9ad26ce621ef89a76f7e",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/input_allowlist.json",
+      "purpose": "prior artifact-access contract",
+      "sha256": "3a02d3661e7ce14ca4ab82a71328d71e5164a75cb635eb8c4d8c2bcc037a15ff",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/terrain_immutable_verification.json",
+      "purpose": "prior Terrain immutability evidence",
+      "sha256": "3df4ecdac151418453a07b8115679b22f422cef4ab1d959146021319e2c105f1",
+      "status": "completed"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/summary.json",
+      "purpose": "locked Terrain selection summary",
+      "sha256": "3500ede308b722dadc924a23f9e2b4873f20c563e6e3a7b9d10e1ef04fafcff8",
+      "status": "completed"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/provenance.json",
+      "purpose": "locked Terrain provenance",
+      "sha256": "ecbe61937f73ec8392b9083106419793a7a477072215d26981130c3069d9483a",
+      "status": "completed"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/readiness.json",
+      "purpose": "locked Terrain readiness",
+      "sha256": "e6fb211a7b85669fa99f7a3e023c52311a038eccfb2bff79c28053f29fc7cf00",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/protocol.json",
+      "purpose": "locked Terrain protocol reference",
+      "sha256": "a2440130374f2b5279bd3451a9db3b510239f97705462e2c0bbec892c4de083b",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/data_manifest.json",
+      "purpose": "locked Terrain data_manifest reference",
+      "sha256": "3c4f60070706f958ab047beb854874524af533f53f0247eea38b6e7520a614fd",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/split_manifest.json",
+      "purpose": "locked Terrain split_manifest reference",
+      "sha256": "ed1cc527ea1984229dc9d085478f95bc1552e8d62f1d8ae6ceff80cbe49ddf1f",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_validation_metrics.csv",
+      "purpose": "locked Terrain validation_metrics reference",
+      "sha256": "0b38682c6964fc185967b1adf36285fb79a8d4bc5eea42308afa6474b692d661",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/resource_report.json",
+      "purpose": "locked Terrain resource_report reference",
+      "sha256": "a6aa0060f17f9f8a580704273bae1563507719b92f2614003a971b8c909d4fd9",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "initial immutable Terrain model",
+      "sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "initial immutable Terrain normalization",
+      "sha256": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "initial immutable Terrain config",
+      "sha256": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+      "status": "completed"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "verify immutable Terrain selection lock",
+      "sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "initial immutable Terrain selection-lock hash",
+      "sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_rl_mjlab/deploy/robots/g1/config/policy/velocity/v0/exported/policy.onnx",
+      "purpose": "fixed walking policy",
+      "sha256": "2a66ca6336eadb3c0b34b557763f3e06d01ff8fcf6260dd4cedbd69d6093fc28",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/scene_walking_terrain_transition.xml",
+      "purpose": "fixed MuJoCo scene",
+      "sha256": "0e795c3e277bd2acdbe21e71c6db82063de71acdc17a561c4f90bf05e2eda1ee",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/g1_29dof.xml",
+      "purpose": "fixed MuJoCo robot include",
+      "sha256": "6a2e53a42771a4ca738d799fbe53592b4939ed42191dd6c3625ed4c024349602",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/terrain_profiles.py",
+      "purpose": "existing material parameters",
+      "sha256": "0a25180abd10a3451dbbb85f72ce520a83c9a7532e81d8800ea8ae5fdb37ccf1",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "immutable physical signal derivation",
+      "sha256": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py",
+      "purpose": "immutable Slip oracle implementation",
+      "sha256": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/bilateral_hil_sensor_v2.py",
+      "purpose": "bilateral Fusion20 schema",
+      "sha256": "44acf56768ff5baa147bb62dc01e1dce23aeb743b37582997ac30f1b8d84c345",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/g1_upstream_locomotion.py",
+      "purpose": "fixed controller implementation",
+      "sha256": "7a494e2837b377a7c186d7cd595c577ffbe4c72b0dba79dfff49d704cd352fe7",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_bilateral_sensor_sink_observability_v2.py",
+      "purpose": "existing development acquisition implementation",
+      "sha256": "2fd49974aed7adea75dea2e16b1828a4faad828f8c04f6a0d7b39bdee705e301",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_bilateral_sink_observability_v2.py",
+      "purpose": "existing bilateral trace contract",
+      "sha256": "ee939c913abd6e08745df6e36510f43bcbabc34c3ec0086383792bb007ee93f3",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/test/test_walking_bilateral_sensor_sink_observability_v2.py",
+      "purpose": "existing schema regression contract",
+      "sha256": "bc8fa603bdb8572737bde7010f530212d981e942b7c0764f55959e7f7cc69630",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_redesign_iteration_v2.py",
+      "purpose": "prior Slip development runner",
+      "sha256": "70c9adca4a4822e344d8cdc996fbcff65ab14c4878d55dcac253a4a957bebcb1",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_redesign_iteration_v2.py",
+      "purpose": "prior Slip state contract",
+      "sha256": "eb24f2c76028b1841ad938b40aa4a3e3a5503e66b0cd71bb1849426550b80030",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_redesign_iteration_v2.py",
+      "purpose": "prior Slip regression contract",
+      "sha256": "2c2b7f535e5d38d750d0ae4911867ae13c3c50d3428f9c74b900a8a3bf8c1280",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3_attempt_001_failed_postprocessing/protocol.json",
+      "purpose": "preserved first-attempt acquisition protocol",
+      "sha256": "c89dc8e2dc1732c206ec5ad02f765fd86a81512bfb309969b90d066e04535b91",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3_attempt_001_failed_postprocessing/provenance_precheck.json",
+      "purpose": "preserved first-attempt precheck",
+      "sha256": "85c68e4323c7062c6accb2b18f371cbbedba9813dd5462cc3675e8f415657075",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3_attempt_001_failed_postprocessing/run_manifest.csv",
+      "purpose": "first-attempt deterministic replay hashes",
+      "sha256": "3293f40dfc6d05c3d5603f25003481d72ac89fd4ee208cef18fd744f1bd1774b",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3_attempt_001_failed_postprocessing/physical_episode_ledger.csv",
+      "purpose": "preserved first-attempt physical ledger",
+      "sha256": "8ee07fd35d32c88c7db48d3751790ce24b86a3584b8f35ded2c6629b94722dfa",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3_attempt_001_failed_postprocessing/positive_source_audit.csv",
+      "purpose": "preserved first-attempt positive audit",
+      "sha256": "fd7d303046fcebab8dfb3417f90335f60ce0a54e43c4c5245d8689c22aa56d22",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3_attempt_001_failed_postprocessing/control_source_audit.csv",
+      "purpose": "preserved first-attempt control audit",
+      "sha256": "3bba4a61fa795b0ff66852c9f77fe6e953964c269f2e35d5084dfbac2dca8d39",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3_attempt_001_failed_postprocessing/pair_parity_audit.csv",
+      "purpose": "preserved first-attempt parity audit",
+      "sha256": "9d9279ca4999ea6d17dfd00fa021d958bbbde31505a0ce1771669d180306e19d",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3_attempt_001_failed_postprocessing/duplicate_audit.json",
+      "purpose": "preserved first-attempt duplicate audit",
+      "sha256": "577d9893b4b2b252af6a1bb649e9eb273f062ba4f5a003410bcd52d51d3edb5b",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3_attempt_001_failed_postprocessing/failure.json",
+      "purpose": "explicit first-attempt failure record",
+      "sha256": "4424e7d654d1dae386232d74f51f02d4aa2718ccd9a4820fe8ad5786e6f64000",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_rl_mjlab/deploy/robots/g1/config/policy/velocity/v0/exported/policy.onnx",
+      "purpose": "fixed walking policy",
+      "sha256": "2a66ca6336eadb3c0b34b557763f3e06d01ff8fcf6260dd4cedbd69d6093fc28",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/scene_walking_terrain_transition.xml",
+      "purpose": "fixed MuJoCo scene",
+      "sha256": "0e795c3e277bd2acdbe21e71c6db82063de71acdc17a561c4f90bf05e2eda1ee",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/g1_29dof.xml",
+      "purpose": "fixed MuJoCo robot include",
+      "sha256": "6a2e53a42771a4ca738d799fbe53592b4939ed42191dd6c3625ed4c024349602",
+      "status": "completed"
+    },
+    {
+      "access": "csv",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3_attempt_001_failed_postprocessing/run_manifest.csv",
+      "purpose": "load first-attempt trace hashes for deterministic recovery",
+      "sha256": "3293f40dfc6d05c3d5603f25003481d72ac89fd4ee208cef18fd744f1bd1774b",
+      "status": "completed"
+    },
+    {
+      "access": "json",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3_attempt_001_failed_postprocessing/failure.json",
+      "purpose": "verify explicit first-attempt failure record",
+      "sha256": "4424e7d654d1dae386232d74f51f02d4aa2718ccd9a4820fe8ad5786e6f64000",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_hazard_operational_label_contract_v2/summary.json",
+      "purpose": "initial operational-label hash",
+      "sha256": "de264c3ba753d4a9507bd73903f93b7dbbc53ff1418c3cf1da9bcba27799fcb0",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "initial physical-oracle calibration hash",
+      "sha256": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "resumed final immutable Terrain model",
+      "sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "resumed final immutable Terrain normalization",
+      "sha256": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "resumed final immutable Terrain config",
+      "sha256": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "resumed final immutable Terrain selection_lock",
+      "sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_hazard_operational_label_contract_v2/summary.json",
+      "purpose": "resumed final operational-label hash",
+      "sha256": "de264c3ba753d4a9507bd73903f93b7dbbc53ff1418c3cf1da9bcba27799fcb0",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "resumed final physical-oracle calibration hash",
+      "sha256": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "resumed final physical signal source hash",
+      "sha256": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py",
+      "purpose": "resumed final Slip oracle source hash",
+      "sha256": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "resumed final immutable Terrain model",
+      "sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "resumed final immutable Terrain normalization",
+      "sha256": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "resumed final immutable Terrain config",
+      "sha256": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "resumed final immutable Terrain selection_lock",
+      "sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_hazard_operational_label_contract_v2/summary.json",
+      "purpose": "resumed final operational-label hash",
+      "sha256": "de264c3ba753d4a9507bd73903f93b7dbbc53ff1418c3cf1da9bcba27799fcb0",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "resumed final physical-oracle calibration hash",
+      "sha256": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "resumed final physical signal source hash",
+      "sha256": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py",
+      "purpose": "resumed final Slip oracle source hash",
+      "sha256": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "resumed final immutable Terrain model",
+      "sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "resumed final immutable Terrain normalization",
+      "sha256": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "resumed final immutable Terrain config",
+      "sha256": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "resumed final immutable Terrain selection_lock",
+      "sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_hazard_operational_label_contract_v2/summary.json",
+      "purpose": "resumed final operational-label hash",
+      "sha256": "de264c3ba753d4a9507bd73903f93b7dbbc53ff1418c3cf1da9bcba27799fcb0",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "resumed final physical-oracle calibration hash",
+      "sha256": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "resumed final physical signal source hash",
+      "sha256": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py",
+      "purpose": "resumed final Slip oracle source hash",
+      "sha256": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "resumed final immutable Terrain model",
+      "sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "resumed final immutable Terrain normalization",
+      "sha256": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "resumed final immutable Terrain config",
+      "sha256": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "resumed final immutable Terrain selection_lock",
+      "sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_hazard_operational_label_contract_v2/summary.json",
+      "purpose": "resumed final operational-label hash",
+      "sha256": "de264c3ba753d4a9507bd73903f93b7dbbc53ff1418c3cf1da9bcba27799fcb0",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "resumed final physical-oracle calibration hash",
+      "sha256": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "resumed final physical signal source hash",
+      "sha256": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+      "status": "completed"
+    },
+    {
+      "access": "sha256",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py",
+      "purpose": "resumed final Slip oracle source hash",
+      "sha256": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506",
+      "status": "completed"
+    }
+  ],
+  "exact_paths_only": true,
+  "forbidden_tokens": [
+    "/outer/",
+    "_outer_",
+    "holdout",
+    "spatial_final",
+    "spatial-final",
+    "final_test",
+    "final-test"
+  ]
+}

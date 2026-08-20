@@ -1,0 +1,32 @@
+{
+  "friction_only": true,
+  "height_delta_m": 0.0,
+  "height_preserving": true,
+  "patches": {
+    "left": {
+      "height_delta_m": 0.0,
+      "surface_z_m": 0.0,
+      "target_foot": "left",
+      "x_max_m": 1.5,
+      "x_min_m": -0.3,
+      "y_max_m": 0.26,
+      "y_min_m": 0.015
+    },
+    "right": {
+      "height_delta_m": 0.0,
+      "surface_z_m": 0.0,
+      "target_foot": "right",
+      "x_max_m": 1.5,
+      "x_min_m": -0.3,
+      "y_max_m": -0.015,
+      "y_min_m": -0.26
+    }
+  },
+  "penetration_or_compliance_change": false,
+  "phase_activation_ms": {
+    "early_loading": 0,
+    "mid_late_stance": 190,
+    "mid_loading_early_stance": 70
+  },
+  "target_foot_geom_mapping": "only named target-foot sole contacts receive the pair material"
+}

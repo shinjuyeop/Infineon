@@ -1,0 +1,9 @@
+{
+  "causal_pair_statistic_rows": 648,
+  "control_rows": 108,
+  "original_derived_outputs_preserved_in": "postprocessing_pre_audit_repair",
+  "positive_rows": 108,
+  "reason": "populate touchdown-relative causal histories for preserved no-onset attempts",
+  "simulation_run_count": 0,
+  "source_trace_archive_sha256": "2dcd4c636748bc117d5c5946e7ac9cc2d29918d30d6da9c747beacdf9e12c25a"
+}

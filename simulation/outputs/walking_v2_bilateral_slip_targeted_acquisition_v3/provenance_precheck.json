@@ -1,0 +1,25 @@
+{
+  "allowlist_sha256_before_first_run": "4cfe89730dac0196333dd90bc7a0a918bf7df49ed4318005cf50e45e977cd7f2",
+  "deterministic_recovery": {
+    "first_attempt_archive": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3_attempt_001_failed_postprocessing",
+    "first_attempt_run_count": 216,
+    "replay_hash_match_required": true,
+    "replay_required_because": "future_nested_fold_manifest_json_serialization"
+  },
+  "first_simulation_started_after_this_file_was_written": true,
+  "forbidden_policy_sha256_before_first_run": "95d23242e2d10ab850153deaa8646c5008c51a51728f4ef199c7b7b25eb8837c",
+  "joint_provenance_loaded": true,
+  "joint_readiness_loaded": true,
+  "joint_summary_loaded": true,
+  "oracle_verified_before_first_run": true,
+  "policy_sha256": "2a66ca6336eadb3c0b34b557763f3e06d01ff8fcf6260dd4cedbd69d6093fc28",
+  "prior_artifact_hashes": {
+    "simulation/outputs/walking_v2_slip_redesign_iteration_v2/input_allowlist.json": "3a02d3661e7ce14ca4ab82a71328d71e5164a75cb635eb8c4d8c2bcc037a15ff",
+    "simulation/outputs/walking_v2_slip_redesign_iteration_v2/terrain_immutable_verification.json": "3df4ecdac151418453a07b8115679b22f422cef4ab1d959146021319e2c105f1"
+  },
+  "protocol_sha256_before_first_run": "c89dc8e2dc1732c206ec5ad02f765fd86a81512bfb309969b90d066e04535b91",
+  "robot_xml_sha256": "6a2e53a42771a4ca738d799fbe53592b4939ed42191dd6c3625ed4c024349602",
+  "scene_sha256": "0e795c3e277bd2acdbe21e71c6db82063de71acdc17a561c4f90bf05e2eda1ee",
+  "starting_checkpoint": "64271f14fbcfbd4981d86df8929d2904ec4a744d",
+  "terrain_verified_before_first_run": true
+}

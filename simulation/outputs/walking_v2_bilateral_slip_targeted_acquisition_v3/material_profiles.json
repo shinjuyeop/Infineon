@@ -1,0 +1,48 @@
+{
+  "control_profile_count_exact": 2,
+  "moderate_source_pilot_used": false,
+  "open_ended_search_used": false,
+  "positive_profile_count_exact": 2,
+  "profiles": {
+    "hard_normal": {
+      "derivation": "existing native Concrete friction, unchanged",
+      "friction": [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      "name": "hard_normal",
+      "source_role": "control"
+    },
+    "moderate_ice_preregistered": {
+      "derivation": "Ice + 1/8 * (Marble - Ice), fixed before acquisition",
+      "friction": [
+        0.1,
+        0.00125,
+        2.125e-05
+      ],
+      "name": "moderate_ice_preregistered",
+      "source_role": "positive"
+    },
+    "native_strong_ice": {
+      "derivation": "existing native Ice friction, unchanged",
+      "friction": [
+        0.05,
+        0.001,
+        1e-05
+      ],
+      "name": "native_strong_ice",
+      "source_role": "positive"
+    },
+    "near_slip_non_event": {
+      "derivation": "Ice + 3/4 * (Marble - Ice), fixed before acquisition",
+      "friction": [
+        0.35000000000000003,
+        0.0025,
+        7.75e-05
+      ],
+      "name": "near_slip_non_event",
+      "source_role": "control"
+    }
+  }
+}

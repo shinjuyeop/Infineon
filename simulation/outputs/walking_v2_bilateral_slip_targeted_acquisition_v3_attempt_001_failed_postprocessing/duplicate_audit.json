@@ -1,0 +1,20 @@
+{
+  "duplicate_full_trace_hash_count": 108,
+  "pass": false,
+  "run_count": 216,
+  "trace_hash_keys": [
+    "time_s",
+    "bilateral_canonical",
+    "force_loaded",
+    "contact_age",
+    "physical_contact",
+    "foot_world_xyz_label_only",
+    "anchor_drift_label_only",
+    "slip_physical_active",
+    "pre_fall_valid",
+    "contact_episode_id",
+    "touchdown_transient",
+    "patch_active"
+  ],
+  "unique_full_trace_hash_count": 108
+}

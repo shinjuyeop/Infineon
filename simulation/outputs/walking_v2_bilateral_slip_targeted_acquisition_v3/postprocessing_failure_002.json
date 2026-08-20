@@ -1,0 +1,9 @@
+{
+  "failure_stage": "representative_anchor_drift_plot",
+  "generated_simulation_run_count_in_recovery_replay": 216,
+  "deterministic_recovery_hash_mismatch_count": 0,
+  "traces_npz_written": true,
+  "cause": "Installed Matplotlib expects labels= rather than tick_labels= for boxplot.",
+  "simulation_reexecution_required": false,
+  "recovery_action": "Resume postprocessing from the preserved traces.npz without overwriting trace or audit tables."
+}

@@ -1,0 +1,22 @@
+{
+  "byte_identical_before_after": true,
+  "final_sha256": {
+    "ground_truth_source": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+    "operational_label_summary": "de264c3ba753d4a9507bd73903f93b7dbbc53ff1418c3cf1da9bcba27799fcb0",
+    "oracle_calibration_summary": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+    "oracle_source": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506"
+  },
+  "initial_sha256": {
+    "ground_truth_source": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+    "operational_label_summary": "de264c3ba753d4a9507bd73903f93b7dbbc53ff1418c3cf1da9bcba27799fcb0",
+    "oracle_calibration_summary": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+    "oracle_source": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506"
+  },
+  "persistence_ms": 3,
+  "postprocess_resumed_without_simulation": true,
+  "runtime_input": false,
+  "semantics_changed": false,
+  "threshold_m": 0.05,
+  "valid": true,
+  "verified_after_acquisition": true
+}

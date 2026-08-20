@@ -1,0 +1,19 @@
+{
+  "fail_closed": true,
+  "forbidden_namespaces": [
+    "outer",
+    "holdout",
+    "spatial-final",
+    "final-test"
+  ],
+  "tokens": [
+    "/outer/",
+    "_outer_",
+    "holdout",
+    "spatial_final",
+    "spatial-final",
+    "final_test",
+    "final-test"
+  ],
+  "version": "walking_v2_slip_acquisition_v3_forbidden_policy"
+}
