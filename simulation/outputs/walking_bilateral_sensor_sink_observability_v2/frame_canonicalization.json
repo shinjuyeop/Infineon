@@ -1,0 +1,71 @@
+{
+  "checks": [
+    {
+      "check": "symmetric_static_pose",
+      "metric": "site_local_position_max_abs_error",
+      "pass": true,
+      "value": 0.0
+    },
+    {
+      "check": "mirrored_joint_pose",
+      "metric": "mirrored_site_world_position_max_abs_error_m",
+      "pass": true,
+      "value": 0.0
+    },
+    {
+      "check": "fsr_slot_order",
+      "metric": "local_geometry_max_abs_error",
+      "pass": true,
+      "value": 0.0
+    },
+    {
+      "check": "mirrored_horizontal_excitation",
+      "metric": "canonical_imu_max_abs_error",
+      "pass": true,
+      "value": 0.005177154699683939
+    },
+    {
+      "check": "mirrored_touchdown",
+      "metric": "validation_left_right_event_count_ratio",
+      "pass": true,
+      "value": 0.99734395750332
+    },
+    {
+      "check": "contact_timing",
+      "metric": "left_right_median_loaded_duration_abs_difference_ms",
+      "pass": true,
+      "value": 5.5
+    },
+    {
+      "check": "shared_feature_parity",
+      "metric": "median_standardized_mean_difference",
+      "pass": true,
+      "value": 0.07499217987060547
+    },
+    {
+      "check": "shared_encoder_weight_identity",
+      "metric": "fingerprint_count",
+      "pass": true,
+      "value": 1
+    }
+  ],
+  "derivation": "polar acceleration uses R; axial gyro uses det(R)R",
+  "raw_and_canonical_recorded": true,
+  "reflection": "R=diag(1,-1,1)",
+  "right_accel_sign": [
+    1.0,
+    -1.0,
+    1.0
+  ],
+  "right_fsr_order": [
+    1,
+    0,
+    3,
+    2
+  ],
+  "right_gyro_sign": [
+    -1.0,
+    1.0,
+    -1.0
+  ]
+}

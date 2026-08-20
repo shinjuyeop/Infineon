@@ -1,0 +1,53 @@
+{
+  "candidate_count_exact": 5,
+  "candidates": {
+    "C0": {
+      "description": "legacy left Fusion10 baseline",
+      "sources": [
+        "bilateral_canonical"
+      ]
+    },
+    "C1": {
+      "description": "bilateral Fusion10, exact shared encoder, load ratio/contact",
+      "sources": [
+        "bilateral_canonical",
+        "contact_age",
+        "force_loaded"
+      ]
+    },
+    "C2": {
+      "description": "C1 plus pelvis accel/gyro",
+      "sources": [
+        "bilateral_canonical",
+        "contact_age",
+        "force_loaded",
+        "pelvis_imu"
+      ]
+    },
+    "C3": {
+      "description": "C1 plus encoder-FK length/velocity/relative motion/contact age",
+      "sources": [
+        "bilateral_canonical",
+        "contact_age",
+        "force_loaded",
+        "joint_position",
+        "joint_velocity"
+      ]
+    },
+    "C4": {
+      "description": "C3 plus command residual/effort and pelvis vertical dynamics",
+      "sources": [
+        "actuator_effort",
+        "bilateral_canonical",
+        "contact_age",
+        "force_loaded",
+        "joint_position",
+        "joint_velocity",
+        "pelvis_imu",
+        "target_position"
+      ]
+    }
+  },
+  "simulator_only_sources_rejected": true,
+  "validation_driven_additions": false
+}

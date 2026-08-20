@@ -1,0 +1,5 @@
+split,foot,physical_touchdown_events,raw_physical_contact_episodes,detected_touchdown_events,touchdown_detection_rate,absolute_p95_latency_ms,contact_phase_agreement,left_event_count,right_event_count,both_foot_source_valid
+development_train,left,932,942,932,1.0,0.0,0.9992314814814814,942,1007,True
+development_train,right,1002,1007,1002,1.0,0.0,0.9976018518518519,942,1007,True
+development_validation,left,747,751,747,1.0,0.0,0.9979513888888889,751,753,True
+development_validation,right,752,753,752,1.0,0.0,0.9963680555555555,751,753,True

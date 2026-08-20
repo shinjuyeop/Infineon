@@ -1,0 +1,9 @@
+check,metric,value,pass
+symmetric_static_pose,site_local_position_max_abs_error,0.0,True
+mirrored_joint_pose,mirrored_site_world_position_max_abs_error_m,0.0,True
+fsr_slot_order,local_geometry_max_abs_error,0.0,True
+mirrored_horizontal_excitation,canonical_imu_max_abs_error,0.005177154699683939,True
+mirrored_touchdown,validation_left_right_event_count_ratio,0.99734395750332,True
+contact_timing,left_right_median_loaded_duration_abs_difference_ms,5.5,True
+shared_feature_parity,median_standardized_mean_difference,0.07499217987060547,True
+shared_encoder_weight_identity,fingerprint_count,1,True

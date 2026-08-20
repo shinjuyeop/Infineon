@@ -1,0 +1,12 @@
+{
+  "forbidden_namespaces": [
+    "outer",
+    "holdout",
+    "spatial",
+    "final-test"
+  ],
+  "new_blind_holdout_executed": false,
+  "outer_and_final_content_load_count": 0,
+  "outer_reuse": false,
+  "path_enumeration_or_sha_provenance_only": true
+}

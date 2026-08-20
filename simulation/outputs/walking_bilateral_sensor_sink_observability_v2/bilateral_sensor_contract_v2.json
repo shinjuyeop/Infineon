@@ -1,0 +1,48 @@
+{
+  "api": [
+    "read_foot_vector(side)",
+    "read_left_foot_vector()",
+    "read_right_foot_vector()",
+    "read_bilateral_vector()",
+    "read_pelvis_vector()",
+    "update_contact_state(side)"
+  ],
+  "bilateral_raw_order": [
+    "left Fusion10",
+    "right Fusion10"
+  ],
+  "legacy_read_vector": "unchanged left Fusion10",
+  "native_rate_hz": 1000,
+  "pelvis_channels": [
+    "pelvis_accel_x",
+    "pelvis_accel_y",
+    "pelvis_accel_z",
+    "pelvis_gyro_x",
+    "pelvis_gyro_y",
+    "pelvis_gyro_z"
+  ],
+  "per_foot_channels": [
+    "foot_force_1",
+    "foot_force_2",
+    "foot_force_3",
+    "foot_force_4",
+    "accel_x",
+    "accel_y",
+    "accel_z",
+    "gyro_x",
+    "gyro_y",
+    "gyro_z"
+  ],
+  "physical_hardware_interface_implemented": false,
+  "privileged_ground_truth_in_runtime": false,
+  "right_attachment_body": "right_ankle_roll_link",
+  "right_contact_geoms": [
+    "right_foot_contact_1",
+    "right_foot_contact_2",
+    "right_foot_contact_3",
+    "right_foot_contact_4"
+  ],
+  "right_imu_site": "right_foot_imu at (+0.035,0,-0.03)",
+  "runtime_detector_inputs_are_virtual_observables": true,
+  "schema": "walking_bilateral_virtual_sensor_v2"
+}

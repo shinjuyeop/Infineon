@@ -1,0 +1,10 @@
+hazard,candidate,architecture,feature_count,sensor_channels,parameter_count,state_memory_bytes,history_memory_bytes,memory_bytes,macs,latency_ms,estimated_e84_latency_ms,expected_vela_compatibility
+sink,C0,logistic,80,10,81,16,8000,8340,8081,30,0.30162,True
+sink,C1,logistic,164,20,165,16,16000,16676,16165,30,0.3033,True
+sink,C2,logistic,182,26,183,16,20800,21548,16183,30,0.30366,True
+sink,C3,logistic,188,44,189,16,35200,35972,16189,30,0.30378,True
+sink,C4,logistic,236,62,237,16,49600,50564,16237,30,0.30474,True
+sink,C1,small_mlp,164,20,2657,16,16000,26644,18657,30,0.35314,True
+slip,C1,small_mlp,164,20,2657,16,16000,26644,18657,30,0.35314,True
+sink,C1,shared_causal_conv1d,84,20,855,16,16000,19436,1624,30,0.30169999999999997,True
+slip,C1,shared_causal_conv1d,84,20,855,16,16000,19436,1624,30,0.30169999999999997,True
