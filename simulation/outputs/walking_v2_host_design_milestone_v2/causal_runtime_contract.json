@@ -1,0 +1,39 @@
+{
+  "architecture_id": "CASE_A_TRANSITION_MONITOR_PLUS_SLIP_ADVISORY",
+  "authority": {
+    "case_a_transition": "monitoring/advisory only",
+    "direct_reflex": false,
+    "recovery_actuation": false,
+    "slip": "monitoring/advisory only"
+  },
+  "history_ms": 200,
+  "inference_rate_hz": 100,
+  "prohibited_runtime_inputs": [
+    "terrain ground truth",
+    "surface/profile/friction identity",
+    "Case label",
+    "transition timestamp",
+    "physical Slip oracle",
+    "first-fall/prefall oracle",
+    "speed label",
+    "foot target label",
+    "variation/source/run/pair/seed identity",
+    "future sample or future onset"
+  ],
+  "responsibilities": {
+    "G0": "causal loaded-contact state, age, runtime episode and unique-owner telemetry",
+    "Sink": "deferred; Case B is evaluation context only",
+    "Slip_S4C": "unchanged broad risk advisory; diagnostic foot only",
+    "Terrain_transition_model": "four-class contact terrain score and Case-A advisory",
+    "deterministic_state": "terrain dwell, across-air prior state, reset, one-shot dedup and authority firewall"
+  },
+  "runtime_inputs": [
+    "bilateral canonical Fusion20",
+    "causal force-loaded contact",
+    "causal touchdown",
+    "causal contact age",
+    "current finite-data flag"
+  ],
+  "sample_rate_hz": 1000,
+  "version": "walking_v2_host_design_runtime_contract_v2"
+}

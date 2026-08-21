@@ -1,0 +1,150 @@
+{
+  "artifact_hash_graph_complete": true,
+  "artifact_manifest": {
+    "aligned_corpus_summary.json": {
+      "byte_count": 2546,
+      "sha256": "309baa540d5aedf1693b1f2d8b35e79bb562deba7fecfc1fcb11d2f9f9af3654"
+    },
+    "aligned_traces_variation_0.npz": {
+      "byte_count": 13392281,
+      "sha256": "d0b42ddefabb2a3a14c4d22293af5d15b41fbefa3ef0e2f33d2c7fd86fbe4f65"
+    },
+    "aligned_traces_variation_1.npz": {
+      "byte_count": 13413110,
+      "sha256": "b026dfa5aa5fa296811fb76cf493ee71bdfaf37f0e0ee5d00adb0666bd7f04cf"
+    },
+    "aligned_traces_variation_2.npz": {
+      "byte_count": 13127078,
+      "sha256": "2e942d58b9dbf05d6354e5eea0a50ba0359b378c29592f349efb8602f05d7661"
+    },
+    "aligned_traces_variation_3.npz": {
+      "byte_count": 13527270,
+      "sha256": "07135eb79be91b46aca511baf791bab7afab29c58499f79fa7ee92be4f78b820"
+    },
+    "aligned_traces_variation_4.npz": {
+      "byte_count": 13536781,
+      "sha256": "a2aaafd22ad26d7f96daadb2eba5de8a0a8e052d1eaee4ea4b669da9e68a5195"
+    },
+    "architecture_alternatives.csv": {
+      "byte_count": 1081,
+      "sha256": "896e8dcc7ead4c3fc5cdccaddcb3b01ee5e0d68e1338ef6fab23c27a224496b7"
+    },
+    "artifact_access_log.json": {
+      "byte_count": 6369,
+      "sha256": "dd9be4652a87cce4dd8df567f28f32172553c8531350163e9024b7aada54d6c8"
+    },
+    "audit.md": {
+      "byte_count": 2760,
+      "sha256": "940130979be2de6be759b2ec4e3cad3101943f857af50f03e7a5acd225ffab19"
+    },
+    "candidate_comparison.csv": {
+      "byte_count": 25997,
+      "sha256": "34477d4adf8be5ac91b98c252a8249cf070c854bdc6b38c6a6ed5760baea4b57"
+    },
+    "causal_runtime_contract.json": {
+      "byte_count": 1351,
+      "sha256": "e8c1bab5786fd6c99491fce15a1de1e603fd4b0114ac39c60efae8491ac7e926"
+    },
+    "design_lock.json": {
+      "byte_count": 3802,
+      "sha256": "a01fe3582c61987ec03442d05e3204322ceef15bca3b37bd5c7c6cb11f2bb6f2"
+    },
+    "development_split_and_leakage_audit.json": {
+      "byte_count": 809,
+      "sha256": "0f3d44b56bf6d0695652a7c4eef6791f030ea204dfc1f6418384c073eb937be3"
+    },
+    "direct_authority_decision.json": {
+      "byte_count": 900,
+      "sha256": "cadf743599ca7b928313467996ba06074cb71d80ac4518732b64dbb8c20a4597"
+    },
+    "forbidden_path_policy.json": {
+      "byte_count": 337,
+      "sha256": "9402b914740948b373166cd98eaa33331f9cb32811862850785d12c283789266"
+    },
+    "host_replay.npz": {
+      "byte_count": 1465239,
+      "sha256": "4f76359fad8fa832a4ab26ca52a37d5243e9a54b6f4f11d63f07e4b6b302cfbb"
+    },
+    "input_allowlist.json": {
+      "byte_count": 2863,
+      "sha256": "9358d6f5c3f4b222c9c431bf4ab0b278f78a8f4592510fde1d68ba6e7c04f918"
+    },
+    "optimizer_health.csv": {
+      "byte_count": 1833,
+      "sha256": "07bd7852789a485f228c7731ee6344e6667b28a260acd520522d19f0591e9624"
+    },
+    "protocol.json": {
+      "byte_count": 6146,
+      "sha256": "ce63a8dd4a2260f2e044f1f8c8748b8716c5ea2f474c5cdc701f30ea9e463ea2"
+    },
+    "resource_and_operator_estimate.json": {
+      "byte_count": 701,
+      "sha256": "a8946a34b4aa82f630ebcf483af827e7fc2c94a721d6ad5ef761ab9d6c6acea2"
+    },
+    "run_manifest.csv": {
+      "byte_count": 331885,
+      "sha256": "d01f612cbdef94d3d407ea4844711ccd6fc2634ba478ab7222734d6d28fae062"
+    },
+    "selected_transition_monitor_metrics.json": {
+      "byte_count": 1258,
+      "sha256": "272a8105399312c44d697985462484fb1926701d136d47c25295cd60a56a47aa"
+    },
+    "selected_transition_outputs.csv": {
+      "byte_count": 34741,
+      "sha256": "9761d0345419670ae166a7d1c6f9983d18ba01749d56997af312788562e6c148"
+    },
+    "slip_advisory_metrics.json": {
+      "byte_count": 1982,
+      "sha256": "2a078f1b0ed66ef130f6875532e45aac687195e8097434b47fabb6a91002867d"
+    },
+    "summary.json": {
+      "byte_count": 4122,
+      "sha256": "2b66020dd362a631bd767a7d4da59329454ca66aaf1798e27e43c68817ceccec"
+    },
+    "terrain_classification_metrics.json": {
+      "byte_count": 1645,
+      "sha256": "4ab842fa7ec9b9c3ec03bf51d8be9e5172b380f1ef5ff1fe8d47225b154f976a"
+    },
+    "terrain_transition_advisory_model.npz": {
+      "byte_count": 15726,
+      "sha256": "11b3ba0c88b1714bf3122f50a192e8deae7f2d27484c5e5ba4e0e8d1f33fc128"
+    },
+    "terrain_transition_advisory_normalization.json": {
+      "byte_count": 15663,
+      "sha256": "ac48d286ac8b53b62cedcb4a3f172b425c4c9c87907f82f357a47a3b1c8949b7"
+    },
+    "terrain_transition_advisory_training.json": {
+      "byte_count": 730,
+      "sha256": "20f6abf52856041a5a1bfa9fd92da9bd75a722ac070abf6d329de5fed914a75c"
+    },
+    "terrain_transition_runtime_config.json": {
+      "byte_count": 345,
+      "sha256": "a8aa757caa1bebfae4e9d5573c8d8e95ab2a6a8882184a9a5897bba7a9550477"
+    },
+    "test_results.json": {
+      "byte_count": 973,
+      "sha256": "3521269275f52c4d072e3d773280d704f7ba4add7966983ad7cef844c13b9343"
+    },
+    "trace_shard_manifest.csv": {
+      "byte_count": 599,
+      "sha256": "04c2b095bc1c894aae4b6d70062fc03c1dba14beeea5718c5dc9e5eb0b3a4508"
+    }
+  },
+  "blind_data_access_count": 0,
+  "blocked_access_count": 0,
+  "created_utc": "2026-08-21T09:34:07.230260+00:00",
+  "execution_head": "cf3b1701c74712998814e918a2630fa10a44194b",
+  "forbidden_access_count": 0,
+  "future_blind_eligible_generated_run_count": 0,
+  "generated_development_run_count": 420,
+  "hardware_e84_hil_execution_count": 0,
+  "int8_vela_execution_count": 0,
+  "manifest_self_hash_excluded": true,
+  "source_sha256": {
+    "simulation/unitree_mujoco/simulate_python/run_walking_v2_host_design_milestone_v2.py": "317fc3fbf383ec9247e1756e51acdfc19488f38c546d9fe9bb40abbfe83e09d9",
+    "simulation/unitree_mujoco/simulate_python/test_walking_v2_host_design_milestone_v2.py": "8dba7c54883ed004b37cad15b676cfe462acad24098e84a3f54346980bd1e862",
+    "simulation/unitree_mujoco/simulate_python/walking_v2_host_design_milestone_v2.py": "53c2af1f34b425b0ac13d8cefccad617946d4a07a98f8880628f3b6d4bf40ef6"
+  },
+  "starting_checkpoint": "cf3b1701c74712998814e918a2630fa10a44194b",
+  "version": "walking_v2_host_design_provenance_v2"
+}

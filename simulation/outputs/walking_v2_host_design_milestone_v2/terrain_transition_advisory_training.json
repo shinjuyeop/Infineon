@@ -1,0 +1,27 @@
+{
+  "candidate_id": "T2_LINEAR_200",
+  "class_count": {
+    "concrete": 6854,
+    "ice": 3402,
+    "marble": 6515,
+    "sand": 7012
+  },
+  "converged": true,
+  "development_only": true,
+  "feature_count": 324,
+  "fit_row_count": 23783,
+  "fit_run_count": 420,
+  "iterations": 35,
+  "max_iterations": 100,
+  "model_sha256": "11b3ba0c88b1714bf3122f50a192e8deae7f2d27484c5e5ba4e0e8d1f33fc128",
+  "performance_estimation": false,
+  "performance_source": "grouped OOF scores only; final-fit scores are replay only",
+  "reload_exact": true,
+  "reload_max_abs_error": 0.0,
+  "seed": 2026082299,
+  "solver": "Newton-CG",
+  "tolerance": 0.0001,
+  "version": "walking_v2_host_terrain_final_fit_v2",
+  "warning_count": 0,
+  "warnings": []
+}

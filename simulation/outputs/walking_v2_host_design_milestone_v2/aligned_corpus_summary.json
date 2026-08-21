@@ -1,0 +1,103 @@
+{
+  "case_code": {
+    "A": 0,
+    "B": 1,
+    "C": 2,
+    "D": 3,
+    "N": 4,
+    "S": 5
+  },
+  "case_run_count": {
+    "A": 60,
+    "B": 60,
+    "C": 60,
+    "D": 60,
+    "N": 60,
+    "S": 120
+  },
+  "development_only": true,
+  "duration_s_per_run": 1.2,
+  "exact_fusion20_finite_runs": 420,
+  "future_blind_exclusion_permanent": true,
+  "physical_slip_onset_count": 182,
+  "run_count": 420,
+  "runs_with_first_fall": 102,
+  "runs_with_left_transition": 420,
+  "runs_with_right_transition": 419,
+  "sample_count_per_run": 1200,
+  "sample_rate_hz": 1000,
+  "shards": [
+    {
+      "byte_count": 13392281,
+      "file": "aligned_traces_variation_0.npz",
+      "run_count": 84,
+      "sha256": "d0b42ddefabb2a3a14c4d22293af5d15b41fbefa3ef0e2f33d2c7fd86fbe4f65",
+      "variation_index": 0
+    },
+    {
+      "byte_count": 13413110,
+      "file": "aligned_traces_variation_1.npz",
+      "run_count": 84,
+      "sha256": "b026dfa5aa5fa296811fb76cf493ee71bdfaf37f0e0ee5d00adb0666bd7f04cf",
+      "variation_index": 1
+    },
+    {
+      "byte_count": 13127078,
+      "file": "aligned_traces_variation_2.npz",
+      "run_count": 84,
+      "sha256": "2e942d58b9dbf05d6354e5eea0a50ba0359b378c29592f349efb8602f05d7661",
+      "variation_index": 2
+    },
+    {
+      "byte_count": 13527270,
+      "file": "aligned_traces_variation_3.npz",
+      "run_count": 84,
+      "sha256": "07135eb79be91b46aca511baf791bab7afab29c58499f79fa7ee92be4f78b820",
+      "variation_index": 3
+    },
+    {
+      "byte_count": 13536781,
+      "file": "aligned_traces_variation_4.npz",
+      "run_count": 84,
+      "sha256": "a2aaafd22ad26d7f96daadb2eba5de8a0a8e052d1eaee4ea4b669da9e68a5195",
+      "variation_index": 4
+    }
+  ],
+  "speed_run_count": {
+    "0.10": 140,
+    "0.15": 140,
+    "0.20": 140
+  },
+  "terrain_code": {
+    "concrete": 0,
+    "ice": 2,
+    "marble": 1,
+    "sand": 3
+  },
+  "terrain_score_alignment": "selected grouped-OOF 100 Hz causal endpoints held to a synchronized 1 kHz timeline; terrain_score_endpoint_valid identifies actual inference endpoints",
+  "total_samples": 504000,
+  "transition_coverage": {
+    "case_a_events_by_foot": {
+      "left": 43,
+      "right": 24
+    },
+    "case_a_events_by_hard_type": {
+      "concrete": 33,
+      "marble": 34
+    },
+    "case_a_events_by_speed": {
+      "0.10": 19,
+      "0.15": 24,
+      "0.20": 24
+    },
+    "case_a_valid_event_count": 67
+  },
+  "variation_run_count": {
+    "0": 84,
+    "1": 84,
+    "2": 84,
+    "3": 84,
+    "4": 84
+  },
+  "version": "walking_v2_aligned_transition_corpus_v2"
+}

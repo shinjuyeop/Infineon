@@ -1,0 +1,6 @@
+architecture,role,selected,direct_gate_pass,config_id,event_recall,precision,f1,recall_within_20ms,normal_run_fp,reason
+LOCKED_T2_BASELINE,dedicated Case-A transition monitor,False,False,p0.90_d1_a10,0.34328358208955223,0.08455882352941177,0.13569321533923304,0.0,160,grouped-OOF aligned transition comparison
+T1_LINEAR_200,dedicated Case-A transition monitor,False,False,p0.50_d2_a10,0.3880597014925373,0.11206896551724138,0.1739130434782609,0.0,107,grouped-OOF aligned transition comparison
+T2_LINEAR_200,dedicated Case-A transition monitor,True,False,p0.50_d3_a10,0.4925373134328358,0.13807531380753138,0.21568627450980393,0.0,118,grouped-OOF aligned transition comparison
+PRIOR_BROAD_S4C_SLIP,Slip advisory,True,False,s0.45_p0.45_e0.25_n0.20_f0.60_k2_h0.00,0.673036093418259,0.5257048092868989,0.590316573556797,,0,retained only as non-actuating advisory; optimizer remains unqualified
+CASE_A_PLUS_REACTIVE_SLIP_DIRECT,direct reflex,False,False,not_reopened,0.0,,0.0,0.0,0,prior aligned role test had zero scoped output; new transition model cannot cure reactive Slip collapse

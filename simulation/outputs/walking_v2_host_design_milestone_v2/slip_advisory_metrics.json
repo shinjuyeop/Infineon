@@ -1,0 +1,63 @@
+{
+  "aligned_transition_corpus_replay": {
+    "alert_f1": 0.24021592442645073,
+    "alert_precision": 0.23237597911227154,
+    "authority": "advisory only; aligned-corpus development replay",
+    "episode_recall": 0.24860335195530725,
+    "event_count": 358,
+    "event_detected": 89,
+    "median_warning_margin_ms": 18.0,
+    "normal_or_too_early_fp": 294,
+    "output_count": 383,
+    "p95_late_latency_ms": 71.1999999999999,
+    "per_speed_recall": {
+      "0.10": 0.25,
+      "0.15": 0.25,
+      "0.20": 0.2463768115942029
+    },
+    "per_terrain_after_recall": {
+      "concrete": 0.2916666666666667,
+      "ice": 0.13756613756613756,
+      "marble": 0.4567901234567901,
+      "sand": 0.3
+    },
+    "post_fall_output": 22
+  },
+  "authority": "advisory only",
+  "frozen_grouped_oof_reference": {
+    "affected_foot_accuracy": 0.9,
+    "alert_f1": 0.590316573556797,
+    "alert_precision": 0.5257048092868989,
+    "authority": "advisory only; these are OOF development metrics",
+    "candidate": "F0_seed_202608242",
+    "config_id": "s0.45_p0.45_e0.25_n0.20_f0.60_k2_h0.00",
+    "cross_foot_diagnostic_errors": 34,
+    "episode_count": 471,
+    "episode_detected": 317,
+    "episode_recall": 0.673036093418259,
+    "median_warning_margin_ms": 46.0,
+    "normal_contact_fp": 256,
+    "normal_run_fp": 0,
+    "p95_late_latency_ms": 50.79999999999984,
+    "run_count": 125,
+    "run_detected": 117,
+    "run_recall": 0.936,
+    "speed_recall": {
+      "0.10": 0.6727272727272727,
+      "0.15": 0.6987179487179487,
+      "0.20": 0.6466666666666666
+    },
+    "too_early": 30
+  },
+  "model_sha256": "dfa09b6bd6b540f5aa1b47b4b9c607d5f32c8c2cce878a6ab9cee2ad27947b43",
+  "training_health": {
+    "all_heads_converged": false,
+    "head_iterations": {
+      "foot": 1200,
+      "proposal": 1200,
+      "state": 1200
+    },
+    "limitation": "all-development final fit has no performance estimate; OOF metrics govern role"
+  },
+  "version": "walking_v2_host_slip_advisory_metrics_v2"
+}

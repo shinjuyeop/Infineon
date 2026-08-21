@@ -1,0 +1,71 @@
+{
+  "LOCKED_T2_BASELINE": {
+    "accuracy": 0.5008432063187106,
+    "eligible_endpoint_count": 46845,
+    "macro_f1": 0.472446559139334,
+    "per_terrain": {
+      "concrete": {
+        "endpoint_count": 13511,
+        "recall": 0.16083191473614092
+      },
+      "ice": {
+        "endpoint_count": 6704,
+        "recall": 0.7210620525059666
+      },
+      "marble": {
+        "endpoint_count": 12810,
+        "recall": 0.40694769711163153
+      },
+      "sand": {
+        "endpoint_count": 13820,
+        "recall": 0.8134587554269175
+      }
+    }
+  },
+  "T1_LINEAR_200": {
+    "accuracy": 0.5649268865407194,
+    "eligible_endpoint_count": 46845,
+    "macro_f1": 0.555590077076052,
+    "per_terrain": {
+      "concrete": {
+        "endpoint_count": 13511,
+        "recall": 0.42335874472651913
+      },
+      "ice": {
+        "endpoint_count": 6704,
+        "recall": 0.7325477326968973
+      },
+      "marble": {
+        "endpoint_count": 12810,
+        "recall": 0.3869633099141296
+      },
+      "sand": {
+        "endpoint_count": 13820,
+        "recall": 0.7869753979739508
+      }
+    }
+  },
+  "T2_LINEAR_200": {
+    "accuracy": 0.5798484363325862,
+    "eligible_endpoint_count": 46845,
+    "macro_f1": 0.5750707966188,
+    "per_terrain": {
+      "concrete": {
+        "endpoint_count": 13511,
+        "recall": 0.4651025090666864
+      },
+      "ice": {
+        "endpoint_count": 6704,
+        "recall": 0.7373210023866349
+      },
+      "marble": {
+        "endpoint_count": 12810,
+        "recall": 0.41194379391100705
+      },
+      "sand": {
+        "endpoint_count": 13820,
+        "recall": 0.7712735166425471
+      }
+    }
+  }
+}

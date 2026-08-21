@@ -1,0 +1,78 @@
+{
+  "exact_paths_only": true,
+  "inputs": [
+    {
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "frozen physical Slip oracle contract"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_fast_reflex_host_v1/advisory_metrics.json",
+      "purpose": "frozen OOF Slip advisory evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_fast_reflex_host_v1/slip_advisory_model.npz",
+      "purpose": "frozen executable Slip advisory"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_fast_reflex_host_v1/slip_advisory_training.json",
+      "purpose": "frozen Slip training health"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "locked T2 config"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "locked T2 baseline"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "locked T2 normalization"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "locked T2 hash authority"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/bilateral_hil_sensor_v2.py",
+      "purpose": "Fusion20 contract"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/g1_upstream_locomotion.py",
+      "purpose": "walking controller wrapper"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_host_design_milestone_v2.py",
+      "purpose": "host-v2 source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/terrain_profiles.py",
+      "purpose": "native terrain profiles"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_host_design_milestone_v2.py",
+      "purpose": "host-v2 source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "offline contact labels"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py",
+      "purpose": "offline Slip oracle"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_host_design_milestone_v2.py",
+      "purpose": "host-v2 source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/scene_walking_terrain_transition.xml",
+      "purpose": "fixed walking simulation scene"
+    },
+    {
+      "path": "simulation/unitree_rl_mjlab/deploy/robots/g1/config/policy/velocity/v0/exported/policy.onnx",
+      "purpose": "fixed upstream walking controller"
+    }
+  ],
+  "version": "walking_v2_host_design_allowlist_v2"
+}

@@ -1,0 +1,159 @@
+{
+  "blocked_access_count": 0,
+  "events": [
+    {
+      "byte_count": 878421,
+      "path": "simulation/unitree_rl_mjlab/deploy/robots/g1/config/policy/velocity/v0/exported/policy.onnx",
+      "purpose": "verify fixed controller",
+      "sha256": "2a66ca6336eadb3c0b34b557763f3e06d01ff8fcf6260dd4cedbd69d6093fc28",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 5276,
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "verify locked T2 authority",
+      "sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 77226,
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "verify terrain_candidate_model.npz",
+      "sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 15767,
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "verify terrain_candidate_normalization.json",
+      "sha256": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 1196,
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "verify terrain_candidate_config.json",
+      "sha256": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 77226,
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "load locked T2 baseline",
+      "sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 683,
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/scene_walking_terrain_transition.xml",
+      "purpose": "load fixed walking scene",
+      "sha256": "0e795c3e277bd2acdbe21e71c6db82063de71acdc17a561c4f90bf05e2eda1ee",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 878421,
+      "path": "simulation/unitree_rl_mjlab/deploy/robots/g1/config/policy/velocity/v0/exported/policy.onnx",
+      "purpose": "load fixed walking controller",
+      "sha256": "2a66ca6336eadb3c0b34b557763f3e06d01ff8fcf6260dd4cedbd69d6093fc28",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 14625,
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_host_design_milestone_v2.py",
+      "purpose": "hash host-v2 implementation",
+      "sha256": "53c2af1f34b425b0ac13d8cefccad617946d4a07a98f8880628f3b6d4bf40ef6",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 84029,
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_host_design_milestone_v2.py",
+      "purpose": "hash host-v2 implementation",
+      "sha256": "317fc3fbf383ec9247e1756e51acdfc19488f38c546d9fe9bb40abbfe83e09d9",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 4606,
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_host_design_milestone_v2.py",
+      "purpose": "hash host-v2 implementation",
+      "sha256": "8dba7c54883ed004b37cad15b676cfe462acad24098e84a3f54346980bd1e862",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 3950,
+      "path": "simulation/unitree_mujoco/simulate_python/terrain_profiles.py",
+      "purpose": "hash causal or offline-label dependency",
+      "sha256": "0a25180abd10a3451dbbb85f72ce520a83c9a7532e81d8800ea8ae5fdb37ccf1",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 9583,
+      "path": "simulation/unitree_mujoco/simulate_python/bilateral_hil_sensor_v2.py",
+      "purpose": "hash causal or offline-label dependency",
+      "sha256": "44acf56768ff5baa147bb62dc01e1dce23aeb743b37582997ac30f1b8d84c345",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 6387,
+      "path": "simulation/unitree_mujoco/simulate_python/g1_upstream_locomotion.py",
+      "purpose": "hash causal or offline-label dependency",
+      "sha256": "7a494e2837b377a7c186d7cd595c577ffbe4c72b0dba79dfff49d704cd352fe7",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 12217,
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "hash causal or offline-label dependency",
+      "sha256": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 8258,
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py",
+      "purpose": "hash causal or offline-label dependency",
+      "sha256": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 2521,
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "verify frozen Slip oracle contract",
+      "sha256": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 7972,
+      "path": "simulation/outputs/walking_v2_fast_reflex_host_v1/advisory_metrics.json",
+      "purpose": "load frozen Slip OOF evidence",
+      "sha256": "1e4113349ef79d4b166c09862f0f4518cdcd18e0e72833b5016e187b45476b7a",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 2782,
+      "path": "simulation/outputs/walking_v2_fast_reflex_host_v1/slip_advisory_training.json",
+      "purpose": "verify frozen Slip optimizer health",
+      "sha256": "d93428bd06412419a1ac90897414d3720ddb12f2d6623019b248fb99e56a909d",
+      "status": "ALLOWED"
+    },
+    {
+      "byte_count": 128106,
+      "path": "simulation/outputs/walking_v2_fast_reflex_host_v1/slip_advisory_model.npz",
+      "purpose": "load frozen executable Slip model",
+      "sha256": "dfa09b6bd6b540f5aa1b47b4b9c607d5f32c8c2cce878a6ab9cee2ad27947b43",
+      "status": "ALLOWED"
+    }
+  ],
+  "exact_paths_only": true,
+  "fail_closed": true,
+  "forbidden_access_count": 0,
+  "forbidden_tokens": [
+    "/outer/",
+    "_outer_",
+    "holdout",
+    "spatial_final",
+    "spatial-final",
+    "final_test",
+    "final-test"
+  ],
+  "frozen": true,
+  "version": "walking_v2_host_design_access_v2"
+}

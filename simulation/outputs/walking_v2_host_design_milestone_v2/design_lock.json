@@ -1,0 +1,60 @@
+{
+  "authority": {
+    "case_a_transition": "monitoring/advisory only",
+    "direct_reflex": false,
+    "recovery_actuation": false,
+    "slip": "monitoring/advisory only"
+  },
+  "direct_reflex_enabled": false,
+  "explicitly_not": [
+    "blind validation",
+    "safety certification",
+    "deployment authorization",
+    "real-robot readiness",
+    "E84 authorization"
+  ],
+  "future_blind_exclusion": {
+    "corpus": "simulation/outputs/walking_v2_host_design_milestone_v2",
+    "permanent": true
+  },
+  "immutable": true,
+  "lock_type": "development_design_not_blind_safety_or_deployment",
+  "locked_artifact_sha256": {
+    "aligned_corpus_summary.json": "309baa540d5aedf1693b1f2d8b35e79bb562deba7fecfc1fcb11d2f9f9af3654",
+    "aligned_traces_variation_0.npz": "d0b42ddefabb2a3a14c4d22293af5d15b41fbefa3ef0e2f33d2c7fd86fbe4f65",
+    "aligned_traces_variation_1.npz": "b026dfa5aa5fa296811fb76cf493ee71bdfaf37f0e0ee5d00adb0666bd7f04cf",
+    "aligned_traces_variation_2.npz": "2e942d58b9dbf05d6354e5eea0a50ba0359b378c29592f349efb8602f05d7661",
+    "aligned_traces_variation_3.npz": "07135eb79be91b46aca511baf791bab7afab29c58499f79fa7ee92be4f78b820",
+    "aligned_traces_variation_4.npz": "a2aaafd22ad26d7f96daadb2eba5de8a0a8e052d1eaee4ea4b669da9e68a5195",
+    "audit.md": "940130979be2de6be759b2ec4e3cad3101943f857af50f03e7a5acd225ffab19",
+    "candidate_comparison.csv": "34477d4adf8be5ac91b98c252a8249cf070c854bdc6b38c6a6ed5760baea4b57",
+    "causal_runtime_contract.json": "e8c1bab5786fd6c99491fce15a1de1e603fd4b0114ac39c60efae8491ac7e926",
+    "development_split_and_leakage_audit.json": "0f3d44b56bf6d0695652a7c4eef6791f030ea204dfc1f6418384c073eb937be3",
+    "direct_authority_decision.json": "cadf743599ca7b928313467996ba06074cb71d80ac4518732b64dbb8c20a4597",
+    "host_replay.npz": "4f76359fad8fa832a4ab26ca52a37d5243e9a54b6f4f11d63f07e4b6b302cfbb",
+    "protocol.json": "ce63a8dd4a2260f2e044f1f8c8748b8716c5ea2f474c5cdc701f30ea9e463ea2",
+    "resource_and_operator_estimate.json": "a8946a34b4aa82f630ebcf483af827e7fc2c94a721d6ad5ef761ab9d6c6acea2",
+    "run_manifest.csv": "d01f612cbdef94d3d407ea4844711ccd6fc2634ba478ab7222734d6d28fae062",
+    "selected_transition_monitor_metrics.json": "272a8105399312c44d697985462484fb1926701d136d47c25295cd60a56a47aa",
+    "slip_advisory_metrics.json": "2a078f1b0ed66ef130f6875532e45aac687195e8097434b47fabb6a91002867d",
+    "summary.json": "2b66020dd362a631bd767a7d4da59329454ca66aaf1798e27e43c68817ceccec",
+    "terrain_classification_metrics.json": "4ab842fa7ec9b9c3ec03bf51d8be9e5172b380f1ef5ff1fe8d47225b154f976a",
+    "terrain_transition_advisory_model.npz": "11b3ba0c88b1714bf3122f50a192e8deae7f2d27484c5e5ba4e0e8d1f33fc128",
+    "terrain_transition_advisory_normalization.json": "ac48d286ac8b53b62cedcb4a3f172b425c4c9c87907f82f357a47a3b1c8949b7",
+    "terrain_transition_advisory_training.json": "20f6abf52856041a5a1bfa9fd92da9bd75a722ac070abf6d329de5fed914a75c",
+    "terrain_transition_runtime_config.json": "a8aa757caa1bebfae4e9d5573c8d8e95ab2a6a8882184a9a5897bba7a9550477",
+    "test_results.json": "3521269275f52c4d072e3d773280d704f7ba4add7966983ad7cef844c13b9343",
+    "trace_shard_manifest.csv": "04c2b095bc1c894aae4b6d70062fc03c1dba14beeea5718c5dc9e5eb0b3a4508"
+  },
+  "next_step": "ACQUIRE_FRESH_BLIND_HOST_HOLDOUT",
+  "recovery_actuation_enabled": false,
+  "selected_architecture": "CASE_A_TRANSITION_MONITOR_PLUS_SLIP_ADVISORY",
+  "selected_candidate": "T2_LINEAR_200",
+  "selected_policy": "p0.50_d3_a10",
+  "starting_checkpoint": "cf3b1701c74712998814e918a2630fa10a44194b",
+  "upstream_slip_model": {
+    "path": "simulation/outputs/walking_v2_fast_reflex_host_v1/slip_advisory_model.npz",
+    "sha256": "dfa09b6bd6b540f5aa1b47b4b9c607d5f32c8c2cce878a6ab9cee2ad27947b43"
+  },
+  "version": "walking_v2_host_development_design_lock_v2"
+}

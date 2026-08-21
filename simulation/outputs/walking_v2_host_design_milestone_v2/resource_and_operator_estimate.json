@@ -1,0 +1,23 @@
+{
+  "combined_macs_per_100hz_tick_two_feet": 33984,
+  "deterministic_state_bytes_upper_bound": 2048,
+  "endpoint_rate_hz": 100,
+  "host_numpy_model_only_mean_us_per_foot_endpoint": 0.664265895502107,
+  "host_operator_compatibility": [
+    "normalization",
+    "matmul",
+    "bias",
+    "softmax",
+    "argmax",
+    "comparison"
+  ],
+  "int8_or_vela_claim": false,
+  "sample_preprocessing_rate_hz": 1000,
+  "shared_fusion20_history_bytes_float32": 16000,
+  "slip_macs_per_foot_endpoint": 15696,
+  "slip_parameter_count": 15742,
+  "target_latency_or_memory_claim": false,
+  "terrain_macs_per_foot_endpoint": 1296,
+  "terrain_parameter_count": 1948,
+  "version": "walking_v2_host_resource_estimate_v2"
+}

@@ -1,0 +1,37 @@
+{
+  "blind_or_forbidden_members": 0,
+  "candidate_audits": {
+    "T1_LINEAR_200": {
+      "all_folds_filled": true,
+      "feature_shape": [
+        420,
+        101,
+        2,
+        164
+      ],
+      "scores_finite": true
+    },
+    "T2_LINEAR_200": {
+      "all_folds_filled": true,
+      "feature_shape": [
+        420,
+        101,
+        2,
+        324
+      ],
+      "scores_finite": true
+    }
+  },
+  "evaluation_once_per_run": true,
+  "fold_count": 5,
+  "fold_key": "variation_index",
+  "future_blind_eligible_runs": 0,
+  "inference_stride_ms": 10,
+  "run_pair_source_variation_seed_overlap_per_fold": 0,
+  "training_stride_ms": 20,
+  "unique_pair_count": 420,
+  "unique_run_count": 420,
+  "unique_seed_count": 420,
+  "unique_source_count": 420,
+  "version": "walking_v2_host_grouped_split_v2"
+}

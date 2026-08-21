@@ -1,0 +1,229 @@
+{
+  "advisory_gate": "nonzero denominator; report event/run precision, recall, F1, false-positive rates, latency and coverage; false positives do not authorize actuation",
+  "candidate_models_frozen_before_evaluation": [
+    {
+      "architecture": "T1",
+      "candidate_id": "T1_LINEAR_200",
+      "history_ms": 200
+    },
+    {
+      "architecture": "T2",
+      "candidate_id": "T2_LINEAR_200",
+      "history_ms": 200
+    },
+    {
+      "architecture": "T2",
+      "candidate_id": "LOCKED_T2_BASELINE",
+      "history_ms": 200
+    }
+  ],
+  "development_only": true,
+  "direct_gate_frozen_before_evaluation": {
+    "available_source_family": "MuJoCo G1 plus fixed upstream controller",
+    "each_hard_source_recall_within_20ms_min": 0.65,
+    "each_speed_recall_within_20ms_min": 0.7,
+    "minimum_case_a_events": 50,
+    "minimum_grouped_variation_folds": 5,
+    "minimum_independent_source_families": 2,
+    "recall_within_20ms_min": 0.8,
+    "required_zero": [
+      "normal_run_fp",
+      "wrong_case_output",
+      "invalid_output",
+      "post_fall_output",
+      "duplicate_output",
+      "latch_carryover",
+      "cross_foot_output"
+    ]
+  },
+  "file_size_limit_mib": 45,
+  "future_blind_exclusion_permanent": true,
+  "int8_vela": "optional only after lock; not scheduled in this bounded search",
+  "matrix_frozen_before_generation": {
+    "cases": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "N hard-to-hard",
+      "S steady"
+    ],
+    "feet": [
+      "left",
+      "right"
+    ],
+    "run_count": 420,
+    "seeded_replicates_per_cell": 2,
+    "speeds_mps": [
+      0.1,
+      0.15,
+      0.2
+    ],
+    "variation_count": 5
+  },
+  "objective": "select one strongest honest host design from aligned development evidence",
+  "optimizer_frozen_before_final_comparison": {
+    "C": 1.0,
+    "class_weight": "balanced",
+    "max_iterations": 100,
+    "qualification_basis": "pre-comparison fold-0 remediation converged in 33 iterations",
+    "solver": "Newton-CG",
+    "tolerance": 0.0001
+  },
+  "policy_matrix_frozen_before_evaluation": [
+    {
+      "confidence_threshold": 0.5,
+      "config_id": "p0.50_d1_a5",
+      "dwell_endpoints": 1,
+      "minimum_contact_age_ms": 5
+    },
+    {
+      "confidence_threshold": 0.5,
+      "config_id": "p0.50_d1_a10",
+      "dwell_endpoints": 1,
+      "minimum_contact_age_ms": 10
+    },
+    {
+      "confidence_threshold": 0.5,
+      "config_id": "p0.50_d2_a5",
+      "dwell_endpoints": 2,
+      "minimum_contact_age_ms": 5
+    },
+    {
+      "confidence_threshold": 0.5,
+      "config_id": "p0.50_d2_a10",
+      "dwell_endpoints": 2,
+      "minimum_contact_age_ms": 10
+    },
+    {
+      "confidence_threshold": 0.5,
+      "config_id": "p0.50_d3_a5",
+      "dwell_endpoints": 3,
+      "minimum_contact_age_ms": 5
+    },
+    {
+      "confidence_threshold": 0.5,
+      "config_id": "p0.50_d3_a10",
+      "dwell_endpoints": 3,
+      "minimum_contact_age_ms": 10
+    },
+    {
+      "confidence_threshold": 0.65,
+      "config_id": "p0.65_d1_a5",
+      "dwell_endpoints": 1,
+      "minimum_contact_age_ms": 5
+    },
+    {
+      "confidence_threshold": 0.65,
+      "config_id": "p0.65_d1_a10",
+      "dwell_endpoints": 1,
+      "minimum_contact_age_ms": 10
+    },
+    {
+      "confidence_threshold": 0.65,
+      "config_id": "p0.65_d2_a5",
+      "dwell_endpoints": 2,
+      "minimum_contact_age_ms": 5
+    },
+    {
+      "confidence_threshold": 0.65,
+      "config_id": "p0.65_d2_a10",
+      "dwell_endpoints": 2,
+      "minimum_contact_age_ms": 10
+    },
+    {
+      "confidence_threshold": 0.65,
+      "config_id": "p0.65_d3_a5",
+      "dwell_endpoints": 3,
+      "minimum_contact_age_ms": 5
+    },
+    {
+      "confidence_threshold": 0.65,
+      "config_id": "p0.65_d3_a10",
+      "dwell_endpoints": 3,
+      "minimum_contact_age_ms": 10
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "p0.80_d1_a5",
+      "dwell_endpoints": 1,
+      "minimum_contact_age_ms": 5
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "p0.80_d1_a10",
+      "dwell_endpoints": 1,
+      "minimum_contact_age_ms": 10
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "p0.80_d2_a5",
+      "dwell_endpoints": 2,
+      "minimum_contact_age_ms": 5
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "p0.80_d2_a10",
+      "dwell_endpoints": 2,
+      "minimum_contact_age_ms": 10
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "p0.80_d3_a5",
+      "dwell_endpoints": 3,
+      "minimum_contact_age_ms": 5
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "p0.80_d3_a10",
+      "dwell_endpoints": 3,
+      "minimum_contact_age_ms": 10
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "p0.90_d1_a5",
+      "dwell_endpoints": 1,
+      "minimum_contact_age_ms": 5
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "p0.90_d1_a10",
+      "dwell_endpoints": 1,
+      "minimum_contact_age_ms": 10
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "p0.90_d2_a5",
+      "dwell_endpoints": 2,
+      "minimum_contact_age_ms": 5
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "p0.90_d2_a10",
+      "dwell_endpoints": 2,
+      "minimum_contact_age_ms": 10
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "p0.90_d3_a5",
+      "dwell_endpoints": 3,
+      "minimum_contact_age_ms": 5
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "p0.90_d3_a10",
+      "dwell_endpoints": 3,
+      "minimum_contact_age_ms": 10
+    }
+  ],
+  "runtime_oracle_policy": {
+    "first_fall_runtime_gate": false,
+    "future_input": false,
+    "physical_slip_runtime_gate": false,
+    "terrain_gt_runtime_gate": false
+  },
+  "selection_policy": "If any candidate passes the frozen direct gate, minimize false outputs then maximize within-20ms recall and advisory F1; otherwise select monitoring-only by advisory F1, event recall, precision, macro terrain F1, then stable ID.",
+  "sink": "SINK_RUNTIME_DETECTION_DEFERRED",
+  "starting_checkpoint": "cf3b1701c74712998814e918a2630fa10a44194b",
+  "version": "walking_v2_host_design_protocol_v2"
+}

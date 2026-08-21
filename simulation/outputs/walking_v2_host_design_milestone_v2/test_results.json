@@ -1,0 +1,25 @@
+{
+  "checks": {
+    "all_fusion20_finite": true,
+    "all_new_model_folds_converged": true,
+    "all_required_cases": true,
+    "all_required_speeds": true,
+    "both_feet_in_valid_case_a": true,
+    "both_hard_types_in_valid_case_a": true,
+    "case_a_event_count_at_least_50": true,
+    "direct_output_all_false": true,
+    "files_below_45_mib": true,
+    "five_grouped_folds": true,
+    "no_direct_gate_pass": true,
+    "recovery_output_all_false": true,
+    "run_count_420": true,
+    "selected_final_model_converged": true,
+    "selected_final_model_reload_exact": true,
+    "selected_model_oof_complete": true,
+    "sink_deferred": true,
+    "zero_blocked_access": true,
+    "zero_forbidden_access": true
+  },
+  "external_command": "PYTHONPATH=simulation/unitree_mujoco/simulate_python simulation/venv/bin/python -m unittest -v simulation/unitree_mujoco/simulate_python/test_walking_v2_host_design_milestone_v2.py",
+  "version": "walking_v2_host_internal_tests_v2"
+}

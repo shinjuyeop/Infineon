@@ -1,0 +1,22 @@
+{
+  "decisive_failure": "all 420 aligned traces come from one MuJoCo/controller source family; the frozen direct gate requires at least two independent source families",
+  "development_metric_gate_pass": false,
+  "direct_reflex_enabled": false,
+  "other_observed_failures": {
+    "normal_run_fp": 118,
+    "per_hard_source_recall_within_20ms": {
+      "concrete": 0.0,
+      "marble": 0.0
+    },
+    "per_speed_recall_within_20ms": {
+      "0.10": 0.0,
+      "0.15": 0.0,
+      "0.20": 0.0
+    },
+    "post_fall_output": 32,
+    "recall_within_20ms": 0.0,
+    "wrong_case_output": 166
+  },
+  "version": "walking_v2_host_direct_authority_decision_v2",
+  "why_not_more_tuning": "two newly trained causal encoders, the locked baseline and 24 frozen state policies establish the attainable simulator-development frontier; tuning cannot manufacture independent evidence and would increase overfit risk"
+}
