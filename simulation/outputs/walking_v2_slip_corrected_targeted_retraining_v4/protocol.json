@@ -1,0 +1,99 @@
+{
+  "F0": "exact S4-C architecture/loss/raking/hard-negative recipe on augmented corpus",
+  "F1": "F0 architecture with only targeted v3 run-foot-contact-state cell weighting",
+  "actionable_denominator": 471,
+  "blind_access_or_generation": false,
+  "candidate_variants": [
+    "F0",
+    "F1"
+  ],
+  "causal_history_ms": 200,
+  "corrected_state_order": [
+    "raw causal scores",
+    "AIR/touchdown/valid/first-fall masks",
+    "first-fall hard reset",
+    "contact ownership",
+    "normal/early margins",
+    "persistence",
+    "hysteresis",
+    "affected-foot selection",
+    "stable output",
+    "current valid episode attribution"
+  ],
+  "diagnostic_pareto": "stored OOF scores only; no post-result expansion or selection",
+  "eligible_run_count": 333,
+  "endpoint_stride_ms": 10,
+  "fold_or_eligibility_change": false,
+  "gate_lowering": false,
+  "gates": {
+    "affected_foot_accuracy_min": 0.9,
+    "each_fold_zero": [
+      "normal_run_fp",
+      "normal_contact_episode_fp",
+      "too_early",
+      "air_firing",
+      "touchdown_firing",
+      "invalid_firing",
+      "post_fall_firing",
+      "latch_carryover",
+      "cross_foot_violation"
+    ],
+    "each_speed_recall_min": 0.7,
+    "pooled_actionable_episode_recall_min": 0.8,
+    "pooled_zero": [
+      "normal_run_fp",
+      "normal_contact_episode_fp",
+      "too_early",
+      "air_firing",
+      "touchdown_firing",
+      "invalid_firing",
+      "post_fall_firing",
+      "latch_carryover",
+      "cross_foot_violation",
+      "future_leakage"
+    ],
+    "resource_gate": true
+  },
+  "generated_file_limit_mib": 45,
+  "new_architecture_after_results": false,
+  "new_data_collection": false,
+  "offline_supervision_only": [
+    "physical contact episode",
+    "physical Slip active",
+    "future onset",
+    "valid mask",
+    "first-fall boundary"
+  ],
+  "operational_horizon_ms": 100,
+  "outer_evaluation": "each frozen fold exactly once after inner-only operating-point choice",
+  "privileged_runtime_inputs": [],
+  "runtime_inputs": [
+    "bilateral Fusion20",
+    "causal force-loaded contact",
+    "derived contact age",
+    "derived five-state gait phase"
+  ],
+  "sample_rate_hz": 1000,
+  "scope": "development-only corrected bilateral Slip retraining",
+  "seeds": [
+    202608241,
+    202608242,
+    202608243
+  ],
+  "selection_order": [
+    "worst_speed_recall_desc",
+    "pooled_recall_desc",
+    "minimum_fold_recall_desc",
+    "affected_foot_accuracy_desc",
+    "p95_late_latency_asc",
+    "macs_asc",
+    "parameter_count_asc",
+    "F0_before_F1",
+    "seed_asc"
+  ],
+  "sink": "SINK_RUNTIME_DETECTION_DEFERRED",
+  "starting_checkpoint": "32225dcdb9f8ff1337dee7c894dd44661b3f57e9",
+  "system_int8_vela_e84_hil": false,
+  "terrain_write": false,
+  "version": "walking_v2_slip_corrected_targeted_retraining_v4"
+}

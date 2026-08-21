@@ -1,0 +1,16 @@
+{
+  "fail_closed": true,
+  "forbidden_tokens": [
+    "/outer/",
+    "_outer_",
+    "holdout",
+    "spatial_final",
+    "spatial-final",
+    "final_test",
+    "final-test"
+  ],
+  "new_data_or_directory_enumeration_authorized": false,
+  "outer_holdout_spatial_final_access_authorized": false,
+  "privileged_ground_truth_runtime_input_authorized": false,
+  "version": "walking_v2_slip_corrected_retrain_forbidden_v4"
+}

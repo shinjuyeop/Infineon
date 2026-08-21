@@ -1,0 +1,121 @@
+{
+  "candidate_count": 6,
+  "candidates": [
+    {
+      "architecture": "S4-C",
+      "candidate_id": "F0_seed_202608241",
+      "corrected_runtime": "V4",
+      "heads": [
+        "normal",
+        "early",
+        "actionable",
+        "active",
+        "foot",
+        "proposal"
+      ],
+      "history_ms": 200,
+      "optimizer": "LBFGS",
+      "projection_width": 40,
+      "seed": 202608241,
+      "variant": "F0",
+      "weighting": "original_S4C"
+    },
+    {
+      "architecture": "S4-C",
+      "candidate_id": "F0_seed_202608242",
+      "corrected_runtime": "V4",
+      "heads": [
+        "normal",
+        "early",
+        "actionable",
+        "active",
+        "foot",
+        "proposal"
+      ],
+      "history_ms": 200,
+      "optimizer": "LBFGS",
+      "projection_width": 40,
+      "seed": 202608242,
+      "variant": "F0",
+      "weighting": "original_S4C"
+    },
+    {
+      "architecture": "S4-C",
+      "candidate_id": "F0_seed_202608243",
+      "corrected_runtime": "V4",
+      "heads": [
+        "normal",
+        "early",
+        "actionable",
+        "active",
+        "foot",
+        "proposal"
+      ],
+      "history_ms": 200,
+      "optimizer": "LBFGS",
+      "projection_width": 40,
+      "seed": 202608243,
+      "variant": "F0",
+      "weighting": "original_S4C"
+    },
+    {
+      "architecture": "S4-C",
+      "candidate_id": "F1_seed_202608241",
+      "corrected_runtime": "V4",
+      "heads": [
+        "normal",
+        "early",
+        "actionable",
+        "active",
+        "foot",
+        "proposal"
+      ],
+      "history_ms": 200,
+      "optimizer": "LBFGS",
+      "projection_width": 40,
+      "seed": 202608241,
+      "variant": "F1",
+      "weighting": "targeted_v3_episode_cells"
+    },
+    {
+      "architecture": "S4-C",
+      "candidate_id": "F1_seed_202608242",
+      "corrected_runtime": "V4",
+      "heads": [
+        "normal",
+        "early",
+        "actionable",
+        "active",
+        "foot",
+        "proposal"
+      ],
+      "history_ms": 200,
+      "optimizer": "LBFGS",
+      "projection_width": 40,
+      "seed": 202608242,
+      "variant": "F1",
+      "weighting": "targeted_v3_episode_cells"
+    },
+    {
+      "architecture": "S4-C",
+      "candidate_id": "F1_seed_202608243",
+      "corrected_runtime": "V4",
+      "heads": [
+        "normal",
+        "early",
+        "actionable",
+        "active",
+        "foot",
+        "proposal"
+      ],
+      "history_ms": 200,
+      "optimizer": "LBFGS",
+      "projection_width": 40,
+      "seed": 202608243,
+      "variant": "F1",
+      "weighting": "targeted_v3_episode_cells"
+    }
+  ],
+  "fixed_before_training": true,
+  "version": "walking_v2_slip_corrected_candidate_matrix_v4"
+}

@@ -1,0 +1,109 @@
+{
+  "E84_or_HIL_performed": false,
+  "INT8_performed": false,
+  "Vela_performed": false,
+  "candidates": [
+    {
+      "candidate_id": "F0_seed_202608241",
+      "history_bytes": 16000,
+      "macs_per_tick": 35696,
+      "model_parameter_bytes_float64": 125936,
+      "normalization_bytes_float64": 5376,
+      "operations_per_second_at_1khz": 35696000,
+      "parameter_count": 15742,
+      "persistent_state_bytes": 512,
+      "resource_gate_pass": true,
+      "runtime_config_bytes": 223,
+      "seed": 202608241,
+      "variant": "F0"
+    },
+    {
+      "candidate_id": "F0_seed_202608242",
+      "history_bytes": 16000,
+      "macs_per_tick": 35696,
+      "model_parameter_bytes_float64": 125936,
+      "normalization_bytes_float64": 5376,
+      "operations_per_second_at_1khz": 35696000,
+      "parameter_count": 15742,
+      "persistent_state_bytes": 512,
+      "resource_gate_pass": true,
+      "runtime_config_bytes": 222,
+      "seed": 202608242,
+      "variant": "F0"
+    },
+    {
+      "candidate_id": "F0_seed_202608243",
+      "history_bytes": 16000,
+      "macs_per_tick": 35696,
+      "model_parameter_bytes_float64": 125936,
+      "normalization_bytes_float64": 5376,
+      "operations_per_second_at_1khz": 35696000,
+      "parameter_count": 15742,
+      "persistent_state_bytes": 512,
+      "resource_gate_pass": true,
+      "runtime_config_bytes": 222,
+      "seed": 202608243,
+      "variant": "F0"
+    },
+    {
+      "candidate_id": "F1_seed_202608241",
+      "history_bytes": 16000,
+      "macs_per_tick": 35696,
+      "model_parameter_bytes_float64": 125936,
+      "normalization_bytes_float64": 5376,
+      "operations_per_second_at_1khz": 35696000,
+      "parameter_count": 15742,
+      "persistent_state_bytes": 512,
+      "resource_gate_pass": true,
+      "runtime_config_bytes": 222,
+      "seed": 202608241,
+      "variant": "F1"
+    },
+    {
+      "candidate_id": "F1_seed_202608242",
+      "history_bytes": 16000,
+      "macs_per_tick": 35696,
+      "model_parameter_bytes_float64": 125936,
+      "normalization_bytes_float64": 5376,
+      "operations_per_second_at_1khz": 35696000,
+      "parameter_count": 15742,
+      "persistent_state_bytes": 512,
+      "resource_gate_pass": true,
+      "runtime_config_bytes": 222,
+      "seed": 202608242,
+      "variant": "F1"
+    },
+    {
+      "candidate_id": "F1_seed_202608243",
+      "history_bytes": 16000,
+      "macs_per_tick": 35696,
+      "model_parameter_bytes_float64": 125936,
+      "normalization_bytes_float64": 5376,
+      "operations_per_second_at_1khz": 35696000,
+      "parameter_count": 15742,
+      "persistent_state_bytes": 512,
+      "resource_gate_pass": true,
+      "runtime_config_bytes": 222,
+      "seed": 202608243,
+      "variant": "F1"
+    }
+  ],
+  "ceilings": {
+    "history_bytes": 32768,
+    "macs_per_tick": 60000,
+    "parameter_count": 30000,
+    "persistent_state_bytes": 4096
+  },
+  "expected_TFLM_Vela_operator_set": [
+    "FULLY_CONNECTED",
+    "RELU",
+    "SOFTMAX",
+    "LOGISTIC",
+    "SUB",
+    "ADD",
+    "MUL",
+    "GREATER",
+    "ARGMAX",
+    "stateful reset/comparison"
+  ]
+}

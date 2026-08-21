@@ -1,0 +1,86 @@
+{
+  "F0_weighting": "episode balance \u00d7 raking, sqrt, state weights 1.5/2.0/2.5/1.5, wrong-foot \u00d75, mined hard negatives \u00d75",
+  "F1_weighting": "targeted v3 run-foot-contact-state cells; same hard-negative multiplier",
+  "Fusion20_mapping": "left FSR4+accel3+gyro3 then right FSR4+accel3+gyro3",
+  "base_feature_architecture": "S3 full_stats_50ms_plus_200ms",
+  "convergence": "gradient tolerance 1e-6 or 400 iterations",
+  "endpoint_stride_ms": 10,
+  "exact_reconstruction_possible": true,
+  "family": "S4-C",
+  "heads": [
+    "four-state multinomial",
+    "affected-foot binary",
+    "actionable proposal binary"
+  ],
+  "hidden_layers": [
+    "fixed affine width40",
+    "ReLU"
+  ],
+  "history_ms": 200,
+  "initialization": "numpy default_rng(seed): normal projection + uniform bias",
+  "left_right_canonicalization": "runtime_feature S3 own/other symmetric plus asymmetry",
+  "losses": "weighted multinomial/binary logistic cross entropy",
+  "mandated_deviations_from_legacy_execution": [
+    "333-run augmented eligible corpus and frozen v8 folds",
+    "frozen corrected-R4 labels with exact 471-episode denominator",
+    "invalid/post-fall exclusion before training and state accumulation",
+    "corrected V4 fall reset, contact ownership and affected-foot denominator",
+    "new preregistered seeds and operating grid"
+  ],
+  "normalization": "weighted inner-training-only mean/std; scales below 1e-12 set to 1",
+  "optimizer": {
+    "C": 1.0,
+    "max_iter": 400,
+    "solver": "lbfgs",
+    "tol": 1e-06
+  },
+  "projection_width": 40,
+  "regularization": "sklearn LogisticRegression L2 default with C=1.0",
+  "runtime_scores": [
+    "normal",
+    "early",
+    "actionable",
+    "active",
+    "foot",
+    "proposal"
+  ],
+  "runtime_telemetry_reconstruction": {
+    "contact_age_max_abs_error": 0,
+    "gait_phase_mismatch_count": 0
+  },
+  "seed_handling": [
+    202608241,
+    202608242,
+    202608243
+  ],
+  "source_sha256": {
+    "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_corrected_targeted_retraining_v4.py": "b18d964cc647b390d8e44f31a8be8f66b7d0a5d20dcbc5bc28ccaff71706ccb0",
+    "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_redesign_iteration_v2.py": "70c9adca4a4822e344d8cdc996fbcff65ab14c4878d55dcac253a4a957bebcb1",
+    "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_retraining_failure_audit_v4.py": "7fb825a3f790dc78217ff2de6764c26268c06941de805ec154062cd28275e8d0",
+    "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_targeted_retraining_v3.py": "6bc8a35049ebd832b54fb0e33332109b1e51854e189c46158a1efa0d06a8ec74",
+    "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_corrected_targeted_retraining_v4.py": "ccd3cf368869be536606a30dc78d5f02f5972a8eab15eb2c8653836bde60185c",
+    "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_retraining_failure_audit_v4.py": "8ace31106304e128b5504919f76dbc560b267f4fccf31dffafca2bb8d2b0826e",
+    "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+    "simulation/unitree_mujoco/simulate_python/walking_v2_joint_terrain_slip_redesign_v1.py": "9ac756eee6c4fc79f1b5c3ea00beb3b914290243248f20daa1e7f63a4daf566a",
+    "simulation/unitree_mujoco/simulate_python/walking_v2_slip_corrected_targeted_retraining_v4.py": "4735429cab75a8bac9e82fd629bd3211cace2dd380fe1a313da7584354de0a3c",
+    "simulation/unitree_mujoco/simulate_python/walking_v2_slip_redesign_iteration_v2.py": "eb24f2c76028b1841ad938b40aa4a3e3a5503e66b0cd71bb1849426550b80030",
+    "simulation/unitree_mujoco/simulate_python/walking_v2_slip_retraining_failure_audit_v4.py": "caa256792258b04d56c0cdd8fa4daf6f8cac7cf7c768de6e7e78568d92a8acd8",
+    "simulation/unitree_mujoco/simulate_python/walking_v2_slip_targeted_retraining_v3.py": "633ab7192ef15da1e6e559c830c739f6f7d04a3b7259c4083fb1f09acb97bb86"
+  },
+  "state_verifier_interface": {
+    "base_feature_architecture": "S3",
+    "early_margin": 0.25,
+    "feature": "dual_timescale_proposal_plus_causal_verifier",
+    "foot_threshold": 0.6,
+    "history_ms": 200,
+    "hysteresis": 0.05,
+    "normal_margin": 0.2,
+    "persistence_endpoints": 2,
+    "projection_width": 40,
+    "proposal_threshold": 0.65,
+    "state_threshold": 0.65,
+    "two_stage": true
+  },
+  "status": "EXACT_S4C_RECONSTRUCTED_WITH_MANDATED_V4_EVALUATION_CHANGES",
+  "unauthorized_or_approximated_deviations": []
+}

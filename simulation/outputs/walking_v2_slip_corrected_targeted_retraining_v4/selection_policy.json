@@ -1,0 +1,49 @@
+{
+  "blind_access": false,
+  "diagnostic_fallback_count_if_none": 1,
+  "discard_all_gate_failures": true,
+  "final_fit_count_if_selected": 1,
+  "fixed_before_training": true,
+  "gate_lowering": false,
+  "gates": {
+    "affected_foot_accuracy_min": 0.9,
+    "each_fold_zero": [
+      "normal_run_fp",
+      "normal_contact_episode_fp",
+      "too_early",
+      "air_firing",
+      "touchdown_firing",
+      "invalid_firing",
+      "post_fall_firing",
+      "latch_carryover",
+      "cross_foot_violation"
+    ],
+    "each_speed_recall_min": 0.7,
+    "pooled_actionable_episode_recall_min": 0.8,
+    "pooled_zero": [
+      "normal_run_fp",
+      "normal_contact_episode_fp",
+      "too_early",
+      "air_firing",
+      "touchdown_firing",
+      "invalid_firing",
+      "post_fall_firing",
+      "latch_carryover",
+      "cross_foot_violation",
+      "future_leakage"
+    ],
+    "resource_gate": true
+  },
+  "ranking": [
+    "worst_speed_recall_desc",
+    "pooled_recall_desc",
+    "minimum_fold_recall_desc",
+    "affected_foot_accuracy_desc",
+    "p95_late_latency_asc",
+    "macs_asc",
+    "parameter_count_asc",
+    "F0_before_F1",
+    "seed_asc"
+  ],
+  "version": "walking_v2_slip_corrected_selection_policy_v4"
+}

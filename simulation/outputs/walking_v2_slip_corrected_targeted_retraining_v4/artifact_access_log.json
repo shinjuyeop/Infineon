@@ -1,0 +1,746 @@
+{
+  "access_count": 92,
+  "accesses": [
+    {
+      "byte_count": 26086,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/input_allowlist.json",
+      "purpose": "bootstrap inherited exact allowlist",
+      "sequence": 1,
+      "sha256": "5ec2c416208dc6b8a5cc40ad32dc792d4cb702a55e6d4d10f3b6cb49d0c445ba"
+    },
+    {
+      "byte_count": 7559,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/provenance.json",
+      "purpose": "failure audit hash graph",
+      "sequence": 2,
+      "sha256": "ed38f8075283d8d34d0c76ccc80d344c234665992a25ccf39fc8ed1ef69c9a31"
+    },
+    {
+      "byte_count": 8156,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/artifact_access_log.json",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 3,
+      "sha256": "779f134b500b9eb9fae06c1de4321148d88847297863b79d872d7d7e28a95318"
+    },
+    {
+      "byte_count": 1164,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/audit.md",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 4,
+      "sha256": "29522d9cfd0eb5d4776502462887b2dcae3638a418dcd2e781eb061b70ff9681"
+    },
+    {
+      "byte_count": 622,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/correctness_fixes.json",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 5,
+      "sha256": "f24763d1928a55309d2211a1d706b69288197572335b7eaa9e91350d343b8565"
+    },
+    {
+      "byte_count": 883,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/episode_duration_gap_metrics.csv",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 6,
+      "sha256": "1f617f6b6dd225eb561af2265370896caa821d726319417dac873ea52fcbb3fe"
+    },
+    {
+      "byte_count": 83853,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/episode_reconciliation.csv",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 7,
+      "sha256": "7c53ffff65453bc5130aec372be99ee494f90a2b3e9256399b10f56fec852451"
+    },
+    {
+      "byte_count": 1503,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/exact_replay_parity.json",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 8,
+      "sha256": "1ce8801715a8d40e86d1488347af7dd2b6b5c062195b09a490ce97efc3ef2324"
+    },
+    {
+      "byte_count": 306,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/forbidden_path_policy.json",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 9,
+      "sha256": "7dcee086a98d454f6f2af658d10773e8c8d180986700f302db694ac784482bd7"
+    },
+    {
+      "byte_count": 13822,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/immutable_verification.json",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 10,
+      "sha256": "afe1140f90363ef9af0a16937e69845ea1f391a50df4af986a48ff5dcd6de352"
+    },
+    {
+      "byte_count": 26086,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/input_allowlist.json",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 11,
+      "sha256": "5ec2c416208dc6b8a5cc40ad32dc792d4cb702a55e6d4d10f3b6cb49d0c445ba"
+    },
+    {
+      "byte_count": 596,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/label_distribution.csv",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 12,
+      "sha256": "cf7c270bb464e226010154e3f7629c68bde96f5e09bbc290b348bd98471157ad"
+    },
+    {
+      "byte_count": 4584,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/normalization_audit.json",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 13,
+      "sha256": "73b0545e929c40ac693df8be6aedd05724f55e758fb6b3200dfcf3b0cf37be39"
+    },
+    {
+      "byte_count": 231172,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/operating_point_pareto.csv",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 14,
+      "sha256": "c8329df856e8a16b67c52e1cc55b258e7b2199f7635d1ab9fc92267d26c36a26"
+    },
+    {
+      "byte_count": 2039,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/protocol.json",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 15,
+      "sha256": "c5eb5c93c2c3a6e1856d8aa49e70863c14dbee8114e60f4435dd88fc09dcab26"
+    },
+    {
+      "byte_count": 1556,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/raw_score_metrics.csv",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 16,
+      "sha256": "d1d5d6303724b666ce15076fff625798b351cb5a7fae4d76f05a6399304cda07"
+    },
+    {
+      "byte_count": 936,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/readiness.json",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 17,
+      "sha256": "348d4026197ad153cea0573c9d3ecc8b771c810ecca8f55f46462b5ea49c0d17"
+    },
+    {
+      "byte_count": 1459,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/root_cause_classification.json",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 18,
+      "sha256": "ee3b36c0d700a4ce2a1ba58fd3b6fa89a1a1aa8a228e2af0790a5572ef241cee"
+    },
+    {
+      "byte_count": 6283,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/shadow_comparison.csv",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 19,
+      "sha256": "3efa992fb42b9ae626865610fc8cbb37d2c1c8c181964b5a46007759521dc185"
+    },
+    {
+      "byte_count": 3746,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/stage_rejection_metrics.csv",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 20,
+      "sha256": "933325423049d3fd995db10502794c0e0a43c99742299b4de73dd310a3c608f9"
+    },
+    {
+      "byte_count": 4676,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/state_mask_variant_metrics.csv",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 21,
+      "sha256": "1b79a9df098d0c3148e28815762a606f6af4a1efb3fcc31e099692a559468600"
+    },
+    {
+      "byte_count": 12049,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/summary.json",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 22,
+      "sha256": "4a6bf7d4de46e626331a3dfea9e8242c7688368d45518604127bc19e8da69d5f"
+    },
+    {
+      "byte_count": 29358,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/training_health.csv",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 23,
+      "sha256": "430c4ae8de7c66a26f1bbee007846f26bdbae9d3b7b9f226d1c8a9d2e96dcc30"
+    },
+    {
+      "byte_count": 7869520,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/unified_sample_ledger.csv",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 24,
+      "sha256": "91ae0189f032f7b236b5c8bfbc7ea6b9909645c6acc7c97dc258f0758f846611"
+    },
+    {
+      "byte_count": 18585,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/violation_ledger.csv",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 25,
+      "sha256": "43521aafc8a8b7e1ebc44f43d6ef4ba14b608b637779402c82b811c2fb763333"
+    },
+    {
+      "byte_count": 936,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/violation_reconciliation.json",
+      "purpose": "verify failure-audit artifact hash",
+      "sequence": 26,
+      "sha256": "0ca3942b6996b3983150d7d1f9ac06ff0ed1c29d144d8948ed26804a2cce14d3"
+    },
+    {
+      "byte_count": 1500,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/provenance.json",
+      "purpose": "previous S4-C provenance",
+      "sequence": 27,
+      "sha256": "ae97af9dd4b3d01af529aeaa9850a988f625db3558339065c518b615d338f95f"
+    },
+    {
+      "byte_count": 7871,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/protocol.json",
+      "purpose": "frozen S4-C recipe evidence",
+      "sequence": 28,
+      "sha256": "cc47a70dc913a123d9739f68e325276938c65036dde5329d2bb6d8be4fda10b8"
+    },
+    {
+      "byte_count": 3153,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/summary.json",
+      "purpose": "frozen S4-C recipe evidence",
+      "sequence": 29,
+      "sha256": "781de0b0629b50f48145b949a87862afd9d9a2fb6fcb9ad26ce621ef89a76f7e"
+    },
+    {
+      "byte_count": 3655,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/slip_candidate_matrix.csv",
+      "purpose": "frozen S4-C recipe evidence",
+      "sequence": 30,
+      "sha256": "59d4bf377f69d12dacdd25d6dce4b9ef1ac9efbbfc440cdf4a5a0d2165bbc39d"
+    },
+    {
+      "byte_count": 5342,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/slip_training_health.csv",
+      "purpose": "frozen S4-C recipe evidence",
+      "sequence": 31,
+      "sha256": "eddb8176d6d1f6b2f2404cbe7f413fd069e708a428be1c48a04530d8fb9c3a9f"
+    },
+    {
+      "byte_count": 12386,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/slip_fold_metrics.csv",
+      "purpose": "frozen S4-C recipe evidence",
+      "sequence": 32,
+      "sha256": "2ddc7018691123d08edecda1d541f19cc5bb003ceff9a0ae142b83088ade08ce"
+    },
+    {
+      "byte_count": 43880,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/nested_fold_manifest.json",
+      "purpose": "frozen S4-C recipe evidence",
+      "sequence": 33,
+      "sha256": "1c3cf6d11b5ab6e0cf3e560e7c725c2b8f94949d9b620336d8f39154cc68aa1e"
+    },
+    {
+      "byte_count": 21476,
+      "decision": "ALLOWED",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_corrected_targeted_retraining_v4.py",
+      "purpose": "source reconstruction hash",
+      "sequence": 34,
+      "sha256": "4735429cab75a8bac9e82fd629bd3211cace2dd380fe1a313da7584354de0a3c"
+    },
+    {
+      "byte_count": 67357,
+      "decision": "ALLOWED",
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_corrected_targeted_retraining_v4.py",
+      "purpose": "source reconstruction hash",
+      "sequence": 35,
+      "sha256": "b18d964cc647b390d8e44f31a8be8f66b7d0a5d20dcbc5bc28ccaff71706ccb0"
+    },
+    {
+      "byte_count": 13909,
+      "decision": "ALLOWED",
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_corrected_targeted_retraining_v4.py",
+      "purpose": "source reconstruction hash",
+      "sequence": 36,
+      "sha256": "ccd3cf368869be536606a30dc78d5f02f5972a8eab15eb2c8653836bde60185c"
+    },
+    {
+      "byte_count": 18651,
+      "decision": "ALLOWED",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_redesign_iteration_v2.py",
+      "purpose": "source reconstruction hash",
+      "sequence": 37,
+      "sha256": "eb24f2c76028b1841ad938b40aa4a3e3a5503e66b0cd71bb1849426550b80030"
+    },
+    {
+      "byte_count": 62148,
+      "decision": "ALLOWED",
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_redesign_iteration_v2.py",
+      "purpose": "source reconstruction hash",
+      "sequence": 38,
+      "sha256": "70c9adca4a4822e344d8cdc996fbcff65ab14c4878d55dcac253a4a957bebcb1"
+    },
+    {
+      "byte_count": 32300,
+      "decision": "ALLOWED",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_joint_terrain_slip_redesign_v1.py",
+      "purpose": "source reconstruction hash",
+      "sequence": 39,
+      "sha256": "9ac756eee6c4fc79f1b5c3ea00beb3b914290243248f20daa1e7f63a4daf566a"
+    },
+    {
+      "byte_count": 12217,
+      "decision": "ALLOWED",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "source reconstruction hash",
+      "sequence": 40,
+      "sha256": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81"
+    },
+    {
+      "byte_count": 22980,
+      "decision": "ALLOWED",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_targeted_retraining_v3.py",
+      "purpose": "source reconstruction hash",
+      "sequence": 41,
+      "sha256": "633ab7192ef15da1e6e559c830c739f6f7d04a3b7259c4083fb1f09acb97bb86"
+    },
+    {
+      "byte_count": 73581,
+      "decision": "ALLOWED",
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_targeted_retraining_v3.py",
+      "purpose": "source reconstruction hash",
+      "sequence": 42,
+      "sha256": "6bc8a35049ebd832b54fb0e33332109b1e51854e189c46158a1efa0d06a8ec74"
+    },
+    {
+      "byte_count": 7508,
+      "decision": "ALLOWED",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_retraining_failure_audit_v4.py",
+      "purpose": "source reconstruction hash",
+      "sequence": 43,
+      "sha256": "caa256792258b04d56c0cdd8fa4daf6f8cac7cf7c768de6e7e78568d92a8acd8"
+    },
+    {
+      "byte_count": 80687,
+      "decision": "ALLOWED",
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_retraining_failure_audit_v4.py",
+      "purpose": "source reconstruction hash",
+      "sequence": 44,
+      "sha256": "7fb825a3f790dc78217ff2de6764c26268c06941de805ec154062cd28275e8d0"
+    },
+    {
+      "byte_count": 12938,
+      "decision": "ALLOWED",
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_retraining_failure_audit_v4.py",
+      "purpose": "source reconstruction hash",
+      "sequence": 45,
+      "sha256": "8ace31106304e128b5504919f76dbc560b267f4fccf31dffafca2bb8d2b0826e"
+    },
+    {
+      "byte_count": 325570,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/future_nested_fold_manifest.json",
+      "purpose": "exact frozen 333-row folds",
+      "sequence": 46,
+      "sha256": "4a14fcf905afb3e6bf6358729abc33f560090e18a979bd8d31582762c71b8782"
+    },
+    {
+      "byte_count": 200321,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/augmented_canonical_development_manifest.json",
+      "purpose": "targeted run metadata",
+      "sequence": 47,
+      "sha256": "ab6a81b7ee0f9261980b611f9a18ac3d715a69f4cacc06b1eed48a7d1ae16f1b"
+    },
+    {
+      "byte_count": 73289,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/training_eligibility.csv",
+      "purpose": "authoritative eligibility",
+      "sequence": 48,
+      "sha256": "cabe9f24e39949cb62527a09c231f95095c67d4616e716b60819e8504a49d74c"
+    },
+    {
+      "byte_count": 1986827,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/trace_shard_manifest.json",
+      "purpose": "trace-shard hash and round-trip authority",
+      "sequence": 49,
+      "sha256": "f2931f5dc7ce071cae4e4d0380f1701cbdd790ef10e66f962d5b284c7d5ded8a"
+    },
+    {
+      "byte_count": 14861956,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_000.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 50,
+      "sha256": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953"
+    },
+    {
+      "byte_count": 14715645,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_001.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 51,
+      "sha256": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9"
+    },
+    {
+      "byte_count": 15079606,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_002.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 52,
+      "sha256": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803"
+    },
+    {
+      "byte_count": 14855900,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_003.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 53,
+      "sha256": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842"
+    },
+    {
+      "byte_count": 14746957,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_004.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 54,
+      "sha256": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91"
+    },
+    {
+      "byte_count": 15054915,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_005.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 55,
+      "sha256": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804"
+    },
+    {
+      "byte_count": 14822685,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_006.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 56,
+      "sha256": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1"
+    },
+    {
+      "byte_count": 14779340,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_007.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 57,
+      "sha256": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad"
+    },
+    {
+      "byte_count": 15042320,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_008.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 58,
+      "sha256": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b"
+    },
+    {
+      "byte_count": 1073799,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/trace_shard_manifest.json",
+      "purpose": "trace-shard hash and round-trip authority",
+      "sequence": 59,
+      "sha256": "cf4700841507ed5c685bc31a9b55c8fd06b0fa220187697f313ac818f622ceaa"
+    },
+    {
+      "byte_count": 14904668,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_000.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 60,
+      "sha256": "d43220476fb46b62d82a95dccec3967ad43faae16489ddf67ef86eff37317d58"
+    },
+    {
+      "byte_count": 14861008,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_001.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 61,
+      "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+    },
+    {
+      "byte_count": 14969992,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_002.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 62,
+      "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+    },
+    {
+      "byte_count": 14736033,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_003.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 63,
+      "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+    },
+    {
+      "byte_count": 14816081,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_004.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 64,
+      "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+    },
+    {
+      "byte_count": 3762953,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_005.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 65,
+      "sha256": "6a28140d0d5e0205c66610f090e10e080e2d304049ad2c6086089fa9b1db5be6"
+    },
+    {
+      "byte_count": 197063,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/trace_shard_manifest.json",
+      "purpose": "trace-shard hash and round-trip authority",
+      "sequence": 66,
+      "sha256": "7831edd54bef4f84929c383b14873643eb5584153e56e69cf7c260cda8e61c9b"
+    },
+    {
+      "byte_count": 15870904,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/traces_part_000.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 67,
+      "sha256": "cfad372ca01f832e435c8c383b0a26b95645bc07b6a4e7f9a8fc3793c0afe4a0"
+    },
+    {
+      "byte_count": 136644,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json",
+      "purpose": "existing 120-run manifest",
+      "sequence": 68,
+      "sha256": "f95f054003ce01e6841c3a8c8c49d70a6afd5f236d33977950edd73d9b604841"
+    },
+    {
+      "byte_count": 79248859,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz",
+      "purpose": "manifest-transitive existing eligible development traces",
+      "sequence": 69,
+      "sha256": "3ff4f8a1f270a39287fbe274753de91a5b0750d1a160e3cc9b1de01174f2a6ca"
+    },
+    {
+      "byte_count": 53083935,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz",
+      "purpose": "manifest-transitive existing eligible development traces",
+      "sequence": 70,
+      "sha256": "8c6a1db0eecdf8f63cf3d361d896e770968473dca1bdcf4c0b0f9ae240fe42f8"
+    },
+    {
+      "byte_count": 38811,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/failed_v3_quarantine_manifest.json",
+      "purpose": "verify excluded v3 quarantine only",
+      "sequence": 71,
+      "sha256": "b935b08e6ff0abf8ea8e67f00fd237ec3462816025ebb26d3b6ed73d989e8439"
+    },
+    {
+      "byte_count": 136644,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json",
+      "purpose": "existing 120-run terrain metadata",
+      "sequence": 72,
+      "sha256": "f95f054003ce01e6841c3a8c8c49d70a6afd5f236d33977950edd73d9b604841"
+    },
+    {
+      "byte_count": 200321,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/augmented_canonical_development_manifest.json",
+      "purpose": "targeted profile metadata",
+      "sequence": 73,
+      "sha256": "ab6a81b7ee0f9261980b611f9a18ac3d715a69f4cacc06b1eed48a7d1ae16f1b"
+    },
+    {
+      "byte_count": 79248859,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz",
+      "purpose": "exact old contact-age/gait-phase reconstruction parity",
+      "sequence": 74,
+      "sha256": "3ff4f8a1f270a39287fbe274753de91a5b0750d1a160e3cc9b1de01174f2a6ca"
+    },
+    {
+      "byte_count": 53083935,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz",
+      "purpose": "exact old contact-age/gait-phase reconstruction parity",
+      "sequence": 75,
+      "sha256": "8c6a1db0eecdf8f63cf3d361d896e770968473dca1bdcf4c0b0f9ae240fe42f8"
+    },
+    {
+      "byte_count": 73289,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/training_eligibility.csv",
+      "purpose": "eligibility audit",
+      "sequence": 76,
+      "sha256": "cabe9f24e39949cb62527a09c231f95095c67d4616e716b60819e8504a49d74c"
+    },
+    {
+      "byte_count": 13822,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/immutable_verification.json",
+      "purpose": "immutable baseline",
+      "sequence": 77,
+      "sha256": "afe1140f90363ef9af0a16937e69845ea1f391a50df4af986a48ff5dcd6de352"
+    },
+    {
+      "byte_count": 2521,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "Terrain/M1/G0/oracle immutable before-training hash",
+      "sequence": 78,
+      "sha256": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc"
+    },
+    {
+      "byte_count": 1196,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "Terrain/M1/G0/oracle immutable before-training hash",
+      "sequence": 79,
+      "sha256": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27"
+    },
+    {
+      "byte_count": 77226,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "Terrain/M1/G0/oracle immutable before-training hash",
+      "sequence": 80,
+      "sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f"
+    },
+    {
+      "byte_count": 15767,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "Terrain/M1/G0/oracle immutable before-training hash",
+      "sequence": 81,
+      "sha256": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640"
+    },
+    {
+      "byte_count": 5276,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "Terrain/M1/G0/oracle immutable before-training hash",
+      "sequence": 82,
+      "sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835"
+    },
+    {
+      "byte_count": 200321,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/augmented_canonical_development_manifest.json",
+      "purpose": "Terrain/M1/G0/oracle immutable before-training hash",
+      "sequence": 83,
+      "sha256": "ab6a81b7ee0f9261980b611f9a18ac3d715a69f4cacc06b1eed48a7d1ae16f1b"
+    },
+    {
+      "byte_count": 325570,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/future_nested_fold_manifest.json",
+      "purpose": "Terrain/M1/G0/oracle immutable before-training hash",
+      "sequence": 84,
+      "sha256": "4a14fcf905afb3e6bf6358729abc33f560090e18a979bd8d31582762c71b8782"
+    },
+    {
+      "byte_count": 197063,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/trace_shard_manifest.json",
+      "purpose": "Terrain/M1/G0/oracle immutable before-training hash",
+      "sequence": 85,
+      "sha256": "7831edd54bef4f84929c383b14873643eb5584153e56e69cf7c260cda8e61c9b"
+    },
+    {
+      "byte_count": 15870904,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/traces_part_000.npz",
+      "purpose": "Terrain/M1/G0/oracle immutable before-training hash",
+      "sequence": 86,
+      "sha256": "cfad372ca01f832e435c8c383b0a26b95645bc07b6a4e7f9a8fc3793c0afe4a0"
+    },
+    {
+      "byte_count": 73289,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/training_eligibility.csv",
+      "purpose": "Terrain/M1/G0/oracle immutable before-training hash",
+      "sequence": 87,
+      "sha256": "cabe9f24e39949cb62527a09c231f95095c67d4616e716b60819e8504a49d74c"
+    },
+    {
+      "byte_count": 2681,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_profile_lock.json",
+      "purpose": "Terrain/M1/G0/oracle immutable before-training hash",
+      "sequence": 88,
+      "sha256": "e50965e0e435ee2fd704069c95b648489c1ddbb48cdecaa93f152d3950ad2128"
+    },
+    {
+      "byte_count": 883,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/selected_geometry_lock.json",
+      "purpose": "Terrain/M1/G0/oracle immutable before-training hash",
+      "sequence": 89,
+      "sha256": "b8d9f627fecb04f3ac629272ae8cd1b641bab93d00bdd3fa63f88f814b081343"
+    },
+    {
+      "byte_count": 12217,
+      "decision": "ALLOWED",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "Terrain/M1/G0/oracle immutable before-training hash",
+      "sequence": 90,
+      "sha256": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81"
+    },
+    {
+      "byte_count": 8258,
+      "decision": "ALLOWED",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py",
+      "purpose": "Terrain/M1/G0/oracle immutable before-training hash",
+      "sequence": 91,
+      "sha256": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506"
+    },
+    {
+      "byte_count": 83853,
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/episode_reconciliation.csv",
+      "purpose": "frozen 471 episode contract",
+      "sequence": 92,
+      "sha256": "7c53ffff65453bc5130aec372be99ee494f90a2b3e9256399b10f56fec852451"
+    }
+  ],
+  "exact_paths_only": true,
+  "fail_closed": true,
+  "forbidden_access_count": 0,
+  "frozen_before_first_training_job": true,
+  "version": "walking_v2_slip_corrected_retrain_access_v4"
+}

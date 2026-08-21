@@ -1,0 +1,851 @@
+{
+  "configuration_count": 84,
+  "configurations": [
+    {
+      "config_id": "s0.45_p0.45_e0.15_n0.10_f0.60_k1_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.45,
+      "state_threshold": 0.45
+    },
+    {
+      "config_id": "s0.45_p0.45_e0.15_n0.10_f0.60_k1_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.45,
+      "state_threshold": 0.45
+    },
+    {
+      "config_id": "s0.45_p0.45_e0.15_n0.10_f0.60_k2_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.45,
+      "state_threshold": 0.45
+    },
+    {
+      "config_id": "s0.45_p0.45_e0.15_n0.10_f0.60_k2_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.45,
+      "state_threshold": 0.45
+    },
+    {
+      "config_id": "s0.45_p0.45_e0.15_n0.10_f0.60_k3_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.45,
+      "state_threshold": 0.45
+    },
+    {
+      "config_id": "s0.45_p0.45_e0.15_n0.10_f0.60_k3_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.45,
+      "state_threshold": 0.45
+    },
+    {
+      "config_id": "s0.45_p0.45_e0.25_n0.20_f0.60_k1_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.45,
+      "state_threshold": 0.45
+    },
+    {
+      "config_id": "s0.45_p0.45_e0.25_n0.20_f0.60_k1_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.45,
+      "state_threshold": 0.45
+    },
+    {
+      "config_id": "s0.45_p0.45_e0.25_n0.20_f0.60_k2_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.45,
+      "state_threshold": 0.45
+    },
+    {
+      "config_id": "s0.45_p0.45_e0.25_n0.20_f0.60_k2_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.45,
+      "state_threshold": 0.45
+    },
+    {
+      "config_id": "s0.45_p0.45_e0.25_n0.20_f0.60_k3_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.45,
+      "state_threshold": 0.45
+    },
+    {
+      "config_id": "s0.45_p0.45_e0.25_n0.20_f0.60_k3_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.45,
+      "state_threshold": 0.45
+    },
+    {
+      "config_id": "s0.55_p0.55_e0.15_n0.10_f0.60_k1_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.55_e0.15_n0.10_f0.60_k1_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.55_e0.15_n0.10_f0.60_k2_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.55_e0.15_n0.10_f0.60_k2_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.55_e0.15_n0.10_f0.60_k3_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.55_e0.15_n0.10_f0.60_k3_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.55_e0.25_n0.20_f0.60_k1_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.55_e0.25_n0.20_f0.60_k1_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.55_e0.25_n0.20_f0.60_k2_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.55_e0.25_n0.20_f0.60_k2_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.55_e0.25_n0.20_f0.60_k3_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.55_e0.25_n0.20_f0.60_k3_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.65_p0.65_e0.15_n0.10_f0.60_k1_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.65_e0.15_n0.10_f0.60_k1_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.65_e0.15_n0.10_f0.60_k2_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.65_e0.15_n0.10_f0.60_k2_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.65_e0.15_n0.10_f0.60_k3_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.65_e0.15_n0.10_f0.60_k3_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.65_e0.25_n0.20_f0.60_k1_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.65_e0.25_n0.20_f0.60_k1_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.65_e0.25_n0.20_f0.60_k2_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.65_e0.25_n0.20_f0.60_k2_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.65_e0.25_n0.20_f0.60_k3_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.65_e0.25_n0.20_f0.60_k3_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.75_p0.75_e0.15_n0.10_f0.60_k1_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.75,
+      "state_threshold": 0.75
+    },
+    {
+      "config_id": "s0.75_p0.75_e0.15_n0.10_f0.60_k1_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.75,
+      "state_threshold": 0.75
+    },
+    {
+      "config_id": "s0.75_p0.75_e0.15_n0.10_f0.60_k2_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.75,
+      "state_threshold": 0.75
+    },
+    {
+      "config_id": "s0.75_p0.75_e0.15_n0.10_f0.60_k2_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.75,
+      "state_threshold": 0.75
+    },
+    {
+      "config_id": "s0.75_p0.75_e0.15_n0.10_f0.60_k3_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.75,
+      "state_threshold": 0.75
+    },
+    {
+      "config_id": "s0.75_p0.75_e0.15_n0.10_f0.60_k3_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.75,
+      "state_threshold": 0.75
+    },
+    {
+      "config_id": "s0.75_p0.75_e0.25_n0.20_f0.60_k1_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.75,
+      "state_threshold": 0.75
+    },
+    {
+      "config_id": "s0.75_p0.75_e0.25_n0.20_f0.60_k1_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.75,
+      "state_threshold": 0.75
+    },
+    {
+      "config_id": "s0.75_p0.75_e0.25_n0.20_f0.60_k2_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.75,
+      "state_threshold": 0.75
+    },
+    {
+      "config_id": "s0.75_p0.75_e0.25_n0.20_f0.60_k2_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.75,
+      "state_threshold": 0.75
+    },
+    {
+      "config_id": "s0.75_p0.75_e0.25_n0.20_f0.60_k3_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.75,
+      "state_threshold": 0.75
+    },
+    {
+      "config_id": "s0.75_p0.75_e0.25_n0.20_f0.60_k3_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.75,
+      "state_threshold": 0.75
+    },
+    {
+      "config_id": "s0.85_p0.85_e0.15_n0.10_f0.60_k1_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.85,
+      "state_threshold": 0.85
+    },
+    {
+      "config_id": "s0.85_p0.85_e0.15_n0.10_f0.60_k1_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.85,
+      "state_threshold": 0.85
+    },
+    {
+      "config_id": "s0.85_p0.85_e0.15_n0.10_f0.60_k2_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.85,
+      "state_threshold": 0.85
+    },
+    {
+      "config_id": "s0.85_p0.85_e0.15_n0.10_f0.60_k2_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.85,
+      "state_threshold": 0.85
+    },
+    {
+      "config_id": "s0.85_p0.85_e0.15_n0.10_f0.60_k3_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.85,
+      "state_threshold": 0.85
+    },
+    {
+      "config_id": "s0.85_p0.85_e0.15_n0.10_f0.60_k3_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.85,
+      "state_threshold": 0.85
+    },
+    {
+      "config_id": "s0.85_p0.85_e0.25_n0.20_f0.60_k1_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.85,
+      "state_threshold": 0.85
+    },
+    {
+      "config_id": "s0.85_p0.85_e0.25_n0.20_f0.60_k1_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.85,
+      "state_threshold": 0.85
+    },
+    {
+      "config_id": "s0.85_p0.85_e0.25_n0.20_f0.60_k2_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.85,
+      "state_threshold": 0.85
+    },
+    {
+      "config_id": "s0.85_p0.85_e0.25_n0.20_f0.60_k2_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.85,
+      "state_threshold": 0.85
+    },
+    {
+      "config_id": "s0.85_p0.85_e0.25_n0.20_f0.60_k3_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.85,
+      "state_threshold": 0.85
+    },
+    {
+      "config_id": "s0.85_p0.85_e0.25_n0.20_f0.60_k3_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.85,
+      "state_threshold": 0.85
+    },
+    {
+      "config_id": "s0.65_p0.55_e0.15_n0.10_f0.60_k1_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.55_e0.15_n0.10_f0.60_k1_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.55_e0.15_n0.10_f0.60_k2_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.55_e0.15_n0.10_f0.60_k2_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.55_e0.15_n0.10_f0.60_k3_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.55_e0.15_n0.10_f0.60_k3_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.55_e0.25_n0.20_f0.60_k1_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.55_e0.25_n0.20_f0.60_k1_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.55_e0.25_n0.20_f0.60_k2_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.55_e0.25_n0.20_f0.60_k2_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.55_e0.25_n0.20_f0.60_k3_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.65_p0.55_e0.25_n0.20_f0.60_k3_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.55,
+      "state_threshold": 0.65
+    },
+    {
+      "config_id": "s0.55_p0.65_e0.15_n0.10_f0.60_k1_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.65_e0.15_n0.10_f0.60_k1_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.65_e0.15_n0.10_f0.60_k2_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.65_e0.15_n0.10_f0.60_k2_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.65_e0.15_n0.10_f0.60_k3_h0.00",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.65_e0.15_n0.10_f0.60_k3_h0.05",
+      "early_margin": 0.15,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.1,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.65_e0.25_n0.20_f0.60_k1_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.65_e0.25_n0.20_f0.60_k1_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 1,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.65_e0.25_n0.20_f0.60_k2_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.65_e0.25_n0.20_f0.60_k2_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 2,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.65_e0.25_n0.20_f0.60_k3_h0.00",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.0,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.55
+    },
+    {
+      "config_id": "s0.55_p0.65_e0.25_n0.20_f0.60_k3_h0.05",
+      "early_margin": 0.25,
+      "foot_threshold": 0.6,
+      "hysteresis": 0.05,
+      "normal_margin": 0.2,
+      "persistence_endpoints": 3,
+      "proposal_threshold": 0.65,
+      "state_threshold": 0.55
+    }
+  ],
+  "contains_exact_prior_S4C_point": true,
+  "fixed_before_training": true,
+  "outer_scores_used_for_selection": false,
+  "post_result_expansion": false,
+  "selection_source": "aggregate inner-training predictions only",
+  "version": "walking_v2_slip_operating_point_policy_v4"
+}
