@@ -1,0 +1,138 @@
+{
+  "G0_geometry_contract_sha256": "a7ecd6fa3e44f49b07f3b0a0729d091f2156bc8493b171549748776c9fde5583",
+  "M1_profile_contract_sha256": "455c2fd9a5bf9da24243c6a72e199ecf83eb508d03eda3cf0fddfa5e8fd2a311",
+  "after_training": {
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json": {
+      "after_sha256": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+      "before_sha256": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+      "byte_identical": true
+    },
+    "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json": {
+      "after_sha256": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+      "before_sha256": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+      "byte_identical": true
+    },
+    "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz": {
+      "after_sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "before_sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "byte_identical": true
+    },
+    "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json": {
+      "after_sha256": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+      "before_sha256": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+      "byte_identical": true
+    },
+    "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json": {
+      "after_sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "before_sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "byte_identical": true
+    },
+    "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_profile_lock.json": {
+      "after_sha256": "e50965e0e435ee2fd704069c95b648489c1ddbb48cdecaa93f152d3950ad2128",
+      "before_sha256": "e50965e0e435ee2fd704069c95b648489c1ddbb48cdecaa93f152d3950ad2128",
+      "byte_identical": true
+    },
+    "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/selected_geometry_lock.json": {
+      "after_sha256": "b8d9f627fecb04f3ac629272ae8cd1b641bab93d00bdd3fa63f88f814b081343",
+      "before_sha256": "b8d9f627fecb04f3ac629272ae8cd1b641bab93d00bdd3fa63f88f814b081343",
+      "byte_identical": true
+    },
+    "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py": {
+      "after_sha256": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+      "before_sha256": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+      "byte_identical": true
+    },
+    "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py": {
+      "after_sha256": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506",
+      "before_sha256": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506",
+      "byte_identical": true
+    }
+  },
+  "all_match": true,
+  "all_match_after_training": true,
+  "artifacts": {
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json": {
+      "actual_sha256": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+      "expected_sha256": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+      "match": true
+    },
+    "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json": {
+      "actual_sha256": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+      "expected_sha256": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+      "match": true
+    },
+    "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz": {
+      "actual_sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "expected_sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "match": true
+    },
+    "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json": {
+      "actual_sha256": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+      "expected_sha256": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+      "match": true
+    },
+    "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json": {
+      "actual_sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "expected_sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "match": true
+    },
+    "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/augmented_canonical_development_manifest.json": {
+      "actual_sha256": "ab6a81b7ee0f9261980b611f9a18ac3d715a69f4cacc06b1eed48a7d1ae16f1b",
+      "expected_sha256": "ab6a81b7ee0f9261980b611f9a18ac3d715a69f4cacc06b1eed48a7d1ae16f1b",
+      "match": true
+    },
+    "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/future_nested_fold_manifest.json": {
+      "actual_sha256": "4a14fcf905afb3e6bf6358729abc33f560090e18a979bd8d31582762c71b8782",
+      "expected_sha256": "4a14fcf905afb3e6bf6358729abc33f560090e18a979bd8d31582762c71b8782",
+      "match": true
+    },
+    "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/trace_shard_manifest.json": {
+      "actual_sha256": "7831edd54bef4f84929c383b14873643eb5584153e56e69cf7c260cda8e61c9b",
+      "expected_sha256": "7831edd54bef4f84929c383b14873643eb5584153e56e69cf7c260cda8e61c9b",
+      "match": true
+    },
+    "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/traces_part_000.npz": {
+      "actual_sha256": "cfad372ca01f832e435c8c383b0a26b95645bc07b6a4e7f9a8fc3793c0afe4a0",
+      "expected_sha256": "cfad372ca01f832e435c8c383b0a26b95645bc07b6a4e7f9a8fc3793c0afe4a0",
+      "match": true
+    },
+    "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/training_eligibility.csv": {
+      "actual_sha256": "cabe9f24e39949cb62527a09c231f95095c67d4616e716b60819e8504a49d74c",
+      "expected_sha256": "cabe9f24e39949cb62527a09c231f95095c67d4616e716b60819e8504a49d74c",
+      "match": true
+    },
+    "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_profile_lock.json": {
+      "actual_sha256": "e50965e0e435ee2fd704069c95b648489c1ddbb48cdecaa93f152d3950ad2128",
+      "expected_sha256": "e50965e0e435ee2fd704069c95b648489c1ddbb48cdecaa93f152d3950ad2128",
+      "match": true
+    },
+    "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/selected_geometry_lock.json": {
+      "actual_sha256": "b8d9f627fecb04f3ac629272ae8cd1b641bab93d00bdd3fa63f88f814b081343",
+      "expected_sha256": "b8d9f627fecb04f3ac629272ae8cd1b641bab93d00bdd3fa63f88f814b081343",
+      "match": true
+    },
+    "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py": {
+      "actual_sha256": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+      "expected_sha256": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+      "match": true
+    },
+    "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py": {
+      "actual_sha256": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506",
+      "expected_sha256": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506",
+      "match": true
+    }
+  },
+  "contract_hashes_match": true,
+  "explicit_contact_pair_contract_sha256": "be210abb41729fb4bbc267b7a17c31c6bbc5db2da6067e3f6d0674684007a1f0",
+  "friction_vector": [
+    0.0875,
+    0.0875,
+    0.00125,
+    2.125e-05,
+    2.125e-05
+  ],
+  "friction_vector_sha256": "5e61989004a895de43d8a57ef734d2734a7cdc67e7bdf2d1bb880d66d89ca7f7",
+  "origin_main_match": true,
+  "starting_checkpoint_match": true,
+  "verified_before_training": true
+}

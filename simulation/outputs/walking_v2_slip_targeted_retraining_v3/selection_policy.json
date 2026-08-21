@@ -1,0 +1,65 @@
+{
+  "candidate_ranking": [
+    "highest worst-speed actionable episode recall",
+    "highest pooled actionable episode recall",
+    "highest affected-foot accuracy",
+    "lowest p95 late latency",
+    "highest minimum fold recall",
+    "lowest MAC count",
+    "lowest parameter count",
+    "lexical candidate ID",
+    "lowest seed"
+  ],
+  "diagnostic_config_ranking_if_none_safe": [
+    "lowest summed safety violations",
+    "highest threshold",
+    "highest persistence",
+    "highest actionable margin",
+    "lexical config ID"
+  ],
+  "final_config_reconciliation": "most frequent outer-fold-selected config; tie by conservative threshold, persistence, margin, then lexical config ID",
+  "frozen_before_first_training_job": true,
+  "mandatory_fold_zero_safety_gates": [
+    "normal_run_fp",
+    "normal_contact_episode_fp",
+    "too_early_activation",
+    "air_firing",
+    "touchdown_transient_firing",
+    "invalid_firing",
+    "postfall_firing",
+    "latch_carryover",
+    "cross_foot_ownership_violation"
+  ],
+  "mandatory_pooled_gates": {
+    "actionable_episode_recall_min": 0.8,
+    "affected_foot_accuracy_min": 0.9,
+    "air_touchdown_invalid_postfall_latch_crossfoot_max_each": 0,
+    "every_speed_actionable_episode_recall_min": 0.7,
+    "future_leakage_max": 0,
+    "normal_contact_episode_fp_max": 0,
+    "normal_run_fp_max": 0,
+    "resource_gates": true,
+    "too_early_activation_max": 0
+  },
+  "no_passing_candidate_action": {
+    "diagnostic_fallback_count": 1,
+    "fresh_blind_holdout_authorized": false,
+    "normalization": false,
+    "production_model": false,
+    "selection_lock": false
+  },
+  "operating_config_ranking": [
+    "all inner-training zero-safety gates",
+    "highest inner episode recall",
+    "highest inner worst-speed recall",
+    "highest affected-foot accuracy",
+    "lowest p95 late latency",
+    "highest threshold",
+    "highest persistence",
+    "highest actionable margin",
+    "lexical config ID"
+  ],
+  "post_result_threshold_search_allowed": false,
+  "run_coverage_primary_metric": false,
+  "version": "walking_v2_slip_retrain_selection_policy_v3"
+}

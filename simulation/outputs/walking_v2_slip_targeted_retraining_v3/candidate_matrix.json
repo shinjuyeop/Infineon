@@ -1,0 +1,359 @@
+{
+  "actionable_margin_grid": [
+    0.0,
+    0.1
+  ],
+  "candidate_count": 9,
+  "candidates": [
+    {
+      "candidate_id": "R1_seed_202608231",
+      "family": {
+        "activation": "relu",
+        "batch_construction": "complete eligible population; streaming sufficient statistics",
+        "candidate_id": "R1",
+        "early_stopping": false,
+        "epochs": 1,
+        "feature_contract": "current bilateral Fusion20, 50 ms deltas/statistics, causal contact age",
+        "hidden_width": 12,
+        "history_ms": [
+          50
+        ],
+        "learning_rate": "not_applicable_closed_form",
+        "loss_terms": [
+          "balanced four-state negative log likelihood",
+          "actionable_over_normal ordering",
+          "actionable_over_early margin",
+          "correct_foot_over_contralateral ordering"
+        ],
+        "loss_weights": [
+          1.0,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "name": "targeted_S4_C_reproduction",
+        "optimizer": "episode_weighted_diagonal_gaussian_closed_form",
+        "output_contract": "two-stage actionable proposal plus causal normal/early verifier and affected-foot comparator"
+      },
+      "seed": 202608231
+    },
+    {
+      "candidate_id": "R1_seed_202608232",
+      "family": {
+        "activation": "relu",
+        "batch_construction": "complete eligible population; streaming sufficient statistics",
+        "candidate_id": "R1",
+        "early_stopping": false,
+        "epochs": 1,
+        "feature_contract": "current bilateral Fusion20, 50 ms deltas/statistics, causal contact age",
+        "hidden_width": 12,
+        "history_ms": [
+          50
+        ],
+        "learning_rate": "not_applicable_closed_form",
+        "loss_terms": [
+          "balanced four-state negative log likelihood",
+          "actionable_over_normal ordering",
+          "actionable_over_early margin",
+          "correct_foot_over_contralateral ordering"
+        ],
+        "loss_weights": [
+          1.0,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "name": "targeted_S4_C_reproduction",
+        "optimizer": "episode_weighted_diagonal_gaussian_closed_form",
+        "output_contract": "two-stage actionable proposal plus causal normal/early verifier and affected-foot comparator"
+      },
+      "seed": 202608232
+    },
+    {
+      "candidate_id": "R1_seed_202608233",
+      "family": {
+        "activation": "relu",
+        "batch_construction": "complete eligible population; streaming sufficient statistics",
+        "candidate_id": "R1",
+        "early_stopping": false,
+        "epochs": 1,
+        "feature_contract": "current bilateral Fusion20, 50 ms deltas/statistics, causal contact age",
+        "hidden_width": 12,
+        "history_ms": [
+          50
+        ],
+        "learning_rate": "not_applicable_closed_form",
+        "loss_terms": [
+          "balanced four-state negative log likelihood",
+          "actionable_over_normal ordering",
+          "actionable_over_early margin",
+          "correct_foot_over_contralateral ordering"
+        ],
+        "loss_weights": [
+          1.0,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "name": "targeted_S4_C_reproduction",
+        "optimizer": "episode_weighted_diagonal_gaussian_closed_form",
+        "output_contract": "two-stage actionable proposal plus causal normal/early verifier and affected-foot comparator"
+      },
+      "seed": 202608233
+    },
+    {
+      "candidate_id": "R2_seed_202608231",
+      "family": {
+        "activation": "relu",
+        "batch_construction": "complete eligible population; streaming sufficient statistics",
+        "candidate_id": "R2",
+        "early_stopping": false,
+        "epochs": 1,
+        "feature_contract": "separate ipsilateral/contralateral 50 ms and 200 ms summaries",
+        "hidden_width": 16,
+        "history_ms": [
+          50,
+          200
+        ],
+        "learning_rate": "not_applicable_closed_form",
+        "loss_terms": [
+          "balanced four-state negative log likelihood",
+          "actionable_over_normal ordering",
+          "actionable_over_early margin",
+          "correct_foot_over_contralateral ordering"
+        ],
+        "loss_weights": [
+          1.0,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "name": "dual_timescale_horizon_verifier",
+        "optimizer": "episode_weighted_diagonal_gaussian_closed_form",
+        "output_contract": "shared per-foot four-state horizon head plus affected-foot localization head"
+      },
+      "seed": 202608231
+    },
+    {
+      "candidate_id": "R2_seed_202608232",
+      "family": {
+        "activation": "relu",
+        "batch_construction": "complete eligible population; streaming sufficient statistics",
+        "candidate_id": "R2",
+        "early_stopping": false,
+        "epochs": 1,
+        "feature_contract": "separate ipsilateral/contralateral 50 ms and 200 ms summaries",
+        "hidden_width": 16,
+        "history_ms": [
+          50,
+          200
+        ],
+        "learning_rate": "not_applicable_closed_form",
+        "loss_terms": [
+          "balanced four-state negative log likelihood",
+          "actionable_over_normal ordering",
+          "actionable_over_early margin",
+          "correct_foot_over_contralateral ordering"
+        ],
+        "loss_weights": [
+          1.0,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "name": "dual_timescale_horizon_verifier",
+        "optimizer": "episode_weighted_diagonal_gaussian_closed_form",
+        "output_contract": "shared per-foot four-state horizon head plus affected-foot localization head"
+      },
+      "seed": 202608232
+    },
+    {
+      "candidate_id": "R2_seed_202608233",
+      "family": {
+        "activation": "relu",
+        "batch_construction": "complete eligible population; streaming sufficient statistics",
+        "candidate_id": "R2",
+        "early_stopping": false,
+        "epochs": 1,
+        "feature_contract": "separate ipsilateral/contralateral 50 ms and 200 ms summaries",
+        "hidden_width": 16,
+        "history_ms": [
+          50,
+          200
+        ],
+        "learning_rate": "not_applicable_closed_form",
+        "loss_terms": [
+          "balanced four-state negative log likelihood",
+          "actionable_over_normal ordering",
+          "actionable_over_early margin",
+          "correct_foot_over_contralateral ordering"
+        ],
+        "loss_weights": [
+          1.0,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "name": "dual_timescale_horizon_verifier",
+        "optimizer": "episode_weighted_diagonal_gaussian_closed_form",
+        "output_contract": "shared per-foot four-state horizon head plus affected-foot localization head"
+      },
+      "seed": 202608233
+    },
+    {
+      "candidate_id": "R3_seed_202608231",
+      "family": {
+        "activation": "relu",
+        "batch_construction": "complete eligible population; streaming sufficient statistics",
+        "candidate_id": "R3",
+        "early_stopping": false,
+        "epochs": 1,
+        "feature_contract": "causal maximum-200 ms hazard summaries and contact-scoped state",
+        "hidden_width": 20,
+        "history_ms": [
+          25,
+          50,
+          100,
+          200
+        ],
+        "learning_rate": "not_applicable_closed_form",
+        "loss_terms": [
+          "balanced four-state negative log likelihood",
+          "actionable_over_normal ordering",
+          "actionable_over_early margin",
+          "correct_foot_over_contralateral ordering"
+        ],
+        "loss_weights": [
+          1.0,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "name": "discrete_hazard_foot_localization",
+        "optimizer": "episode_weighted_diagonal_gaussian_closed_form",
+        "output_contract": "four preregistered 25 ms hazard bins, farther/no-event, active evidence, foot head"
+      },
+      "seed": 202608231
+    },
+    {
+      "candidate_id": "R3_seed_202608232",
+      "family": {
+        "activation": "relu",
+        "batch_construction": "complete eligible population; streaming sufficient statistics",
+        "candidate_id": "R3",
+        "early_stopping": false,
+        "epochs": 1,
+        "feature_contract": "causal maximum-200 ms hazard summaries and contact-scoped state",
+        "hidden_width": 20,
+        "history_ms": [
+          25,
+          50,
+          100,
+          200
+        ],
+        "learning_rate": "not_applicable_closed_form",
+        "loss_terms": [
+          "balanced four-state negative log likelihood",
+          "actionable_over_normal ordering",
+          "actionable_over_early margin",
+          "correct_foot_over_contralateral ordering"
+        ],
+        "loss_weights": [
+          1.0,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "name": "discrete_hazard_foot_localization",
+        "optimizer": "episode_weighted_diagonal_gaussian_closed_form",
+        "output_contract": "four preregistered 25 ms hazard bins, farther/no-event, active evidence, foot head"
+      },
+      "seed": 202608232
+    },
+    {
+      "candidate_id": "R3_seed_202608233",
+      "family": {
+        "activation": "relu",
+        "batch_construction": "complete eligible population; streaming sufficient statistics",
+        "candidate_id": "R3",
+        "early_stopping": false,
+        "epochs": 1,
+        "feature_contract": "causal maximum-200 ms hazard summaries and contact-scoped state",
+        "hidden_width": 20,
+        "history_ms": [
+          25,
+          50,
+          100,
+          200
+        ],
+        "learning_rate": "not_applicable_closed_form",
+        "loss_terms": [
+          "balanced four-state negative log likelihood",
+          "actionable_over_normal ordering",
+          "actionable_over_early margin",
+          "correct_foot_over_contralateral ordering"
+        ],
+        "loss_weights": [
+          1.0,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "name": "discrete_hazard_foot_localization",
+        "optimizer": "episode_weighted_diagonal_gaussian_closed_form",
+        "output_contract": "four preregistered 25 ms hazard bins, farther/no-event, active evidence, foot head"
+      },
+      "seed": 202608233
+    }
+  ],
+  "family_count": 3,
+  "fixed_seeds": [
+    202608231,
+    202608232,
+    202608233
+  ],
+  "fourth_family_allowed": false,
+  "frozen_before_first_training_job": true,
+  "hard_negative_multiplier": 4.0,
+  "hard_negative_per_run_foot_state": 32,
+  "hard_negative_ratio": 1.0,
+  "hysteresis_grid": [
+    0.05
+  ],
+  "normalization": "inner-training-only mean/std; epsilon 1e-6; clip +/-8",
+  "offline_label_only": [
+    "physical_contact",
+    "contact_episode_id",
+    "future_physical_onset",
+    "touchdown_transient",
+    "first_fall_censor",
+    "physical_oracle_active"
+  ],
+  "persistence_grid_ms": [
+    3,
+    5
+  ],
+  "post_result_architecture_change_allowed": false,
+  "privileged_runtime_inputs": [],
+  "projection_initialization": "fixed seeded Gaussian/sqrt(input width)",
+  "resource_ceilings": {
+    "history_memory_bytes": 49600,
+    "macs_per_1khz_tick": 18657,
+    "parameter_count": 2657,
+    "persistent_state_bytes": 1024
+  },
+  "runtime_inputs": [
+    "bilateral_canonical_Fusion20",
+    "causal_FSR_contact_state",
+    "causal_contact_age",
+    "commanded_speed"
+  ],
+  "seed_count_per_family": 3,
+  "threshold_grid": [
+    0.7,
+    0.85,
+    0.95,
+    0.99
+  ],
+  "version": "walking_v2_slip_retrain_candidate_matrix_v3"
+}

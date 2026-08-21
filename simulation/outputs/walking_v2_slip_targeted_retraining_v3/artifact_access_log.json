@@ -1,0 +1,204 @@
+{
+  "access_count": 28,
+  "accesses": [
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/input_allowlist.json",
+      "purpose": "source exact allowlist authority",
+      "sequence": 1,
+      "timestamp_utc": "2026-08-21T04:44:49.616764+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json",
+      "purpose": "manifest-transitive existing input authority",
+      "sequence": 2,
+      "timestamp_utc": "2026-08-21T04:44:49.616809+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/training_eligibility.csv",
+      "purpose": "authoritative eligibility",
+      "sequence": 3,
+      "timestamp_utc": "2026-08-21T04:44:49.616833+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/future_nested_fold_manifest.json",
+      "purpose": "exact nested folds",
+      "sequence": 4,
+      "timestamp_utc": "2026-08-21T04:44:49.616854+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/augmented_canonical_development_manifest.json",
+      "purpose": "eligible targeted metadata",
+      "sequence": 5,
+      "timestamp_utc": "2026-08-21T04:44:49.616875+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/provenance.json",
+      "purpose": "v8 artifact hash graph",
+      "sequence": 6,
+      "timestamp_utc": "2026-08-21T04:44:49.616895+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/failed_v3_quarantine_manifest.json",
+      "purpose": "verify quarantined v3 count without trace access",
+      "sequence": 7,
+      "timestamp_utc": "2026-08-21T04:44:49.622760+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/trace_shard_manifest.json",
+      "purpose": "trace-shard hash and round-trip authority",
+      "sequence": 8,
+      "timestamp_utc": "2026-08-21T04:44:49.631897+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_000.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 9,
+      "timestamp_utc": "2026-08-21T04:44:49.640197+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_001.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 10,
+      "timestamp_utc": "2026-08-21T04:44:49.860078+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_002.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 11,
+      "timestamp_utc": "2026-08-21T04:44:50.073555+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_003.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 12,
+      "timestamp_utc": "2026-08-21T04:44:50.289069+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_004.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 13,
+      "timestamp_utc": "2026-08-21T04:44:50.505069+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_005.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 14,
+      "timestamp_utc": "2026-08-21T04:44:50.723088+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_006.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 15,
+      "timestamp_utc": "2026-08-21T04:44:50.937935+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_007.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 16,
+      "timestamp_utc": "2026-08-21T04:44:51.151886+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_008.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 17,
+      "timestamp_utc": "2026-08-21T04:44:51.366459+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/trace_shard_manifest.json",
+      "purpose": "trace-shard hash and round-trip authority",
+      "sequence": 18,
+      "timestamp_utc": "2026-08-21T04:44:51.580567+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_000.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 19,
+      "timestamp_utc": "2026-08-21T04:44:51.584541+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_001.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 20,
+      "timestamp_utc": "2026-08-21T04:44:51.798504+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_002.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 21,
+      "timestamp_utc": "2026-08-21T04:44:52.008352+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_003.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 22,
+      "timestamp_utc": "2026-08-21T04:44:52.222777+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_004.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 23,
+      "timestamp_utc": "2026-08-21T04:44:52.436484+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_005.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 24,
+      "timestamp_utc": "2026-08-21T04:44:52.648102+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/trace_shard_manifest.json",
+      "purpose": "trace-shard hash and round-trip authority",
+      "sequence": 25,
+      "timestamp_utc": "2026-08-21T04:44:52.700429+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/traces_part_000.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 26,
+      "timestamp_utc": "2026-08-21T04:44:52.701345+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz",
+      "purpose": "manifest-transitive existing eligible development traces",
+      "sequence": 27,
+      "timestamp_utc": "2026-08-21T04:44:52.919782+00:00"
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz",
+      "purpose": "manifest-transitive existing eligible development traces",
+      "sequence": 28,
+      "timestamp_utc": "2026-08-21T04:44:57.889114+00:00"
+    }
+  ],
+  "exact_paths_only": true,
+  "fail_closed": true,
+  "forbidden_access_count": 0
+}

@@ -1,0 +1,15 @@
+{
+  "directory_enumeration_or_repo_wide_search_authorized": false,
+  "fail_closed": true,
+  "forbidden_tokens": [
+    "/outer/",
+    "_outer_",
+    "holdout",
+    "spatial_final",
+    "spatial-final",
+    "final_test",
+    "final-test"
+  ],
+  "outer_holdout_final_access_authorized": false,
+  "privileged_ground_truth_runtime_input_authorized": false
+}

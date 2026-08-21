@@ -1,0 +1,9 @@
+{
+  "causal_window_max_history_ms": 200,
+  "future_leakage_count": 0,
+  "future_onset_use": "offline supervision and evaluation only",
+  "hard_negative_evaluated_fold_access_count": 0,
+  "normalization_outer_fold_overlap_count": 0,
+  "privileged_runtime_input_count": 0,
+  "runtime_feature_contract": "current and past Fusion20/contact state only"
+}

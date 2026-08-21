@@ -1,0 +1,89 @@
+{
+  "candidate_families": {
+    "R1": {
+      "estimated_operations_per_second": 1464000,
+      "expected_operator_set": [
+        "FULLY_CONNECTED",
+        "RELU",
+        "SUB",
+        "MUL",
+        "ADD",
+        "SOFTMAX",
+        "GREATER",
+        "ARGMAX",
+        "stateful reset/comparison"
+      ],
+      "family_id": "R1",
+      "hidden_width": 12,
+      "history_memory_bytes": 16000,
+      "input_feature_count": 55,
+      "macs_per_1khz_tick": 1464,
+      "model_bytes_float32": 3192,
+      "output_class_count": 4,
+      "parameter_count": 798,
+      "persistent_state_bytes": 120,
+      "resource_gates_pass": true,
+      "unsupported_operator_risk": "LOW_UNCOMPILED_REQUIRES_FUTURE_VELA_CONFIRMATION"
+    },
+    "R2": {
+      "estimated_operations_per_second": 2976000,
+      "expected_operator_set": [
+        "FULLY_CONNECTED",
+        "RELU",
+        "SUB",
+        "MUL",
+        "ADD",
+        "SOFTMAX",
+        "GREATER",
+        "ARGMAX",
+        "stateful reset/comparison"
+      ],
+      "family_id": "R2",
+      "hidden_width": 16,
+      "history_memory_bytes": 16000,
+      "input_feature_count": 87,
+      "macs_per_1khz_tick": 2976,
+      "model_bytes_float32": 6296,
+      "output_class_count": 4,
+      "parameter_count": 1574,
+      "persistent_state_bytes": 120,
+      "resource_gates_pass": true,
+      "unsupported_operator_risk": "LOW_UNCOMPILED_REQUIRES_FUTURE_VELA_CONFIRMATION"
+    },
+    "R3": {
+      "estimated_operations_per_second": 2720000,
+      "expected_operator_set": [
+        "FULLY_CONNECTED",
+        "RELU",
+        "SUB",
+        "MUL",
+        "ADD",
+        "SOFTMAX",
+        "GREATER",
+        "ARGMAX",
+        "stateful reset/comparison"
+      ],
+      "family_id": "R3",
+      "hidden_width": 20,
+      "history_memory_bytes": 16000,
+      "input_feature_count": 59,
+      "macs_per_1khz_tick": 2720,
+      "model_bytes_float32": 6116,
+      "output_class_count": 7,
+      "parameter_count": 1529,
+      "persistent_state_bytes": 120,
+      "resource_gates_pass": true,
+      "unsupported_operator_risk": "LOW_UNCOMPILED_REQUIRES_FUTURE_VELA_CONFIRMATION"
+    }
+  },
+  "e84_deployment_performed": false,
+  "hil_execution_performed": false,
+  "int8_conversion_performed": false,
+  "resource_ceilings": {
+    "history_memory_bytes": 49600,
+    "macs_per_1khz_tick": 18657,
+    "parameter_count": 2657,
+    "persistent_state_bytes": 1024
+  },
+  "vela_compilation_performed": false
+}

@@ -1,0 +1,266 @@
+{
+  "actionable_horizon_ms": 100,
+  "blind_holdout_access": false,
+  "created_before_training_trace_value_access": true,
+  "data_contract": {
+    "authoritative": "frozen v8 eligibility and exact 333-row future nested-fold manifest",
+    "eligible": [
+      "POSITIVE_ELIGIBLE",
+      "CONTROL_ELIGIBLE",
+      "eligible existing bilateral development"
+    ],
+    "excluded": [
+      "FAILED_SOURCE_DIAGNOSTIC_ONLY",
+      "CALIBRATION_ONLY_DO_NOT_TRAIN",
+      "QUARANTINED",
+      "FORBIDDEN",
+      "invalid/post-fall samples"
+    ],
+    "fold_reconstruction": false,
+    "new_data_collection": false
+  },
+  "label_contract": {
+    "future_onset_label_only": true,
+    "physical_active_is_evidence_not_runtime_confirmation": true,
+    "scope": [
+      "foot",
+      "contact_episode",
+      "touchdown",
+      "first_fall_censor"
+    ],
+    "states": [
+      "NORMAL_NO_EVENT",
+      "EARLY_PRECURSOR",
+      "ACTIONABLE_RISK",
+      "PHYSICAL_ACTIVE_EVIDENCE"
+    ]
+  },
+  "maximum_causal_history_ms": 200,
+  "operating_grid": [
+    {
+      "actionable_margin": 0.0,
+      "hysteresis": 0.05,
+      "persistence_ms": 3,
+      "threshold": 0.7
+    },
+    {
+      "actionable_margin": 0.1,
+      "hysteresis": 0.05,
+      "persistence_ms": 3,
+      "threshold": 0.7
+    },
+    {
+      "actionable_margin": 0.0,
+      "hysteresis": 0.05,
+      "persistence_ms": 5,
+      "threshold": 0.7
+    },
+    {
+      "actionable_margin": 0.1,
+      "hysteresis": 0.05,
+      "persistence_ms": 5,
+      "threshold": 0.7
+    },
+    {
+      "actionable_margin": 0.0,
+      "hysteresis": 0.05,
+      "persistence_ms": 3,
+      "threshold": 0.85
+    },
+    {
+      "actionable_margin": 0.1,
+      "hysteresis": 0.05,
+      "persistence_ms": 3,
+      "threshold": 0.85
+    },
+    {
+      "actionable_margin": 0.0,
+      "hysteresis": 0.05,
+      "persistence_ms": 5,
+      "threshold": 0.85
+    },
+    {
+      "actionable_margin": 0.1,
+      "hysteresis": 0.05,
+      "persistence_ms": 5,
+      "threshold": 0.85
+    },
+    {
+      "actionable_margin": 0.0,
+      "hysteresis": 0.05,
+      "persistence_ms": 3,
+      "threshold": 0.95
+    },
+    {
+      "actionable_margin": 0.1,
+      "hysteresis": 0.05,
+      "persistence_ms": 3,
+      "threshold": 0.95
+    },
+    {
+      "actionable_margin": 0.0,
+      "hysteresis": 0.05,
+      "persistence_ms": 5,
+      "threshold": 0.95
+    },
+    {
+      "actionable_margin": 0.1,
+      "hysteresis": 0.05,
+      "persistence_ms": 5,
+      "threshold": 0.95
+    },
+    {
+      "actionable_margin": 0.0,
+      "hysteresis": 0.05,
+      "persistence_ms": 3,
+      "threshold": 0.99
+    },
+    {
+      "actionable_margin": 0.1,
+      "hysteresis": 0.05,
+      "persistence_ms": 3,
+      "threshold": 0.99
+    },
+    {
+      "actionable_margin": 0.0,
+      "hysteresis": 0.05,
+      "persistence_ms": 5,
+      "threshold": 0.99
+    },
+    {
+      "actionable_margin": 0.1,
+      "hysteresis": 0.05,
+      "persistence_ms": 5,
+      "threshold": 0.99
+    }
+  ],
+  "privileged_runtime_inputs": [],
+  "protocol_mutation_after_first_training_job": false,
+  "resource_ceilings": {
+    "history_memory_bytes": 49600,
+    "macs_per_1khz_tick": 18657,
+    "parameter_count": 2657,
+    "persistent_state_bytes": 1024
+  },
+  "runtime_observables": [
+    "bilateral per-foot FSR4",
+    "bilateral per-foot accel3/gyro3",
+    "causal FSR-loaded contact",
+    "causal contact age",
+    "commanded speed"
+  ],
+  "sample_rate_hz": 1000,
+  "sink_status": "SINK_RUNTIME_DETECTION_DEFERRED",
+  "starting_checkpoint": "72df1e1fa692357a2cf8afedddc8006e669001a4",
+  "system_int8_vela_e84_hil_work": false,
+  "task": "Walking v2 Targeted Slip Retraining v3",
+  "terrain_training": false,
+  "touchdown_guard_ms": 10,
+  "training": {
+    "complete_population": true,
+    "families": [
+      {
+        "activation": "relu",
+        "batch_construction": "complete eligible population; streaming sufficient statistics",
+        "candidate_id": "R1",
+        "early_stopping": false,
+        "epochs": 1,
+        "feature_contract": "current bilateral Fusion20, 50 ms deltas/statistics, causal contact age",
+        "hidden_width": 12,
+        "history_ms": [
+          50
+        ],
+        "learning_rate": "not_applicable_closed_form",
+        "loss_terms": [
+          "balanced four-state negative log likelihood",
+          "actionable_over_normal ordering",
+          "actionable_over_early margin",
+          "correct_foot_over_contralateral ordering"
+        ],
+        "loss_weights": [
+          1.0,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "name": "targeted_S4_C_reproduction",
+        "optimizer": "episode_weighted_diagonal_gaussian_closed_form",
+        "output_contract": "two-stage actionable proposal plus causal normal/early verifier and affected-foot comparator"
+      },
+      {
+        "activation": "relu",
+        "batch_construction": "complete eligible population; streaming sufficient statistics",
+        "candidate_id": "R2",
+        "early_stopping": false,
+        "epochs": 1,
+        "feature_contract": "separate ipsilateral/contralateral 50 ms and 200 ms summaries",
+        "hidden_width": 16,
+        "history_ms": [
+          50,
+          200
+        ],
+        "learning_rate": "not_applicable_closed_form",
+        "loss_terms": [
+          "balanced four-state negative log likelihood",
+          "actionable_over_normal ordering",
+          "actionable_over_early margin",
+          "correct_foot_over_contralateral ordering"
+        ],
+        "loss_weights": [
+          1.0,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "name": "dual_timescale_horizon_verifier",
+        "optimizer": "episode_weighted_diagonal_gaussian_closed_form",
+        "output_contract": "shared per-foot four-state horizon head plus affected-foot localization head"
+      },
+      {
+        "activation": "relu",
+        "batch_construction": "complete eligible population; streaming sufficient statistics",
+        "candidate_id": "R3",
+        "early_stopping": false,
+        "epochs": 1,
+        "feature_contract": "causal maximum-200 ms hazard summaries and contact-scoped state",
+        "hidden_width": 20,
+        "history_ms": [
+          25,
+          50,
+          100,
+          200
+        ],
+        "learning_rate": "not_applicable_closed_form",
+        "loss_terms": [
+          "balanced four-state negative log likelihood",
+          "actionable_over_normal ordering",
+          "actionable_over_early margin",
+          "correct_foot_over_contralateral ordering"
+        ],
+        "loss_weights": [
+          1.0,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "name": "discrete_hazard_foot_localization",
+        "optimizer": "episode_weighted_diagonal_gaussian_closed_form",
+        "output_contract": "four preregistered 25 ms hazard bins, farther/no-event, active evidence, foot head"
+      }
+    ],
+    "final_fit": "exactly once and only after all mandatory development gates pass",
+    "hard_negative_mining": "inner-training-only, two-stage, no destructive downsampling",
+    "normalization": "inner-training-only population mean/std",
+    "outer_folds": [
+      0,
+      1,
+      2
+    ],
+    "seeds": [
+      202608231,
+      202608232,
+      202608233
+    ]
+  },
+  "version": "walking_v2_slip_targeted_retraining_v3"
+}
