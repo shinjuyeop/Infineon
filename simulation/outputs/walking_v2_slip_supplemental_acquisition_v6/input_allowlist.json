@@ -1,0 +1,241 @@
+{
+  "exact_paths_only": true,
+  "inputs": [
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_scenario_generator_redesign_v4.py",
+      "purpose": "frozen v4 generator implementation"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_scenario_generator_redesign_v4.py",
+      "purpose": "frozen v4 generator implementation"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_scenario_generator_redesign_v4.py",
+      "purpose": "frozen v4 generator implementation"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_bilateral_slip_targeted_acquisition_v5.py",
+      "purpose": "frozen v5 acquisition implementation"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_bilateral_slip_targeted_acquisition_v5.py",
+      "purpose": "frozen v5 acquisition implementation"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_bilateral_slip_targeted_acquisition_v5.py",
+      "purpose": "frozen v5 acquisition implementation"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/protocol.json",
+      "purpose": "verified v4 generator artifact"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/summary.json",
+      "purpose": "verified v4 generator artifact"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/readiness.json",
+      "purpose": "verified v4 generator artifact"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/provenance.json",
+      "purpose": "verified v4 generator artifact"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/local_patch_definition.json",
+      "purpose": "verified v4 generator artifact"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/geom_contact_contract.csv",
+      "purpose": "verified v4 generator artifact"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/terrain_immutable_verification.json",
+      "purpose": "verified v4 generator artifact"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/oracle_immutable_verification.json",
+      "purpose": "verified v4 generator artifact"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/failed_v3_quarantine_manifest.json",
+      "purpose": "verified v4 generator artifact"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/protocol.json",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/acquisition_manifest.json",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/summary.json",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/readiness.json",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/provenance.json",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/generator_immutable_verification.json",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/patch_contract_verification.json",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/oracle_immutable_verification.json",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/terrain_immutable_verification.json",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/v3_quarantine_verification.json",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/material_profiles.json",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/patch_geometry.json",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/run_manifest.csv",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/positive_source_audit.csv",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/control_source_audit.csv",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/active_patch_contact_audit.csv",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/physical_episode_ledger.csv",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/pair_parity_audit.csv",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/trace_shard_manifest.json",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_000.npz",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_001.npz",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_002.npz",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_003.npz",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_004.npz",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_005.npz",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_006.npz",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_007.npz",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_008.npz",
+      "purpose": "immutable v5 acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3/run_manifest.csv",
+      "purpose": "quarantined v3 run inventory only"
+    },
+    {
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json",
+      "purpose": "existing valid 120-run development inventory"
+    },
+    {
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/slip_bilateral_metrics.csv",
+      "purpose": "existing physical-onset foot inventory; model scores unused"
+    },
+    {
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "frozen physical Slip oracle contract"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py",
+      "purpose": "frozen physical Slip oracle implementation"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "frozen physical contact labels"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/terrain_profiles.py",
+      "purpose": "frozen material profiles"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/bilateral_hil_sensor_v2.py",
+      "purpose": "Fusion20 virtual sensors"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/g1_upstream_locomotion.py",
+      "purpose": "frozen walking controller"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "immutable Terrain model"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "immutable Terrain normalization"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "immutable Terrain config"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "immutable Terrain lock"
+    },
+    {
+      "path": "simulation/unitree_rl_mjlab/deploy/robots/g1/config/policy/velocity/v0/exported/policy.onnx",
+      "purpose": "fixed walking policy"
+    },
+    {
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/scene_walking_terrain_transition.xml",
+      "purpose": "fixed walking scene"
+    },
+    {
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/g1_29dof.xml",
+      "purpose": "fixed G1 robot include"
+    }
+  ]
+}

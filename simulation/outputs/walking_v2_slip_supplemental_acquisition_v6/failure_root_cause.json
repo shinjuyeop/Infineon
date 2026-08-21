@@ -1,0 +1,39 @@
+{
+  "allowed_primary_failure_causes": [
+    "INSUFFICIENT_PATCH_DWELL",
+    "INSUFFICIENT_REMAINING_STANCE",
+    "LOW_NORMAL_LOAD",
+    "INSUFFICIENT_TANGENTIAL_DEMAND",
+    "LEFT_RIGHT_GAIT_ASYMMETRY",
+    "PATCH_LONGITUDINAL_MISALIGNMENT",
+    "ORACLE_ONSET_AFTER_CONTACT_LOSS",
+    "MODERATE_FRICTION_PHYSICALLY_INSUFFICIENT",
+    "OTHER_WITH_EVIDENCE"
+  ],
+  "evidence": {
+    "early_middle_mean_maximum_anchor_drift_m": 0.09191605655683412,
+    "early_middle_source_valid_count": 18,
+    "failed_count": 9,
+    "failed_mean_maximum_anchor_drift_m": 0.03742646405266391,
+    "failed_source_valid_count": 0,
+    "left_vs_right_normal_load_ratio": 1.0372499940983244,
+    "left_vs_right_patch_dwell_ratio": 1.0039271688682614,
+    "left_vs_right_remaining_stance_ratio": 1.0039271688682614,
+    "left_vs_right_tangential_force_ratio": 1.0338406249494905,
+    "left_vs_right_target_velocity_ratio": 0.7399828016261778,
+    "oracle_threshold_m": 0.05,
+    "right_mean_maximum_anchor_drift_m": 0.05439655565553241,
+    "right_source_valid_count": 5,
+    "strong_mean_maximum_anchor_drift_m": 0.061609370840920344,
+    "strong_source_valid_count": 7
+  },
+  "exactly_one_primary_failure_cause": true,
+  "interpretation": "Patch dwell, remaining stance, and normal/tangential force are comparable between feet, but late-stance left-foot tangential velocity and accumulated drift are lower. Strong friction reduction and earlier activation overcome that asymmetric kinematic demand; frozen moderate friction does not.",
+  "model_scores_used": false,
+  "patch_longitudinal_misalignment_supported": false,
+  "primary_failure_cause": "LEFT_RIGHT_GAIT_ASYMMETRY",
+  "secondary_contributors": [
+    "INSUFFICIENT_REMAINING_STANCE",
+    "MODERATE_FRICTION_PHYSICALLY_INSUFFICIENT"
+  ]
+}

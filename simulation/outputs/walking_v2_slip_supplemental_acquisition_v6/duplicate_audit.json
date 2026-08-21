@@ -1,0 +1,11 @@
+{
+  "calibration_run_count": 24,
+  "discarded_count": 0,
+  "duplicate_unique_trace_count": 0,
+  "replaced_count": 0,
+  "silently_relabelled_count": 0,
+  "supplemental_run_count": 0,
+  "unique_run_id_count": 24,
+  "unique_trace_hash_count": 24,
+  "valid": true
+}

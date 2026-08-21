@@ -1,0 +1,46 @@
+{
+  "audit": {
+    "calibration_run_count_included": 0,
+    "combined_targeted_source_valid_positive_count": 84,
+    "factorial_cells_with_support": 33,
+    "failed_source_run_count_included": 0,
+    "pass": false,
+    "v3_run_count_included": 0,
+    "v5_valid_positive_count": 84,
+    "v6_valid_positive_count": 0
+  },
+  "eligible_runs": [],
+  "excluded": {
+    "calibration_only_run_ids": [
+      "cal_positive_0p10_G0",
+      "cal_control_0p10_G0",
+      "cal_positive_0p10_G1",
+      "cal_control_0p10_G1",
+      "cal_positive_0p10_G2",
+      "cal_control_0p10_G2",
+      "cal_positive_0p10_G3",
+      "cal_control_0p10_G3",
+      "cal_positive_0p15_G0",
+      "cal_control_0p15_G0",
+      "cal_positive_0p15_G1",
+      "cal_control_0p15_G1",
+      "cal_positive_0p15_G2",
+      "cal_control_0p15_G2",
+      "cal_positive_0p15_G3",
+      "cal_control_0p15_G3",
+      "cal_positive_0p20_G0",
+      "cal_control_0p20_G0",
+      "cal_positive_0p20_G1",
+      "cal_control_0p20_G1",
+      "cal_positive_0p20_G2",
+      "cal_control_0p20_G2",
+      "cal_positive_0p20_G3",
+      "cal_control_0p20_G3"
+    ],
+    "v3_quarantined_trace_use_count": 0
+  },
+  "not_created": true,
+  "reason": "bounded geometry calibration failed",
+  "training_use_assignment_performed": false,
+  "version": "walking_v2_combined_development_v6"
+}

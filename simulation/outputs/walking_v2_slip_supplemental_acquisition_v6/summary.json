@@ -1,0 +1,82 @@
+{
+  "all_attempts_retained": true,
+  "blind_holdout_created": false,
+  "calibration": {
+    "all_attempts_retained": true,
+    "executed_positive_attempts": 12,
+    "executed_unique_runs": 24,
+    "matched_controls": 12,
+    "passing_candidate_count": 0,
+    "planned_positive_attempts": 12
+  },
+  "combined_audit": {
+    "calibration_run_count_included": 0,
+    "combined_targeted_source_valid_positive_count": 84,
+    "factorial_cells_with_support": 33,
+    "failed_source_run_count_included": 0,
+    "pass": false,
+    "v3_run_count_included": 0,
+    "v5_valid_positive_count": 84,
+    "v6_valid_positive_count": 0
+  },
+  "forbidden_artifact_access_count": 0,
+  "model_selected_or_locked": false,
+  "moderate_friction_changed": false,
+  "next_step": "SLIP_MODERATE_PROFILE_RECALIBRATION",
+  "oracle_byte_identical": true,
+  "original_v5": {
+    "V5_ACQUISITION_DATA_READY": false,
+    "covered_factorial_cells": 33,
+    "source_valid_positive_count": 84
+  },
+  "primary_failure_cause": "LEFT_RIGHT_GAIT_ASYMMETRY",
+  "readiness": {
+    "SINK_RUNTIME_DETECTION_DEFERRED": true,
+    "WALKING_V2_FRESH_BLIND_HOLDOUT_AUTHORIZED": false,
+    "WALKING_V2_INT8_PREPARATION_AUTHORIZED": false,
+    "WALKING_V2_SLIP_COMBINED_DEVELOPMENT_DATA_READY": false,
+    "WALKING_V2_SLIP_COMBINED_FACTORIAL_COVERAGE_READY": false,
+    "WALKING_V2_SLIP_FAILED_CELL_DIAGNOSIS_READY": true,
+    "WALKING_V2_SLIP_FUTURE_FOLD_READY": false,
+    "WALKING_V2_SLIP_GEOMETRY_CALIBRATION_READY": false,
+    "WALKING_V2_SLIP_SUPPLEMENTAL_CONTROL_READY": false,
+    "WALKING_V2_SLIP_SUPPLEMENTAL_DATA_READY": false,
+    "WALKING_V2_SLIP_SUPPLEMENTAL_SOURCE_READY": false,
+    "WALKING_V2_SLIP_TARGETED_RETRAINING_AUTHORIZED": false,
+    "WALKING_V2_SYSTEM_MIGRATION_AUTHORIZED": false,
+    "WALKING_V2_TERRAIN_LOCK_PRESERVED": true
+  },
+  "selected_geometry_candidate": null,
+  "supplemental_gates": {
+    "air_or_postfall_positive_attribution_count": 0,
+    "all_three_missing_cells_filled": false,
+    "control_physical_slip_onset_count": 0,
+    "discarded_count": 0,
+    "duplicate_unique_trace_count": 0,
+    "executed_positive_attempts": 0,
+    "forbidden_artifact_access_count": 0,
+    "friction_contract_violation_count": 0,
+    "full_trace_identity_count": 0,
+    "left_target_first_accuracy": 0.0,
+    "matched_control_attempts": 0,
+    "pair_precontact_parity_count": 0,
+    "pass": false,
+    "patch_base_double_contact_count": 0,
+    "planned_positive_attempts": 0,
+    "postcontact_divergence_count": 0,
+    "replaced_count": 0,
+    "silently_relabelled_count": 0,
+    "source_valid_count_by_speed": {
+      "0.10": 0,
+      "0.15": 0,
+      "0.20": 0
+    },
+    "source_valid_positive_count": 0,
+    "valid_control_count": 0
+  },
+  "system_int8_vela_e84_hil_changed": false,
+  "task": "Supplement Missing Left Mid-Late Moderate Slip Conditions v6",
+  "terrain_byte_identical": true,
+  "training_performed": false,
+  "v3_trace_use_count": 0
+}

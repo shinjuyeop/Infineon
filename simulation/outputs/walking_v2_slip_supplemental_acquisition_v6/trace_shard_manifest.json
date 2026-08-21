@@ -1,0 +1,6576 @@
+{
+  "all_exact_roundtrip_verified": true,
+  "all_under_45_mib": true,
+  "deterministic_run_order": [
+    "cal_positive_0p10_G0",
+    "cal_control_0p10_G0",
+    "cal_positive_0p10_G1",
+    "cal_control_0p10_G1",
+    "cal_positive_0p10_G2",
+    "cal_control_0p10_G2",
+    "cal_positive_0p10_G3",
+    "cal_control_0p10_G3",
+    "cal_positive_0p15_G0",
+    "cal_control_0p15_G0",
+    "cal_positive_0p15_G1",
+    "cal_control_0p15_G1",
+    "cal_positive_0p15_G2",
+    "cal_control_0p15_G2",
+    "cal_positive_0p15_G3",
+    "cal_control_0p15_G3",
+    "cal_positive_0p20_G0",
+    "cal_control_0p20_G0",
+    "cal_positive_0p20_G1",
+    "cal_control_0p20_G1",
+    "cal_positive_0p20_G2",
+    "cal_control_0p20_G2",
+    "cal_positive_0p20_G3",
+    "cal_control_0p20_G3"
+  ],
+  "git_lfs_required": false,
+  "shard_count": 1,
+  "shard_size_runs": 24,
+  "shards": [
+    {
+      "array_shapes": [
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "cff8d64b7f6269f70d31102031427445fbc2003052913bc986f924fc611f688e",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "806b0823f655e701788c29487116d3e0efc6ad17906f6a9fef8c4a7b89d895b3",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "cd258b9db1f4a50819958e433cad277e34b4e1cc0808589ff06cf176ccd40f42",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "0b3e3f65d68ee3d43b4138ffb9dfc51ead9329fff855970d2ae29e5839941558",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "70a8273764bc78769420f9d3a39b2e6ef9abe5015643cddab766b9284edcb7af",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "c149263abc03be0503428906be55853153286575ed87a86a36e31c235554fcd4",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "2af4f6f8d03c0244491c23d3a20e1186c1b281f515ae84f979015a4a56aa4ff5",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "0b3e3f65d68ee3d43b4138ffb9dfc51ead9329fff855970d2ae29e5839941558",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2c3f48963be11f55eb80f7ebe5e3a3d0f6228f0cf6e20ab5b70400edd4c0a450",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "31d8e92d7eb3ddd1fe0f939e79e161e07c63dbcec1cea216806c62b3cd826cf2",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "a2afcf18ceb33e2c97246cb233cf57cd432c0f6598e44564da5c49e401620832",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "cf53a8a6885bdb1b686cd88e6472c6e7dadb1eb98891924ca05560675c3a58fc",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "cac10c64018569c50f8e58e4571ee5f89e2857c618c4387addb7daa624b15fa4",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "8dccdbb224c4f48075c765b80f18e2d27f5f775c9ba33cf18f642c137fac7f9f",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "0b3e3f65d68ee3d43b4138ffb9dfc51ead9329fff855970d2ae29e5839941558",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "11ef39379bde07e3f53d54cec1bf8aa75c5ce6cac858f3f0a296e1dc78205b7e",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "da6a62757c54c48e4a6d1fa0597caa8777457973c423e82e0a3a2e60e91092b6",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "336773eca4666a4c45f724fca733975d63a68e01487eb03df04c5a38ecbb504e",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3afc6a50c5d59819e91c57bb54927b2d5c407ad9cc5b4803bc36b50eee3dc118",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "cd85920bdc34db23c141c053c6919572bdfd194293556821566c912dd0720700",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "fa4cdca062f3b92f446b8e4e191d647220555e460f5b5fde78b29bdda3f394df",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "79436411f38a99a0ea3a7c60994f6a4f80bde3dd884e1fa40eb0bbb74d6a3a12",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_positive_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "dfa60913ad4382410013d3b422ddb14c25d575ab40497805c8834f2c422c7fbf",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "1fbb4f17aa8b5f5bd72e16ea9d05b8429af373e1f4e40619b77f2018c70797ad",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "327cf32dad10f4a93e11a59f81214af440e3af1678e8344bd6db35c0d280f24b",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "0a52e0fb8785ceca0d8e5db0fafc8760c142a87a2529763710359006cf3e13e0",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "b3126e26ccb611adb6164beae5f7b4bcb00f254db998d70a884d3293323d86b3",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "08335644ff29fccd1d098c1cbe77c4304b1c50fbc522517f47772a77340551d6",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "49359d0bd94ba3c9d5631ab933bb0e436419abb9f36b1ad17bb70b85f5f720f6",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "0a52e0fb8785ceca0d8e5db0fafc8760c142a87a2529763710359006cf3e13e0",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f4cf2f41cc707ba7073b0836b63d12601a1e0427c2eb5186bf2ceffc39815b59",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "aacee1acc8ecca6857228a44e0ad45d295151c8628a5ec4937041a8fb22f49f8",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f49d4f1da29313013e5ec428d3fdd7b4aeaf3442c5a902430bb7de4fc6576e42",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "cf53a8a6885bdb1b686cd88e6472c6e7dadb1eb98891924ca05560675c3a58fc",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "cac10c64018569c50f8e58e4571ee5f89e2857c618c4387addb7daa624b15fa4",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "8dccdbb224c4f48075c765b80f18e2d27f5f775c9ba33cf18f642c137fac7f9f",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "0a52e0fb8785ceca0d8e5db0fafc8760c142a87a2529763710359006cf3e13e0",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1ba61f9fa17c45b3a81253c654b9b68679dde05e88db693c979e2bf12bba0e79",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4b312bc543abc98857eba5d5ded3ae0da83c448c5dca1cc6d2c52ae145b28d58",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "88fb535db6c807f0ed6baa25be0c3f981940cb580db7798a284cc69cd107b5f7",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "73a530aca6deddf4e4fdd58be7cf1777f094a5e60872e5dcaa1bdfd94d51811e",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "41b5837027184c5fd876489638845cbf7fe02b7e452b2e8ce9666b1ea12c29ae",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "95dd95e3cf1cd8779e3eb80cb87d28cd75eb87f8c400d74dae8bb456e7d743f8",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "ff637bb309b3138a8cd3fa7e612d3dc87142ba9fdc4f12d3e3e414811fe1c4ae",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_control_0p10_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "872ee8a0c64808909080e533e0e5a6063ef98f0acb00eaa7f69d25366273de3e",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "579a9d465ca0066b1a0711d7be7cff45d33a7be8465f5404b385ba5249c1c265",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "b2522be410d86a70a29e1e9ce5e935f2aa5da7eef24f50bc6617f444279147b7",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "9c3d95062ae4f57078dfcde5bcb749df3f32b1c44bc0d92c236b0c5602f2f667",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "50ebf7e8dedecf6ab7f043bbf5f1f229f8bafcabbdac38853d5ceb56d47f5442",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "72c14b1d0c9ffb0f5b3b326b3b90771f915f413f0a3fe406a15bc592b05a3ea7",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "88027cc26ab60948740be49a3a66e03f45379eff8897dc83abb65cb60e22b8f6",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "9c3d95062ae4f57078dfcde5bcb749df3f32b1c44bc0d92c236b0c5602f2f667",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3282bf587e1f83ebc185c4b0d1fafdcdd1590c588a772d9c8dcee8f4c42be63a",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "216fb9561643483d0222665c3034cdcee4e169464e787d646c17bf3ae9d26a1a",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "41281d19f8abc423544c78c5690cbcda0106715df56b164556434abf7aa7d123",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "cf53a8a6885bdb1b686cd88e6472c6e7dadb1eb98891924ca05560675c3a58fc",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "c9487c4165801f8ed6f593ddb93e4910a5332f325054b19deb60213da1611b48",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "8c01ed9158c2dec7f885a029aebf3a15f920638ef9a03927cd7d41f20bcf7673",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "9c3d95062ae4f57078dfcde5bcb749df3f32b1c44bc0d92c236b0c5602f2f667",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "6d7c7f6c73095813111f94cde98874713bce135b4239a31845c26b01cee8856f",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4f21e86b9734aa07e7aae2ac41bf18ad92132304f9ece8c607fa88dc27d46fe9",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "eede8a1afc9403d35df7cd92c238e5672b2529e0831dd593bd0a48d0f6897646",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3cc644eab831780e3b2626d6bf5ed7321a67332076d93d881e19cf9780ce9834",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "bf0a6e341b6122e378ec8161df30828b4a1760d969bb56a73921a27d18e28149",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "bd221b854c2633cbf5be2461773acd9735d711385594e5f619fb14526baef8f7",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "eb6b55be6a1c69ce4557dd7088b1e9e1911fe9f06fb1ea07c3077248f1aa4c83",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_positive_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "17a639000c605d617ca26267ee7abec4d466e30ffc5b51232b80aff656feeec3",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "7a77a9389713704d132cea6d928a1abc45d8be2ac585392b3a253a6990e3be96",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "86e117babfde006da88fd8233dca7e43211f199db0f4d299bba780a6c02c8206",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3fa69cee694380d7d9d439da25e8764c28e8a392a8d9c48da169a340350b4bfc",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "8028ff0343cf2c1ba26eeb0b3887a0dfd109aaa34826cbafa64b3f3c79bfe6be",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "4a2f9ac1df80a485c65204f901157108e9f0579a676a7ea7347b11e47e240405",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "d04dc211cf7e345b9c3dc777cb7e00386b0567d60b1df3f6cebdb52a899e6f8c",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3fa69cee694380d7d9d439da25e8764c28e8a392a8d9c48da169a340350b4bfc",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4fadda50e252b4c94b8e2127c0bc8663129833ca7b39ea9df79f58ad24eadca1",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4fdc41966b921262771121a92f6bf063a0c0ee608f5aa3f394d21da8ec9c9e50",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2be4e01964d39f2a9dbe0d4ea9cb639a1eb08f94b293cac8b1a9a5c06bb92a20",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "cf53a8a6885bdb1b686cd88e6472c6e7dadb1eb98891924ca05560675c3a58fc",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "c9487c4165801f8ed6f593ddb93e4910a5332f325054b19deb60213da1611b48",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "8c01ed9158c2dec7f885a029aebf3a15f920638ef9a03927cd7d41f20bcf7673",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "3fa69cee694380d7d9d439da25e8764c28e8a392a8d9c48da169a340350b4bfc",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "048c64734c497a5a36f40b3631096fc339b8fcdb9838c25d1d1332039eeab8ed",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "491121606f09220034ee85b557f490e3b759f86b490a3de79c3ffc5fafc058ac",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "a5327c81c9e0853e5e18561b62b3414ca73d43f5b39aa59ca614e9ec21e7f75a",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2b2e552dc812a60907d9b6b7d2b5192454b85291eaacc5a28a7016616e144b4e",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "8beb61fe46dd5d5a41186393b14c1a24e1f520fd556465d8f074a86e5a719ee6",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "812cc2f4c95fe6bfec5b9b1451f0c858d3f23e07c5a80972d3c8a589410af7b0",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1ab9890e7ff00b4cb01ae6d02ddf258f030cd0c7d6da668b7ea63ae02bc5c18c",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_control_0p10_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "98f0fc8846900014191bd5e91b47479d15723672e83c2146bf68b5ccaaabbfb5",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "32dfeaa89c700b8bd485a6fe3c94a4ff9cf1016dfaf64d6ee26e9b95c06218f1",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "b2522be410d86a70a29e1e9ce5e935f2aa5da7eef24f50bc6617f444279147b7",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "9c3d95062ae4f57078dfcde5bcb749df3f32b1c44bc0d92c236b0c5602f2f667",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4460bccd3c9b29d19782bab11f1814d185973ba8356107f5b21713ebb20f2d92",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "13cd061f45370ee6d9cf642defa40f287c39be84e60af186f635859e6f4fc9e9",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "0afa122732c44a62ff6f30abea39a8688b446da3f163618e7eeb8b77853ef2bd",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "9c3d95062ae4f57078dfcde5bcb749df3f32b1c44bc0d92c236b0c5602f2f667",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3282bf587e1f83ebc185c4b0d1fafdcdd1590c588a772d9c8dcee8f4c42be63a",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "fd2385904cc0ca89ee6bf27a1ed627b726de494623ac163c4fbf24dbe924635f",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "a9fad3b22bae7ff15e2d6559413ad45f24e391b88d97e9c290c925dbf3c0122f",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "cf53a8a6885bdb1b686cd88e6472c6e7dadb1eb98891924ca05560675c3a58fc",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "d953967c9f8e4cb862d1ae656c92c8bc286e3549605217de29efed0b4318ee67",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "6ea21438003124a91f554707eb83a3b461a36c53c85e89178e7756936186252b",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "9c3d95062ae4f57078dfcde5bcb749df3f32b1c44bc0d92c236b0c5602f2f667",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "6d7c7f6c73095813111f94cde98874713bce135b4239a31845c26b01cee8856f",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4f21e86b9734aa07e7aae2ac41bf18ad92132304f9ece8c607fa88dc27d46fe9",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "eede8a1afc9403d35df7cd92c238e5672b2529e0831dd593bd0a48d0f6897646",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2df8238fa533e2c8c6cafaec6edbbf405111ba245f02fd1bd7240f523201fc4e",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "b63660d9cecebb84e31def18fcee9918013e4fe5538dffd4f9009c97e2cd0739",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "6df962568a41030ef32140f1a0dd3d49820913c096fc76438c11ce53c93a22d9",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "eb6b55be6a1c69ce4557dd7088b1e9e1911fe9f06fb1ea07c3077248f1aa4c83",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_positive_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "0441ec6132bf5b48d77c9a4478bd7636eb1a1820bb52a34548e4c1c2f098be8d",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "0c7081b760e4c39092986355d2014253ccffbf6e83b92f1f6beb4f8dfbd6e921",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "68321f2b0b4b43579fa54b34a80801bfabf9407692de56e505a141bed291b2a0",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "55f644988c4b512276abfc9a928d736922e91668e24462dec5e626c4fcfd120a",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "40277795365052b87f15df07bde28c8f121c605462eab51ab6be27e508fe0560",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "9c82d711f90d1c908415118d7a00cf30bae4d7a28e2aa6fad23924b53ca50eaf",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "66ccd4009e0e09ea1df7d751d4b162e5b75261c7e46972ebea99ba37c2343ebf",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "55f644988c4b512276abfc9a928d736922e91668e24462dec5e626c4fcfd120a",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "14941858f5d07a437ff40e531456dd4bd0541d28546cda07e80cae90f733321b",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5c818f0032ef0da00de007b7fac31764ba2f28e370a3cc9ab9b45014f16b83d7",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f65192975eb14f563884b254f11fb801e6a3233d78658cef5b21177e7b84b21e",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "cf53a8a6885bdb1b686cd88e6472c6e7dadb1eb98891924ca05560675c3a58fc",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "d953967c9f8e4cb862d1ae656c92c8bc286e3549605217de29efed0b4318ee67",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "6ea21438003124a91f554707eb83a3b461a36c53c85e89178e7756936186252b",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "55f644988c4b512276abfc9a928d736922e91668e24462dec5e626c4fcfd120a",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3a596876c082c0ac78a7d83108f1d1c2aadb0ee48e653b47dc39e8f59e5c54df",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f36b1c0687aa6e795d827b5c9cf53cb07fc217b09482e9f5a6987deac156b731",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "ff2d9a2c5cff7898d2e5d9a57cca467c9defac7898d605496be89821cc933c86",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3f5531156f2ebc8a8fd190500ef32ce23a32de3ec8341eff5f1cde3172caf4ac",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7ac0ced4cec838e1435f6723fed6dc69275fb25cdd60d5ba2b953d3a00786698",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2a1fd41b3876ba5a46a6367f5442bdd32b61c064dff4e376954c4b092741458b",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "9585df8364350e688b60ee9e044545bf300e9c85ef33314d38269e31492975fc",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_control_0p10_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "67610e279442f56bbc240c11f367c828515d5b15457b5650088a451488999c41",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "10ef06b31ec6b7103c60c53c71a2e5ff346f49fa2a1b1146f82df92d7fcde9f9",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "e56af7d9909ceff7beeb7cf2a230d1e50633807bfd11656b7362eced121fcde7",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "d9eccf6a2688a68f0048b84c7e4568c77fa5f4a9c5bdddf5e7a7e13daa36834a",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "8f59ddc9da12f156a81cffdf00249956b9334d2445d94e711ba1192d5da79579",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "acf099df0d70fc2680699de78dc534ff396f1421cbb8e01774ac7f3475dc21c0",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "d3ba0885decabfb3a8a5ad28110fab3a57a47a6fd14971b12cdbb56c1e4f4e0c",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "d9eccf6a2688a68f0048b84c7e4568c77fa5f4a9c5bdddf5e7a7e13daa36834a",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "458c3cb0756ccf2f55d0253e5376270b19f3626afe13945267c022c6233619e8",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4a534e5903f0190c001aa4e0d73e121987104c6e0772cddc4d84613869bd0c20",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "84b6e8f10c1d657614b66500c8651be2ddf4a6843db2e64f050467853b3a402a",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "cf53a8a6885bdb1b686cd88e6472c6e7dadb1eb98891924ca05560675c3a58fc",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "6b47c001488f5963b3c5bc474db93343f5bfb54df30125ed5a3c379a92bdfd9a",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "a24e9f953362ccb0e64ec1ec7de4b3c2521d2c67341a9b7111038271b604e087",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "d9eccf6a2688a68f0048b84c7e4568c77fa5f4a9c5bdddf5e7a7e13daa36834a",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "102a53e1d9e2df6b2452854c47cbc7f11efc5fe08fd3dc0851abce7624ec1ea3",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "c18b0788879e72fa311f792b89a22ca7f0a79ed9a9bc95f64a6778d301dc4cfd",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5635e2265f19647ac2f74f58dc43075bf426be368177c398bf942b23c8d441aa",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "8f9a143c8b265671a7278e6f69dbeee8c76d5d1ffe0795d3c5dcb9294350f93a",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f8722f92166165c8b8fc53ec6218b31f8b2f5e97243cb910e805e2d1bbb685db",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "9746c32de5afb7c1f0c6ccd80c812155d6ea7085c59e154583113186d058b33f",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "6d88b3c56aaa008df2c5483a9e9acefa0889e83caa5af5488b2d90f3fd6a6103",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_positive_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "f6fe31785fa4ca7fa865f4d13623ff4e0a5efd0679d080240ea7693069a21648",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "289a3c27ca77a329e84682472ca0b345b041871e03ac45358dc6d1f0e3353256",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "f91280c18986c4a452ba74373ff91dbe9d72f1764a5327f34c1941a565cba0b6",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "009ea7fc6ca256d1f2c553185e09342242bd51daf34bb074264c6b34e985b84d",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "844872bbbc53e38e7570b03699bb3d7decbdf94d4001101c6f6202b9fe0b9570",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "f7d5dfeeb530e06a6e2e839752f7d1aba40699e517f6cc8605c5d6801b2d21d1",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "41f91d208cbbffd51dcc48d3d30c510f36dcb1f48b3b71f2bf2a65bf129ba208",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "009ea7fc6ca256d1f2c553185e09342242bd51daf34bb074264c6b34e985b84d",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "01bd3fd15f7dbec2a94ea827dc748d10696bdfd859d03e141137e2669ca2b04a",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4a2c92c647a33a4aae4135fb8a601bfff29a2cb87f903afe4b8d2c990c638bf3",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1fbd0a59d89ad9204eb7095324d0d9894116ae8f2bc4788c40a65b741291485a",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "cf53a8a6885bdb1b686cd88e6472c6e7dadb1eb98891924ca05560675c3a58fc",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "6b47c001488f5963b3c5bc474db93343f5bfb54df30125ed5a3c379a92bdfd9a",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "a24e9f953362ccb0e64ec1ec7de4b3c2521d2c67341a9b7111038271b604e087",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "009ea7fc6ca256d1f2c553185e09342242bd51daf34bb074264c6b34e985b84d",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "71bffa7c896cdf6cce2bb2a2e43c01f1983d687a6e0083366f3094e4ad67632d",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "c16d39c279eed70209445dfe1bdd73e20888a20e1bce0cc5f9ac97a78e3612de",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "91ce39bbdbeb00398468937d8011e5acc897ba34f3c48c17372ca99f428bc547",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7406bce97d6c2a98b3fb98e5f5a2199b27af22e8c621ff0b389161b0333f8d36",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "35113989eb9e9f4f65e6cdf6606184fe8ea7db35a6d15d401cc3a0d33df199e2",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "d9dc5b939a265b748b44012f69cf19d99885a6b1cae9cc624d8282a50c15ea49",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "869d0847a5c10afaacb2c17676ebf600299a8d571524bede0f8520ead9bd5060",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_control_0p10_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "8afd92e883fb6bc5810b7fee830fd570f09149844ef6c63831060a3b89bceffd",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "7c06001fa62a777d4d703eb23dafa0b6b997e7b382ccb81deeb3d9a301f7712a",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "8e7308a323934d1a8e4e85785c677b100c1dfe6f174a3fbbe56a651ecb55ce0b",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a378cc786d44a06bd21c90f9066698badc0db701aab629c997663e2473851fb",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "d192434789a225b4daef38f74279990a90c51ba87d3ac02751f50f62a9a54c18",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "9a1dd1502a9dd59a52abde103c14372dee3264bc447c1970927b3a9db15c6f49",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "6b37938628aa223a173fc897645bcdd9733b31ce6070c0659f3c5d35a3750de3",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a378cc786d44a06bd21c90f9066698badc0db701aab629c997663e2473851fb",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "6830d2970529c5ea9bfbb9643aa760bf0df35e84d23be9010deb24469c0fe7ed",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7547560e96d1a620f2fd641c5debed4cf89ea9d32265a43c1948aac32847ce0b",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "0759ed3407ced2bfd20bf77987d22825ae3bcffe8bfd00e0fab6bca9e58fbd9a",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "aebf03a9f31373611cf1b023db128398581321fd4fdd5197cad2da884afa4982",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "e4e14a82ed71383857df0bb7b171eb675b15a8f9b5336d3607f41b09b6d616b5",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "4b23c60fc12b47df74da5de0a3c49e4ceca8718d8bfd196d172290296c041ac4",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "7a378cc786d44a06bd21c90f9066698badc0db701aab629c997663e2473851fb",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "ed94932aa18cb9a48dd29c306826c12e8d2405536e8dc0747cc2bb2fecf6a992",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f4d1efba10df283da5b9e9dddadf72b11e9d184cf4b4088e054f9fa7704efc7a",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "71840e1d3756dafc055e720277c4a9f279db53ab13c544fde321a65d904f4d29",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5e24717e48f8fa96a45e5c886db609f140f3444493ad803472408d2f5bfdda65",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "cc6e74af8ec55ac52b5b0857a7d00078612e42af2cfca55a31085680097d57fa",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "0f7b29a1a5187c487b309a1ca0a60b97139bd01c5d0e8b0affeff5e8b44a3489",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "fce1cb4cd39f1b2b41e39730812374920534f413a19b22128e8baad8d3a79263",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_positive_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "55d80ca8d347622f4111d3fa13f3b50362cdc88b4481ed70f9368ff876afa04d",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "0a1dce06ef80bbab58b12846765a12112e1d6267ca8eed77e91d00e13b596bb8",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "8769160714bbcc3169735ff9e6573a7349de250edd5a4c586616f5ae341b8cc0",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1f0fcad3a4d040719235f2800c81bd523da8bc565b63aeac1ef15b8903cc277b",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "dcfb284d16de38d066c6d5fce6abe710026e085179e1cd976547b1a3c9799bac",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "25f9ee2979a2f375843f94c689015025e95149243e0d1a73f0d2f5583d993e8a",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "0f9dff59ab92eebba98114ea3308e38bd79bb7969703849b587eb1354bb96367",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1f0fcad3a4d040719235f2800c81bd523da8bc565b63aeac1ef15b8903cc277b",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "fde1db21b816db23c63bdb4db6a242dea7a6bd30b015b2451967e3e5cd20aaca",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "73a6b564cdb1a1a9b1789037519255ff58168e20465d42dc04c0bf3218cb62fa",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1334cf30a65eb064a5aee48303239dc20fe99df8f44d36e9049cb54880acb821",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "aebf03a9f31373611cf1b023db128398581321fd4fdd5197cad2da884afa4982",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "e4e14a82ed71383857df0bb7b171eb675b15a8f9b5336d3607f41b09b6d616b5",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "4b23c60fc12b47df74da5de0a3c49e4ceca8718d8bfd196d172290296c041ac4",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "1f0fcad3a4d040719235f2800c81bd523da8bc565b63aeac1ef15b8903cc277b",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "c7cb989f61b8f509af256942ad211e37b6dd32760a7a1d9bfc51a2889abc8600",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "adb2c0534abc1da47ecf79e1a8ad5b1b73e24454038453d23e4750f810629a50",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "52b6eca1dec6cef1f22934add892d6ae7f7a9b049c65e6ed24a382314c1ef97f",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "ecaf57c0cdb56cd15ccf433a95d190f8a8f62c94d66d5f04d07d63758e754125",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7227e48875f129afa725ff09a5e4ff067e7079759aff93cd14b6e17a33cc5b90",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2dd60de088e6485e9514650d190965a5b8b86c03fba979b164b9896aebe895c9",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "e9e45ef5349006b1a46d7f5d2dbc9bb7ceca3e6a11460da7cebe9151d89f5b95",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_control_0p15_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "048b7ff8c7b06a042ff5adcbdc44bd7b5cf2b3a2562a6c1ddc63697975bc1c8f",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "72efec0db2dd17f73df4b0c9306160ca7c3cb10cd8f38c27c63fc37a5542d440",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "388e10d9c69e3bffe7d364aed952c505c1160d9d13ab1d700dc18486c934389b",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "570b40c1990c272d9d6502ce6101722abce01ada24d61117c67b91487342c1dc",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "67d3158f9e327ccb9d95a73ea61e8fb8ff2af983ca9d2aeffed3ebf5593b61c7",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "3a619e3bf7a106bce9d221debf4df234289eb109ed740606da4a39a4140adb01",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "4f5b7504d814454ba418ec78342432343ba7f0a7ae02524d2d93f6c0b5f919e8",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "570b40c1990c272d9d6502ce6101722abce01ada24d61117c67b91487342c1dc",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "45a950d9a49d9042ed9de3e72ce2cc0d296eb48cd3291d0da06af2fa87b38c3c",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "aea312f1aa72232155178dbc5ffcbe7366188a9900db78f0c3909d161d0a3051",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "d4af23e500700b13531a1ad5fc8086e30723a054c8cdceaf194f6fff02d9b9bf",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "aebf03a9f31373611cf1b023db128398581321fd4fdd5197cad2da884afa4982",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "ff8fb1abb395f7bbf57db023ddb80f1305ff9b2ab6a17af3842320a1dcec2bd3",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "dbf337eed90177441dadfc0d62e5f45f96ab4d399bf9b8fb8c8148f969286124",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "570b40c1990c272d9d6502ce6101722abce01ada24d61117c67b91487342c1dc",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "841a38dba4d99fe3296e6dee1652593a62b10304573dce744f716ac899cc6fdb",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "445852b350c5e18aafa72f6710dd08ccb3771517e8f246430035fd0b02158230",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "de49a772054cbd00f91d9c13c4bc9e64855b205ccd40e5c9aeb45774ddcd0814",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3101b2c7cbaff57fef1d52af1b526313ed79c5b52b343118548b3de3219bc27c",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "d299b18559ba4817048100f950c7118180d585cda02f8ac288fa305fb16d7689",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "ed74291d46178f89b13b919a04df0a7bba3a99bbe11e7618280fc5c11a06f226",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "e9cb680a32275997352791038df26f032fbae9f9e0f3b493ad8a0f4b891274fc",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_positive_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "5355f66d4bf59b766784471864b3fbe8e9effc11580831d0c0dedcd49a8ed414",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "ccba301cc3277459cd4850f847be42a0cd8ff395ef1eb081760112c0589505f8",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "81cc4c34e04bae83a89e29d2bbdbe1b18f0b808dd0834b7b663f875af65e522b",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "19adf09d25c20c1cea0ddbd5120e3931c4df4e29b29a2adbe43aec79202c2387",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "97347b8ee328c3f515c8762a7afb44d57d1352d0d1d37716d7ee46aadf4ada86",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "a3a95f78fd69f597fc2cfcd8fd75c900f69810caab7a211ca086ae5b220fad6a",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "e7d55d064ba4579671badc26e52fe2e837ad0020516398cb0a3ada944751a5cf",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "19adf09d25c20c1cea0ddbd5120e3931c4df4e29b29a2adbe43aec79202c2387",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5117106b9aab8181f6b715000c62fe6de2605847738fab5358c1dc409434aa4c",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "dd2ba28a02a186e60a1f6f780f14fdf9bfa34797d9f1d353d94dcf317c604c17",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "a998d5e0e6dfd0a8b3b3318c874e2c91c2985a3b3a388b5d2aa4a0ce1b203b50",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "aebf03a9f31373611cf1b023db128398581321fd4fdd5197cad2da884afa4982",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "ff8fb1abb395f7bbf57db023ddb80f1305ff9b2ab6a17af3842320a1dcec2bd3",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "dbf337eed90177441dadfc0d62e5f45f96ab4d399bf9b8fb8c8148f969286124",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "19adf09d25c20c1cea0ddbd5120e3931c4df4e29b29a2adbe43aec79202c2387",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1f6d83bd4cd59cd1ac84a4e4c80011f625fc0f1ca190ee1c89c1ce5ecc3bd4a4",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5bdbb4a80d1d860adfd44c159da59a87e5d941783e583377a2a9baf7fa05f6b8",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "6cdd6b16a50f340aab7003dd75ce04a6df33690bde1dc3a0e3b4ad3fc3cfa1af",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "db62dd675f890f3e2cc0daa81546dfd1a5942931a3ba4ee139c2f3a4e8df6659",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5b9a709a75ed3db56bdec029a7608c8dde48fcec1f868de4c9c80e02923a68ef",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "387140857cd3b85381c07299c5270c65f4117d3b01b9a6f06ea92031d55bd1f8",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "fa23936e12089a223e7a2d009ca33d9ee6d94038d18e9db2171de621877bdd79",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_control_0p15_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "64d316c1b49b88ecf721175c265e22217b9209889358b8f6a378b1569e39c907",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "b3a0a62de0e357be295954cc1b51dce0cbbebb7014ffa9da2a1d3f6669725663",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "db34d41690af7a77534a0f2c38494093302b5c79978b4fe92ead3f85475d456b",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "851cd3753423c4c99b803a19f26092bbf600a7377ebd65e780d1e8ed0477726b",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5922bd0771c0284d341ec64f921920f25a41e1eeafc2f0ff92233982feb9ce4a",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "b5f0b164fc52eafe805619194bdca660a53ad63d12330ca36da37f122fe4a454",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "39bfa416ac4669b594bb2fb5cdd7149d309c8d2c20f3662d0f83795bc6f8bc6a",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "851cd3753423c4c99b803a19f26092bbf600a7377ebd65e780d1e8ed0477726b",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83bfeb73618a0ed442acc0a87f661722523ff8b7c2b2a43184f7f1dc1c0903a8",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "b0bf598a4e9d3d06c9f622a4457e8a14b7a801b684bf5c785725930ac8c652b5",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7e003f3bb0d736a0517197c65b96e2a38f8418da71083cc451dc9f892b548a22",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "aebf03a9f31373611cf1b023db128398581321fd4fdd5197cad2da884afa4982",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "14f33bb31fb7bac79595ecd3206816705e7833b0396d70420a30c7f250c2b522",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "32a670b806e3920548239085895f2a314377f7084e779cf67129a29e63f29d03",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "851cd3753423c4c99b803a19f26092bbf600a7377ebd65e780d1e8ed0477726b",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "d9433e3b01998afe5f2dd84a07a0a2be82a6be41ab83bb592ffa6b406dc68604",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "e179feece26ba24d667cc76f21452a73d209bf72e5c4784b4ea5473307e85d22",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2293729efdea7f6b616e4e5b1c1b47c37117a28cff3f59bc759563efbddba7e9",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "30cb87bba1a21d2e9c680ee9e90a2d381e46282e8a88294f676f9b1a1062f530",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "ad635f5acfb7aee1e93d6f1e91b49e682f2a1a588dbf6c7f25b7fcd94beaafce",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4eb6ab101f931daaa1019d9bff2c6bd0a43816174bdb48737dbfcf39588f57a0",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5ed9139302b7f92b0e57c01decca90251256cbbd6f4b8d2268ea18d512ef1908",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_positive_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "305582a7e90487c7c2d159db602fd014a243adc5e8df78d470b46747ac5c008d",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "9e877737df07b3d20766312d5aedb60b33e8401ea6ec9b36d8779d43dc9e2d9a",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "dd008669a33ae4fe5930f1f84df8615d881a2681989efadb232ec8e32194f7cb",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "bb59fb38295d87df8e95a2e408c3400ff3d95983a3118a095102cf18a53ab9a1",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "69c967fa455099c2ba042a0b02e83456736da302bb4d5a34c6ca3b6bfd6dde73",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "6ecf7d6bf5c9a80681d65036b69a5bbe5c468015ed3cca9e85da107af7d805b9",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "b2d61b54aa23dcba06f87314c679da12e2e8518e016d4476f782604b699bbd98",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "bb59fb38295d87df8e95a2e408c3400ff3d95983a3118a095102cf18a53ab9a1",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "339cadddd58347f20459c369c35328ba068339f3349bfc10c650d7db57114db9",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5834aabfbdf80316a0e2bc00c7f8cc86a1e2d4e369fb2025e08567765e4e628d",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "54f5105b5a28b7ac7f1163e061344900b8dcdcf4ccaecb013944f2f23ce7bdb4",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "aebf03a9f31373611cf1b023db128398581321fd4fdd5197cad2da884afa4982",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "14f33bb31fb7bac79595ecd3206816705e7833b0396d70420a30c7f250c2b522",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "32a670b806e3920548239085895f2a314377f7084e779cf67129a29e63f29d03",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "bb59fb38295d87df8e95a2e408c3400ff3d95983a3118a095102cf18a53ab9a1",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3f11923a978166ecc0f5fb256a203cb6aa6d3967a6b64d1bfc681728aaacf7ef",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3f9bc151f12c92d749adf61e41b9eba0039452ce2a3061167cdf62a7f07cf447",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f7409c9f06f61898ffa166d41bc7126a0a5f80bda01305f9e5653cdd1502b868",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "a06a15ec0b61a4a7b1b427e77170dfbc456935568605c2655b27eba0c4f9b062",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "85f6d7c195c83b72de570cdda332b2d5f576bc008308cda9d05775f2612237ba",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "280335113ce14e5868432f1e3634106485866efa89d4a102e3b2e5be37d0583b",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "e175fbf82da8fc49aa2dcc50160871f3ef8b57231d3257e5701808977fadda4e",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_control_0p15_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "b84ae1fb3a8879587b8fbb7303c1c2ade974207ac7ceb2a6d2feb3fb14b6a939",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "28fcab5b6b0407ca270ceb70b0c319f12100f6171af6420ed395c1b9392a1089",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "8e7308a323934d1a8e4e85785c677b100c1dfe6f174a3fbbe56a651ecb55ce0b",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a378cc786d44a06bd21c90f9066698badc0db701aab629c997663e2473851fb",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "ed9227fda0dba44e17fc15db92d5926a66ba8781a4f3880de43d59ce4d37735d",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "e33c04881686914dde00d783d90fc8f5aea62866a44c1b33f10bcaf97cde7ad8",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "ad4be47c708f1b2a7916532d7fe07b466d955313f69ebe9acaba1c0c67f31c5e",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a378cc786d44a06bd21c90f9066698badc0db701aab629c997663e2473851fb",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "6830d2970529c5ea9bfbb9643aa760bf0df35e84d23be9010deb24469c0fe7ed",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5faf36acea64f0f7c80178aaafdc54093712a1b716b61d4c4c48f65976480731",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1dd22a6e1ea6a0d297db1417d992da01b6a97573ffd88d2b1b9e946a962ab2a4",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "aebf03a9f31373611cf1b023db128398581321fd4fdd5197cad2da884afa4982",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "36b24be029bf579829d1dfbb9cd57e74a02de19cd9e265c97ab4971bf7559f48",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "70d8a37ea81be6e488b2e615be1d3dd0917e4c0bd8146d6d326bce3f719410c6",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "7a378cc786d44a06bd21c90f9066698badc0db701aab629c997663e2473851fb",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "ed94932aa18cb9a48dd29c306826c12e8d2405536e8dc0747cc2bb2fecf6a992",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f4d1efba10df283da5b9e9dddadf72b11e9d184cf4b4088e054f9fa7704efc7a",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "71840e1d3756dafc055e720277c4a9f279db53ab13c544fde321a65d904f4d29",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2112189eac0600364caf4467f46c5e89453e8b70f726a18b8a4cae6da0ccaced",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "986754e906effcafb5bbe69b1db0aa23e1d2d64e9b121a2719d918283529521a",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "0f9c401bcb9b264d7deb1e32ef5adffbe8da56b98d61a840bd3a784218d7a040",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "fce1cb4cd39f1b2b41e39730812374920534f413a19b22128e8baad8d3a79263",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_positive_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "97e5a9bd8067e0c6337b37a110081d314545aa7fb882f8c085b23328b94780a8",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "9cd45c999b583ccbf1683058bd8456b55c6a771b4f5f8503cf199877e33e9cd1",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "81cc4c34e04bae83a89e29d2bbdbe1b18f0b808dd0834b7b663f875af65e522b",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "19adf09d25c20c1cea0ddbd5120e3931c4df4e29b29a2adbe43aec79202c2387",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "c1be049b7009f11a5df2e91e9c62497ffd60b03ad9ab6df4fefbebec97a97776",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "a0c3499039382984c3d259184f3f6d7b71726a12ca4b9e85bcf154eb000eb0c5",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "c09f823c58f1b3908bacf1dde59769033650f0a01265613f3f9bf77c5c371ae6",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "19adf09d25c20c1cea0ddbd5120e3931c4df4e29b29a2adbe43aec79202c2387",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5117106b9aab8181f6b715000c62fe6de2605847738fab5358c1dc409434aa4c",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "036c4e82363c4897915663597bc2e85193e4e18120202ae492955ea97921a047",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4b743ad6401286a47c218122373062e352caf3ea129e6bfc596eb8922e3140d2",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "aebf03a9f31373611cf1b023db128398581321fd4fdd5197cad2da884afa4982",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "36b24be029bf579829d1dfbb9cd57e74a02de19cd9e265c97ab4971bf7559f48",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "70d8a37ea81be6e488b2e615be1d3dd0917e4c0bd8146d6d326bce3f719410c6",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "19adf09d25c20c1cea0ddbd5120e3931c4df4e29b29a2adbe43aec79202c2387",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1f6d83bd4cd59cd1ac84a4e4c80011f625fc0f1ca190ee1c89c1ce5ecc3bd4a4",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5bdbb4a80d1d860adfd44c159da59a87e5d941783e583377a2a9baf7fa05f6b8",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "6cdd6b16a50f340aab7003dd75ce04a6df33690bde1dc3a0e3b4ad3fc3cfa1af",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f1a61375776d2a82735984747599056352caafc336168ecd5b1cec22170fc797",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "a9b2a21e64573f66e158ffa329fd9d69d034dc218a4a27c679125cdb5e20f857",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "65383c3cdeb0c414236efcd4fb76410075f64de9969be6954c9ec840fbcc23df",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "fa23936e12089a223e7a2d009ca33d9ee6d94038d18e9db2171de621877bdd79",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_control_0p15_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "d91e796a4b0deebe5c0d4dc636e3a11af947659013b321b265a3c46823b35dce",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "00942196371baac30de48fc01c3ca588dfae94b252aa3c797d5072d6b5e3203e",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "1628b7012cad4ac4403d8d369ef7f37f7f6c431ea84bbb76d100f1732a5466b1",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "d648f292103d6bb448489f69b7c9fa04ee3df57856306e7e9c872a1bd9338368",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "286da778347dee938173b2b21859f3f1575fe7a9bb8cb2eee9be89256eeeb191",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "1e424c77baed38e90cab95b7e47198ba0394b1047eea16ba62f570cc62eb62e3",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "6101b3577bd0237251ced6412ad3acbd98324bb926105697298b3086225dac78",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "d648f292103d6bb448489f69b7c9fa04ee3df57856306e7e9c872a1bd9338368",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "e0fab7f6d8c95d079bcbd96027482ee2204d16db0f582211afecc4e9cb6c85ab",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "40c93b9bfffebc19058f8f8b8dfef88aec2001760ab21ff681117fc8617b6918",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f076dabbada32c3e1baf7c489a8f2c4eb28f8f926800e89f9ec0f07d1e96bc97",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2c1ab8ce4a6fac78cc81d74334923fe0de3f00ed6c69923ca9a5df563f5dea3e",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "32291529b04e0ca3049c083ab5f8813e5d14928437246ce80b54dadd908f1ea7",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "9e4877c4f762771d27963e1fce83525e61ba9b89c908e2303b61fe58a562009b",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "d648f292103d6bb448489f69b7c9fa04ee3df57856306e7e9c872a1bd9338368",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3b4d14ce729c5144592e96fcd520c40945cc1b41f7e274d4b36d97111b586a61",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3672b98a71eddbdde57645141ee84d0b8a068206c2d1370cbb766173652b20bc",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "cbb8b11f457ce3dbcac28ee5ddd2b95b2d40f231dc1e3639c951f33829a5db1c",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "593dfc4d528309cbba27122f5c2c9eaf4cfa74e3569c8b6929ef252904bb0d60",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2fa0f31bbb18de6568d1254daa1751e2bc0aa8d47d4e119268eed49e573b52c8",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "44b3872b270e992d74d4f42a67fb9132e1754711a04b4bbb42b3e3c7db0df603",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "ff044702f2e14fc65cd9148ac732d66fb2781f8bb7b0eee4ea61d44cc5970b12",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "bf4d38f5302b139f510d624987af47ba19c45f7ce949e30fb5b873165e55a619",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5dcfa382583915681f1cb8f07301dea5f1d13d1994d8dc7767f297805553b377",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_positive_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "5bf533d2de1bbf7861f57aa801e5428e0d684dc06c3f15f791750cc3b8b97798",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "02dd946ea362037ed30d64788143a3214f9f5dec5fdcc6b025acca2880115483",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "0155fec595b531ab83fbaa9fbeeecde3fee353255f4f435de720cd58c4e3f6bc",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4b530da6bdaebe92338ae488e00174347081a5dd6d8707a71b7c735fb9a63a7d",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "18a000b71312afd42a1ad5a7d665e95a3d157ad2f8785651e23eda9e740c430f",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "899557de7667972debe0312df745e160eb49b6735d5bd350a094d51e203aedbd",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "a14e91e3c5e85c83c40fd52cdb6f5be38d94fe820222fb45e9f9620c39f05d2f",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4b530da6bdaebe92338ae488e00174347081a5dd6d8707a71b7c735fb9a63a7d",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2676fb2db6328288143536bbb7374f42b48346f03d5bed2ff0a44e5b654095f1",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "73fd4d8625d03c80ff61b1120dca5c5cc12fa0a15beec5f99fa91b1e4436c4cc",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "c71d97099cb40da5dddbaac92900446a6869c2e0f511d4f21a841c5bc699665b",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2c1ab8ce4a6fac78cc81d74334923fe0de3f00ed6c69923ca9a5df563f5dea3e",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "32291529b04e0ca3049c083ab5f8813e5d14928437246ce80b54dadd908f1ea7",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "9e4877c4f762771d27963e1fce83525e61ba9b89c908e2303b61fe58a562009b",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "4b530da6bdaebe92338ae488e00174347081a5dd6d8707a71b7c735fb9a63a7d",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5687ec82d4439cd11e59f08f584064af200e57f6407a9e0d0b06e7fb93b1a69d",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1d51623076385eadbde101657338b0b0bc2399052b15fd621c4e21a8cab187eb",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3ca2acc9840a8700f17468f1fda3ecf9941c333f7dea050c77f6ca5e205408dd",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "b6315d5397124110ef10e0cb859bd431e0af6449bfee2ca5a84f90155d775b5e",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "e9388fb3857b9b54b8a3892db0f0c750f0fd98caf2f7d86085ecb74f525a507a",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "a60e6eb8534493735865f75321e39f9de3c586f0ee7d53066c78beaaec819e47",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "0b7f1e54ef06f5ef0a5c83f58c4bf9c8c0d8fb9676fb57ebda76b74b7ab3ca60",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_control_0p20_G0",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "d55da60af97ecebe0ee9cf10078075d435c9abdacf8d74f1f26d01a7c7f9cc90",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "405b9e13a8e4f6b1a41e5ce35d964b085c1c88918ebae7807344005f36c44bc0",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "d3bf799ea80af05d9102dbc2c2863c83e6f324492230693471dd293a9bd2954b",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "b38a0a1186f8a7ff87f3dda715a2f6feb4d7e6d4db98368cad55c632dda6acf4",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2c21ae4e22aa9c0d1ef131e57febbf1d4de5833442b77cb4e0d00d57aa1adf07",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "db3178487590359db94e6dad5d7d62295af58634f261b3b785f06362520ad71d",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "8320a37f50acd26fa4b0ff4f5688621f7acc69d195c336aa77e7f14fda0ccb3c",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "b38a0a1186f8a7ff87f3dda715a2f6feb4d7e6d4db98368cad55c632dda6acf4",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7b18d46908a800f94ec4eb74eefdfca82fafcf5e2b123f21b5f96e886f7f9ffb",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "a8145534ab24cfcc2e09ff79682bf6e6428fff5dc5568f988ceb2b597ab86cd2",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "d7e0f0e76ed08242434c932e6e58d1a5d37d58cdd8be23e723e232bbafe696ef",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2c1ab8ce4a6fac78cc81d74334923fe0de3f00ed6c69923ca9a5df563f5dea3e",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "1216aaabfcd6fb4b8f958d4b836413f6f337a89e713e2e70b9db1caa6e6c2f53",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "815df3902b76ea39958de7a91444b6e65e78302a312d5c9bc58447a8277ced52",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "b38a0a1186f8a7ff87f3dda715a2f6feb4d7e6d4db98368cad55c632dda6acf4",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "36065d319d115b49c29c4529610baf78a09c2e6cf5bc77d989bc73f785aa882f",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "cf5cbd6ed409a439555e477da8336476233d9696f61a710ffce2c54737069495",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "86a1b720cda4823552a8eef8674ce3d3c20efa186753e741c26175b574a22b9a",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f87aa3dc5e87081f35f1bb2aa4bbdd86da9a5d8c20ed4a7e083b35e43e006d4b",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4736f291d537e26542909350c209bebff94f48e471f0c6f3de0cf06d0feeca66",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "cfb14a50c63469095a866ed9934ca43c322a7d5e68c0902ed9985f986525e76a",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "8fada42a86e60387dd076571cc8f4ea72fba083394de3bc824673c162b5e0394",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_positive_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "99ba8775c219c2c44b9284e67a7f5aecf428ef4d40e4b4813b7107f9e4b81bfb",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "a759951cb76cf473f15c23fcd2f2a845e434b9d36e8026906d040763cb807ebe",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "ef2a7310f23577a6b600a0fc46f3bc14aa687e5384fe6796b56bbaed0bafe297",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "714c01ac963637440869543effb87882cd60041e71389effe37cf7328c1e992c",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "0ac4c665b21512a74817fa0e605a20fb189a8e2c83affc755beb870fd3b86a5f",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "cfc1965e265225ddfb912af767f163923cb60cf002daaed777cea623aee39657",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "b45d7664ac326031d6a17b45f740a0e8e829ddc5c8dafd053945487d859a3d15",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "714c01ac963637440869543effb87882cd60041e71389effe37cf7328c1e992c",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "95b31a31fe496bffe3ccd75276b31e0f674b5d15b5df17b4bd28b002c9a704a0",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f4f56369a7d2f690f54708a1ce28a18b2ccee3d864f0ab5666f1e1b1148f9a65",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3b2819533ca6c347f792986fbac4d822d211735677a76c1ecf3e7c45f2b5a679",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2c1ab8ce4a6fac78cc81d74334923fe0de3f00ed6c69923ca9a5df563f5dea3e",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "1216aaabfcd6fb4b8f958d4b836413f6f337a89e713e2e70b9db1caa6e6c2f53",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "815df3902b76ea39958de7a91444b6e65e78302a312d5c9bc58447a8277ced52",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "714c01ac963637440869543effb87882cd60041e71389effe37cf7328c1e992c",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3576c8e37aa1ccad3b28f2f055566a344df3a0301492f15bc2a865d93180aa70",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "591a295295c5c60f3da5cb876a00cfee146c2854018873c121ae3d5ce4832b62",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "47387ec1e10925ffdc3bad4c6571bc67acff7aabae0c69d0dbc95627e2216ae6",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "a41bcff569d5073301b3174c1e8e49a20a221438a0b2b725b5081fdb127bd1e4",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5fe11702e75313649d64fff327fb2bb964ca876eb2df34e6bc2b2bfde557155b",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f4f1fb30f1c698e1f5bd92a39f07b3c1356c48ebdbe20c0bbd2f7dc81c481ac8",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "03d56abc35d7b860b1563b504172ae7cd839711363bff622079ddd0581f7304d",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_control_0p20_G1",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "1a03fc72d16de350054772780e1fa60477f6aceea5c5e74e7fc07070e4bf8852",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "e13eb2ff7ae31925e3f50838f3aa9da37a01947662e830797bb7015d0ed3c8a7",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "f4d2c445235fffd09a48b145c880b58c3326e5a5a1bad125c71dc8d46b85fcc1",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "e0003a0675caadb9ee6838eb2cd0f32bec4ecb54cedeb72461aba8520cb0f680",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "307986a50d38e7f1008afc115c961e2bafdc54e700adaa446825725c3ebaf12a",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "f84cb2d0e7caac3b1aa5219c45045f01d99b707aadfd96f0cb8ce51f20c13d05",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "d648751ec0b4f5e935e5ec31957704af906fced9383d4cd4ef0737677b946575",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "e0003a0675caadb9ee6838eb2cd0f32bec4ecb54cedeb72461aba8520cb0f680",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "6fe80614ceb542208ad102bbf0e269146901004197450434ab90a84aa214349e",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "0a396f7b4f74442e0116836d37397d1342658dfed4c99cbc1b529ade41fdb25d",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "60b226bb945cf69cc67e7c1262e97f53966d95959eb49963dcf7471ca786fc8b",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2c1ab8ce4a6fac78cc81d74334923fe0de3f00ed6c69923ca9a5df563f5dea3e",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "bff73b534358debc4999d8f11631a7e6e751a3d4c3ccc3fc0badced0cdb720f8",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "9a1b3a507fe127510f363f3d2bb3fa47babb6975e8b58bbe6f1b70d1cf226a29",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "e0003a0675caadb9ee6838eb2cd0f32bec4ecb54cedeb72461aba8520cb0f680",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "ae363ed00a2f28c5ba2db2f22f1dafd5641d60adafd541a5f37df3e059a6537e",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "9b39b64959d0b0f95febfcfcb7188b88908208230f214126c942a3137c85f858",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5f9fbb40c79daed4e1bd6e9048efebd8e06242ba27f1ee2c1b2bdb249ae92056",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5b2464b460d45d6ccd6e1c660fec86bf3857d6804aa3452d4c2e285be3370fed",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f23bda2aff7d5d9f55f06fd027a512f2b68245ee958333ee87fd280270303985",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "bffc92b54a3e8f77ab08c45f1891038c387048d7454636f4f6cba1a929a1229b",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "29b417daa29d641aaefa5c4baf0cd10275f88ba97dfe6c21b0c8e3b658689c5c",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f61b0880d013c2c70b95790fff4fd9dfb39c2ee06b8e9d3a35be865ac11a58aa",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2ba42f2bc510aa6d68c1cc710001fd40c67921374d4137c3570e9db461634e05",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_positive_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "cfd2fe786cfcce56ce0a10ce42d935de0f8afd79e1388a0588535aa5d937cdd8",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "6b7fa151b4176837f84c9a6f5b7253e6b3bd5d5a39f45e462ffdc22c815b45a9",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "0155fec595b531ab83fbaa9fbeeecde3fee353255f4f435de720cd58c4e3f6bc",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4b530da6bdaebe92338ae488e00174347081a5dd6d8707a71b7c735fb9a63a7d",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1d5f72b6c8b8af0ac906b96655b6975a81883d73227561522737dba41bd79dae",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "67922aafbe6904cdb8f6efbc4774fd5b0d8e1df2e75d403b668e1b8f5635ecdd",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "455326e0c589b64f4538df8b2401a480ec3ce4148c7b80180b1c2f12ece5651d",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "4b530da6bdaebe92338ae488e00174347081a5dd6d8707a71b7c735fb9a63a7d",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2676fb2db6328288143536bbb7374f42b48346f03d5bed2ff0a44e5b654095f1",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2139f1218ef5475c8e4aa0957d602153d49a84d98859b8dcadd343947e0b6601",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "b43ce180623f472646d0f59e6ae67f47088cdd7ebf51a4d4e0fb56c9332f2551",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2c1ab8ce4a6fac78cc81d74334923fe0de3f00ed6c69923ca9a5df563f5dea3e",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "bff73b534358debc4999d8f11631a7e6e751a3d4c3ccc3fc0badced0cdb720f8",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "9a1b3a507fe127510f363f3d2bb3fa47babb6975e8b58bbe6f1b70d1cf226a29",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "4b530da6bdaebe92338ae488e00174347081a5dd6d8707a71b7c735fb9a63a7d",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "5687ec82d4439cd11e59f08f584064af200e57f6407a9e0d0b06e7fb93b1a69d",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1d51623076385eadbde101657338b0b0bc2399052b15fd621c4e21a8cab187eb",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3ca2acc9840a8700f17468f1fda3ecf9941c333f7dea050c77f6ca5e205408dd",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "c8cebeb1093f78aebf786804840b3dccb4762649d5c9e29fcf3aec24a4bda092",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "da3af5ae8edcda915277115d2c11d361c7f284231356c26307d30dc4aa4819cb",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "b14ee7e1c08ab7bda3575bfa50a8bb8ca63881517dc522cffc4d7946a9d4af84",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "0b7f1e54ef06f5ef0a5c83f58c4bf9c8c0d8fb9676fb57ebda76b74b7ab3ca60",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_control_0p20_G2",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "6af968173e5e551af19f562703626b067d67d984da9746eb0b8150093d7abda7",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "9f124c8a404bdd8f4ae7252ff455701ebc616e44dd18d6e1be0f682ec7fc7ae2",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "656457fbc59fc6a46999d23fab8cd9450e966b0a0917e52bd7ee43a573cb6af4",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "11bbeeed32e6426e1206bee64a30c9266c73d95d2c3f64c83e1fc3cb045a8387",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1bd592c2edfc63d33aa549c9bc4d9a159c5c6ba9f89485f809867c632531f918",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "9782d6877677d10204f067ddbd6d629927c2dfdc8db663e00b3ae2a6d84fdad6",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "1216cf271ed015923f14a3b62944d713df62a2915f4dc70372af96e5a24bdae9",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "11bbeeed32e6426e1206bee64a30c9266c73d95d2c3f64c83e1fc3cb045a8387",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "415483c3c2146a8d545de23480c5b07949a271a1bbd10c0b885718fd484f0eb0",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "6df84f2058e4a2de2df4eddd88431431d62e0e1917fac337af3dffa00219c188",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "a5716ab5468f5f808ed1a59daff12db12e8bbe667980f05220bf273a71546a78",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2c1ab8ce4a6fac78cc81d74334923fe0de3f00ed6c69923ca9a5df563f5dea3e",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "c6f46f3524ebcc1e0570050cd23055aaf35a696623b5b0489b1482f3b2e026ce",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "dd5c688d810a96c5ab329b61498c90421ce8b94d3c7dc839db44235bf7ded8b7",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "11bbeeed32e6426e1206bee64a30c9266c73d95d2c3f64c83e1fc3cb045a8387",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1265483fe25563a4073e9cde7178d0b7b15a03c6fc57a5cbe932a21f1db0dfea",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "28632860b031f8d878eac780282530a54b257e2dcafbfd772ca941c213b803fc",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "c2190d2746a8d6c7b83bf301822fbbf7185b41f541db8d591d0d9cd380564dbc",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "fc508b8ec345943b8e05c053192fb4bbe976089181059ae1419c14ff4bae82a8",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "30b1c7b712604a3f86699dacdcdec4cdfe4d44b4ab4f57f0bf015efb16b390fa",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1b308a6c7cf390e26f61c5d742448c6f22f4a97a9386c78df2a243a1d1b704a1",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "229d16e5a047cef9368621a6452c4413b3b4204d7c94ec2c1f7b10b14ba8a11e",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_positive_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7a6c7cc0f1322efe2818a6a6b00b4f34ffdba711136258bffe60dfb0b57b9274",
+          "dtype": "<f8",
+          "field": "time_s",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "6538d2ad7b019c9cb4f6c4b3f9fbfcdaac789e5b1c54a8ffd251bd2b81f6e9fc",
+          "dtype": "<f4",
+          "field": "bilateral_fusion20_raw",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "45b96129240aec42e1ab0980a8e8d7d7bb31d4b0efff0f14ecbe62888b4f4f69",
+          "dtype": "<f4",
+          "field": "bilateral_canonical",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            20
+          ]
+        },
+        {
+          "array_sha256": "e1ef94ad73c6e7d4443eba0d431e99c78c9d678346e53eac0b8545bed92b8380",
+          "dtype": "|b1",
+          "field": "force_loaded",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "69bbe496d16dad24b7f179e0971eae83dce2863106e978135d2d3c07c53ae018",
+          "dtype": "|b1",
+          "field": "physical_contact",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "20256fa8796898b80f874c84340bd648d210cef1b107287833a7e990be271dd3",
+          "dtype": "<f4",
+          "field": "foot_world_xyz_label_only",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "758e81692ba527d5793e5e0b9d18178c884ee47fa1c1fc41e12845f0abc6ed94",
+          "dtype": "<f4",
+          "field": "foot_world_velocity_label_only",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2,
+            3
+          ]
+        },
+        {
+          "array_sha256": "05223dab0bd2de5b6f9b8d97410ec3839ca3a8d31b53a5d0cc506ecbf65f0fc6",
+          "dtype": "<f4",
+          "field": "contact_penetration_label_only",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "69bbe496d16dad24b7f179e0971eae83dce2863106e978135d2d3c07c53ae018",
+          "dtype": "|b1",
+          "field": "patch_contact",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "1b872df39e13bd8d80af50b190ad4daa2e1aed4da58f369af3487250caf836e9",
+          "dtype": "<f8",
+          "field": "effective_patch_friction",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "abaeb70d4ef908607f16df5b3443181b1b77c0c55a4850df834e9007fa0da63e",
+          "dtype": "<f8",
+          "field": "patch_normal_force_n",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "62aaa9ab776814bdd1119cd6107906d1f0952183ab5a546df3484359573860f7",
+          "dtype": "<f8",
+          "field": "patch_tangential_force_n",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "2c1ab8ce4a6fac78cc81d74334923fe0de3f00ed6c69923ca9a5df563f5dea3e",
+          "dtype": "<f8",
+          "field": "command",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            3
+          ]
+        },
+        {
+          "array_sha256": "c6f46f3524ebcc1e0570050cd23055aaf35a696623b5b0489b1482f3b2e026ce",
+          "dtype": "<f8",
+          "field": "prepatch_qpos",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            39,
+            36
+          ]
+        },
+        {
+          "array_sha256": "dd5c688d810a96c5ab329b61498c90421ce8b94d3c7dc839db44235bf7ded8b7",
+          "dtype": "<f8",
+          "field": "prepatch_qvel",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            39,
+            35
+          ]
+        },
+        {
+          "array_sha256": "68bcd3a59d3a181f40eb41d9a40da7d2146b060d519cc78e8b53af4ce5102842",
+          "dtype": "<f8",
+          "field": "prepatch_policy_state",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            39,
+            63
+          ]
+        },
+        {
+          "array_sha256": "b94dd1bdcaf3acef5a741e077a1f75420e4ec23603eed6bd1096d373d84d15a8",
+          "dtype": "|b1",
+          "field": "pre_fall_valid",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000
+          ]
+        },
+        {
+          "array_sha256": "69bbe496d16dad24b7f179e0971eae83dce2863106e978135d2d3c07c53ae018",
+          "dtype": "|b1",
+          "field": "valid_pre_fall_mask",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "6c8870f97eb4236bbb373e988522408672aac63babdd1c61df233d8c25f9ba42",
+          "dtype": "|b1",
+          "field": "air_mask",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "65c97e03ab6f4ddacda8f58dbb660e65b75fc32ec45d3e84baef34d69cc44d5f",
+          "dtype": "<i4",
+          "field": "contact_episode_id",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "3188fd2559b68d50a66a837e880e5796b4c37185f67bbf5666be1a13bec1e39c",
+          "dtype": "|b1",
+          "field": "touchdown_transient",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "ca25767a5231b315ed071176718e8c2d1417f151c1ac1656f80a407883e8e1bb",
+          "dtype": "<f4",
+          "field": "contact_anchor_xy_label_only",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2,
+            2
+          ]
+        },
+        {
+          "array_sha256": "7268d1e9896263983755f191cdf607291e707cde652154659ebe7f858cef8ce9",
+          "dtype": "<f4",
+          "field": "anchor_drift_label_only",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "079eb1eb669aff022c89c604cda55e2222c86aa412247193eb8ed504f61ef5a9",
+          "dtype": "<f4",
+          "field": "tangential_velocity_label_only",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "99fbcc892d0666a73eecc0a97160ab218723e8a93972576364ada7914ab07169",
+          "dtype": "|b1",
+          "field": "slip_calibration_valid_label_only",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "83c18a0a2f0eb22458923b57e8bee84178f3ef5736664f519de0bf0664059337",
+          "dtype": "|b1",
+          "field": "slip_physical_active",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        },
+        {
+          "array_sha256": "f3df37cfcb57085091232f1a03abc78ab7c4c5b564b01c3337e7010328ddfde0",
+          "dtype": "|i1",
+          "field": "label_timing_state",
+          "run_id": "cal_control_0p20_G3",
+          "shape": [
+            3000,
+            2
+          ]
+        }
+      ],
+      "bytes": 15021879,
+      "exact_roundtrip_verified": true,
+      "mib": 14.325980186462402,
+      "path": "traces_part_000.npz",
+      "run_count": 24,
+      "run_ids": [
+        "cal_positive_0p10_G0",
+        "cal_control_0p10_G0",
+        "cal_positive_0p10_G1",
+        "cal_control_0p10_G1",
+        "cal_positive_0p10_G2",
+        "cal_control_0p10_G2",
+        "cal_positive_0p10_G3",
+        "cal_control_0p10_G3",
+        "cal_positive_0p15_G0",
+        "cal_control_0p15_G0",
+        "cal_positive_0p15_G1",
+        "cal_control_0p15_G1",
+        "cal_positive_0p15_G2",
+        "cal_control_0p15_G2",
+        "cal_positive_0p15_G3",
+        "cal_control_0p15_G3",
+        "cal_positive_0p20_G0",
+        "cal_control_0p20_G0",
+        "cal_positive_0p20_G1",
+        "cal_control_0p20_G1",
+        "cal_positive_0p20_G2",
+        "cal_control_0p20_G2",
+        "cal_positive_0p20_G3",
+        "cal_control_0p20_G3"
+      ],
+      "sha256": "2404bc400750b65e2dc23d617d3ba2bdde1cfd7140656c972746e76b48c7a790",
+      "under_45_mib": true
+    }
+  ]
+}

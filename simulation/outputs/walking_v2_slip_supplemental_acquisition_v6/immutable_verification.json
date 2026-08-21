@@ -1,0 +1,153 @@
+{
+  "after": {
+    "oracle_sha256": {
+      "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+      "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+      "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506"
+    },
+    "profile_sha256": {
+      "hard_normal": "861cadc347a7537baf4156258c4048b56064561c9b50e586532235b5d2f3d6b3",
+      "moderate_ice_preregistered": "3cddb328c943fcb864ba62572277315a9065a43336ba8738c962ddcfd4b1d286",
+      "native_strong_ice": "5034a800903c5eced64e60812239d0a0cec7a4529d9ab4ec020b1934e9407d14",
+      "near_slip_non_event": "3649d0fedcf9b2cffc3bfb8d9549fa5f3e25bf3a598a903de9a00ea61649b44e"
+    },
+    "terrain_sha256": {
+      "config": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+      "lock": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "model": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "normalization": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640"
+    },
+    "v4_generator_sha256": {
+      "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_scenario_generator_redesign_v4.py": "37fd626c7727c85f50e4020c9088460251d5046b2a55511a150d0d1e8cc1f3d1",
+      "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_scenario_generator_redesign_v4.py": "fde7eaf204c22d9601faedd0af1fea2ba42517a09567be9b58ce9a4af723532a",
+      "simulation/unitree_mujoco/simulate_python/walking_v2_slip_scenario_generator_redesign_v4.py": "07eb57ab235b9ef2c3ba69ba27cae97b70d3fd0184ad98cae5401ff89aa8e316"
+    },
+    "v5_artifact_sha256": {
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/acquisition_manifest.json": "bd74b8c1b54e8470ab5424dec2dbbdf953005929acaa69417215e8a9e838ffdc",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/active_patch_contact_audit.csv": "9d5db4d31ad41dac102f2ec04e5ecf52bec804c627deab62456ac6714b0ba68c",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/control_source_audit.csv": "419282f6b0d01b677e55a359b933f9842539fbf599f1470374dd76bb5c9dff3d",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/generator_immutable_verification.json": "6cb5711c819c197bc008e7bb635767272d2b3f93deafbae381ab04ab8e7d3500",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/material_profiles.json": "d62f471604d8df58f71671ca6b913bec77714816331af4f70b36660db1acd283",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/oracle_immutable_verification.json": "1cfc4c73ab1ca834d02f561d8182963064b1cb4bb86eab596a6bc2a255438851",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/pair_parity_audit.csv": "ea218a44091fd37b08ea62ea13b28f1cb378d203c6c428d7ca93dcca53db2ebe",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/patch_contract_verification.json": "07695188bc4b40b1cfbd4fe816301664ff5ca7066fba90ec1ca09f55c40941ed",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/patch_geometry.json": "34416574a295ff7ea4bc71b76b315774102d9c5e478edff150cd30f8c4a64af1",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/physical_episode_ledger.csv": "6e3c1dbaf12053a56a936f4a483fc589732e9498068abaafa8a5c059a23f88cf",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/positive_source_audit.csv": "af1c786a4a45d3f312114c2ae35815716b47782cb65cb48c94bdd2fbd6a4dd68",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/protocol.json": "0687518fcf26a5c6ade0bc9f9c13994aea017262faf34f28418776abd11f4831",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/provenance.json": "29fb4f0b5b7681563504b3323c30883590d602df1fc100ebd303a03510ebfd5d",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/readiness.json": "778ffb70fffb628c3c27e456df8b76747a5d57871ceac5be1c6095357275aedc",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/run_manifest.csv": "eaa6ec38da058eef10f15e90ebee743eb9de630e6d83f3bfa3be0ee30b43f91c",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/summary.json": "41aa9de10129faa576d8bbbb2ef5229ee15fd73221a87b15236164b7d87e92e9",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/terrain_immutable_verification.json": "901a45ecb8b2be9b030c40009ae4cc32b94935cd79267eb2bf6e9b9e0ffd0c5f",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/trace_shard_manifest.json": "f2931f5dc7ce071cae4e4d0380f1701cbdd790ef10e66f962d5b284c7d5ded8a",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_000.npz": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_001.npz": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_002.npz": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_003.npz": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_004.npz": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_005.npz": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_006.npz": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_007.npz": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_008.npz": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b",
+      "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/v3_quarantine_verification.json": "7ab7603da13b3974b76bf4baf1fd469f8b00660c476afb34890a61dc07163c9f"
+    },
+    "v5_source_sha256": {
+      "simulation/unitree_mujoco/simulate_python/run_walking_v2_bilateral_slip_targeted_acquisition_v5.py": "92db4fa08f8d399e75e0acd2f57867eb531a9672baeb9492edfc592fb6d18708",
+      "simulation/unitree_mujoco/simulate_python/test_walking_v2_bilateral_slip_targeted_acquisition_v5.py": "accdf918d503f0427cd262bbf2206389b8d7b205b4d1dbe388db73809b872c18",
+      "simulation/unitree_mujoco/simulate_python/walking_v2_bilateral_slip_targeted_acquisition_v5.py": "dedba37a3b9108af9496584870d1487c456940269ba65670a80ab392a327e578"
+    }
+  },
+  "all_immutable_after_execution": true,
+  "clean_worktree_verified_before_implementation": true,
+  "execution_head": "c484c4dfe2560de068b288fb4fdaf755424f04b2",
+  "explicit_pair_contract_sha256": "be210abb41729fb4bbc267b7a17c31c6bbc5db2da6067e3f6d0674684007a1f0",
+  "explicit_pair_count": 8,
+  "moderate_friction_changed": false,
+  "oracle_before_sha256": {
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+    "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+    "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506"
+  },
+  "patch_geometry_sha256": "4626bd89098ed03fbab3cc7df2db822b3dc0cdfd42e87a73134146cb3611ae5f",
+  "patch_height_compliance_solref_solimp_changed": false,
+  "physical_slip_oracle_byte_identical": true,
+  "preflight_ready": true,
+  "profile_before_sha256": {
+    "hard_normal": "861cadc347a7537baf4156258c4048b56064561c9b50e586532235b5d2f3d6b3",
+    "moderate_ice_preregistered": "3cddb328c943fcb864ba62572277315a9065a43336ba8738c962ddcfd4b1d286",
+    "native_strong_ice": "5034a800903c5eced64e60812239d0a0cec7a4529d9ab4ec020b1934e9407d14",
+    "near_slip_non_event": "3649d0fedcf9b2cffc3bfb8d9549fa5f3e25bf3a598a903de9a00ea61649b44e"
+  },
+  "protocol_frozen_before_diagnostic_execution": true,
+  "protocol_sha256_before_diagnostic_execution": "01d172d1fcce3d3f568fbd05071cb7bc985f89c4b24ee3d5051514261b8a883f",
+  "protocol_unchanged": true,
+  "selected_geometry_lock_unchanged_during_supplement": true,
+  "starting_checkpoint": "c484c4dfe2560de068b288fb4fdaf755424f04b2",
+  "strong_moderate_profiles_unchanged": true,
+  "task_scoped_uncommitted_paths_before_execution": [
+    "?? simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_supplemental_acquisition_v6.py",
+    "?? simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_supplemental_acquisition_v6.py",
+    "?? simulation/unitree_mujoco/simulate_python/walking_v2_slip_supplemental_acquisition_v6.py"
+  ],
+  "terrain_before_sha256": {
+    "config": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+    "lock": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+    "model": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+    "normalization": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640"
+  },
+  "terrain_byte_identical": true,
+  "unrelated_worktree_change_count_before_execution": 0,
+  "v3_quarantine_disposition": "INVALID_INTERVENTION_DO_NOT_TRAIN",
+  "v3_trace_use_count": 0,
+  "v4_generator_before_sha256": {
+    "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_scenario_generator_redesign_v4.py": "37fd626c7727c85f50e4020c9088460251d5046b2a55511a150d0d1e8cc1f3d1",
+    "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_scenario_generator_redesign_v4.py": "fde7eaf204c22d9601faedd0af1fea2ba42517a09567be9b58ce9a4af723532a",
+    "simulation/unitree_mujoco/simulate_python/walking_v2_slip_scenario_generator_redesign_v4.py": "07eb57ab235b9ef2c3ba69ba27cae97b70d3fd0184ad98cae5401ff89aa8e316"
+  },
+  "v4_generator_checkpoint_sha256": {
+    "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_scenario_generator_redesign_v4.py": "37fd626c7727c85f50e4020c9088460251d5046b2a55511a150d0d1e8cc1f3d1",
+    "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_scenario_generator_redesign_v4.py": "fde7eaf204c22d9601faedd0af1fea2ba42517a09567be9b58ce9a4af723532a",
+    "simulation/unitree_mujoco/simulate_python/walking_v2_slip_scenario_generator_redesign_v4.py": "07eb57ab235b9ef2c3ba69ba27cae97b70d3fd0184ad98cae5401ff89aa8e316"
+  },
+  "v4_generator_matches_checkpoint": true,
+  "v4_generator_unchanged": true,
+  "v5_artifact_before_sha256": {
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/acquisition_manifest.json": "bd74b8c1b54e8470ab5424dec2dbbdf953005929acaa69417215e8a9e838ffdc",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/active_patch_contact_audit.csv": "9d5db4d31ad41dac102f2ec04e5ecf52bec804c627deab62456ac6714b0ba68c",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/control_source_audit.csv": "419282f6b0d01b677e55a359b933f9842539fbf599f1470374dd76bb5c9dff3d",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/generator_immutable_verification.json": "6cb5711c819c197bc008e7bb635767272d2b3f93deafbae381ab04ab8e7d3500",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/material_profiles.json": "d62f471604d8df58f71671ca6b913bec77714816331af4f70b36660db1acd283",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/oracle_immutable_verification.json": "1cfc4c73ab1ca834d02f561d8182963064b1cb4bb86eab596a6bc2a255438851",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/pair_parity_audit.csv": "ea218a44091fd37b08ea62ea13b28f1cb378d203c6c428d7ca93dcca53db2ebe",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/patch_contract_verification.json": "07695188bc4b40b1cfbd4fe816301664ff5ca7066fba90ec1ca09f55c40941ed",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/patch_geometry.json": "34416574a295ff7ea4bc71b76b315774102d9c5e478edff150cd30f8c4a64af1",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/physical_episode_ledger.csv": "6e3c1dbaf12053a56a936f4a483fc589732e9498068abaafa8a5c059a23f88cf",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/positive_source_audit.csv": "af1c786a4a45d3f312114c2ae35815716b47782cb65cb48c94bdd2fbd6a4dd68",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/protocol.json": "0687518fcf26a5c6ade0bc9f9c13994aea017262faf34f28418776abd11f4831",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/provenance.json": "29fb4f0b5b7681563504b3323c30883590d602df1fc100ebd303a03510ebfd5d",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/readiness.json": "778ffb70fffb628c3c27e456df8b76747a5d57871ceac5be1c6095357275aedc",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/run_manifest.csv": "eaa6ec38da058eef10f15e90ebee743eb9de630e6d83f3bfa3be0ee30b43f91c",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/summary.json": "41aa9de10129faa576d8bbbb2ef5229ee15fd73221a87b15236164b7d87e92e9",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/terrain_immutable_verification.json": "901a45ecb8b2be9b030c40009ae4cc32b94935cd79267eb2bf6e9b9e0ffd0c5f",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/trace_shard_manifest.json": "f2931f5dc7ce071cae4e4d0380f1701cbdd790ef10e66f962d5b284c7d5ded8a",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_000.npz": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_001.npz": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_002.npz": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_003.npz": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_004.npz": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_005.npz": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_006.npz": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_007.npz": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_008.npz": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/v3_quarantine_verification.json": "7ab7603da13b3974b76bf4baf1fd469f8b00660c476afb34890a61dc07163c9f"
+  },
+  "v5_artifacts_unchanged": true,
+  "v5_source_before_sha256": {
+    "simulation/unitree_mujoco/simulate_python/run_walking_v2_bilateral_slip_targeted_acquisition_v5.py": "92db4fa08f8d399e75e0acd2f57867eb531a9672baeb9492edfc592fb6d18708",
+    "simulation/unitree_mujoco/simulate_python/test_walking_v2_bilateral_slip_targeted_acquisition_v5.py": "accdf918d503f0427cd262bbf2206389b8d7b205b4d1dbe388db73809b872c18",
+    "simulation/unitree_mujoco/simulate_python/walking_v2_bilateral_slip_targeted_acquisition_v5.py": "dedba37a3b9108af9496584870d1487c456940269ba65670a80ab392a327e578"
+  },
+  "v5_source_unchanged": true,
+  "v5_trace_shards_verified": true
+}

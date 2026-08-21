@@ -1,0 +1,27 @@
+{
+  "failure_action": "SLIP_MODERATE_PROFILE_RECALIBRATION",
+  "geometry": null,
+  "geometry_sha256": null,
+  "moderate_friction_changed": false,
+  "moderate_friction_profile_sha256": "3cddb328c943fcb864ba62572277315a9065a43336ba8738c962ddcfd4b1d286",
+  "selected": false,
+  "selected_geometry_candidate": null,
+  "selection_criteria": [
+    "control remains physically non-slip",
+    "target foot first",
+    "onset inside frozen mid_late_stance bin",
+    "no AIR/post-fall-only onset",
+    "no patch/base double contact",
+    "pre-contact parity",
+    "post-contact divergence",
+    "valid source at all three speeds"
+  ],
+  "selection_performed_after_all_24_fixed_calibration_runs": true,
+  "supplemental_acquisition_authorized": false,
+  "tie_break_order": [
+    "smallest deviation from G0",
+    "shortest patch",
+    "smallest upstream shift",
+    "lexical candidate ID"
+  ]
+}

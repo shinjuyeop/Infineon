@@ -1,0 +1,259 @@
+{
+  "all_files_within_limit": true,
+  "files": [
+    {
+      "bytes": 18482,
+      "mib": 0.017625808715820312,
+      "path": "artifact_access_log.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1155,
+      "mib": 0.0011014938354492188,
+      "path": "audit.md",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1324,
+      "mib": 0.001262664794921875,
+      "path": "combined_development_manifest.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 2370,
+      "mib": 0.0022602081298828125,
+      "path": "combined_factorial_coverage.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 29462,
+      "mib": 0.028097152709960938,
+      "path": "combined_factorial_coverage.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 262,
+      "mib": 0.0002498626708984375,
+      "path": "duplicate_audit.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 27713,
+      "mib": 0.026429176330566406,
+      "path": "failed_cell_diagnosis.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 28619,
+      "mib": 0.02729320526123047,
+      "path": "failed_left_vs_successful_right_patch_dwell.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1776,
+      "mib": 0.0016937255859375,
+      "path": "failure_root_cause.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 305,
+      "mib": 0.00029087066650390625,
+      "path": "forbidden_path_policy.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 203,
+      "mib": 0.00019359588623046875,
+      "path": "future_nested_fold_manifest.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 62311,
+      "mib": 0.059424400329589844,
+      "path": "g0_g3_physical_response.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1264056,
+      "mib": 1.2054977416992188,
+      "path": "geometry_calibration_contact_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 4770,
+      "mib": 0.0045490264892578125,
+      "path": "geometry_calibration_control_source_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1731,
+      "mib": 0.0016508102416992188,
+      "path": "geometry_calibration_fall_censor_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 24600,
+      "mib": 0.02346038818359375,
+      "path": "geometry_calibration_manifest.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 9340,
+      "mib": 0.008907318115234375,
+      "path": "geometry_calibration_metrics.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 4702,
+      "mib": 0.0044841766357421875,
+      "path": "geometry_calibration_pair_parity.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 41681,
+      "mib": 0.039750099182128906,
+      "path": "geometry_calibration_physical_episode_ledger.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 5054,
+      "mib": 0.0048198699951171875,
+      "path": "geometry_calibration_positive_source_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 3255,
+      "mib": 0.0031042098999023438,
+      "path": "geometry_candidate_contract.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 16481,
+      "mib": 0.015717506408691406,
+      "path": "immutable_verification.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 10142,
+      "mib": 0.009672164916992188,
+      "path": "input_allowlist.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 33700,
+      "mib": 0.032138824462890625,
+      "path": "moderate_vs_strong_anchor_drift.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 23039,
+      "mib": 0.021971702575683594,
+      "path": "protocol.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 5414,
+      "mib": 0.0051631927490234375,
+      "path": "provenance.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 745,
+      "mib": 0.0007104873657226562,
+      "path": "readiness.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 3817,
+      "mib": 0.0036401748657226562,
+      "path": "run_progress_manifest.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 883,
+      "mib": 0.0008420944213867188,
+      "path": "selected_geometry_lock.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 48987,
+      "mib": 0.04671764373779297,
+      "path": "selected_geometry_positive_control_traces.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 2928,
+      "mib": 0.0027923583984375,
+      "path": "summary.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1,
+      "mib": 9.5367431640625e-07,
+      "path": "supplemental_contact_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1,
+      "mib": 9.5367431640625e-07,
+      "path": "supplemental_control_source_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1,
+      "mib": 9.5367431640625e-07,
+      "path": "supplemental_fall_censor_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 28719,
+      "mib": 0.027388572692871094,
+      "path": "supplemental_onset_distribution_by_speed.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1,
+      "mib": 9.5367431640625e-07,
+      "path": "supplemental_pair_manifest.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1,
+      "mib": 9.5367431640625e-07,
+      "path": "supplemental_pair_parity.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1,
+      "mib": 9.5367431640625e-07,
+      "path": "supplemental_physical_episode_ledger.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1,
+      "mib": 9.5367431640625e-07,
+      "path": "supplemental_positive_source_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1,
+      "mib": 9.5367431640625e-07,
+      "path": "supplemental_run_manifest.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 191471,
+      "mib": 0.1826009750366211,
+      "path": "trace_shard_manifest.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 15021879,
+      "mib": 14.325980186462402,
+      "path": "traces_part_000.npz",
+      "under_or_equal_45_mib": true
+    }
+  ],
+  "limit_mib": 45,
+  "maximum_file_mib": 14.325980186462402
+}

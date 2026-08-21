@@ -1,0 +1,10 @@
+{
+  "audit": {
+    "valid": false
+  },
+  "not_created": true,
+  "reason": "combined readiness gate failed",
+  "rows": [],
+  "training_performed": false,
+  "version": "walking_v2_future_nested_fold_v6"
+}

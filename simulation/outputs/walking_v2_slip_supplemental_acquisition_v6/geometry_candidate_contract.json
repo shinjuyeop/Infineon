@@ -1,0 +1,113 @@
+{
+  "candidate_count": 4,
+  "candidates": [
+    {
+      "bounds": {
+        "top_z_m": 0.0,
+        "x_max_m": 2.0,
+        "x_min_m": -1.0,
+        "y_max_m": 0.8,
+        "y_min_m": -0.8
+      },
+      "candidate_id": "G0",
+      "collision_masks": {
+        "patch_conaffinity": 0,
+        "patch_contype": 0
+      },
+      "explicit_sole_pair_count": 8,
+      "friction_profile_unchanged": true,
+      "length_m": 3.0,
+      "length_multiplier": 1.0,
+      "patch_base_overlap": false,
+      "sha256": "a7ecd6fa3e44f49b07f3b0a0729d091f2156bc8493b171549748776c9fde5583",
+      "solref_solimp_unchanged": true,
+      "top_height_m": 0.0,
+      "top_height_unchanged": true,
+      "upstream_shift_m": 0.0,
+      "width_m": 1.6,
+      "width_unchanged": true
+    },
+    {
+      "bounds": {
+        "top_z_m": 0.0,
+        "x_max_m": 1.85,
+        "x_min_m": -1.15,
+        "y_max_m": 0.8,
+        "y_min_m": -0.8
+      },
+      "candidate_id": "G1",
+      "collision_masks": {
+        "patch_conaffinity": 0,
+        "patch_contype": 0
+      },
+      "explicit_sole_pair_count": 8,
+      "friction_profile_unchanged": true,
+      "length_m": 3.0,
+      "length_multiplier": 1.0,
+      "patch_base_overlap": false,
+      "sha256": "051eaaaa756841b4390c2cb9bf5de7c4dcc96a9ccdca3afb07d8cb1b424d3396",
+      "solref_solimp_unchanged": true,
+      "top_height_m": 0.0,
+      "top_height_unchanged": true,
+      "upstream_shift_m": 0.15,
+      "width_m": 1.6,
+      "width_unchanged": true
+    },
+    {
+      "bounds": {
+        "top_z_m": 0.0,
+        "x_max_m": 2.2249999999999996,
+        "x_min_m": -1.2249999999999999,
+        "y_max_m": 0.8,
+        "y_min_m": -0.8
+      },
+      "candidate_id": "G2",
+      "collision_masks": {
+        "patch_conaffinity": 0,
+        "patch_contype": 0
+      },
+      "explicit_sole_pair_count": 8,
+      "friction_profile_unchanged": true,
+      "length_m": 3.4499999999999993,
+      "length_multiplier": 1.15,
+      "patch_base_overlap": false,
+      "sha256": "38ca90cb5eb8d4ea14380f58e0f24d550e8fdb5f77dec68fabfe8e374467ca74",
+      "solref_solimp_unchanged": true,
+      "top_height_m": 0.0,
+      "top_height_unchanged": true,
+      "upstream_shift_m": 0.0,
+      "width_m": 1.6,
+      "width_unchanged": true
+    },
+    {
+      "bounds": {
+        "top_z_m": 0.0,
+        "x_max_m": 2.0749999999999997,
+        "x_min_m": -1.375,
+        "y_max_m": 0.8,
+        "y_min_m": -0.8
+      },
+      "candidate_id": "G3",
+      "collision_masks": {
+        "patch_conaffinity": 0,
+        "patch_contype": 0
+      },
+      "explicit_sole_pair_count": 8,
+      "friction_profile_unchanged": true,
+      "length_m": 3.4499999999999997,
+      "length_multiplier": 1.15,
+      "patch_base_overlap": false,
+      "sha256": "48230d0329c3281d43809f9a56f7acf524a936c6e74e8006284045b221cf3f0e",
+      "solref_solimp_unchanged": true,
+      "top_height_m": 0.0,
+      "top_height_unchanged": true,
+      "upstream_shift_m": 0.15,
+      "width_m": 1.6,
+      "width_unchanged": true
+    }
+  ],
+  "contract_sha256": "283cd286ffb1999a9b84ceeb5cd229dff15c497aac73598c44d49e4ad3e117c5",
+  "frozen_before_diagnostic_execution": true,
+  "moderate_friction_unchanged": true,
+  "only_longitudinal_shift_or_length_differs_from_g0": true
+}
