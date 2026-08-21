@@ -1,0 +1,129 @@
+{
+  "G0_changed": false,
+  "M1_changed": false,
+  "actual_onset_phase_defines_target_phase": true,
+  "calibration_data_training_use": false,
+  "diagnosis_physical_signals_only": true,
+  "diagnosis_primary_cause": "PATCH_ENTRY_POSE_SENSITIVITY",
+  "exact_M1_friction_vector": [
+    0.08750000000000001,
+    0.08750000000000001,
+    0.00125,
+    2.125e-05,
+    2.125e-05
+  ],
+  "explicit_sole_contact_pair_count": 8,
+  "failed_source_automatic_negative_use": false,
+  "geometry": {
+    "bounds": {
+      "top_z_m": 0.0,
+      "x_max_m": 2.0,
+      "x_min_m": -1.0,
+      "y_max_m": 0.8,
+      "y_min_m": -0.8
+    },
+    "candidate_id": "G0",
+    "collision_masks": {
+      "patch_conaffinity": 0,
+      "patch_contype": 0
+    },
+    "explicit_sole_pair_count": 8,
+    "friction_profile_unchanged": true,
+    "length_m": 3.0,
+    "length_multiplier": 1.0,
+    "patch_base_overlap": false,
+    "solref_solimp_unchanged": true,
+    "top_height_m": 0.0,
+    "top_height_unchanged": true,
+    "upstream_shift_m": 0.0,
+    "width_m": 1.6,
+    "width_unchanged": true
+  },
+  "locked_profile": {
+    "candidate_id": "M1",
+    "friction3": [
+      0.08750000000000001,
+      0.00125,
+      2.125e-05
+    ],
+    "friction5": [
+      0.08750000000000001,
+      0.08750000000000001,
+      0.00125,
+      2.125e-05,
+      2.125e-05
+    ],
+    "frozen_source": "preregistered v7 sliding-only interpolation",
+    "interpolated_components": [
+      0,
+      1
+    ],
+    "interpolation_fraction_from_strong": 0.75,
+    "name": "moderate_v2_M1",
+    "role": "candidate",
+    "rolling_components_frozen_from": "moderate-v1",
+    "torsional_component_frozen_from": "moderate-v1"
+  },
+  "model_scores_used": false,
+  "oracle_changed": false,
+  "overwrite_policy": "refuse non-empty output",
+  "sink_deferred": true,
+  "starting_checkpoint": "0f7d41ded7c3c2dd750eb0cdacc8230c2bf20a8e",
+  "strong_ice_changed": false,
+  "supplemental_contract": {
+    "Cartesian_product": true,
+    "adaptive_variations": false,
+    "command_delays_s": [
+      0.02,
+      0.03,
+      0.04,
+      0.05
+    ],
+    "hard_normal_controls": 6,
+    "matched_controls": 12,
+    "near_slip_non_event_controls": 6,
+    "phase_fractions": [
+      0.27,
+      0.41,
+      0.55
+    ],
+    "phase_offsets": [
+      -0.13999999999999996,
+      0.0,
+      0.14000000000000007
+    ],
+    "positive_runs": 12,
+    "replacement_runs": false,
+    "run_order": [
+      "supplemental_positive_v8_l00",
+      "supplemental_control_v8_l00",
+      "supplemental_positive_v8_l01",
+      "supplemental_control_v8_l01",
+      "supplemental_positive_v8_l02",
+      "supplemental_control_v8_l02",
+      "supplemental_positive_v8_l03",
+      "supplemental_control_v8_l03",
+      "supplemental_positive_v8_l04",
+      "supplemental_control_v8_l04",
+      "supplemental_positive_v8_l05",
+      "supplemental_control_v8_l05",
+      "supplemental_positive_v8_l06",
+      "supplemental_control_v8_l06",
+      "supplemental_positive_v8_l07",
+      "supplemental_control_v8_l07",
+      "supplemental_positive_v8_l08",
+      "supplemental_control_v8_l08",
+      "supplemental_positive_v8_l09",
+      "supplemental_control_v8_l09",
+      "supplemental_positive_v8_l10",
+      "supplemental_control_v8_l10",
+      "supplemental_positive_v8_l11",
+      "supplemental_control_v8_l11"
+    ],
+    "total_unique_runs": 24
+  },
+  "supplemental_variation_contract_sha256": "da192809aff3779ba099be723454425b621ec082117493708d1e8591ea9d00a0",
+  "task": "Acquire Additional Moderate-v2 Slip Support v8",
+  "terrain_changed": false,
+  "training_performed": false
+}

@@ -1,0 +1,35 @@
+{
+  "alternatives_rejected": {
+    "COMMAND_DELAY_SENSITIVITY": "isolating pair has identical 0.04 s delay",
+    "CONTACT_LOAD_SENSITIVITY": "load is treated as a patch-entry consequence, not the isolated input",
+    "INITIAL_GAIT_PHASE_SENSITIVITY": "isolating pair has identical 0.41 controller phase",
+    "MULTIFACTOR_VARIATION_SENSITIVITY": "one isolated upstream difference is available",
+    "STANCE_DURATION_SENSITIVITY": "not needed to explain the same-contract split",
+    "TANGENTIAL_VELOCITY_SENSITIVITY": "velocity is treated as a patch-entry consequence"
+  },
+  "detector_or_model_scores_used": false,
+  "diagnosis_uses_physical_signals_only": true,
+  "exactly_one_primary_cause": true,
+  "failed_run_ids": [
+    "positive_0p15_left_mid_late_stance_v0_M1",
+    "positive_0p15_left_mid_late_stance_v1_M1",
+    "positive_0p15_left_mid_late_stance_v2_M1"
+  ],
+  "isolating_comparison": {
+    "different_initial_qpos": true,
+    "different_initial_qvel": true,
+    "failed_maximum_anchor_drift_m": 0.03440896421670914,
+    "failed_oracle_margin_m": -0.015591035783290866,
+    "failed_run_id": "positive_0p15_left_mid_late_stance_v1_M1",
+    "patch_entry_pose_distance_m": 0.00031255111112076206,
+    "same_G0_geometry": true,
+    "same_M1_profile": true,
+    "same_command_delay": true,
+    "same_phase_fraction": true,
+    "successful_maximum_anchor_drift_m": 0.05823401361703873,
+    "successful_oracle_margin_m": 0.008234013617038724
+  },
+  "primary_cause": "PATCH_ENTRY_POSE_SENSITIVITY",
+  "reasoning": "The same 0.41 phase fraction and 0.04 s command delay succeed under the calibration initial state but fail under the v7 acquisition perturbation. The changed initial generalized state changes patch entry pose/load/velocity and leaves anchor drift below the frozen 0.05 m oracle threshold.",
+  "successful_run_id": "cal_0p15_M1"
+}

@@ -1,0 +1,223 @@
+{
+  "all_files_within_limit": true,
+  "files": [
+    {
+      "bytes": 21280,
+      "mib": 0.020294189453125,
+      "path": "artifact_access_log.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1476,
+      "mib": 0.001407623291015625,
+      "path": "audit.md",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 200321,
+      "mib": 0.1910409927368164,
+      "path": "augmented_canonical_development_manifest.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 2643,
+      "mib": 0.0025205612182617188,
+      "path": "augmented_factorial_coverage.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 28270,
+      "mib": 0.026960372924804688,
+      "path": "augmented_factorial_coverage.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 140982,
+      "mib": 0.13445091247558594,
+      "path": "canonical_base_manifest.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 465,
+      "mib": 0.00044345855712890625,
+      "path": "duplicate_audit.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 381,
+      "mib": 0.00036334991455078125,
+      "path": "forbidden_path_policy.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 325570,
+      "mib": 0.3104877471923828,
+      "path": "future_nested_fold_manifest.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 20132,
+      "mib": 0.019199371337890625,
+      "path": "immutable_verification.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 11906,
+      "mib": 0.011354446411132812,
+      "path": "input_allowlist.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 3574,
+      "mib": 0.0034084320068359375,
+      "path": "protocol.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 4973,
+      "mib": 0.004742622375488281,
+      "path": "provenance.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 738,
+      "mib": 0.0007038116455078125,
+      "path": "readiness.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 24242,
+      "mib": 0.023118972778320312,
+      "path": "source_validity_by_command_delay.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 24766,
+      "mib": 0.023618698120117188,
+      "path": "source_validity_by_phase_offset.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 96176,
+      "mib": 0.0917205810546875,
+      "path": "successful_calibration_vs_failed_v7_variations.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 6334,
+      "mib": 0.0060405731201171875,
+      "path": "summary.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 35507,
+      "mib": 0.03386211395263672,
+      "path": "supplemental_anchor_drift.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 21726,
+      "mib": 0.020719528198242188,
+      "path": "supplemental_cell_manifest.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1608033,
+      "mib": 1.5335397720336914,
+      "path": "supplemental_contact_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 5684,
+      "mib": 0.005420684814453125,
+      "path": "supplemental_control_source_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 4501,
+      "mib": 0.004292488098144531,
+      "path": "supplemental_fall_censor_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 3866,
+      "mib": 0.0036869049072265625,
+      "path": "supplemental_pair_manifest.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 6214,
+      "mib": 0.0059261322021484375,
+      "path": "supplemental_pair_parity.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 80808,
+      "mib": 0.07706451416015625,
+      "path": "supplemental_physical_episode_ledger.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 156620,
+      "mib": 0.14936447143554688,
+      "path": "supplemental_positive_control_paired_traces.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 5646,
+      "mib": 0.0053844451904296875,
+      "path": "supplemental_positive_source_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 24609,
+      "mib": 0.023468971252441406,
+      "path": "supplemental_run_manifest.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 14283,
+      "mib": 0.013621330261230469,
+      "path": "supplemental_variation_contract.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 8635,
+      "mib": 0.008234977722167969,
+      "path": "supplemental_variation_metrics.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 197063,
+      "mib": 0.18793392181396484,
+      "path": "trace_shard_manifest.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 15870904,
+      "mib": 15.135673522949219,
+      "path": "traces_part_000.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 73289,
+      "mib": 0.06989383697509766,
+      "path": "training_eligibility.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 3978,
+      "mib": 0.0037937164306640625,
+      "path": "variation_failure_diagnosis.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1849,
+      "mib": 0.0017633438110351562,
+      "path": "variation_root_cause.json",
+      "under_or_equal_45_mib": true
+    }
+  ],
+  "limit_mib": 45,
+  "maximum_file_mib": 15.135673522949219
+}

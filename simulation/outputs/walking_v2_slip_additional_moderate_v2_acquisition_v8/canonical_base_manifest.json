@@ -1,0 +1,4150 @@
+{
+  "audit": {
+    "all_phases_represented": true,
+    "both_feet_represented": true,
+    "combined_source_valid_positive_count": 87,
+    "combined_source_valid_rate": 0.8055555555555556,
+    "control_attempts": 108,
+    "covered_factorial_cells": 35,
+    "moderate_v2_source_valid_count": 39,
+    "outer_holdout_final_run_count": 0,
+    "pass": false,
+    "physics_provenance_pass": true,
+    "positive_attempts": 108,
+    "strong_source_valid_count": 48,
+    "target_first_accuracy": 1.0,
+    "total_runs": 216,
+    "v3_run_count": 0,
+    "v5_moderate_v1_run_count": 0,
+    "v6_calibration_run_count": 0,
+    "v7_profile_calibration_run_count": 0,
+    "valid_control_count": 108,
+    "valid_positive_by_speed": {
+      "0.10": 31,
+      "0.15": 27,
+      "0.20": 29
+    }
+  },
+  "base_acquisition_versions": [
+    "v5_strong",
+    "v7_moderate_v2"
+  ],
+  "base_control_attempts": 108,
+  "base_factorial_coverage": "35/36",
+  "base_positive_attempts": 108,
+  "base_v7_claimed_ready": false,
+  "base_valid_positive_count": 87,
+  "base_valid_positive_rate": 0.8055555555555556,
+  "content_sha256": "f36f0cceed3693fcbee86d3db7c918ab642215a827ff46466d837a97710efef1",
+  "matrix_layer": "base_factorial_matrix",
+  "original_v5_readiness_preserved_false": true,
+  "original_v7_readiness_preserved_false": true,
+  "runs": [
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_000",
+      "role": "positive",
+      "run_id": "positive_0p10_left_early_loading_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_000",
+      "role": "control",
+      "run_id": "control_0p10_left_early_loading_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_001",
+      "role": "positive",
+      "run_id": "positive_0p10_left_early_loading_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_001",
+      "role": "control",
+      "run_id": "control_0p10_left_early_loading_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_002",
+      "role": "positive",
+      "run_id": "positive_0p10_left_early_loading_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_002",
+      "role": "control",
+      "run_id": "control_0p10_left_early_loading_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_006",
+      "role": "positive",
+      "run_id": "positive_0p10_left_mid_loading_early_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_006",
+      "role": "control",
+      "run_id": "control_0p10_left_mid_loading_early_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_007",
+      "role": "positive",
+      "run_id": "positive_0p10_left_mid_loading_early_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_007",
+      "role": "control",
+      "run_id": "control_0p10_left_mid_loading_early_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_008",
+      "role": "positive",
+      "run_id": "positive_0p10_left_mid_loading_early_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_008",
+      "role": "control",
+      "run_id": "control_0p10_left_mid_loading_early_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_012",
+      "role": "positive",
+      "run_id": "positive_0p10_left_mid_late_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_012",
+      "role": "control",
+      "run_id": "control_0p10_left_mid_late_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_013",
+      "role": "positive",
+      "run_id": "positive_0p10_left_mid_late_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_013",
+      "role": "control",
+      "run_id": "control_0p10_left_mid_late_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_014",
+      "role": "positive",
+      "run_id": "positive_0p10_left_mid_late_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_014",
+      "role": "control",
+      "run_id": "control_0p10_left_mid_late_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_018",
+      "role": "positive",
+      "run_id": "positive_0p10_right_early_loading_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_018",
+      "role": "control",
+      "run_id": "control_0p10_right_early_loading_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_019",
+      "role": "positive",
+      "run_id": "positive_0p10_right_early_loading_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_019",
+      "role": "control",
+      "run_id": "control_0p10_right_early_loading_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_020",
+      "role": "positive",
+      "run_id": "positive_0p10_right_early_loading_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_020",
+      "role": "control",
+      "run_id": "control_0p10_right_early_loading_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_024",
+      "role": "positive",
+      "run_id": "positive_0p10_right_mid_loading_early_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_024",
+      "role": "control",
+      "run_id": "control_0p10_right_mid_loading_early_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_025",
+      "role": "positive",
+      "run_id": "positive_0p10_right_mid_loading_early_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_025",
+      "role": "control",
+      "run_id": "control_0p10_right_mid_loading_early_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_026",
+      "role": "positive",
+      "run_id": "positive_0p10_right_mid_loading_early_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_026",
+      "role": "control",
+      "run_id": "control_0p10_right_mid_loading_early_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_030",
+      "role": "positive",
+      "run_id": "positive_0p10_right_mid_late_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_030",
+      "role": "control",
+      "run_id": "control_0p10_right_mid_late_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_031",
+      "role": "positive",
+      "run_id": "positive_0p10_right_mid_late_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_031",
+      "role": "control",
+      "run_id": "control_0p10_right_mid_late_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v5:v5_pair_032",
+      "role": "positive",
+      "run_id": "positive_0p10_right_mid_late_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": false,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_032",
+      "role": "control",
+      "run_id": "control_0p10_right_mid_late_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.1,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_036",
+      "role": "positive",
+      "run_id": "positive_0p15_left_early_loading_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_036",
+      "role": "control",
+      "run_id": "control_0p15_left_early_loading_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_037",
+      "role": "positive",
+      "run_id": "positive_0p15_left_early_loading_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_037",
+      "role": "control",
+      "run_id": "control_0p15_left_early_loading_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v5:v5_pair_038",
+      "role": "positive",
+      "run_id": "positive_0p15_left_early_loading_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": false,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_038",
+      "role": "control",
+      "run_id": "control_0p15_left_early_loading_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_042",
+      "role": "positive",
+      "run_id": "positive_0p15_left_mid_loading_early_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_042",
+      "role": "control",
+      "run_id": "control_0p15_left_mid_loading_early_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_043",
+      "role": "positive",
+      "run_id": "positive_0p15_left_mid_loading_early_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_043",
+      "role": "control",
+      "run_id": "control_0p15_left_mid_loading_early_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_044",
+      "role": "positive",
+      "run_id": "positive_0p15_left_mid_loading_early_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_044",
+      "role": "control",
+      "run_id": "control_0p15_left_mid_loading_early_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v5:v5_pair_048",
+      "role": "positive",
+      "run_id": "positive_0p15_left_mid_late_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": false,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_048",
+      "role": "control",
+      "run_id": "control_0p15_left_mid_late_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_049",
+      "role": "positive",
+      "run_id": "positive_0p15_left_mid_late_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_049",
+      "role": "control",
+      "run_id": "control_0p15_left_mid_late_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_050",
+      "role": "positive",
+      "run_id": "positive_0p15_left_mid_late_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_050",
+      "role": "control",
+      "run_id": "control_0p15_left_mid_late_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_054",
+      "role": "positive",
+      "run_id": "positive_0p15_right_early_loading_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_054",
+      "role": "control",
+      "run_id": "control_0p15_right_early_loading_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_055",
+      "role": "positive",
+      "run_id": "positive_0p15_right_early_loading_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_055",
+      "role": "control",
+      "run_id": "control_0p15_right_early_loading_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_056",
+      "role": "positive",
+      "run_id": "positive_0p15_right_early_loading_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_056",
+      "role": "control",
+      "run_id": "control_0p15_right_early_loading_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_060",
+      "role": "positive",
+      "run_id": "positive_0p15_right_mid_loading_early_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_060",
+      "role": "control",
+      "run_id": "control_0p15_right_mid_loading_early_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_061",
+      "role": "positive",
+      "run_id": "positive_0p15_right_mid_loading_early_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_061",
+      "role": "control",
+      "run_id": "control_0p15_right_mid_loading_early_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_062",
+      "role": "positive",
+      "run_id": "positive_0p15_right_mid_loading_early_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_062",
+      "role": "control",
+      "run_id": "control_0p15_right_mid_loading_early_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v5:v5_pair_066",
+      "role": "positive",
+      "run_id": "positive_0p15_right_mid_late_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": false,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_066",
+      "role": "control",
+      "run_id": "control_0p15_right_mid_late_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_067",
+      "role": "positive",
+      "run_id": "positive_0p15_right_mid_late_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_067",
+      "role": "control",
+      "run_id": "control_0p15_right_mid_late_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_068",
+      "role": "positive",
+      "run_id": "positive_0p15_right_mid_late_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_068",
+      "role": "control",
+      "run_id": "control_0p15_right_mid_late_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.15,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_072",
+      "role": "positive",
+      "run_id": "positive_0p20_left_early_loading_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_006.npz",
+        "sha256": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_072",
+      "role": "control",
+      "run_id": "control_0p20_left_early_loading_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_006.npz",
+        "sha256": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_073",
+      "role": "positive",
+      "run_id": "positive_0p20_left_early_loading_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_006.npz",
+        "sha256": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_073",
+      "role": "control",
+      "run_id": "control_0p20_left_early_loading_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_006.npz",
+        "sha256": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v5:v5_pair_074",
+      "role": "positive",
+      "run_id": "positive_0p20_left_early_loading_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": false,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_006.npz",
+        "sha256": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_074",
+      "role": "control",
+      "run_id": "control_0p20_left_early_loading_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_006.npz",
+        "sha256": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_078",
+      "role": "positive",
+      "run_id": "positive_0p20_left_mid_loading_early_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_006.npz",
+        "sha256": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_078",
+      "role": "control",
+      "run_id": "control_0p20_left_mid_loading_early_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_006.npz",
+        "sha256": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_079",
+      "role": "positive",
+      "run_id": "positive_0p20_left_mid_loading_early_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_006.npz",
+        "sha256": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_079",
+      "role": "control",
+      "run_id": "control_0p20_left_mid_loading_early_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_006.npz",
+        "sha256": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_080",
+      "role": "positive",
+      "run_id": "positive_0p20_left_mid_loading_early_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_006.npz",
+        "sha256": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_080",
+      "role": "control",
+      "run_id": "control_0p20_left_mid_loading_early_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_006.npz",
+        "sha256": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_084",
+      "role": "positive",
+      "run_id": "positive_0p20_left_mid_late_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_007.npz",
+        "sha256": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_084",
+      "role": "control",
+      "run_id": "control_0p20_left_mid_late_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_007.npz",
+        "sha256": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_085",
+      "role": "positive",
+      "run_id": "positive_0p20_left_mid_late_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_007.npz",
+        "sha256": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_085",
+      "role": "control",
+      "run_id": "control_0p20_left_mid_late_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_007.npz",
+        "sha256": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v5:v5_pair_086",
+      "role": "positive",
+      "run_id": "positive_0p20_left_mid_late_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": false,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_007.npz",
+        "sha256": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_086",
+      "role": "control",
+      "run_id": "control_0p20_left_mid_late_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_007.npz",
+        "sha256": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_090",
+      "role": "positive",
+      "run_id": "positive_0p20_right_early_loading_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_007.npz",
+        "sha256": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_090",
+      "role": "control",
+      "run_id": "control_0p20_right_early_loading_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_007.npz",
+        "sha256": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_091",
+      "role": "positive",
+      "run_id": "positive_0p20_right_early_loading_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_007.npz",
+        "sha256": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_091",
+      "role": "control",
+      "run_id": "control_0p20_right_early_loading_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_007.npz",
+        "sha256": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_092",
+      "role": "positive",
+      "run_id": "positive_0p20_right_early_loading_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_007.npz",
+        "sha256": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_092",
+      "role": "control",
+      "run_id": "control_0p20_right_early_loading_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_007.npz",
+        "sha256": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_096",
+      "role": "positive",
+      "run_id": "positive_0p20_right_mid_loading_early_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_008.npz",
+        "sha256": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_096",
+      "role": "control",
+      "run_id": "control_0p20_right_mid_loading_early_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_008.npz",
+        "sha256": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_097",
+      "role": "positive",
+      "run_id": "positive_0p20_right_mid_loading_early_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_008.npz",
+        "sha256": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_097",
+      "role": "control",
+      "run_id": "control_0p20_right_mid_loading_early_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_008.npz",
+        "sha256": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_098",
+      "role": "positive",
+      "run_id": "positive_0p20_right_mid_loading_early_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_008.npz",
+        "sha256": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_098",
+      "role": "control",
+      "run_id": "control_0p20_right_mid_loading_early_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_008.npz",
+        "sha256": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_102",
+      "role": "positive",
+      "run_id": "positive_0p20_right_mid_late_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_008.npz",
+        "sha256": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_102",
+      "role": "control",
+      "run_id": "control_0p20_right_mid_late_stance_native_strong_ice_v0",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_008.npz",
+        "sha256": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b"
+      },
+      "variation_index": 0
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_103",
+      "role": "positive",
+      "run_id": "positive_0p20_right_mid_late_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_008.npz",
+        "sha256": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_103",
+      "role": "control",
+      "run_id": "control_0p20_right_mid_late_stance_native_strong_ice_v1",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_008.npz",
+        "sha256": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b"
+      },
+      "variation_index": 1
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_104",
+      "role": "positive",
+      "run_id": "positive_0p20_right_mid_late_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_008.npz",
+        "sha256": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v5:v5_pair_104",
+      "role": "control",
+      "run_id": "control_0p20_right_mid_late_stance_native_strong_ice_v2",
+      "severity": "native_strong_ice",
+      "source_acquisition": "v5_strong",
+      "source_valid": true,
+      "speed_mps": 0.2,
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_008.npz",
+        "sha256": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b"
+      },
+      "variation_index": 2
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_000",
+      "role": "positive",
+      "run_id": "positive_0p10_left_early_loading_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "d43220476fb46b62d82a95dccec3967ad43faae16489ddf67ef86eff37317d58"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_000",
+      "role": "control",
+      "run_id": "control_0p10_left_early_loading_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "d43220476fb46b62d82a95dccec3967ad43faae16489ddf67ef86eff37317d58"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_001",
+      "role": "positive",
+      "run_id": "positive_0p10_left_early_loading_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "d43220476fb46b62d82a95dccec3967ad43faae16489ddf67ef86eff37317d58"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_001",
+      "role": "control",
+      "run_id": "control_0p10_left_early_loading_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "d43220476fb46b62d82a95dccec3967ad43faae16489ddf67ef86eff37317d58"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_002",
+      "role": "positive",
+      "run_id": "positive_0p10_left_early_loading_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "d43220476fb46b62d82a95dccec3967ad43faae16489ddf67ef86eff37317d58"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_002",
+      "role": "control",
+      "run_id": "control_0p10_left_early_loading_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_000.npz",
+        "sha256": "d43220476fb46b62d82a95dccec3967ad43faae16489ddf67ef86eff37317d58"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_003",
+      "role": "positive",
+      "run_id": "positive_0p10_left_mid_loading_early_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_003",
+      "role": "control",
+      "run_id": "control_0p10_left_mid_loading_early_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_004",
+      "role": "positive",
+      "run_id": "positive_0p10_left_mid_loading_early_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_004",
+      "role": "control",
+      "run_id": "control_0p10_left_mid_loading_early_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_005",
+      "role": "positive",
+      "run_id": "positive_0p10_left_mid_loading_early_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_005",
+      "role": "control",
+      "run_id": "control_0p10_left_mid_loading_early_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_006",
+      "role": "positive",
+      "run_id": "positive_0p10_left_mid_late_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_006",
+      "role": "control",
+      "run_id": "control_0p10_left_mid_late_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_007",
+      "role": "positive",
+      "run_id": "positive_0p10_left_mid_late_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_007",
+      "role": "control",
+      "run_id": "control_0p10_left_mid_late_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_008",
+      "role": "positive",
+      "run_id": "positive_0p10_left_mid_late_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_008",
+      "role": "control",
+      "run_id": "control_0p10_left_mid_late_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_009",
+      "role": "positive",
+      "run_id": "positive_0p10_right_early_loading_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_009",
+      "role": "control",
+      "run_id": "control_0p10_right_early_loading_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_010",
+      "role": "positive",
+      "run_id": "positive_0p10_right_early_loading_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_010",
+      "role": "control",
+      "run_id": "control_0p10_right_early_loading_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_011",
+      "role": "positive",
+      "run_id": "positive_0p10_right_early_loading_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_011",
+      "role": "control",
+      "run_id": "control_0p10_right_early_loading_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_012",
+      "role": "positive",
+      "run_id": "positive_0p10_right_mid_loading_early_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_012",
+      "role": "control",
+      "run_id": "control_0p10_right_mid_loading_early_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_013",
+      "role": "positive",
+      "run_id": "positive_0p10_right_mid_loading_early_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_013",
+      "role": "control",
+      "run_id": "control_0p10_right_mid_loading_early_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_014",
+      "role": "positive",
+      "run_id": "positive_0p10_right_mid_loading_early_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_014",
+      "role": "control",
+      "run_id": "control_0p10_right_mid_loading_early_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_001.npz",
+        "sha256": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_015",
+      "role": "positive",
+      "run_id": "positive_0p10_right_mid_late_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_015",
+      "role": "control",
+      "run_id": "control_0p10_right_mid_late_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_016",
+      "role": "positive",
+      "run_id": "positive_0p10_right_mid_late_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_016",
+      "role": "control",
+      "run_id": "control_0p10_right_mid_late_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_017",
+      "role": "positive",
+      "run_id": "positive_0p10_right_mid_late_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_017",
+      "role": "control",
+      "run_id": "control_0p10_right_mid_late_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.1",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_018",
+      "role": "positive",
+      "run_id": "positive_0p15_left_early_loading_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_018",
+      "role": "control",
+      "run_id": "control_0p15_left_early_loading_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_019",
+      "role": "positive",
+      "run_id": "positive_0p15_left_early_loading_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_019",
+      "role": "control",
+      "run_id": "control_0p15_left_early_loading_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_020",
+      "role": "positive",
+      "run_id": "positive_0p15_left_early_loading_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_020",
+      "role": "control",
+      "run_id": "control_0p15_left_early_loading_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_021",
+      "role": "positive",
+      "run_id": "positive_0p15_left_mid_loading_early_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_021",
+      "role": "control",
+      "run_id": "control_0p15_left_mid_loading_early_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_022",
+      "role": "positive",
+      "run_id": "positive_0p15_left_mid_loading_early_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_022",
+      "role": "control",
+      "run_id": "control_0p15_left_mid_loading_early_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_023",
+      "role": "positive",
+      "run_id": "positive_0p15_left_mid_loading_early_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_023",
+      "role": "control",
+      "run_id": "control_0p15_left_mid_loading_early_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_024",
+      "role": "positive",
+      "run_id": "positive_0p15_left_mid_late_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_024",
+      "role": "control",
+      "run_id": "control_0p15_left_mid_late_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_025",
+      "role": "positive",
+      "run_id": "positive_0p15_left_mid_late_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_025",
+      "role": "control",
+      "run_id": "control_0p15_left_mid_late_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_026",
+      "role": "positive",
+      "run_id": "positive_0p15_left_mid_late_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_026",
+      "role": "control",
+      "run_id": "control_0p15_left_mid_late_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_002.npz",
+        "sha256": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_027",
+      "role": "positive",
+      "run_id": "positive_0p15_right_early_loading_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_027",
+      "role": "control",
+      "run_id": "control_0p15_right_early_loading_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_028",
+      "role": "positive",
+      "run_id": "positive_0p15_right_early_loading_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_028",
+      "role": "control",
+      "run_id": "control_0p15_right_early_loading_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_029",
+      "role": "positive",
+      "run_id": "positive_0p15_right_early_loading_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_029",
+      "role": "control",
+      "run_id": "control_0p15_right_early_loading_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_030",
+      "role": "positive",
+      "run_id": "positive_0p15_right_mid_loading_early_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_030",
+      "role": "control",
+      "run_id": "control_0p15_right_mid_loading_early_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_031",
+      "role": "positive",
+      "run_id": "positive_0p15_right_mid_loading_early_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_031",
+      "role": "control",
+      "run_id": "control_0p15_right_mid_loading_early_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_032",
+      "role": "positive",
+      "run_id": "positive_0p15_right_mid_loading_early_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_032",
+      "role": "control",
+      "run_id": "control_0p15_right_mid_loading_early_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_033",
+      "role": "positive",
+      "run_id": "positive_0p15_right_mid_late_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_033",
+      "role": "control",
+      "run_id": "control_0p15_right_mid_late_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_034",
+      "role": "positive",
+      "run_id": "positive_0p15_right_mid_late_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_034",
+      "role": "control",
+      "run_id": "control_0p15_right_mid_late_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_035",
+      "role": "positive",
+      "run_id": "positive_0p15_right_mid_late_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_035",
+      "role": "control",
+      "run_id": "control_0p15_right_mid_late_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.15",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_036",
+      "role": "positive",
+      "run_id": "positive_0p20_left_early_loading_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_036",
+      "role": "control",
+      "run_id": "control_0p20_left_early_loading_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_037",
+      "role": "positive",
+      "run_id": "positive_0p20_left_early_loading_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_037",
+      "role": "control",
+      "run_id": "control_0p20_left_early_loading_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_038",
+      "role": "positive",
+      "run_id": "positive_0p20_left_early_loading_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_038",
+      "role": "control",
+      "run_id": "control_0p20_left_early_loading_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_003.npz",
+        "sha256": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_039",
+      "role": "positive",
+      "run_id": "positive_0p20_left_mid_loading_early_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_039",
+      "role": "control",
+      "run_id": "control_0p20_left_mid_loading_early_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_040",
+      "role": "positive",
+      "run_id": "positive_0p20_left_mid_loading_early_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_040",
+      "role": "control",
+      "run_id": "control_0p20_left_mid_loading_early_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_041",
+      "role": "positive",
+      "run_id": "positive_0p20_left_mid_loading_early_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_041",
+      "role": "control",
+      "run_id": "control_0p20_left_mid_loading_early_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_042",
+      "role": "positive",
+      "run_id": "positive_0p20_left_mid_late_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_042",
+      "role": "control",
+      "run_id": "control_0p20_left_mid_late_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_043",
+      "role": "positive",
+      "run_id": "positive_0p20_left_mid_late_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_043",
+      "role": "control",
+      "run_id": "control_0p20_left_mid_late_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_044",
+      "role": "positive",
+      "run_id": "positive_0p20_left_mid_late_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_044",
+      "role": "control",
+      "run_id": "control_0p20_left_mid_late_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "left",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_045",
+      "role": "positive",
+      "run_id": "positive_0p20_right_early_loading_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_045",
+      "role": "control",
+      "run_id": "control_0p20_right_early_loading_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_046",
+      "role": "positive",
+      "run_id": "positive_0p20_right_early_loading_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_046",
+      "role": "control",
+      "run_id": "control_0p20_right_early_loading_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_047",
+      "role": "positive",
+      "run_id": "positive_0p20_right_early_loading_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_047",
+      "role": "control",
+      "run_id": "control_0p20_right_early_loading_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "early_loading",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_048",
+      "role": "positive",
+      "run_id": "positive_0p20_right_mid_loading_early_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_048",
+      "role": "control",
+      "run_id": "control_0p20_right_mid_loading_early_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_049",
+      "role": "positive",
+      "run_id": "positive_0p20_right_mid_loading_early_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_049",
+      "role": "control",
+      "run_id": "control_0p20_right_mid_loading_early_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_050",
+      "role": "positive",
+      "run_id": "positive_0p20_right_mid_loading_early_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_050",
+      "role": "control",
+      "run_id": "control_0p20_right_mid_loading_early_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "mid_loading_early_stance",
+      "trace_shard": {
+        "path": "traces_part_004.npz",
+        "sha256": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": false,
+      "pair_id": "v7:v7_pair_051",
+      "role": "positive",
+      "run_id": "positive_0p20_right_mid_late_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": false,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "6a28140d0d5e0205c66610f090e10e080e2d304049ad2c6086089fa9b1db5be6"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_051",
+      "role": "control",
+      "run_id": "control_0p20_right_mid_late_stance_v0_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "6a28140d0d5e0205c66610f090e10e080e2d304049ad2c6086089fa9b1db5be6"
+      },
+      "variation_index": "0"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_052",
+      "role": "positive",
+      "run_id": "positive_0p20_right_mid_late_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "6a28140d0d5e0205c66610f090e10e080e2d304049ad2c6086089fa9b1db5be6"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "hard_normal",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_052",
+      "role": "control",
+      "run_id": "control_0p20_right_mid_late_stance_v1_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "6a28140d0d5e0205c66610f090e10e080e2d304049ad2c6086089fa9b1db5be6"
+      },
+      "variation_index": "1"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_053",
+      "role": "positive",
+      "run_id": "positive_0p20_right_mid_late_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "6a28140d0d5e0205c66610f090e10e080e2d304049ad2c6086089fa9b1db5be6"
+      },
+      "variation_index": "2"
+    },
+    {
+      "control_type": "near_slip_non_event",
+      "development_only": true,
+      "future_training_eligible": true,
+      "pair_id": "v7:v7_pair_053",
+      "role": "control",
+      "run_id": "control_0p20_right_mid_late_stance_v2_M1",
+      "severity": "moderate_v2",
+      "source_acquisition": "v7_moderate_v2",
+      "source_valid": true,
+      "speed_mps": "0.2",
+      "target_foot": "right",
+      "target_phase": "mid_late_stance",
+      "trace_shard": {
+        "path": "traces_part_005.npz",
+        "sha256": "6a28140d0d5e0205c66610f090e10e080e2d304049ad2c6086089fa9b1db5be6"
+      },
+      "variation_index": "2"
+    }
+  ],
+  "training_performed": false,
+  "version": "walking_v2_slip_canonical_base_v8"
+}

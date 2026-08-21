@@ -1,0 +1,269 @@
+{
+  "exact_paths_only": true,
+  "inputs": [
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_moderate_profile_recalibration_v7.py",
+      "purpose": "immutable v7 moderate-v2 source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_moderate_profile_recalibration_v7.py",
+      "purpose": "immutable v7 moderate-v2 source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_moderate_profile_recalibration_v7.py",
+      "purpose": "immutable v7 moderate-v2 source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_bilateral_slip_targeted_acquisition_v5.py",
+      "purpose": "immutable v5 strong acquisition source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_bilateral_slip_targeted_acquisition_v5.py",
+      "purpose": "immutable v5 strong acquisition source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_bilateral_slip_targeted_acquisition_v5.py",
+      "purpose": "immutable v5 strong acquisition source"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/summary.json",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/readiness.json",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/provenance.json",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/protocol.json",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/immutable_verification.json",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_profile_lock.json",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/profile_calibration_manifest.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/profile_calibration_metrics.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/profile_calibration_physical_episode_ledger.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/profile_calibration_fall_censor_audit.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_run_manifest.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_positive_source_audit.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_control_source_audit.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_pair_parity.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_contact_audit.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_fall_censor_audit.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/trace_shard_manifest.json",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_000.npz",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_001.npz",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_002.npz",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_003.npz",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_004.npz",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_005.npz",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/summary.json",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/readiness.json",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/provenance.json",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/run_manifest.csv",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/positive_source_audit.csv",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/control_source_audit.csv",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/pair_parity_audit.csv",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/trace_shard_manifest.json",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_000.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_001.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_002.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_003.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_004.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_005.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_006.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_007.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_008.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/geometry_calibration_manifest.csv",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/selected_geometry_lock.json",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/failed_v3_quarantine_manifest.json",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3/run_manifest.csv",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_supplemental_acquisition_v6.py",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_scenario_generator_redesign_v4.py",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/terrain_profiles.py",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/bilateral_hil_sensor_v2.py",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/g1_upstream_locomotion.py",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/unitree_rl_mjlab/deploy/robots/g1/config/policy/velocity/v0/exported/policy.onnx",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/scene_walking_terrain_transition.xml",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/g1_29dof.xml",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "immutable Terrain model"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "immutable Terrain normalization"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "immutable Terrain config"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "immutable Terrain lock"
+    },
+    {
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "frozen physical Slip oracle"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py",
+      "purpose": "frozen physical Slip oracle"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "frozen physical Slip oracle"
+    }
+  ]
+}

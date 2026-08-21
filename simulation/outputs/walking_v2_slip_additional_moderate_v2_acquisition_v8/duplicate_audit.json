@@ -1,0 +1,15 @@
+{
+  "deterministic_serialization_replay_count": 1,
+  "discarded_count": 0,
+  "duplicate_unique_trace_count": 0,
+  "executed_run_count": 24,
+  "planned_run_count": 24,
+  "replaced_count": 0,
+  "replay_changed_run_configuration": false,
+  "replay_reason": "post-execution control-audit serializer field mismatch",
+  "silently_relabelled_count": 0,
+  "unique_pair_fingerprint_count": 12,
+  "unique_run_id_count": 24,
+  "unique_trace_hash_count": 24,
+  "valid": true
+}

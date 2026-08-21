@@ -1,0 +1,207 @@
+{
+  "M1_G0_strong_oracle_unchanged": true,
+  "augmented_factorial_coverage": 36,
+  "augmented_manifest_created": true,
+  "base_factorial_coverage": 35,
+  "base_positive_attempts": 108,
+  "base_valid_positive_count": 87,
+  "base_valid_positive_rate": 0.8055555555555556,
+  "blind_holdout_created": false,
+  "discarded_replaced_silently_relabelled": [
+    0,
+    0,
+    0
+  ],
+  "eligibility_counts": {
+    "CALIBRATION_ONLY_DO_NOT_TRAIN": 42,
+    "CONTROL_ELIGIBLE": 120,
+    "FAILED_SOURCE_DIAGNOSTIC_ONLY": 27,
+    "FORBIDDEN": 0,
+    "POSITIVE_ELIGIBLE": 93,
+    "QUARANTINED": 216
+  },
+  "execution_recovery": {
+    "adaptive_or_replacement_variation_count": 0,
+    "deterministic_serialization_replay_count": 1,
+    "incident": "control-audit serializer field mismatch after 24/24 runs",
+    "preliminary_physics_block_completed": true,
+    "preliminary_results_persisted": false,
+    "preliminary_unpersisted_results_used_for_contract_changes": false,
+    "run_ids_seeds_and_configurations_changed": false
+  },
+  "forbidden_artifact_access_count": 0,
+  "future_fold_manifest_created": true,
+  "model_selected_or_locked": false,
+  "next_step": "SLIP_TARGETED_RETRAINING_V3",
+  "readiness": {
+    "SINK_RUNTIME_DETECTION_DEFERRED": true,
+    "WALKING_V2_FRESH_BLIND_HOLDOUT_AUTHORIZED": false,
+    "WALKING_V2_INT8_PREPARATION_AUTHORIZED": false,
+    "WALKING_V2_SLIP_AUGMENTED_DEVELOPMENT_DATA_READY": true,
+    "WALKING_V2_SLIP_AUGMENTED_FACTORIAL_COVERAGE_READY": true,
+    "WALKING_V2_SLIP_FUTURE_FOLD_READY": true,
+    "WALKING_V2_SLIP_SUPPLEMENTAL_CELL_READY": true,
+    "WALKING_V2_SLIP_SUPPLEMENTAL_CONTRACT_READY": true,
+    "WALKING_V2_SLIP_SUPPLEMENTAL_CONTROL_READY": true,
+    "WALKING_V2_SLIP_SUPPLEMENTAL_SOURCE_READY": true,
+    "WALKING_V2_SLIP_TARGETED_RETRAINING_AUTHORIZED": true,
+    "WALKING_V2_SLIP_VARIATION_DIAGNOSIS_READY": true,
+    "WALKING_V2_SYSTEM_MIGRATION_AUTHORIZED": false,
+    "WALKING_V2_TERRAIN_LOCK_PRESERVED": true
+  },
+  "supplemental_control_runs": 12,
+  "supplemental_efficiency": 0.5,
+  "supplemental_gates": {
+    "air_or_postfall_positive_attribution_count": 0,
+    "all_valid_onsets_mid_late_stance": true,
+    "claims_all_combinations_robust": false,
+    "control_physical_slip_onset_count": 0,
+    "discarded_count": 0,
+    "duplicate_unique_trace_count": 0,
+    "exact_1khz_fusion20": true,
+    "executed_positive_runs": 12,
+    "forbidden_artifact_access_count": 0,
+    "friction_contract_violation_count": 0,
+    "full_trace_identity_count": 0,
+    "matched_control_runs": 12,
+    "pass": true,
+    "patch_base_double_contact_count": 0,
+    "physically_distinct_valid_variation_count": 6,
+    "planned_positive_runs": 12,
+    "postcontact_divergence_count": 12,
+    "precontact_pair_parity_count": 12,
+    "replaced_count": 0,
+    "silently_relabelled_count": 0,
+    "source_valid_positive_count": 6,
+    "source_validity_by_command_delay": {
+      "0.02": {
+        "planned": 3,
+        "source_valid": 1
+      },
+      "0.03": {
+        "planned": 3,
+        "source_valid": 2
+      },
+      "0.04": {
+        "planned": 3,
+        "source_valid": 2
+      },
+      "0.05": {
+        "planned": 3,
+        "source_valid": 1
+      }
+    },
+    "source_validity_by_phase_offset": {
+      "+0.00": {
+        "planned": 4,
+        "source_valid": 1
+      },
+      "+0.14": {
+        "planned": 4,
+        "source_valid": 1
+      },
+      "-0.14": {
+        "planned": 4,
+        "source_valid": 4
+      }
+    },
+    "source_validity_interaction": [
+      {
+        "command_delay_s": 0.02,
+        "failure_reason": "",
+        "phase_offset": -0.13999999999999996,
+        "source_valid": true,
+        "variation_id": "V8_L00"
+      },
+      {
+        "command_delay_s": 0.03,
+        "failure_reason": "",
+        "phase_offset": -0.13999999999999996,
+        "source_valid": true,
+        "variation_id": "V8_L01"
+      },
+      {
+        "command_delay_s": 0.04,
+        "failure_reason": "",
+        "phase_offset": -0.13999999999999996,
+        "source_valid": true,
+        "variation_id": "V8_L02"
+      },
+      {
+        "command_delay_s": 0.05,
+        "failure_reason": "",
+        "phase_offset": -0.13999999999999996,
+        "source_valid": true,
+        "variation_id": "V8_L03"
+      },
+      {
+        "command_delay_s": 0.02,
+        "failure_reason": "NO_PHYSICAL_ONSET",
+        "phase_offset": 0.0,
+        "source_valid": false,
+        "variation_id": "V8_L04"
+      },
+      {
+        "command_delay_s": 0.03,
+        "failure_reason": "NO_PHYSICAL_ONSET",
+        "phase_offset": 0.0,
+        "source_valid": false,
+        "variation_id": "V8_L05"
+      },
+      {
+        "command_delay_s": 0.04,
+        "failure_reason": "",
+        "phase_offset": 0.0,
+        "source_valid": true,
+        "variation_id": "V8_L06"
+      },
+      {
+        "command_delay_s": 0.05,
+        "failure_reason": "NO_PHYSICAL_ONSET",
+        "phase_offset": 0.0,
+        "source_valid": false,
+        "variation_id": "V8_L07"
+      },
+      {
+        "command_delay_s": 0.02,
+        "failure_reason": "NO_PHYSICAL_ONSET",
+        "phase_offset": 0.14000000000000007,
+        "source_valid": false,
+        "variation_id": "V8_L08"
+      },
+      {
+        "command_delay_s": 0.03,
+        "failure_reason": "",
+        "phase_offset": 0.14000000000000007,
+        "source_valid": true,
+        "variation_id": "V8_L09"
+      },
+      {
+        "command_delay_s": 0.04,
+        "failure_reason": "NO_PHYSICAL_ONSET",
+        "phase_offset": 0.14000000000000007,
+        "source_valid": false,
+        "variation_id": "V8_L10"
+      },
+      {
+        "command_delay_s": 0.05,
+        "failure_reason": "NO_PHYSICAL_ONSET",
+        "phase_offset": 0.14000000000000007,
+        "source_valid": false,
+        "variation_id": "V8_L11"
+      }
+    ],
+    "supplemental_efficiency": 0.5,
+    "target_first_accuracy": 1.0,
+    "total_unique_runs": 24,
+    "unique_initial_policy_state_count": 12,
+    "valid_control_count": 12
+  },
+  "supplemental_physically_distinct_valid_variation_count": 6,
+  "supplemental_positive_runs": 12,
+  "supplemental_source_valid_positive_count": 6,
+  "system_int8_vela_e84_hil_changed": false,
+  "task": "Acquire Additional Moderate-v2 Slip Support v8",
+  "training_performed": false,
+  "variation_root_cause": "PATCH_ENTRY_POSE_SENSITIVITY"
+}
