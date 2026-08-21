@@ -1,0 +1,15 @@
+contract_id,row_type,original_positive_run_count,scoped_positive_run_count,excluded_positive_run_count,original_episode_count,scoped_episode_count,excluded_episode_count,scoped_episode_percent_of_original,unique_owner_available_episode_count,matching_owner_available_episode_count,ambiguous_or_no_owner_episode_count,predicted_case_a_before_onset_count,predicted_case_a_within_20ms_count,oracle_case_a_but_predicted_not_count,predicted_case_a_incorrect_count,oracle_terrain_substituted,exclusion_reason,excluded_percent_of_original,source,scoped_source_fraction
+C1_CASE_A_UNIQUE_OWNER_PREDICTIVE,TOTAL,125,0,125,471,0,471,0.0,434,416,37,0,0,NOT_ASSESSABLE_NO_PRIOR_TRANSITION_ORACLE,0,False,,,,
+C1_CASE_A_UNIQUE_OWNER_PREDICTIVE,EXCLUSION_REASON,,,,471,,416,,,,,,,,,,PREDICTED_CASE_A_TRANSITION_UNAVAILABLE,0.8832271762208068,,
+C1_CASE_A_UNIQUE_OWNER_PREDICTIVE,EXCLUSION_REASON,,,,471,,55,,,,,,,,,,UNIQUE_MATCHING_G0_OWNER_UNAVAILABLE,0.11677282377919321,,
+C1_CASE_A_UNIQUE_OWNER_PREDICTIVE,SOURCE_EVIDENCE,,,,202,0,,,,,,,,,,,,,existing_valid_120_bilateral_development,0.0
+C1_CASE_A_UNIQUE_OWNER_PREDICTIVE,SOURCE_EVIDENCE,,,,160,0,,,,,,,,,,,,,v5_strong,0.0
+C1_CASE_A_UNIQUE_OWNER_PREDICTIVE,SOURCE_EVIDENCE,,,,99,0,,,,,,,,,,,,,v7_moderate_v2,0.0
+C1_CASE_A_UNIQUE_OWNER_PREDICTIVE,SOURCE_EVIDENCE,,,,10,0,,,,,,,,,,,,,v8_moderate_v2_supplemental,0.0
+C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION,TOTAL,125,0,125,471,0,471,0.0,386,369,85,0,0,NOT_ASSESSABLE_NO_PRIOR_TRANSITION_ORACLE,0,False,,,,
+C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION,EXCLUSION_REASON,,,,471,,369,,,,,,,,,,PREDICTED_CASE_A_TRANSITION_UNAVAILABLE,0.7834394904458599,,
+C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION,EXCLUSION_REASON,,,,471,,102,,,,,,,,,,UNIQUE_MATCHING_G0_OWNER_UNAVAILABLE,0.21656050955414013,,
+C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION,SOURCE_EVIDENCE,,,,202,0,,,,,,,,,,,,,existing_valid_120_bilateral_development,0.0
+C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION,SOURCE_EVIDENCE,,,,160,0,,,,,,,,,,,,,v5_strong,0.0
+C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION,SOURCE_EVIDENCE,,,,99,0,,,,,,,,,,,,,v7_moderate_v2,0.0
+C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION,SOURCE_EVIDENCE,,,,10,0,,,,,,,,,,,,,v8_moderate_v2_supplemental,0.0

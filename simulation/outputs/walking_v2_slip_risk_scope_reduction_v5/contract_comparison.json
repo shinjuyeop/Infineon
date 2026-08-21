@@ -1,0 +1,43 @@
+{
+  "chosen_contract": "C3_TERRAIN_CASE_A_REFLEX_ONLY",
+  "contracts": [
+    {
+      "contract_id": "C0_BROAD_PREDICTIVE_BASELINE",
+      "coverage_episodes": 471,
+      "reason": "frozen broad predictive mandatory-gate failure",
+      "selectable": false,
+      "supported": false
+    },
+    {
+      "contract_id": "C1_CASE_A_UNIQUE_OWNER_PREDICTIVE",
+      "coverage_episodes": 0,
+      "reason": "predicted Case-A transition timeline unavailable and evidence floor failed",
+      "supported": false
+    },
+    {
+      "contract_id": "C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION",
+      "coverage_episodes": 0,
+      "reason": "predicted Case-A transition timeline unavailable and evidence floor failed",
+      "supported": false
+    },
+    {
+      "contract_id": "C3_TERRAIN_CASE_A_REFLEX_ONLY",
+      "coverage_episodes": "not_a_learned_slip_detection_claim",
+      "reason": "Terrain lock and pure Case-A mapping intact; learned Slip actuation disabled; validation pending",
+      "supported": true
+    },
+    {
+      "contract_id": "C4_STOP_WALKING_V2_SLIP_RUNTIME",
+      "coverage_episodes": 0,
+      "reason": "fail-closed deployment fallback",
+      "supported": true
+    }
+  ],
+  "decision_order_applied": [
+    "C1_CASE_A_UNIQUE_OWNER_PREDICTIVE",
+    "C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION",
+    "C3_TERRAIN_CASE_A_REFLEX_ONLY",
+    "C4_STOP_WALKING_V2_SLIP_RUNTIME"
+  ],
+  "version": "walking_v2_slip_scope_contract_comparison_v5"
+}

@@ -1,0 +1,16 @@
+{
+  "all_exact": true,
+  "classification_if_failed": "SLIP_SCOPE_ANALYSIS_INPUT_PARITY_FAILURE",
+  "metric_mismatch_count": 0,
+  "metric_mismatches": [],
+  "no_training_or_fit": true,
+  "original_episode_count": 471,
+  "pareto_row_count": 504,
+  "reproduced_fallback": "F1_seed_202608242",
+  "reproduced_maximum_all_three_zero_recall": 0.0,
+  "reproduced_maximum_contact_episode_fp_zero_recall": 0.0,
+  "reproduced_maximum_run_fp_zero_recall": 0.6963906581740976,
+  "reproduced_maximum_too_early_zero_recall": 0.08280254777070063,
+  "stored_fallback": "F1_seed_202608242",
+  "stored_maximum_all_three_zero_recall": 0.0
+}

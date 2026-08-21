@@ -1,0 +1,14 @@
+{
+  "G0_authority": "unique current contact owner for any future foot-specific actuation",
+  "chosen_contract": "C3_TERRAIN_CASE_A_REFLEX_ONLY",
+  "learned_slip_offline_diagnostic_authority": true,
+  "learned_slip_runtime_actuation_authority": false,
+  "learned_slip_runtime_inference_authority": false,
+  "next_step": "VALIDATE_TERRAIN_ONLY_CASE_REFLEX",
+  "oracle_terrain_substituted": false,
+  "reason": "C1/C2 lack causally evidenced Case-A scope and evidence floor; C3 preserves the locked Terrain role while disabling learned Slip actuation",
+  "score_derived_scope": false,
+  "terrain_case_a_initial_reflex_authority": true,
+  "terrain_only_system_validation_still_required": true,
+  "version": "walking_v2_slip_scope_decision_v5"
+}

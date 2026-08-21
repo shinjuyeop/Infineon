@@ -1,0 +1,63 @@
+{
+  "LBFGS_convergence_qualification": "TRAINING_HEALTH_INSUFFICIENT",
+  "causal_signal_inventory_sha256": "90055d6ef9e77a517580c3888ff377d09934e8fce9e873de60748d2fd09a8691",
+  "chosen_contract": "C3_TERRAIN_CASE_A_REFLEX_ONLY",
+  "corrected_v4_result_sha256": "31eb1c6e0e825e2e599e5ff8c1447be7ddd5a5256707c510abd6a059c2321265",
+  "covered_operational_domain": "Terrain-predicted Case-A reflex role; no learned Slip detection claim",
+  "evidence_limitations": [
+    "no authoritative per-event predicted Case-A transition timeline in the 333-run corpus",
+    "C1 and C2 retain zero scoped episodes rather than deleting difficult events",
+    "LBFGS gradient norm, step size, last-25 improvement and near-ceiling prediction stability were not recorded"
+  ],
+  "excluded_operational_domain": "all learned Slip predictive, confirmation, inference and actuation authority",
+  "explicitly_prohibited_claims": [
+    "universal model impossibility",
+    "broad learned Slip predictive readiness",
+    "learned Slip reactive-confirmation readiness",
+    "learned affected-foot actuation readiness",
+    "blind/generalization readiness",
+    "System migration readiness",
+    "INT8 deployment readiness",
+    "Sink runtime detection readiness"
+  ],
+  "immutable": true,
+  "immutable_artifact_sha256": {
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+    "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+    "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+    "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+    "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+    "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/augmented_canonical_development_manifest.json": "ab6a81b7ee0f9261980b611f9a18ac3d715a69f4cacc06b1eed48a7d1ae16f1b",
+    "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/future_nested_fold_manifest.json": "4a14fcf905afb3e6bf6358729abc33f560090e18a979bd8d31582762c71b8782",
+    "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/trace_shard_manifest.json": "7831edd54bef4f84929c383b14873643eb5584153e56e69cf7c260cda8e61c9b",
+    "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/traces_part_000.npz": "cfad372ca01f832e435c8c383b0a26b95645bc07b6a4e7f9a8fc3793c0afe4a0",
+    "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/training_eligibility.csv": "cabe9f24e39949cb62527a09c231f95095c67d4616e716b60819e8504a49d74c",
+    "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_profile_lock.json": "e50965e0e435ee2fd704069c95b648489c1ddbb48cdecaa93f152d3950ad2128",
+    "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/selected_geometry_lock.json": "b8d9f627fecb04f3ac629272ae8cd1b641bab93d00bdd3fa63f88f814b081343",
+    "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+    "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506"
+  },
+  "lock_type": "scope_and_runtime_role_not_model_selection",
+  "model_artifact_created": false,
+  "next_authorized_task": "VALIDATE_TERRAIN_ONLY_CASE_REFLEX",
+  "original_denominator_sha256": "fd0be8ed57f495ee3749c7fc525ee322fd93b9a062878daf3df221241f56ec6c",
+  "protocol_sha256": "f60f0ec56385d79d25511bb15f7d3985515efcd2319747eb8d5df6083aee2154",
+  "runtime_authority": {
+    "G0": "unique current contact owner authority for any future scoped foot actuation",
+    "Slip": "offline diagnostics only; no runtime inference or actuation authority",
+    "Terrain": "sole initial Case-A transition reflex authority pending Terrain-only validation"
+  },
+  "safety_invariants": [
+    "no learned Slip actuation",
+    "no oracle Terrain runtime substitution",
+    "no score/run/source/variation/seed-derived scope",
+    "G0 unique owner required for future foot actuation",
+    "AIR/touchdown/invalid/post-fall/latch/cross-foot remain fail-closed"
+  ],
+  "scope_matrix_sha256": "a8ad4603ed6d23b5565d6ef2df130ade898e999d45afa439ba1d44126e1fa212",
+  "scoped_denominator_sha256": "d839f0ad2449995e16b9707121c068a8e26a32a0157f2ce5e27fa118570fec34",
+  "slip_selection_lock_created": false,
+  "starting_checkpoint": "df53a25d2bdfb166ec6bf33dcbc5f22e3b5002ec",
+  "timing_claim": "no learned Slip warning/confirmation timing claim; Terrain Case-A timing requires next validation",
+  "version": "walking_v2_slip_risk_scope_decision_lock_v5"
+}

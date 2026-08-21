@@ -1,0 +1,83 @@
+{
+  "contracts": [
+    {
+      "contract_id": "C0_BROAD_PREDICTIVE_BASELINE",
+      "denominator": "original frozen 471 episodes",
+      "horizon_ms": 100,
+      "reason": "already failed the corrected-v4 mandatory gates",
+      "role": "diagnostic baseline",
+      "scope_selectors": [],
+      "selectable": false
+    },
+    {
+      "contract_id": "C1_CASE_A_UNIQUE_OWNER_PREDICTIVE",
+      "forbidden_selectors": [
+        "run/source/variation/seed",
+        "observed error",
+        "model score",
+        "speed-only",
+        "foot-only",
+        "future severity/duration/peak",
+        "oracle Terrain"
+      ],
+      "horizon_ms": 100,
+      "physical_active_evidence_required": false,
+      "role": "foot-specific predictive warning",
+      "scope_selectors": [
+        "locked predicted Case A",
+        "exactly one current G0 owner",
+        "valid loaded contact",
+        "touchdown transient passed",
+        "before first fall"
+      ],
+      "selectable": true
+    },
+    {
+      "actuation_owner": "current unique G0 owner",
+      "causal_confirmation_gate": "physical-active state is argmax; no new threshold",
+      "contract_id": "C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION",
+      "diagnostic_deadlines_ms": [
+        10,
+        30,
+        50
+      ],
+      "initial_reflex_authority": false,
+      "learned_foot_head": "diagnostic only",
+      "role": "reactive confirmation/recovery escalation only",
+      "scope_selectors": [
+        "locked predicted Case A",
+        "exactly one current G0 owner",
+        "valid loaded contact",
+        "touchdown transient passed",
+        "before first fall"
+      ],
+      "selectable": true,
+      "selectable_deadline_ms": 20
+    },
+    {
+      "contract_id": "C3_TERRAIN_CASE_A_REFLEX_ONLY",
+      "learned_slip_actuation_authority": false,
+      "learned_slip_inference_authority": "offline diagnostic only",
+      "requires_later_validation": "Terrain-only Case-A System validation",
+      "role": "Terrain predicted Case-A transition reflex only",
+      "selectable": true
+    },
+    {
+      "contract_id": "C4_STOP_WALKING_V2_SLIP_RUNTIME",
+      "role": "no learned Slip inference or actuation",
+      "selectable": true,
+      "sink": "SINK_RUNTIME_DETECTION_DEFERRED",
+      "terrain_preserved": true
+    }
+  ],
+  "decision_order": [
+    "C1_CASE_A_UNIQUE_OWNER_PREDICTIVE",
+    "C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION",
+    "C3_TERRAIN_CASE_A_REFLEX_ONLY",
+    "C4_STOP_WALKING_V2_SLIP_RUNTIME"
+  ],
+  "frozen_before_scope_metrics": true,
+  "gates_lowered": false,
+  "new_contract_after_results": false,
+  "version": "walking_v2_slip_risk_scope_matrix_v5"
+}

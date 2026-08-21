@@ -1,0 +1,7 @@
+contract_id,fold,original_episode_count,scoped_episode_count,coverage,confirmation_or_predictive_recall,all_zero_safety,fold_gate_pass
+C1_CASE_A_UNIQUE_OWNER_PREDICTIVE,0,170,0,0.0,0.0,True,False
+C1_CASE_A_UNIQUE_OWNER_PREDICTIVE,1,183,0,0.0,0.0,True,False
+C1_CASE_A_UNIQUE_OWNER_PREDICTIVE,2,118,0,0.0,0.0,True,False
+C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION,0,170,0,0.0,0.0,True,False
+C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION,1,183,0,0.0,0.0,True,False
+C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION,2,118,0,0.0,0.0,True,False

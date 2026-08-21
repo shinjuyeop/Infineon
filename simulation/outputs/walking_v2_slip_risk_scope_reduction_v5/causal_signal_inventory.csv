@@ -1,0 +1,21 @@
+signal,producer,timestamp_reference,latency,model_predicted,oracle_derived,allowed_runtime_gate,available_before_physical_onset,available_within_20ms_after_onset,qualification
+predicted_terrain_state,locked Walking-v2 T2 Terrain model,current causal 200 ms bilateral history endpoint,10 ms endpoint cadence; compute latency unbenchmarked,True,False,True,conditional on a completed 200 ms history,conditional,Model prediction; never terrain_id/name/oracle.
+predicted_transition_case,portable transition case mapper over two stable predicted Terrain states,endpoint at which a different stable predicted Terrain state becomes available,unbounded in this corpus: transition persistence/timeline not stored,True,False,True,not evidenced for any of the 471 episodes,not evidenced,"Allowed in principle, but unavailable for C1/C2 accounting without a prior predicted state."
+transition_state_availability_timestamp,Terrain transition state machine,same causal endpoint as predicted transition recognition,not recorded,False,False,False,no,no,Missing authoritative per-run transition timeline.
+touchdown_timestamp,causal force-loaded rising edge,current 1 kHz sample,<=1 ms,False,False,True,yes,yes,Runtime-observable virtual FSR contact edge.
+causal_touchdown_age,counter since causal force-loaded rising edge,current 1 kHz sample,<=1 ms,False,False,True,yes,yes,Reconstructed exactly against legacy telemetry.
+current_G0_contact_state,bilateral virtual FSR/contact telemetry,current 1 kHz sample,<=1 ms,False,False,True,yes,yes,G0 geometry is fixed; contact state is causal telemetry.
+current_unique_contact_owner,exactly-one-foot predicate over valid G0 contact state,current 1 kHz sample,<=1 ms,False,False,True,yes,yes,Permitted actuation owner; no learned-foot substitution.
+single_support_dual_support_state,bilateral G0 contact-state reducer,current 1 kHz sample,<=1 ms,False,False,True,yes,yes,Derived without future contact.
+foot_identity,fixed left/right sensor wiring and G0 owner,current sample,0 ms,False,False,True,yes,yes,Both feet remain representable.
+current_speed_command,locomotion command source,current controller tick,0 ms,False,False,True,yes,yes,Inventory only; C1/C2 do not select one speed.
+measured_causal_speed,encoder/IMU speed estimator,current estimator tick,not frozen,False,False,False,unknown,unknown,No frozen estimator contract; not used as a gate.
+M1_state,locked simulation friction profile,environment configuration,not a runtime measurement,False,True,False,no,no,Configuration/oracle context; prohibited as a runtime scope gate.
+raw_state_head_outputs,stored S4-C OOF state head,10 ms endpoint after 200 ms history,10 ms cadence; compute latency unbenchmarked,True,False,False,yes,yes,"Detector evidence, explicitly prohibited from selecting the operational scope."
+raw_proposal_head_output,stored S4-C OOF proposal head,10 ms endpoint after 200 ms history,10 ms cadence; compute latency unbenchmarked,True,False,False,yes,yes,"Detector evidence, not a scope selector."
+raw_foot_head_output,stored S4-C OOF foot head,10 ms endpoint after 200 ms history,10 ms cadence; compute latency unbenchmarked,True,False,False,yes,yes,Diagnostic in C2; G0 unique owner controls actuation ownership.
+causal_physical_active_evidence,S4-C physical-active state probability/argmax,10 ms endpoint after 200 ms history,10 ms cadence; compute latency unbenchmarked,True,False,True,may be predicted early,yes,"Model-predicted evidence, not the physical oracle; pre-onset firing remains a violation."
+first_fall_boundary,offline first-fall oracle in frozen traces,first invalid physical sample,offline only,False,True,False,no,no,Evaluation/reset audit only; no locked causal fall estimator exists.
+invalid_mask,runtime data-quality monitor plus offline fall censor,current sample,<=1 ms for data quality; fall part offline,False,False,True,partial,partial,Causal data-quality component allowed; oracle fall component evaluation-only.
+AIR_mask,causal bilateral force-loaded state,current 1 kHz sample,<=1 ms,False,False,True,yes,yes,Runtime allowed.
+touchdown_transient_mask,causal touchdown age <=10 ms,current 1 kHz sample,<=1 ms,False,False,True,yes,yes,Runtime allowed.

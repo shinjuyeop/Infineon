@@ -1,0 +1,5 @@
+contract_id,foot,original_episode_count,scoped_episode_count,coverage,represented
+C1_CASE_A_UNIQUE_OWNER_PREDICTIVE,left,229,0,0.0,False
+C1_CASE_A_UNIQUE_OWNER_PREDICTIVE,right,242,0,0.0,False
+C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION,left,229,0,0.0,False
+C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION,right,242,0,0.0,False

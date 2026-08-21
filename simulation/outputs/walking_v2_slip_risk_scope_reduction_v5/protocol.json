@@ -1,0 +1,47 @@
+{
+  "analysis_only": true,
+  "blind_system_int8_vela_e84_hil": false,
+  "contract_added_after_metrics": false,
+  "contracts": [
+    "C0_BROAD_PREDICTIVE_BASELINE",
+    "C1_CASE_A_UNIQUE_OWNER_PREDICTIVE",
+    "C2_CASE_A_UNIQUE_OWNER_REACTIVE_CONFIRMATION",
+    "C3_TERRAIN_CASE_A_REFLEX_ONLY",
+    "C4_STOP_WALKING_V2_SLIP_RUNTIME"
+  ],
+  "fold_or_eligibility_change": false,
+  "generated_file_limit_mib": 45,
+  "inputs": "stored F0/F1 OOF scores and frozen development artifacts only",
+  "model_normalization_config_or_selection_lock_creation": false,
+  "new_data": false,
+  "objective": "widest causally enforceable and operationally honest reduced Slip contract",
+  "oracle_terrain_runtime_substitution": false,
+  "original_actionable_episode_count": 471,
+  "original_run_count": 333,
+  "physical_horizon_ms": 100,
+  "reactive_diagnostic_deadlines_ms": [
+    10,
+    30,
+    50
+  ],
+  "reactive_selectable_deadline_ms": 20,
+  "safety_gates_lowered": false,
+  "scope_selector_prohibitions": [
+    "run_id",
+    "source_id",
+    "variation",
+    "seed",
+    "observed_error_list",
+    "model_score",
+    "one_speed",
+    "one_foot",
+    "future_severity",
+    "future_duration",
+    "future_peak_slip",
+    "oracle_terrain"
+  ],
+  "sink": "SINK_RUNTIME_DETECTION_DEFERRED",
+  "starting_checkpoint": "df53a25d2bdfb166ec6bf33dcbc5f22e3b5002ec",
+  "training_or_fitting": false,
+  "version": "walking_v2_slip_risk_scope_reduction_v5"
+}
