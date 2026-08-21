@@ -1,0 +1,996 @@
+{
+  "bootstrap_authority": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/input_allowlist.json",
+  "exact_paths_only": true,
+  "inputs": [
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_sensor_contract_v2.json",
+      "purpose": "manifest-transitive exact-hash authorized existing development input",
+      "sha256": "35671fd007362ed74a6609e3f95145f16330746e3816575cd009675469b87b5f"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz",
+      "purpose": "manifest-transitive exact-hash authorized existing development input",
+      "sha256": "3ff4f8a1f270a39287fbe274753de91a5b0750d1a160e3cc9b1de01174f2a6ca"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz",
+      "purpose": "manifest-transitive exact-hash authorized existing development input",
+      "sha256": "8c6a1db0eecdf8f63cf3d361d896e770968473dca1bdcf4c0b0f9ae240fe42f8"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/candidate_feature_sets.json",
+      "purpose": "manifest-transitive exact-hash authorized existing development input",
+      "sha256": "048e7b3b9be5fcea5cb9dd6049d460bab7e64ce6be05d9014dfc907f12a2cc94"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/resource_estimate.csv",
+      "purpose": "manifest-transitive exact-hash authorized existing development input",
+      "sha256": "28e3e4414dddc9bfab1a2627306b21aa3c3fc8ba13fee218d26dea87f78ebe61"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "frozen physical Slip oracle"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3/run_manifest.csv",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/control_source_audit.csv",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/pair_parity_audit.csv",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/positive_source_audit.csv",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/provenance.json",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/readiness.json",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/run_manifest.csv",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/summary.json",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/trace_shard_manifest.json",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_000.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_001.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_002.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_003.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_004.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_005.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_006.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_007.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_008.npz",
+      "purpose": "immutable v5 strong acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "immutable Terrain config"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "immutable Terrain model"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "immutable Terrain normalization"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "immutable Terrain lock"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/augmented_canonical_development_manifest.json",
+      "purpose": "frozen v8 retraining authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/future_nested_fold_manifest.json",
+      "purpose": "frozen v8 retraining authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/immutable_verification.json",
+      "purpose": "frozen v8 retraining authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/input_allowlist.json",
+      "purpose": "frozen v8 retraining authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/provenance.json",
+      "purpose": "frozen v8 retraining authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/summary.json",
+      "purpose": "frozen v8 retraining authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/trace_shard_manifest.json",
+      "purpose": "frozen v8 retraining authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/traces_part_000.npz",
+      "purpose": "frozen v8 retraining authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/training_eligibility.csv",
+      "purpose": "frozen v8 retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/artifact_access_log.json",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/audit.md",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/candidate_fold_metrics.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/candidate_foot_metrics.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/candidate_matrix.json",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/candidate_pooled_metrics.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/candidate_speed_metrics.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/crossing_reconciliation.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/eligibility_audit.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/episode_distribution.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/forbidden_path_policy.json",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/hard_negative_audit.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/immutable_verification.json",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/input_allowlist.json",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/label_distribution.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/nested_fold_audit.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/oof_raw_head_scores_F0_seed_202608241.npz",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/oof_raw_head_scores_F0_seed_202608242.npz",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/oof_raw_head_scores_F0_seed_202608243.npz",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/oof_raw_head_scores_F1_seed_202608241.npz",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/oof_raw_head_scores_F1_seed_202608242.npz",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/oof_raw_head_scores_F1_seed_202608243.npz",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/operating_point_pareto.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/operating_point_policy.json",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/protocol.json",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/provenance.json",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/readiness.json",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/recipe_reconstruction.json",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/reset_audit.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/resource_report.json",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/selection_policy.json",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/stage_rejection_metrics.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/summary.json",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/timing_metrics.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/training_health.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_corrected_targeted_retraining_v4/weighting_comparison.csv",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/immutable_verification.json",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_contact_audit.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_control_source_audit.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_fall_censor_audit.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_pair_parity.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_positive_source_audit.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_profile_lock.json",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/moderate_v2_run_manifest.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/profile_calibration_fall_censor_audit.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/profile_calibration_manifest.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/profile_calibration_metrics.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/profile_calibration_physical_episode_ledger.csv",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/protocol.json",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/provenance.json",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/readiness.json",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/summary.json",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/trace_shard_manifest.json",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_000.npz",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_001.npz",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_002.npz",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_003.npz",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_004.npz",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_005.npz",
+      "purpose": "immutable v7 calibration/acquisition evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/development_manifest.json",
+      "purpose": "previous S4-C development-only evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/input_allowlist.json",
+      "purpose": "previous S4-C development-only evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/nested_fold_manifest.json",
+      "purpose": "previous S4-C development-only evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/protocol.json",
+      "purpose": "previous S4-C development-only evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/provenance.json",
+      "purpose": "previous S4-C development-only evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/slip_candidate_matrix.csv",
+      "purpose": "previous S4-C development-only evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/slip_crossing_reconciliation.csv",
+      "purpose": "previous S4-C development-only evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/slip_episode_metrics.csv",
+      "purpose": "previous S4-C development-only evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/slip_fold_metrics.csv",
+      "purpose": "previous S4-C development-only evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/slip_label_distribution.csv",
+      "purpose": "previous S4-C development-only evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/slip_training_health.csv",
+      "purpose": "previous S4-C development-only evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/summary.json",
+      "purpose": "previous S4-C development-only evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/artifact_access_log.json",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/audit.md",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/correctness_fixes.json",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/episode_duration_gap_metrics.csv",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/episode_reconciliation.csv",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/exact_replay_parity.json",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/forbidden_path_policy.json",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/immutable_verification.json",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/input_allowlist.json",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/label_distribution.csv",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/normalization_audit.json",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/operating_point_pareto.csv",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/protocol.json",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/provenance.json",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/raw_score_metrics.csv",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/readiness.json",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/root_cause_classification.json",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/shadow_comparison.csv",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/stage_rejection_metrics.csv",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/state_mask_variant_metrics.csv",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/summary.json",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/training_health.csv",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/unified_sample_ledger.csv",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/violation_ledger.csv",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_retraining_failure_audit_v4/violation_reconciliation.json",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/artifact_access_log.json",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/audit.md",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/causal_signal_inventory.csv",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/contract_comparison.json",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/convergence_qualification.csv",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/decision.json",
+      "purpose": "host-v1 frozen authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/exact_input_parity.json",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/forbidden_path_policy.json",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/immutable_verification.json",
+      "purpose": "host-v1 frozen authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/input_allowlist.json",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/predictive_scope_metrics.csv",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/protocol.json",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/provenance.json",
+      "purpose": "host-v1 frozen authority"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/reactive_confirmation_metrics.csv",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/reactive_latency_metrics.csv",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/readiness.json",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/scope_coverage.csv",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/scope_fold_metrics.csv",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/scope_foot_metrics.csv",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/scope_matrix.json",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/scope_safety_metrics.csv",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/scope_speed_metrics.csv",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/slip_risk_scope_decision_lock.json",
+      "purpose": "v5 transitive hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_risk_scope_reduction_v5/summary.json",
+      "purpose": "host-v1 frozen authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/failed_v3_quarantine_manifest.json",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/geometry_calibration_manifest.csv",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/selected_geometry_lock.json",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/artifact_access_log.json",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/audit.md",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/candidate_fold_metrics.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/candidate_foot_metrics.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/candidate_matrix.json",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/candidate_phase_metrics.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/candidate_pooled_metrics.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/candidate_speed_metrics.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/crossing_reconciliation.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/eligibility_audit.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/episode_distribution.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/forbidden_path_policy.json",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/future_leakage_audit.json",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/hard_negative_audit.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/immutable_verification.json",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/input_allowlist.json",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/label_distribution.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/nested_fold_audit.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/oof_predictions_R1.npz",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/oof_predictions_R2.npz",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/oof_predictions_R3.npz",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/operating_point_audit.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/protocol.json",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/provenance.json",
+      "purpose": "v3 artifact hash graph"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/readiness.json",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/reset_audit.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/resource_report.json",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/selection_policy.json",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/summary.json",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/timing_metrics.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/training_health.csv",
+      "purpose": "frozen v3 replay evidence"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/simulate_python/bilateral_hil_sensor_v2.py",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/simulate_python/g1_upstream_locomotion.py",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_bilateral_slip_targeted_acquisition_v5.py",
+      "purpose": "immutable v5 strong acquisition source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_fast_reflex_host_v1.py",
+      "purpose": "host-v1 frozen authority"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_corrected_targeted_retraining_v4.py",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_moderate_profile_recalibration_v7.py",
+      "purpose": "immutable v7 moderate-v2 source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_redesign_iteration_v2.py",
+      "purpose": "frozen recipe/source comparison"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_retraining_failure_audit_v4.py",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_risk_scope_reduction_v5.py",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_targeted_retraining_v3.py",
+      "purpose": "frozen recipe/source comparison"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/terrain_fast_reflex_system_v1.py",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/simulate_python/terrain_profiles.py",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_bilateral_slip_targeted_acquisition_v5.py",
+      "purpose": "immutable v5 strong acquisition source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_fast_reflex_host_v1.py",
+      "purpose": "host-v1 frozen authority"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_corrected_targeted_retraining_v4.py",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_moderate_profile_recalibration_v7.py",
+      "purpose": "immutable v7 moderate-v2 source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_retraining_failure_audit_v4.py",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_risk_scope_reduction_v5.py",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "frozen physical Slip oracle"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py",
+      "purpose": "frozen physical Slip oracle"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_bilateral_slip_targeted_acquisition_v5.py",
+      "purpose": "immutable v5 strong acquisition source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_fast_reflex_host_v1.py",
+      "purpose": "host-v1 frozen authority"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_joint_terrain_slip_redesign_v1.py",
+      "purpose": "frozen recipe/source comparison"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_corrected_targeted_retraining_v4.py",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_moderate_profile_recalibration_v7.py",
+      "purpose": "immutable v7 moderate-v2 source"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_redesign_iteration_v2.py",
+      "purpose": "frozen recipe/source comparison"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_retraining_failure_audit_v4.py",
+      "purpose": "frozen corrected-retraining authority"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_risk_scope_reduction_v5.py",
+      "purpose": "frozen scope-analysis authority"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_scenario_generator_redesign_v4.py",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_supplemental_acquisition_v6.py",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_targeted_retraining_v3.py",
+      "purpose": "frozen recipe/source comparison"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/g1_29dof.xml",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/scene_walking_terrain_transition.xml",
+      "purpose": "explicitly scoped frozen support input"
+    },
+    {
+      "authority": "frozen v3 allowlist",
+      "path": "simulation/unitree_rl_mjlab/deploy/robots/g1/config/policy/velocity/v0/exported/policy.onnx",
+      "purpose": "explicitly scoped frozen support input"
+    }
+  ],
+  "version": "walking_v2_fast_reflex_allowlist_v1"
+}

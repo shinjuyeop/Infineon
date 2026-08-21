@@ -1,0 +1,6 @@
+architecture,direct_authority,selected,gate_pass,event_recall,recall_within_20ms,normal_contact_fp,too_early,post_fall_output,reason
+TERRAIN_CASE_A_DIRECT,True,False,False,0.09129511677282377,0.09129511677282377,57,0,8,strict false-actuation and recall gates failed
+BROAD_LEARNED_SLIP_DIRECT,True,False,False,0.673036093418259,0.6220806794055201,256,30,41,useful advisory recall but direct false outputs are unacceptable
+CASE_A_PLUS_SLIP_PREDICTIVE_DIRECT,True,False,False,0.04670912951167728,0.04670912951167728,36,0,3,scope is nonzero but precision/recall do not support actuation
+CASE_A_PLUS_ACTIVE_REACTIVE_DIRECT,True,False,False,0.0,0.0,0,0,0,reactive confirmation collapses useful detection
+MONITORING_ONLY_TERRAIN_AND_SLIP_ADVISORY,False,True,True,0.673036093418259,0.6220806794055201,256,30,41,preserves useful telemetry without unsafe actuation authority

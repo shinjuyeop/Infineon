@@ -1,0 +1,276 @@
+{
+  "case_a_scope": {
+    "original_episode_count": 471,
+    "per_speed": {
+      "predictive": {
+        "0.10": {
+          "eligible": 10,
+          "total": 165
+        },
+        "0.15": {
+          "eligible": 14,
+          "total": 156
+        },
+        "0.20": {
+          "eligible": 16,
+          "total": 150
+        }
+      },
+      "reactive": {
+        "0.10": {
+          "eligible": 11,
+          "total": 165
+        },
+        "0.15": {
+          "eligible": 16,
+          "total": 156
+        },
+        "0.20": {
+          "eligible": 14,
+          "total": 150
+        }
+      }
+    },
+    "predictive_episode_denominator": 40,
+    "predictive_run_denominator": 32,
+    "reactive_20ms_episode_denominator": 41,
+    "reactive_20ms_run_denominator": 31,
+    "zero_denominators_reported_as_performance": false
+  },
+  "case_a_scoped_predictive": {
+    "actionable_runs": 125,
+    "after_contact_output": 0,
+    "alert_f1": 0.08270676691729324,
+    "contact_owner_mismatch": 0,
+    "detected_runs": 19,
+    "detected_within_20ms": 22,
+    "detected_within_50ms": 22,
+    "direct_gate_pass": false,
+    "duplicate_output": 0,
+    "event_count": 471,
+    "event_detected": 22,
+    "event_recall": 0.04670912951167728,
+    "eventless_run_count": 208,
+    "foot_recall": {
+      "left": 0.056768558951965066,
+      "right": 0.0371900826446281
+    },
+    "invalid_output": 0,
+    "latch_carryover": 0,
+    "median_late_latency_ms": 0.0,
+    "median_warning_margin_ms": 15.0,
+    "normal_contact_count": 8914,
+    "normal_contact_fp": 36,
+    "normal_contact_fp_rate": 0.004038590980480144,
+    "normal_run_fp": 0,
+    "normal_run_fp_rate": 0.0,
+    "output_count": 61,
+    "p95_late_latency_ms": 0.0,
+    "p95_warning_margin_ms": 35.44999999999999,
+    "post_fall_output": 3,
+    "precision": 0.36065573770491804,
+    "predictive_detected_by_onset": 22,
+    "predictive_recall_by_onset": 0.04670912951167728,
+    "recall_within_20ms": 0.04670912951167728,
+    "recall_within_50ms": 0.04670912951167728,
+    "run_count": 333,
+    "run_recall": 0.152,
+    "speed_recall": {
+      "0.10": 0.030303030303030304,
+      "0.15": 0.0641025641025641,
+      "0.20": 0.04666666666666667
+    },
+    "speed_recall_within_20ms": {
+      "0.10": 0.030303030303030304,
+      "0.15": 0.0641025641025641,
+      "0.20": 0.04666666666666667
+    },
+    "too_early": 0,
+    "wrong_case_output": 0
+  },
+  "case_a_scoped_reactive_confirmation": {
+    "actionable_runs": 125,
+    "after_contact_output": 0,
+    "alert_f1": 0.0,
+    "contact_owner_mismatch": 0,
+    "detected_runs": 0,
+    "detected_within_20ms": 0,
+    "detected_within_50ms": 0,
+    "direct_gate_pass": false,
+    "duplicate_output": 0,
+    "event_count": 471,
+    "event_detected": 0,
+    "event_recall": 0.0,
+    "eventless_run_count": 208,
+    "foot_recall": {
+      "left": 0.0,
+      "right": 0.0
+    },
+    "invalid_output": 0,
+    "latch_carryover": 0,
+    "median_late_latency_ms": null,
+    "median_warning_margin_ms": null,
+    "normal_contact_count": 8914,
+    "normal_contact_fp": 0,
+    "normal_contact_fp_rate": 0.0,
+    "normal_run_fp": 0,
+    "normal_run_fp_rate": 0.0,
+    "output_count": 0,
+    "p95_late_latency_ms": null,
+    "p95_warning_margin_ms": null,
+    "post_fall_output": 0,
+    "precision": null,
+    "predictive_detected_by_onset": 0,
+    "predictive_recall_by_onset": 0.0,
+    "recall_within_20ms": 0.0,
+    "recall_within_50ms": 0.0,
+    "run_count": 333,
+    "run_recall": 0.0,
+    "speed_recall": {
+      "0.10": 0.0,
+      "0.15": 0.0,
+      "0.20": 0.0
+    },
+    "speed_recall_within_20ms": {
+      "0.10": 0.0,
+      "0.15": 0.0,
+      "0.20": 0.0
+    },
+    "too_early": 0,
+    "wrong_case_output": 0
+  },
+  "slip_advisory_causal_host_replay": {
+    "actionable_runs": 125,
+    "after_contact_output": 0,
+    "alert_f1": 0.568609865470852,
+    "contact_owner_mismatch": 150,
+    "detected_runs": 117,
+    "detected_within_20ms": 293,
+    "detected_within_50ms": 301,
+    "direct_gate_pass": false,
+    "duplicate_output": 0,
+    "event_count": 471,
+    "event_detected": 317,
+    "event_recall": 0.673036093418259,
+    "eventless_run_count": 208,
+    "foot_recall": {
+      "left": 0.6593886462882096,
+      "right": 0.6859504132231405
+    },
+    "invalid_output": 0,
+    "latch_carryover": 0,
+    "median_late_latency_ms": 0.0,
+    "median_warning_margin_ms": 46.0,
+    "normal_contact_count": 8914,
+    "normal_contact_fp": 256,
+    "normal_contact_fp_rate": 0.028718869194525466,
+    "normal_run_fp": 0,
+    "normal_run_fp_rate": 0.0,
+    "output_count": 678,
+    "p95_late_latency_ms": 50.79999999999984,
+    "p95_warning_margin_ms": 87.19999999999999,
+    "post_fall_output": 41,
+    "precision": 0.4922360248447205,
+    "predictive_detected_by_onset": 282,
+    "predictive_recall_by_onset": 0.5987261146496815,
+    "recall_within_20ms": 0.6220806794055201,
+    "recall_within_50ms": 0.6390658174097664,
+    "run_count": 333,
+    "run_recall": 0.936,
+    "speed_recall": {
+      "0.10": 0.6727272727272727,
+      "0.15": 0.6987179487179487,
+      "0.20": 0.6466666666666666
+    },
+    "speed_recall_within_20ms": {
+      "0.10": 0.6242424242424243,
+      "0.15": 0.6217948717948718,
+      "0.20": 0.62
+    },
+    "too_early": 30,
+    "wrong_case_output": 0
+  },
+  "slip_advisory_frozen_oof_reference": {
+    "affected_foot_accuracy": 0.9,
+    "alert_f1": 0.590316573556797,
+    "alert_precision": 0.5257048092868989,
+    "authority": "advisory only; these are OOF development metrics",
+    "candidate": "F0_seed_202608242",
+    "config_id": "s0.45_p0.45_e0.25_n0.20_f0.60_k2_h0.00",
+    "cross_foot_diagnostic_errors": 34,
+    "episode_count": 471,
+    "episode_detected": 317,
+    "episode_recall": 0.673036093418259,
+    "median_warning_margin_ms": 46.0,
+    "normal_contact_fp": 256,
+    "normal_run_fp": 0,
+    "p95_late_latency_ms": 50.79999999999984,
+    "run_count": 125,
+    "run_detected": 117,
+    "run_recall": 0.936,
+    "speed_recall": {
+      "0.10": 0.6727272727272727,
+      "0.15": 0.6987179487179487,
+      "0.20": 0.6466666666666666
+    },
+    "too_early": 30
+  },
+  "terrain_case_a_advisory": {
+    "actionable_runs": 125,
+    "after_contact_output": 0,
+    "alert_f1": 0.1485319516407599,
+    "confidence_threshold": 0.8,
+    "config_id": "contact_h2_i5_p0.80_pending1",
+    "contact_owner_mismatch": 0,
+    "detected_runs": 32,
+    "detected_within_20ms": 43,
+    "detected_within_50ms": 43,
+    "direct_gate_pass": false,
+    "duplicate_output": 0,
+    "event_count": 471,
+    "event_detected": 43,
+    "event_recall": 0.09129511677282377,
+    "eventless_run_count": 208,
+    "foot_recall": {
+      "left": 0.08733624454148471,
+      "right": 0.09504132231404959
+    },
+    "hard_dwell_endpoints": 2,
+    "ice_dwell_endpoints": 5,
+    "invalid_output": 0,
+    "latch_carryover": 0,
+    "median_late_latency_ms": 0.0,
+    "median_warning_margin_ms": 20.0,
+    "normal_contact_count": 8914,
+    "normal_contact_fp": 57,
+    "normal_contact_fp_rate": 0.00639443571909356,
+    "normal_run_fp": 0,
+    "normal_run_fp_rate": 0.0,
+    "output_count": 108,
+    "p95_late_latency_ms": 3.5999999999999943,
+    "p95_warning_margin_ms": 45.29999999999999,
+    "pending_until_unique_owner": true,
+    "post_fall_output": 8,
+    "precision": 0.39814814814814814,
+    "predictive_detected_by_onset": 40,
+    "predictive_recall_by_onset": 0.08492569002123142,
+    "recall_within_20ms": 0.09129511677282377,
+    "recall_within_50ms": 0.09129511677282377,
+    "run_count": 333,
+    "run_recall": 0.256,
+    "speed_recall": {
+      "0.10": 0.06666666666666667,
+      "0.15": 0.10256410256410256,
+      "0.20": 0.10666666666666667
+    },
+    "speed_recall_within_20ms": {
+      "0.10": 0.06666666666666667,
+      "0.15": 0.10256410256410256,
+      "0.20": 0.10666666666666667
+    },
+    "too_early": 0,
+    "wrong_case_output": 0
+  },
+  "version": "walking_v2_fast_reflex_advisory_metrics_v1",
+  "zero_denominator_policy": "null/NOT_APPLICABLE, never 0% performance"
+}

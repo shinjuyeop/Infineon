@@ -1,0 +1,18 @@
+{
+  "checks": {
+    "blocked_access_zero": true,
+    "case_a_denominators_nonzero": true,
+    "direct_output_all_false": true,
+    "event_count_471": true,
+    "forbidden_access_zero": true,
+    "hardware_not_executed": true,
+    "immutable_artifacts_match": true,
+    "no_direct_candidate_selected": true,
+    "record_count_333": true,
+    "sink_deferred": true,
+    "slip_model_reload_exact": true,
+    "terrain_candidates_27": true
+  },
+  "external_command": "PYTHONPATH=simulation/unitree_mujoco/simulate_python simulation/venv/bin/python -m unittest -v simulation/unitree_mujoco/simulate_python/test_walking_v2_fast_reflex_host_v1.py",
+  "version": "walking_v2_fast_reflex_internal_tests_v1"
+}

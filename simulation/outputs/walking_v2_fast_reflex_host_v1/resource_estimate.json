@@ -1,0 +1,15 @@
+{
+  "combined_macs_per_endpoint": 64864,
+  "compute_latency_benchmarked": false,
+  "deterministic_state_bytes_upper_bound": 1024,
+  "endpoint_rate_hz": 100,
+  "estimated_model_bytes_float64": 199504,
+  "int8_or_target_resource_claim": false,
+  "sample_preprocessing_rate_hz": 1000,
+  "shared_Fusion20_history_bytes_float32": 16000,
+  "slip_macs_per_endpoint": 35696,
+  "slip_parameter_count": 15742,
+  "terrain_macs_per_endpoint": 29168,
+  "terrain_parameter_count": 9196,
+  "version": "walking_v2_fast_reflex_resource_estimate_v1"
+}

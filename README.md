@@ -65,6 +65,28 @@ target-runtime parity policy를 사용한다. Pelvis IMU와 slip/contact trace�
 diagnostic 전용이고 legacy synthetic `(50, 5)` pipeline은 현재 입력에 사용하지
 않는다.
 
+## Walking v2 Fast Reflex host prototype
+
+Walking v2의 현재 development 결론은
+[`walking_v2_fast_reflex_host_v1/audit.md`](simulation/outputs/walking_v2_fast_reflex_host_v1/audit.md)에
+기록되어 있다. Locked T2 Terrain과 S4-C Slip은 advisory telemetry만 제공하고,
+deterministic authority firewall이 direct reflex/recovery actuation을 항상
+비활성화한다. 이는 safety 또는 deployment lock이 아닌 development design lock이다.
+
+재현과 regression test는 다음과 같이 실행한다. 기존 versioned output을 덮어쓰지
+않도록 재현 시에는 새 `--output-dir`를 지정한다.
+
+```bash
+PYTHONPATH=simulation/unitree_mujoco/simulate_python \
+  simulation/venv/bin/python \
+  simulation/unitree_mujoco/simulate_python/run_walking_v2_fast_reflex_host_v1.py \
+  --output-dir simulation/outputs/walking_v2_fast_reflex_host_v1_reproduction
+
+PYTHONPATH=simulation/unitree_mujoco/simulate_python \
+  simulation/venv/bin/python -m unittest -v \
+  simulation/unitree_mujoco/simulate_python/test_walking_v2_fast_reflex_host_v1.py
+```
+
 ## G1 horizontal-pulse preview
 
 Simulation virtual environment를 준비한 뒤 실행한다.

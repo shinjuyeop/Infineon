@@ -1,0 +1,37 @@
+{
+  "architecture_id": "MONITORING_ONLY_TERRAIN_AND_SLIP_ADVISORY",
+  "authority": {
+    "G0": "causal unique-owner tag; sole permitted future foot owner",
+    "M1": "development simulation provenance only; no runtime input",
+    "Sink": "SINK_RUNTIME_DETECTION_DEFERRED",
+    "Slip_S4C": "risk advisory only; learned foot is diagnostic only",
+    "Terrain_T2": "Case-A context advisory only; no actuation",
+    "deterministic_state": "owns current-data mask, contact reset, persistence, one-shot dedup, and the hard direct-actuation firewall",
+    "direct_reflex": "constant false"
+  },
+  "history_ms": 200,
+  "inference_endpoint_stride_ms": 10,
+  "outputs": {
+    "direct_reflex": false,
+    "recovery_actuation": false,
+    "slip_risk_advisory": "telemetry/operator-study only",
+    "terrain_case_a_advisory": "telemetry only"
+  },
+  "prohibited_runtime_inputs": [
+    "terrain_name/id",
+    "M1 profile or friction",
+    "physical Slip oracle",
+    "future onset",
+    "pre_fall_valid or fall oracle",
+    "run/source/seed identity"
+  ],
+  "runtime_inputs": [
+    "bilateral Fusion20",
+    "causal G0 force-loaded contact",
+    "causal contact age",
+    "causal gait phase",
+    "current finite-data-quality"
+  ],
+  "sample_rate_hz": 1000,
+  "version": "walking_v2_fast_reflex_host_contract_v1"
+}

@@ -1,0 +1,47 @@
+{
+  "all_heads_converged": false,
+  "architecture": "S4-C",
+  "candidate": "F0_seed_202608242",
+  "convergence_warning_count": 3,
+  "convergence_warnings": [
+    "lbfgs failed to converge after 1200 iteration(s) (status=1):\nSTOP: TOTAL NO. OF ITERATIONS REACHED LIMIT\n\nIncrease the number of iterations to improve the convergence (max_iter=1200).\nYou might also want to scale the data as shown in:\n    https://scikit-learn.org/stable/modules/preprocessing.html\nPlease also refer to the documentation for alternative solver options:\n    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression",
+    "lbfgs failed to converge after 1200 iteration(s) (status=1):\nSTOP: TOTAL NO. OF ITERATIONS REACHED LIMIT\n\nIncrease the number of iterations to improve the convergence (max_iter=1200).\nYou might also want to scale the data as shown in:\n    https://scikit-learn.org/stable/modules/preprocessing.html\nPlease also refer to the documentation for alternative solver options:\n    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression",
+    "lbfgs failed to converge after 1200 iteration(s) (status=1):\nSTOP: TOTAL NO. OF ITERATIONS REACHED LIMIT\n\nIncrease the number of iterations to improve the convergence (max_iter=1200).\nYou might also want to scale the data as shown in:\n    https://scikit-learn.org/stable/modules/preprocessing.html\nPlease also refer to the documentation for alternative solver options:\n    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression"
+  ],
+  "development_only": true,
+  "feature_count": 336,
+  "fit_row_count": 95107,
+  "fit_run_count": 333,
+  "head_iterations": {
+    "foot": 1200,
+    "proposal": 1200,
+    "state": 1200
+  },
+  "limitation": "all-development final fit has no performance estimate; OOF metrics govern role",
+  "macs_per_endpoint": 35696,
+  "max_iterations": 1200,
+  "model_sha256": "dfa09b6bd6b540f5aa1b47b4b9c607d5f32c8c2cce878a6ab9cee2ad27947b43",
+  "optimizer": "LBFGS",
+  "parameter_count": 15742,
+  "performance_estimation": false,
+  "previous_18_fold_fits_all_hit_400": true,
+  "projection_width": 40,
+  "reload_exact": true,
+  "reload_max_abs_error": 0.0,
+  "seed": 202608242,
+  "tolerance": 1e-06,
+  "version": "walking_v2_slip_advisory_final_fit_v1",
+  "weight_audit": {
+    "contract": "EXACT_S4C_EPISODE_RAKING_STATE_LOSS_AND_WRONG_FOOT_WEIGHTING",
+    "effective_sample_size": 4185.179107532162,
+    "foot_weight_max": 98.54903859613347,
+    "foot_weight_min": 0.12382112065736714,
+    "foot_weight_sum": 95107.0,
+    "hard_negative_row_count": 1955,
+    "row_count": 95107,
+    "state_weight_max": 279.5633635751291,
+    "state_weight_min": 2.0141679193737657e-14,
+    "state_weight_sum": 95106.99999999999,
+    "variant": "F0"
+  }
+}

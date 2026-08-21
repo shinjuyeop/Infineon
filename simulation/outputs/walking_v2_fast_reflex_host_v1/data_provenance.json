@@ -1,0 +1,63 @@
+{
+  "data_audit": {
+    "actionable_boundary": "1..100ms before same-foot same-contact onset, inclusive",
+    "contact_episode_ownership_verified": true,
+    "eligibility_counts": {
+      "CALIBRATION_ONLY_DO_NOT_TRAIN": 42,
+      "CONTROL_ELIGIBLE": 120,
+      "FAILED_SOURCE_DIAGNOSTIC_ONLY": 27,
+      "POSITIVE_ELIGIBLE": 93,
+      "QUARANTINED": 216
+    },
+    "eligibility_sha256": "cabe9f24e39949cb62527a09c231f95095c67d4616e716b60819e8504a49d74c",
+    "eligible_targeted_rows": 213,
+    "first_fall_censor_verified": true,
+    "fold_assignment_verified": true,
+    "fold_count": 3,
+    "fold_membership_sha256": "4a14fcf905afb3e6bf6358729abc33f560090e18a979bd8d31582762c71b8782",
+    "fold_rows": 333,
+    "fusion20_channel_order_verified": true,
+    "future_label_horizon_ms": 100,
+    "left_right_canonicalization_verified": true,
+    "maximum_causal_window_ms": 200,
+    "quarantined_count": 216,
+    "run_mapping_unique": true,
+    "sample_rate_hz": 1000,
+    "time_to_onset_sign": "positive before onset; zero at onset; negative after onset",
+    "trace_round_trip_verified": true
+  },
+  "event_count": 471,
+  "immutable_match_before": true,
+  "origin_checkpoint_match": true,
+  "previous_lbfgs_ceiling_count": 18,
+  "previous_lbfgs_fit_count": 18,
+  "record_count": 333,
+  "source_sha256": {
+    "simulation/unitree_mujoco/simulate_python/run_walking_v2_fast_reflex_host_v1.py": "ad7741112fed29dc6acfb4c65d1359084fde6a4243143f2e7ca5d350baefa1a9",
+    "simulation/unitree_mujoco/simulate_python/test_walking_v2_fast_reflex_host_v1.py": "303e81a3d2ba75a1ebd67c13ba531035028ce82f3a298c30fb33fb92a7546a1c",
+    "simulation/unitree_mujoco/simulate_python/walking_v2_fast_reflex_host_v1.py": "c78de8c48dae615acfb69f5238338844426ca209e22159c052a56364ee780521"
+  },
+  "starting_checkpoint_match": true,
+  "terrain_lock_match": true,
+  "trace_hashes": {
+    "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz": "3ff4f8a1f270a39287fbe274753de91a5b0750d1a160e3cc9b1de01174f2a6ca",
+    "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz": "8c6a1db0eecdf8f63cf3d361d896e770968473dca1bdcf4c0b0f9ae240fe42f8",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_000.npz": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_001.npz": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_002.npz": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_003.npz": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_004.npz": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_005.npz": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_006.npz": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_007.npz": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad",
+    "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_008.npz": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b",
+    "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/traces_part_000.npz": "cfad372ca01f832e435c8c383b0a26b95645bc07b6a4e7f9a8fc3793c0afe4a0",
+    "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_000.npz": "d43220476fb46b62d82a95dccec3967ad43faae16489ddf67ef86eff37317d58",
+    "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_001.npz": "ac77ff1e73ca01d273022d38459161cf008cd0af9d0617585e07e8fd48a7454b",
+    "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_002.npz": "60a08f8c474ae33b4173e4e4cf9e3205586136d9195076fd5b13b7ed687db3f3",
+    "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_003.npz": "d6c564205542d1e1aa18f6cc1f9996dfe34d8764d905db70daa4c11229cfc83a",
+    "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_004.npz": "409cb3646dcf9e3b1e271a5972bbccd2cddad625d84a61b8798c31721cfbdbe3",
+    "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_005.npz": "6a28140d0d5e0205c66610f090e10e080e2d304049ad2c6086089fa9b1db5be6"
+  },
+  "v5_hash_graph_match": true
+}

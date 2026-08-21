@@ -1,0 +1,241 @@
+{
+  "blind_system_int8_vela_e84_hil": false,
+  "development_only": true,
+  "direct_authority_gate": {
+    "each_speed_recall_within_20ms_min": 0.7,
+    "recall_within_20ms_min": 0.8,
+    "required_zero": [
+      "normal_contact_fp",
+      "too_early",
+      "invalid_output",
+      "post_fall_output",
+      "wrong_case_output",
+      "duplicate_output",
+      "latch_carryover",
+      "contact_owner_mismatch"
+    ]
+  },
+  "final_slip_fit": {
+    "all_333_development_runs": true,
+    "architecture": "S4-C",
+    "max_iterations": 1200,
+    "performance_source": "OOF scores only; final-fit in-sample scores not reported",
+    "purpose": "executable development advisory model, not performance estimation",
+    "seed": 202608242,
+    "tolerance": 1e-06,
+    "variant": "F0"
+  },
+  "forbidden_data_access": true,
+  "generated_file_limit_mib": 45,
+  "new_simulation_data": false,
+  "objective": "strongest honest causal host prototype on available development evidence",
+  "runtime_evaluation": {
+    "data_quality": "current Fusion20 finiteness only",
+    "fall_or_prefall_runtime_gate": false,
+    "physical_episode_and_onset": "offline attribution only",
+    "physical_oracle_runtime_gate": false
+  },
+  "sink": "SINK_RUNTIME_DETECTION_DEFERRED",
+  "slip_advisory_selection": {
+    "authority": "advisory only",
+    "candidate": "F0_seed_202608242",
+    "config_id": "s0.45_p0.45_e0.25_n0.20_f0.60_k2_h0.00",
+    "policy": "maximum event-alert F1 with no normal-run FP; deterministic ties",
+    "source": "previously stored six-candidate OOF Pareto only"
+  },
+  "starting_checkpoint": "3aa9393c3b535cd954b500649ebc50430f6bd4ce",
+  "terrain_candidate_matrix_frozen_before_timeline_metrics": true,
+  "terrain_candidate_selection": "non-actuating advisory alert-F1, then precision, recall, latency and config id; normal-run/invalid/wrong-case/duplicate outputs must be zero",
+  "terrain_candidates": [
+    {
+      "confidence_threshold": 0.7,
+      "config_id": "contact_h2_i3_p0.70_pending1",
+      "hard_dwell_endpoints": 2,
+      "ice_dwell_endpoints": 3,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "contact_h2_i3_p0.80_pending1",
+      "hard_dwell_endpoints": 2,
+      "ice_dwell_endpoints": 3,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "contact_h2_i3_p0.90_pending1",
+      "hard_dwell_endpoints": 2,
+      "ice_dwell_endpoints": 3,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.7,
+      "config_id": "contact_h2_i5_p0.70_pending1",
+      "hard_dwell_endpoints": 2,
+      "ice_dwell_endpoints": 5,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "contact_h2_i5_p0.80_pending1",
+      "hard_dwell_endpoints": 2,
+      "ice_dwell_endpoints": 5,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "contact_h2_i5_p0.90_pending1",
+      "hard_dwell_endpoints": 2,
+      "ice_dwell_endpoints": 5,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.7,
+      "config_id": "contact_h2_i8_p0.70_pending1",
+      "hard_dwell_endpoints": 2,
+      "ice_dwell_endpoints": 8,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "contact_h2_i8_p0.80_pending1",
+      "hard_dwell_endpoints": 2,
+      "ice_dwell_endpoints": 8,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "contact_h2_i8_p0.90_pending1",
+      "hard_dwell_endpoints": 2,
+      "ice_dwell_endpoints": 8,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.7,
+      "config_id": "contact_h3_i3_p0.70_pending1",
+      "hard_dwell_endpoints": 3,
+      "ice_dwell_endpoints": 3,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "contact_h3_i3_p0.80_pending1",
+      "hard_dwell_endpoints": 3,
+      "ice_dwell_endpoints": 3,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "contact_h3_i3_p0.90_pending1",
+      "hard_dwell_endpoints": 3,
+      "ice_dwell_endpoints": 3,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.7,
+      "config_id": "contact_h3_i5_p0.70_pending1",
+      "hard_dwell_endpoints": 3,
+      "ice_dwell_endpoints": 5,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "contact_h3_i5_p0.80_pending1",
+      "hard_dwell_endpoints": 3,
+      "ice_dwell_endpoints": 5,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "contact_h3_i5_p0.90_pending1",
+      "hard_dwell_endpoints": 3,
+      "ice_dwell_endpoints": 5,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.7,
+      "config_id": "contact_h3_i8_p0.70_pending1",
+      "hard_dwell_endpoints": 3,
+      "ice_dwell_endpoints": 8,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "contact_h3_i8_p0.80_pending1",
+      "hard_dwell_endpoints": 3,
+      "ice_dwell_endpoints": 8,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "contact_h3_i8_p0.90_pending1",
+      "hard_dwell_endpoints": 3,
+      "ice_dwell_endpoints": 8,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.7,
+      "config_id": "contact_h5_i3_p0.70_pending1",
+      "hard_dwell_endpoints": 5,
+      "ice_dwell_endpoints": 3,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "contact_h5_i3_p0.80_pending1",
+      "hard_dwell_endpoints": 5,
+      "ice_dwell_endpoints": 3,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "contact_h5_i3_p0.90_pending1",
+      "hard_dwell_endpoints": 5,
+      "ice_dwell_endpoints": 3,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.7,
+      "config_id": "contact_h5_i5_p0.70_pending1",
+      "hard_dwell_endpoints": 5,
+      "ice_dwell_endpoints": 5,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "contact_h5_i5_p0.80_pending1",
+      "hard_dwell_endpoints": 5,
+      "ice_dwell_endpoints": 5,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "contact_h5_i5_p0.90_pending1",
+      "hard_dwell_endpoints": 5,
+      "ice_dwell_endpoints": 5,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.7,
+      "config_id": "contact_h5_i8_p0.70_pending1",
+      "hard_dwell_endpoints": 5,
+      "ice_dwell_endpoints": 8,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.8,
+      "config_id": "contact_h5_i8_p0.80_pending1",
+      "hard_dwell_endpoints": 5,
+      "ice_dwell_endpoints": 8,
+      "pending_until_unique_owner": true
+    },
+    {
+      "confidence_threshold": 0.9,
+      "config_id": "contact_h5_i8_p0.90_pending1",
+      "hard_dwell_endpoints": 5,
+      "ice_dwell_endpoints": 8,
+      "pending_until_unique_owner": true
+    }
+  ],
+  "version": "walking_v2_fast_reflex_host_v1"
+}

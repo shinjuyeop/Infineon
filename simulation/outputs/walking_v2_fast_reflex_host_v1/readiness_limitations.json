@@ -1,0 +1,23 @@
+{
+  "BLIND_EVALUATION_AUTHORIZED": false,
+  "DIRECT_FAST_REFLEX_AUTHORIZED": false,
+  "HOST_CAUSAL_REPLAY_READY": true,
+  "INT8_VELA_E84_HIL_AUTHORIZED": false,
+  "REAL_ROBOT_READY": false,
+  "SAFETY_CERTIFIED": false,
+  "SINK_RUNTIME_DETECTION_DEFERRED": true,
+  "SLIP_ADVISORY_MODEL_READY": true,
+  "SYSTEM_MIGRATION_AUTHORIZED": false,
+  "TERRAIN_CASE_A_TIMELINE_READY": true,
+  "limitations": [
+    "simulation-only development evidence",
+    "Walking T2 is in-sample for part of the original 120-run corpus",
+    "targeted traces lack an authoritative per-sample physical Terrain transition label",
+    "final advisory model is fit on all development data and has no independent metric",
+    "OOF advisory precision is insufficient for actuator authority",
+    "no causal fall estimator exists; post-fall advisory outputs are reported, not hidden",
+    "host compute latency and target-runtime parity are unbenchmarked"
+  ],
+  "next_step": "ACQUIRE_ALIGNED_CASE_A_TRANSITION_DEVELOPMENT_CORPUS",
+  "version": "walking_v2_fast_reflex_readiness_v1"
+}
