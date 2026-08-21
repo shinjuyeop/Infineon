@@ -1,0 +1,4 @@
+speed_mps,hard_control_maximum_anchor_drift_m,M0_maximum_anchor_drift_m,M1_maximum_anchor_drift_m,M2_maximum_anchor_drift_m,M3_maximum_anchor_drift_m,strong_reference_maximum_anchor_drift_m,expected_order,tolerance_m,pairwise_order_pass,severity_ordering_pass
+0.1,0.007923583500087261,0.0381956622004509,0.05771153047680855,0.0456295870244503,0.040566056966781616,0.07715624570846558,hard_control<M0<M1<M2<M3<strong_reference,0.005,"[true, true, false, false, true]",False
+0.15,0.007998533546924591,0.03183237090706825,0.05823401361703873,0.0581527054309845,0.04921381548047066,0.061624348163604736,hard_control<M0<M1<M2<M3<strong_reference,0.005,"[true, true, true, false, true]",False
+0.2,0.008821888826787472,0.05946662276983261,0.06361877173185349,0.060750704258680344,0.07542166858911514,0.06246103718876839,hard_control<M0<M1<M2<M3<strong_reference,0.005,"[true, true, true, true, false]",False

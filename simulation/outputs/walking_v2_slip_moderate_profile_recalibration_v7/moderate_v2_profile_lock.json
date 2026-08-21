@@ -1,0 +1,37 @@
+{
+  "candidate_id": "M1",
+  "changed_after_lock": false,
+  "friction3": [
+    0.08750000000000001,
+    0.00125,
+    2.125e-05
+  ],
+  "friction5": [
+    0.08750000000000001,
+    0.08750000000000001,
+    0.00125,
+    2.125e-05,
+    2.125e-05
+  ],
+  "full_friction_vector_sha256": "5e61989004a895de43d8a57ef734d2734a7cdc67e7bdf2d1bb880d66d89ca7f7",
+  "g0_geometry_only": true,
+  "locked_before_reacquisition": true,
+  "moderate_v1_unchanged": true,
+  "profile_contract_sha256": "455c2fd9a5bf9da24243c6a72e199ecf83eb508d03eda3cf0fddfa5e8fd2a311",
+  "profile_name": "moderate_v2_M1",
+  "selection_evidence": {
+    "candidate_id": "M1",
+    "candidate_pass": true,
+    "friction3": "[0.08750000000000001, 0.00125, 2.125e-05]",
+    "friction5": "[0.08750000000000001, 0.08750000000000001, 0.00125, 2.125e-05, 2.125e-05]",
+    "profile_name": "moderate_v2_M1",
+    "profile_sha256": "455c2fd9a5bf9da24243c6a72e199ecf83eb508d03eda3cf0fddfa5e8fd2a311",
+    "row_type": "candidate",
+    "speed_criteria": "[{\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": true, \"no_air_or_postfall_only\": true, \"no_double_contact\": true, \"onset_mid_late\": true, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": true, \"source_valid\": true, \"speed_mps\": 0.1, \"speed_pass\": true, \"strictly_between_references\": true}, {\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": true, \"no_air_or_postfall_only\": true, \"no_double_contact\": true, \"onset_mid_late\": true, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": true, \"source_valid\": true, \"speed_mps\": 0.15, \"speed_pass\": true, \"strictly_between_references\": true}, {\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": true, \"no_air_or_postfall_only\": true, \"no_double_contact\": true, \"onset_mid_late\": true, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": true, \"source_valid\": true, \"speed_mps\": 0.2, \"speed_pass\": true, \"strictly_between_references\": true}]",
+    "valid_speed_count": 3
+  },
+  "selection_evidence_sha256": "f1802da1bb529d342d1278d3f6ed3d3d85b6c5ead36570e029f71030478d5c2f",
+  "selection_tiebreak": "highest passing friction; least deviation from moderate-v1",
+  "strong_reference_unchanged": true,
+  "version": "moderate-v2"
+}

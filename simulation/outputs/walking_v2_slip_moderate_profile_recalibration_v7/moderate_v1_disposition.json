@@ -1,0 +1,130 @@
+{
+  "attempt_count": 54,
+  "automatically_included_in_training": false,
+  "deleted_or_overwritten": false,
+  "disposition": "SUPERSEDED_PROFILE_DEVELOPMENT_DIAGNOSTIC",
+  "kept_separately_versioned": true,
+  "no_onset_run_count": 13,
+  "no_onset_run_ids": [
+    "positive_0p10_left_mid_late_stance_moderate_ice_preregistered_v0",
+    "positive_0p10_left_mid_late_stance_moderate_ice_preregistered_v1",
+    "positive_0p10_left_mid_late_stance_moderate_ice_preregistered_v2",
+    "positive_0p10_right_mid_late_stance_moderate_ice_preregistered_v0",
+    "positive_0p15_left_mid_late_stance_moderate_ice_preregistered_v0",
+    "positive_0p15_left_mid_late_stance_moderate_ice_preregistered_v1",
+    "positive_0p15_left_mid_late_stance_moderate_ice_preregistered_v2",
+    "positive_0p15_right_mid_late_stance_moderate_ice_preregistered_v1",
+    "positive_0p20_left_mid_late_stance_moderate_ice_preregistered_v0",
+    "positive_0p20_left_mid_late_stance_moderate_ice_preregistered_v1",
+    "positive_0p20_left_mid_late_stance_moderate_ice_preregistered_v2",
+    "positive_0p20_right_mid_late_stance_moderate_ice_preregistered_v1",
+    "positive_0p20_right_mid_late_stance_moderate_ice_preregistered_v2"
+  ],
+  "physically_valid_run_count": 36,
+  "physically_valid_run_ids": [
+    "positive_0p10_left_early_loading_moderate_ice_preregistered_v0",
+    "positive_0p10_left_early_loading_moderate_ice_preregistered_v1",
+    "positive_0p10_left_early_loading_moderate_ice_preregistered_v2",
+    "positive_0p10_left_mid_loading_early_stance_moderate_ice_preregistered_v0",
+    "positive_0p10_left_mid_loading_early_stance_moderate_ice_preregistered_v1",
+    "positive_0p10_left_mid_loading_early_stance_moderate_ice_preregistered_v2",
+    "positive_0p10_right_early_loading_moderate_ice_preregistered_v2",
+    "positive_0p10_right_mid_loading_early_stance_moderate_ice_preregistered_v0",
+    "positive_0p10_right_mid_loading_early_stance_moderate_ice_preregistered_v1",
+    "positive_0p10_right_mid_loading_early_stance_moderate_ice_preregistered_v2",
+    "positive_0p10_right_mid_late_stance_moderate_ice_preregistered_v1",
+    "positive_0p10_right_mid_late_stance_moderate_ice_preregistered_v2",
+    "positive_0p15_left_early_loading_moderate_ice_preregistered_v0",
+    "positive_0p15_left_early_loading_moderate_ice_preregistered_v1",
+    "positive_0p15_left_early_loading_moderate_ice_preregistered_v2",
+    "positive_0p15_left_mid_loading_early_stance_moderate_ice_preregistered_v0",
+    "positive_0p15_left_mid_loading_early_stance_moderate_ice_preregistered_v1",
+    "positive_0p15_left_mid_loading_early_stance_moderate_ice_preregistered_v2",
+    "positive_0p15_right_early_loading_moderate_ice_preregistered_v1",
+    "positive_0p15_right_early_loading_moderate_ice_preregistered_v2",
+    "positive_0p15_right_mid_loading_early_stance_moderate_ice_preregistered_v0",
+    "positive_0p15_right_mid_loading_early_stance_moderate_ice_preregistered_v1",
+    "positive_0p15_right_mid_loading_early_stance_moderate_ice_preregistered_v2",
+    "positive_0p15_right_mid_late_stance_moderate_ice_preregistered_v0",
+    "positive_0p15_right_mid_late_stance_moderate_ice_preregistered_v2",
+    "positive_0p20_left_early_loading_moderate_ice_preregistered_v0",
+    "positive_0p20_left_early_loading_moderate_ice_preregistered_v1",
+    "positive_0p20_left_early_loading_moderate_ice_preregistered_v2",
+    "positive_0p20_left_mid_loading_early_stance_moderate_ice_preregistered_v0",
+    "positive_0p20_left_mid_loading_early_stance_moderate_ice_preregistered_v1",
+    "positive_0p20_left_mid_loading_early_stance_moderate_ice_preregistered_v2",
+    "positive_0p20_right_early_loading_moderate_ice_preregistered_v2",
+    "positive_0p20_right_mid_loading_early_stance_moderate_ice_preregistered_v0",
+    "positive_0p20_right_mid_loading_early_stance_moderate_ice_preregistered_v1",
+    "positive_0p20_right_mid_loading_early_stance_moderate_ice_preregistered_v2",
+    "positive_0p20_right_mid_late_stance_moderate_ice_preregistered_v0"
+  ],
+  "possible_future_hard_negative_eligibility": [
+    {
+      "eligibility": "REVIEW_ONLY",
+      "run_id": "positive_0p10_left_mid_late_stance_moderate_ice_preregistered_v0",
+      "training_use_assigned": false
+    },
+    {
+      "eligibility": "REVIEW_ONLY",
+      "run_id": "positive_0p10_left_mid_late_stance_moderate_ice_preregistered_v1",
+      "training_use_assigned": false
+    },
+    {
+      "eligibility": "REVIEW_ONLY",
+      "run_id": "positive_0p10_left_mid_late_stance_moderate_ice_preregistered_v2",
+      "training_use_assigned": false
+    },
+    {
+      "eligibility": "REVIEW_ONLY",
+      "run_id": "positive_0p10_right_mid_late_stance_moderate_ice_preregistered_v0",
+      "training_use_assigned": false
+    },
+    {
+      "eligibility": "REVIEW_ONLY",
+      "run_id": "positive_0p15_left_mid_late_stance_moderate_ice_preregistered_v0",
+      "training_use_assigned": false
+    },
+    {
+      "eligibility": "REVIEW_ONLY",
+      "run_id": "positive_0p15_left_mid_late_stance_moderate_ice_preregistered_v1",
+      "training_use_assigned": false
+    },
+    {
+      "eligibility": "REVIEW_ONLY",
+      "run_id": "positive_0p15_left_mid_late_stance_moderate_ice_preregistered_v2",
+      "training_use_assigned": false
+    },
+    {
+      "eligibility": "REVIEW_ONLY",
+      "run_id": "positive_0p15_right_mid_late_stance_moderate_ice_preregistered_v1",
+      "training_use_assigned": false
+    },
+    {
+      "eligibility": "REVIEW_ONLY",
+      "run_id": "positive_0p20_left_mid_late_stance_moderate_ice_preregistered_v0",
+      "training_use_assigned": false
+    },
+    {
+      "eligibility": "REVIEW_ONLY",
+      "run_id": "positive_0p20_left_mid_late_stance_moderate_ice_preregistered_v1",
+      "training_use_assigned": false
+    },
+    {
+      "eligibility": "REVIEW_ONLY",
+      "run_id": "positive_0p20_left_mid_late_stance_moderate_ice_preregistered_v2",
+      "training_use_assigned": false
+    },
+    {
+      "eligibility": "REVIEW_ONLY",
+      "run_id": "positive_0p20_right_mid_late_stance_moderate_ice_preregistered_v1",
+      "training_use_assigned": false
+    },
+    {
+      "eligibility": "REVIEW_ONLY",
+      "run_id": "positive_0p20_right_mid_late_stance_moderate_ice_preregistered_v2",
+      "training_use_assigned": false
+    }
+  ],
+  "profile_version": "moderate-v1"
+}

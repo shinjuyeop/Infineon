@@ -1,0 +1,169 @@
+{
+  "blind_holdout_created": false,
+  "canonical_audit": {
+    "all_phases_represented": true,
+    "both_feet_represented": true,
+    "combined_source_valid_positive_count": 87,
+    "combined_source_valid_rate": 0.8055555555555556,
+    "control_attempts": 108,
+    "covered_factorial_cells": 35,
+    "moderate_v2_source_valid_count": 39,
+    "outer_holdout_final_run_count": 0,
+    "pass": false,
+    "physics_provenance_pass": true,
+    "positive_attempts": 108,
+    "strong_source_valid_count": 48,
+    "target_first_accuracy": 1.0,
+    "total_runs": 216,
+    "v3_run_count": 0,
+    "v5_moderate_v1_run_count": 0,
+    "v6_calibration_run_count": 0,
+    "v7_profile_calibration_run_count": 0,
+    "valid_control_count": 108,
+    "valid_positive_by_speed": {
+      "0.10": 31,
+      "0.15": 27,
+      "0.20": 29
+    }
+  },
+  "canonical_manifest_created": false,
+  "discarded_replaced_silently_relabelled": [
+    0,
+    0,
+    0
+  ],
+  "forbidden_artifact_access_count": 0,
+  "future_fold_manifest_created": false,
+  "g0_geometry_unchanged": true,
+  "locked_friction_vector": [
+    0.08750000000000001,
+    0.08750000000000001,
+    0.00125,
+    2.125e-05,
+    2.125e-05
+  ],
+  "model_selected_or_locked": false,
+  "moderate_v1_separate_version": true,
+  "moderate_v2_acquisition_gates": {
+    "air_or_postfall_positive_attribution_count": 0,
+    "all_missing_left_mid_late_cells_filled": false,
+    "all_speed_foot_phase_cells_covered": false,
+    "control_physical_slip_onset_count": 0,
+    "covered_speed_foot_phase_cells": 17,
+    "discarded_count": 0,
+    "duplicate_unique_trace_count": 0,
+    "each_speed_has_both_feet": true,
+    "exact_1khz_fusion20": true,
+    "executed_control_attempts": 54,
+    "executed_positive_attempts": 54,
+    "forbidden_artifact_access_count": 0,
+    "friction_contract_violation_count": 0,
+    "full_trace_identity_count": 0,
+    "left_right_ratio": 0.7727272727272727,
+    "pass": false,
+    "patch_base_double_contact_count": 0,
+    "postcontact_divergence_count": 54,
+    "precontact_pair_parity_count": 54,
+    "replaced_count": 0,
+    "silently_relabelled_count": 0,
+    "source_valid_by_foot": {
+      "left": 17,
+      "right": 22
+    },
+    "source_valid_by_phase": {
+      "early_loading": 15,
+      "mid_late_stance": 8,
+      "mid_loading_early_stance": 16
+    },
+    "source_valid_by_speed": {
+      "0.10": 14,
+      "0.15": 12,
+      "0.20": 13
+    },
+    "source_valid_positive_count": 39,
+    "target_first_accuracy": 1.0,
+    "valid_control_count": 54
+  },
+  "next_step": "ADDITIONAL_MODERATE_V2_ACQUISITION",
+  "oracle_byte_identical": true,
+  "original_v5_readiness": false,
+  "profile_calibration": {
+    "all_arm_precontact_parity": true,
+    "all_nonhard_postcontact_diverged": true,
+    "candidate_results": [
+      {
+        "candidate_id": "M0",
+        "candidate_pass": false,
+        "friction3": "[0.1, 0.00125, 2.125e-05]",
+        "friction5": "[0.1, 0.1, 0.00125, 2.125e-05, 2.125e-05]",
+        "profile_name": "moderate_v1_M0",
+        "profile_sha256": "27c7cf602fcb4effca0ace3f7ac0e5f46502c1b6f57bf9bab13f26081a6a11d9",
+        "row_type": "candidate",
+        "speed_criteria": "[{\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": false, \"no_air_or_postfall_only\": false, \"no_double_contact\": true, \"onset_mid_late\": false, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": true, \"source_valid\": false, \"speed_mps\": 0.1, \"speed_pass\": false, \"strictly_between_references\": false}, {\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": false, \"no_air_or_postfall_only\": false, \"no_double_contact\": true, \"onset_mid_late\": false, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": true, \"source_valid\": false, \"speed_mps\": 0.15, \"speed_pass\": false, \"strictly_between_references\": false}, {\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": true, \"no_air_or_postfall_only\": true, \"no_double_contact\": true, \"onset_mid_late\": true, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": true, \"source_valid\": true, \"speed_mps\": 0.2, \"speed_pass\": false, \"strictly_between_references\": false}]",
+        "valid_speed_count": 1
+      },
+      {
+        "candidate_id": "M1",
+        "candidate_pass": true,
+        "friction3": "[0.08750000000000001, 0.00125, 2.125e-05]",
+        "friction5": "[0.08750000000000001, 0.08750000000000001, 0.00125, 2.125e-05, 2.125e-05]",
+        "profile_name": "moderate_v2_M1",
+        "profile_sha256": "455c2fd9a5bf9da24243c6a72e199ecf83eb508d03eda3cf0fddfa5e8fd2a311",
+        "row_type": "candidate",
+        "speed_criteria": "[{\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": true, \"no_air_or_postfall_only\": true, \"no_double_contact\": true, \"onset_mid_late\": true, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": true, \"source_valid\": true, \"speed_mps\": 0.1, \"speed_pass\": true, \"strictly_between_references\": true}, {\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": true, \"no_air_or_postfall_only\": true, \"no_double_contact\": true, \"onset_mid_late\": true, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": true, \"source_valid\": true, \"speed_mps\": 0.15, \"speed_pass\": true, \"strictly_between_references\": true}, {\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": true, \"no_air_or_postfall_only\": true, \"no_double_contact\": true, \"onset_mid_late\": true, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": true, \"source_valid\": true, \"speed_mps\": 0.2, \"speed_pass\": true, \"strictly_between_references\": true}]",
+        "valid_speed_count": 3
+      },
+      {
+        "candidate_id": "M2",
+        "candidate_pass": false,
+        "friction3": "[0.07500000000000001, 0.00125, 2.125e-05]",
+        "friction5": "[0.07500000000000001, 0.07500000000000001, 0.00125, 2.125e-05, 2.125e-05]",
+        "profile_name": "moderate_v2_M2",
+        "profile_sha256": "1e0050d8f67b990eec5bd35e1e908d677ef786ba6d0d31f62488278fda18d51e",
+        "row_type": "candidate",
+        "speed_criteria": "[{\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": false, \"no_air_or_postfall_only\": false, \"no_double_contact\": true, \"onset_mid_late\": false, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": true, \"source_valid\": false, \"speed_mps\": 0.1, \"speed_pass\": false, \"strictly_between_references\": true}, {\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": true, \"no_air_or_postfall_only\": true, \"no_double_contact\": true, \"onset_mid_late\": true, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": true, \"source_valid\": true, \"speed_mps\": 0.15, \"speed_pass\": true, \"strictly_between_references\": true}, {\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": true, \"no_air_or_postfall_only\": true, \"no_double_contact\": true, \"onset_mid_late\": true, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": true, \"source_valid\": true, \"speed_mps\": 0.2, \"speed_pass\": true, \"strictly_between_references\": true}]",
+        "valid_speed_count": 2
+      },
+      {
+        "candidate_id": "M3",
+        "candidate_pass": false,
+        "friction3": "[0.0625, 0.00125, 2.125e-05]",
+        "friction5": "[0.0625, 0.0625, 0.00125, 2.125e-05, 2.125e-05]",
+        "profile_name": "moderate_v2_M3",
+        "profile_sha256": "4e95d979241d3c87523f43127d853aa4853b949c30f542f77fe71d4cd2c4a119",
+        "row_type": "candidate",
+        "speed_criteria": "[{\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": false, \"no_air_or_postfall_only\": false, \"no_double_contact\": true, \"onset_mid_late\": false, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": true, \"source_valid\": false, \"speed_mps\": 0.1, \"speed_pass\": false, \"strictly_between_references\": true}, {\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": false, \"no_air_or_postfall_only\": false, \"no_double_contact\": true, \"onset_mid_late\": false, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": true, \"source_valid\": false, \"speed_mps\": 0.15, \"speed_pass\": false, \"strictly_between_references\": true}, {\"effective_friction_contract\": true, \"hard_control_non_slip\": true, \"left_first\": true, \"no_air_or_postfall_only\": true, \"no_double_contact\": true, \"onset_mid_late\": true, \"physically_distinct_from_strong\": true, \"physics_stable\": true, \"postcontact_divergence\": true, \"precontact_parity\": true, \"severity_bracket_with_tolerance\": false, \"source_valid\": true, \"speed_mps\": 0.2, \"speed_pass\": false, \"strictly_between_references\": true}]",
+        "valid_speed_count": 1
+      }
+    ],
+    "executed_unique_runs": 18,
+    "friction_contract_violation_count": 0,
+    "hard_controls_physically_non_slip": true,
+    "model_scores_used": false,
+    "patch_base_double_contact_count": 0,
+    "physical_severity_ordering_pass": false
+  },
+  "readiness": {
+    "SINK_RUNTIME_DETECTION_DEFERRED": true,
+    "WALKING_V2_FRESH_BLIND_HOLDOUT_AUTHORIZED": false,
+    "WALKING_V2_INT8_PREPARATION_AUTHORIZED": false,
+    "WALKING_V2_SLIP_CANONICAL_DEVELOPMENT_DATA_READY": false,
+    "WALKING_V2_SLIP_CANONICAL_FACTORIAL_COVERAGE_READY": false,
+    "WALKING_V2_SLIP_FUTURE_FOLD_READY": false,
+    "WALKING_V2_SLIP_MODERATE_V2_CONTROL_READY": true,
+    "WALKING_V2_SLIP_MODERATE_V2_LOCK_READY": true,
+    "WALKING_V2_SLIP_MODERATE_V2_PROFILE_READY": true,
+    "WALKING_V2_SLIP_MODERATE_V2_SOURCE_READY": false,
+    "WALKING_V2_SLIP_PROFILE_CALIBRATION_READY": true,
+    "WALKING_V2_SLIP_TARGETED_RETRAINING_AUTHORIZED": false,
+    "WALKING_V2_SYSTEM_MIGRATION_AUTHORIZED": false,
+    "WALKING_V2_TERRAIN_LOCK_PRESERVED": true
+  },
+  "selected_candidate": "M1",
+  "strong_ice_unchanged": true,
+  "system_int8_vela_e84_hil_changed": false,
+  "task": "Recalibrate and Reacquire Moderate Bilateral Slip Profile v7",
+  "terrain_byte_identical": true,
+  "training_performed": false,
+  "v3_trace_use_count": 0
+}

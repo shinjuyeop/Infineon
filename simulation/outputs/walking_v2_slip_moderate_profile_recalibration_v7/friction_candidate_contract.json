@@ -1,0 +1,144 @@
+{
+  "candidate_count": 4,
+  "candidate_ids": [
+    "M0",
+    "M1",
+    "M2",
+    "M3"
+  ],
+  "frozen_before_execution": true,
+  "grid_sha256": "14ebcca3d340d7b53020d4b576083a8b370e9879c8d94f16f93fd4d2caa5a8d8",
+  "profiles": {
+    "M0": {
+      "candidate_id": "M0",
+      "friction3": [
+        0.1,
+        0.00125,
+        2.125e-05
+      ],
+      "friction5": [
+        0.1,
+        0.1,
+        0.00125,
+        2.125e-05,
+        2.125e-05
+      ],
+      "frozen_source": "preregistered v7 sliding-only interpolation",
+      "interpolated_components": [
+        0,
+        1
+      ],
+      "interpolation_fraction_from_strong": 1.0,
+      "name": "moderate_v1_M0",
+      "role": "candidate",
+      "rolling_components_frozen_from": "moderate-v1",
+      "sha256": "27c7cf602fcb4effca0ace3f7ac0e5f46502c1b6f57bf9bab13f26081a6a11d9",
+      "torsional_component_frozen_from": "moderate-v1"
+    },
+    "M1": {
+      "candidate_id": "M1",
+      "friction3": [
+        0.08750000000000001,
+        0.00125,
+        2.125e-05
+      ],
+      "friction5": [
+        0.08750000000000001,
+        0.08750000000000001,
+        0.00125,
+        2.125e-05,
+        2.125e-05
+      ],
+      "frozen_source": "preregistered v7 sliding-only interpolation",
+      "interpolated_components": [
+        0,
+        1
+      ],
+      "interpolation_fraction_from_strong": 0.75,
+      "name": "moderate_v2_M1",
+      "role": "candidate",
+      "rolling_components_frozen_from": "moderate-v1",
+      "sha256": "455c2fd9a5bf9da24243c6a72e199ecf83eb508d03eda3cf0fddfa5e8fd2a311",
+      "torsional_component_frozen_from": "moderate-v1"
+    },
+    "M2": {
+      "candidate_id": "M2",
+      "friction3": [
+        0.07500000000000001,
+        0.00125,
+        2.125e-05
+      ],
+      "friction5": [
+        0.07500000000000001,
+        0.07500000000000001,
+        0.00125,
+        2.125e-05,
+        2.125e-05
+      ],
+      "frozen_source": "preregistered v7 sliding-only interpolation",
+      "interpolated_components": [
+        0,
+        1
+      ],
+      "interpolation_fraction_from_strong": 0.5,
+      "name": "moderate_v2_M2",
+      "role": "candidate",
+      "rolling_components_frozen_from": "moderate-v1",
+      "sha256": "1e0050d8f67b990eec5bd35e1e908d677ef786ba6d0d31f62488278fda18d51e",
+      "torsional_component_frozen_from": "moderate-v1"
+    },
+    "M3": {
+      "candidate_id": "M3",
+      "friction3": [
+        0.0625,
+        0.00125,
+        2.125e-05
+      ],
+      "friction5": [
+        0.0625,
+        0.0625,
+        0.00125,
+        2.125e-05,
+        2.125e-05
+      ],
+      "frozen_source": "preregistered v7 sliding-only interpolation",
+      "interpolated_components": [
+        0,
+        1
+      ],
+      "interpolation_fraction_from_strong": 0.25,
+      "name": "moderate_v2_M3",
+      "role": "candidate",
+      "rolling_components_frozen_from": "moderate-v1",
+      "sha256": "4e95d979241d3c87523f43127d853aa4853b949c30f542f77fe71d4cd2c4a119",
+      "torsional_component_frozen_from": "moderate-v1"
+    }
+  },
+  "sliding_components_only_interpolated": true,
+  "strong_reference": {
+    "candidate_id": "strong_reference",
+    "friction3": [
+      0.05,
+      0.001,
+      1e-05
+    ],
+    "friction5": [
+      0.05,
+      0.05,
+      0.001,
+      1e-05,
+      1e-05
+    ],
+    "frozen_source": "v5 frozen native strong Ice",
+    "interpolated_components": [
+      0,
+      1
+    ],
+    "interpolation_fraction_from_strong": 0.0,
+    "name": "native_strong_ice",
+    "role": "reference",
+    "rolling_components_frozen_from": "moderate-v1",
+    "torsional_component_frozen_from": "moderate-v1"
+  },
+  "torsional_rolling_solref_solimp_condim_priority_geometry_frozen": true
+}

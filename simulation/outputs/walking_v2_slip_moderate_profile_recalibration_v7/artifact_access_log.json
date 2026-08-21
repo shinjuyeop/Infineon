@@ -1,0 +1,472 @@
+{
+  "all_accesses_completed": true,
+  "blocked_access_count": 0,
+  "events": [
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_scenario_generator_redesign_v4.py",
+      "purpose": "frozen v4 scenario-generator implementation",
+      "sha256": "07eb57ab235b9ef2c3ba69ba27cae97b70d3fd0184ad98cae5401ff89aa8e316",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_scenario_generator_redesign_v4.py",
+      "purpose": "frozen v4 scenario-generator implementation",
+      "sha256": "37fd626c7727c85f50e4020c9088460251d5046b2a55511a150d0d1e8cc1f3d1",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_scenario_generator_redesign_v4.py",
+      "purpose": "frozen v4 scenario-generator implementation",
+      "sha256": "fde7eaf204c22d9601faedd0af1fea2ba42517a09567be9b58ce9a4af723532a",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_bilateral_slip_targeted_acquisition_v5.py",
+      "purpose": "frozen v5 acquisition implementation",
+      "sha256": "dedba37a3b9108af9496584870d1487c456940269ba65670a80ab392a327e578",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_bilateral_slip_targeted_acquisition_v5.py",
+      "purpose": "frozen v5 acquisition implementation",
+      "sha256": "92db4fa08f8d399e75e0acd2f57867eb531a9672baeb9492edfc592fb6d18708",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_bilateral_slip_targeted_acquisition_v5.py",
+      "purpose": "frozen v5 acquisition implementation",
+      "sha256": "accdf918d503f0427cd262bbf2206389b8d7b205b4d1dbe388db73809b872c18",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_v2_slip_supplemental_acquisition_v6.py",
+      "purpose": "frozen v6 diagnosis implementation",
+      "sha256": "d0d8d6d112f58fe49fc64561b672f17de81f642ba5c2bc071bd8bcc99fd367a7",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/run_walking_v2_slip_supplemental_acquisition_v6.py",
+      "purpose": "frozen v6 diagnosis implementation",
+      "sha256": "8c9be1b7430850444016aeaf8eeb960610a7802afc29347c75a13b85e63c6c34",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/test_walking_v2_slip_supplemental_acquisition_v6.py",
+      "purpose": "frozen v6 diagnosis implementation",
+      "sha256": "a47664ea87cb34a353cc1ed73676483958541417fb6078cac907e811875fa05e",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/summary.json",
+      "purpose": "verified v4 solver artifact",
+      "sha256": "fba0520829e0a0e286498b81a40906ea087870697cea2e02775b8e811b18983b",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/readiness.json",
+      "purpose": "verified v4 solver artifact",
+      "sha256": "c678a77ce61a374d3e90f09af4c39382b3f0f4ba14e874e908518b0a05e69ba8",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/provenance.json",
+      "purpose": "verified v4 solver artifact",
+      "sha256": "22cabf06af0d8c7d13eae72d92fd85638934009702e84a6ff1bd22601169823d",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/local_patch_definition.json",
+      "purpose": "verified v4 solver artifact",
+      "sha256": "05c24c0a5ab70abf83bca3b7d8eb973e9ef0f2f3055446900937eea5d0967aa3",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/geom_contact_contract.csv",
+      "purpose": "verified v4 solver artifact",
+      "sha256": "019f0b721c4d114de04e05af58be147edd4e1468ff4c4ef1cf0f6531d2ce1100",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/failed_v3_quarantine_manifest.json",
+      "purpose": "verified v4 solver artifact",
+      "sha256": "b935b08e6ff0abf8ea8e67f00fd237ec3462816025ebb26d3b6ed73d989e8439",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/summary.json",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "41aa9de10129faa576d8bbbb2ef5229ee15fd73221a87b15236164b7d87e92e9",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/readiness.json",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "778ffb70fffb628c3c27e456df8b76747a5d57871ceac5be1c6095357275aedc",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/provenance.json",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "29fb4f0b5b7681563504b3323c30883590d602df1fc100ebd303a03510ebfd5d",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/acquisition_manifest.json",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "bd74b8c1b54e8470ab5424dec2dbbdf953005929acaa69417215e8a9e838ffdc",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/material_profiles.json",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "d62f471604d8df58f71671ca6b913bec77714816331af4f70b36660db1acd283",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/patch_geometry.json",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "34416574a295ff7ea4bc71b76b315774102d9c5e478edff150cd30f8c4a64af1",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/generator_immutable_verification.json",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "6cb5711c819c197bc008e7bb635767272d2b3f93deafbae381ab04ab8e7d3500",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/oracle_immutable_verification.json",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "1cfc4c73ab1ca834d02f561d8182963064b1cb4bb86eab596a6bc2a255438851",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/terrain_immutable_verification.json",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "901a45ecb8b2be9b030c40009ae4cc32b94935cd79267eb2bf6e9b9e0ffd0c5f",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/run_manifest.csv",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "eaa6ec38da058eef10f15e90ebee743eb9de630e6d83f3bfa3be0ee30b43f91c",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/positive_source_audit.csv",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "af1c786a4a45d3f312114c2ae35815716b47782cb65cb48c94bdd2fbd6a4dd68",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/control_source_audit.csv",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "419282f6b0d01b677e55a359b933f9842539fbf599f1470374dd76bb5c9dff3d",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/pair_parity_audit.csv",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "ea218a44091fd37b08ea62ea13b28f1cb378d203c6c428d7ca93dcca53db2ebe",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/trace_shard_manifest.json",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "f2931f5dc7ce071cae4e4d0380f1701cbdd790ef10e66f962d5b284c7d5ded8a",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_000.npz",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "6920fa7b5b8800db348887c535c6f211095bf8c9d15657e21aa32554ae6d7953",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_001.npz",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "46cc80a996bb766cfd0f8821df65cd3ec964641b3cf46112350e828c3426a6e9",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_002.npz",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "cf96ed8ccc134ccd2991c4c01d33a6b46d57aef1f7ef97e2b0c32e7b5a6e9803",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_003.npz",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "8628285de46e225aa2d1e8411ae6a4dc28c08b850b0fc9e23bf0833007829842",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_004.npz",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "74cb798d10514327ddfc63bf4f5407bd8ce3d61a240eca294ab5532412077d91",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_005.npz",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "d92ff3f046dc9464eb47828f0b9626f96570073dac1cc4c2899b46571e568804",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_006.npz",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "fb56f48b54516b5ae47148d03de580534cccec5b98dbf464e9f3460ce95b13d1",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_007.npz",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "1efd0d7c6a3a407cc17f2d5bc551e64b8f97dc8b6fcc11b17f0dc7ea95c6d9ad",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_008.npz",
+      "purpose": "immutable v5 acquisition evidence",
+      "sha256": "d3d80bb5e98964a396f9ce2aac500ec7e737ea9be7a8c6ca7675a76d5d8a9e1b",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/summary.json",
+      "purpose": "immutable v6 diagnosis/calibration evidence",
+      "sha256": "5f5c259edf0fb9f4721d52b7c9d8b9155119fbc80dcb55b0636e6b6d753e500a",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/readiness.json",
+      "purpose": "immutable v6 diagnosis/calibration evidence",
+      "sha256": "70df389f54de4edb3cefa42a648ab653827ac4d5306d0c3c655b0d871fe05870",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/provenance.json",
+      "purpose": "immutable v6 diagnosis/calibration evidence",
+      "sha256": "975a9ba0e8a3ba0128516b650176aed15d6fb2873826b96389b7d7ef58e3eba9",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/immutable_verification.json",
+      "purpose": "immutable v6 diagnosis/calibration evidence",
+      "sha256": "8da6c98ae1ca8c4bcc487fc69064bb3046e0cd11d14c9cc43244ec43fda84a62",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/failure_root_cause.json",
+      "purpose": "immutable v6 diagnosis/calibration evidence",
+      "sha256": "f69d3690ce5397d40d6061e0dbdef60ee99cc60a3fd444b8d0acfa1d3e8b3d28",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/failed_cell_diagnosis.csv",
+      "purpose": "immutable v6 diagnosis/calibration evidence",
+      "sha256": "760d8db35e19547c5c877b5d79025876daea0ade8d8d5d3549e1011979e0a049",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/geometry_candidate_contract.json",
+      "purpose": "immutable v6 diagnosis/calibration evidence",
+      "sha256": "51f3354eafdeecd1e9c8d579749bf8101581a22964f8f809236206099b528a62",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/geometry_calibration_manifest.csv",
+      "purpose": "immutable v6 diagnosis/calibration evidence",
+      "sha256": "dc77e722dba186242dc0f5d6c2045b49b9a9e4aba4273f072eac452b31bcd14d",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/geometry_calibration_metrics.csv",
+      "purpose": "immutable v6 diagnosis/calibration evidence",
+      "sha256": "aba8f1b345d648ce247124260c430d21eb743705c0015a842bc46e4ac2830d97",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/selected_geometry_lock.json",
+      "purpose": "immutable v6 diagnosis/calibration evidence",
+      "sha256": "b8d9f627fecb04f3ac629272ae8cd1b641bab93d00bdd3fa63f88f814b081343",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/trace_shard_manifest.json",
+      "purpose": "immutable v6 diagnosis/calibration evidence",
+      "sha256": "2f8efc693a9e4a30329870da5c72a71b98326955e48df91cbe191d4286a5b819",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_slip_supplemental_acquisition_v6/traces_part_000.npz",
+      "purpose": "immutable v6 diagnosis/calibration evidence",
+      "sha256": "2404bc400750b65e2dc23d617d3ba2bdde1cfd7140656c972746e76b48c7a790",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v3/run_manifest.csv",
+      "purpose": "quarantined v3 run inventory only",
+      "sha256": "3293f40dfc6d05c3d5603f25003481d72ac89fd4ee208cef18fd744f1bd1774b",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json",
+      "purpose": "existing valid 120-run development inventory",
+      "sha256": "f95f054003ce01e6841c3a8c8c49d70a6afd5f236d33977950edd73d9b604841",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json",
+      "purpose": "frozen physical Slip oracle contract",
+      "sha256": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py",
+      "purpose": "frozen physical Slip oracle implementation",
+      "sha256": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py",
+      "purpose": "frozen contact-label derivation",
+      "sha256": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/terrain_profiles.py",
+      "purpose": "frozen material sources",
+      "sha256": "0a25180abd10a3451dbbb85f72ce520a83c9a7532e81d8800ea8ae5fdb37ccf1",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/bilateral_hil_sensor_v2.py",
+      "purpose": "Fusion20 virtual sensors",
+      "sha256": "44acf56768ff5baa147bb62dc01e1dce23aeb743b37582997ac30f1b8d84c345",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/simulate_python/g1_upstream_locomotion.py",
+      "purpose": "frozen walking controller",
+      "sha256": "7a494e2837b377a7c186d7cd595c577ffbe4c72b0dba79dfff49d704cd352fe7",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_model.npz",
+      "purpose": "immutable Terrain model",
+      "sha256": "a039f28f63b9582887f698ba7ab99d1d5e0c63bbcda2abaead744aba0e4a924f",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_normalization.json",
+      "purpose": "immutable Terrain normalization",
+      "sha256": "251a4b00300dd9d7b94a94cb428b7a83c4d98cbece8d155a3e02cb2efd1d6640",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_candidate_config.json",
+      "purpose": "immutable Terrain config",
+      "sha256": "9b49811833853dbfe6d90b4e705a881b700231675c9d50b4ab06c06ec8e9fe27",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/outputs/walking_v2_joint_terrain_slip_redesign_v1/terrain_selection_lock.json",
+      "purpose": "immutable Terrain lock",
+      "sha256": "2629279bfc3c7f4cf1e40774997ff95735b36af5d068111928fbecf05da13835",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_rl_mjlab/deploy/robots/g1/config/policy/velocity/v0/exported/policy.onnx",
+      "purpose": "fixed walking policy",
+      "sha256": "2a66ca6336eadb3c0b34b557763f3e06d01ff8fcf6260dd4cedbd69d6093fc28",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/scene_walking_terrain_transition.xml",
+      "purpose": "fixed scene",
+      "sha256": "0e795c3e277bd2acdbe21e71c6db82063de71acdc17a561c4f90bf05e2eda1ee",
+      "status": "completed"
+    },
+    {
+      "access": "hash",
+      "path": "simulation/unitree_mujoco/unitree_robots/g1/g1_29dof.xml",
+      "purpose": "fixed robot include",
+      "sha256": "6a2e53a42771a4ca738d799fbe53592b4939ed42191dd6c3625ed4c024349602",
+      "status": "completed"
+    }
+  ],
+  "exact_paths_only": true,
+  "forbidden_tokens": [
+    "/outer/",
+    "_outer_",
+    "holdout",
+    "spatial_final",
+    "spatial-final",
+    "final_test",
+    "final-test"
+  ],
+  "model_scores_used_for_profile_selection": false
+}

@@ -1,0 +1,15 @@
+{
+  "fail_closed": true,
+  "forbidden_tokens": [
+    "/outer/",
+    "_outer_",
+    "holdout",
+    "spatial_final",
+    "spatial-final",
+    "final_test",
+    "final-test"
+  ],
+  "model_score_profile_selection_authorized": false,
+  "outer_holdout_final_access_authorized": false,
+  "v3_trace_use_authorized": false
+}

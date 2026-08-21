@@ -1,0 +1,11 @@
+{
+  "discarded_count": 0,
+  "duplicate_unique_trace_count": 0,
+  "moderate_v2_reacquisition_run_count": 108,
+  "profile_calibration_run_count": 18,
+  "replaced_count": 0,
+  "silently_relabelled_count": 0,
+  "unique_run_id_count": 126,
+  "unique_trace_hash_count": 126,
+  "valid": true
+}

@@ -1,0 +1,265 @@
+{
+  "all_files_within_limit": true,
+  "files": [
+    {
+      "bytes": 20384,
+      "mib": 0.019439697265625,
+      "path": "artifact_access_log.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1448,
+      "mib": 0.00138092041015625,
+      "path": "audit.md",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 104104,
+      "mib": 0.09928131103515625,
+      "path": "calibration_response_by_speed.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 30507,
+      "mib": 0.02909374237060547,
+      "path": "canonical_factorial_coverage.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 287,
+      "mib": 0.00027370452880859375,
+      "path": "duplicate_audit.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 316,
+      "mib": 0.000301361083984375,
+      "path": "forbidden_path_policy.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 3690,
+      "mib": 0.0035190582275390625,
+      "path": "friction_candidate_contract.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 81599,
+      "mib": 0.0778188705444336,
+      "path": "friction_coefficient_vs_anchor_drift.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 20375,
+      "mib": 0.019431114196777344,
+      "path": "immutable_verification.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 11213,
+      "mib": 0.010693550109863281,
+      "path": "input_allowlist.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 42607,
+      "mib": 0.040633201599121094,
+      "path": "left_right_moderate_v2_response.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 6324,
+      "mib": 0.006031036376953125,
+      "path": "moderate_v1_disposition.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 9776968,
+      "mib": 9.324043273925781,
+      "path": "moderate_v2_contact_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 16638,
+      "mib": 0.015867233276367188,
+      "path": "moderate_v2_control_source_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 10075,
+      "mib": 0.009608268737792969,
+      "path": "moderate_v2_fall_censor_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 12653,
+      "mib": 0.012066841125488281,
+      "path": "moderate_v2_pair_manifest.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 21339,
+      "mib": 0.02035045623779297,
+      "path": "moderate_v2_pair_parity.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 660184,
+      "mib": 0.6296005249023438,
+      "path": "moderate_v2_physical_episode_ledger.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 18765,
+      "mib": 0.01789569854736328,
+      "path": "moderate_v2_positive_source_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 2681,
+      "mib": 0.0025568008422851562,
+      "path": "moderate_v2_profile_lock.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 99233,
+      "mib": 0.0946359634399414,
+      "path": "moderate_v2_run_manifest.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 30215,
+      "mib": 0.028815269470214844,
+      "path": "onset_distribution_by_phase.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1267103,
+      "mib": 1.2084035873413086,
+      "path": "profile_calibration_contact_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1266,
+      "mib": 0.0012073516845703125,
+      "path": "profile_calibration_fall_censor_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 17104,
+      "mib": 0.0163116455078125,
+      "path": "profile_calibration_manifest.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 14801,
+      "mib": 0.014115333557128906,
+      "path": "profile_calibration_metrics.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 2358,
+      "mib": 0.0022487640380859375,
+      "path": "profile_calibration_pair_parity.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 36419,
+      "mib": 0.03473186492919922,
+      "path": "profile_calibration_physical_episode_ledger.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 901,
+      "mib": 0.0008592605590820312,
+      "path": "profile_severity_ordering.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 83909,
+      "mib": 0.08002185821533203,
+      "path": "profile_severity_ordering.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 18039,
+      "mib": 0.017203330993652344,
+      "path": "protocol.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 5319,
+      "mib": 0.005072593688964844,
+      "path": "provenance.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 738,
+      "mib": 0.0007038116455078125,
+      "path": "readiness.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 6588,
+      "mib": 0.006282806396484375,
+      "path": "resource_size_audit.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 23393,
+      "mib": 0.022309303283691406,
+      "path": "run_progress_manifest.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 11515,
+      "mib": 0.010981559753417969,
+      "path": "summary.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1073799,
+      "mib": 1.0240545272827148,
+      "path": "trace_shard_manifest.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 14904668,
+      "mib": 14.21419906616211,
+      "path": "traces_part_000.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 14861008,
+      "mib": 14.172561645507812,
+      "path": "traces_part_001.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 14969992,
+      "mib": 14.276496887207031,
+      "path": "traces_part_002.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 14736033,
+      "mib": 14.053376197814941,
+      "path": "traces_part_003.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 14816081,
+      "mib": 14.129715919494629,
+      "path": "traces_part_004.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 3762953,
+      "mib": 3.5886316299438477,
+      "path": "traces_part_005.npz",
+      "under_or_equal_45_mib": true
+    }
+  ],
+  "limit_mib": 45,
+  "maximum_file_mib": 14.276496887207031
+}
