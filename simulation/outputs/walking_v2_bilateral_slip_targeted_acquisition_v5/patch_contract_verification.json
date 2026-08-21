@@ -1,0 +1,138 @@
+{
+  "all_sole_geoms_are_collision_geoms": true,
+  "explicit_pair_count": 8,
+  "geometry_payload": {
+    "collision_geometry_sha256": "58b3071a02305e9ea39c75751a7a9c67c32afb648478888eb597c404f529b717",
+    "left": {
+      "top_z_m": 0.0,
+      "x_max_m": 2.0,
+      "x_min_m": -1.0,
+      "y_max_m": 0.8,
+      "y_min_m": -0.8
+    },
+    "right": {
+      "top_z_m": 0.0,
+      "x_max_m": 2.0,
+      "x_min_m": -1.0,
+      "y_max_m": 0.8,
+      "y_min_m": -0.8
+    },
+    "top_height_delta_m": 0.0
+  },
+  "pair_contract_sha256": "be210abb41729fb4bbc267b7a17c31c6bbc5db2da6067e3f6d0674684007a1f0",
+  "pair_payload": {
+    "pair_dim": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "pair_friction": [
+      [
+        1.0,
+        1.0,
+        0.005,
+        0.0001,
+        0.0001
+      ],
+      [
+        1.0,
+        1.0,
+        0.005,
+        0.0001,
+        0.0001
+      ],
+      [
+        1.0,
+        1.0,
+        0.005,
+        0.0001,
+        0.0001
+      ],
+      [
+        1.0,
+        1.0,
+        0.005,
+        0.0001,
+        0.0001
+      ],
+      [
+        1.0,
+        1.0,
+        0.005,
+        0.0001,
+        0.0001
+      ],
+      [
+        1.0,
+        1.0,
+        0.005,
+        0.0001,
+        0.0001
+      ],
+      [
+        1.0,
+        1.0,
+        0.005,
+        0.0001,
+        0.0001
+      ],
+      [
+        1.0,
+        1.0,
+        0.005,
+        0.0001,
+        0.0001
+      ]
+    ],
+    "pair_geom1": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "pair_geom2": [
+      17,
+      18,
+      19,
+      20,
+      32,
+      33,
+      34,
+      35
+    ],
+    "pair_names": {
+      "left": [
+        "pair_left_foot_contact_1_slip_patch",
+        "pair_left_foot_contact_2_slip_patch",
+        "pair_left_foot_contact_3_slip_patch",
+        "pair_left_foot_contact_4_slip_patch"
+      ],
+      "right": [
+        "pair_right_foot_contact_1_slip_patch",
+        "pair_right_foot_contact_2_slip_patch",
+        "pair_right_foot_contact_3_slip_patch",
+        "pair_right_foot_contact_4_slip_patch"
+      ]
+    },
+    "patch_conaffinity": [
+      0
+    ],
+    "patch_contype": [
+      0
+    ],
+    "patch_geom_id": 2
+  },
+  "patch_geometry_sha256": "4626bd89098ed03fbab3cc7df2db822b3dc0cdfd42e87a73134146cb3611ae5f",
+  "ready": true,
+  "v4_geom_contract_row_count": 8,
+  "v4_patch_base_double_contact_count": 0
+}

@@ -1,0 +1,15 @@
+{
+  "after_sha256": {
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+    "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+    "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506"
+  },
+  "before_sha256": {
+    "simulation/outputs/walking_hazard_oracle_calibration_v1/summary.json": "62d4da1dfb86b1ad2ef754624d256be594c0a199b5e916cc45ab044da7ee34bc",
+    "simulation/unitree_mujoco/simulate_python/walking_hazard_ground_truth_v1.py": "e12cdb8699f70d448766de04f3dcc5e952ac43155e09540512428b408dba2b81",
+    "simulation/unitree_mujoco/simulate_python/walking_hazard_oracle_calibration_v1.py": "5056222ae11d1760e01118d76be4e53207682e8a86c8295d319478159f663506"
+  },
+  "persistence_ms": 3,
+  "threshold_m": 0.05,
+  "unchanged_after_acquisition": true
+}

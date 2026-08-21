@@ -1,0 +1,12 @@
+{
+  "discarded_count": 0,
+  "duplicate_count": 0,
+  "executed_unique_runs": 216,
+  "planned_unique_runs": 216,
+  "replaced_count": 0,
+  "silently_relabelled_count": 0,
+  "unique_full_trace_hashes": 216,
+  "unique_pair_ids": 108,
+  "unique_run_ids": 216,
+  "valid": true
+}

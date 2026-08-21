@@ -1,0 +1,23 @@
+{
+  "base_overlap": false,
+  "bounds": {
+    "left": {
+      "top_z_m": 0.0,
+      "x_max_m": 2.0,
+      "x_min_m": -1.0,
+      "y_max_m": 0.8,
+      "y_min_m": -0.8
+    },
+    "right": {
+      "top_z_m": 0.0,
+      "x_max_m": 2.0,
+      "x_min_m": -1.0,
+      "y_max_m": 0.8,
+      "y_min_m": -0.8
+    }
+  },
+  "geometry_sha256": "4626bd89098ed03fbab3cc7df2db822b3dc0cdfd42e87a73134146cb3611ae5f",
+  "implementation": "PRECOMPILED_TILED_PATCH_GEOM",
+  "pair_count": 8,
+  "top_height_delta_m": 0.0
+}

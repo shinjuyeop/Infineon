@@ -1,0 +1,9 @@
+{
+  "disposition": "INVALID_INTERVENTION_DO_NOT_TRAIN",
+  "future_training_use_authorized": false,
+  "quarantine_manifest_run_count": 216,
+  "ready": true,
+  "v3_run_count": 216,
+  "v3_trace_artifacts_accessed": 0,
+  "v3_trace_artifacts_allowlisted": false
+}

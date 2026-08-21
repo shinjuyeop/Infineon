@@ -1,0 +1,9 @@
+{
+  "audit": {
+    "valid": false
+  },
+  "not_created": true,
+  "reason": "mandatory acquisition data gate failed",
+  "rows": [],
+  "version": "walking_v2_future_nested_fold_contract_v5"
+}

@@ -1,0 +1,171 @@
+{
+  "all_attempts_retained": true,
+  "blind_holdout_created": false,
+  "control_attempts": 108,
+  "executed_unique_runs": 216,
+  "forbidden_access_count": 0,
+  "future_fold_audit": {
+    "valid": false
+  },
+  "gates": {
+    "acquisition_data_gate_pass": false,
+    "control_source_coverage": {
+      "all_onset_phases_represented": true,
+      "all_speeds_represented": true,
+      "both_control_types_represented": true,
+      "both_target_foot_configs": true,
+      "failed_control_silently_counted": 0,
+      "physical_slip_onset_count": 0,
+      "stable_loaded_contact_coverage": true,
+      "valid_control_count": 108
+    },
+    "control_source_pass": true,
+    "counterfactual_physics": {
+      "effective_friction_contract_violation_count": 0,
+      "full_trace_identity_count": 0,
+      "no_patch_contact_pair_count": 0,
+      "pair_configuration_parity_count": 108,
+      "pair_count": 108,
+      "patch_base_double_contact_count": 0,
+      "patch_contact_without_divergence_count": 0,
+      "unexpected_precontact_divergence_count": 0,
+      "valid_patch_pairs_with_postcontact_divergence": true
+    },
+    "counterfactual_physics_pass": true,
+    "positive_source_coverage": {
+      "air_or_postfall_positive_count": 0,
+      "all_onset_phases_represented": true,
+      "all_speeds_represented": true,
+      "bilateral_ambiguous_count": 0,
+      "both_feet_represented": true,
+      "both_severities_represented": true,
+      "covered_cell_count": 33,
+      "left_right_ratio": 0.9534883720930233,
+      "left_valid_count": 41,
+      "moderate_source_valid_count": 36,
+      "planned_count": 108,
+      "required_cell_count": 36,
+      "right_valid_count": 43,
+      "source_valid_count": 84,
+      "source_valid_fraction": 0.7777777777777778,
+      "strong_source_valid_count": 48,
+      "target_first_fraction": 1.0,
+      "valid_count_by_speed": {
+        "0.10": 29,
+        "0.15": 28,
+        "0.20": 27
+      }
+    },
+    "positive_source_pass": false,
+    "schema_and_provenance": {
+      "control_attempts": 108,
+      "duplicate_unique_run_count": 0,
+      "exact_1khz_timestamps": true,
+      "exact_fusion20_schema": true,
+      "executed_unique_runs": 216,
+      "finite_fusion20": true,
+      "forbidden_artifact_access_count": 0,
+      "generator_profile_patch_hashes_unchanged": true,
+      "oracle_hashes_unchanged": true,
+      "planned_unique_runs": 216,
+      "positive_attempts": 108,
+      "terrain_hashes_unchanged": true,
+      "unique_pair_ids": true,
+      "unique_run_ids": true,
+      "v3_quarantined_trace_use_count": 0
+    },
+    "schema_and_provenance_pass": true,
+    "timing_diversity": {
+      "all_label_timing_states_supported": true,
+      "all_preregistered_bins_represented": true,
+      "maximum_bin_fraction": 0.42857142857142855,
+      "no_bin_exceeds_50_percent": true,
+      "phase_counts": {
+        "early_loading": 29,
+        "mid_late_stance": 19,
+        "mid_loading_early_stance": 36
+      },
+      "support_by_foot_speed": [
+        {
+          "actionable_0_100ms": true,
+          "early_precursor_farther_than_100ms": true,
+          "foot": "left",
+          "physical_active_evidence": true,
+          "speed_mps": 0.1,
+          "valid_event_count": 15
+        },
+        {
+          "actionable_0_100ms": true,
+          "early_precursor_farther_than_100ms": true,
+          "foot": "left",
+          "physical_active_evidence": true,
+          "speed_mps": 0.15,
+          "valid_event_count": 13
+        },
+        {
+          "actionable_0_100ms": true,
+          "early_precursor_farther_than_100ms": true,
+          "foot": "left",
+          "physical_active_evidence": true,
+          "speed_mps": 0.2,
+          "valid_event_count": 13
+        },
+        {
+          "actionable_0_100ms": true,
+          "early_precursor_farther_than_100ms": true,
+          "foot": "right",
+          "physical_active_evidence": true,
+          "speed_mps": 0.1,
+          "valid_event_count": 14
+        },
+        {
+          "actionable_0_100ms": true,
+          "early_precursor_farther_than_100ms": true,
+          "foot": "right",
+          "physical_active_evidence": true,
+          "speed_mps": 0.15,
+          "valid_event_count": 15
+        },
+        {
+          "actionable_0_100ms": true,
+          "early_precursor_farther_than_100ms": true,
+          "foot": "right",
+          "physical_active_evidence": true,
+          "speed_mps": 0.2,
+          "valid_event_count": 14
+        }
+      ]
+    },
+    "timing_diversity_pass": true
+  },
+  "generator_unchanged": true,
+  "model_selected_or_locked": false,
+  "next_step": "ADDITIONAL_TARGETED_SLIP_ACQUISITION",
+  "oracle_byte_identical": true,
+  "planned_unique_runs": 216,
+  "positive_attempts": 108,
+  "readiness": {
+    "SINK_RUNTIME_DETECTION_DEFERRED": true,
+    "WALKING_V2_FRESH_BLIND_HOLDOUT_AUTHORIZED": false,
+    "WALKING_V2_INT8_PREPARATION_AUTHORIZED": false,
+    "WALKING_V2_SLIP_AFFECTED_FOOT_BALANCE_READY": true,
+    "WALKING_V2_SLIP_CONTROL_SOURCE_READY": true,
+    "WALKING_V2_SLIP_COUNTERFACTUAL_PARITY_READY": true,
+    "WALKING_V2_SLIP_FUTURE_FOLD_READY": false,
+    "WALKING_V2_SLIP_GENERATOR_IMMUTABLE_READY": true,
+    "WALKING_V2_SLIP_ONSET_DIVERSITY_READY": true,
+    "WALKING_V2_SLIP_POSITIVE_SOURCE_READY": false,
+    "WALKING_V2_SLIP_REACQUISITION_DATA_READY": false,
+    "WALKING_V2_SLIP_REACQUISITION_PROTOCOL_READY": true,
+    "WALKING_V2_SLIP_REACQUISITION_PROVENANCE_READY": true,
+    "WALKING_V2_SLIP_SOLVER_INTERVENTION_READY": true,
+    "WALKING_V2_SLIP_TARGETED_RETRAINING_AUTHORIZED": false,
+    "WALKING_V2_SYSTEM_MIGRATION_AUTHORIZED": false,
+    "WALKING_V2_TERRAIN_LOCK_PRESERVED": true
+  },
+  "system_or_int8_work_performed": false,
+  "task": "Reacquire Targeted Bilateral Slip Development Data v5",
+  "terrain_byte_identical": true,
+  "training_performed": false,
+  "v3_trace_use_count": 0
+}

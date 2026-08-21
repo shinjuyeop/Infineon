@@ -1,0 +1,301 @@
+{
+  "all_files_within_limit": true,
+  "files": [
+    {
+      "bytes": 22410,
+      "mib": 0.021371841430664062,
+      "path": "acquisition_manifest.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 16953636,
+      "mib": 16.16824722290039,
+      "path": "active_patch_contact_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 141,
+      "mib": 0.00013446807861328125,
+      "path": "affected_foot_distribution.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 9059,
+      "mib": 0.008639335632324219,
+      "path": "artifact_access_log.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1179,
+      "mib": 0.0011243820190429688,
+      "path": "audit.md",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 191043,
+      "mib": 0.18219280242919922,
+      "path": "causal_feature_pair_statistics.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 35712,
+      "mib": 0.0340576171875,
+      "path": "control_source_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 30518,
+      "mib": 0.029104232788085938,
+      "path": "counterfactual_pair_manifest.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 272,
+      "mib": 0.0002593994140625,
+      "path": "duplicate_audit.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 56275,
+      "mib": 0.05366802215576172,
+      "path": "effective_friction_and_tangential_force.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 24197,
+      "mib": 0.02307605743408203,
+      "path": "fall_censor_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 19361,
+      "mib": 0.018464088439941406,
+      "path": "fall_censor_distribution.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 255,
+      "mib": 0.00024318695068359375,
+      "path": "forbidden_path_policy.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 189,
+      "mib": 0.00018024444580078125,
+      "path": "future_nested_fold_manifest.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 3016,
+      "mib": 0.00287628173828125,
+      "path": "generator_immutable_verification.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 4872,
+      "mib": 0.00464630126953125,
+      "path": "input_allowlist.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1855,
+      "mib": 0.0017690658569335938,
+      "path": "material_profiles.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 57290,
+      "mib": 0.05463600158691406,
+      "path": "moderate_positive_control_paired_trace.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 93046,
+      "mib": 0.08873558044433594,
+      "path": "onset_distribution_speed_foot_phase_severity.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 179,
+      "mib": 0.00017070770263671875,
+      "path": "onset_phase_distribution.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1041,
+      "mib": 0.0009927749633789062,
+      "path": "oracle_immutable_verification.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 45684,
+      "mib": 0.043567657470703125,
+      "path": "pair_parity_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 2410,
+      "mib": 0.0022983551025390625,
+      "path": "patch_contract_verification.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 500,
+      "mib": 0.000476837158203125,
+      "path": "patch_geometry.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1426037,
+      "mib": 1.3599748611450195,
+      "path": "physical_episode_ledger.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 40938,
+      "mib": 0.03904151916503906,
+      "path": "positive_source_audit.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 126573,
+      "mib": 0.12070941925048828,
+      "path": "protocol.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 5528,
+      "mib": 0.00527191162109375,
+      "path": "provenance.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 2599,
+      "mib": 0.0024785995483398438,
+      "path": "provenance_precheck.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 882,
+      "mib": 0.0008411407470703125,
+      "path": "readiness.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 178696,
+      "mib": 0.17041778564453125,
+      "path": "run_manifest.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 41528,
+      "mib": 0.03960418701171875,
+      "path": "run_progress_manifest.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 123,
+      "mib": 0.00011730194091796875,
+      "path": "severity_distribution.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 98,
+      "mib": 9.34600830078125e-05,
+      "path": "speed_distribution.csv",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 52067,
+      "mib": 0.04965496063232422,
+      "path": "strong_positive_control_paired_trace.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 5867,
+      "mib": 0.005595207214355469,
+      "path": "summary.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 58365,
+      "mib": 0.05566120147705078,
+      "path": "target_vs_contralateral_anchor_drift.png",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 764,
+      "mib": 0.000728607177734375,
+      "path": "terrain_immutable_verification.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 1986827,
+      "mib": 1.8947858810424805,
+      "path": "trace_shard_manifest.json",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 14861956,
+      "mib": 14.173465728759766,
+      "path": "traces_part_000.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 14715645,
+      "mib": 14.03393268585205,
+      "path": "traces_part_001.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 15079606,
+      "mib": 14.381032943725586,
+      "path": "traces_part_002.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 14855900,
+      "mib": 14.16769027709961,
+      "path": "traces_part_003.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 14746957,
+      "mib": 14.063794136047363,
+      "path": "traces_part_004.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 15054915,
+      "mib": 14.3574857711792,
+      "path": "traces_part_005.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 14822685,
+      "mib": 14.136013984680176,
+      "path": "traces_part_006.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 14779340,
+      "mib": 14.094676971435547,
+      "path": "traces_part_007.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 15042320,
+      "mib": 14.345474243164062,
+      "path": "traces_part_008.npz",
+      "under_or_equal_45_mib": true
+    },
+    {
+      "bytes": 259,
+      "mib": 0.00024700164794921875,
+      "path": "v3_quarantine_verification.json",
+      "under_or_equal_45_mib": true
+    }
+  ],
+  "limit_mib": 45,
+  "maximum_file_mib": 16.16824722290039
+}

@@ -1,0 +1,80 @@
+{
+  "frozen_before_acquisition": true,
+  "moderate_matches_v4": true,
+  "profiles": {
+    "hard_normal": {
+      "friction3": [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      "friction5": [
+        1.0,
+        1.0,
+        0.005,
+        0.0001,
+        0.0001
+      ],
+      "frozen_source": "v4 native Concrete hard control",
+      "name": "hard_normal",
+      "role": "control",
+      "sha256": "861cadc347a7537baf4156258c4048b56064561c9b50e586532235b5d2f3d6b3"
+    },
+    "moderate_ice_preregistered": {
+      "friction3": [
+        0.1,
+        0.00125,
+        2.125e-05
+      ],
+      "friction5": [
+        0.1,
+        0.1,
+        0.00125,
+        2.125e-05,
+        2.125e-05
+      ],
+      "frozen_source": "v4 frozen moderate Ice",
+      "name": "moderate_ice_preregistered",
+      "role": "positive",
+      "sha256": "3cddb328c943fcb864ba62572277315a9065a43336ba8738c962ddcfd4b1d286"
+    },
+    "native_strong_ice": {
+      "friction3": [
+        0.05,
+        0.001,
+        1e-05
+      ],
+      "friction5": [
+        0.05,
+        0.05,
+        0.001,
+        1e-05,
+        1e-05
+      ],
+      "frozen_source": "v4 native strong Ice",
+      "name": "native_strong_ice",
+      "role": "positive",
+      "sha256": "5034a800903c5eced64e60812239d0a0cec7a4529d9ab4ec020b1934e9407d14"
+    },
+    "near_slip_non_event": {
+      "friction3": [
+        0.35000000000000003,
+        0.0025,
+        7.75e-05
+      ],
+      "friction5": [
+        0.35000000000000003,
+        0.35000000000000003,
+        0.0025,
+        7.75e-05,
+        7.75e-05
+      ],
+      "frozen_source": "v3 preregistered near-slip non-event",
+      "name": "near_slip_non_event",
+      "role": "control",
+      "sha256": "3649d0fedcf9b2cffc3bfb8d9549fa5f3e25bf3a598a903de9a00ea61649b44e"
+    }
+  },
+  "search_performed": false,
+  "strong_matches_v4": true
+}
