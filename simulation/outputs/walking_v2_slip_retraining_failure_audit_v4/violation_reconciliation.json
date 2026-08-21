@@ -1,0 +1,18 @@
+{
+  "cross_foot_cause": "score/owner selection chose the opposite foot while only the contralateral physical label was actionable",
+  "cross_foot_count": 1,
+  "event_can_receive_both_invalid_and_postfall_categories": true,
+  "fallback_candidate_id": "R1_seed_202608231",
+  "invalid_and_postfall_exact_same_events": true,
+  "invalid_count": 52,
+  "invalid_output_in_positive_numerator": false,
+  "invalid_postfall_overlap_count": 52,
+  "normal_contact_episode_fp": 57,
+  "normal_run_fp": 0,
+  "normal_run_vs_episode_explanation": "All false-positive contact episodes occur in runs that also contain at least one physical Slip event; run-level normal FP counts only wholly event-free runs.",
+  "post_fall_count": 52,
+  "post_fall_reset_before_update_in_V0": false,
+  "runtime_crossing_count": 65,
+  "too_early_count": 2,
+  "violation_record_semantics": "actual reconciled runtime first-crossing events, not raw scores or hidden states"
+}

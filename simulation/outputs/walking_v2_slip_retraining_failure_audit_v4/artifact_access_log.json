@@ -1,0 +1,218 @@
+{
+  "access_count": 35,
+  "accesses": [
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/future_nested_fold_manifest.json",
+      "purpose": "exact frozen 333-row folds",
+      "sequence": 1
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/augmented_canonical_development_manifest.json",
+      "purpose": "targeted run metadata",
+      "sequence": 2
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/training_eligibility.csv",
+      "purpose": "authoritative eligibility",
+      "sequence": 3
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/trace_shard_manifest.json",
+      "purpose": "trace-shard hash and round-trip authority",
+      "sequence": 4
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_000.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 5
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_001.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 6
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_002.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 7
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_003.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 8
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_004.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 9
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_005.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 10
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_006.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 11
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_007.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 12
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_bilateral_slip_targeted_acquisition_v5/traces_part_008.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 13
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/trace_shard_manifest.json",
+      "purpose": "trace-shard hash and round-trip authority",
+      "sequence": 14
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_000.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 15
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_001.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 16
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_002.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 17
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_003.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 18
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_004.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 19
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_moderate_profile_recalibration_v7/traces_part_005.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 20
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/trace_shard_manifest.json",
+      "purpose": "trace-shard hash and round-trip authority",
+      "sequence": 21
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_additional_moderate_v2_acquisition_v8/traces_part_000.npz",
+      "purpose": "verify trace shard and exact array round-trip",
+      "sequence": 22
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/manifest.json",
+      "purpose": "existing 120-run manifest",
+      "sequence": 23
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_train.npz",
+      "purpose": "manifest-transitive existing eligible development traces",
+      "sequence": 24
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_bilateral_sensor_sink_observability_v2/bilateral_traces_validation.npz",
+      "purpose": "manifest-transitive existing eligible development traces",
+      "sequence": 25
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_scenario_generator_redesign_v4/failed_v3_quarantine_manifest.json",
+      "purpose": "verify excluded v3 quarantine only",
+      "sequence": 26
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/candidate_fold_metrics.csv",
+      "purpose": "stored fold metrics parity",
+      "sequence": 27
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/training_health.csv",
+      "purpose": "stored training-count parity",
+      "sequence": 28
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/oof_predictions_R1.npz",
+      "purpose": "stored exact OOF raw predictions",
+      "sequence": 29
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/oof_predictions_R2.npz",
+      "purpose": "stored exact OOF raw predictions",
+      "sequence": 30
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/oof_predictions_R3.npz",
+      "purpose": "stored exact OOF raw predictions",
+      "sequence": 31
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/label_distribution.csv",
+      "purpose": "stored aggregate label parity",
+      "sequence": 32
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/candidate_fold_metrics.csv",
+      "purpose": "stored frozen operating configurations",
+      "sequence": 33
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_redesign_iteration_v2/slip_candidate_matrix.csv",
+      "purpose": "previous S4-C metrics",
+      "sequence": 34
+    },
+    {
+      "decision": "ALLOWED",
+      "path": "simulation/outputs/walking_v2_slip_targeted_retraining_v3/candidate_pooled_metrics.csv",
+      "purpose": "current R1 pooled metrics",
+      "sequence": 35
+    }
+  ],
+  "exact_paths_only": true,
+  "fail_closed": true,
+  "forbidden_access_count": 0
+}

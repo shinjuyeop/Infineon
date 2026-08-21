@@ -1,0 +1,17 @@
+dimension,value,episode_count,median_contact_duration_ms,median_physical_active_duration_ms,median_inter_episode_gap_ms
+source_acquisition,existing_valid_120_bilateral_development,202,186.0,57.0,355.5
+source_acquisition,v5_strong,160,170.0,21.0,507.5
+source_acquisition,v7_moderate_v2,99,168.0,19.0,526.0
+source_acquisition,v8_moderate_v2_supplemental,10,289.0,6.5,575.0
+speed_mps,0.1,165,183.0,35.0,438.5
+speed_mps,0.15,156,175.5,24.0,454.5
+speed_mps,0.2,150,167.0,22.0,467.0
+foot,left,229,183.0,31.0,470.0
+foot,right,242,167.5,26.0,433.0
+onset_phase,early_loading,104,86.0,19.5,403.0
+onset_phase,legacy_development,202,186.0,57.0,355.5
+onset_phase,mid_late_stance,55,287.0,11.0,573.0
+onset_phase,mid_loading_early_stance,110,188.0,28.5,563.0
+severity,legacy_development,202,186.0,57.0,355.5
+severity,moderate_v2,109,183.0,19.0,539.0
+severity,native_strong_ice,160,170.0,21.0,507.5

@@ -1,0 +1,55 @@
+{
+  "allowed_retraining": "exact deterministic replay of frozen R1/R2/R3 only",
+  "blind_holdout_access": false,
+  "conditional_correctness_fix_scope": [
+    "mask order",
+    "reset order",
+    "attribution",
+    "reporting/denominator"
+  ],
+  "diagnostic_only": true,
+  "eligible_data_or_fold_modification": false,
+  "gate_changes": false,
+  "generated_file_limit_mib": 45,
+  "new_data_collection": false,
+  "new_threshold_selection": false,
+  "new_training_architecture": false,
+  "pareto_is_diagnostic_only": true,
+  "production_candidate_or_lock_creation": false,
+  "root_cause_choices": [
+    "DATA_MANIFEST_MISALIGNMENT",
+    "TRACE_SHARD_MAPPING_ERROR",
+    "LABEL_ENCODING_MISMATCH",
+    "TIME_TO_ONSET_BOUNDARY_ERROR",
+    "EPISODE_SEGMENTATION_INFLATION",
+    "NORMALIZATION_ERROR",
+    "CLASS_WEIGHT_OR_SAMPLING_COLLAPSE",
+    "TRAINING_OPTIMIZATION_COLLAPSE",
+    "MODEL_UNDERCAPACITY",
+    "RAW_SCORE_TASK_INCOMPATIBILITY",
+    "VERIFIER_OVERREJECTION",
+    "OPERATING_POINT_GATE_CONFLICT",
+    "MASK_CENSOR_ATTRIBUTION_BUG",
+    "MULTIPLE_INTERACTING_CAUSES"
+  ],
+  "shadow_comparisons": {
+    "A": "previous S4-C / previous 120-run development population",
+    "B": "previous S4-C / augmented eligible population and v8 folds",
+    "C": "current R1 / previous 120-run development population",
+    "D": "current R1 / augmented eligible population and v8 folds",
+    "rule": "do not fabricate exact comparability where required raw artifacts or mapping contract do not exist"
+  },
+  "sink": "SINK_RUNTIME_DETECTION_DEFERRED",
+  "starting_checkpoint": "09cb434133b6a944b4d750829f920dacc6d2c229",
+  "state_variants": {
+    "V0": "exact stored behavior",
+    "V1": "first-fall censor before state update",
+    "V2": "hard reset at first-fall boundary",
+    "V3": "invalid samples prohibited from persistence",
+    "V4": "V1 + V2 + V3"
+  },
+  "stored_operating_points_only_for_primary_replay": true,
+  "system_or_int8_authorization": false,
+  "terrain_writes": false,
+  "version": "walking_v2_slip_retraining_failure_audit_v4"
+}

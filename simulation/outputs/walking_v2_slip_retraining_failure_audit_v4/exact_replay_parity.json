@@ -1,0 +1,43 @@
+{
+  "candidate_hash_and_config_parity": true,
+  "downstream_interpretation_authorized": true,
+  "episode_count_parity": true,
+  "family_parity": [
+    {
+      "actionable_probability_exact": true,
+      "candidate_count": 3,
+      "family_id": "R1",
+      "maximum_actionable_absolute_error": 0.0,
+      "predicted_state_exact": true,
+      "predicted_state_mismatch_count": 0,
+      "stored_oof_sha256": "57cdb52324b99dd562af51d7416e0eb4227a8d14d6feb981e045971d09652712"
+    },
+    {
+      "actionable_probability_exact": true,
+      "candidate_count": 3,
+      "family_id": "R2",
+      "maximum_actionable_absolute_error": 0.0,
+      "predicted_state_exact": true,
+      "predicted_state_mismatch_count": 0,
+      "stored_oof_sha256": "bcd4653b10584e7a84ea3d47b3de3c5dada7cb4a38be88105fcb825b4d1fc099"
+    },
+    {
+      "actionable_probability_exact": true,
+      "candidate_count": 3,
+      "family_id": "R3",
+      "maximum_actionable_absolute_error": 0.0,
+      "predicted_state_exact": true,
+      "predicted_state_mismatch_count": 0,
+      "stored_oof_sha256": "cb2f303f40587349e4af77e0de12212f84d84658f44e839e15d95b41e1736d2d"
+    }
+  ],
+  "fold_count_parity": true,
+  "label_count_parity": true,
+  "labels_recomputed_from_frozen_oracle_ledger": true,
+  "operating_configs_exact": true,
+  "out_of_fold_raw_prediction_exact": true,
+  "status": "PASS",
+  "stored_vs_recomputed_label_count_mismatch_count": 0,
+  "threshold_state_metrics_exact": true,
+  "training_sample_population_parity": true
+}

@@ -1,0 +1,24 @@
+{
+  "authorization_reason": "A mask/reset correctness bug is demonstrated, so only a corrected frozen-pipeline rerun is authorized before architecture or risk-scope decisions.",
+  "corrected_rerun_authorized": true,
+  "downstream_interpretation_stopped": false,
+  "episode_denominator_valid": true,
+  "first_material_divergence_stage": "STAGE_1_POPULATION_FOR_A_VS_D; COMMON-POPULATION_RECIPE_ISOLATION_UNAVAILABLE",
+  "localized": true,
+  "mask_bug_proven": true,
+  "model_redesign_authorized": false,
+  "post_operating_point_episode_recall_R1": 0.012738853503184714,
+  "primary_root_cause": "MULTIPLE_INTERACTING_CAUSES",
+  "raw_actionable_auprc_R1": 0.17951166038617303,
+  "raw_actionable_auroc_R1": 0.7708284415893699,
+  "raw_argmax_episode_recall_R1": 0.9766454352441614,
+  "recall_collapse_explanation": "R1 was named an S4-C reproduction but changed the 200ms/width40/LBFGS state+foot+proposal recipe to a 50ms/width12 diagonal-Gaussian state-only recipe; then the selected 0.99 threshold and 5ms persistence reject most remaining episode evidence. The denominator also expands from the legacy 170-event development definition to 471 per-foot contact-owned events.",
+  "risk_scope_reduction_required": false,
+  "secondary_causes": [
+    "RECIPE_DISCONTINUITY_MODEL_CAPACITY_UNRESOLVED",
+    "OPERATING_POINT_GATE_CONFLICT",
+    "MASK_CENSOR_ATTRIBUTION_BUG",
+    "CONTACT_EPISODE_DENOMINATOR_EXPANSION"
+  ],
+  "training_optimization_collapse": false
+}

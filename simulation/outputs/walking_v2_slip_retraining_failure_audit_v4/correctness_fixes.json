@@ -1,0 +1,13 @@
+{
+  "bug": "first-fall/invalid masks were applied only during attribution, after state accumulation and crossing creation",
+  "candidate_or_lock_created": false,
+  "correctness_bug_proven": true,
+  "fix_applied": true,
+  "fix_scope": [
+    "mask order",
+    "first-fall reset order",
+    "affected-foot reporting"
+  ],
+  "implementation": "the reusable V4 runtime helper applies first-fall and validity before persistence, performs a hard fall reset, and reports affected-foot accuracy without the tautological conditional denominator; production candidacy remains prohibited",
+  "retraining_performed_after_fix": false
+}
